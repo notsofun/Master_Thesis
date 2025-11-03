@@ -1,2 +1,3 @@
-English_Existing/Jigsaw/all_data.csv
-English_Existing/Jigsaw/identity_individual_annotations.csv
+data_collection/English_Existing/Jigsaw/all_data.csv
+data_collection/English_Existing/Jigsaw/identity_individual_annotations.csv
+data_preanalysis/cooc_output

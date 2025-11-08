@@ -165,8 +165,10 @@ def build_ngrams(tokens_list, max_n=MAX_NGRAM):
 # -----------------------
 def analyze(input_file: str, output_dir: str):
     os.makedirs(output_dir, exist_ok=True)
+    print("[INFO] 开始分析，输出目录：", output_dir)
 
-    # 读取 CSV，尽量容错：尝试多种编码与分隔符
+    # 读取 CSV
+    print("[INFO] 读取 CSV 文件：", input_file)
     df = None
     tried = []
     for enc in ["utf-8", "utf-8-sig", "latin1"]:
@@ -183,53 +185,64 @@ def analyze(input_file: str, output_dir: str):
             break
     if df is None:
         raise RuntimeError(f"无法读取文件 {input_file}（尝试了：{tried}）")
+    print(f"[INFO] 成功读取 {len(df)} 条原始数据（尝试过编码和分隔符：{tried}）")
 
-    # 只取第二列（文本列）与可选的 post_id 列（第一列）
+    # 取文本列
     cols = df.columns.tolist()
-    text_col = cols[1]  # 按约定“第二列是文本”
+    text_col = cols[1]
     df = df[[cols[0], text_col]].rename(columns={cols[0]: 'post_id', text_col: 'text'})
     df['text'] = df['text'].astype(str).fillna('').str.strip()
     df = df[df['text'] != '']
-    print(f"读取 {len(df)} 条有效文本（从 {input_file}）")
+    print(f"[INFO] 有效文本条数：{len(df)}")
 
     # 清洗与分词
+    print("[INFO] 文本清洗中...")
     docs_clean = df['text'].map(clean_text).tolist()
+    print("[INFO] 分词中...")
     docs_tokens = [tokenize(t) for t in docs_clean]
 
-    # 统计 n-gram（文档级）
+    # n-gram 统计
+    print(f"[INFO] 统计 n-gram（最大长度 {MAX_NGRAM}）...")
     ngram_counter = build_ngrams(docs_tokens, max_n=MAX_NGRAM)
-    # 过滤低频
     ngram_counter = Counter({k:v for k,v in ngram_counter.items() if v >= MIN_TERM_FREQ})
+    print(f"[INFO] n-gram 统计完成，候选 n-gram 数量：{len(ngram_counter)}")
 
-    # token-level (单词) 以及窗口共现
+    # token-level 共现
+    print(f"[INFO] 计算 token-level 窗口共现（窗口大小 {WINDOW_SIZE}）...")
     token_docs = [[tok for tok in toks if not (tok in SKLEARN_STOPWORDS or tok.isdigit())] for toks in docs_tokens]
     term_count, pair_count, total_windows = window_cooccurrence(token_docs, window_size=WINDOW_SIZE)
-
-    # 过滤低频 term
     term_count = Counter({k:v for k,v in term_count.items() if v >= MIN_TERM_FREQ})
+    print(f"[INFO] token-level 统计完成，term 数量：{len(term_count)}, pair 数量：{len(pair_count)}")
 
-    # PMI
+    # PMI / NPMI / t-score / jaccard / LLR
+    print("[INFO] 计算 PMI...")
     pmi_dict = pmi(pair_count, term_count, total_windows)
+    print("[INFO] 计算 NPMI...")
     npmi_dict = npmi(pair_count, term_count, total_windows)
+    print("[INFO] 计算 t-score...")
     t_dict = t_score(pair_count, term_count, total_windows)
+    print("[INFO] 计算 Jaccard...")
     jaccard_dict = jaccard(pair_count, term_count)
+    print("[INFO] 计算 LLR...")
     llr_dict = log_likelihood(pair_count, term_count, total_windows)
 
-    # 输出：top 单词、top ngrams
+    # 输出 top 单词 / ngram
+    print(f"[INFO] 输出 top {TOP_K_TERMS} 单词...")
     top_terms = term_count.most_common(TOP_K_TERMS)
     pd.DataFrame(top_terms, columns=['term', 'freq']).to_csv(os.path.join(output_dir, 'top_terms_freq.csv'), index=False)
-
+    print(f"[INFO] 输出 top {TOP_K_TERMS} n-gram...")
     top_ngrams = ngram_counter.most_common(TOP_K_TERMS)
     pd.DataFrame(top_ngrams, columns=['ngram', 'freq']).to_csv(os.path.join(output_dir, 'top_ngrams_freq.csv'), index=False)
 
-    # 输出：top 共现对（按共现次数与 PMI 排序）
+    # 输出 top pair
+    print("[INFO] 输出 top 共现对（按次数和 PMI）...")
     top_pairs_by_count = sorted(pair_count.items(), key=lambda x: x[1], reverse=True)[:1000]
     pd.DataFrame([(a,b,c) for (a,b),c in top_pairs_by_count], columns=['a','b','co_count']).to_csv(os.path.join(output_dir,'top_pairs_count.csv'), index=False)
-
     top_pairs_by_pmi = sorted(pmi_dict.items(), key=lambda x: x[1], reverse=True)[:1000]
     pd.DataFrame([(a,b,c) for (a,b),c in top_pairs_by_pmi], columns=['a','b','pmi']).to_csv(os.path.join(output_dir,'top_pairs_pmi.csv'), index=False)
 
-    # 与目标词强关联（按共现数与 PMI）
+    # 与目标词关联
+    print("[INFO] 输出与目标词强关联词...")
     assoc_rows = []
     target_lower = [t.lower() for t in TARGET_TERMS]
     for (a,b),c in pair_count.items():
@@ -238,38 +251,170 @@ def analyze(input_file: str, output_dir: str):
     if assoc_rows:
         pd.DataFrame(assoc_rows, columns=['a','b','co_count','pmi']).sort_values(['co_count','pmi'], ascending=[False, False]).to_csv(os.path.join(output_dir,'assoc_with_targets.csv'), index=False)
 
-    # 最终建议关键词候选（合并 unigram 与 ngram 高频 + 与目标强关联）
-    # 选取 top ngram + top unigrams appearance
-    candidates = set([t for t,_ in top_terms[:TOP_K_TERMS]]) | set([g for g,_ in top_ngrams[:TOP_K_TERMS]])
-    # 导出候选
-    pd.DataFrame(sorted(candidates), columns=['candidate']).to_csv(os.path.join(output_dir,'candidate_keywords.txt'), index=False)
-
+    # 各指标 CSV
+    print("[INFO] 输出各指标 CSV...")
     def dict_to_df(d, name):
         df = pd.DataFrame([(a,b,v) for (a,b),v in d.items()], columns=['a','b',name])
         df.sort_values(by=name, ascending=False, inplace=True)
         df.to_csv(os.path.join(output_dir, f'top_pairs_{name}.csv'), index=False)
 
-    dict_to_df(pmi_dict, 'pmi')
-    dict_to_df(npmi_dict, 'npmi')
-    dict_to_df(t_dict, 't')
-    dict_to_df(jaccard_dict, 'jaccard')
-    dict_to_df(llr_dict, 'llr')
+    for d,name in [(pmi_dict,'pmi'), (npmi_dict,'npmi'), (t_dict,'t'), (jaccard_dict,'jaccard'), (llr_dict,'llr')]:
+        dict_to_df(d, name)
+    print("[INFO] 指标 CSV 输出完成")
 
-    print("分析完成，结果输出到目录：", output_dir)
+    # 综合候选关键词
+    print("[INFO] 生成综合候选关键词...")
+    # -----------------------
+    # 构建词 -> 对索引，加速指标计算
+    # -----------------------
+    from collections import defaultdict
+
+    # 候选关键词（unigram + ngram + 与目标词强关联）
+    candidate_keywords = set([t for t,_ in top_terms]) | set([g for g,_ in top_ngrams])
+    for (a,b),co_count in pair_count.items():
+        if a in target_lower or b in target_lower:
+            candidate_keywords.add(a)
+            candidate_keywords.add(b)
+
+    # 建立词 -> pair 索引
+    kw2pairs = defaultdict(list)
+    for (a,b) in pair_count:
+        kw2pairs[a].append((a,b))
+        kw2pairs[b].append((a,b))
+
+    # -----------------------
+    # 计算综合评分
+    # -----------------------
+    max_term_freq = max(term_count.values()) if term_count else 1
+    candidate_scores = {}
+
+    for kw in candidate_keywords:
+        freq_score = term_count.get(kw, 0) / max_term_freq
+
+        pairs = kw2pairs.get(kw, [])
+        count_pairs = max(1, len(pairs))  # 避免除零
+
+        # 平均指标
+        assoc_score = sum(pmi_dict.get(p,0) for p in pairs) / count_pairs
+        t_score_val = sum(t_dict.get(p,0) for p in pairs) / count_pairs
+        llr_val = sum(llr_dict.get(p,0) for p in pairs) / count_pairs
+
+        # 综合评分，可调权重
+        candidate_scores[kw] = 0.4*freq_score + 0.3*assoc_score + 0.15*t_score_val + 0.15*llr_val
+
+    # 排序取 top K
+    sorted_candidates = sorted(candidate_scores.items(), key=lambda x: x[1], reverse=True)
+    top_candidates = [kw for kw,_ in sorted_candidates[:TOP_K_TERMS]]
+
+    # 导出候选关键词
+    pd.DataFrame(top_candidates, columns=['candidate']).to_csv(
+        os.path.join(output_dir,'candidate_keywords.txt'), index=False
+    )
+
+def load_pair_dicts_from_csv(output_dir):
+    """
+    从之前输出的 CSV 文件读取指标，返回 dicts。
+    """
+    dicts = {}
+    for name in ['pmi','npmi','t','jaccard','llr']:
+        path = os.path.join(output_dir, f'top_pairs_{name}.csv')
+        if not os.path.exists(path):
+            print(f"[WARN] 文件不存在: {path}, 将返回空字典")
+            dicts[name] = {}
+            continue
+        print(f"[INFO] 读取指标文件: {path}")
+        df = pd.read_csv(path)
+        dicts[name] = { (row['a'], row['b']): row[name] for _, row in df.iterrows() }
+        print(f"[INFO] {name} 指标加载完成，共 {len(dicts[name])} 条记录")
+    return dicts
+
+def load_term_pair_counts(output_dir):
+    # term_count
+    term_count_path = os.path.join(output_dir, 'top_terms_freq.csv')
+    print(f"[INFO] 读取 term_count 文件: {term_count_path}")
+    term_count_df = pd.read_csv(term_count_path)
+    term_count = { row['term']: row['freq'] for _, row in term_count_df.iterrows() }
+    print(f"[INFO] term_count 加载完成，共 {len(term_count)} 个词")
+
+    # pair_count
+    pair_count_path = os.path.join(output_dir, 'top_pairs_count.csv')
+    print(f"[INFO] 读取 pair_count 文件: {pair_count_path}")
+    pair_count_df = pd.read_csv(pair_count_path)
+    pair_count = { (row['a'], row['b']): row['co_count'] for _, row in pair_count_df.iterrows() }
+    print(f"[INFO] pair_count 加载完成，共 {len(pair_count)} 对词对")
+
+    return term_count, pair_count
+
+def extract_candidate_keywords_with_log(term_count, pair_count, pmi_dict, t_dict, llr_dict, target_terms, output_dir, top_k=300):
+    print("[INFO] 开始计算候选关键词综合评分...")
+
+    candidate_keywords = set(term_count.keys())
+    candidate_keywords.update({a for (a,b) in pair_count if a in target_terms})
+    candidate_keywords.update({b for (a,b) in pair_count if b in target_terms})
+    print(f"[INFO] 候选关键词总数: {len(candidate_keywords)}")
+
+    max_term_freq = max(term_count.values()) if term_count else 1
+    candidate_scores = {}
+    for i, kw in enumerate(candidate_keywords, 1):
+        if i % 100 == 0:
+            print(f"[INFO] 已处理 {i}/{len(candidate_keywords)} 个候选词...")
+        # 词频归一化
+        freq_score = term_count.get(kw, 0) / max_term_freq
+
+        # 与目标词平均 PMI
+        assoc_pairs = [(a,b) for (a,b) in pair_count if kw in (a,b)]
+        assoc_score = sum(pmi_dict.get((a,b),0) for (a,b) in assoc_pairs) / max(1,len(assoc_pairs))
+
+        # 平均 t-score
+        t_score_val = sum(t_dict.get((a,b),0) for (a,b) in assoc_pairs) / max(1,len(assoc_pairs))
+
+        # 平均 LLR
+        llr_val = sum(llr_dict.get((a,b),0) for (a,b) in assoc_pairs) / max(1,len(assoc_pairs))
+
+        # 综合评分（可调整权重）
+        candidate_scores[kw] = 0.4*freq_score + 0.3*assoc_score + 0.15*t_score_val + 0.15*llr_val
+
+    print("[INFO] 综合评分计算完成，开始排序...")
+    sorted_candidates = sorted(candidate_scores.items(), key=lambda x: x[1], reverse=True)
+    top_candidates = [kw for kw,_ in sorted_candidates[:top_k]]
+
+    # 导出
+    pd.DataFrame(top_candidates, columns=['candidate']).to_csv('candidate_keywords.txt', index=False)
+    print(f"[INFO] 候选关键词提取完成，输出到 {'candidate_keywords.txt'}")
 
 
 # -----------------------
 # CLI
 # -----------------------
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Co-occurrence based keyword/phrase extraction")
-    parser.add_argument("--input", "-i", default="merged_deduped.csv", help="输入 CSV 文件（第二列为文本）")
-    parser.add_argument("--out", "-o", default="cooc_output", help="结果输出目录")
-    parser.add_argument("--min_freq", type=int, default=MIN_TERM_FREQ, help="最小频次阈值")
-    parser.add_argument("--window", type=int, default=WINDOW_SIZE, help="滑动窗口大小")
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser(description="Co-occurrence based keyword/phrase extraction")
+    # parser.add_argument("--input", "-i", default="merged_deduped.csv", help="输入 CSV 文件（第二列为文本）")
+    # parser.add_argument("--out", "-o", default="cooc_output", help="结果输出目录")
+    # parser.add_argument("--min_freq", type=int, default=MIN_TERM_FREQ, help="最小频次阈值")
+    # parser.add_argument("--window", type=int, default=WINDOW_SIZE, help="滑动窗口大小")
+    # args = parser.parse_args()
 
-    MIN_TERM_FREQ = args.min_freq
-    WINDOW_SIZE = args.window
+    # MIN_TERM_FREQ = args.min_freq
+    # WINDOW_SIZE = args.window
 
-    analyze(args.input, args.out)
+    # analyze(args.input, args.out)
+    output_dir = "cooc_output"
+    print("[INFO] 开始从 CSV 加载指标和计数...")
+    term_count, pair_count = load_term_pair_counts(output_dir)
+    dicts = load_pair_dicts_from_csv(output_dir)
+    pmi_dict = dicts['pmi']
+    t_dict = dicts['t']
+    llr_dict = dicts['llr']
+    print("[INFO] 指标加载完成，开始提取候选关键词...")
+
+    extract_candidate_keywords_with_log(
+        term_count=term_count,
+        pair_count=pair_count,
+        pmi_dict=pmi_dict,
+        t_dict=t_dict,
+        llr_dict=llr_dict,
+        target_terms=[t.lower() for t in TARGET_TERMS],
+        output_dir=output_dir,
+        top_k=TOP_K_TERMS
+    )
+    print("[INFO] 候选关键词提取流程全部完成")

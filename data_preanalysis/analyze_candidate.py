@@ -1,16 +1,16 @@
 import pandas as pd
 import numpy as np
-import os
+import os, datetime
+from keywords_extraction import TARGET_TERMS
 
 # === 假设你已经有两个 DataFrame：pmi_df 和 tscore_df ===
 # 它们至少包含 ['a', 'b', 'pmi', 't_score'] 四列
 # 并且你已经有 TARGET_TERMS 列表
 
-pmi_df = pd.read_csv(r'candidate_keywords\candidate_keywords_pmi_15.txt')
-tscore_df = pd.read_csv(r'candidate_keywords\candidate_keywords_tscore_76.txt')
-TARGET_TERMS = ["christian", "christians", "church", "jesus", "bible", "priest"]
+pmi_df = pd.read_csv(r'candidate_keywords\candidate_keywords_pmi_20251110_094217.txt')
+tscore_df = pd.read_csv(r'candidate_keywords\candidate_keywords_tscore_20251110_094217.txt')
+id_str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
-# 提取共现的词（去掉 target 自身）
 def extract_terms(df, top_n=50):
     words = []
     for _, row in df.head(top_n).iterrows():
@@ -39,12 +39,12 @@ fused_terms = extract_terms(merged_df.sort_values("fused_score", ascending=False
 
 # === 保存结果 ===
 os.makedirs("candidate_keywords", exist_ok=True)
-pd.DataFrame({"term": sorted(core_terms)}).to_csv("candidate_keywords/targets_core.csv", index=False)
-pd.DataFrame({"term": sorted(latent_terms)}).to_csv("candidate_keywords/targets_latent.csv", index=False)
-pd.DataFrame({"term": sorted(fused_terms)}).to_csv("candidate_keywords/targets_fused.csv", index=False)
+pd.DataFrame({"term": sorted(core_terms)}).to_csv(f"candidate_keywords/targets_core{id_str}.csv", index=False)
+# pd.DataFrame({"term": sorted(latent_terms)}).to_csv(f"candidate_keywords/targets_latent{id_str}.csv", index=False)
+pd.DataFrame({"term": sorted(fused_terms)}).to_csv(f"candidate_keywords/targets_fused{id_str}.csv", index=False)
 
 # === 打印统计 ===
 print(f"Core terms (intersection): {len(core_terms)}")
-print(f"Stable (T-score only): {len(stable_terms)} | Latent (PMI only): {len(latent_terms)}")
+# print(f"Stable (T-score only): {len(stable_terms)} | Latent (PMI only): {len(latent_terms)}")
 #这个latent为0，说明就是没有差值
 print(f"Fused version total: {len(fused_terms)}")

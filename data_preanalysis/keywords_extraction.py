@@ -23,7 +23,16 @@ WINDOW_SIZE = 4           # 滑动窗口大小（token数）用于窗口共现
 MIN_TERM_FREQ = 5         # 最低频次阈值（词/短语）用于过滤噪声
 MAX_NGRAM = 3             # ngram 最大长度(1=单词, 2=二短语, 3=三短语)
 TOP_K_TERMS = 300         # 导出多少 top 单词/短语供人工查看
-TARGET_TERMS = ["christian", "christians", "church", "jesus", "bible", "priest"]  # 可自定义关注词
+TARGET_TERMS = [
+	# Theological core
+	"christian", "christians", "christ", "church", "jesus", "bible", "god", "holy",
+	"catholic", "catholics", "pope", "teach", "teaching", "teachings", "belief", "believe", "true",
+	# Institutional / state-related
+	"authority", "state", "institutional", "separation", "change", "history", "right",
+	
+	# Cultural / emotional
+	"love", "think", "women", "white", "world", "people", "time", "way", "needs", "like"
+]
 
 # -----------------------
 # 文本处理与分词函数

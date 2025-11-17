@@ -15,6 +15,24 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
+KEYWORD_JSON = "../fianl_keywors.json"
+OUTPUT_CSV = "all_search_posts.csv"
+
+def load_keywords_from_json(path=KEYWORD_JSON, key="Chinese"):
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return data.get(key, [])
+
+
+def append_to_big_csv(rows, filename=OUTPUT_CSV, header=None):
+    file_exists = os.path.exists(filename)
+    with open(filename, "a", newline="", encoding="utf-8-sig") as f:
+        writer = csv.DictWriter(f, fieldnames=header)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerows(rows)
+
+
 # ---------------- 基本配置 ----------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 COOKIE_FILE = os.path.join(BASE_DIR, "tieba_cookies.json")
@@ -294,25 +312,43 @@ def save_to_csv(data: List[Dict[str, Any]], filename: str):
 
 # ---------------- 主流程 ----------------
 def main():
+    all_keywords = load_keywords_from_json(KEYWORD_JSON, key="Chinese")
+    print(f"Loaded {len(all_keywords)} keywords.")
     try:
         login_with_cookie()
-        for kw in KEYWORDS:
+        for kw in all_keywords:
+            print(f"\n===== Processing keyword: {kw} =====")
+
+            try:
             # 加载断点
-            prog = load_progress(kw)
-            start_page = prog["page"] if prog and "page" in prog else 0
-            existing_results = prog.get("results", []) if prog else []
+                prog = load_progress(kw)
+                start_page = prog["page"] if prog and "page" in prog else 0
+                existing_results = prog.get("results", []) if prog else []
 
-            # 抓取
-            posts = crawl_tieba_search(kw, pages=8, start_page=start_page)
+                # 抓取
+                posts = crawl_tieba_search(kw, pages=8, start_page=start_page)
 
-            # 合并并保存
-            all_results = existing_results + posts
-            safe_name = safe_filename(kw)
-            save_to_csv(all_results, filename=f"{safe_name}_search_posts.csv")
-            # 清理断点（可选）
-            prog_path = os.path.join(PROGRESS_DIR, f"{safe_name}_progress.pkl")
-            if os.path.exists(prog_path):
-                os.remove(prog_path)
+                # 给每条记录加上 keyword 字段
+                for p in posts:
+                    p["keyword"] = kw
+
+                # 合并并保存
+                all_results = existing_results + posts
+
+                # --- 写入总 CSV ---
+                if all_results:
+                    header = list(all_results[0].keys())
+                    append_to_big_csv(all_results, filename=OUTPUT_CSV, header=header)
+
+                # --- 清理断点 ---
+                safe_name = safe_filename(kw)
+                prog_path = os.path.join(PROGRESS_DIR, f"{safe_name}_progress.pkl")
+                if os.path.exists(prog_path):
+                    os.remove(prog_path)
+            except Exception as e:
+                # 不影响后续关键词
+                print(f"[Error] keyword '{kw}' failed: {e}")
+                continue
     finally:
         try:
             driver.quit()

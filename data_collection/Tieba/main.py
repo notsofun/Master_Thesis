@@ -15,6 +15,41 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
+import logging
+from datetime import datetime
+
+# ------------ 日志配置 ------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_DIR = os.path.join(BASE_DIR, "log")
+os.makedirs(LOG_DIR, exist_ok=True)
+
+log_filename = datetime.now().strftime("%Y%m%d_%H%M%S") + ".log"
+log_path = os.path.join(LOG_DIR, log_filename)
+
+logger = logging.getLogger("tieba_crawler")
+logger.setLevel(logging.INFO)
+
+# 文件输出
+file_handler = logging.FileHandler(log_path, encoding="utf-8")
+file_handler.setLevel(logging.INFO)
+
+# 控制台输出
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+
+formatter = logging.Formatter(
+    "[%(asctime)s] [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
+file_handler.setFormatter(formatter)
+console_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
+logger.info("日志系统初始化完成：%s", log_path)
+
+
 KEYWORD_JSON = "../fianl_keywors.json"
 OUTPUT_CSV = "all_search_posts.csv"
 
@@ -72,16 +107,16 @@ def login_with_cookie():
                 except Exception:
                     pass
             driver.refresh()
-            print("✅ 已加载 cookie 并刷新页面")
+            logger.info("✅ 已加载 cookie 并刷新页面")
         except Exception as e:
-            print(f"⚠️ 加载 cookie 失败: {e}")
+            logger.error(f"⚠️ 加载 cookie 失败: {e}")
     else:
-        print("请手动在打开的浏览器中完成登录（扫码等），登录后按 Enter 保存 cookie 并继续...")
+        logger.warning("请手动在打开的浏览器中完成登录（扫码等），登录后按 Enter 保存 cookie 并继续...")
         input()
         cookies = driver.get_cookies()
         with open(COOKIE_FILE, "w", encoding="utf-8") as f:
             json.dump(cookies, f, ensure_ascii=False, indent=2)
-        print("✅ 登录成功，cookie 已保存")
+        logger.info("✅ 登录成功，cookie 已保存")
 
 
 # ---------------- 工具函数 ----------------
@@ -119,7 +154,7 @@ def safe_switch_to_main(driver):
         if driver.window_handles:
             driver.switch_to.window(driver.window_handles[0])
     except Exception as e:
-        print(f"⚠️ 切换主窗口失败: {e}")
+        logger.error(f"⚠️ 切换主窗口失败: {e}")
 
 # ---------------- 帖子详情抓取 ----------------
 def parse_post_detail(driver, link: str):
@@ -197,14 +232,14 @@ def parse_post_detail(driver, link: str):
                 "link": link
             })
     except Exception as e:
-        print(f"❌ 抓取帖子详情失败 ({link}): {e}")
+        logger.error(f"❌ 抓取帖子详情失败 ({link}): {e}")
     finally:
         # 只关闭当前标签页
         try:
             if len(driver.window_handles) > 1:
                 driver.close()
         except Exception as e:
-            print(f"⚠️ 关闭标签页失败: {e}")
+            logger.error(f"⚠️ 关闭标签页失败: {e}")
         safe_switch_to_main(driver)
 
     return post_data
@@ -221,24 +256,24 @@ def is_captcha_present(driver) -> bool:
         return False
 
 def crawl_tieba_search(keyword: str, pages: int = 3, start_page: int = 0):
-    print(f"🔍 开始关键词：{keyword} 从第 {start_page+1} 页，共 {pages} 页")
+    logger.info(f"🔍 开始关键词：{keyword} 从第 {start_page+1} 页，共 {pages} 页")
     url = f"https://tieba.baidu.com/f/search/res?ie=utf-8&qw={keyword}"
     driver.get(url)
     human_like_sleep(1.2, 2.5)
 
     results = []
     consecutive_failures = 0
-    backoff_base = 5
+    backoff_base = 10
 
     for page in range(start_page, pages):
         try:
-            print(f"📄 正在抓取第 {page+1} 页...")
+            logger.info(f"📄 正在抓取第 {page+1} 页...")
             human_scroll(driver)
             human_like_sleep(1.0, 2.5)
 
             # 验证检测
             if is_captcha_present(driver):
-                print("⚠️ 检测到安全验证（captcha）。请在浏览器中完成验证后按 Enter 继续。")
+                logger.warning("⚠️ 检测到安全验证（captcha）。请在浏览器中完成验证后按 Enter 继续。")
                 save_progress(keyword, {"page": page, "results": results})
                 input("完成验证后按 Enter 继续...")
                 driver.refresh()
@@ -278,7 +313,7 @@ def crawl_tieba_search(keyword: str, pages: int = 3, start_page: int = 0):
                 next_btn = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, '下一页>')))
                 next_btn.click()
             except Exception:
-                print("🚫 未能点击下一页或已到最后一页。")
+                logger.error("🚫 未能点击下一页或已到最后一页。")
                 break
 
             # 低概率短暂停留，模拟人工行为
@@ -286,14 +321,14 @@ def crawl_tieba_search(keyword: str, pages: int = 3, start_page: int = 0):
             consecutive_failures = 0
 
         except Exception as e:
-            print(f"❌ 第 {page+1} 页异常: {e}")
+            logger.error(f"❌ 第 {page+1} 页异常: {e}")
             consecutive_failures += 1
             wait_time = backoff_base * (2 ** (consecutive_failures - 1))
-            print(f"⏳ 出错后等待 {wait_time} 秒重试（连续失败 {consecutive_failures} 次）")
+            logger.error(f"⏳ 出错后等待 {wait_time} 秒重试（连续失败 {consecutive_failures} 次）")
             save_progress(keyword, {"page": page, "results": results})
             time.sleep(wait_time)
             if consecutive_failures >= 5:
-                print("✋ 多次失败，建议人工检查浏览器或稍后重试。")
+                logger.error("✋ 多次失败，建议人工检查浏览器或稍后重试。")
                 break
 
     return results
@@ -301,23 +336,23 @@ def crawl_tieba_search(keyword: str, pages: int = 3, start_page: int = 0):
 # ---------------- 保存 CSV ----------------
 def save_to_csv(data: List[Dict[str, Any]], filename: str):
     if not data:
-        print("⚠️ 无数据，跳过保存。")
+        logger.error("⚠️ 无数据，跳过保存。")
         return
     path = os.path.join(BASE_DIR, filename)
     with open(path, "w", newline='', encoding="utf-8-sig") as f:
         writer = csv.DictWriter(f, fieldnames=list(data[0].keys()))
         writer.writeheader()
         writer.writerows(data)
-    print(f"✅ 已保存 {len(data)} 条记录到 {path}")
+    logger.info(f"✅ 已保存 {len(data)} 条记录到 {path}")
 
 # ---------------- 主流程 ----------------
 def main():
     all_keywords = load_keywords_from_json(KEYWORD_JSON, key="Chinese")
-    print(f"Loaded {len(all_keywords)} keywords.")
+    logger.info(f"Loaded {len(all_keywords)} keywords.")
     try:
         login_with_cookie()
         for kw in all_keywords:
-            print(f"\n===== Processing keyword: {kw} =====")
+            logger.info(f"\n===== Processing keyword: {kw} =====")
 
             try:
             # 加载断点
@@ -347,7 +382,7 @@ def main():
                     os.remove(prog_path)
             except Exception as e:
                 # 不影响后续关键词
-                print(f"[Error] keyword '{kw}' failed: {e}")
+                logger.error(f"[Error] keyword '{kw}' failed: {e}")
                 continue
     finally:
         try:

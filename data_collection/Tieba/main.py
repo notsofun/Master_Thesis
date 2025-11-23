@@ -51,7 +51,7 @@ logger.info("日志系统初始化完成：%s", log_path)
 
 
 KEYWORD_JSON = "../fianl_keywors.json"
-OUTPUT_CSV = "all_search_posts.csv"
+OUTPUT_CSV = f"{datetime.now().strftime("%Y%m%d_%H%M%S")}_search_posts.csv"
 
 def load_keywords_from_json(path=KEYWORD_JSON, key="Chinese"):
     with open(path, "r", encoding="utf-8") as f:

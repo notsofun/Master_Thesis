@@ -244,82 +244,89 @@ def parse_search_page(driver: webdriver.Chrome, keyword: str) -> List[str]:
 
 # ========== 线程抓取 ==========
 def parse_thread_page(driver: webdriver.Chrome, thread_url: str, keyword: str) -> List[Dict[str, Any]]:
-    """解析线程/帖子页面"""
+    """解析线程/帖子页面，支持翻页抓取所有回帖，直到无下一页或达到最大回帖数"""
     logger.info("📖 开始解析线程页面: %s", thread_url)
     posts = []
-    
     retry_count = 0
+    total_posts = 0
+    page_idx = 1
+    url = thread_url
     while retry_count < MAX_RETRIES:
         try:
-            logger.info("📥 加载页面... (尝试 %d/%d)", retry_count + 1, MAX_RETRIES)
-            driver.get(thread_url)
-            human_like_sleep(2, 4)  # 等待页面加载
-            
+            driver.get(url)
+            human_like_sleep(2, 4)
             soup = BeautifulSoup(driver.page_source, "lxml")
 
-            # 1. 获取帖子标题
+            # 获取帖子标题
             title_elem = soup.find("h1", id="title")
             title = clean_text(title_elem.get_text()) if title_elem else "无标题"
             logger.info("📋 线程标题: %s", title[:50])
 
-            # 2. 遍历所有回帖
-            li_items = soup.find_all("li", class_=re.compile(r"threadview_response"))
-            logger.info("🔍 找到 %d 条回帖", len(li_items))
-            
-            if not li_items:
-                logger.warning("⚠️ 未找到任何回帖内容")
-                return []
-            
-            for idx, li in enumerate(li_items, 1):
-                try:
-                    if idx > MAX_POSTS_PER_THREAD:
-                        break
-
-                    # 3. 提取内容
-                    body_div = li.find("div", class_=re.compile(r"threadview_response_body|threadview_response_detail"))
-                    if not body_div:
-                        logger.debug("⚠️ 第 %d 条回帖: 未找到内容", idx)
+            while True:
+                # 2. 遍历所有回帖
+                li_items = soup.find_all("li", class_=re.compile(r"threadview_response"))
+                logger.info("🔍 找到 %d 条回帖 (第 %d 页)", len(li_items), page_idx)
+                if not li_items:
+                    logger.warning("⚠️ 未找到任何回帖内容")
+                    break
+                for li in li_items:
+                    try:
+                        if total_posts >= MAX_POSTS_PER_THREAD:
+                            logger.info("🚦 已达每线程最大回帖数 %d，提前结束", MAX_POSTS_PER_THREAD)
+                            return posts
+                        # 3. 提取内容
+                        body_div = li.find("div", class_=re.compile(r"threadview_response_body|threadview_response_detail"))
+                        if not body_div:
+                            logger.debug("⚠️ 回帖: 未找到内容")
+                            continue
+                        text = clean_text(body_div.get_text(" ", strip=True))
+                        # 4. 提取元数据
+                        info_div = li.find("div", class_=re.compile(r"threadview_response_info"))
+                        author, post_time = "未知", "未知"
+                        if info_div:
+                            info_text = info_div.get_text(" ", strip=True)
+                            m_author = re.search(r"(名前|名無し|ID)\s*[:\uff1a]?\s*([^\s]+)", info_text)
+                            if m_author:
+                                author = m_author.group(2)
+                            else:
+                                name_match = re.search(r'\d+\s+(.*?)\s+\d{4}/', info_text)
+                                if name_match:
+                                    author = name_match.group(1).strip()
+                            m_time = re.search(r"(\d{4}[/-]\d{1,2}[/-]\d{1,2}[^0-9]{0,10}\d{1,2}:\d{2}:\d{2})", info_text)
+                            if m_time:
+                                post_time = m_time.group(1)
+                        post = {
+                            "keyword": keyword,
+                            "thread_url": thread_url,
+                            "title": title,
+                            "author": author,
+                            "time": post_time,
+                            "text": text,
+                            "uid": uid_from_text(thread_url, text[:200])
+                        }
+                        posts.append(post)
+                        total_posts += 1
+                    except Exception as e:
+                        logger.warning("⚠️ 回帖提取失败: %s", e)
                         continue
-                    text = clean_text(body_div.get_text(" ", strip=True))
-
-                    # 4. 提取元数据
-                    info_div = li.find("div", class_=re.compile(r"threadview_response_info"))
-                    author, post_time = "未知", "未知"
-                    
-                    if info_div:
-                        info_text = info_div.get_text(" ", strip=True)
-                        
-                        # 提取作者
-                        m_author = re.search(r"(名前|名無し|ID)\s*[:\uff1a]?\s*([^\s]+)", info_text)
-                        if m_author:
-                            author = m_author.group(2)
-                        else:
-                            name_match = re.search(r'\d+\s+(.*?)\s+\d{4}/', info_text)
-                            if name_match:
-                                author = name_match.group(1).strip()
-
-                        # 提取时间
-                        m_time = re.search(r"(\d{4}[/-]\d{1,2}[/-]\d{1,2}[^0-9]{0,10}\d{1,2}:\d{2}:\d{2})", info_text)
-                        if m_time:
-                            post_time = m_time.group(1)
-
-                    # 创建帖子数据
-                    post = {
-                        "keyword": keyword,
-                        "thread_url": thread_url,
-                        "title": title,
-                        "author": author,
-                        "time": post_time,
-                        "text": text,
-                        "uid": uid_from_text(thread_url, text[:200])
-                    }
-                    posts.append(post)
-                    logger.debug("✅ 第 %d 条回帖已提取", idx)
-                    
+                # 检查是否有下一页按钮
+                try:
+                    next_btn = driver.find_elements(By.CSS_SELECTOR, 'a.nolink.fa.fa-play.next')
+                    if next_btn and next_btn[0].is_displayed() and next_btn[0].is_enabled():
+                        logger.info("➡️ 检测到下一页按钮, 点击进入下一页 (第 %d 页)", page_idx + 1)
+                        # 滚动到按钮并点击
+                        driver.execute_script("arguments[0].scrollIntoView(true);", next_btn[0])
+                        next_btn[0].click()
+                        human_like_sleep(2, 4)
+                        soup = BeautifulSoup(driver.page_source, "lxml")
+                        page_idx += 1
+                        continue
+                    else:
+                        logger.info("🚫 未检测到下一页按钮, 回帖抓取结束")
+                        break
                 except Exception as e:
-                    logger.warning("⚠️ 第 %d 条回帖提取失败: %s", idx, e)
-                    continue
-
+                    logger.info("🚫 下一页按钮查找/点击异常: %s, 视为无下一页", e)
+                    break
             if posts:
                 logger.info("✅ 成功提取 %d 条回帖", len(posts))
                 return posts
@@ -331,7 +338,6 @@ def parse_thread_page(driver: webdriver.Chrome, thread_url: str, keyword: str) -
                     logger.info("⏳ 等待 %d 秒后重试...", wait_time)
                     human_like_sleep(wait_time)
                 continue
-                
         except Exception as e:
             logger.error("❌ 页面解析出错: %s", e)
             retry_count += 1
@@ -341,7 +347,6 @@ def parse_thread_page(driver: webdriver.Chrome, thread_url: str, keyword: str) -
             wait_time = BACKOFF_BASE * (2 ** retry_count)
             logger.info("⏳ 错误恢复，等待 %d 秒后重试...", wait_time)
             human_like_sleep(wait_time)
-    
     logger.warning("⚠️ 页面解析最终失败，返回空列表")
     return []
 

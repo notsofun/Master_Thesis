@@ -1,7 +1,7 @@
 import os
 import time
 import csv
-import json
+import json, hashlib
 import random
 import logging
 import pickle
@@ -251,6 +251,18 @@ def parse_thread_page(driver: webdriver.Chrome, thread_url: str, keyword: str) -
     total_posts = 0
     page_idx = 1
     url = thread_url
+
+    # 可调整的保护阈值（若全站已知最大展示数可设置 PAGE_DISPLAY_LIMIT = 100）
+    PAGE_DISPLAY_LIMIT = globals().get("PAGE_DISPLAY_LIMIT", 100)
+    MAX_PAGE_ITER = globals().get("MAX_PAGE_ITER", 200)  # 防止无限循环
+
+    def _posts_hash_from_soup(soup):
+        li_items_local = soup.find_all("li", class_=re.compile(r"threadview_response"))
+        texts = [clean_text((li.get_text(" ", strip=True) or "")[:1000]) for li in li_items_local]
+        # 使用稳定哈希字符串
+        h = hashlib.sha256("\n".join(texts).encode("utf-8")).hexdigest()
+        return h, li_items_local
+
     while retry_count < MAX_RETRIES:
         try:
             driver.get(url)
@@ -262,13 +274,23 @@ def parse_thread_page(driver: webdriver.Chrome, thread_url: str, keyword: str) -
             title = clean_text(title_elem.get_text()) if title_elem else "无标题"
             logger.info("📋 线程标题: %s", title[:50])
 
+            # 初始页面内容哈希
+            current_hash, _ = _posts_hash_from_soup(soup)
+
+            page_iter = 0
             while True:
-                # 2. 遍历所有回帖
+                page_iter += 1
+                if page_iter > MAX_PAGE_ITER:
+                    logger.warning("⚠️ 翻页次数超过上限 %d，停止翻页以防无限循环", MAX_PAGE_ITER)
+                    break
+
+                # 2. 遍历所有回帖（根据当前 soup）
                 li_items = soup.find_all("li", class_=re.compile(r"threadview_response"))
                 logger.info("🔍 找到 %d 条回帖 (第 %d 页)", len(li_items), page_idx)
                 if not li_items:
-                    logger.warning("⚠️ 未找到任何回帖内容")
+                    logger.warning("⚠️ 未找到任何回帖内容 (第 %d 页)", page_idx)
                     break
+
                 for li in li_items:
                     try:
                         if total_posts >= MAX_POSTS_PER_THREAD:
@@ -309,24 +331,78 @@ def parse_thread_page(driver: webdriver.Chrome, thread_url: str, keyword: str) -
                     except Exception as e:
                         logger.warning("⚠️ 回帖提取失败: %s", e)
                         continue
-                # 检查是否有下一页按钮
+
+                # ---- 在尝试点击下一页前做更多检查 ----
+                # 如果已达到总数上限，直接结束
+                if total_posts >= MAX_POSTS_PER_THREAD:
+                    logger.info("🚦 已达每线程最大回帖数 %d，结束", MAX_POSTS_PER_THREAD)
+                    return posts
+
+                # 查找下一页按钮
                 try:
-                    next_btn = driver.find_elements(By.CSS_SELECTOR, 'a.nolink.fa.fa-play.next')
-                    if next_btn and next_btn[0].is_displayed() and next_btn[0].is_enabled():
-                        logger.info("➡️ 检测到下一页按钮, 点击进入下一页 (第 %d 页)", page_idx + 1)
-                        # 滚动到按钮并点击
-                        driver.execute_script("arguments[0].scrollIntoView(true);", next_btn[0])
-                        next_btn[0].click()
-                        human_like_sleep(2, 4)
-                        soup = BeautifulSoup(driver.page_source, "lxml")
-                        page_idx += 1
-                        continue
-                    else:
-                        logger.info("🚫 未检测到下一页按钮, 回帖抓取结束")
-                        break
+                    next_btns = driver.find_elements(By.CSS_SELECTOR, 'a.nolink.fa.fa-play.next')
                 except Exception as e:
-                    logger.info("🚫 下一页按钮查找/点击异常: %s, 视为无下一页", e)
+                    logger.info("🚫 下一页按钮查找异常: %s, 视为无下一页", e)
                     break
+
+                if not next_btns:
+                    logger.info("🚫 未检测到下一页按钮, 回帖抓取结束")
+                    break
+
+                next_btn = next_btns[0]
+                btn_class = (next_btn.get_attribute("class") or "")
+                # 如果类里存在 disabled 标记，直接终止（适配站点常见做法）
+                if "disabled" in btn_class.lower():
+                    logger.info("🚫 下一页按钮处于 disabled 状态, 停止翻页")
+                    break
+
+                # 如果第一页的回帖数小于页面最大展示数且我们在第一页，通常表示无第二页（你说的站点行为）
+                if page_idx == 1 and len(li_items) <= PAGE_DISPLAY_LIMIT and total_posts <= PAGE_DISPLAY_LIMIT:
+                    logger.info("ℹ️ 第1页回帖数 (%d) 未达到页面最大展示数 (%d), 视为无下一页", len(li_items), PAGE_DISPLAY_LIMIT)
+                    break
+
+                # 尝试点击并等待页面内容变化（基于哈希检测）
+                logger.info("➡️ 尝试点击下一页 (第 %d 页 -> 第 %d 页)", page_idx, page_idx + 1)
+                try:
+                    # 将按钮滚动到可视并优先用 JS click 绕过覆盖问题
+                    driver.execute_script("arguments[0].scrollIntoView(true);", next_btn)
+                    try:
+                        driver.execute_script("arguments[0].click();", next_btn)
+                    except Exception:
+                        next_btn.click()
+                except Exception as e_click:
+                    logger.debug("⚠️ 点击下一页时异常，尝试常规 click: %s", e_click)
+                    try:
+                        next_btn.click()
+                    except Exception as e_click2:
+                        logger.info("🚫 下一页按钮点击失败: %s, 视为无下一页", e_click2)
+                        break
+
+                # 等待页面实际变化：轮询检查回帖哈希是否发生变化
+                waited = 0
+                changed = False
+                wait_interval = 0.5
+                max_wait = 6  # 秒，等待新页面加载的超时时间
+                while waited < max_wait:
+                    human_like_sleep(wait_interval, wait_interval)  # 轻睡，给页面时间
+                    new_soup = BeautifulSoup(driver.page_source, "lxml")
+                    new_hash, new_li_items = _posts_hash_from_soup(new_soup)
+                    if new_hash != current_hash:
+                        # 页面确实变化
+                        soup = new_soup
+                        current_hash = new_hash
+                        page_idx += 1
+                        changed = True
+                        break
+                    waited += wait_interval
+                if not changed:
+                    logger.info("🚫 点击后页面内容未变化，判定为无实际下一页，停止翻页")
+                    break
+
+                # loop 回到处理新页
+                continue
+
+            # 外层 while True 结束
             if posts:
                 logger.info("✅ 成功提取 %d 条回帖", len(posts))
                 return posts
@@ -338,6 +414,7 @@ def parse_thread_page(driver: webdriver.Chrome, thread_url: str, keyword: str) -
                     logger.info("⏳ 等待 %d 秒后重试...", wait_time)
                     human_like_sleep(wait_time)
                 continue
+
         except Exception as e:
             logger.error("❌ 页面解析出错: %s", e)
             retry_count += 1

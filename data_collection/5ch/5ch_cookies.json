@@ -1,299 +1,19 @@
 [
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1795441541,
-    "httpOnly": false,
-    "name": "__browsiUID",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "8d6155bc-eefb-473f-917e-33c74f152260"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510329,
-    "httpOnly": false,
-    "name": "oversea_1561463546",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "90"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510319,
-    "httpOnly": false,
-    "name": "ffo_1739367286",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "43"
-  },
-  {
     "domain": ".5ch.net",
-    "expiry": 1798465541,
+    "expiry": 1798550193,
     "httpOnly": false,
     "name": "_ga_7NQT8916KZ",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
-    "value": "GS2.1.s1763902994$o2$g1$t1763905541$j5$l0$h0"
+    "value": "GS2.1.s1763985475$o3$g1$t1763990192$j24$l0$h0"
   },
   {
     "domain": "itest.5ch.net",
-    "expiry": 1764510297,
+    "expiry": 1764594976,
     "httpOnly": false,
-    "name": "poverty_1761253831",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "6"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510265,
-    "httpOnly": false,
-    "name": "news4vip_1762495099",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "9"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510225,
-    "httpOnly": false,
-    "name": "poverty_1763286557",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "49"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510195,
-    "httpOnly": false,
-    "name": "jsaloon_1734692105",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "718"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510186,
-    "httpOnly": false,
-    "name": "psy_1741241513",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "206"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510141,
-    "httpOnly": false,
-    "name": "livegalileo_1761294268",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "4"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510118,
-    "httpOnly": false,
-    "name": "news4vip_1761651813",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "1"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510020,
-    "httpOnly": false,
-    "name": "news4vip_1761890816",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "2"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509824,
-    "httpOnly": false,
-    "name": "kyoto_1304659533",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "812"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510009,
-    "httpOnly": false,
-    "name": "poverty_1763406379",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "9"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509994,
-    "httpOnly": false,
-    "name": "poverty_1761271577",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "25"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510275,
-    "httpOnly": false,
-    "name": "poverty_1761355953",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "4"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510253,
-    "httpOnly": false,
-    "name": "news4vip_1762589496",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "3"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509972,
-    "httpOnly": false,
-    "name": "livegalileo_1761834130",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "18"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510063,
-    "httpOnly": false,
-    "name": "poverty_1761799051",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "6"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509015,
-    "httpOnly": false,
-    "name": "poverty_1763630235",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "13"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509939,
-    "httpOnly": false,
-    "name": "livegalileo_1762468773",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "2"
-  },
-  {
-    "domain": ".5ch.net",
-    "expiry": 1771681541,
-    "httpOnly": false,
-    "name": "_unv_aid",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "11b0c9229f64fab9aed042fb77fb33a2"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509920,
-    "httpOnly": false,
-    "name": "poverty_1763160216",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "27"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509895,
-    "httpOnly": false,
-    "name": "moeplus_1758466499",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "14"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509862,
-    "httpOnly": false,
-    "name": "poverty_1763103590",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "40"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509851,
-    "httpOnly": false,
-    "name": "news4vip_1763551216",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "6"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509144,
-    "httpOnly": false,
-    "name": "hage_1762501227",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "6"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509226,
-    "httpOnly": false,
-    "name": "news4vip_1761378162",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "8"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510088,
-    "httpOnly": false,
-    "name": "poverty_1762324623",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "5"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509811,
-    "httpOnly": false,
-    "name": "min_1363635259",
+    "name": "kyousan_1673712296",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
@@ -301,197 +21,847 @@
   },
   {
     "domain": "itest.5ch.net",
-    "expiry": 1764509910,
+    "expiry": 1764594958,
     "httpOnly": false,
-    "name": "news4vip_1763834330",
+    "name": "seiji_1710977563",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
+    "value": "920"
+  },
+  {
+    "domain": "itest.5ch.net",
+    "expiry": 1764594897,
+    "httpOnly": false,
+    "name": "meikyu_1748026574",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "133"
+  },
+  {
+    "domain": "itest.5ch.net",
+    "expiry": 1764594882,
+    "httpOnly": false,
+    "name": "giin_1748912888",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "411"
+  },
+  {
+    "domain": "itest.5ch.net",
+    "expiry": 1764594844,
+    "httpOnly": false,
+    "name": "psy_1753678966",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "67"
+  },
+  {
+    "domain": ".5ch.net",
+    "expiry": 1771766193,
+    "httpOnly": false,
+    "name": "_unv_aid",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "16e8f176d947aa31cf2460437772356f"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509482,
+    "httpOnly": false,
+    "name": "news4vip_1763040842",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
     "value": "1"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509835,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509712,
     "httpOnly": false,
-    "name": "min_1291723725",
+    "name": "__bnc_pfpuid__",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "590"
+    "secure": true,
+    "value": "15g6-W3YV3NdFoT"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509132,
+    "httpOnly": false,
+    "name": "poverty_1762706742",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "125"
   },
   {
     "domain": "itest.5ch.net",
-    "expiry": 1763907341,
+    "expiry": 1764594856,
     "httpOnly": false,
-    "name": "__browsiSessionID",
+    "name": "musicjg_1751895039",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
-    "value": "87a95c53-339a-4783-95f9-79fffcccc15d&true&DEFAULT&ch&desktop-4.52.1252"
+    "value": "155"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510287,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510020,
     "httpOnly": false,
-    "name": "news4vip_1761290446",
+    "name": "news4vip_1761890816",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "1"
+    "secure": true,
+    "value": "2"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509025,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510319,
     "httpOnly": false,
-    "name": "news4vip_1763613578",
+    "name": "ffo_1739367286",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "4"
+    "secure": true,
+    "value": "43"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509416,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510329,
     "httpOnly": false,
-    "name": "livegalileo_1763170909",
+    "name": "oversea_1561463546",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "16"
+    "secure": true,
+    "value": "90"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509775,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509561,
     "httpOnly": false,
-    "name": "archeology_1474979879",
+    "name": "newsplus_1762314134",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "530"
+    "secure": true,
+    "value": "195"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509883,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509292,
     "httpOnly": false,
-    "name": "news4vip_1761322362",
+    "name": "poverty_1763870094",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "5"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509752,
-    "httpOnly": false,
-    "name": "kyoto_1566062676",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "116"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509741,
-    "httpOnly": false,
-    "name": "hawaii_1680320182",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "12"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509617,
-    "httpOnly": false,
-    "name": "psy_1749681277",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
+    "secure": true,
     "value": "9"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764508991,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509015,
     "httpOnly": false,
-    "name": "okinawa_1469199513",
+    "name": "poverty_1763630235",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "68"
+    "secure": true,
+    "value": "13"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510195,
+    "httpOnly": false,
+    "name": "jsaloon_1734692105",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "718"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510275,
+    "httpOnly": false,
+    "name": "poverty_1761355953",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "4"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509929,
+    "httpOnly": false,
+    "name": "news4vip_1762742675",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "2"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509824,
+    "httpOnly": false,
+    "name": "kyoto_1304659533",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "812"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509683,
+    "httpOnly": false,
+    "name": "psy_1721935482",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "154"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510297,
+    "httpOnly": false,
+    "name": "poverty_1761253831",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "6"
   },
   {
     "domain": "itest.5ch.net",
-    "expiry": 1764509711,
+    "expiry": 1764594912,
     "httpOnly": false,
-    "name": "kyoto_1707678507",
+    "name": "psy_1740029252",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
-    "value": "445"
+    "value": "506"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510309,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509972,
     "httpOnly": false,
-    "name": "bakanews_1745223695",
+    "name": "livegalileo_1761834130",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "14"
+    "secure": true,
+    "value": "18"
   },
   {
-    "domain": "itest.5ch.net",
+    "domain": ".itest.5ch.net",
     "expiry": 1764509698,
     "httpOnly": false,
     "name": "kyoto_1714890081",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
+    "secure": true,
     "value": "47"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510030,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510009,
     "httpOnly": false,
-    "name": "news4vip_1761545109",
+    "name": "poverty_1763406379",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "9"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509215,
+    "httpOnly": false,
+    "name": "livegalileo_1761442919",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "3"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509203,
+    "httpOnly": false,
+    "name": "livenhk_1761656090",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "1002"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509895,
+    "httpOnly": false,
+    "name": "moeplus_1758466499",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "14"
+  },
+  {
+    "domain": "itest.5ch.net",
+    "expiry": 1795526193,
+    "httpOnly": false,
+    "name": "__browsiUID",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
+    "value": "529f9ab3-f456-4c2c-bb6c-0aec563e27f2"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509192,
+    "httpOnly": false,
+    "name": "news4vip_1761661438",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "1"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509851,
+    "httpOnly": false,
+    "name": "news4vip_1763551216",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "6"
+  },
+  {
+    "domain": "itest.5ch.net",
+    "expiry": 1764594941,
+    "httpOnly": false,
+    "name": "musicjg_1713523699",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "311"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1795521475,
+    "httpOnly": false,
+    "name": "__browsiUID",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "251681b5-ad17-4ce1-ae72-cf50773ebd1c"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510309,
+    "httpOnly": false,
+    "name": "bakanews_1745223695",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "14"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510253,
+    "httpOnly": false,
+    "name": "news4vip_1762589496",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "3"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510063,
+    "httpOnly": false,
+    "name": "poverty_1761799051",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "6"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509939,
+    "httpOnly": false,
+    "name": "livegalileo_1762468773",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "2"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509920,
+    "httpOnly": false,
+    "name": "poverty_1763160216",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "27"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509446,
+    "httpOnly": false,
+    "name": "news4vip_1763088474",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "86"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509375,
+    "httpOnly": false,
+    "name": "wcomic_1763272269",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "30"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509439,
+    "httpOnly": false,
+    "name": "news4vip_1763105098",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "20"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1795521474,
+    "httpOnly": false,
+    "name": "rise_enhance_uuid",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "4ac83fea-0ee2-4d5c-9b69-0f597ac6ef5c"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509087,
+    "httpOnly": false,
+    "name": "news4vip_1763078490",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "3"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510265,
+    "httpOnly": false,
+    "name": "news4vip_1762495099",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "9"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509144,
+    "httpOnly": false,
+    "name": "hage_1762501227",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "6"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510225,
+    "httpOnly": false,
+    "name": "poverty_1763286557",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "49"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510287,
+    "httpOnly": false,
+    "name": "news4vip_1761290446",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "1"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510118,
+    "httpOnly": false,
+    "name": "news4vip_1761651813",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "1"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509077,
+    "httpOnly": false,
+    "name": "occult_1763093643",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "7"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509300,
+    "httpOnly": false,
+    "name": "news4vip_1763859664",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "3"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509711,
+    "httpOnly": false,
+    "name": "kyoto_1707678507",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "445"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510088,
+    "httpOnly": false,
+    "name": "poverty_1762324623",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
     "value": "5"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509672,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764508980,
     "httpOnly": false,
-    "name": "archeology_1725159104",
+    "name": "min_1528184210",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "14"
+    "secure": true,
+    "value": "626"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510042,
+    "httpOnly": false,
+    "name": "geino_1718347240",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "86"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509321,
+    "httpOnly": false,
+    "name": "news4vip_1763554341",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "4"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509835,
+    "httpOnly": false,
+    "name": "min_1291723725",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "590"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509025,
+    "httpOnly": false,
+    "name": "news4vip_1763613578",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "4"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764508991,
+    "httpOnly": false,
+    "name": "okinawa_1469199513",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "68"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510141,
+    "httpOnly": false,
+    "name": "livegalileo_1761294268",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "4"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509180,
+    "httpOnly": false,
+    "name": "news4vip_1761661568",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "13"
   },
   {
     "domain": "itest.5ch.net",
-    "expiry": 1764509254,
+    "expiry": 1764594927,
     "httpOnly": false,
-    "name": "min_1721159297",
+    "name": "covid19_1734577875",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
-    "value": "14"
+    "value": "366"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509775,
+    "httpOnly": false,
+    "name": "archeology_1474979879",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "530"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510186,
+    "httpOnly": false,
+    "name": "psy_1741241513",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "206"
   },
   {
     "domain": "itest.5ch.net",
+    "expiry": 1764594831,
+    "httpOnly": false,
+    "name": "spiritual_1758622047",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "24"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509799,
+    "httpOnly": false,
+    "name": "kyoto_1412485346",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "205"
+  },
+  {
+    "domain": ".itest.5ch.net",
     "expiry": 1764509630,
     "httpOnly": false,
     "name": "magazin_1741919500",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
+    "secure": true,
     "value": "661"
   },
   {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509883,
+    "httpOnly": false,
+    "name": "news4vip_1761322362",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "5"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509617,
+    "httpOnly": false,
+    "name": "psy_1749681277",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "9"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509254,
+    "httpOnly": false,
+    "name": "min_1721159297",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "14"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510129,
+    "httpOnly": false,
+    "name": "news4vip_1761382199",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "5"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509332,
+    "httpOnly": false,
+    "name": "poverty_1763450581",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "60"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509168,
+    "httpOnly": false,
+    "name": "poverty_1761871636",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "5"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509606,
+    "httpOnly": false,
+    "name": "psy_1758635860",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "6"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509549,
+    "httpOnly": false,
+    "name": "neet4vip_1762720259",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "4"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509583,
+    "httpOnly": false,
+    "name": "mlb_1761460603",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "18"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509572,
+    "httpOnly": false,
+    "name": "bizplus_1762172001",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "49"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509503,
+    "httpOnly": false,
+    "name": "poverty_1763033572",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "375"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509454,
+    "httpOnly": false,
+    "name": "livegalileo_1763080426",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "373"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509427,
+    "httpOnly": false,
+    "name": "news4vip_1763170807",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "3"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509787,
+    "httpOnly": false,
+    "name": "kyoto_1456030588",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "298"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509515,
+    "httpOnly": false,
+    "name": "poverty_1763013767",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "43"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509111,
+    "httpOnly": false,
+    "name": "news4vip_1762852355",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "10"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510056,
+    "httpOnly": false,
+    "name": "news4vip_1762988434",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "5"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509752,
+    "httpOnly": false,
+    "name": "kyoto_1566062676",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "116"
+  },
+  {
     "domain": ".5ch.net",
-    "expiry": 1763909141,
+    "expiry": 1763993793,
     "httpOnly": false,
     "name": "_unv_id",
     "path": "/",
@@ -500,658 +870,318 @@
     "value": "_unv_id"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509683,
-    "httpOnly": false,
-    "name": "psy_1721935482",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "154"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509606,
-    "httpOnly": false,
-    "name": "psy_1758635860",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "6"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510163,
-    "httpOnly": false,
-    "name": "psy_1755724195",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "489"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510129,
-    "httpOnly": false,
-    "name": "news4vip_1761382199",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "5"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509583,
-    "httpOnly": false,
-    "name": "mlb_1761460603",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "18"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509561,
-    "httpOnly": false,
-    "name": "newsplus_1762314134",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "195"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509002,
-    "httpOnly": false,
-    "name": "owarai_1426669381",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "162"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509549,
-    "httpOnly": false,
-    "name": "neet4vip_1762720259",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "4"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509572,
-    "httpOnly": false,
-    "name": "bizplus_1762172001",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "49"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509515,
-    "httpOnly": false,
-    "name": "poverty_1763013767",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "43"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509375,
-    "httpOnly": false,
-    "name": "wcomic_1763272269",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "30"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509482,
-    "httpOnly": false,
-    "name": "news4vip_1763040842",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "1"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509454,
-    "httpOnly": false,
-    "name": "livegalileo_1763080426",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "373"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509439,
-    "httpOnly": false,
-    "name": "news4vip_1763105098",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "20"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509427,
-    "httpOnly": false,
-    "name": "news4vip_1763170807",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "3"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509385,
-    "httpOnly": false,
-    "name": "news4vip_1763271009",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "20"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510098,
-    "httpOnly": false,
-    "name": "news4vip_1761999596",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "13"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509929,
-    "httpOnly": false,
-    "name": "news4vip_1762742675",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "2"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509264,
-    "httpOnly": false,
-    "name": "chinasmog_1598083809",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "26"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509365,
-    "httpOnly": false,
-    "name": "poverty_1763319828",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "38"
-  },
-  {
-    "domain": "itest.5ch.net",
+    "domain": ".itest.5ch.net",
     "expiry": 1764509354,
     "httpOnly": false,
     "name": "livegalileo_1763328139",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
+    "secure": true,
     "value": "9"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509292,
-    "httpOnly": false,
-    "name": "poverty_1763870094",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "9"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509787,
-    "httpOnly": false,
-    "name": "kyoto_1456030588",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "298"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509233,
-    "httpOnly": false,
-    "name": "jinsei_1753795120",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "12"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510078,
-    "httpOnly": false,
-    "name": "poverty_1762433024",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "30"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509332,
-    "httpOnly": false,
-    "name": "poverty_1763450581",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "60"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509215,
-    "httpOnly": false,
-    "name": "livegalileo_1761442919",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "3"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509398,
-    "httpOnly": false,
-    "name": "poverty_1763209279",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "6"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509764,
-    "httpOnly": false,
-    "name": "kyoto_1562376463",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "43"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509168,
-    "httpOnly": false,
-    "name": "poverty_1761871636",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "5"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509077,
-    "httpOnly": false,
-    "name": "occult_1763093643",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "7"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509873,
-    "httpOnly": false,
-    "name": "news4vip_1762073881",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "9"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764508980,
-    "httpOnly": false,
-    "name": "min_1528184210",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "626"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509203,
-    "httpOnly": false,
-    "name": "livenhk_1761656090",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "1002"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509321,
-    "httpOnly": false,
-    "name": "news4vip_1763554341",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "4"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509983,
-    "httpOnly": false,
-    "name": "poverty_1761822071",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "24"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510152,
-    "httpOnly": false,
-    "name": "psy_1758981601",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "4"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509503,
-    "httpOnly": false,
-    "name": "poverty_1763033572",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "375"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509300,
-    "httpOnly": false,
-    "name": "news4vip_1763859664",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "3"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509720,
-    "httpOnly": false,
-    "name": "pcnews_1699790944",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "69"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509243,
-    "httpOnly": false,
-    "name": "psy_1740893140",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "37"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509712,
-    "httpOnly": false,
-    "name": "__bnc_pfpuid__",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "15g6-W3YV3NdFoT"
   },
   {
     "domain": ".itest.5ch.net",
-    "expiry": 1798465541,
+    "expiry": 1764509994,
     "httpOnly": false,
-    "name": "_im_vid",
+    "name": "poverty_1761271577",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "01K8JMSZFHY7MHJZK72BV7HZS7"
+    "secure": true,
+    "value": "25"
   },
   {
     "domain": "itest.5ch.net",
-    "expiry": 1764509192,
+    "expiry": 1763991993,
     "httpOnly": false,
-    "name": "news4vip_1761661438",
+    "name": "__browsiSessionID",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
-    "value": "1"
+    "value": "c97ce3f8-0e63-4dc2-81b3-49f5cb91b23f&true&DEFAULT&ch&desktop-4.52.1252"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509799,
-    "httpOnly": false,
-    "name": "kyoto_1412485346",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "205"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509180,
-    "httpOnly": false,
-    "name": "news4vip_1761661568",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "13"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509132,
-    "httpOnly": false,
-    "name": "poverty_1762706742",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "125"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509121,
-    "httpOnly": false,
-    "name": "poverty_1762829992",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "61"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509639,
-    "httpOnly": false,
-    "name": "psy_1735861042",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "24"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509111,
-    "httpOnly": false,
-    "name": "news4vip_1762852355",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "10"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510107,
-    "httpOnly": false,
-    "name": "news4vip_1761787176",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "3"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509087,
-    "httpOnly": false,
-    "name": "news4vip_1763078490",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "3"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509446,
-    "httpOnly": false,
-    "name": "news4vip_1763088474",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "86"
-  },
-  {
-    "domain": "itest.5ch.net",
+    "domain": ".itest.5ch.net",
     "expiry": 1764509494,
     "httpOnly": false,
     "name": "newsplus_1763034384",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
+    "secure": true,
     "value": "1002"
   },
   {
     "domain": ".itest.5ch.net",
-    "expiry": 1793099450,
+    "expiry": 1764509233,
     "httpOnly": false,
-    "name": "__browsiUID",
+    "name": "jinsei_1753795120",
     "path": "/",
     "sameSite": "Lax",
     "secure": true,
-    "value": "38d2b324-2efe-4039-89e9-23c0757c53d6"
+    "value": "12"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510152,
+    "httpOnly": false,
+    "name": "psy_1758981601",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "4"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509811,
+    "httpOnly": false,
+    "name": "min_1363635259",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "678"
   },
   {
     "domain": "itest.5ch.net",
-    "expiry": 1764508968,
+    "expiry": 1764594812,
     "httpOnly": false,
-    "name": "hobby_1679950825",
+    "name": "wcomic_1759285120",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
-    "value": "110"
+    "value": "624"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510056,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510163,
     "httpOnly": false,
-    "name": "news4vip_1762988434",
+    "name": "psy_1755724195",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "5"
+    "secure": true,
+    "value": "489"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510235,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509873,
     "httpOnly": false,
-    "name": "news_1762865174",
+    "name": "news4vip_1762073881",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "69"
+    "secure": true,
+    "value": "9"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509048,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509983,
     "httpOnly": false,
-    "name": "poverty_1763192608",
+    "name": "poverty_1761822071",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "8"
+    "secure": true,
+    "value": "24"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1763905998,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509243,
     "httpOnly": false,
-    "name": "matw_uuid_EOT-HMHS8U4W",
+    "name": "psy_1740893140",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
-    "value": "{\"tags\":[{\"tagId\":\"691d209f3571fb44d719ef64\",\"count\":0,\"start\":\"2025-11-23T13:43:18.951Z\",\"frequency\":\"10MIN\",\"repeat\":\"2\",\"version\":\"7\"}]}"
+    "secure": true,
+    "value": "37"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509310,
-    "httpOnly": false,
-    "name": "kyoto_1763595574",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "10"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764509274,
-    "httpOnly": false,
-    "name": "ranime_1227700685",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "224"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764510042,
-    "httpOnly": false,
-    "name": "geino_1718347240",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "86"
-  },
-  {
-    "domain": "itest.5ch.net",
-    "expiry": 1764508956,
-    "httpOnly": false,
-    "name": "philo_1701664584",
-    "path": "/",
-    "sameSite": "Lax",
-    "secure": false,
-    "value": "195"
-  },
-  {
-    "domain": "itest.5ch.net",
+    "domain": ".itest.5ch.net",
     "expiry": 1764509950,
     "httpOnly": false,
     "name": "newsplus_1762418244",
     "path": "/",
     "sameSite": "Lax",
-    "secure": false,
+    "secure": true,
     "value": "245"
   },
   {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510235,
+    "httpOnly": false,
+    "name": "news_1762865174",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "69"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509121,
+    "httpOnly": false,
+    "name": "poverty_1762829992",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "61"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509002,
+    "httpOnly": false,
+    "name": "owarai_1426669381",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "162"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509672,
+    "httpOnly": false,
+    "name": "archeology_1725159104",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "14"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509720,
+    "httpOnly": false,
+    "name": "pcnews_1699790944",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "69"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509416,
+    "httpOnly": false,
+    "name": "livegalileo_1763170909",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "16"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509385,
+    "httpOnly": false,
+    "name": "news4vip_1763271009",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "20"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509639,
+    "httpOnly": false,
+    "name": "psy_1735861042",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "24"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509910,
+    "httpOnly": false,
+    "name": "news4vip_1763834330",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "1"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509264,
+    "httpOnly": false,
+    "name": "chinasmog_1598083809",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "26"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764508956,
+    "httpOnly": false,
+    "name": "philo_1701664584",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "195"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510030,
+    "httpOnly": false,
+    "name": "news4vip_1761545109",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "5"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509862,
+    "httpOnly": false,
+    "name": "poverty_1763103590",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "40"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509226,
+    "httpOnly": false,
+    "name": "news4vip_1761378162",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "8"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509398,
+    "httpOnly": false,
+    "name": "poverty_1763209279",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "6"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509365,
+    "httpOnly": false,
+    "name": "poverty_1763319828",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "38"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509741,
+    "httpOnly": false,
+    "name": "hawaii_1680320182",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "12"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510078,
+    "httpOnly": false,
+    "name": "poverty_1762433024",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "30"
+  },
+  {
     "domain": ".5ch.net",
-    "expiry": 1798465541,
+    "expiry": 1798550193,
     "httpOnly": false,
     "name": "_ga",
     "path": "/",
@@ -1160,13 +1190,93 @@
     "value": "GA1.1.977354424.1761562392"
   },
   {
-    "domain": "itest.5ch.net",
-    "expiry": 1795440911,
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510107,
     "httpOnly": false,
-    "name": "rise_enhance_uuid",
+    "name": "news4vip_1761787176",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "3"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764508968,
+    "httpOnly": false,
+    "name": "hobby_1679950825",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "110"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764510098,
+    "httpOnly": false,
+    "name": "news4vip_1761999596",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "13"
+  },
+  {
+    "domain": "itest.5ch.net",
+    "expiry": 1763990793,
+    "httpOnly": false,
+    "name": "matw_uuid_EOT-HMHS8U4W",
     "path": "/",
     "sameSite": "Lax",
     "secure": false,
-    "value": "beee3290-66d8-45aa-a12b-a212b4d196a6"
+    "value": "{\"tags\":[{\"tagId\":\"691d209f3571fb44d719ef64\",\"count\":0,\"start\":\"2025-11-24T13:16:33.418Z\",\"frequency\":\"10MIN\",\"repeat\":\"2\",\"version\":\"8\"}]}"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509764,
+    "httpOnly": false,
+    "name": "kyoto_1562376463",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "43"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1798550194,
+    "httpOnly": false,
+    "name": "_im_vid",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": false,
+    "value": "01K8JMSZFHY7MHJZK72BV7HZS7"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509048,
+    "httpOnly": false,
+    "name": "poverty_1763192608",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "8"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509310,
+    "httpOnly": false,
+    "name": "kyoto_1763595574",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "10"
+  },
+  {
+    "domain": ".itest.5ch.net",
+    "expiry": 1764509274,
+    "httpOnly": false,
+    "name": "ranime_1227700685",
+    "path": "/",
+    "sameSite": "Lax",
+    "secure": true,
+    "value": "224"
   }
 ]

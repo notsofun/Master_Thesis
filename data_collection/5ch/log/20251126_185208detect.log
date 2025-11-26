@@ -1,0 +1,162 @@
+[2025-11-26 18:52:08] [INFO] ============================================================
+[2025-11-26 18:52:08] [INFO] 日志系统初始化完成
+[2025-11-26 18:52:08] [INFO] 日志路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_collection\5ch\log\20251126_185208detect.log
+[2025-11-26 18:52:08] [INFO] ============================================================
+[2025-11-26 18:52:08] [INFO] [INFO] Loading tokenizer and model...
+[2025-11-26 18:52:11] [INFO] [INFO] Model loaded.
+[2025-11-26 18:52:26] [ERROR] Error: index out of range in self when analyzing 247th text.
+[2025-11-26 18:52:41] [ERROR] Error: index out of range in self when analyzing 578th text.
+[2025-11-26 18:53:37] [ERROR] Error: index out of range in self when analyzing 1958th text.
+[2025-11-26 18:53:48] [ERROR] Error: index out of range in self when analyzing 2180th text.
+[2025-11-26 18:54:20] [ERROR] Error: index out of range in self when analyzing 2871th text.
+[2025-11-26 18:54:33] [ERROR] Error: index out of range in self when analyzing 3087th text.
+[2025-11-26 18:54:33] [ERROR] Error: index out of range in self when analyzing 3092th text.
+[2025-11-26 18:54:33] [ERROR] Error: index out of range in self when analyzing 3101th text.
+[2025-11-26 18:54:35] [ERROR] Error: index out of range in self when analyzing 3139th text.
+[2025-11-26 18:54:36] [ERROR] Error: index out of range in self when analyzing 3147th text.
+[2025-11-26 18:54:50] [ERROR] Error: index out of range in self when analyzing 3421th text.
+[2025-11-26 18:54:50] [ERROR] Error: index out of range in self when analyzing 3423th text.
+[2025-11-26 18:54:50] [ERROR] Error: index out of range in self when analyzing 3424th text.
+[2025-11-26 18:54:50] [ERROR] Error: index out of range in self when analyzing 3425th text.
+[2025-11-26 18:54:51] [ERROR] Error: index out of range in self when analyzing 3433th text.
+[2025-11-26 18:54:52] [ERROR] Error: index out of range in self when analyzing 3441th text.
+[2025-11-26 18:54:56] [ERROR] Error: index out of range in self when analyzing 3512th text.
+[2025-11-26 18:55:07] [ERROR] Error: index out of range in self when analyzing 3701th text.
+[2025-11-26 18:55:17] [ERROR] Error: index out of range in self when analyzing 3841th text.
+[2025-11-26 18:55:18] [ERROR] Error: index out of range in self when analyzing 3850th text.
+[2025-11-26 18:55:19] [ERROR] Error: index out of range in self when analyzing 3855th text.
+[2025-11-26 18:55:20] [ERROR] Error: index out of range in self when analyzing 3863th text.
+[2025-11-26 18:55:21] [ERROR] Error: index out of range in self when analyzing 3880th text.
+[2025-11-26 18:55:22] [ERROR] Error: index out of range in self when analyzing 3887th text.
+[2025-11-26 18:55:24] [ERROR] Error: index out of range in self when analyzing 3908th text.
+[2025-11-26 18:55:28] [ERROR] Error: index out of range in self when analyzing 3993th text.
+[2025-11-26 18:55:31] [ERROR] Error: index out of range in self when analyzing 4061th text.
+[2025-11-26 18:55:35] [ERROR] Error: index out of range in self when analyzing 4144th text.
+[2025-11-26 18:55:41] [ERROR] Error: index out of range in self when analyzing 4249th text.
+[2025-11-26 18:55:53] [ERROR] Error: index out of range in self when analyzing 4438th text.
+[2025-11-26 18:56:14] [ERROR] Error: index out of range in self when analyzing 4834th text.
+[2025-11-26 18:56:15] [ERROR] Error: index out of range in self when analyzing 4842th text.
+[2025-11-26 18:56:16] [ERROR] Error: index out of range in self when analyzing 4858th text.
+[2025-11-26 18:56:17] [ERROR] Error: index out of range in self when analyzing 4864th text.
+[2025-11-26 18:56:17] [ERROR] Error: index out of range in self when analyzing 4869th text.
+[2025-11-26 18:56:17] [ERROR] Error: index out of range in self when analyzing 4880th text.
+[2025-11-26 18:56:18] [ERROR] Error: index out of range in self when analyzing 4883th text.
+[2025-11-26 18:56:19] [ERROR] Error: index out of range in self when analyzing 4901th text.
+[2025-11-26 18:56:25] [ERROR] Error: index out of range in self when analyzing 4980th text.
+[2025-11-26 18:56:28] [ERROR] Error: index out of range in self when analyzing 5013th text.
+[2025-11-26 18:56:35] [ERROR] Error: 'float' object is not iterable when analyzing 5132th text.
+[2025-11-26 18:56:35] [ERROR] Error: index out of range in self when analyzing 5139th text.
+[2025-11-26 18:56:37] [ERROR] Error: index out of range in self when analyzing 5159th text.
+[2025-11-26 18:58:17] [ERROR] Error: 'float' object is not iterable when analyzing 7298th text.
+[2025-11-26 18:59:21] [ERROR] Error: index out of range in self when analyzing 8410th text.
+[2025-11-26 18:59:21] [ERROR] Error: index out of range in self when analyzing 8411th text.
+[2025-11-26 18:59:21] [ERROR] Error: index out of range in self when analyzing 8416th text.
+[2025-11-26 18:59:26] [ERROR] Error: index out of range in self when analyzing 8481th text.
+[2025-11-26 18:59:26] [ERROR] Error: index out of range in self when analyzing 8485th text.
+[2025-11-26 18:59:26] [ERROR] Error: index out of range in self when analyzing 8489th text.
+[2025-11-26 18:59:30] [ERROR] Error: index out of range in self when analyzing 8531th text.
+[2025-11-26 18:59:34] [ERROR] Error: index out of range in self when analyzing 8572th text.
+[2025-11-26 18:59:34] [ERROR] Error: index out of range in self when analyzing 8574th text.
+[2025-11-26 18:59:34] [ERROR] Error: index out of range in self when analyzing 8578th text.
+[2025-11-26 18:59:35] [ERROR] Error: index out of range in self when analyzing 8581th text.
+[2025-11-26 18:59:38] [ERROR] Error: index out of range in self when analyzing 8612th text.
+[2025-11-26 18:59:43] [ERROR] Error: index out of range in self when analyzing 8692th text.
+[2025-11-26 18:59:44] [ERROR] Error: index out of range in self when analyzing 8702th text.
+[2025-11-26 18:59:48] [ERROR] Error: index out of range in self when analyzing 8743th text.
+[2025-11-26 18:59:49] [ERROR] Error: index out of range in self when analyzing 8754th text.
+[2025-11-26 18:59:54] [ERROR] Error: index out of range in self when analyzing 8812th text.
+[2025-11-26 19:00:05] [ERROR] Error: index out of range in self when analyzing 8903th text.
+[2025-11-26 19:00:14] [ERROR] Error: index out of range in self when analyzing 8987th text.
+[2025-11-26 19:00:22] [ERROR] Error: index out of range in self when analyzing 9068th text.
+[2025-11-26 19:00:27] [ERROR] Error: index out of range in self when analyzing 9105th text.
+[2025-11-26 19:00:27] [ERROR] Error: index out of range in self when analyzing 9106th text.
+[2025-11-26 19:00:27] [ERROR] Error: index out of range in self when analyzing 9109th text.
+[2025-11-26 19:00:34] [ERROR] Error: index out of range in self when analyzing 9182th text.
+[2025-11-26 19:00:34] [ERROR] Error: index out of range in self when analyzing 9190th text.
+[2025-11-26 19:00:34] [ERROR] Error: index out of range in self when analyzing 9194th text.
+[2025-11-26 19:00:34] [ERROR] Error: index out of range in self when analyzing 9196th text.
+[2025-11-26 19:00:34] [ERROR] Error: index out of range in self when analyzing 9202th text.
+[2025-11-26 19:00:34] [ERROR] Error: index out of range in self when analyzing 9204th text.
+[2025-11-26 19:00:35] [ERROR] Error: index out of range in self when analyzing 9206th text.
+[2025-11-26 19:00:35] [ERROR] Error: index out of range in self when analyzing 9221th text.
+[2025-11-26 19:00:36] [ERROR] Error: index out of range in self when analyzing 9235th text.
+[2025-11-26 19:00:36] [ERROR] Error: index out of range in self when analyzing 9238th text.
+[2025-11-26 19:00:37] [ERROR] Error: index out of range in self when analyzing 9256th text.
+[2025-11-26 19:00:38] [ERROR] Error: index out of range in self when analyzing 9267th text.
+[2025-11-26 19:00:41] [ERROR] Error: index out of range in self when analyzing 9309th text.
+[2025-11-26 19:01:25] [ERROR] Error: index out of range in self when analyzing 10268th text.
+[2025-11-26 19:01:26] [ERROR] Error: index out of range in self when analyzing 10293th text.
+[2025-11-26 19:02:37] [ERROR] Error: index out of range in self when analyzing 12110th text.
+[2025-11-26 19:02:48] [ERROR] Error: index out of range in self when analyzing 12392th text.
+[2025-11-26 19:02:49] [ERROR] Error: index out of range in self when analyzing 12410th text.
+[2025-11-26 19:03:14] [ERROR] Error: index out of range in self when analyzing 13100th text.
+[2025-11-26 19:03:37] [ERROR] Error: index out of range in self when analyzing 13804th text.
+[2025-11-26 19:03:47] [ERROR] Error: index out of range in self when analyzing 14086th text.
+[2025-11-26 19:03:53] [ERROR] Error: index out of range in self when analyzing 14217th text.
+[2025-11-26 19:03:54] [ERROR] Error: index out of range in self when analyzing 14222th text.
+[2025-11-26 19:03:54] [ERROR] Error: index out of range in self when analyzing 14223th text.
+[2025-11-26 19:03:54] [ERROR] Error: index out of range in self when analyzing 14224th text.
+[2025-11-26 19:03:54] [ERROR] Error: index out of range in self when analyzing 14229th text.
+[2025-11-26 19:03:55] [ERROR] Error: index out of range in self when analyzing 14252th text.
+[2025-11-26 19:03:56] [ERROR] Error: index out of range in self when analyzing 14262th text.
+[2025-11-26 19:03:56] [ERROR] Error: index out of range in self when analyzing 14270th text.
+[2025-11-26 19:04:02] [ERROR] Error: index out of range in self when analyzing 14350th text.
+[2025-11-26 19:04:02] [ERROR] Error: index out of range in self when analyzing 14351th text.
+[2025-11-26 19:04:02] [ERROR] Error: index out of range in self when analyzing 14353th text.
+[2025-11-26 19:04:02] [ERROR] Error: index out of range in self when analyzing 14354th text.
+[2025-11-26 19:04:03] [ERROR] Error: index out of range in self when analyzing 14399th text.
+[2025-11-26 19:04:11] [ERROR] Error: index out of range in self when analyzing 14559th text.
+[2025-11-26 19:04:17] [ERROR] Error: index out of range in self when analyzing 14654th text.
+[2025-11-26 19:04:17] [ERROR] Error: index out of range in self when analyzing 14655th text.
+[2025-11-26 19:04:18] [ERROR] Error: index out of range in self when analyzing 14673th text.
+[2025-11-26 19:04:19] [ERROR] Error: index out of range in self when analyzing 14689th text.
+[2025-11-26 19:04:22] [ERROR] Error: index out of range in self when analyzing 14723th text.
+[2025-11-26 19:04:32] [ERROR] Error: index out of range in self when analyzing 14866th text.
+[2025-11-26 19:04:47] [ERROR] Error: index out of range in self when analyzing 15218th text.
+[2025-11-26 19:04:48] [ERROR] Error: index out of range in self when analyzing 15259th text.
+[2025-11-26 19:04:53] [ERROR] Error: index out of range in self when analyzing 15400th text.
+[2025-11-26 19:05:01] [ERROR] Error: index out of range in self when analyzing 15629th text.
+[2025-11-26 19:05:51] [ERROR] Error: 'float' object is not iterable when analyzing 17046th text.
+[2025-11-26 19:07:09] [ERROR] Error: index out of range in self when analyzing 18378th text.
+[2025-11-26 19:07:25] [ERROR] Error: index out of range in self when analyzing 18750th text.
+[2025-11-26 19:07:29] [ERROR] Error: index out of range in self when analyzing 18837th text.
+[2025-11-26 19:07:29] [ERROR] Error: index out of range in self when analyzing 18838th text.
+[2025-11-26 19:07:29] [ERROR] Error: index out of range in self when analyzing 18839th text.
+[2025-11-26 19:07:29] [ERROR] Error: index out of range in self when analyzing 18840th text.
+[2025-11-26 19:07:30] [ERROR] Error: index out of range in self when analyzing 18843th text.
+[2025-11-26 19:08:27] [ERROR] Error: index out of range in self when analyzing 20053th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20609th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20610th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20611th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20612th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20613th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20614th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20619th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20620th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20621th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20624th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20625th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20626th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20627th text.
+[2025-11-26 19:08:49] [ERROR] Error: 'float' object is not iterable when analyzing 20628th text.
+[2025-11-26 19:08:57] [ERROR] Error: index out of range in self when analyzing 20854th text.
+[2025-11-26 19:09:02] [ERROR] Error: index out of range in self when analyzing 20997th text.
+[2025-11-26 19:11:15] [ERROR] Error: index out of range in self when analyzing 23893th text.
+[2025-11-26 19:11:42] [ERROR] Error: index out of range in self when analyzing 24540th text.
+[2025-11-26 19:11:51] [ERROR] Error: index out of range in self when analyzing 24770th text.
+[2025-11-26 19:11:54] [ERROR] Error: index out of range in self when analyzing 24840th text.
+[2025-11-26 19:12:15] [ERROR] Error: index out of range in self when analyzing 25240th text.
+[2025-11-26 19:12:19] [ERROR] Error: index out of range in self when analyzing 25319th text.
+[2025-11-26 19:12:25] [ERROR] Error: index out of range in self when analyzing 25420th text.
+[2025-11-26 19:12:29] [ERROR] Error: index out of range in self when analyzing 25479th text.
+[2025-11-26 19:12:30] [ERROR] Error: index out of range in self when analyzing 25491th text.
+[2025-11-26 19:12:54] [ERROR] Error: index out of range in self when analyzing 25910th text.
+[2025-11-26 19:12:54] [ERROR] Error: index out of range in self when analyzing 25914th text.
+[2025-11-26 19:12:56] [ERROR] Error: index out of range in self when analyzing 25931th text.
+[2025-11-26 19:13:18] [ERROR] Error: index out of range in self when analyzing 26429th text.
+[2025-11-26 19:13:37] [INFO] [INFO] Saved to result.csv
+[2025-11-26 19:13:37] [WARNING] [WARNING] Saved error records to errors.csv
+[2025-11-26 19:13:37] [INFO] [INFO] Total texts: 26736
+[2025-11-26 19:13:37] [INFO] [INFO] Successfully processed: 26586 (99.44%)
+[2025-11-26 19:13:37] [INFO] [INFO] Failed: 150 (0.56%)
+[2025-11-26 19:13:37] [INFO] [INFO] Hate speech ratio: 17.41%

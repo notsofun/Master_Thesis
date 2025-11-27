@@ -118,7 +118,7 @@ class HateSpeechDetector:
         return pd.DataFrame(results), pd.DataFrame(errors)
 
 if __name__ == "__main__":
-    df = pd.read_csv('../5ch/20251124_130843_5ch_posts.csv')
+    df = pd.read_csv('../../data_collection/5ch/20251124_130843_5ch_posts.csv')
     texts = df["text"]
 
     detector = HateSpeechDetector()

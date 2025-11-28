@@ -1,0 +1,31 @@
+[2025-11-28 22:31:10] [INFO] ============================================================
+[2025-11-28 22:31:10] [INFO] 日志系统初始化完成
+[2025-11-28 22:31:10] [INFO] 日志路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_detect\Japanese\log\20251128_223110pipeline.log
+[2025-11-28 22:31:10] [INFO] ============================================================
+[2025-11-28 22:31:10] [INFO] Loaded 26736 texts from ../../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2025-11-28 22:31:10] [INFO] Computed sample size (finite-pop correction) = 1014
+[2025-11-28 22:31:10] [INFO] Using sample size = 10
+[2025-11-28 22:31:10] [INFO] [INFO] Loading model luke_offensiveness -> TomokiFujihara/luke-japanese-base-lite-offensiveness-estimation
+[2025-11-28 22:31:12] [INFO] [INFO] Loading model DuoGuard -> DuoGuard/DuoGuard-1.5B-transfer
+[2025-11-28 22:31:15] [INFO] [INFO] Loading model kubota -> kubota/luke-large-defamation-detection-japanese
+[2025-11-28 22:31:17] [WARNING] This model_wrapper uses pipeline kubota
+[2025-11-28 22:31:17] [INFO] [INFO] Loading model yuki -> yukismd/HateSpeechClassification-japanese-gpt-neox-3-6b-instruction-ppo
+[2025-11-28 22:31:31] [INFO] [INFO] Loading model kit -> kit-nlp/electra-small-japanese-discriminator-cyberbullying
+[2025-11-28 22:31:32] [INFO] [INFO] Loading model yacis -> ptaszynski/yacis-electra-small-japanese-cyberbullying
+[2025-11-28 22:31:33] [INFO] Running HS detection on sampled texts...
+[2025-11-28 22:31:33] [INFO] Start running model: luke_offensiveness on 10 texts
+[2025-11-28 22:31:35] [INFO] [luke_offensiveness] Finished. Processed: 10/10 valid texts. Hate Speech: 1 (10.00%).
+[2025-11-28 22:31:35] [INFO] Start running model: DuoGuard on 10 texts
+[2025-11-28 22:31:35] [INFO] [DuoGuard] Finished. Processed: 0/10 valid texts. Hate Speech: 0 (0.00%).
+[2025-11-28 22:31:35] [INFO] Start running model: kubota on 10 texts
+[2025-11-28 22:31:37] [INFO] [kubota] Finished. Processed: 10/10 valid texts. Hate Speech: 2 (20.00%).
+[2025-11-28 22:31:37] [INFO] Start running model: yuki on 10 texts
+[2025-11-28 22:31:50] [INFO] [yuki] Finished. Processed: 10/10 valid texts. Hate Speech: 0 (0.00%).
+[2025-11-28 22:31:50] [INFO] Start running model: kit on 10 texts
+[2025-11-28 22:31:50] [INFO] [kit] Finished. Processed: 10/10 valid texts. Hate Speech: 3 (30.00%).
+[2025-11-28 22:31:50] [INFO] Start running model: yacis on 10 texts
+[2025-11-28 22:31:50] [INFO] [yacis] Finished. Processed: 10/10 valid texts. Hate Speech: 3 (30.00%).
+[2025-11-28 22:31:51] [INFO] Running Gemini classification...
+[2025-11-28 22:32:50] [INFO] Computing model–Gemini agreement...
+[2025-11-28 22:32:50] [INFO] Model accuracies vs Gemini: {'luke_offensiveness': 0.9, 'DuoGuard': 1.0, 'kubota': 0.8, 'yuki': 1.0, 'kit': 0.7, 'yacis': 0.7}
+[2025-11-28 22:32:50] [INFO] Selected best model: DuoGuard with accuracy 1.0000

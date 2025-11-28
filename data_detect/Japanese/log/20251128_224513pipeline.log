@@ -1,0 +1,44 @@
+[2025-11-28 22:45:13] [INFO] ============================================================
+[2025-11-28 22:45:13] [INFO] 日志系统初始化完成
+[2025-11-28 22:45:13] [INFO] 日志路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_detect\Japanese\log\20251128_224513pipeline.log
+[2025-11-28 22:45:13] [INFO] ============================================================
+[2025-11-28 22:45:13] [INFO] Loaded 26736 texts from ../../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2025-11-28 22:45:13] [INFO] Computed sample size (finite-pop correction) = 1014
+[2025-11-28 22:45:13] [INFO] Using sample size = 10
+[2025-11-28 22:45:13] [INFO] [INFO] Loading model luke_offensiveness -> TomokiFujihara/luke-japanese-base-lite-offensiveness-estimation
+[2025-11-28 22:45:15] [INFO] [INFO] Loading model DuoGuard -> DuoGuard/DuoGuard-1.5B-transfer
+[2025-11-28 22:45:18] [INFO] [INFO] Loading model kubota -> kubota/luke-large-defamation-detection-japanese
+[2025-11-28 22:45:20] [WARNING] This model_wrapper uses pipeline kubota
+[2025-11-28 22:45:20] [INFO] [INFO] Loading model yuki -> yukismd/HateSpeechClassification-japanese-gpt-neox-3-6b-instruction-ppo
+[2025-11-28 22:45:32] [INFO] [INFO] Loading model kit -> kit-nlp/electra-small-japanese-discriminator-cyberbullying
+[2025-11-28 22:45:32] [INFO] [INFO] Loading model yacis -> ptaszynski/yacis-electra-small-japanese-cyberbullying
+[2025-11-28 22:45:33] [INFO] Running HS detection on sampled texts...
+[2025-11-28 22:45:33] [INFO] Start running model: luke_offensiveness on 10 texts
+[2025-11-28 22:45:36] [INFO] [luke_offensiveness] Finished. Processed: 10/10 valid texts. Hate Speech: 1 (10.00%).
+[2025-11-28 22:45:36] [INFO] Start running model: DuoGuard on 10 texts
+[2025-11-28 22:45:50] [INFO] We got the possibilities of Guard: [0.000518798828125, 0.0002613067626953125, 2.9325485229492188e-05, 0.0004444122314453125, 2.9325485229492188e-05, 0.0003795623779296875, 0.00014019012451171875, 7.009506225585938e-05, 0.002716064453125, 0.00021648406982421875, 0.00075531005859375, 0.0001583099365234375]
+[2025-11-28 22:45:58] [INFO] We got the possibilities of Guard: [0.03857421875, 0.00830078125, 0.005218505859375, 0.0028076171875, 0.002471923828125, 0.0010986328125, 0.00012302398681640625, 0.003173828125, 0.044677734375, 0.006500244140625, 0.056640625, 0.0038299560546875]
+[2025-11-28 22:46:46] [INFO] We got the possibilities of Guard: [0.00154876708984375, 0.00145721435546875, 0.000335693359375, 0.000667572021484375, 0.0004444122314453125, 0.00433349609375, 0.00124359130859375, 0.0005340576171875, 0.0047607421875, 0.00186920166015625, 0.00628662109375, 0.0002613067626953125]
+[2025-11-28 22:47:02] [INFO] We got the possibilities of Guard: [0.00170135498046875, 0.000644683837890625, 0.0002956390380859375, 0.00113677978515625, 0.0002460479736328125, 0.001068115234375, 0.00048828125, 0.0002460479736328125, 0.0145263671875, 0.000431060791015625, 0.00136566162109375, 0.00012302398681640625]
+[2025-11-28 22:51:21] [INFO] We got the possibilities of Guard: [0.00058746337890625, 0.00021648406982421875, 5.817413330078125e-05, 4.267692565917969e-05, 0.0001316070556640625, 0.000553131103515625, 4.267692565917969e-05, 0.000457763671875, 0.0021820068359375, 5.817413330078125e-05, 0.000179290771484375, 3.7670135498046875e-05]
+[2025-11-28 22:51:43] [INFO] We got the possibilities of Guard: [0.000553131103515625, 0.000335693359375, 0.0002307891845703125, 0.000431060791015625, 4.00543212890625e-05, 0.000457763671875, 0.00012302398681640625, 0.00057220458984375, 0.00689697265625, 0.000606536865234375, 0.00360107421875, 0.00016880035400390625]
+[2025-11-28 22:52:08] [INFO] We got the possibilities of Guard: [0.00885009765625, 0.01031494140625, 0.0028076171875, 0.00421142578125, 0.000431060791015625, 0.0078125, 0.00193023681640625, 0.00096893310546875, 0.5, 0.007568359375, 0.134765625, 0.0029754638671875]
+[2025-11-28 22:53:10] [INFO] We got the possibilities of Guard: [0.000278472900390625, 0.0003452301025390625, 5.14984130859375e-05, 3.123283386230469e-05, 4.839897155761719e-05, 0.00014019012451171875, 4.5299530029296875e-05, 0.000179290771484375, 0.0225830078125, 0.00019073486328125, 0.0001087188720703125, 5.817413330078125e-05]
+[2025-11-28 22:53:29] [INFO] We got the possibilities of Guard: [0.0012054443359375, 0.002044677734375, 0.000431060791015625, 0.0013275146484375, 0.00020313262939453125, 0.00096893310546875, 0.0001583099365234375, 0.0003681182861328125, 0.0244140625, 0.00099945068359375, 0.0037078857421875, 0.0002460479736328125]
+[2025-11-28 22:55:33] [INFO] We got the possibilities of Guard: [0.000606536865234375, 0.00021648406982421875, 0.0001583099365234375, 0.00102996826171875, 6.628036499023438e-05, 0.002044677734375, 0.0001583099365234375, 0.00048828125, 0.00555419921875, 0.000179290771484375, 0.0023193359375, 0.0002613067626953125]
+[2025-11-28 22:55:33] [INFO] [DuoGuard] Finished. Processed: 10/10 valid texts. Hate Speech: 8 (80.00%).
+[2025-11-28 22:55:33] [INFO] Start running model: kubota on 10 texts
+[2025-11-28 22:55:35] [INFO] [kubota] Finished. Processed: 10/10 valid texts. Hate Speech: 2 (20.00%).
+[2025-11-28 22:55:35] [INFO] Start running model: yuki on 10 texts
+[2025-11-28 22:55:58] [INFO] [yuki] Finished. Processed: 10/10 valid texts. Hate Speech: 0 (0.00%).
+[2025-11-28 22:55:58] [INFO] Start running model: kit on 10 texts
+[2025-11-28 22:55:58] [INFO] [kit] Finished. Processed: 10/10 valid texts. Hate Speech: 3 (30.00%).
+[2025-11-28 22:55:58] [INFO] Start running model: yacis on 10 texts
+[2025-11-28 22:55:58] [INFO] [yacis] Finished. Processed: 10/10 valid texts. Hate Speech: 3 (30.00%).
+[2025-11-28 22:55:59] [INFO] Running Gemini classification...
+[2025-11-28 22:56:54] [INFO] Computing model–Gemini agreement...
+[2025-11-28 22:56:54] [INFO] Model accuracies vs Gemini: {'luke_offensiveness': 0.9, 'DuoGuard': 0.2, 'kubota': 0.8, 'yuki': 1.0, 'kit': 0.7, 'yacis': 0.7}
+[2025-11-28 22:56:54] [INFO] Selected best model: yuki with accuracy 1.0000
+[2025-11-28 22:56:54] [INFO] Saved annotation CSV to C:\Users\11037\Documents\GitHub\Master_Thesis\data_detect\Japanese\output\to_annotate_yuki.csv
+[2025-11-28 22:56:54] [INFO] Pipeline finished. Result summary:
+[2025-11-28 22:56:54] [INFO] {'stats': {'luke_offensiveness': {'matches': 9, 'total': 10, 'accuracy': 0.9}, 'DuoGuard': {'matches': 2, 'total': 10, 'accuracy': 0.2}, 'kubota': {'matches': 8, 'total': 10, 'accuracy': 0.8}, 'yuki': {'matches': 10, 'total': 10, 'accuracy': 1.0}, 'kit': {'matches': 7, 'total': 10, 'accuracy': 0.7}, 'yacis': {'matches': 7, 'total': 10, 'accuracy': 0.7}}, 'best_model': 'yuki', 'best_stats': {'matches': 10, 'total': 10, 'accuracy': 1.0}, 'annotation_csv': 'C:\\Users\\11037\\Documents\\GitHub\\Master_Thesis\\data_detect\\Japanese\\output\\to_annotate_yuki.csv'}

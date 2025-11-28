@@ -45,12 +45,6 @@ logger.info("日志路径: %s", log_path)
 logger.info("="*60)
 
 if __name__ == "__main__":
-    # 1) 配置：把模型列表换成你要的 HS 模型
-    model_specs = [
-        {"name": "luke_offensiveness", "tokenizer_base": "studio-ousia/luke-japanese-base-lite", "model": "TomokiFujihara/luke-japanese-base-lite-offensiveness-estimation"},
-        # 增加其他你想评估的模型
-        # {"name": "my_hs_model_v1", "tokenizer_base": "bert-base-multilingual-cased", "model": "your-org/your-finetuned-model"},
-    ]
 
     # 2) 入口数据 CSV，必须包含列 'text'
     input_csv = DEFAULT_INPUT_CSV
@@ -60,7 +54,7 @@ if __name__ == "__main__":
     if not gemini_key:
         raise RuntimeError("Please set GEMINI_API_KEY in environment before running.")
 
-    pipeline = HatePipeline(logger, input_csv=input_csv, model_specs=model_specs, gemini_api_key=gemini_key)
+    pipeline = HatePipeline(logger, input_csv=input_csv, gemini_api_key=gemini_key)
     result = pipeline.run_detection()
     logger.info("Pipeline finished. Result summary:")
     logger.info(result)

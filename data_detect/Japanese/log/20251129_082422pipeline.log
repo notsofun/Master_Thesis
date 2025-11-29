@@ -1,0 +1,281 @@
+[2025-11-29 08:24:22] [INFO] ============================================================
+[2025-11-29 08:24:22] [INFO] 日志系统初始化完成
+[2025-11-29 08:24:22] [INFO] 日志路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_detect\Japanese\log\20251129_082422pipeline.log
+[2025-11-29 08:24:22] [INFO] ============================================================
+[2025-11-29 08:24:22] [INFO] Loaded 26736 texts from ../../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2025-11-29 08:24:22] [INFO] Computed sample size (finite-pop correction) = 1014
+[2025-11-29 08:24:22] [INFO] Using sample size = 250
+[2025-11-29 08:24:22] [INFO] [INFO] Loading model luke_offensiveness -> TomokiFujihara/luke-japanese-base-lite-offensiveness-estimation
+[2025-11-29 08:24:25] [INFO] [INFO] Loading model DuoGuard -> DuoGuard/DuoGuard-1.5B-transfer
+[2025-11-29 08:24:28] [INFO] [INFO] Loading model kubota -> kubota/luke-large-defamation-detection-japanese
+[2025-11-29 08:24:31] [WARNING] This model_wrapper uses pipeline kubota
+[2025-11-29 08:24:31] [INFO] [INFO] Loading model yuki -> yukismd/HateSpeechClassification-japanese-gpt-neox-3-6b-instruction-ppo
+[2025-11-29 08:24:43] [INFO] [INFO] Loading model kit -> kit-nlp/electra-small-japanese-discriminator-cyberbullying
+[2025-11-29 08:24:44] [INFO] [INFO] Loading model yacis -> ptaszynski/yacis-electra-small-japanese-cyberbullying
+[2025-11-29 08:24:44] [INFO] Running HS detection on sampled texts...
+[2025-11-29 08:24:44] [INFO] Start running model: luke_offensiveness on 250 texts
+[2025-11-29 08:24:59] [INFO] [luke_offensiveness] Finished. Processed: 250/250 valid texts. Hate Speech: 41 (16.40%).
+[2025-11-29 08:24:59] [INFO] Start running model: DuoGuard on 250 texts
+[2025-11-29 11:12:16] [INFO] [DuoGuard] Finished. Processed: 250/250 valid texts. Hate Speech: 191 (76.40%).
+[2025-11-29 11:12:16] [INFO] Start running model: kubota on 250 texts
+[2025-11-29 11:13:01] [INFO] [kubota] Finished. Processed: 250/250 valid texts. Hate Speech: 42 (16.80%).
+[2025-11-29 11:13:01] [INFO] Start running model: yuki on 250 texts
+[2025-11-29 11:19:21] [INFO] [yuki] Finished. Processed: 250/250 valid texts. Hate Speech: 6 (2.40%).
+[2025-11-29 11:19:21] [INFO] Start running model: kit on 250 texts
+[2025-11-29 11:19:28] [INFO] [kit] Finished. Processed: 250/250 valid texts. Hate Speech: 121 (48.40%).
+[2025-11-29 11:19:28] [INFO] Start running model: yacis on 250 texts
+[2025-11-29 11:19:33] [INFO] [yacis] Finished. Processed: 250/250 valid texts. Hate Speech: 76 (30.40%).
+[2025-11-29 11:19:33] [INFO] Running Gemini classification...
+[2025-11-29 11:21:25] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 34.58822525s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '34s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""水を差して関西風にしてあげよう"""
+
+[2025-11-29 11:21:27] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 32.827419047s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""中止まじか 仕方ないな"""
+
+[2025-11-29 11:21:28] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 31.425647091s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+""">>705 40代だろな 前半じゃないと思う"""
+
+[2025-11-29 11:21:30] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 30.21489778s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '30s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+""">>14 見たかったなw"""
+
+[2025-11-29 11:21:32] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 28.197782206s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '28s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""というか、月30万円あるいは45万円も 長年に渡り無料でフードスタンプを 支給されていたとは驚きですし、 あまり世間（他国）には 知れ渡ってなかったと思う。"""
+
+[2025-11-29 11:21:33] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 26.80200598s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""＞大学進学の希望を絶たれた長男は「お前が献金したせいで ＞妹も大学に行きたいと母親に伝え この家の子供3人は、一体どんだけ「親の庇護下で大学に行く事」に執着してんの？ つまり、日本中の大学行ってない人を「大学行けなかったゴミ」と見下してんの？"""
+
+[2025-11-29 11:33:27] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 32.614629969s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""令和デビュー 『10/1 ダイジェスト プラス 9/17』 https://www.youtube..../watch?v=H7RbAWTahpQ 9/17 警視廳 touch and go 3連發 連合軍がスタートか？ 警察を日本政府から切り離し、連合軍(テッラTerra防衛軍)に切り替えたという事"""
+
+[2025-11-29 11:33:29] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 30.824959759s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '30s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+""">>465 ソノシートなら爪楊枝でいけるんじゃなかったっけ 小学一年生の付録だったか、針折るからって触らせてもらえんで手回しでボエ〜な音聴いた記憶あるわ"""
+
+[2025-11-29 11:33:30] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 29.571138616s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""アメリカ:ワシントン…？"""
+
+[2025-11-29 11:33:32] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 28.206795488s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '28s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""キリスト教会行っても無理。 治んねえからこいつら。 免罪符は通じない。。 救うな・・・Jesus。 俺様ならびに後の世からの命令。"""
+
+[2025-11-29 11:33:34] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 26.157991393s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""人類の発展にとって偉大な人物は、既存の道徳や法律を超えて行動する権利がある 山上さんはリアルなラスコーリニコフだったのだ！"""
+
+[2025-11-29 11:34:28] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 31.31157942s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+""">>92 ただの無職借金マザコンおじさんだからね 年収500万の正社員だったら事件起こしてない"""
+
+[2025-11-29 11:34:30] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 29.354298422s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""クロニクルによると前後編に分かれているものは重工業含めてない ヒストリアで樋口監督読んだりしてるので特別枠なんだろうと考察はするけど 実際のところは制作者側じゃないと分からない"""
+
+[2025-11-29 11:34:32] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 27.442269815s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '27s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""これじゃ自動で閉まらないね"""
+
+[2025-11-29 11:34:33] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 26.321684654s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""高市総理の態度は正しい。 欧米の価値観（キリスト教的価値観）では、コウモリ外交は信用されない。 新約聖書「二人の主人に仕えることは出来ない。」 以前の自民党政権は自国民に強く他国には弱い内弁慶だったが、 高市政権は内弁慶ではないので好感が持てる。 高市総理の明確な意見も良い。 新約聖書「“はい”なら“はい”、“いいえ”なら“いいえ”とだけ言いなさい。それ以外は悪魔から出る。」"""
+
+[2025-11-29 11:35:27] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 32.446516517s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""これはどっちの勝ち？ https://i.imgur.com/mtcKYY8.jpeg"""
+
+[2025-11-29 11:35:29] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 30.971378859s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '30s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+""">>3 中国人ほんまカス"""
+
+[2025-11-29 11:35:30] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 29.449192129s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""https://imgur.com/a/D6KevPZ 枝肉でよこせ”江田希望”（えだきほ：素戔嗚）。"""
+
+[2025-11-29 11:35:32] [WARNING] Gemini classify attempt failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 10, model: gemini-2.5-flash\nPlease retry in 27.660250612s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '10'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '27s'}]}} when classifying 
+You are a content-moderation assistant. For the given TEXT below, answer whether it is HATE SPEECH.
+Definition (use this to decide): Hate speech = content that attacks or dehumanizes a target based on protected characteristic (race, nationality, religion, gender, sexual orientation, disability, etc.), or encourages violence/harassment. Be conservative if ambiguous.
+
+INSTRUCTIONS:
+- Output ONLY a single JSON object and nothing else.
+- Fields:
+  - is_hate: true or false
+  - confidence: number between 0 and 1
+  - explanation: a short (1-2 sentence) justification (what target and why)
+TEXT:
+"""永田さんが、いいんだね。殺っちゃってについて話してるぞ"""
+
+[2025-11-29 11:42:04] [INFO] Computing model–Gemini agreement...
+[2025-11-29 11:42:04] [INFO] Model accuracies vs Gemini: {'luke_offensiveness': 0.812, 'DuoGuard': 0.34, 'kubota': 0.856, 'yuki': 0.88, 'kit': 0.532, 'yacis': 0.664}
+[2025-11-29 11:42:04] [INFO] Selected best model: yuki with accuracy 0.8800
+[2025-11-29 11:42:04] [INFO] Saved annotation CSV to C:\Users\11037\Documents\GitHub\Master_Thesis\data_detect\Japanese\output\to_annotate_yuki.csv
+[2025-11-29 11:42:04] [INFO] Pipeline finished. Result summary:
+[2025-11-29 11:42:04] [INFO] {'stats': {'luke_offensiveness': {'matches': 203, 'total': 250, 'accuracy': 0.812}, 'DuoGuard': {'matches': 85, 'total': 250, 'accuracy': 0.34}, 'kubota': {'matches': 214, 'total': 250, 'accuracy': 0.856}, 'yuki': {'matches': 220, 'total': 250, 'accuracy': 0.88}, 'kit': {'matches': 133, 'total': 250, 'accuracy': 0.532}, 'yacis': {'matches': 166, 'total': 250, 'accuracy': 0.664}}, 'best_model': 'yuki', 'best_stats': {'matches': 220, 'total': 250, 'accuracy': 0.88}, 'annotation_csv': 'C:\\Users\\11037\\Documents\\GitHub\\Master_Thesis\\data_detect\\Japanese\\output\\to_annotate_yuki.csv'}

@@ -111,6 +111,9 @@ class ModelWrapper:
         self.score_fn = getattr(self, model_info.score_method)
 
     def score_text(self, text: str) -> int:
+        # 截断到 256 字符
+        if len(text) > 256:
+            text = text[:256]
         return self.score_fn(text)
     
     def luke_score_text(self, text: str) -> int:

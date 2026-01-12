@@ -48,13 +48,8 @@ if __name__ == "__main__":
 
     # 2) 入口数据 CSV，必须包含列 'text'
     input_csv = DEFAULT_INPUT_CSV
-
-    # 3) 从环境变量读取 Gemini Key
-    gemini_key = os.environ.get("GEMINI_API_KEY")
-    if not gemini_key:
-        raise RuntimeError("Please set GEMINI_API_KEY in environment before running.")
-
-    pipeline = HatePipeline(logger, input_csv=input_csv, gemini_api_key=gemini_key)
-    result = pipeline.run_detection()
+    # 使用 ensemble pipeline（不再直接依赖 Gemini）
+    pipeline = HatePipeline(logger, input_csv=input_csv)
+    result = pipeline.run_detection(total_annotation_n=4000)
     logger.info("Pipeline finished. Result summary:")
     logger.info(result)

@@ -1,27 +1,82 @@
 # pipeline.py
-import os, random
+import os
+import math
+import random
+import logging
+from typing import List, Dict, Optional, Any
 import pandas as pd
-import time
+import numpy as np
 from config import *
 from utils import compute_sample_size, random_sample_indices, ensure_dir, save_annotation_csv
-from hate_detector import HateSpeechDetector, ModelName
-from gemini_client import GeminiClient
-from typing import List, Dict
+from hate_detector import ModelName, ModelWrapper as OldModelWrapper, HateSpeechDetector
 from tqdm import tqdm
+
+logger = logging.getLogger("ensemble_pipeline")
+
+
+class ModelWrapper:
+    """Base class for model wrappers. Subclass and implement `predict(texts)`.
+    `predict` returns a list of dicts: {'label': 0|1, 'prob': float}
+    """
+    def predict(self, texts: List[str]) -> List[Dict[str, Any]]:
+        raise NotImplementedError
+
+
+class ExistingDetectorAdapter(ModelWrapper):
+    """Adapter around the existing `hate_detector.ModelWrapper` that only exposes `score_text` (0/1).
+    This adapter returns probability=1.0 for predicted label (best-effort)."""
+    def __init__(self, wrapper: Any):
+        self.wrapper = wrapper
+
+    def predict(self, texts: List[str]) -> List[Dict[str, Any]]:
+        out = []
+        for t in texts:
+            try:
+                lbl = int(self.wrapper.score_text(t))
+                out.append({"label": lbl, "prob": float(1.0)})
+            except Exception:
+                out.append({"label": 0, "prob": 0.0})
+        return out
+
+
+def _binary_entropy(p: float) -> float:
+    # handle edge cases
+    if p <= 0.0 or p >= 1.0:
+        return 0.0
+    return -(p * math.log2(p) + (1 - p) * math.log2(1 - p))
+
+
 class HatePipeline:
-    def __init__(self, logger, input_csv: str, gemini_api_key: str,
+    """Pipeline that accepts a list of `ModelWrapper` instances and performs ensemble scoring
+    and stratified sampling for annotation export.
+    If `models` is None, we will attempt to create adapters for the models listed in `ModelName`.
+    """
+    def __init__(self, logger, input_csv: str, models: Optional[List[ModelWrapper]] = None,
                  population: int = DEFAULT_POPULATION, margin: float = DEFAULT_MARGIN,
-                 sample_override: int = None, output_dir: str = OUTPUT_DIR, device="cpu"):
+                 sample_override: int = None, output_dir: str = OUTPUT_DIR, device: str = "cpu"):
         self.input_csv = input_csv
-        self.gemini_api_key = gemini_api_key
         self.population = population
         self.margin = margin
         self.logger = logger
-        self.models = [m.value for m in ModelName]
         self.sample_override = sample_override
         self.output_dir = output_dir
         ensure_dir(self.output_dir)
         self.device = device
+
+        # models: list of ModelWrapper
+        if models is None:
+            # attempt to create adapters using existing `ModelWrapper` in hate_detector
+            self.logger.info("No ModelWrapper list provided; creating adapters from ModelName enum.")
+            self.models = []
+            for m in [mn.value for mn in ModelName]:
+                try:
+                    old_wrapper = OldModelWrapper(self.logger, m, device=self.device)
+                    adapter = ExistingDetectorAdapter(old_wrapper)
+                    self.models.append((m.name, adapter))
+                except Exception as e:
+                    self.logger.warning(f"Failed to init adapter for {m.name}: {e}")
+        else:
+            self.models = [(f"model_{i}", m) for i, m in enumerate(models)]
 
     def _load_texts(self) -> pd.Series:
         df = pd.read_csv(self.input_csv)
@@ -29,131 +84,165 @@ class HatePipeline:
             raise ValueError("input csv must have a 'text' column")
         return df["text"].astype(str)
 
-    def run_detection(self):
+    def evaluate_ensemble(self, texts: List[str]) -> pd.DataFrame:
+        """Run all models over texts and compute per-sample ensemble statistics.
+        Returns DataFrame with columns:
+        - text, model_votes (list), model_probs (list), votes_str (e.g., '2/1'),
+          avg_prob, entropy, conflict(bool)
+        """
+        n_models = len(self.models)
+        if n_models == 0:
+            raise RuntimeError("No models available for ensemble evaluation")
+
+        # collect predictions per model
+        model_preds = []  # list of lists (per model)
+        names = []
+        for name, m in self.models:
+            self.logger.info(f"Predicting with {name} on {len(texts)} texts")
+            preds = m.predict(list(texts))
+            # normalize into dicts
+            model_preds.append(preds)
+            names.append(name)
+
+        rows = []
+        for i, t in enumerate(texts):
+            probs = []
+            labels = []
+            for preds in model_preds:
+                p = preds[i].get("prob", 0.0)
+                lbl = int(preds[i].get("label", 0))
+                probs.append(float(p))
+                labels.append(int(lbl))
+
+            avg_prob = float(np.mean(probs)) if len(probs) > 0 else 0.0
+            # votes: count of label==1
+            vote_for = sum(labels)
+            vote_against = n_models - vote_for
+            votes_str = f"{vote_for}/{vote_against}"
+            unanimous = (vote_for == 0) or (vote_for == n_models)
+            conflict = not unanimous
+
+            # compute entropy from avg_prob (binary)
+            ent = _binary_entropy(avg_prob)
+
+            rows.append({
+                "text": t,
+                "model_names": names,
+                "model_labels": labels,
+                "model_probs": probs,
+                "model_votes": votes_str,
+                "avg_prob": avg_prob,
+                "entropy": ent,
+                "conflict": bool(conflict),
+                "vote_for": vote_for,
+                "vote_against": vote_against,
+            })
+
+        return pd.DataFrame(rows)
+
+    def generate_annotation_set(self, evaluated_df: pd.DataFrame, total_n: int = 4000,
+                                keywords: Optional[List[str]] = None) -> pd.DataFrame:
+        """Stratified sampling per spec:
+        - 30% consistent hate (all models vote hate) and high prob
+        - 30% consistent non-hate AND contains keywords
+        - 40% conflicts or uncertain (entropy high or avg_prob in [0.4,0.6])
+        Returns sampled DataFrame with sampling_strategy_tag column.
+        """
+        if keywords is None:
+            keywords = []
+
+        n1 = int(total_n * 0.3)
+        n2 = int(total_n * 0.3)
+        n3 = total_n - n1 - n2
+
+        # consistent hate: vote_for == n_models and avg_prob high
+        n_models = len(self.models)
+        consistent_hate = evaluated_df[(evaluated_df["vote_for"] == n_models) & (evaluated_df["avg_prob"] >= 0.8)].copy()
+
+        # consistent non-hate with keywords
+        if len(keywords) > 0:
+            contains_kw = evaluated_df["text"].apply(lambda s: any(kw in s for kw in keywords))
+            consistent_non = evaluated_df[(evaluated_df["vote_for"] == 0) & (contains_kw)].copy()
+        else:
+            # if no keywords provided, fall back to consistent non-hate overall
+            consistent_non = evaluated_df[evaluated_df["vote_for"] == 0].copy()
+
+        # conflicts or uncertain: conflict True OR avg_prob between 0.4 and 0.6
+        uncertain = evaluated_df[(evaluated_df["conflict"] == True) | ((evaluated_df["avg_prob"] >= 0.4) & (evaluated_df["avg_prob"] <= 0.6))].copy()
+
+        sampled = []
+
+        def _sample_from(df: pd.DataFrame, k: int, tag: str):
+            if df.empty or k <= 0:
+                return pd.DataFrame()
+            k = min(k, len(df))
+            return df.sample(n=k, random_state=42).assign(sampling_strategy_tag=tag)
+
+        s1 = _sample_from(consistent_hate, n1, "consistent_hate")
+        s2 = _sample_from(consistent_non, n2, "consistent_non_hate")
+        s3 = _sample_from(uncertain, n3, "conflict_or_uncertain")
+
+        sampled_df = pd.concat([s1, s2, s3], ignore_index=True)
+
+        # if not enough samples due to small groups, fill from remaining pool
+        if len(sampled_df) < total_n:
+            remaining_pool = evaluated_df.drop(sampled_df.index, errors="ignore")
+            need = total_n - len(sampled_df)
+            if not remaining_pool.empty and need > 0:
+                fill = remaining_pool.sample(n=min(need, len(remaining_pool)), random_state=42).assign(sampling_strategy_tag="fill")
+                sampled_df = pd.concat([sampled_df, fill], ignore_index=True)
+
+        # ensure columns requested by user
+        final = sampled_df[["text", "model_votes", "avg_prob", "sampling_strategy_tag"]].copy()
+        final = final.rename(columns={"avg_prob": "average_prob"})
+
+        return final
+
+    def export_for_annotation(self, df: pd.DataFrame, out_path: str, fmt: str = "csv") -> str:
+        """Export DataFrame to CSV or JSONL. Returns path on success."""
+        ensure_dir(os.path.dirname(out_path))
+        if fmt == "csv":
+            df.to_csv(out_path, index=False)
+        else:
+            # jsonl
+            df.to_json(out_path, orient="records", lines=True, force_ascii=False)
+        return out_path
+
+    def run_detection(self, total_annotation_n: int = 4000, keywords: Optional[List[str]] = None):
         texts = self._load_texts()
         total = len(texts)
         self.logger.info(f"Loaded {total} texts from {self.input_csv}")
 
-        # 计算样本量
         computed_n = compute_sample_size(self.population, margin=self.margin)
         self.logger.info(f"Computed sample size (finite-pop correction) = {computed_n}")
         sample_n = self.sample_override or min(computed_n, DEFAULT_MAX_SAMPLE)
         self.logger.info(f"Using sample size = {sample_n}")
 
-        # ───────── 1. 先抽样 ─────────
         idxs = random_sample_indices(total, sample_n)
         sampled_texts = texts.iloc[idxs].reset_index(drop=True)
 
-        # ───────── 2. 再对抽样文本做 HS 检测 ─────────
-        detector = HateSpeechDetector(logger=self.logger,model_specs=self.models,device=self.device)
+        self.logger.info("Evaluating ensemble on sampled texts...")
+        evaluated = self.evaluate_ensemble(sampled_texts.tolist())
 
-        self.logger.info("Running HS detection on sampled texts...")
-        sample_results = detector.run_on_texts(
-            sampled_texts
-        )
+        self.logger.info("Generating annotation set via stratified sampling...")
+        annotation_df = self.generate_annotation_set(evaluated, total_n=total_annotation_n, keywords=keywords)
 
-        # ───────── 3. Gemini 判定 ─────────
-        gemini = GeminiClient(self.logger,self.gemini_api_key, model_name=GEMINI_MODEL)
-        gemini_results = []
-
-        self.logger.info("Running Gemini classification...")
-        for t in tqdm(sampled_texts, desc="Gemini", ncols=120, smoothing=0.1, colour="green"):
-            try:
-                g = gemini.classify(t)
-                jitter = random.uniform(0, 1)
-                time.sleep(jitter+1) # 每次分类休息一秒，防止被Google拦截
-                gemini_results.append(g)
-            except Exception as e:
-                self.logger.error(f"Error:{e} when generating results of Gemini")
-
-        # ───────── 4. 统计一致性 ─────────
-        self.logger.info("Computing model–Gemini agreement...")
-
-        stats = {}
-
-        for name, texts in tqdm(sample_results.items(), desc="Stats", ncols=100):
-            try:
-                hs_labels = texts.get("HS", pd.Series()).fillna(0).astype(int).tolist()
-                
-                gem_labels = []
-                for i, g in enumerate(gemini_results):
-                    try:
-                        gem_labels.append(1 if g.get("is_hate") else 0)
-                    except Exception as sub_e:
-                        gem_labels.append(0)  # 出错则用默认值
-                        self.logger.warning(f"Error processing gemini_results[{i}]: {sub_e}")
-                
-                # 对齐长度，防止报错
-                min_len = min(len(hs_labels), len(gem_labels))
-                hs_labels = hs_labels[:min_len]
-                gem_labels = gem_labels[:min_len]
-
-                total = len(hs_labels)
-                matches = sum(1 for a, b in zip(hs_labels, gem_labels) if a == b)
-                accuracy = matches / total if total > 0 else 0.0
-
-                stats[name] = {"matches": matches, "total": total, "accuracy": accuracy}
-            
-            except Exception as e:
-                self.logger.error(f"Error when calculating agreement for '{name}': {e}")
-                stats[name] = {"matches": 0, "total": 0, "accuracy": 0.0}
-
-        # ───────── 5. 选择最佳模型 ─────────
+        out_csv = os.path.join(self.output_dir, f"to_annotate_ensemble_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv")
         try:
-            best_model = max(stats.items(), key=lambda x: x[1].get("accuracy", 0.0))
-            best_name = best_model[0]
-            best_stats = best_model[1]
-        except Exception as e:
-            self.logger.error(f"Failed to select best model: {e}")
-            best_name = None
-            best_stats = {"accuracy": 0.0}
-
-        self.logger.info(f"Model accuracies vs Gemini: { {k:v.get('accuracy', 0.0) for k,v in stats.items()} }")
-        if best_name:
-            self.logger.info(f"Selected best model: {best_name} with accuracy {best_stats.get('accuracy',0.0):.4f}")
-        else:
-            self.logger.warning("No valid best model could be selected.")
-
-        # ───────── 6. 生成待标注 CSV ─────────
-        rows = []
-
-        if best_name and best_name in sample_results:
-            df_best = sample_results[best_name]
-            
-            for idx, line in df_best.iterrows():
-                try:
-                    text = line.get('text', "")
-                    hs_label = int(line.get("HS", -1)) if line.get("HS") is not None else None
-                    gem_label = 1 if line.get("is_hate") is True else 0
-                    rows.append({
-                        "text": text,
-                        "hs_model_label": hs_label,
-                        "gemini_label": gem_label,
-                        "human_label": ""
-                    })
-                except Exception as e:
-                    self.logger.warning(f"Skipping line {idx} due to error: {e}")
-        else:
-            self.logger.warning(f"No data found for best model '{best_name}'")
-
-        # 保存 CSV
-        out_csv = os.path.join(self.output_dir, f"to_annotate_{best_name or 'unknown'}.csv")
-        try:
-            save_annotation_csv(rows, out_csv)
+            self.export_for_annotation(annotation_df, out_csv, fmt="csv")
             self.logger.info(f"Saved annotation CSV to {out_csv}")
         except Exception as e:
             self.logger.error(f"Failed to save annotation CSV: {e}")
             out_csv = None
 
         return {
-            "stats": stats,
-            "best_model": best_name,
-            "best_stats": best_stats,
-            "annotation_csv": out_csv
+            "evaluated": evaluated,
+            "annotation_df": annotation_df,
+            "annotation_csv": out_csv,
+            "n_models": len(self.models)
         }
 
-    
-    # 以下为微调的 scaffold（需要真实标注数据）
+    # 以下为微调的 scaffold（与之前保留）
     def finetune_model(self, model_name_or_path: str, train_csv: str, val_csv: str, output_dir: str, epochs:int=3):
         """
         示例：使用 Hugging Face Trainer 对文本二分类做微调

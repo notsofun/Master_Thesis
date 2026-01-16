@@ -6,10 +6,10 @@ current_dir = os.path.dirname(os.path.abspath(__file__)) # data_detect 目录
 root_dir = os.path.dirname(current_dir)                 # Master_Thesis 目录
 if root_dir not in sys.path:
     sys.path.append(root_dir)
-    
+
 import logging
 from datetime import datetime
-from Japanese.config import DEFAULT_INPUT_CSV
+from data_detect.Japanese.config import DEFAULT_INPUT_CSV
 from data_detect.pipeline import HatePipeline
 from dotenv import load_dotenv
 load_dotenv()

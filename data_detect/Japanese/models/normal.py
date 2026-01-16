@@ -1,5 +1,5 @@
 from data_detect.base import BaseModel
-from constants import ModelName, ModelInfo, HateScore
+from data_detect.Japanese.constants import ModelName, ModelInfo, HateScore
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 import numpy as np
 import torch

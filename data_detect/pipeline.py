@@ -6,8 +6,8 @@ import logging
 from typing import List, Dict, Optional, Any
 import pandas as pd
 import numpy as np
-from Japanese.config import *
-from utils import compute_sample_size, random_sample_indices, ensure_dir, save_annotation_csv
+from data_detect.Japanese.config import *
+from data_detect.utils import compute_sample_size, random_sample_indices, ensure_dir, save_annotation_csv
 from data_detect.Japanese.constants import ModelInfo, ModelName, HateScore
 from data_detect.Japanese.factory import ModelFactory
 from tqdm import tqdm

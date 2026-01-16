@@ -6,38 +6,13 @@ import logging
 from typing import List, Dict, Optional, Any
 import pandas as pd
 import numpy as np
-from config import *
+from Japanese.config import *
 from utils import compute_sample_size, random_sample_indices, ensure_dir, save_annotation_csv
-from hate_detector import ModelName, ModelWrapper as OldModelWrapper, HateSpeechDetector
+from data_detect.Japanese.constants import ModelInfo, ModelName, HateScore
+from data_detect.Japanese.factory import ModelFactory
 from tqdm import tqdm
 
 logger = logging.getLogger("ensemble_pipeline")
-
-
-class ModelWrapper:
-    """Base class for model wrappers. Subclass and implement `predict(texts)`.
-    `predict` returns a list of dicts: {'label': 0|1, 'prob': float}
-    """
-    def predict(self, texts: List[str]) -> List[Dict[str, Any]]:
-        raise NotImplementedError
-
-
-class ExistingDetectorAdapter(ModelWrapper):
-    """Adapter around the existing `hate_detector.ModelWrapper` that only exposes `score_text` (0/1).
-    This adapter returns probability=1.0 for predicted label (best-effort)."""
-    def __init__(self, wrapper: Any):
-        self.wrapper = wrapper
-
-    def predict(self, texts: List[str]) -> List[Dict[str, Any]]:
-        out = []
-        for t in texts:
-            try:
-                lbl = int(self.wrapper.score_text(t))
-                out.append({"label": lbl, "prob": float(1.0)})
-            except Exception:
-                out.append({"label": 0, "prob": 0.0})
-        return out
-
 
 def _binary_entropy(p: float) -> float:
     # handle edge cases
@@ -51,7 +26,7 @@ class HatePipeline:
     and stratified sampling for annotation export.
     If `models` is None, we will attempt to create adapters for the models listed in `ModelName`.
     """
-    def __init__(self, logger, input_csv: str, models: Optional[List[ModelWrapper]] = None,
+    def __init__(self, logger, input_csv: str, models: Optional[List[ModelInfo]] = None,
                  population: int = DEFAULT_POPULATION, margin: float = DEFAULT_MARGIN,
                  sample_override: int = None, output_dir: str = OUTPUT_DIR, device: str = "cpu"):
         self.input_csv = input_csv
@@ -70,8 +45,7 @@ class HatePipeline:
             self.models = []
             for m in [mn.value for mn in ModelName]:
                 try:
-                    old_wrapper = OldModelWrapper(self.logger, m, device=self.device)
-                    adapter = ExistingDetectorAdapter(old_wrapper)
+                    adapter = ModelFactory.create_model(m, device=self.device)
                     self.models.append((m.name, adapter))
                 except Exception as e:
                     self.logger.warning(f"Failed to init adapter for {m.name}: {e}")

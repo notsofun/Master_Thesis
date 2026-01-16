@@ -2,8 +2,8 @@
 import os
 import logging
 from datetime import datetime
-from config import DEFAULT_INPUT_CSV
-from pipeline import HatePipeline
+from Japanese.config import DEFAULT_INPUT_CSV
+from data_detect.pipeline import HatePipeline
 from dotenv import load_dotenv
 load_dotenv()
 

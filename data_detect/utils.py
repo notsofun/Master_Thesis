@@ -4,7 +4,7 @@ import random
 import pandas as pd
 from typing import List, Tuple
 import os
-from config import RANDOM_SEED
+from data_detect.Japanese.config import RANDOM_SEED
 
 random.seed(RANDOM_SEED)
 

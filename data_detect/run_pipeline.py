@@ -2,8 +2,11 @@
 import sys
 import os
 
-# 将项目根目录（即 data_detect 的上一层）加入路径
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+current_dir = os.path.dirname(os.path.abspath(__file__)) # data_detect 目录
+root_dir = os.path.dirname(current_dir)                 # Master_Thesis 目录
+if root_dir not in sys.path:
+    sys.path.append(root_dir)
+    
 import logging
 from datetime import datetime
 from Japanese.config import DEFAULT_INPUT_CSV

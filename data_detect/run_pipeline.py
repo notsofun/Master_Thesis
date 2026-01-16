@@ -1,5 +1,9 @@
 # scripts/run_pipeline.py
+import sys
 import os
+
+# 将项目根目录（即 data_detect 的上一层）加入路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import logging
 from datetime import datetime
 from Japanese.config import DEFAULT_INPUT_CSV

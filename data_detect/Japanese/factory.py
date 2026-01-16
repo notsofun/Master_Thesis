@@ -1,4 +1,4 @@
-from constants import ModelName
+from data_detect.Japanese.constants import ModelName
 from data_detect.Japanese.models import normal, Yuki, Duo_Guard, Kubota, Luke
 from data_detect.base import BaseModel
 

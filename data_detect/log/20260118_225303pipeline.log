@@ -1,0 +1,9 @@
+[2026-01-18 22:53:03] [INFO] ============================================================
+[2026-01-18 22:53:03] [INFO] 日志系统初始化完成
+[2026-01-18 22:53:03] [INFO] 日志路径: /Users/noriaki/Documents/GitHub/Master_Thesis/data_detect/log/20260118_225303pipeline.log
+[2026-01-18 22:53:03] [INFO] ============================================================
+[2026-01-18 22:53:03] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-18 22:53:03] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-18 22:53:03] [INFO] Using sample size = 250
+[2026-01-18 22:53:03] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-18 22:53:03] [INFO] Predicting with model_0 on 250 texts

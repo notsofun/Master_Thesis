@@ -1,0 +1,6 @@
+[2026-01-18 22:49:20] [INFO] ============================================================
+[2026-01-18 22:49:20] [INFO] 日志系统初始化完成
+[2026-01-18 22:49:20] [INFO] 日志路径: /Users/noriaki/Documents/GitHub/Master_Thesis/data_detect/log/20260118_224920pipeline.log
+[2026-01-18 22:49:20] [INFO] ============================================================
+[2026-01-18 22:49:20] [INFO] No ModelWrapper list provided; creating adapters from ModelName enum.
+[2026-01-18 22:49:20] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>

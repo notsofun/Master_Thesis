@@ -1,0 +1,6 @@
+[2026-01-18 23:11:57] [INFO] ============================================================
+[2026-01-18 23:11:57] [INFO] 日志系统初始化完成
+[2026-01-18 23:11:57] [INFO] 日志路径: /Users/noriaki/Documents/GitHub/Master_Thesis/data_detect/log/20260118_231157pipeline.log
+[2026-01-18 23:11:57] [INFO] ============================================================
+[2026-01-18 23:11:57] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-18 23:11:57] [INFO] it is a normal model

@@ -1,0 +1,10 @@
+[2026-01-18 23:03:58] [INFO] ============================================================
+[2026-01-18 23:03:58] [INFO] 日志系统初始化完成
+[2026-01-18 23:03:58] [INFO] 日志路径: /Users/noriaki/Documents/GitHub/Master_Thesis/data_detect/log/20260118_230358pipeline.log
+[2026-01-18 23:03:58] [INFO] ============================================================
+[2026-01-18 23:03:58] [INFO] now we are creating None
+[2026-01-18 23:03:58] [WARNING] Failed to init adapter for kit: Model ModelInfo(name='kit', tokenizer='kit-nlp/electra-small-japanese-discriminator-cyberbullying', model='kit-nlp/electra-small-japanese-discriminator-cyberbullying', score_method='kit_score') not supported
+[2026-01-18 23:03:58] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-18 23:03:58] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-18 23:03:58] [INFO] Using sample size = 250
+[2026-01-18 23:03:58] [INFO] Evaluating ensemble on sampled texts...

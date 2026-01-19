@@ -5,7 +5,9 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__)) # data_detect 目录
 root_dir = os.path.dirname(current_dir)                 # Master_Thesis 目录
 if root_dir not in sys.path:
-    sys.path.append(root_dir)
+    sys.path.insert(0, root_dir)
+
+from data_detect.Japanese.constants import ModelName
 
 import logging
 from datetime import datetime
@@ -52,11 +54,11 @@ logger.info("日志路径: %s", log_path)
 logger.info("="*60)
 
 if __name__ == "__main__":
-
+    to_test = [ModelName.KIT]
     # 2) 入口数据 CSV，必须包含列 'text'
     input_csv = DEFAULT_INPUT_CSV
     # 使用 ensemble pipeline（不再直接依赖 Gemini）
-    pipeline = HatePipeline(logger, input_csv=input_csv)
+    pipeline = HatePipeline(logger, input_csv=input_csv, models=to_test)
     result = pipeline.run_detection(total_annotation_n=4000)
     logger.info("Pipeline finished. Result summary:")
     logger.info(result)

@@ -1,0 +1,46 @@
+[2026-01-19 11:25:50] [INFO] ============================================================
+[2026-01-19 11:25:50] [INFO] 日志系统初始化完成
+[2026-01-19 11:25:50] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260119_112550pipeline.log
+[2026-01-19 11:25:50] [INFO] ============================================================
+[2026-01-19 11:25:50] [INFO] No ModelWrapper list provided; creating adapters from ModelName enum.
+[2026-01-19 11:25:57] [WARNING] We are creating ModelName.LUKE by ModelInfo(name='luke_offensiveness', tokenizer='studio-ousia/luke-japanese-base-lite', model='TomokiFujihara/luke-japanese-base-lite-offensiveness-estimation', score_method='luke_score_text')
+[2026-01-19 11:25:57] [WARNING] Failed to init adapter for DUO_GUARD: DuoGuardModel.__init__() missing 1 required positional argument: 'model_info'
+[2026-01-19 11:25:57] [WARNING] Failed to init adapter for KUBOTA: KubotaModel.__init__() missing 1 required positional argument: 'model_info'
+[2026-01-19 11:26:00] [WARNING] Failed to init adapter for YUKI: Using a `device_map`, `tp_plan`, `torch.device` context manager or setting `torch.set_default_device(device)` requires `accelerate`. You can install it with `pip install accelerate`
+[2026-01-19 11:26:00] [WARNING] Failed to init adapter for KIT: NormalModel.__init__() missing 1 required positional argument: 'model_info'
+[2026-01-19 11:26:00] [WARNING] Failed to init adapter for YACIS: NormalModel.__init__() missing 1 required positional argument: 'model_info'
+[2026-01-19 11:26:01] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-19 11:26:01] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-19 11:26:01] [INFO] Using sample size = 250
+[2026-01-19 11:26:01] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-19 11:26:01] [INFO] Predicting with LUKE on 250 texts
+[2026-01-19 11:27:17] [INFO] Generating annotation set via stratified sampling...
+[2026-01-19 11:27:18] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260119_112718.csv
+[2026-01-19 11:27:18] [INFO] Pipeline finished. Result summary:
+[2026-01-19 11:27:18] [INFO] {'evaluated':                                                   text model_names model_labels model_probs  ... entropy  conflict  vote_for  vote_against
+0                               もっと具体的にあげて事実無根って聞きたかった      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+1          https://animal-liber...net/issue/slaughter/      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+2    なんせ､部屋の､ｲﾗﾝもの､捨てんと｡ 将棋24の対局記録のﾒﾓ帳､いっぱいある｡しかも､今...      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+3                             >>284 私有財産の禁止とか共産主義みてーだな      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+4    AI による概要 先住民族は、歴史的に国家の軍隊に所属したり、独自の部隊を組織したりしてきま...      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+..                                                 ...         ...          ...         ...  ...     ...       ...       ...           ...
+245                                         >>259 正当防衛      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+246                                             枝丹較チョン      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+247  昭恵「安倍晋三からです」（籠池に100万円の寄付金を手渡しながら） 萩豚「成田市ほど時間はか...      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+248                                          早く円盤出ないかな      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+249   統一教会 https://rio2016.5ch.....cgi/psy/1713616997/      [LUKE]          [0]       [1.0]  ...     0.0     False         0             1
+
+[250 rows x 10 columns], 'annotation_df':                                                   text model_votes  average_prob sampling_strategy_tag
+0    いいかい？ 韓国人を差別したり、ネトウヨを差別したりしてはいけないよ それは悪魔の考え 日本...         1/0           1.0       consistent_hate
+1                           京都大学の学生は日本語では読みません<m(__)m>         1/0           1.0       consistent_hate
+2                                         隣人が一番敵になりやすい         1/0           1.0       consistent_hate
+3    キリスト教会行っても無理。 治んねえからこいつら。 免罪符は通じない。。 救うな・・・Jes...         1/0           1.0       consistent_hate
+4      過去の贖罪で聖職者目指したの？神に懺悔する前に相手に謝罪する事が先だろ！人としてどうなんだよ。         1/0           1.0       consistent_hate
+..                                                 ...         ...           ...                   ...
+245                               結局、世の中は洗脳信者が増えるほど儲かる         0/1           1.0   consistent_non_hate
+246                       せっかくの日本語ラジオ 電波ジャック辞めてもらえません🔥         0/1           1.0   consistent_non_hate
+247  https://www.youtube..../watch?v=g0FfCR2XLMY 西脇...         0/1           1.0   consistent_non_hate
+248  「プロレススーパースター列伝」の漫画家・原田久仁信さん死去 https://news.yah...         0/1           1.0   consistent_non_hate
+249                  でこすけ２氏 終わった後に ３来るか 意味わからない 文章なりねば         0/1           1.0   consistent_non_hate
+
+[250 rows x 4 columns], 'annotation_csv': '/root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260119_112718.csv', 'n_models': 1}

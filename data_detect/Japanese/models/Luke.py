@@ -10,7 +10,7 @@ class LukeModel(BaseModel):
         self.tokenizer = AutoTokenizer.from_pretrained(model_info.tokenizer)
         self.model = AutoModelForSequenceClassification.from_pretrained(model_info.model, trust_remote_code=True)
 
-    def luke_score_text(self, text: str) -> int:
+    def score(self, text: str) -> int:
         inputs = self.tokenizer.encode_plus(text, return_tensors="pt")
         logits = self.model(
             inputs["input_ids"],

@@ -9,7 +9,7 @@ DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "data"))
 OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "output"))
 
 # 如果你手上有 CSV 原始文件，可在运行脚本传入；这里给默认文件名
-DEFAULT_INPUT_CSV = '../../data_collection/5ch/20251124_130843_5ch_posts.csv'
+DEFAULT_INPUT_CSV = '../data_collection/5ch/20251124_130843_5ch_posts.csv'
 
 # Gemini 模型名称（可替换）
 GEMINI_MODEL = "models/gemini-2.5-flash"

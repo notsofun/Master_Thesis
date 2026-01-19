@@ -1,0 +1,15 @@
+[2026-01-18 22:00:26] [INFO] ============================================================
+[2026-01-18 22:00:26] [INFO] 日志系统初始化完成
+[2026-01-18 22:00:26] [INFO] 日志路径: /Users/noriaki/Documents/GitHub/Master_Thesis/data_detect/log/20260118_220026pipeline.log
+[2026-01-18 22:00:26] [INFO] ============================================================
+[2026-01-18 22:00:26] [INFO] No ModelWrapper list provided; creating adapters from ModelName enum.
+[2026-01-18 22:00:26] [WARNING] Failed to init adapter for LUKE: Can't instantiate abstract class LukeModel with abstract method score
+[2026-01-18 22:00:26] [WARNING] Failed to init adapter for DUO_GUARD: DuoGuardModel.__init__() missing 1 required positional argument: 'model_info'
+[2026-01-18 22:00:26] [WARNING] Failed to init adapter for KUBOTA: KubotaModel.__init__() missing 1 required positional argument: 'model_info'
+[2026-01-18 22:00:27] [WARNING] Failed to init adapter for YUKI: Cannot instantiate this tokenizer from a slow version. If it's based on sentencepiece, make sure you have sentencepiece installed.
+[2026-01-18 22:00:27] [WARNING] Failed to init adapter for KIT: The ipadic dictionary is not installed. See https://github.com/polm/ipadic-py for installation.
+[2026-01-18 22:00:28] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-18 22:00:28] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-18 22:00:28] [INFO] Using sample size = 250
+[2026-01-18 22:00:28] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-18 22:00:28] [INFO] Predicting with YACIS on 250 texts

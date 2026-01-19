@@ -1,0 +1,15 @@
+[2026-01-18 21:03:54] [INFO] ============================================================
+[2026-01-18 21:03:54] [INFO] 日志系统初始化完成
+[2026-01-18 21:03:54] [INFO] 日志路径: /Users/noriaki/Documents/GitHub/Master_Thesis/data_detect/log/20260118_210354pipeline.log
+[2026-01-18 21:03:54] [INFO] ============================================================
+[2026-01-18 21:03:54] [INFO] No ModelWrapper list provided; creating adapters from ModelName enum.
+[2026-01-18 21:03:54] [WARNING] Failed to init adapter for luke_offensiveness: Model ModelInfo(name='luke_offensiveness', tokenizer='studio-ousia/luke-japanese-base-lite', model='TomokiFujihara/luke-japanese-base-lite-offensiveness-estimation', score_method='luke_score_text') not supported
+[2026-01-18 21:03:54] [WARNING] Failed to init adapter for DuoGuard: Model ModelInfo(name='DuoGuard', tokenizer='Qwen/Qwen2.5-1.5B', model='DuoGuard/DuoGuard-1.5B-transfer', score_method='duo_guard_score') not supported
+[2026-01-18 21:03:54] [WARNING] Failed to init adapter for kubota: Model ModelInfo(name='kubota', tokenizer='', model='kubota/luke-large-defamation-detection-japanese', score_method='kubota_score') not supported
+[2026-01-18 21:03:54] [WARNING] Failed to init adapter for yuki: Model ModelInfo(name='yuki', tokenizer='yukismd/HateSpeechClassification-japanese-gpt-neox-3-6b-instruction-ppo', model='yukismd/HateSpeechClassification-japanese-gpt-neox-3-6b-instruction-ppo', score_method='yuki_score') not supported
+[2026-01-18 21:03:54] [WARNING] Failed to init adapter for kit: Model ModelInfo(name='kit', tokenizer='kit-nlp/electra-small-japanese-discriminator-cyberbullying', model='kit-nlp/electra-small-japanese-discriminator-cyberbullying', score_method='kit_score') not supported
+[2026-01-18 21:03:54] [WARNING] Failed to init adapter for yacis: Model ModelInfo(name='yacis', tokenizer='ptaszynski/yacis-electra-small-japanese-cyberbullying', model='ptaszynski/yacis-electra-small-japanese-cyberbullying', score_method='kit_score') not supported
+[2026-01-18 21:03:54] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-18 21:03:54] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-18 21:03:54] [INFO] Using sample size = 250
+[2026-01-18 21:03:54] [INFO] Evaluating ensemble on sampled texts...

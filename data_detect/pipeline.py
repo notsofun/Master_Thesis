@@ -43,9 +43,9 @@ class HatePipeline:
             # attempt to create adapters using existing `ModelWrapper` in hate_detector
             self.logger.info("No ModelWrapper list provided; creating adapters from ModelName enum.")
             self.models = []
-            for m in [mn.value for mn in ModelName]:
+            for m in [mn for mn in ModelName]:
                 try:
-                    adapter = ModelFactory.create_model(m, device=self.device)
+                    adapter = ModelFactory.create_model(m)
                     self.models.append((m.name, adapter))
                 except Exception as e:
                     self.logger.warning(f"Failed to init adapter for {m.name}: {e}")
@@ -73,6 +73,7 @@ class HatePipeline:
         names = []
         for name, m in self.models:
             self.logger.info(f"Predicting with {name} on {len(texts)} texts")
+            m.to(self.device)
             preds = m.predict(list(texts))
             # normalize into dicts
             model_preds.append(preds)

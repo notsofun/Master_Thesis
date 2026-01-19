@@ -17,6 +17,7 @@ class ModelFactory:
         model_class = cls._mapping.get(name)
         if not model_class:
             raise ValueError(f"Model {name} not supported")
-        elif model_class is normal:
+        if isinstance(model_class, normal):
             return model_class(name.value)
-        return model_class()
+        else:
+            return model_class()

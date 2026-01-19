@@ -4,10 +4,10 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipe
 import torch
 
 class KubotaModel(BaseModel):
-    def __init__(self, model_info: ModelInfo, device="cpu"):
+    def __init__(self, device="cpu"):
         self.device = device
-        self.model_info = model_info
-        self.pipe = pipeline(model=model_info.model)
+        self.model_info = ModelName.KUBOTA.value
+        self.pipe = pipeline(model=self.model_info.model)
 
     def score(self, text):
         result = self.pipe(text)[0]   # 取第一个结果 dict

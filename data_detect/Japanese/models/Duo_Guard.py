@@ -4,15 +4,15 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipe
 import torch
 
 class DuoGuardModel(BaseModel):
-    def __init__(self, model_info: ModelInfo, device="cpu"):
+    def __init__(self, device="cpu"):
         self.device = device
-        self.model_info = model_info
-        self.tokenizer = AutoTokenizer.from_pretrained(model_info.tokenizer)
+        self.model_info = ModelName.DUO_GUARD.value
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_info.tokenizer)
         self.tokenizer.pad_token = self.tokenizer.eos_token
 
         # Load the DuoGuard-0.5B model
         self.model = AutoModelForSequenceClassification.from_pretrained(
-            model_info.model,
+            self.model_info.model,
             torch_dtype=torch.bfloat16
         ).to(self.device)
 

@@ -45,8 +45,7 @@ class HatePipeline:
             self.models = []
             for m in [mn for mn in ModelName]:
                 try:
-                    adapter = ModelFactory.create_model(m)
-                    self.logger.warning(f"We are creating {m} by {m.value}")
+                    adapter = ModelFactory.create_model(self.logger, m)
                     self.models.append((m.name, adapter))
                 except Exception as e:
                     self.logger.warning(f"Failed to init adapter for {m.name}: {e}")

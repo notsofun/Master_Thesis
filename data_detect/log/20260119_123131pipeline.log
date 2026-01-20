@@ -1,0 +1,60 @@
+[2026-01-19 12:31:31] [INFO] ============================================================
+[2026-01-19 12:31:31] [INFO] 日志系统初始化完成
+[2026-01-19 12:31:31] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260119_123131pipeline.log
+[2026-01-19 12:31:31] [INFO] ============================================================
+[2026-01-19 12:31:31] [INFO] No ModelWrapper list provided; creating adapters from ModelName enum.
+[2026-01-19 12:31:31] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>
+[2026-01-19 12:31:35] [WARNING] Failed to init adapter for LUKE: 
+MLukeTokenizer requires the SentencePiece library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/google/sentencepiece#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+[2026-01-19 12:31:35] [INFO] now we are creating <class 'data_detect.Japanese.models.Duo_Guard.DuoGuardModel'>
+[2026-01-19 12:44:07] [INFO] now we are creating <class 'data_detect.Japanese.models.Kubota.KubotaModel'>
+[2026-01-19 13:39:56] [WARNING] Failed to init adapter for KUBOTA: 
+MLukeTokenizer requires the SentencePiece library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/google/sentencepiece#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+[2026-01-19 13:39:56] [INFO] now we are creating <class 'data_detect.Japanese.models.Yuki.YukiModel'>
+[2026-01-19 13:40:06] [WARNING] Failed to init adapter for YUKI: Cannot instantiate this tokenizer from a slow version. If it's based on sentencepiece, make sure you have sentencepiece installed.
+[2026-01-19 13:40:06] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-19 13:40:11] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-19 13:40:44] [INFO] Successfully initialized [('DUO_GUARD', <data_detect.Japanese.models.Duo_Guard.DuoGuardModel object at 0x7fdc503b1b80>), ('KIT', <data_detect.Japanese.models.normal.NormalModel object at 0x7fdc62379760>), ('YACIS', <data_detect.Japanese.models.normal.NormalModel object at 0x7fdca2941ac0>)] models
+[2026-01-19 13:40:44] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-19 13:40:44] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-19 13:40:44] [INFO] Using sample size = 250
+[2026-01-19 13:40:44] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-19 13:40:44] [INFO] Predicting with DUO_GUARD on 250 texts
+[2026-01-19 13:41:10] [INFO] Predicting with KIT on 250 texts
+[2026-01-19 13:41:12] [INFO] Predicting with YACIS on 250 texts
+[2026-01-19 13:41:15] [INFO] Generating annotation set via stratified sampling...
+[2026-01-19 13:41:15] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260119_134115.csv
+[2026-01-19 13:41:15] [INFO] Pipeline finished. Result summary:
+[2026-01-19 13:41:15] [INFO] {'evaluated':                                                   text              model_names model_labels  ... conflict vote_for  vote_against
+0                               もっと具体的にあげて事実無根って聞きたかった  [DUO_GUARD, KIT, YACIS]    [1, 0, 0]  ...     True        1             2
+1          https://animal-liber...net/issue/slaughter/  [DUO_GUARD, KIT, YACIS]    [0, 0, 0]  ...    False        0             3
+2    なんせ､部屋の､ｲﾗﾝもの､捨てんと｡ 将棋24の対局記録のﾒﾓ帳､いっぱいある｡しかも､今...  [DUO_GUARD, KIT, YACIS]    [0, 0, 1]  ...     True        1             2
+3                             >>284 私有財産の禁止とか共産主義みてーだな  [DUO_GUARD, KIT, YACIS]    [1, 1, 1]  ...    False        3             0
+4    AI による概要 先住民族は、歴史的に国家の軍隊に所属したり、独自の部隊を組織したりしてきま...  [DUO_GUARD, KIT, YACIS]    [1, 0, 0]  ...     True        1             2
+..                                                 ...                      ...          ...  ...      ...      ...           ...
+245                                         >>259 正当防衛  [DUO_GUARD, KIT, YACIS]    [1, 0, 1]  ...     True        2             1
+246                                             枝丹較チョン  [DUO_GUARD, KIT, YACIS]    [0, 0, 0]  ...    False        0             3
+247  昭恵「安倍晋三からです」（籠池に100万円の寄付金を手渡しながら） 萩豚「成田市ほど時間はか...  [DUO_GUARD, KIT, YACIS]    [1, 1, 0]  ...     True        2             1
+248                                          早く円盤出ないかな  [DUO_GUARD, KIT, YACIS]    [1, 0, 0]  ...     True        1             2
+249   統一教会 https://rio2016.5ch.....cgi/psy/1713616997/  [DUO_GUARD, KIT, YACIS]    [1, 0, 0]  ...     True        1             2
+
+[250 rows x 10 columns], 'annotation_df':                                                   text model_votes  average_prob  sampling_strategy_tag
+0    真言宗 常用経典 九條錫杖（くじょうしゃくじょう） http://shingon-kyo.s...         3/0           1.0        consistent_hate
+1    >>724 なんかお前らおかしくね？ 統一教会は叩くのに、日本に原爆を落として、100万人以...         3/0           1.0        consistent_hate
+2    特権階級の俺様から金取ろうとは・・・これいかに。 無条件降伏すればいいものを・・・。 逆らう...         3/0           1.0        consistent_hate
+3    内海 聡 @touyoui 昨日のよしみとチーム日本代表が街宣入るため。 応援弁士池田としえ...         3/0           1.0        consistent_hate
+4                               >>705 40代だろな 前半じゃないと思う         3/0           1.0        consistent_hate
+..                                                 ...         ...           ...                    ...
+245                                             無罪でいいわ         1/2           1.0  conflict_or_uncertain
+246  毎日のみことば https://seseragi-sc....e%ef%bc%89%e5%8...         1/2           1.0  conflict_or_uncertain
+247  それゆえ、万軍の主、 イスラエルの神は言われる、 わたしは生きている。 モアブは必ずソドムの...         2/1           1.0  conflict_or_uncertain
+248                                         >>259 正当防衛         2/1           1.0  conflict_or_uncertain
+249                                  >>259 真田…信繁は伝説なのか         2/1           1.0  conflict_or_uncertain
+
+[250 rows x 4 columns], 'annotation_csv': '/root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260119_134115.csv', 'n_models': 3}

@@ -1,0 +1,41 @@
+[2026-01-19 12:28:58] [INFO] ============================================================
+[2026-01-19 12:28:58] [INFO] 日志系统初始化完成
+[2026-01-19 12:28:58] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260119_122858pipeline.log
+[2026-01-19 12:28:58] [INFO] ============================================================
+[2026-01-19 12:28:58] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-19 12:29:51] [INFO] Successfully initialized [('KIT', <data_detect.Japanese.models.normal.NormalModel object at 0x7f6405faea80>)] models
+[2026-01-19 12:29:51] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-19 12:29:51] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-19 12:29:51] [INFO] Using sample size = 250
+[2026-01-19 12:29:51] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-19 12:29:51] [INFO] Predicting with KIT on 250 texts
+[2026-01-19 12:29:54] [INFO] Generating annotation set via stratified sampling...
+[2026-01-19 12:29:54] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260119_122954.csv
+[2026-01-19 12:29:54] [INFO] Pipeline finished. Result summary:
+[2026-01-19 12:29:54] [INFO] {'evaluated':                                                   text model_names model_labels model_probs  ... entropy  conflict  vote_for  vote_against
+0                               もっと具体的にあげて事実無根って聞きたかった       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+1          https://animal-liber...net/issue/slaughter/       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+2    なんせ､部屋の､ｲﾗﾝもの､捨てんと｡ 将棋24の対局記録のﾒﾓ帳､いっぱいある｡しかも､今...       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+3                             >>284 私有財産の禁止とか共産主義みてーだな       [KIT]          [1]       [1.0]  ...     0.0     False         1             0
+4    AI による概要 先住民族は、歴史的に国家の軍隊に所属したり、独自の部隊を組織したりしてきま...       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+..                                                 ...         ...          ...         ...  ...     ...       ...       ...           ...
+245                                         >>259 正当防衛       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+246                                             枝丹較チョン       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+247  昭恵「安倍晋三からです」（籠池に100万円の寄付金を手渡しながら） 萩豚「成田市ほど時間はか...       [KIT]          [1]       [1.0]  ...     0.0     False         1             0
+248                                          早く円盤出ないかな       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+249   統一教会 https://rio2016.5ch.....cgi/psy/1713616997/       [KIT]          [0]       [1.0]  ...     0.0     False         0             1
+
+[250 rows x 10 columns], 'annotation_df':                                                   text model_votes  average_prob sampling_strategy_tag
+0    >>409 壺連呼中国共産党員=ユダヤ共産主義支持 統一教会=反ポリコレ、反ユダヤ共産主義=...         1/0           1.0       consistent_hate
+1                   >>125 やっぱりネトウヨを語るには、ネットde真実は外せないかw         1/0           1.0       consistent_hate
+2             >>473 自分が知らないだけなのにイキれるシアワセなオツムの子はほっときなさい         1/0           1.0       consistent_hate
+3    佐々木の血とお家は京極竜子がギリギリ繋いだって感じよな 六角や尼子が潰れて本当にヤバかったんやろな         1/0           1.0       consistent_hate
+4    スレの皆さん、おはようございます。 キリスト教関係の信仰生活について、紹介レスを作りましたの...         1/0           1.0       consistent_hate
+..                                                 ...         ...           ...                   ...
+245                     お早うございます。 今日も寒いね、冬の服で厚着をしています。         0/1           1.0   consistent_non_hate
+246  「プロレススーパースター列伝」の漫画家・原田久仁信さん死去 https://news.yah...         0/1           1.0   consistent_non_hate
+247                                       >>14 見たかったなw         0/1           1.0   consistent_non_hate
+248                   >>35 名前無しはびまたん違うよ。 もっともっと偏差値高いよ😃         0/1           1.0   consistent_non_hate
+249  ・宗教書ブームの陰で コスモメイト(当時。現在ワールドメイト)の主宰者、深見東州氏（本名・半...         0/1           1.0   consistent_non_hate
+
+[250 rows x 4 columns], 'annotation_csv': '/root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260119_122954.csv', 'n_models': 1}

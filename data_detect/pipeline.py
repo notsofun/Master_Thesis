@@ -124,17 +124,12 @@ class HatePipeline:
     def generate_annotation_set(self, evaluated_df: pd.DataFrame, total_n: int = 4000,
                                 keywords: Optional[List[str]] = None) -> pd.DataFrame:
         """Stratified sampling per spec:
-        - 30% consistent hate (all models vote hate) and high prob
-        - 30% consistent non-hate AND contains keywords
-        - 40% conflicts or uncertain (entropy high or avg_prob in [0.4,0.6])
+        - Primary: conflict_or_uncertain samples (entropy high or avg_prob in [0.4,0.6])
+        - If insufficient, fill remaining equally from consistent_hate and consistent_non_hate
         Returns sampled DataFrame with sampling_strategy_tag column.
         """
         if keywords is None:
             keywords = []
-
-        n1 = int(total_n * 0.3)
-        n2 = int(total_n * 0.3)
-        n3 = total_n - n1 - n2
 
         # consistent hate: vote_for == n_models and avg_prob high
         n_models = len(self.models)
@@ -151,27 +146,27 @@ class HatePipeline:
         # conflicts or uncertain: conflict True OR avg_prob between 0.4 and 0.6
         uncertain = evaluated_df[(evaluated_df["conflict"] == True) | ((evaluated_df["avg_prob"] >= 0.4) & (evaluated_df["avg_prob"] <= 0.6))].copy()
 
-        sampled = []
-
         def _sample_from(df: pd.DataFrame, k: int, tag: str):
             if df.empty or k <= 0:
                 return pd.DataFrame()
             k = min(k, len(df))
             return df.sample(n=k, random_state=42).assign(sampling_strategy_tag=tag)
 
-        s1 = _sample_from(consistent_hate, n1, "consistent_hate")
-        s2 = _sample_from(consistent_non, n2, "consistent_non_hate")
-        s3 = _sample_from(uncertain, n3, "conflict_or_uncertain")
+        # Primary: sample from conflict_or_uncertain up to total_n
+        s_uncertain = _sample_from(uncertain, total_n, "conflict_or_uncertain")
+        
+        sampled_df = s_uncertain.copy()
 
-        sampled_df = pd.concat([s1, s2, s3], ignore_index=True)
-
-        # if not enough samples due to small groups, fill from remaining pool
+        # If not enough conflict_or_uncertain samples, fill remaining equally from hate and non-hate
         if len(sampled_df) < total_n:
-            remaining_pool = evaluated_df.drop(sampled_df.index, errors="ignore")
             need = total_n - len(sampled_df)
-            if not remaining_pool.empty and need > 0:
-                fill = remaining_pool.sample(n=min(need, len(remaining_pool)), random_state=42).assign(sampling_strategy_tag="fill")
-                sampled_df = pd.concat([sampled_df, fill], ignore_index=True)
+            need_from_hate = (need + 1) // 2  # ceiling division
+            need_from_non_hate = need // 2     # floor division
+            
+            s_hate = _sample_from(consistent_hate, need_from_hate, "consistent_hate")
+            s_non = _sample_from(consistent_non, need_from_non_hate, "consistent_non_hate")
+            
+            sampled_df = pd.concat([sampled_df, s_hate, s_non], ignore_index=True)
 
         # ensure columns requested by user
         final = sampled_df[["text", "model_votes", "avg_prob", "sampling_strategy_tag"]].copy()

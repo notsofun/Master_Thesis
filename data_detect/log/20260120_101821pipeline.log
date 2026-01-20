@@ -1,0 +1,52 @@
+[2026-01-20 10:18:21] [INFO] ============================================================
+[2026-01-20 10:18:21] [INFO] 日志系统初始化完成
+[2026-01-20 10:18:21] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260120_101821pipeline.log
+[2026-01-20 10:18:21] [INFO] ============================================================
+[2026-01-20 10:18:21] [INFO] No ModelWrapper list provided; creating adapters from ModelName enum.
+[2026-01-20 10:18:21] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>
+[2026-01-20 10:18:26] [INFO] now we are creating <class 'data_detect.Japanese.models.Duo_Guard.DuoGuardModel'>
+[2026-01-20 10:18:28] [INFO] now we are creating <class 'data_detect.Japanese.models.Kubota.KubotaModel'>
+[2026-01-20 10:18:32] [INFO] now we are creating <class 'data_detect.Japanese.models.Yuki.YukiModel'>
+[2026-01-20 10:18:33] [WARNING] Failed to init adapter for YUKI: Using a `device_map`, `tp_plan`, `torch.device` context manager or setting `torch.set_default_device(device)` requires `accelerate`. You can install it with `pip install accelerate`
+[2026-01-20 10:18:33] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-20 10:18:35] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-20 10:18:37] [INFO] Successfully initialized [('LUKE', <data_detect.Japanese.models.Luke.LukeModel object at 0x7f8878517e60>), ('DUO_GUARD', <data_detect.Japanese.models.Duo_Guard.DuoGuardModel object at 0x7f8872ab6510>), ('KUBOTA', <data_detect.Japanese.models.Kubota.KubotaModel object at 0x7f8872ae3f20>), ('KIT', <data_detect.Japanese.models.normal.NormalModel object at 0x7f88784f7140>), ('YACIS', <data_detect.Japanese.models.normal.NormalModel object at 0x7f8871a41bb0>)] models
+[2026-01-20 10:18:38] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-20 10:18:38] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-20 10:18:38] [INFO] Using sample size = 5000
+[2026-01-20 10:18:38] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-20 10:18:38] [INFO] Predicting with LUKE on 5000 texts
+[2026-01-20 10:20:30] [INFO] Predicting with DUO_GUARD on 5000 texts
+[2026-01-20 10:28:56] [INFO] Predicting with KUBOTA on 5000 texts
+[2026-01-20 10:28:58] [INFO] Predicting with KIT on 5000 texts
+[2026-01-20 10:29:49] [INFO] Predicting with YACIS on 5000 texts
+[2026-01-20 10:30:27] [INFO] Generating annotation set via stratified sampling...
+[2026-01-20 10:30:27] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260120_103027.csv
+[2026-01-20 10:30:27] [INFO] Pipeline finished. Result summary:
+[2026-01-20 10:30:27] [INFO] {'evaluated':                                                    text                            model_names  ... vote_for vote_against
+0                                もっと具体的にあげて事実無根って聞きたかった  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+1           https://animal-liber...net/issue/slaughter/  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        0            5
+2     なんせ､部屋の､ｲﾗﾝもの､捨てんと｡ 将棋24の対局記録のﾒﾓ帳､いっぱいある｡しかも､今...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+3                              >>284 私有財産の禁止とか共産主義みてーだな  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        3            2
+4     AI による概要 先住民族は、歴史的に国家の軍隊に所属したり、独自の部隊を組織したりしてきま...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+...                                                 ...                                    ...  ...      ...          ...
+4995  キモイ澄が執事なったし実在しない神を信じる気が失せたから教会離れた。旧婦人会の残党も淘汰され...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        3            2
+4996                             >>923 ウケるで終わらせる程度の民度です  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        3            2
+4997  まあでも自分は牛乳は普通牛乳を好んで使うし飲んでいるかな・・・美味しいから。 たまーに豆乳を...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+4998                    >>822 わりとガチでぺっさんにもやってほしいと思ってるの🥺  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        2            3
+4999  >>134 初代教皇ペトロは主キリストが使徒たちの頭として任命した。 二代目教皇が選ばれた時...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+
+[5000 rows x 10 columns], 'annotation_df':                                                    text model_votes  average_prob sampling_strategy_tag
+0     https://x.com/tachib.../1829781737364459963 この...         5/0           1.0       consistent_hate
+1                                           >>431 アホなの？         5/0           1.0       consistent_hate
+2                                                     ？         0/5           0.8   consistent_non_hate
+3                                             山神終了のお知らせ         0/5           0.8   consistent_non_hate
+4                                              この仕組みいる？         0/5           0.8   consistent_non_hate
+...                                                 ...         ...           ...                   ...
+3995  今朝は久々に反逆気分 無理も無いでしょ？ 朝飯食って聖母の乳ワイン半分飲んで憂さ晴らし 今日...         1/4           0.8                  fill
+3996  「不思議に思いませんでした。 母の部屋に安倍元首相が表紙の旧統一教会の機関誌がありました。 ...         2/3           0.8                  fill
+3997  キリがねえ・・・。 悪いが親の意向は聞き入れられないぞ。 可愛いとは思わん・・・こいつら。 ...         3/2           0.8                  fill
+3998                   >>181 同じ舞台のところはワンカットじゃまいか？10分くらい         1/4           0.8                  fill
+3999                           >>346 訂正 擊うつちやがった→擊ちやがった         4/1           0.8                  fill
+
+[4000 rows x 4 columns], 'annotation_csv': '/root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260120_103027.csv', 'n_models': 5}

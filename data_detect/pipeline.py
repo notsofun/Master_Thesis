@@ -191,7 +191,7 @@ class HatePipeline:
 
         computed_n = compute_sample_size(self.population, margin=self.margin)
         self.logger.info(f"Computed sample size (finite-pop correction) = {computed_n}")
-        sample_n = self.sample_override or min(computed_n, DEFAULT_MAX_SAMPLE)
+        sample_n = self.sample_override or max(computed_n, DEFAULT_MAX_SAMPLE)
         self.logger.info(f"Using sample size = {sample_n}")
 
         idxs = random_sample_indices(total, sample_n)

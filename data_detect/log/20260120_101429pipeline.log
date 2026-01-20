@@ -1,0 +1,52 @@
+[2026-01-20 10:14:29] [INFO] ============================================================
+[2026-01-20 10:14:29] [INFO] 日志系统初始化完成
+[2026-01-20 10:14:29] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260120_101429pipeline.log
+[2026-01-20 10:14:29] [INFO] ============================================================
+[2026-01-20 10:14:29] [INFO] No ModelWrapper list provided; creating adapters from ModelName enum.
+[2026-01-20 10:14:29] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>
+[2026-01-20 10:14:36] [INFO] now we are creating <class 'data_detect.Japanese.models.Duo_Guard.DuoGuardModel'>
+[2026-01-20 10:14:38] [INFO] now we are creating <class 'data_detect.Japanese.models.Kubota.KubotaModel'>
+[2026-01-20 10:14:44] [INFO] now we are creating <class 'data_detect.Japanese.models.Yuki.YukiModel'>
+[2026-01-20 10:14:47] [WARNING] Failed to init adapter for YUKI: Using a `device_map`, `tp_plan`, `torch.device` context manager or setting `torch.set_default_device(device)` requires `accelerate`. You can install it with `pip install accelerate`
+[2026-01-20 10:14:47] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-20 10:14:51] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-20 10:14:55] [INFO] Successfully initialized [('LUKE', <data_detect.Japanese.models.Luke.LukeModel object at 0x7fce9e8b4f20>), ('DUO_GUARD', <data_detect.Japanese.models.Duo_Guard.DuoGuardModel object at 0x7fcefca31ac0>), ('KUBOTA', <data_detect.Japanese.models.Kubota.KubotaModel object at 0x7fce9eb07da0>), ('KIT', <data_detect.Japanese.models.normal.NormalModel object at 0x7fcea69d8e30>), ('YACIS', <data_detect.Japanese.models.normal.NormalModel object at 0x7fce9ffd4ef0>)] models
+[2026-01-20 10:14:56] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-20 10:14:56] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-20 10:14:56] [INFO] Using sample size = 1014
+[2026-01-20 10:14:56] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-20 10:14:56] [INFO] Predicting with LUKE on 1014 texts
+[2026-01-20 10:15:17] [INFO] Predicting with DUO_GUARD on 1014 texts
+[2026-01-20 10:16:55] [INFO] Predicting with KUBOTA on 1014 texts
+[2026-01-20 10:16:56] [INFO] Predicting with KIT on 1014 texts
+[2026-01-20 10:17:05] [INFO] Predicting with YACIS on 1014 texts
+[2026-01-20 10:17:13] [INFO] Generating annotation set via stratified sampling...
+[2026-01-20 10:17:13] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260120_101713.csv
+[2026-01-20 10:17:13] [INFO] Pipeline finished. Result summary:
+[2026-01-20 10:17:13] [INFO] {'evaluated':                                                    text                            model_names  ... vote_for vote_against
+0                                もっと具体的にあげて事実無根って聞きたかった  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+1           https://animal-liber...net/issue/slaughter/  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        0            5
+2     なんせ､部屋の､ｲﾗﾝもの､捨てんと｡ 将棋24の対局記録のﾒﾓ帳､いっぱいある｡しかも､今...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+3                              >>284 私有財産の禁止とか共産主義みてーだな  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        3            2
+4     AI による概要 先住民族は、歴史的に国家の軍隊に所属したり、独自の部隊を組織したりしてきま...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        1            4
+...                                                 ...                                    ...  ...      ...          ...
+1009        エッチなことは5年以上してないのにチンコの皮にイボができてる(>_<) コンジですか？  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        2            3
+1010  >>125 宗教を政治に関わらせるという異常なことをやった極悪人は皆殺しにするしかない 自業...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        3            2
+1011  まさか！「進次郎氏の正体が判明」【小泉進次郎議員の魂本体霊言】（2025.10.2収録、10...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        2            3
+1012                                            奇人 岡本太郎  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        2            3
+1013  【【インマニエル】】9 https://rio2016.5ch.....cgi/psy/17...  [LUKE, DUO_GUARD, KUBOTA, KIT, YACIS]  ...        2            3
+
+[1014 rows x 10 columns], 'annotation_df':                                                    text model_votes  average_prob  sampling_strategy_tag
+0     https://x.com/tachib.../1829781737364459963 この...         5/0           1.0        consistent_hate
+1                                           >>431 アホなの？         5/0           1.0        consistent_hate
+2                                         創造主を甘く見すぎなのだ。         0/5           0.8    consistent_non_hate
+3     【忘れないから】 サビの後はこの1行だけ。 歌詞すべての中でタイトルがそのまま出てくるのはこ...         0/5           0.8    consistent_non_hate
+4                                                がんばるなぁ         0/5           0.8    consistent_non_hate
+...                                                 ...         ...           ...                    ...
+1011                            修道院とか修道会はカトリック由来だと思いますよ         1/4           0.8  conflict_or_uncertain
+1012  ２６年目に逮捕 女心の恐ろしさ 身に何かあれば幸福の科学信者 牧師に伝えておきます。 接点はピッピ         2/3           0.8  conflict_or_uncertain
+1013  ルカによる福音 10章より どこかの町に入り、迎え入れられたら、出される物を食べ、その町の病...         1/4           0.8  conflict_or_uncertain
+1014  マリア崇拝の被害者 暇人さん 「病院のマリヤ像が話しかけてからギリシャ語ができるようになった...         3/2           0.8  conflict_or_uncertain
+1015                                       ほっほう程嫌味じゃないｗ         1/4           0.8  conflict_or_uncertain
+
+[1016 rows x 4 columns], 'annotation_csv': '/root/Master_Thesis/data_detect/Japanese/output/to_annotate_ensemble_20260120_101713.csv', 'n_models': 5}

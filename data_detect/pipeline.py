@@ -1,15 +1,13 @@
 # pipeline.py
 import os
 import math
-import random
 import logging
 from typing import List, Dict, Optional, Any
+from data_detect.Chinese.config import DEFAULT_MAX_SAMPLE as ChineseMAX
+from data_detect.Japanese.config import DEFAULT_MAX_SAMPLE as JapaneseMAX
 import pandas as pd
 import numpy as np
-from data_detect.Japanese.config import *
-from data_detect.utils import compute_sample_size, random_sample_indices, ensure_dir, save_annotation_csv
-from data_detect.Japanese.constants import ModelInfo, ModelName, HateScore
-from data_detect.Japanese.factory import ModelFactory
+from data_detect.utils import compute_sample_size, random_sample_indices, ensure_dir, Language
 from tqdm import tqdm
 
 logger = logging.getLogger("ensemble_pipeline")
@@ -24,46 +22,83 @@ def _binary_entropy(p: float) -> float:
 class HatePipeline:
     """Pipeline that accepts a list of `ModelWrapper` instances and performs ensemble scoring
     and stratified sampling for annotation export.
+    Supports both Japanese and Chinese models.
     If `models` is None, we will attempt to create adapters for the models listed in `ModelName`.
     """
-    def __init__(self, logger, input_csv: str, models: Optional[List[ModelInfo]] = None,
-                 population: int = DEFAULT_POPULATION, margin: float = DEFAULT_MARGIN,
-                 sample_override: int = None, output_dir: str = OUTPUT_DIR, device: str = "cpu"):
+    def __init__(self, logger, input_csv: str, models: Optional[List[Any]] = None,
+                 population: int = 100000, margin: float = 0.05,
+                 sample_override: int = None, output_dir: str = None, device: str = "cpu", 
+                 model_factory=None):
         self.input_csv = input_csv
         self.population = population
         self.margin = margin
         self.logger = logger
         self.sample_override = sample_override
-        self.output_dir = output_dir
+        self.output_dir = output_dir or os.path.join(os.path.dirname(__file__), "output")
         ensure_dir(self.output_dir)
         self.device = device
-
-        # models: list of ModelWrapper
+        
+        # 通用的 factory (支持日文和中文)
+        self.model_factory = model_factory
+        
+        # models: list of model enums
         if models is None:
-            self.logger.info("No ModelWrapper list provided; creating adapters from ModelName enum.")
-            self._models_initalize()
+            self.logger.info("No models provided; attempting to create adapters from Japanese ModelName enum.")
+            try:
+                from data_detect.Japanese.constants import ModelName
+                from data_detect.Japanese.factory import ModelFactory as JapaneseFactory
+                models = ModelName
+                self.model_factory = JapaneseFactory
+            except ImportError:
+                raise RuntimeError("Default Japanese models not available")
         else:
-            self._models_initalize(models=models)
+            # 从第一个 model 推断 factory
+            if self.model_factory is None:
+                self._infer_factory_from_models(models)
+        
+        self._models_initalize(models=models)
+
+    def _infer_factory_from_models(self, models):
+        """根据 model 类型推断要使用的 factory"""
+        if not models:
+            return
+        
+        first_model = models[0]
+        model_class_name = first_model.__class__.__name__
+        
+        if "Chinese" in model_class_name or "ChineseModelName" in str(type(first_model)):
+            from data_detect.Chinese.factory import ChineseModelFactory
+            self.model_factory = ChineseModelFactory
+            self.lan = Language.CHINESE
+        else:
+            from data_detect.Japanese.factory import ModelFactory as JapaneseFactory
+            self.model_factory = JapaneseFactory
+            self.lan = Language.Japanese
 
     def _models_initalize(self, models=None):
-        if models is None:
-            models = ModelName
         self.models = []
         for m in models:
             try:
-                adapter = ModelFactory.create_model(self.logger, m, device=self.device)
-                self.models.append((m.name, adapter))
+                adapter = self.model_factory.create_model(self.logger, m, device=self.device)
+                # 获取模型名称
+                model_name = m.value.name if hasattr(m, 'value') else m.name
+                self.models.append((model_name, adapter))
             except Exception as e:
-                self.logger.warning(f"Failed to init adapter for {m.name}: {e}")
+                self.logger.warning(f"Failed to init adapter for {m}: {e}")
 
-        self.logger.info(f"Successfully initialized {self.models} models")
+        self.logger.info(f"Successfully initialized {len(self.models)} models")
         return self
 
     def _load_texts(self) -> pd.Series:
         df = pd.read_csv(self.input_csv)
-        if "text" not in df.columns:
-            raise ValueError("input csv must have a 'text' column")
-        return df["text"].astype(str)
+        # Try 'text' first, fallback to 'main_content' for Chinese datasets
+        if self.lan == Language.Japanese:
+            return df["text"].astype(str)
+        elif self.lan == Language.CHINESE:
+            self.logger.info("Using 'main_content' column instead of 'text'")
+            return df["main_content"].astype(str)
+        else:
+            raise ValueError("input csv must have a 'text' or 'main_content' column")
 
     def evaluate_ensemble(self, texts: List[str]) -> pd.DataFrame:
         """Run all models over texts and compute per-sample ensemble statistics.
@@ -124,27 +159,47 @@ class HatePipeline:
     def generate_annotation_set(self, evaluated_df: pd.DataFrame, total_n: int = 4000,
                                 keywords: Optional[List[str]] = None) -> pd.DataFrame:
         """Stratified sampling per spec:
-        - Primary: conflict_or_uncertain samples (entropy high or avg_prob in [0.4,0.6])
+        - Primary: conflict_or_uncertain samples:
+          1. 多模型判断不一致 (conflict == True)
+          2. 多模型一致但置信度低 (unanimous && avg_prob < 0.5)
+          3. 平均置信度在不确定范围内 (avg_prob in [0.4, 0.6])
         - If insufficient, fill remaining equally from consistent_hate and consistent_non_hate
         Returns sampled DataFrame with sampling_strategy_tag column.
         """
         if keywords is None:
             keywords = []
 
-        # consistent hate: vote_for == n_models and avg_prob high
         n_models = len(self.models)
+        
+        # 1. 高置信度的确定样本
         consistent_hate = evaluated_df[(evaluated_df["vote_for"] == n_models) & (evaluated_df["avg_prob"] >= 0.8)].copy()
-
-        # consistent non-hate with keywords
+        
+        # 2. 一致但低置信度的样本 (多个模型都同意但都不确定)
+        low_confidence_unanimous = evaluated_df[
+            ((evaluated_df["vote_for"] == n_models) | (evaluated_df["vote_for"] == 0)) & 
+            (evaluated_df["avg_prob"] < 0.5)
+        ].copy()
+        
+        # 3. 非仇恨一致样本 (with or without keywords)
         if len(keywords) > 0:
             contains_kw = evaluated_df["text"].apply(lambda s: any(kw in s for kw in keywords))
             consistent_non = evaluated_df[(evaluated_df["vote_for"] == 0) & (contains_kw)].copy()
         else:
-            # if no keywords provided, fall back to consistent non-hate overall
             consistent_non = evaluated_df[evaluated_df["vote_for"] == 0].copy()
-
-        # conflicts or uncertain: conflict True OR avg_prob between 0.4 and 0.6
-        uncertain = evaluated_df[(evaluated_df["conflict"] == True) | ((evaluated_df["avg_prob"] >= 0.4) & (evaluated_df["avg_prob"] <= 0.6))].copy()
+        
+        # 4. 不确定/冲突样本 (模型判断不一致 OR 置信度在不确定范围)
+        uncertain = evaluated_df[
+            (evaluated_df["conflict"] == True) | 
+            ((evaluated_df["avg_prob"] >= 0.4) & (evaluated_df["avg_prob"] <= 0.6))
+        ].copy()
+        
+        # 从低置信度中移除已经在 uncertain 中的
+        low_confidence_unanimous = low_confidence_unanimous[
+            ~low_confidence_unanimous.index.isin(uncertain.index)
+        ]
+        
+        # 合并为主要的采样池：不确定 + 低置信度一致
+        primary_pool = pd.concat([uncertain, low_confidence_unanimous], ignore_index=False).drop_duplicates()
 
         def _sample_from(df: pd.DataFrame, k: int, tag: str):
             if df.empty or k <= 0:
@@ -152,23 +207,23 @@ class HatePipeline:
             k = min(k, len(df))
             return df.sample(n=k, random_state=42).assign(sampling_strategy_tag=tag)
 
-        # Primary: sample from conflict_or_uncertain up to total_n
-        s_uncertain = _sample_from(uncertain, total_n, "conflict_or_uncertain")
+        # 主要采样：从不确定/冲突 + 低置信度样本中采样
+        s_primary = _sample_from(primary_pool, total_n, "uncertain_or_low_confidence")
         
-        sampled_df = s_uncertain.copy()
+        sampled_df = s_primary.copy()
 
-        # If not enough conflict_or_uncertain samples, fill remaining equally from hate and non-hate
+        # 如果不足，从高置信度样本中补充（一比一）
         if len(sampled_df) < total_n:
             need = total_n - len(sampled_df)
-            need_from_hate = (need + 1) // 2  # ceiling division
-            need_from_non_hate = need // 2     # floor division
+            need_from_hate = (need + 1) // 2  # 天花板除法
+            need_from_non_hate = need // 2     # 地板除法
             
-            s_hate = _sample_from(consistent_hate, need_from_hate, "consistent_hate")
+            s_hate = _sample_from(consistent_hate, need_from_hate, "consistent_hate_high_conf")
             s_non = _sample_from(consistent_non, need_from_non_hate, "consistent_non_hate")
             
             sampled_df = pd.concat([sampled_df, s_hate, s_non], ignore_index=True)
 
-        # ensure columns requested by user
+        # 确保输出列
         final = sampled_df[["text", "model_votes", "avg_prob", "sampling_strategy_tag"]].copy()
         final = final.rename(columns={"avg_prob": "average_prob"})
 
@@ -191,7 +246,8 @@ class HatePipeline:
 
         computed_n = compute_sample_size(self.population, margin=self.margin)
         self.logger.info(f"Computed sample size (finite-pop correction) = {computed_n}")
-        sample_n = self.sample_override or min(computed_n, DEFAULT_MAX_SAMPLE)
+        max_samp = ChineseMAX if self.lan == Language.CHINESE else JapaneseMAX
+        sample_n = self.sample_override or max(computed_n, ChineseMAX)
         self.logger.info(f"Using sample size = {sample_n}")
 
         idxs = random_sample_indices(total, sample_n)
@@ -217,76 +273,3 @@ class HatePipeline:
             "annotation_csv": out_csv,
             "n_models": len(self.models)
         }
-
-    # 以下为微调的 scaffold（与之前保留）
-    def finetune_model(self, model_name_or_path: str, train_csv: str, val_csv: str, output_dir: str, epochs:int=3):
-        """
-        示例：使用 Hugging Face Trainer 对文本二分类做微调
-        train_csv/val_csv 都应包含 columns: text,label (label 0/1)
-        这里给出可直接运行的 template
-        """
-        from datasets import load_dataset, Dataset
-        from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer
-        import numpy as np
-        import torch
-
-        train_df = pd.read_csv(train_csv)
-        val_df = pd.read_csv(val_csv)
-
-        ds_train = Dataset.from_pandas(train_df[["text","label"]])
-        ds_val = Dataset.from_pandas(val_df[["text","label"]])
-
-        tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
-        def preprocess(batch):
-            return tokenizer(batch["text"], truncation=True, padding="max_length", max_length=256)
-        ds_train = ds_train.map(preprocess, batched=True)
-        ds_val = ds_val.map(preprocess, batched=True)
-        ds_train.set_format(type="torch", columns=["input_ids","attention_mask","label"])
-        ds_val.set_format(type="torch", columns=["input_ids","attention_mask","label"])
-
-        model = AutoModelForSequenceClassification.from_pretrained(model_name_or_path, num_labels=2)
-
-        training_args = TrainingArguments(
-            output_dir=output_dir,
-            evaluation_strategy="epoch",
-            per_device_train_batch_size=16,
-            per_device_eval_batch_size=32,
-            num_train_epochs=epochs,
-            save_total_limit=2,
-            logging_steps=50
-        )
-
-        def compute_metrics(eval_pred):
-            logits, labels = eval_pred
-            preds = np.argmax(logits, axis=-1)
-            from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-            acc = accuracy_score(labels, preds)
-            p, r, f, _ = precision_recall_fscore_support(labels, preds, average="binary")
-            return {"accuracy": acc, "precision": p, "recall": r, "f1": f}
-
-        trainer = Trainer(
-            model=model,
-            args=training_args,
-            train_dataset=ds_train,
-            eval_dataset=ds_val,
-            compute_metrics=compute_metrics
-        )
-
-        trainer.train()
-        trainer.save_model(output_dir)
-        return output_dir
-
-    def evaluate_against_gemini(self, model_wrapper, sample_texts: List[str], gemini_results: List[Dict]):
-        """
-        给定微调后或原模型的 wrapper（须实现 score_text + is_hate），计算与 gemini 的一致率。
-        """
-        hs_preds = []
-        for t in sample_texts:
-            score = model_wrapper.score_text(t)
-            hs = model_wrapper.is_hate(score)
-            hs_preds.append(hs)
-        gemini_preds = [1 if (g.get("is_hate") is True) else 0 for g in gemini_results]
-        total = len(hs_preds)
-        matches = sum(1 for a,b in zip(hs_preds, gemini_preds) if a==b)
-        acc = matches/total if total>0 else 0.0
-        return {"matches": matches, "total": total, "accuracy": acc}

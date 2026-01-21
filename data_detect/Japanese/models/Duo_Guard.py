@@ -15,8 +15,13 @@ class DuoGuardModel(BaseModel):
             self.model_info.model,
             torch_dtype=torch.bfloat16
         ).to(self.device)
+        self.model.eval()
 
-    def score(self, text):
+    def score(self, text: str) -> dict:
+        """
+        返回预测标签和置信度
+        Returns: {"label": 0/1, "prob": float(0.0-1.0)}
+        """
         inputs = self.tokenizer(
             text,
             return_tensors="pt",
@@ -47,5 +52,11 @@ class DuoGuardModel(BaseModel):
         prob_vector = probabilities[0].tolist()
         max_index = prob_vector.index(max(prob_vector))
         hate_index = category_names.index("Hate")
+        
+        # 判断是否为仇恨
+        label = 1 if max_index == hate_index else 0
+        
+        # 返回对应标签的置信度
+        confidence = prob_vector[hate_index] if label == 1 else (1.0 - prob_vector[hate_index])
 
-        return 1 if max_index == hate_index else 0
+        return {"label": label, "prob": float(confidence)}

@@ -4,9 +4,15 @@ import random
 import pandas as pd
 from typing import List, Tuple
 import os
+from enum import Enum
 from data_detect.Japanese.config import RANDOM_SEED
 
 random.seed(RANDOM_SEED)
+
+class Language(Enum):
+    CHINESE = 1,
+    Japanese = 2
+
 
 def compute_sample_size(population: int, margin: float=0.03, z: float=1.96, p: float=0.5) -> int:
     """

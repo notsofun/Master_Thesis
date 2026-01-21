@@ -19,18 +19,27 @@ class YukiModel(BaseModel):
             trust_remote_code=True,
         ).eval()
 
-    def score(self, text:str) -> int:
+    def score(self, text: str) -> dict:
+        """
+        返回预测标签和置信度
+        Returns: {"label": 0/1, "prob": float(0.0-1.0)}
+        """
         head_weights = torch.load("classification_head.pth", map_location=self.device)
         head = torch.nn.Linear(1, 1, bias=False).to(self.device)
         head.weight.data = head_weights
 
         inputs = self.tokenizer(text, return_tensors="pt", add_special_tokens=False).to(self.device)
 
-        out = self.model(**inputs).logits
-        out = out.to(head.weight.dtype)   # dtype 对齐
-        logits = head(out[:, -1])
+        with torch.no_grad():
+            out = self.model(**inputs).logits
+            out = out.to(head.weight.dtype)   # dtype 对齐
+            logits = head(out[:, -1])
+            
+            # 使用 sigmoid 获取置信度（0-1 范围）
+            confidence = torch.sigmoid(logits[0]).item()
+            
+            # 判断标签（阈值为 0.5）
+            threshold = 0.5
+            label = 1 if confidence > threshold else 0
 
-        threshold = 0
-        is_hate = int(logits.item() > threshold)
-
-        return is_hate
+        return {"label": label, "prob": float(confidence)}

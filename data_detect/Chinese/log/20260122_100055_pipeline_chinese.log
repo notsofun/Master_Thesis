@@ -1,0 +1,18 @@
+[2026-01-22 10:00:55] [INFO] ============================================================
+[2026-01-22 10:00:55] [INFO] 中文仇恨言论检测 Pipeline 启动
+[2026-01-22 10:00:55] [INFO] 日志路径: /root/Master_Thesis/data_detect/Chinese/log/20260122_100055_pipeline_chinese.log
+[2026-01-22 10:00:55] [INFO] ============================================================
+[2026-01-22 10:01:02] [INFO] Creating model: <class 'data_detect.Chinese.models.thucoai.THUCOAIModel'>
+[2026-01-22 10:03:11] [INFO] Creating model: <class 'data_detect.Chinese.models.morit.MoritModel'>
+[2026-01-22 10:03:11] [ERROR] Failed to create model ChineseModelName.MORIT: invalid literal for int() with base 10: 'cuda'
+[2026-01-22 10:03:11] [WARNING] Failed to init adapter for ChineseModelName.MORIT: invalid literal for int() with base 10: 'cuda'
+[2026-01-22 10:03:11] [INFO] Creating model: <class 'data_detect.Chinese.models.davidcliao.DavidcliaoModel'>
+[2026-01-22 10:03:11] [INFO] Successfully initialized 2 models
+[2026-01-22 10:03:12] [INFO] Using 'main_content' column instead of 'text'
+[2026-01-22 10:03:12] [INFO] Loaded 23630 texts from ../../data_collection/Tieba/all_search_posts.csv
+[2026-01-22 10:03:12] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-01-22 10:03:12] [INFO] Using sample size = 5000
+[2026-01-22 10:03:12] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-22 10:03:12] [INFO] Predicting with thu_coai_roberta on 5000 texts
+[2026-01-22 10:03:45] [INFO] Predicting with davidcliao_flair on 5000 texts
+[2026-01-22 10:04:06] [INFO] Generating annotation set via stratified sampling...

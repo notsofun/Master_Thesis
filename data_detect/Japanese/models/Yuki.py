@@ -6,7 +6,7 @@ import torch
 class YukiModel(BaseModel):
     def __init__(self, device="cpu"):
         model_info = ModelName.YUKI.value
-        self.device = device
+        self.device = self._normalize_device(device)
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_info.model,
             use_fast=True,
@@ -15,9 +15,23 @@ class YukiModel(BaseModel):
         self.model = AutoModelForSequenceClassification.from_pretrained(
             model_info.model,
             torch_dtype=torch.float32,   # 强制全精度
-            device_map={"": device},      # 绑定到 GPU/CPU
+            device_map="auto" if self.device != "cpu" else None,  # 自动选择GPU
             trust_remote_code=True,
         ).eval()
+        # 如果不使用device_map，手动移动到设备
+        if self.device != "cpu":
+            self.model.to(self.device)
+    
+    def _normalize_device(self, device):
+        """将device标准化为 'cpu', 'cuda:0' 等格式"""
+        if device == "cpu":
+            return "cpu"
+        elif device.startswith("cuda"):
+            if not torch.cuda.is_available():
+                return "cpu"
+            return "cuda:0" if device == "cuda" else device
+        else:
+            return "cpu"
 
     def score(self, text: str) -> dict:
         """

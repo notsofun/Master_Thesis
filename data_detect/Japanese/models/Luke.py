@@ -7,11 +7,20 @@ import torch
 class LukeModel(BaseModel):
     def __init__(self, device="cpu"):
         model_info = ModelName.LUKE.value
-        self.device = device
+        self.device = self._normalize_device(device)
         self.tokenizer = AutoTokenizer.from_pretrained(model_info.tokenizer)
         self.model = AutoModelForSequenceClassification.from_pretrained(model_info.model, trust_remote_code=True)
-        self.model.to(device)
+        self.model.to(self.device)
         self.model.eval()
+    
+    def _normalize_device(self, device):
+        """将device标准化为 'cpu', 'cuda:0' 等格式"""
+        if device == "cpu":
+            return "cpu"
+        elif device.startswith("cuda"):
+            return "cuda:0" if device == "cuda" else device
+        else:
+            return "cpu"
 
     def score(self, text: str) -> dict:
         """

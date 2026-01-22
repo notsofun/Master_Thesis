@@ -5,7 +5,7 @@ import torch
 
 class DuoGuardModel(BaseModel):
     def __init__(self, device="cpu"):
-        self.device = device
+        self.device = self._normalize_device(device)
         self.model_info = ModelName.DUO_GUARD.value
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_info.tokenizer)
         self.tokenizer.pad_token = self.tokenizer.eos_token
@@ -16,6 +16,17 @@ class DuoGuardModel(BaseModel):
             torch_dtype=torch.bfloat16
         ).to(self.device)
         self.model.eval()
+    
+    def _normalize_device(self, device):
+        """将device标准化为 'cpu', 'cuda:0' 等格式"""
+        if device == "cpu":
+            return "cpu"
+        elif device.startswith("cuda"):
+            if not torch.cuda.is_available():
+                return "cpu"
+            return "cuda:0" if device == "cuda" else device
+        else:
+            return "cpu"
 
     def score(self, text: str) -> dict:
         """

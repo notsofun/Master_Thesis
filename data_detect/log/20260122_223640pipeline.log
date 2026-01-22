@@ -1,0 +1,52 @@
+[2026-01-22 22:36:40] [INFO] ============================================================
+[2026-01-22 22:36:40] [INFO] 日志系统初始化完成
+[2026-01-22 22:36:40] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260122_223640pipeline.log
+[2026-01-22 22:36:40] [INFO] ============================================================
+[2026-01-22 22:36:40] [INFO] No models provided; attempting to create adapters from Japanese ModelName enum.
+[2026-01-22 22:36:47] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>
+[2026-01-22 22:36:56] [INFO] now we are creating <class 'data_detect.Japanese.models.Duo_Guard.DuoGuardModel'>
+[2026-01-22 22:37:01] [INFO] now we are creating <class 'data_detect.Japanese.models.Kubota.KubotaModel'>
+[2026-01-22 22:37:06] [INFO] now we are creating <class 'data_detect.Japanese.models.Yuki.YukiModel'>
+[2026-01-22 22:37:12] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-22 22:37:15] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-22 22:37:19] [INFO] Successfully initialized 6 models
+[2026-01-22 22:37:19] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-22 22:37:19] [INFO] Computed sample size (finite-pop correction) = 383
+[2026-01-22 22:37:19] [INFO] Using sample size = 5000
+[2026-01-22 22:37:19] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-22 22:37:19] [INFO] Predicting with luke_offensiveness on 5000 texts
+[2026-01-22 22:42:31] [INFO] Predicting with DuoGuard on 5000 texts
+[2026-01-22 23:13:50] [INFO] Predicting with kubota on 5000 texts
+[2026-01-22 23:33:26] [INFO] Predicting with yuki on 5000 texts
+[2026-01-23 02:45:16] [INFO] Predicting with kit on 5000 texts
+[2026-01-23 02:46:39] [INFO] Predicting with yacis on 5000 texts
+[2026-01-23 02:47:38] [INFO] Generating annotation set via stratified sampling...
+[2026-01-23 02:47:38] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/output/to_annotate_ensemble_20260123_024738.csv
+[2026-01-23 02:47:38] [INFO] Pipeline finished. Result summary:
+[2026-01-23 02:47:38] [INFO] {'evaluated':                                                    text  ... vote_against
+0                                もっと具体的にあげて事実無根って聞きたかった  ...            5
+1           https://animal-liber...net/issue/slaughter/  ...            6
+2     なんせ､部屋の､ｲﾗﾝもの､捨てんと｡ 将棋24の対局記録のﾒﾓ帳､いっぱいある｡しかも､今...  ...            5
+3                              >>284 私有財産の禁止とか共産主義みてーだな  ...            3
+4     AI による概要 先住民族は、歴史的に国家の軍隊に所属したり、独自の部隊を組織したりしてきま...  ...            5
+...                                                 ...  ...          ...
+4995  キモイ澄が執事なったし実在しない神を信じる気が失せたから教会離れた。旧婦人会の残党も淘汰され...  ...            4
+4996                             >>923 ウケるで終わらせる程度の民度です  ...            3
+4997  まあでも自分は牛乳は普通牛乳を好んで使うし飲んでいるかな・・・美味しいから。 たまーに豆乳を...  ...            5
+4998                    >>822 わりとガチでぺっさんにもやってほしいと思ってるの🥺  ...            4
+4999  >>134 初代教皇ペトロは主キリストが使徒たちの頭として任命した。 二代目教皇が選ばれた時...  ...            5
+
+[5000 rows x 10 columns], 'annotation_df':                                                    text model_votes  average_prob        sampling_strategy_tag
+0        政治家達がカルトとつるまなきゃ少なくとも狙われることはなかっただろ カルト関係者自体は不可避         3/3      0.400616  uncertain_or_low_confidence
+1     >>134 初代教皇ペトロは主キリストが使徒たちの頭として任命した。 二代目教皇が選ばれた時...         1/5      0.447599  uncertain_or_low_confidence
+2               キリスト教が一番人を殺してるのにキリスト教で平和になるとか片腹痛いwwwイテテ         1/5      0.435374  uncertain_or_low_confidence
+3     「他人には厳しく自分には甘い」蓮舫 「R」シールをガン無視、勘違いで小池批判も謝罪ナシ…選挙...         2/4      0.389912  uncertain_or_low_confidence
+4     日本共産党 https://www.jcp.or.j...2023012104_03_0.h...         1/5      0.275334  uncertain_or_low_confidence
+...                                                 ...         ...           ...                          ...
+4837     岡本太郎の“言霊”を現代に甦らせた『タローマン』 藤井亮監督が語る型破りな特撮ドラマの舞台裏         0/6      0.588363          consistent_non_hate
+4838  ・宗教書ブームの陰で コスモメイト(当時。現在ワールドメイト)の主宰者、深見東州氏（本名・半...         0/6      0.605992          consistent_non_hate
+4839                                                  ？         0/6      0.559802          consistent_non_hate
+4840  藤井亮監督の製作秘話が聞ける https://open.spotify...BE0Xa6RN...         0/6      0.608544          consistent_non_hate
+4841                                              あっ・・・         0/6      0.615994          consistent_non_hate
+
+[4842 rows x 4 columns], 'annotation_csv': '/root/Master_Thesis/data_detect/output/to_annotate_ensemble_20260123_024738.csv', 'n_models': 6}

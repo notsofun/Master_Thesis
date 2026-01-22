@@ -5,9 +5,27 @@ import torch
 
 class KubotaModel(BaseModel):
     def __init__(self, device="cpu"):
-        self.device = device
+        self.device = self._normalize_device(device)
         self.model_info = ModelName.KUBOTA.value
-        self.pipe = pipeline(model=self.model_info.model, device=0 if device != "cpu" else -1)
+        # pipeline 的 device 参数: -1 表示 CPU, 0+ 表示 GPU 索引
+        if self.device == "cpu":
+            pipe_device = -1
+        else:
+            # 从 'cuda:0' 提取 GPU 索引
+            gpu_id = int(self.device.split(":")[1]) if ":" in self.device else 0
+            pipe_device = gpu_id
+        self.pipe = pipeline(model=self.model_info.model, device=pipe_device)
+    
+    def _normalize_device(self, device):
+        """将device标准化为 'cpu', 'cuda:0' 等格式"""
+        if device == "cpu":
+            return "cpu"
+        elif device.startswith("cuda"):
+            if not torch.cuda.is_available():
+                return "cpu"
+            return "cuda:0" if device == "cuda" else device
+        else:
+            return "cpu"
 
     def score(self, text: str) -> dict:
         """

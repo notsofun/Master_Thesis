@@ -12,6 +12,7 @@ from data_detect.Japanese.constants import ModelName
 import logging
 from datetime import datetime
 from data_detect.Japanese.config import DEFAULT_INPUT_CSV
+from data_detect.Chinese.config import DEFAULT_INPUT_CSV as Chinese_Input
 from data_detect.pipeline import HatePipeline
 from dotenv import load_dotenv
 load_dotenv()
@@ -59,6 +60,6 @@ if __name__ == "__main__":
     input_csv = DEFAULT_INPUT_CSV
     # 使用 ensemble pipeline（不再直接依赖 Gemini）
     pipeline = HatePipeline(logger, input_csv=input_csv)
-    result = pipeline.run_detection(total_annotation_n=4000)
+    result = pipeline.run_detection(total_annotation_n=5000)
     logger.info("Pipeline finished. Result summary:")
     logger.info(result)

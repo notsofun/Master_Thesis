@@ -12,12 +12,24 @@ class MoritModel(BaseModel):
         self.device = device
         self.candidate_labels = ["仇恨言论", "正常言论"]
         
-        # 初始化零样本分类器
-        device_id = 0 if device == "cpu" else int(device.split(":")[-1])
+        # 智能解析 device 参数
+        if device == "cpu":
+            pipeline_device = -1
+        elif isinstance(device, int):
+            pipeline_device = device
+        elif "cuda" in device:
+            # 尝试从 "cuda:1" 中提取 1，如果没有指定数字则默认为 0
+            try:
+                pipeline_device = int(device.split(":")[-1]) if ":" in device else 0
+            except ValueError:
+                pipeline_device = 0
+        else:
+            pipeline_device = -1
+
         self.classifier = pipeline(
             "zero-shot-classification",
             model="morit/chinese_xlm_xnli",
-            device=device_id if device != "cpu" else -1
+            device=pipeline_device
         )
 
     def score(self, text: str) -> dict:

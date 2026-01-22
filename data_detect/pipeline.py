@@ -199,7 +199,11 @@ class HatePipeline:
         ]
         
         # 合并为主要的采样池：不确定 + 低置信度一致
-        primary_pool = pd.concat([uncertain, low_confidence_unanimous], ignore_index=False).drop_duplicates()
+        # 修改这一行，增加 subset 参数
+        primary_pool = pd.concat(
+            [uncertain, low_confidence_unanimous], 
+            ignore_index=False
+        ).drop_duplicates(subset=['text']) # 或者使用 subset=[evaluated_df.index.name] 如果你有唯一索引
 
         def _sample_from(df: pd.DataFrame, k: int, tag: str):
             if df.empty or k <= 0:

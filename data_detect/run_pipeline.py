@@ -57,7 +57,7 @@ logger.info("="*60)
 if __name__ == "__main__":
     # to_test = [ModelName.KIT]
     # 2) 入口数据 CSV，必须包含列 'text'
-    input_csv = Chinese_Input
+    input_csv = DEFAULT_INPUT_CSV
     # 使用 ensemble pipeline（不再直接依赖 Gemini）
     pipeline = HatePipeline(logger, input_csv=input_csv)
     result = pipeline.run_detection(total_annotation_n=5000)

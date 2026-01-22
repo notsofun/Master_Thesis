@@ -1,0 +1,12 @@
+[2026-01-22 11:08:46] [INFO] ============================================================
+[2026-01-22 11:08:46] [INFO] 日志系统初始化完成
+[2026-01-22 11:08:46] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260122_110846pipeline.log
+[2026-01-22 11:08:46] [INFO] ============================================================
+[2026-01-22 11:08:46] [INFO] No models provided; attempting to create adapters from Japanese ModelName enum.
+[2026-01-22 11:08:52] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>
+[2026-01-22 11:08:57] [INFO] now we are creating <class 'data_detect.Japanese.models.Duo_Guard.DuoGuardModel'>
+[2026-01-22 11:08:59] [INFO] now we are creating <class 'data_detect.Japanese.models.Kubota.KubotaModel'>
+[2026-01-22 11:09:03] [INFO] now we are creating <class 'data_detect.Japanese.models.Yuki.YukiModel'>
+[2026-01-22 11:09:07] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-22 11:09:09] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-22 11:09:11] [INFO] Successfully initialized 6 models

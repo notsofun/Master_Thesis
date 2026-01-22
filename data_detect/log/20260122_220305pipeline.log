@@ -1,0 +1,6 @@
+[2026-01-22 22:03:05] [INFO] ============================================================
+[2026-01-22 22:03:05] [INFO] 日志系统初始化完成
+[2026-01-22 22:03:05] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260122_220305pipeline.log
+[2026-01-22 22:03:05] [INFO] ============================================================
+[2026-01-22 22:03:05] [INFO] No models provided; attempting to create adapters from Japanese ModelName enum.
+[2026-01-22 22:03:17] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>

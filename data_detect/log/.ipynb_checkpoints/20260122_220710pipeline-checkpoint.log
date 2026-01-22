@@ -1,0 +1,18 @@
+[2026-01-22 22:07:10] [INFO] ============================================================
+[2026-01-22 22:07:10] [INFO] 日志系统初始化完成
+[2026-01-22 22:07:10] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260122_220710pipeline.log
+[2026-01-22 22:07:10] [INFO] ============================================================
+[2026-01-22 22:07:10] [INFO] No models provided; attempting to create adapters from Japanese ModelName enum.
+[2026-01-22 22:07:16] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>
+[2026-01-22 22:07:21] [INFO] now we are creating <class 'data_detect.Japanese.models.Duo_Guard.DuoGuardModel'>
+[2026-01-22 22:07:25] [INFO] now we are creating <class 'data_detect.Japanese.models.Kubota.KubotaModel'>
+[2026-01-22 22:07:29] [INFO] now we are creating <class 'data_detect.Japanese.models.Yuki.YukiModel'>
+[2026-01-22 22:07:35] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-22 22:07:40] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-01-22 22:07:44] [INFO] Successfully initialized 6 models
+[2026-01-22 22:07:44] [INFO] Loaded 26736 texts from ../data_collection/5ch/20251124_130843_5ch_posts.csv
+[2026-01-22 22:07:44] [INFO] Computed sample size (finite-pop correction) = 383
+[2026-01-22 22:07:44] [INFO] Using sample size = 5000
+[2026-01-22 22:07:44] [INFO] Evaluating ensemble on sampled texts...
+[2026-01-22 22:07:44] [INFO] Predicting with luke_offensiveness on 5000 texts
+[2026-01-22 22:10:19] [INFO] Predicting with DuoGuard on 5000 texts

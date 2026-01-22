@@ -37,6 +37,7 @@ class HatePipeline:
         self.output_dir = output_dir or os.path.join(os.path.dirname(__file__), "output")
         ensure_dir(self.output_dir)
         self.device = device
+        self.lan = Language.Japanese
         
         # 通用的 factory (支持日文和中文)
         self.model_factory = model_factory

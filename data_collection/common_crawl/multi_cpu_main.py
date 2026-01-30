@@ -21,7 +21,7 @@ TASKS = [
 
 MAX_CHAR_LEN = 250
 MAX_EXTRACT_PER_LANG = 400000 
-NUM_PROC = cpu_count()  # 自动获取服务器核心数
+NUM_PROC = min(8, cpu_count())  # 自动获取服务器核心数
 
 def worker_task(args):
     """

@@ -48,9 +48,9 @@ def run_multilingual_extraction():
         print(f"{'='*40}")
 
         try:
-            dataset = load_dataset("allenai/c4", f"multilingual.{lang}", split="train", streaming=True)
-        except:
-            dataset = load_dataset("allenai/c4", lang, split="train", streaming=True)
+            dataset = load_dataset("allenai/c4", lang, streaming=True)
+        except Exception as e:
+            print(f"Error when fetching {e}")
 
         count = 0
         scanned = 0

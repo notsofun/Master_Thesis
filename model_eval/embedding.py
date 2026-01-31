@@ -1,5 +1,5 @@
 import torch
-import gc
+import gc, os
 import json
 import pandas as pd
 import numpy as np
@@ -8,13 +8,16 @@ import seaborn as sns
 from scipy import stats
 from sentence_transformers import SentenceTransformer, util
 
+os.environ["SENTENCE_TRANSFORMERS_HOME"] = "/root/autodl-tmp/hf_cache"
+os.environ["HUGGINGFACE_HUB_CACHE"] = "/root/autodl-tmp/hf_cache"
+
 # 强制使用 GPU
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Running on: {device}")
 
 # 加载生成的 100+ 条数据
 try:
-    with open('model_eval/testsets/cn_ja_testset.json', 'r', encoding='utf-8') as f:
+    with open('testsets/cn_ja_testset.json', 'r', encoding='utf-8') as f:
         test_suites = json.load(f)
 except FileNotFoundError:
     print("请先运行上面的 generator 脚本生成 JSON 文件！")

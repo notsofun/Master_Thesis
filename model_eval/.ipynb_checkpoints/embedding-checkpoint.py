@@ -1,33 +1,27 @@
 import torch
-import gc
+import gc, os
+import json
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
 from sentence_transformers import SentenceTransformer, util
+
+os.environ["SENTENCE_TRANSFORMERS_HOME"] = "/root/autodl-tmp/hf_cache"
+os.environ["HUGGINGFACE_HUB_CACHE"] = "/root/autodl-tmp/hf_cache"
 
 # 强制使用 GPU
 device = "cuda" if torch.cuda.is_available() else "cpu"
+print(f"Running on: {device}")
 
-test_suites = {
-    "Standard_Baseline": [
-        {"en": "Religious faith provides spiritual guidance.", 
-         "zh": "宗教信仰提供精神指引。", 
-         "ja": "宗教的な信仰は精神的な指針を与えます。"}
-    ],
-    "Slur_Alignment": [
-        {"en": "That christcuck is just a brainwashed puppet.", 
-         "zh": "那个基督狗不过是个被洗脑的傀儡。", 
-         "ja": "あのキリスト厨はただの洗脳されたパペットだ。"}
-    ],
-    "Metaphor_Hate": [
-        {"en": "Christianity is a tool for racial oppression and denying existence.", 
-         "zh": "基督教实质已经成为种族压迫和否定生存的工具。", 
-         "ja": "キリスト教は人種抑圧と存在否定のために使われる道具だ。"}
-    ],
-    "Deception_Hate": [
-        {"en": "The doctrine is a fairy tale to cover up truths.", 
-         "zh": "教义不过是为了掩盖真相而编造的诡辩。", 
-         "ja": "教義は不都合な真実を誤魔化すための作り話だ。"}
-    ]
-}
+# 加载生成的 100+ 条数据
+try:
+    with open('testsets/cn_ja_testset.json', 'r', encoding='utf-8') as f:
+        test_suites = json.load(f)
+except FileNotFoundError:
+    print("请先运行上面的 generator 脚本生成 JSON 文件！")
+    exit()
 
 MODELS = [
     "BAAI/bge-m3",
@@ -45,57 +39,112 @@ MODELS = [
 ]
 
 def run_bench():
-    results = []
+    # 存储所有单独的样本得分，而不是平均值，以便做统计检验
+    raw_data_records = [] 
+    
     for m_id in MODELS:
-        print(f"Loading {m_id} to GPU...")
+        print(f"Evaluating {m_id} ...")
         try:
-            # 1. 加载模型到 GPU
             model = SentenceTransformer(m_id, device=device, trust_remote_code=True)
             
             for cat, pairs in test_suites.items():
-                for p in pairs:
-                    # 2. 编码 (确保在 GPU 上)
-                    v = model.encode([p['en'], p['zh'], p['ja']], convert_to_tensor=True)
-                    sim_zh = util.cos_sim(v[0], v[1]).item()
-                    sim_ja = util.cos_sim(v[0], v[2]).item()
-                    
-                    results.append({"Model": m_id, "Category": cat, "Avg_Sim": (sim_zh + sim_ja)/2})
+                # 批量编码以加速 (Batch Processing)
+                batch_en = [p['en'] for p in pairs]
+                batch_zh = [p['zh'] for p in pairs]
+                batch_ja = [p['ja'] for p in pairs]
+                
+                # 编码
+                emb_en = model.encode(batch_en, convert_to_tensor=True, normalize_embeddings=True)
+                emb_zh = model.encode(batch_zh, convert_to_tensor=True, normalize_embeddings=True)
+                emb_ja = model.encode(batch_ja, convert_to_tensor=True, normalize_embeddings=True)
+                
+                # 计算余弦相似度 (Pairwise)
+                # distinct cos_sim for each pair
+                scores_zh = torch.sum(emb_en * emb_zh, dim=1).cpu().numpy()
+                scores_ja = torch.sum(emb_en * emb_ja, dim=1).cpu().numpy()
+                
+                # 记录每一个样本的得分
+                for i in range(len(pairs)):
+                    avg_score = (scores_zh[i] + scores_ja[i]) / 2
+                    raw_data_records.append({
+                        "Model": m_id.split('/')[-1],
+                        "Category": cat,
+                        "Score": float(avg_score)
+                    })
             
-            # 3. 严格显存管理
+            # 清理显存
             del model
             gc.collect()
             torch.cuda.empty_cache()
-            torch.cuda.ipc_collect()
             
         except Exception as e:
-            print(f"Error loading {m_id}: {e}")
+            print(f"Error: {e}")
 
-    # --- 修正后的数据处理逻辑 ---
-    df = pd.DataFrame(results).pivot(index="Model", columns="Category", values="Avg_Sim")
+    # ==========================================
+    # 数据分析与统计检验
+    # ==========================================
+    df = pd.DataFrame(raw_data_records)
     
-    # 定义仇恨类字段
-    hate_cols = ['Slur_Alignment', 'Metaphor_Hate', 'Deception_Hate']
-    # 确保所有列都在 df 中，防止报错
-    actual_hate_cols = [c for c in hate_cols if c in df.columns]
-    
-    # 计算均值：反映整体仇恨言论的跨语言对齐得分
-    df['Hate_Mean'] = df[actual_hate_cols].mean(axis=1)
-    
-    # 计算核心 Gap: Standard 基准与仇恨类均值的差距
-    # Gap 为正且越大，说明模型处理仇恨词汇时对齐越失败
-    df['Gap'] = df['Standard_Baseline'] - df['Hate_Mean']
-    
-    # 计算相对于基准的跌幅 (%)
-    df['Drop_Rate (%)'] = (df['Gap'] / df['Standard_Baseline']) * 100
-    
+    # 1. 计算 T-test (Standard vs Slur_Alignment)
     print("\n" + "="*80)
-    print("宗教仇恨跨语言语义对齐评估汇总 (Sorted by Gap)")
-    print("="*80)
-    print(df.sort_values("Gap", ascending=False)[['Standard_Baseline', 'Hate_Mean', 'Gap', 'Drop_Rate (%)']])
+    print("显著性检验 (T-test: Standard vs Slur)")
+    print("H0: 两者均值无差异 (P > 0.05) | H1: 仇恨语义导致显著下降 (P < 0.05)")
     print("="*80)
     
-    # 导出结果
-    df.to_csv("hate_speech_alignment_report.csv")
+    stats_results = []
+    for m in df['Model'].unique():
+        subset = df[df['Model'] == m]
+        std_scores = subset[subset['Category'] == 'Standard_Baseline']['Score']
+        slur_scores = subset[subset['Category'] == 'Slur_Alignment']['Score']
+        
+        # 独立双样本 T 检验
+        t_stat, p_val = stats.ttest_ind(std_scores, slur_scores, equal_var=False)
+        
+        gap = std_scores.mean() - slur_scores.mean()
+        drop_rate = (gap / std_scores.mean()) * 100
+        
+        stats_results.append({
+            "Model": m,
+            "Mean_Std": std_scores.mean(),
+            "Mean_Slur": slur_scores.mean(),
+            "Gap": gap,
+            "Drop_Rate(%)": drop_rate,
+            "P-Value": p_val,
+            "Significant?": "YES (***)" if p_val < 0.001 else ("YES (*)" if p_val < 0.05 else "NO")
+        })
+    
+    stats_df = pd.DataFrame(stats_results).sort_values("Gap", ascending=False)
+    print(stats_df.to_string(index=False))
+    stats_df.to_csv("statistical_analysis.csv", index=False)
+
+    # ==========================================
+    # 可视化 (Boxplot) - 论文级图表
+    # ==========================================
+    plt.figure(figsize=(12, 6))
+    sns.set_theme(style="whitegrid")
+    
+    # 定义绘图顺序
+    order = ["Standard_Baseline", "Slur_Alignment", "Hate_Complex", "Random_Control"]
+    
+    # 绘制箱线图：展示中位数、四分位距和异常值
+    ax = sns.boxplot(x="Model", y="Score", hue="Category", data=df, 
+                     hue_order=order, palette="Set2", showfliers=False)
+    
+    # 叠加散点图 (Strip plot) 展示真实分布，适合 N=100 左右的数据
+    sns.stripplot(x="Model", y="Score", hue="Category", data=df, 
+                  hue_order=order, dodge=True, alpha=0.4, color=".3", legend=False)
+
+    plt.title("Cross-Lingual Semantic Alignment Stability: Standard vs. Hate Speech", fontsize=14)
+    plt.ylabel("Cosine Similarity (EN <-> ZH/JA)", fontsize=12)
+    plt.xlabel("Embedding Model", fontsize=12)
+    plt.xticks(rotation=15)
+    plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+    plt.tight_layout()
+    
+    # 保存图片
+    plt.savefig("alignment_boxplot.png", dpi=300)
+    print("\n图表已保存为: alignment_boxplot.png")
+    print("原始数据已保存为: statistical_analysis.csv")
 
 if __name__ == "__main__":
     run_bench()

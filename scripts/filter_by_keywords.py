@@ -30,6 +30,7 @@ def get_args():
                    help="关键词 JSON 文件路径")
     p.add_argument("--non_common_csv", type=str, default="data_collection/Tieba/all_search_posts.csv",
                    help="Tieba all_search_posts.csv 路径")
+    p.add_argument("--lang", type=str, default='Chinese', help="Japanese or Chinese")
     p.add_argument("--extract_csv", type=str, default="data_collection/common_crawl/extract_zh_religious.csv",
                    help="extract_zh_religious.csv 路径")
     p.add_argument("--output", type=str, default="outputs/merged_filtered_religious_zh.csv",
@@ -41,12 +42,12 @@ def get_args():
     return p.parse_args()
 
 
-def load_keywords(keywords_path: str) -> Set[str]:
+def load_keywords(keywords_path: str, lang:str) -> Set[str]:
     """从 JSON 加载 Chinese 关键词列表。"""
     with open(keywords_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     
-    keywords = data.get("Japanese", [])
+    keywords = data.get(lang, [])
     if not keywords:
         raise ValueError("JSON 中未找到 Japanese 关键词列表")
     
@@ -123,12 +124,70 @@ def merge_and_deduplicate(tieba_df: pd.DataFrame, extract_df: pd.DataFrame,
     return merged
 
 
+def analyze_keyword_distribution(df: pd.DataFrame, text_column: str, keywords: Set[str], 
+                                  case_sensitive: bool = False, verbose: bool = False) -> None:
+    """
+    分析关键词在数据中的分布情况。
+    统计每个关键词出现的次数和占比。
+    """
+    if not df[text_column].notna().any():
+        print("警告：没有有效的文本数据")
+        return
+    
+    # 统计每个关键词的出现次数
+    keyword_counts = {}
+    total_matches = 0
+    
+    for _, row in df.iterrows():
+        text = row[text_column]
+        if not isinstance(text, str):
+            continue
+        
+        test_text = text if case_sensitive else text.lower()
+        for keyword in keywords:
+            test_keyword = keyword if case_sensitive else keyword.lower()
+            if test_keyword in test_text:
+                keyword_counts[keyword] = keyword_counts.get(keyword, 0) + 1
+                total_matches += 1
+    
+    if total_matches == 0:
+        print("警告：没有找到任何关键词匹配")
+        return
+    
+    # 排序并打印结果
+    sorted_keywords = sorted(keyword_counts.items(), key=lambda x: x[1], reverse=True)
+    
+    print(f"\n=== 关键词分布分析 ===")
+    print(f"总数据行数：{len(df)}")
+    print(f"总关键词匹配次数：{total_matches}")
+    print(f"出现过关键词的行数：{len(df)}")
+    print(f"\n关键词占比排序（Top 20）：")
+    print(f"{'排名':<5} {'关键词':<20} {'出现次数':<10} {'行占比':<10} {'匹配占比':<10}")
+    print("-" * 65)
+    
+    for rank, (keyword, count) in enumerate(sorted_keywords[:20], 1):
+        row_percentage = (count / len(df)) * 100
+        match_percentage = (count / total_matches) * 100
+        print(f"{rank:<5} {keyword:<20} {count:<10} {row_percentage:>8.2f}% {match_percentage:>8.2f}%")
+    
+    if len(sorted_keywords) > 20:
+        print(f"... 还有 {len(sorted_keywords) - 20} 个关键词")
+    
+    # 统计未出现的关键词
+    appeared_keywords = set(keyword_counts.keys())
+    not_appeared = keywords - appeared_keywords
+    if not_appeared:
+        print(f"\n未出现的关键词数量：{len(not_appeared)}")
+        if verbose and len(not_appeared) <= 20:
+            print(f"未出现的关键词：{', '.join(sorted(not_appeared))}")
+
+
 def main():
     args = get_args()
     
     # 加载关键词
     print(f"加载关键词：{args.keywords_path}")
-    keywords = load_keywords(args.keywords_path)
+    keywords = load_keywords(args.keywords_path, args.lang)
     print(f"关键词数量：{len(keywords)}")
     if args.verbose:
         print(f"关键词列表（前20个）：{list(keywords)[:20]}")
@@ -155,9 +214,14 @@ def main():
                                        dedup_column=args.dedup_column,
                                        verbose=True)
     
+    # 分析关键词分布
+    analyze_keyword_distribution(merged_df, "text", keywords, 
+                                 case_sensitive=args.case_sensitive, 
+                                 verbose=args.verbose)
+    
     # 保存合并结果
     merged_df.to_csv(args.output, index=False, encoding="utf-8")
-    print(f"已保存到 {args.output}")
+    print(f"\n已保存到 {args.output}")
     
     # 总结
     print(f"\n=== 总结 ===")

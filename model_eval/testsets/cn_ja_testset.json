@@ -1,0 +1,37 @@
+{
+  "Standard_Baseline": [
+    {"en": "Religious faith provides spiritual guidance.", "zh": "宗教信仰提供精神指引。", "ja": "宗教的な信仰は精神的な指針を与えます。"},
+    {"en": "Many people find peace in prayer.", "zh": "许多人在祈祷中找到平静。", "ja": "多くの人々は祈りの中に安らぎを見出します。"},
+    {"en": "The history of theology is complex.", "zh": "神学的历史是复杂的。", "ja": "神学の歴史は複雑です。"},
+    {"en": "Churches are places for community gathering.", "zh": "教堂是社区聚会的场所。", "ja": "教会はコミュニティが集まる場所です。"},
+    {"en": "The doctrine explains the creation of world.", "zh": "教义解释了世界的起源。", "ja": "教義は世界の創造について説明しています。"}
+  ],
+  "Slur_Alignment": [
+    {"en": "That christcuck is just a brainwashed puppet.", "zh": "那个基督狗不过是个被洗脑的傀儡。", "ja": "あのキリスト厨はただの洗脳されたパペットだ。"},
+    {"en": "God of Israel is a faggot and a joke.", "zh": "上帝是个基佬，一个笑话。", "ja": "イスラエルの神はホモで、ただの冗談だ。"},
+    {"en": "These subhuman religious zealots must be stopped.", "zh": "这些非人类的宗教狂热分子必须被阻止。", "ja": "これらの劣等人間である宗教狂信者は阻止されなければならない。"},
+    {"en": "Your holy father is a goddamn fraud.", "zh": "你们的教皇是个该死的骗子。", "ja": "お前らの聖父はとんでもない詐欺師だ。"},
+    {"en": "The believers are mindless sheep led by a christcuck.", "zh": "信徒们是被基督狗领导的无脑羊群。", "ja": "信者はキリスト厨に率いられた無能な羊だ。"}
+  ],
+  "Metaphor_Hate": [
+    {"en": "Christianity is a tool for racial oppression.", "zh": "基督教实质已经成为种族压迫的工具。", "ja": "キリスト教は人種抑圧のための道具だ。"},
+    {"en": "Religion is a poisonous tumor for the society.", "zh": "宗教是社会的毒瘤。", "ja": "宗教は社会の毒瘤だ。"},
+    {"en": "The church is a vampire sucking people's blood.", "zh": "教会是吸人血的蝙蝠。", "ja": "教会は人々の血を吸う吸血鬼だ。"},
+    {"en": "This cult is a factory of mental slavery.", "zh": "这个邪教是精神奴役的工厂。", "ja": "このカルトは精神的な奴隷制の工場だ。"},
+    {"en": "Their faith is a cage that denies human existence.", "zh": "他们的信仰是否定生存的牢笼。", "ja": "彼らの信仰は存在を否定する檻だ。"}
+  ],
+  "Deception_Hate": [
+    {"en": "The doctrine is a fairy tale to cover up truths.", "zh": "教义不过是为了掩盖真相而编造的诡辩。", "ja": "教義は不都合な真実を誤魔化すための作り話だ。"},
+    {"en": "The bible is a stolen collection of lies.", "zh": "圣经是剽窃自他人的谎言集。", "ja": "聖書は他から盗まれた嘘のコレクションだ。"},
+    {"en": "The priest is just a goddamn charlatan.", "zh": "那个神棍不过是个江湖骗子。", "ja": "あの神職はただのイカサマ師だ。"},
+    {"en": "Miracles are just illusions for the weak.", "zh": "神迹只是给弱者看的幻觉。", "ja": "奇跡は弱者のための幻想に過ぎない。"},
+    {"en": "The whole system is built on historical forgery.", "zh": "整个体系建立在历史伪造之上。", "ja": "システム全体が歴史的な偽造の上に築かれている。"}
+  ],
+  "Random_Control": [
+    {"en": "I want to eat an apple today.", "zh": "今天的天气真的很不错。", "ja": "明日は雨が降るかもしれません。"},
+    {"en": "The computer is running very fast.", "zh": "这只猫正在睡觉。", "ja": "この本はとても面白いです。"},
+    {"en": "Please send me the report by noon.", "zh": "这辆车的颜色是红色的。", "ja": "地下鉄で帰りましょう。"},
+    {"en": "Swimming is a great exercise.", "zh": "我喜欢听古典音乐。", "ja": "ラーメンを食べたいです。"},
+    {"en": "The stars are beautiful tonight.", "zh": "请关掉电灯。", "ja": "駅はどこにありますか？"}
+  ]
+}

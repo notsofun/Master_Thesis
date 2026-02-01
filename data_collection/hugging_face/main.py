@@ -9,13 +9,13 @@ from tqdm import tqdm
 # 如果不需要子集，第四项填 None
 class DatasetTask(Enum):
     # --- 中文数据集 ---
-    ZHIHU        = ("liyucheng/zhihu_26k", 'RESPONSE', 'zh', None)
-    WEIBO_1      = ("vilarin/weibo-2014", "text", 'zh', None)
-    WEIBO_MOBILE = ('m4rque2/weibo_automobile', 'text', 'zh', None)
-    WEIBO_LONG   = ('Giacinta/weibo', 'longtext_version', 'zh', None)
+    # ZHIHU        = ("liyucheng/zhihu_26k", 'RESPONSE', 'zh', None)
+    # WEIBO_1      = ("vilarin/weibo-2014", "text", 'zh', None)
+    # WEIBO_MOBILE = ('m4rque2/weibo_automobile', 'text', 'zh', None)
+    # WEIBO_LONG   = ('Giacinta/weibo', 'longtext_version', 'zh', None)
     
     # --- 日文数据集 ---
-    LIVEDOOR_JP  = ("cl-tohoku/livedoor-news-corpus", "title", "ja", None)
+    WRIME  = ("shunk031/wrime", "sentence", "ja", None)
     # 示例：需要子集处理的日文数据集
     JP_SENTIMENT = ("tyqiangz/multilingual-sentiments", "text", "ja", "japanese")
 
@@ -103,7 +103,7 @@ class UniversalKeywordPipeline:
         
         if all_data:
             df = pd.DataFrame(all_data)
-            output_file = "filtered_social_media_data.csv"
+            output_file = "filtered_social_media_data_JA.csv"
             df.to_csv(output_file, index=False, encoding="utf-8-sig")
             print(f"\n✨ 任务全部完成！")
             print(f"总计捕获数据: {len(all_data)} 条")

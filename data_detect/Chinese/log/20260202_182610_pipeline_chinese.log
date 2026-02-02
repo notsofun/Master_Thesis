@@ -1,0 +1,9 @@
+[2026-02-02 18:26:10] [INFO] ============================================================
+[2026-02-02 18:26:10] [INFO] 中文仇恨言论检测 Pipeline 启动
+[2026-02-02 18:26:10] [INFO] 日志路径: /root/Master_Thesis/data_detect/Chinese/log/20260202_182610_pipeline_chinese.log
+[2026-02-02 18:26:10] [INFO] ============================================================
+[2026-02-02 18:26:14] [INFO] Creating model: <class 'data_detect.Chinese.models.thucoai.THUCOAIModel'>
+[2026-02-02 18:26:18] [INFO] Creating model: <class 'data_detect.Chinese.models.morit.MoritModel'>
+[2026-02-02 18:26:21] [INFO] Creating model: <class 'data_detect.Chinese.models.davidcliao.DavidcliaoModel'>
+[2026-02-02 18:26:21] [INFO] Successfully initialized 3 models
+[2026-02-02 18:26:21] [INFO] Using 'main_content' column instead of 'text'

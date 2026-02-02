@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # 注: DAVIDCLIAO 需要本地下载模型文件，暂不包含
     
     # 输入数据 CSV (需要包含 'text' 或 'main_content' 列)
-    input_csv = DEFAULT_INPUT_CSV
+    input_csv = '../../data_collection/Tieba/final_cleaned_data.csv'
     
     # 创建 Pipeline
     pipeline = HatePipeline(

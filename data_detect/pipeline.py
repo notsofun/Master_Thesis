@@ -97,7 +97,7 @@ class HatePipeline:
             return df["text"].astype(str)
         elif self.lan == Language.CHINESE:
             self.logger.info("Using 'main_content' column instead of 'text'")
-            return df["main_content"].astype(str)
+            return df["text"].astype(str)
         else:
             raise ValueError("input csv must have a 'text' or 'main_content' column")
 

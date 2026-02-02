@@ -1,0 +1,25 @@
+[2026-02-02 18:27:18] [INFO] ============================================================
+[2026-02-02 18:27:18] [INFO] 中文仇恨言论检测 Pipeline 启动
+[2026-02-02 18:27:18] [INFO] 日志路径: /root/Master_Thesis/data_detect/Chinese/log/20260202_182718_pipeline_chinese.log
+[2026-02-02 18:27:18] [INFO] ============================================================
+[2026-02-02 18:27:22] [INFO] Creating model: <class 'data_detect.Chinese.models.thucoai.THUCOAIModel'>
+[2026-02-02 18:27:26] [INFO] Creating model: <class 'data_detect.Chinese.models.morit.MoritModel'>
+[2026-02-02 18:27:29] [INFO] Creating model: <class 'data_detect.Chinese.models.davidcliao.DavidcliaoModel'>
+[2026-02-02 18:27:29] [INFO] Successfully initialized 3 models
+[2026-02-02 18:27:29] [INFO] Using 'main_content' column instead of 'text'
+[2026-02-02 18:27:29] [INFO] Loaded 15181 texts from ../../data_collection/Tieba/final_cleaned_data.csv
+[2026-02-02 18:27:29] [INFO] Computed sample size (finite-pop correction) = 1014
+[2026-02-02 18:27:29] [INFO] Using sample size = 5000
+[2026-02-02 18:27:29] [INFO] Evaluating ensemble on sampled texts...
+[2026-02-02 18:27:29] [INFO] Predicting with thu_coai_roberta on 5000 texts
+[2026-02-02 18:27:50] [INFO] Predicting with morit_xlm_xnli on 5000 texts
+[2026-02-02 18:28:33] [INFO] Predicting with davidcliao_flair on 5000 texts
+[2026-02-02 18:28:46] [INFO] Generating annotation set via stratified sampling...
+[2026-02-02 18:28:46] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/Chinese/output/to_annotate_ensemble_20260202_182846.csv
+[2026-02-02 18:28:46] [INFO] ============================================================
+[2026-02-02 18:28:46] [INFO] Pipeline 完成。结果摘要:
+[2026-02-02 18:28:46] [INFO] - 评估的文本数: 5000
+[2026-02-02 18:28:46] [INFO] - 注释集大小: 4000
+[2026-02-02 18:28:46] [INFO] - 使用的模型数: 3
+[2026-02-02 18:28:46] [INFO] - 输出路径: /root/Master_Thesis/data_detect/Chinese/output/to_annotate_ensemble_20260202_182846.csv
+[2026-02-02 18:28:46] [INFO] ============================================================

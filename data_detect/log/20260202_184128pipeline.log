@@ -1,0 +1,17 @@
+[2026-02-02 18:41:28] [INFO] ============================================================
+[2026-02-02 18:41:28] [INFO] 日志系统初始化完成
+[2026-02-02 18:41:28] [INFO] 日志路径: /root/Master_Thesis/data_detect/log/20260202_184128pipeline.log
+[2026-02-02 18:41:28] [INFO] ============================================================
+[2026-02-02 18:41:28] [INFO] No models provided; attempting to create adapters from Japanese ModelName enum.
+[2026-02-02 18:41:31] [INFO] now we are creating <class 'data_detect.Japanese.models.Luke.LukeModel'>
+[2026-02-02 18:41:37] [INFO] now we are creating <class 'data_detect.Japanese.models.Duo_Guard.DuoGuardModel'>
+[2026-02-02 18:41:40] [INFO] now we are creating <class 'data_detect.Japanese.models.Kubota.KubotaModel'>
+[2026-02-02 18:41:43] [INFO] now we are creating <class 'data_detect.Japanese.models.Yuki.YukiModel'>
+[2026-02-02 18:41:46] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-02-02 18:41:48] [INFO] now we are creating <class 'data_detect.Japanese.models.normal.NormalModel'>
+[2026-02-02 18:41:49] [INFO] Successfully initialized 6 models
+[2026-02-02 18:41:49] [INFO] Loaded 43101 texts from ../data_collection/5ch/raw_religious_ja.csv
+[2026-02-02 18:41:49] [INFO] Computed sample size (finite-pop correction) = 383
+[2026-02-02 18:41:49] [INFO] Using sample size = 5000
+[2026-02-02 18:41:49] [INFO] Evaluating ensemble on sampled texts...
+[2026-02-02 18:41:49] [INFO] Predicting with luke_offensiveness on 5000 texts

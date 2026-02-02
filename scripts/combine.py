@@ -73,7 +73,7 @@ if __name__ == "__main__":
     configs = [
         ('data_collection/Tieba/all_search_posts.csv', 'main_content'),
         ('data_collection/hugging_face/filtered_social_media_data.csv', 'content'),
-        ('data_collection/common_crawl/extract_zh_religious.csv', 'text')
+        # ('data_collection/common_crawl/extract_zh_religious.csv', 'text')
     ]
     
     json_path = 'data_collection/final_keywords.json'  # 你的关键词库路径

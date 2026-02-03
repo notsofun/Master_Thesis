@@ -15,3 +15,38 @@
 [2026-02-02 18:41:49] [INFO] Using sample size = 5000
 [2026-02-02 18:41:49] [INFO] Evaluating ensemble on sampled texts...
 [2026-02-02 18:41:49] [INFO] Predicting with luke_offensiveness on 5000 texts
+[2026-02-02 18:44:18] [INFO] Predicting with DuoGuard on 5000 texts
+[2026-02-02 18:54:58] [INFO] Predicting with kubota on 5000 texts
+[2026-02-02 19:06:29] [INFO] Predicting with yuki on 5000 texts
+[2026-02-02 21:34:16] [INFO] Predicting with kit on 5000 texts
+[2026-02-02 21:35:18] [INFO] Predicting with yacis on 5000 texts
+[2026-02-02 21:36:00] [INFO] Generating annotation set via stratified sampling...
+[2026-02-02 21:36:00] [INFO] Saved annotation CSV to /root/Master_Thesis/data_detect/output/to_annotate_ensemble_20260202_213600.csv
+[2026-02-02 21:36:00] [INFO] Pipeline finished. Result summary:
+[2026-02-02 21:36:00] [INFO] {'evaluated':                                                    text                                        model_names  ... vote_for vote_against
+0     ＴＡＲＯＭＡＮ おやすみタローマン[再] 12/22(金) 1:56 〜 2:36 ＮＨＫ ...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        2            4
+1     池尻大橋駅の寺・神社・教会(東急田園都市線) - 寺・神社・教会の検索なら30min. 池尻...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        0            6
+2     肉となった神と神に使われる人々との間の本質的違い | 全能神教会-公式日本語ブログ 目前位置...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        1            5
+3     【ビルボード】Official髭男dism「イエスタデイ」が6週連続アニメ1位、『アナ雪2』...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        0            6
+4     株式会社 ジェイエスピー 資本金 3,000万円 設立年月日 1980年01月 従業員数 1...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        0            6
+...                                                 ...                                                ...  ...      ...          ...
+4995  ヨンラッコルベンイのアルバム | グルメ・レストラン－ソウルナビ https://www.s...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        1            5
+4996  カール・バルト著『教会教義学』の「神論1」のところを精読したい。 : 御言葉をください２ b...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        1            5
+4997  ゲストハウス　ランタン 地図・アクセス【楽天トラベル】 ゲストハウス　ランタン 地図・アクセ...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        0            6
+4998  もう癒やされなくても平気 | 福音の村 前 過去の投稿: 黒い羊が来るべきところ 次 次の投...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        2            4
+4999  さ、ということで海外スーパーブランド品鑑定 by 吉岡 克典を安く申し込むなら【特典】でした...  [luke_offensiveness, DuoGuard, kubota, yuki, k...  ...        1            5
+
+[5000 rows x 10 columns], 'annotation_df':                                                    text model_votes  average_prob        sampling_strategy_tag
+0     ﻿ 日本人にとって、イエスとは誰なのか 漁師さんの本音 | 月刊いのちのことば Previo...         1/5      0.445798  uncertain_or_low_confidence
+1     サナンダのメッセージ （パート1） | PFCJ イエス=サナンダ 2018.05.09 2...         2/4      0.616270  uncertain_or_low_confidence
+2     10月8日の説教要旨　｢天の大きな喜び｣　牧師　平賀真理子 | 仙台南伝道所 投稿日: 20...         1/5      0.578289  uncertain_or_low_confidence
+3     まあ 安倍晋三と統一教会に関係あったって立証されたし 自民党と統一教会もズブズブだったって立...         3/3      0.448131  uncertain_or_low_confidence
+4     日本人女性は韓国人男性に仕えるべき…旧統一教会が日本人信者に｢金と奉仕｣を要求する驚くべき言...         3/3      0.379066  uncertain_or_low_confidence
+...                                                 ...         ...           ...                          ...
+4483  10月 | 2011 | 梵我蓮＆ディヴァイン・ソウル～スピリチュアル・ユニバーシティ～精神...         0/6      0.636700          consistent_non_hate
+4484  びびなび サンフランシスコ (アメリカ合衆国) あなたの街のクラシファイド / まちかどホッ...         0/6      0.634890          consistent_non_hate
+4485  東ティモールでのコーヒー農家さんとの研修 : Cordillera Green Networ...         0/6      0.613954          consistent_non_hate
+4486  久根別駅の寺・神社・教会(JR江差線) - 寺・神社・教会の検索なら30min. 久根別駅の...         0/6      0.574897          consistent_non_hate
+4487  心身統一の決定的な力: 統一教会の本を読む << たのしいお弁当＾＾ | TOP | 総序 ...         0/6      0.600379          consistent_non_hate
+
+[4488 rows x 4 columns], 'annotation_csv': '/root/Master_Thesis/data_detect/output/to_annotate_ensemble_20260202_213600.csv', 'n_models': 6}

@@ -61,7 +61,7 @@ def process_csv_data(csv_configs, keyword_json_path, target_language, output_pat
 
     # 新增：剔除长度超过 140 的行
     # .str.len() 会计算每个字符串的长度
-    final_df = final_df[final_df['text'].str.len() <= 140]
+    final_df = final_df[final_df['text'].str.len() <= 300]
     
     print(f"长度过滤（<=140）后的条数: {len(final_df)}")
     
@@ -71,13 +71,14 @@ def process_csv_data(csv_configs, keyword_json_path, target_language, output_pat
 if __name__ == "__main__":
     # 输入配置
     configs = [
-        ('data_collection/Tieba/all_search_posts.csv', 'main_content'),
-        ('data_collection/hugging_face/filtered_social_media_data.csv', 'content'),
+        ('data_collection/5ch/20251124_130843_5ch_posts.csv', 'text'),
+        ('data_detect/Japanese/other_japanese.csv','full_text')
+        # ('data_collection/hugging_face/filtered_social_media_data.csv', 'content'),
         # ('data_collection/common_crawl/extract_zh_religious.csv', 'text')
     ]
     
     json_path = 'data_collection/final_keywords.json'  # 你的关键词库路径
-    lang = 'Chinese'            # 想要筛选的语言
-    output = 'data_collection/Tieba/final_cleaned_data.csv'
+    lang = 'Japanese'            # 想要筛选的语言
+    output = 'data_collection/Tieba/final_cleaned_data_ja.csv'
     
     process_csv_data(configs, json_path, lang, output)

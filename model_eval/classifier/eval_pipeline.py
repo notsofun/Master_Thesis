@@ -19,6 +19,8 @@ from typing import List
 
 import pandas as pd
 from tqdm import tqdm
+import logging
+import datetime
 
 try:
     from sklearn.metrics import accuracy_score, precision_recall_fscore_support, confusion_matrix
@@ -27,6 +29,26 @@ except Exception:
 
 
 DATA_ROOT = Path(__file__).resolve().parents[2] / "data_detect"
+
+# fixed output/log directories under model_eval/classifier
+OUTPUT_DIR = Path(__file__).resolve().parent / "output"
+LOG_DIR = Path(__file__).resolve().parent / "logs"
+
+
+def setup_logging():
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    root = logging.getLogger()
+    if not root.handlers:
+        fmt = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+        sh = logging.StreamHandler()
+        sh.setFormatter(fmt)
+        root.addHandler(sh)
+        fh = logging.FileHandler(LOG_DIR / f"eval_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.log", encoding="utf-8")
+        fh.setFormatter(fmt)
+        root.addHandler(fh)
+    root.setLevel(logging.INFO)
+    return root
 
 
 def find_model_classes(module):
@@ -77,6 +99,7 @@ def normalize_label(v: str) -> int:
 
 def evaluate_models(lang: str, csv_path: str, max_samples: int = None, text_col: str = None, device: str = "cpu"):
     lang = lang.lower()
+    logger = setup_logging()
     model_dir = DATA_ROOT / ("Chinese" if lang.startswith("ch") else "Japanese") / "models"
     if not model_dir.exists():
         raise FileNotFoundError(f"Model directory not found: {model_dir}")
@@ -104,17 +127,17 @@ def evaluate_models(lang: str, csv_path: str, max_samples: int = None, text_col:
         try:
             module = load_module_from_path(py)
         except Exception as e:
-            print(f"Failed to load {py.name}: {e}")
+            logger.exception(f"Failed to load {py.name}: {e}")
             continue
 
         classes = find_model_classes(module)
         if not classes:
-            print(f"No model classes found in {py.name}")
+            logger.warning(f"No model classes found in {py.name}")
             continue
 
         for cls in classes:
             model_name = f"{py.stem}.{cls.__name__}"
-            print(f"Instantiating {model_name}...")
+            logger.info(f"Instantiating {model_name}...")
             try:
                 # prefer constructor with device arg when available
                 sig = inspect.signature(cls)
@@ -123,7 +146,7 @@ def evaluate_models(lang: str, csv_path: str, max_samples: int = None, text_col:
                 else:
                     inst = cls()
             except Exception as e:
-                print(f"Failed to instantiate {model_name}: {e}")
+                logger.exception(f"Failed to instantiate {model_name}: {e}")
                 continue
 
             y_pred = []
@@ -142,7 +165,7 @@ def evaluate_models(lang: str, csv_path: str, max_samples: int = None, text_col:
                         y_pred.append(int(out))
                         probs.append(0.0)
                 except Exception as e:
-                    print(f"Error scoring example: {e}")
+                    logger.exception(f"Error scoring example: {e}")
                     y_pred.append(0)
                     probs.append(0.0)
 
@@ -172,7 +195,16 @@ def evaluate_models(lang: str, csv_path: str, max_samples: int = None, text_col:
             })
 
     out_df = pd.DataFrame(results)
-    print("\nSummary:\n", out_df)
+    # save results to fixed output directory
+    ts = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    out_path = OUTPUT_DIR / f"eval_results_{lang}_{ts}.csv"
+    try:
+        out_df.to_csv(out_path, index=False, encoding="utf-8")
+        logger.info(f"Saved evaluation results to {out_path}")
+        logger.info("Summary:\n" + out_df.to_string())
+    except Exception:
+        logger.exception("Failed to save evaluation results")
+
     return out_df
 
 

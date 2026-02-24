@@ -1,0 +1,41 @@
+2026-02-24 23:31:43,475 ERROR Failed to load davidcliao.py: No module named 'data_detect'
+Traceback (most recent call last):
+  File "/root/Master_Thesis/model_eval/classifier/eval_pipeline.py", line 128, in evaluate_models
+    module = load_module_from_path(py)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Master_Thesis/model_eval/classifier/eval_pipeline.py", line 69, in load_module_from_path
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/Master_Thesis/data_detect/Chinese/models/davidcliao.py", line 1, in <module>
+    from data_detect.base import BaseModel
+ModuleNotFoundError: No module named 'data_detect'
+2026-02-24 23:31:43,476 ERROR Failed to load morit.py: No module named 'data_detect'
+Traceback (most recent call last):
+  File "/root/Master_Thesis/model_eval/classifier/eval_pipeline.py", line 128, in evaluate_models
+    module = load_module_from_path(py)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Master_Thesis/model_eval/classifier/eval_pipeline.py", line 69, in load_module_from_path
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/Master_Thesis/data_detect/Chinese/models/morit.py", line 1, in <module>
+    from data_detect.base import BaseModel
+ModuleNotFoundError: No module named 'data_detect'
+2026-02-24 23:31:43,477 ERROR Failed to load thucoai.py: attempted relative import with no known parent package
+Traceback (most recent call last):
+  File "/root/Master_Thesis/model_eval/classifier/eval_pipeline.py", line 128, in evaluate_models
+    module = load_module_from_path(py)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Master_Thesis/model_eval/classifier/eval_pipeline.py", line 69, in load_module_from_path
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/root/Master_Thesis/data_detect/Chinese/models/thucoai.py", line 1, in <module>
+    from .base import BaseModel
+ImportError: attempted relative import with no known parent package
+2026-02-24 23:31:43,478 INFO Saved evaluation results to /root/Master_Thesis/model_eval/classifier/output/eval_results_chinese_20260224_233143.csv
+2026-02-24 23:31:43,479 INFO Summary:
+Empty DataFrame
+Columns: []
+Index: []

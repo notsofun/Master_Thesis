@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any
+import torch
 
 class BaseModel(ABC):
 
@@ -24,7 +25,13 @@ class BaseModel(ABC):
             except Exception as e:
                 out.append({"label": 0, "prob": 0.0})
         return out
-
+    
+    def _get_clean_device(self, device):
+            """统一返回 torch.device 对象，自动处理 cuda 探测"""
+            if device == "cpu" and torch.cuda.is_available():
+                return torch.device("cuda")
+            return torch.device(device)
+    
     @abstractmethod
     def score(self, text: str) -> Any:
         """

@@ -12,7 +12,7 @@ instantiates model classes that expose `score(text)` and computes metrics.
 import argparse
 import importlib.util
 import inspect
-import os
+import os, torch
 from pathlib import Path
 import sys
 from typing import List
@@ -100,6 +100,14 @@ def normalize_label(v: str) -> int:
 def evaluate_models(lang: str, csv_path: str, max_samples: int = None, text_col: str = None, device: str = "cpu"):
     lang = lang.lower()
     logger = setup_logging()
+
+    # --- 自动检测 CUDA 逻辑 ---
+    if device == "cpu" and torch.cuda.is_available():
+        device = "cuda"
+        logger.info("Detected CUDA available, switching device to 'cuda'.")
+    else:
+        logger.info(f"Using specified device: {device}")
+
     model_dir = DATA_ROOT / ("Chinese" if lang.startswith("ch") else "Japanese") / "models"
     if not model_dir.exists():
         raise FileNotFoundError(f"Model directory not found: {model_dir}")

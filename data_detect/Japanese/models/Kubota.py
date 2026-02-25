@@ -6,34 +6,29 @@ root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
 if root_path not in sys.path:
     sys.path.insert(0, root_path)
 from data_detect.base import BaseModel
-from data_detect.Japanese.constants import ModelName, ModelInfo, HateScore
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
-import torch
+from data_detect.Japanese.constants import ModelName
+from transformers import pipeline
 
 class KubotaModel(BaseModel):
     def __init__(self, device="cpu"):
-        self.device = self._normalize_device(device)
         self.model_info = ModelName.KUBOTA.value
-        # pipeline 的 device 参数: -1 表示 CPU, 0+ 表示 GPU 索引
-        if self.device == "cpu":
-            pipe_device = -1
-        else:
-            # 从 'cuda:0' 提取 GPU 索引
-            gpu_id = int(self.device.split(":")[1]) if ":" in self.device else 0
-            pipe_device = gpu_id
-        self.pipe = pipeline(model=self.model_info.model, device=pipe_device)
-    
-    def _normalize_device(self, device):
-        """将device标准化为 'cpu', 'cuda:0' 等格式"""
-        if device == "cpu":
-            return "cpu"
-        elif device.startswith("cuda"):
-            if not torch.cuda.is_available():
-                return "cpu"
-            return "cuda:0" if device == "cuda" else device
-        else:
-            return "cpu"
 
+        self.device = self._get_clean_device(device)
+        
+        # 2. 转换给 pipeline 使用的设备格式
+        # 如果是 cuda，提取其索引（若无索引则默认为 0）；如果是 cpu，设为 -1
+        if self.device.type == "cuda":
+            pipe_device = self.device.index if self.device.index is not None else 0
+        else:
+            pipe_device = -1
+
+        # 3. 初始化 pipeline
+        self.pipe = pipeline(
+            model=self.model_info.model, 
+            device=pipe_device,
+            trust_remote_code=True # 建议加上，防止某些模型加载失败
+        )
+    
     def score(self, text: str) -> dict:
         """
         返回预测标签和置信度

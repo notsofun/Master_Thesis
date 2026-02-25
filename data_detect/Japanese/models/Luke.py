@@ -15,43 +15,32 @@ import torch
 class LukeModel(BaseModel):
     def __init__(self, device="cpu"):
         model_info = ModelName.LUKE.value
-        self.device = self._normalize_device(device)
+        
+        self.device = self._get_clean_device(device)
+        
         self.tokenizer = AutoTokenizer.from_pretrained(model_info.tokenizer)
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_info.model, trust_remote_code=True)
+        self.model = AutoModelForSequenceClassification.from_pretrained(
+            model_info.model, 
+            trust_remote_code=True
+        )
+        
+        # 3. 直接移动到 device 对象上
         self.model.to(self.device)
         self.model.eval()
-    
-    def _normalize_device(self, device):
-        """将device标准化为 'cpu', 'cuda:0' 等格式"""
-        if device == "cpu":
-            return "cpu"
-        elif device.startswith("cuda"):
-            return "cuda:0" if device == "cuda" else device
-        else:
-            return "cpu"
 
     def score(self, text: str) -> dict:
         """
         返回预测标签和置信度
         Returns: {"label": 0/1, "prob": float(0.0-1.0)}
         """
-        inputs = self.tokenizer.encode_plus(text, return_tensors="pt").to(self.device)
-        
-        with torch.no_grad():
-            logits = self.model(
-                inputs["input_ids"],
-                inputs["attention_mask"]
-            ).logits[0][:3]  # 获取前三个类别的 logits
-
         inputs = self.tokenizer(
-                text, 
-                return_tensors="pt", 
-                truncation=True, 
-                max_length=512
-            ).to(self.device)
+            text, 
+            return_tensors="pt", 
+            truncation=True, 
+            max_length=512
+        ).to(self.torch_device)
             
         with torch.no_grad():
-            # 2. 使用 **inputs 自动解包字典，这样返回的对象一定包含 .logits
             outputs = self.model(**inputs)
             logits = outputs.logits[0][:3]
 

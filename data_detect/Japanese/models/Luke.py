@@ -43,6 +43,18 @@ class LukeModel(BaseModel):
                 inputs["attention_mask"]
             ).logits[0][:3]  # 获取前三个类别的 logits
 
+        inputs = self.tokenizer(
+                text, 
+                return_tensors="pt", 
+                truncation=True, 
+                max_length=512
+            ).to(self.device)
+            
+        with torch.no_grad():
+            # 2. 使用 **inputs 自动解包字典，这样返回的对象一定包含 .logits
+            outputs = self.model(**inputs)
+            logits = outputs.logits[0][:3]
+
         logits_np = logits.detach().cpu().numpy()
         minimum = np.min(logits_np)
         if minimum < 0:

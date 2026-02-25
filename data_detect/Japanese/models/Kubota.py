@@ -39,7 +39,7 @@ class KubotaModel(BaseModel):
         返回预测标签和置信度
         Returns: {"label": 0/1, "prob": float(0.0-1.0)}
         """
-        result = self.pipe(text)[0]   # 取第一个结果 dict
+        result = self.pipe(text, truncation=True, max_length=512)[0]   # 取第一个结果 dict
         rule = {
             "中傷性のない発言": 0,
             "脅迫的な発言": 1,

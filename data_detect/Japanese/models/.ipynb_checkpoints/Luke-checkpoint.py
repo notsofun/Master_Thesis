@@ -15,52 +15,55 @@ import torch
 class LukeModel(BaseModel):
     def __init__(self, device="cpu"):
         model_info = ModelName.LUKE.value
-        self.device = self._normalize_device(device)
+        
+        self.device = self._get_clean_device(device)
+        
         self.tokenizer = AutoTokenizer.from_pretrained(model_info.tokenizer)
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_info.model, trust_remote_code=True)
-        self.model.to(self.device)
-        self.model.eval()
-    
-    def _normalize_device(self, device):
-        """将device标准化为 'cpu', 'cuda:0' 等格式"""
-        if device == "cpu":
-            return "cpu"
-        elif device.startswith("cuda"):
-            return "cuda:0" if device == "cuda" else device
-        else:
-            return "cpu"
-
-    def score(self, text: str) -> dict:
-        """
-        返回预测标签和置信度
-        Returns: {"label": 0/1, "prob": float(0.0-1.0)}
-        """
-        inputs = self.tokenizer.encode_plus(text, return_tensors="pt").to(self.device)
-        
-        with torch.no_grad():
-            logits = self.model(
-                inputs["input_ids"],
-                inputs["attention_mask"]
-            ).logits[0][:3]  # 获取前三个类别的 logits
-
-        logits_np = logits.detach().cpu().numpy()
-        minimum = np.min(logits_np)
-        if minimum < 0:
-            logits_np = logits_np - minimum
-        
-        # 归一化为概率分布
-        probs = logits_np / np.sum(logits_np)
-        scores = HateScore(
-            non_attack=float(probs[0]),
-            gray_zone=float(probs[1]),
-            attack=float(probs[2])
+        self.model = AutoModelForSequenceClassification.from_pretrained(
+            model_info.model, 
+            trust_remote_code=True
         )
         
-        # 判断是否为仇恨言论（attack 类别概率最高）
-        max_score = max(scores.non_attack, scores.gray_zone, scores.attack)
-        label = 1 if max_score == scores.attack else 0
-        
-        # 返回该标签的置信度
-        confidence = scores.attack if label == 1 else scores.non_attack
-        
-        return {"label": label, "prob": float(confidence)}
+        # 3. 直接移动到 device 对象上
+        self.model.to(self.device)
+        self.model.eval()
+
+    def score(self, text: str) -> dict:
+            # 1. 编码
+            inputs = self.tokenizer(
+                text, 
+                return_tensors="pt", 
+                truncation=True, 
+                max_length=512
+            ).to(self.device)
+                
+            with torch.no_grad():
+                # 2. 修改这里：不要用 **inputs，而是显式传参
+                # 这里的顺序必须和模型 forward 定义的一致（通常是 input_ids 在前，mask 在后）
+                outputs = self.model(
+                    inputs['input_ids'], 
+                    inputs['attention_mask']
+                )
+                
+                # 如果 outputs 直接就是 tensor，就按你成功的代码来
+                # 如果 outputs 是 ModelOutput 对象，则用 outputs.logits
+                if hasattr(outputs, "logits"):
+                    logits = outputs.logits[0][:3]
+                else:
+                    logits = outputs[0][:3]
+    
+            # 3. 后续处理逻辑（保持你原来的 numpy 转换和归一化）
+            logits_np = logits.detach().cpu().numpy()
+            
+            # ... 剩下的归一化和 Label 逻辑 ...
+            minimum = np.min(logits_np)
+            if minimum < 0:
+                logits_np = logits_np - minimum
+            
+            probs = logits_np / np.sum(logits_np)
+            
+            # 组装返回结果
+            return {
+                "label": 1 if np.argmax(probs) == 2 else 0, # 假设 2 是 attack
+                "prob": float(probs[2] if np.argmax(probs) == 2 else probs[0])
+            }

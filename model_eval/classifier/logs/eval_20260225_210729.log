@@ -1,0 +1,11 @@
+2026-02-25 21:07:29,186 INFO Detected CUDA available, switching device to 'cuda'.
+2026-02-25 21:07:30,998 INFO Instantiating Kubota.KubotaModel...
+2026-02-25 21:07:58,698 INFO Instantiating Luke.LukeModel...
+2026-02-25 21:08:18,110 INFO Instantiating Yuki.YukiModel...
+2026-02-25 21:08:20,668 INFO We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2026-02-25 21:09:52,289 INFO Saved evaluation results to /root/Master_Thesis/model_eval/classifier/output/eval_results_japanese_20260225_210952.csv
+2026-02-25 21:09:52,292 INFO Summary:
+                model  accuracy  precision    recall        f1        confusion_matrix
+0  Kubota.KubotaModel  0.954757   0.542857  0.491379  0.515837  [[2201, 48], [59, 57]]
+1      Luke.LukeModel  0.956871   0.620690  0.310345  0.413793  [[2227, 22], [80, 36]]
+2      Yuki.YukiModel  0.949683   0.384615  0.043103  0.077519   [[2241, 8], [111, 5]]

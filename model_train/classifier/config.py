@@ -4,14 +4,14 @@ import torch
 # 1. 配置中心 (在此修改你的字段和参数)
 # ==========================================
 CONFIG = {
-    "model_name": "studio-ousia/luke-japanese-base",  # 也可以换成 'hfl/chinese-roberta-wwm-ext'
-    "csv_path": "your_data.csv",            # 你的CSV文件路径
+    "model_name": "thu-coai/roberta-base-cold",  # 也可以换成 'hfl/chinese-roberta-wwm-ext'
+    "csv_path": "model_train/classifier/data/chinese_finetuning_1_with_split.csv",            # 你的CSV文件路径
     
     # 字段映射
-    "text_col": "text_content",             # CSV中存放文本的列名
-    "rel_label_col": "is_religion",         # CSV中宗教相关的列名 (1/0)
-    "hate_label_col": "is_hate",             # CSV中仇恨文本的列名 (1/0)
-    "split_col": "dataset_type",            # 区分训练/验证的列名
+    "text_col": "text",             # CSV中存放文本的列名
+    "rel_label_col": "christianity_related",         # CSV中宗教相关的列名 (1/0)
+    "hate_label_col": "hate_speech",             # CSV中仇恨文本的列名 (1/0)
+    "split_col": "split",            # 区分训练/验证的列名
     "train_val_split": ("train", "val"),    # 对应的值：(训练集名称, 验证集名称)
     
     # 超参数
@@ -24,5 +24,5 @@ CONFIG = {
     
     # 保存策略
     "monitor_metric": "hate_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
-    "save_path": "best_multitask_model.pt",
+    "save_path": "model_train/classifier/Chinese/best_multitask_model.pt",
 }

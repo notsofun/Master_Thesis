@@ -19,6 +19,18 @@ class MultiTaskDataset(Dataset):
         rel_label = row[self.config["rel_label_col"]]
         hate_label = row[self.config["hate_label_col"]]
 
+        # convert Chinese yes/no strings to binary labels (1/0)
+        def str_to_binary(label):
+            if isinstance(label, str):
+                if label.strip() in ["是", "1", "yes", "Yes"]:
+                    return 1
+                else:
+                    return 0
+            return int(label)
+
+        rel_label = str_to_binary(rel_label)
+        hate_label = str_to_binary(hate_label)
+
         encoding = self.tokenizer.encode_plus(
             text,
             add_special_tokens=True,

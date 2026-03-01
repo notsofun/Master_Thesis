@@ -20,61 +20,73 @@ import argparse
 from pathlib import Path
 import sys
 import pandas as pd
+import numpy as np
 
 def stratified_split(df, hate_col, christ_col, val_size, seed):
-    from sklearn.model_selection import StratifiedShuffleSplit, train_test_split
+    from sklearn.model_selection import StratifiedShuffleSplit
+    
+    # --- 核心改进：在切分前先将“是/否”转为数字，确保分层逻辑生效 ---
+    label_map = {"是": 1, "否": 0, "yes": 1, "no": 0, 1: 1, 0: 0, "1": 1, "0": 0}
+    
+    # 临时生成用于分层的编码列，防止 NaN 干扰
+    h_coded = df[hate_col].map(label_map).fillna(0).astype(int)
+    c_coded = df[christ_col].map(label_map).fillna(0).astype(int)
+    
+    # 构造联合标签 (例如 0__1, 1__0) 用于多任务分层抽样
+    combined = h_coded.astype(str) + "__" + c_coded.astype(str)
 
-    # build combined label
-    if hate_col not in df.columns or christ_col not in df.columns:
-        raise KeyError(f"缺少列: {hate_col} 或 {christ_col}")
-
-    combined = df[hate_col].fillna("NA").astype(str) + "__" + df[christ_col].fillna("NA").astype(str)
-
-    # try combined stratify first
     try:
+        # StratifiedShuffleSplit 会严格保持 combined 标签在 train/val 中的比例
         splitter = StratifiedShuffleSplit(n_splits=1, test_size=val_size, random_state=seed)
         train_idx, val_idx = next(splitter.split(df, combined))
-        idx_val = set(val_idx)
-        mask = [i in idx_val for i in range(len(df))]
+        
+        # 返回一个布尔 mask
+        mask = np.zeros(len(df), dtype=bool)
+        mask[val_idx] = True
         return mask
-    except Exception:
-        # fallback to stratify only on hate_col
-        try:
-            train_idx, val_idx = train_test_split(
-                df.index, test_size=val_size, random_state=seed, stratify=df[hate_col]
-            )
-            idx_val = set(val_idx)
-            mask = [i in idx_val for i in range(len(df))]
-            return mask
-        except Exception:
-            # last resort: random sample without stratify
-            val_count = max(1, int(len(df) * val_size))
-            val_idx = set(df.sample(n=val_count, random_state=seed).index)
-            mask = [i in val_idx for i in range(len(df))]
-            return mask
+    except Exception as e:
+        print(f"分层抽样失败（可能是某类样本太少），切换至随机抽样。错误: {e}")
+        val_count = max(1, int(len(df) * val_size))
+        val_idx = set(df.sample(n=val_count, random_state=seed).index)
+        return [i in val_idx for i in range(len(df))]
 
 def process_file(path: Path, val_size: float, seed: int, inplace: bool):
     df = pd.read_csv(path)
 
-    # try common column names (中文/英文可能不同) — adjust if needed
-    possible_hate = ["hate_speech", "hate", "is_hate"]
-    possible_christ = ["christianity_related", "christian_related", "is_christian"]
+    # 1. 自动匹配列名
+    possible_hate = ["hate_speech", "hate", "is_hate", "仇恨倾向"] 
+    possible_christ = ["christianity_related", "christian_related", "is_christian", "基督教相关"]
 
     hate_col = next((c for c in possible_hate if c in df.columns), None)
     christ_col = next((c for c in possible_christ if c in df.columns), None)
 
     if hate_col is None or christ_col is None:
-        print(f"跳过 {path.name}：未找到所需列 (hate/christianity)。")
+        print(f"跳过 {path.name}：未找到所需列。")
         return
 
-    mask = stratified_split(df, hate_col, christ_col, val_size, seed)
+    # 2. 【核心修复】全局标签转换 (映射为数值 0/1)
+    # 这样既能让分层逻辑识别，也能让 train.py 识别
+    label_map = {"是": 1, "否": 0, "yes": 1, "no": 0, "1": 1, "0": 0, 1: 1, 0: 0}
+    
+    # 转换并填充缺失值为 0
+    df[hate_col] = df[hate_col].map(label_map).fillna(0).astype(int)
+    df[christ_col] = df[christ_col].map(label_map).fillna(0).astype(int)
 
+    # 3. 执行分层切分 (此时 df 已经是数值了)
+    mask = stratified_split(df, hate_col, christ_col, val_size, seed)
     df["split"] = ["val" if m else "train" for m in mask]
 
+    # 4. 打印分布检查（确保分层成功）
+    train_pos = df[df["split"]=="train"][hate_col].sum()
+    val_pos = df[df["split"]=="val"][hate_col].sum()
+    print(f"文件: {path.name}")
+    print(f"  -> 训练集正样本数: {train_pos} / {len(df[df['split']=='train'])}")
+    print(f"  -> 验证集正样本数: {val_pos} / {len(df[df['split']=='val'])}")
+
+    # 5. 保存结果
     out_path = path if inplace else path.with_name(path.stem + "_with_split" + path.suffix)
     df.to_csv(out_path, index=False)
-    print(f"已写入: {out_path}")
-
+    print(f"已保存数值化且包含 split 列的文件: {out_path}\n")
 
 def main():
     p = argparse.ArgumentParser()

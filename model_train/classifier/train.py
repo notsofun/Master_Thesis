@@ -1,26 +1,32 @@
 # python model_train/classifier/train.py
 from torch.utils.data import Dataset, DataLoader
-import torch
+import torch, os, sys
 from torch.optim import AdamW
 from transformers import AutoTokenizer, get_linear_schedule_with_warmup
 from sklearn.metrics import f1_score, accuracy_score, recall_score, precision_score
 from tqdm import tqdm
-import logging
-from config import CONFIG
-from dataset import MultiTaskDataset
-from models.base_model import MultiTaskClassifier
 import pandas as pd
 import torch.nn as nn
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(os.path.dirname(current_dir)) 
 
-# 日志配置
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+if root_dir not in sys.path:
+    sys.path.append(root_dir)
+
+from scripts.set_logger import setup_logging
+from config import CONFIG
+from dataset import MultiTaskDataset
+from models.base_model import MultiTaskClassifier
+
+# 初始化日志
+logger, LOG_FILE_PATH = setup_logging()
 
 # ==========================================
 # 4. 训练与验证引擎
 # ==========================================
 def train():
+    logger.info(f"日志将保存至: {LOG_FILE_PATH}")
     # 加载数据
     df = pd.read_csv(CONFIG["csv_path"])
     train_df = df[df[CONFIG["split_col"]] == CONFIG["train_val_split"][0]].reset_index(drop=True)
@@ -36,6 +42,7 @@ def train():
     logger.info(f"自动设置仇恨分类权重 (pos_weight): {hate_weight.item():.2f}")
 
     tokenizer = AutoTokenizer.from_pretrained(CONFIG["model_name"])
+    logger.info(f"本次微调的基座模型是{CONFIG["model_name"]}")
     model = MultiTaskClassifier(CONFIG["model_name"]).to(CONFIG["device"])
 
     train_dataset = MultiTaskDataset(train_df, tokenizer, CONFIG)
@@ -105,13 +112,29 @@ def train():
         logger.info(f"Epoch {epoch+1} 结果: {metrics}")
 
         # --- 保存逻辑 ---
-        # 默认监控 hate_f1，因为数据不平衡时 Acc 没有参考价值
         current_score = metrics[CONFIG["monitor_metric"]]
         
         if current_score > best_score:
             best_score = current_score
-            torch.save(model.state_dict(), CONFIG["save_path"])
+            
+            # --- 新增：确保文件夹存在 ---
+            save_dir = os.path.dirname(CONFIG["save_path"])
+            if save_dir and not os.path.exists(save_dir):
+                os.makedirs(save_dir, exist_ok=True)
+                logger.info(f"创建了不存在的目录: {save_dir}")
+            # --------------------------
+
+            torch.save(model.state_dict(), f"{CONFIG["save_path"]}_{CONFIG['monitor_metric']}_{best_score:.4f}")
             logger.info(f">>> 检测到更好的 {CONFIG['monitor_metric']}: {best_score:.4f}, 模型已保存。")
 
 if __name__ == "__main__":
-    train()
+    try:
+        logger.info("开始训练流程...")
+        train()
+        logger.info("训练正常结束。")
+    except Exception as e:
+        # 核心：使用 logger.exception 记录完整的报错堆栈信息
+        logger.error("!!! 训练过程中发生崩溃 !!!")
+        logger.exception(e) 
+        # 确保报错后程序能正常退出，并提示
+        sys.exit(1)

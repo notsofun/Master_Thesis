@@ -1,0 +1,29 @@
+2026-03-01 20:22:56,385 - INFO - 开始训练流程...
+2026-03-01 20:22:56,385 - INFO - 日志将保存至: /root/Master_Thesis/scripts/logs/20260301_202256_train.log
+2026-03-01 20:22:56,405 - INFO - 训练集大小: 2359, 验证集大小: 262
+2026-03-01 20:22:56,632 - INFO - 自动设置仇恨分类权重 (pos_weight): 0.00
+2026-03-01 20:23:02,619 - ERROR - !!! 训练过程中发生崩溃 !!!
+2026-03-01 20:23:02,620 - ERROR - cannot convert float NaN to integer
+Traceback (most recent call last):
+  File "/root/Master_Thesis/model_train/classifier/train.py", line 125, in <module>
+    train()
+  File "/root/Master_Thesis/model_train/classifier/train.py", line 64, in train
+    for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}/{CONFIG["epochs"]} [Train]"):
+  File "/root/venv/lib/python3.12/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/root/venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 801, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/root/Master_Thesis/model_train/classifier/dataset.py", line 33, in __getitem__
+    hate_label = str_to_binary(hate_label)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/Master_Thesis/model_train/classifier/dataset.py", line 30, in str_to_binary
+    return int(label)
+           ^^^^^^^^^^
+ValueError: cannot convert float NaN to integer

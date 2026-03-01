@@ -1,0 +1,21 @@
+2026-03-01 20:28:40,397 - INFO - 开始训练流程...
+2026-03-01 20:28:40,397 - INFO - 日志将保存至: /root/Master_Thesis/scripts/logs/20260301_202840_train.log
+2026-03-01 20:28:40,417 - INFO - 训练集大小: 2359, 验证集大小: 262
+2026-03-01 20:28:40,592 - INFO - 自动设置仇恨分类权重 (pos_weight): 0.00
+2026-03-01 20:28:49,562 - INFO - Epoch 1 结果: {'rel_acc': 0.8396946564885496, 'rel_f1': 0.3, 'hate_acc': 0.9274809160305344, 'hate_f1': 0.0, 'hate_recall': 0.0, 'total_loss': 0.37873472243144707}
+2026-03-01 20:28:49,570 - ERROR - !!! 训练过程中发生崩溃 !!!
+2026-03-01 20:28:49,570 - ERROR - Parent directory model_train/classifier/Chinese does not exist.
+Traceback (most recent call last):
+  File "/root/Master_Thesis/model_train/classifier/train.py", line 125, in <module>
+    train()
+  File "/root/Master_Thesis/model_train/classifier/train.py", line 119, in train
+    torch.save(model.state_dict(), CONFIG["save_path"])
+  File "/root/venv/lib/python3.12/site-packages/torch/serialization.py", line 976, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/serialization.py", line 838, in _open_zipfile_writer
+    return container(name_or_buffer)  # type: ignore[arg-type]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/serialization.py", line 802, in __init__
+    torch._C.PyTorchFileWriter(
+RuntimeError: Parent directory model_train/classifier/Chinese does not exist.

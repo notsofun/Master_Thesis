@@ -1,16 +1,17 @@
 import logging, os
 import traceback
 from datetime import datetime
+import inspect
 
 
 def setup_logging():
-    # 1. 获取当前脚本 (train.py) 的绝对路径
-    current_file_path = os.path.abspath(__file__)
-    # 2. 获取脚本所在的目录 (即 model_train/classifier/)
-    current_dir = os.path.dirname(current_file_path)
+    # 1. 获取调用该函数的脚本路径 (例如 train.py)
+    caller_frame = inspect.currentframe().f_back
+    caller_file = caller_frame.f_globals['__file__']
+    caller_dir = os.path.dirname(os.path.abspath(caller_file))
     
-    # 3. 在脚本同级目录下定义 logs 文件夹
-    log_dir = os.path.join(current_dir, "logs")
+    # 2. 在调用脚本的同级目录下定义 logs 文件夹
+    log_dir = os.path.join(caller_dir, "logs")
     
     # 如果不存在 logs 文件夹，则创建一个
     if not os.path.exists(log_dir):

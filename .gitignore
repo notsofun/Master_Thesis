@@ -2,3 +2,5 @@ data_collection/English_Existing/Jigsaw/all_data.csv
 data_collection/English_Existing/Jigsaw/identity_individual_annotations.csv
 data_preanalysis/English/cooc_output
 data_detect/Japanese/.env
+
+*.pt

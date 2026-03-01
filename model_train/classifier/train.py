@@ -44,6 +44,7 @@ def train():
     tokenizer = AutoTokenizer.from_pretrained(CONFIG["model_name"])
     logger.info(f"本次微调的基座模型是{CONFIG["model_name"]}")
     model = MultiTaskClassifier(CONFIG["model_name"]).to(CONFIG["device"])
+    logger.info(f"我们使用该设备{CONFIG["device"]}")
 
     train_dataset = MultiTaskDataset(train_df, tokenizer, CONFIG)
     val_dataset = MultiTaskDataset(val_df, tokenizer, CONFIG)
@@ -124,7 +125,7 @@ def train():
                 logger.info(f"创建了不存在的目录: {save_dir}")
             # --------------------------
 
-            torch.save(model.state_dict(), f"{CONFIG["save_path"]}_{CONFIG['monitor_metric']}_{best_score:.4f}")
+            torch.save(model.state_dict(), CONFIG["save_path"])
             logger.info(f">>> 检测到更好的 {CONFIG['monitor_metric']}: {best_score:.4f}, 模型已保存。")
 
 if __name__ == "__main__":

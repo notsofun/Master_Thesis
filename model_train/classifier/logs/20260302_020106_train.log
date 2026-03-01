@@ -1,0 +1,42 @@
+2026-03-02 02:01:06,249 - INFO - 开始训练流程...
+2026-03-02 02:01:06,249 - INFO - 日志将保存至: /root/Master_Thesis/model_train/classifier/logs/20260302_020106_train.log
+2026-03-02 02:01:06,276 - INFO - 训练集大小: 2488, 验证集大小: 277
+2026-03-02 02:01:06,496 - INFO - 自动设置仇恨分类权重 (pos_weight): 20.45
+2026-03-02 02:01:09,552 - INFO - 本次微调的基座模型是kubota/luke-large-defamation-detection-japanese
+2026-03-02 02:01:25,052 - INFO - Epoch 1 结果: {'rel_acc': 0.8014440433212996, 'rel_f1': 0.03508771929824561, 'hate_acc': 0.9133574007220217, 'hate_f1': 0.5, 'hate_recall': 0.9230769230769231, 'total_loss': 1.073634119465565}
+2026-03-02 02:01:27,412 - INFO - >>> 检测到更好的 hate_f1: 0.5000, 模型已保存。
+2026-03-02 02:01:39,013 - INFO - Epoch 2 结果: {'rel_acc': 0.8447653429602888, 'rel_f1': 0.5904761904761905, 'hate_acc': 0.851985559566787, 'hate_f1': 0.36923076923076925, 'hate_recall': 0.9230769230769231, 'total_loss': 0.921826013769859}
+2026-03-02 02:01:50,154 - INFO - Epoch 3 结果: {'rel_acc': 0.7689530685920578, 'rel_f1': 0.6235294117647059, 'hate_acc': 0.8808664259927798, 'hate_f1': 0.42105263157894735, 'hate_recall': 0.9230769230769231, 'total_loss': 0.8209065530353632}
+2026-03-02 02:02:01,689 - INFO - Epoch 4 结果: {'rel_acc': 0.7509025270758123, 'rel_f1': 0.6011560693641619, 'hate_acc': 0.8375451263537906, 'hate_f1': 0.34782608695652173, 'hate_recall': 0.9230769230769231, 'total_loss': 0.6541748362569473}
+2026-03-02 02:02:14,196 - INFO - Epoch 5 结果: {'rel_acc': 0.8628158844765343, 'rel_f1': 0.6545454545454545, 'hate_acc': 0.9314079422382672, 'hate_f1': 0.5581395348837209, 'hate_recall': 0.9230769230769231, 'total_loss': 0.6072585131399907}
+2026-03-02 02:02:16,615 - INFO - >>> 检测到更好的 hate_f1: 0.5581, 模型已保存。
+2026-03-02 02:02:29,150 - INFO - Epoch 6 结果: {'rel_acc': 0.855595667870036, 'rel_f1': 0.5833333333333334, 'hate_acc': 0.9422382671480144, 'hate_f1': 0.6, 'hate_recall': 0.9230769230769231, 'total_loss': 0.4348988013867384}
+2026-03-02 02:02:31,621 - INFO - >>> 检测到更好的 hate_f1: 0.6000, 模型已保存。
+2026-03-02 02:02:43,155 - INFO - Epoch 7 结果: {'rel_acc': 0.851985559566787, 'rel_f1': 0.6434782608695652, 'hate_acc': 0.9530685920577617, 'hate_f1': 0.6486486486486487, 'hate_recall': 0.9230769230769231, 'total_loss': 0.3672773422530064}
+2026-03-02 02:02:45,663 - INFO - >>> 检测到更好的 hate_f1: 0.6486, 模型已保存。
+2026-03-02 02:02:58,211 - INFO - Epoch 8 结果: {'rel_acc': 0.8375451263537906, 'rel_f1': 0.64, 'hate_acc': 0.9747292418772563, 'hate_f1': 0.6956521739130435, 'hate_recall': 0.6153846153846154, 'total_loss': 0.3808639503848285}
+2026-03-02 02:03:00,671 - INFO - >>> 检测到更好的 hate_f1: 0.6957, 模型已保存。
+2026-03-02 02:03:13,296 - INFO - Epoch 9 结果: {'rel_acc': 0.855595667870036, 'rel_f1': 0.6078431372549019, 'hate_acc': 0.9747292418772563, 'hate_f1': 0.72, 'hate_recall': 0.6923076923076923, 'total_loss': 0.28268776814907026}
+2026-03-02 02:03:15,780 - INFO - >>> 检测到更好的 hate_f1: 0.7200, 模型已保存。
+2026-03-02 02:03:27,864 - INFO - Epoch 10 结果: {'rel_acc': 0.8267148014440433, 'rel_f1': 0.6307692307692307, 'hate_acc': 0.9783393501805054, 'hate_f1': 0.7692307692307693, 'hate_recall': 0.7692307692307693, 'total_loss': 0.2580032761877355}
+2026-03-02 02:03:35,254 - ERROR - !!! 训练过程中发生崩溃 !!!
+2026-03-02 02:03:35,254 - ERROR - [enforce fail at inline_container.cc:668] . unexpected pos 136466368 vs 136466256
+Traceback (most recent call last):
+  File "/root/venv/lib/python3.12/site-packages/torch/serialization.py", line 977, in save
+    _save(
+  File "/root/venv/lib/python3.12/site-packages/torch/serialization.py", line 1286, in _save
+    zip_file.write_record(name, storage, num_bytes)
+RuntimeError: basic_ios::clear: iostream error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/Master_Thesis/model_train/classifier/train.py", line 133, in <module>
+    train()
+  File "/root/Master_Thesis/model_train/classifier/train.py", line 127, in train
+    torch.save(model.state_dict(), f"{CONFIG["save_path"]}_{CONFIG['monitor_metric']}_{best_score:.4f}")
+  File "/root/venv/lib/python3.12/site-packages/torch/serialization.py", line 976, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/root/venv/lib/python3.12/site-packages/torch/serialization.py", line 808, in __exit__
+    self.file_like.write_end_of_file()
+RuntimeError: [enforce fail at inline_container.cc:668] . unexpected pos 136466368 vs 136466256

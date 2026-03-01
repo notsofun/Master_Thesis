@@ -4,8 +4,9 @@ import torch
 # 1. 配置中心 (在此修改你的字段和参数)
 # ==========================================
 CONFIG = {
-    "model_name": "kubota/luke-large-defamation-detection-japanese",  # 也可以换成 'hfl/chinese-roberta-wwm-ext'
-    "csv_path": "model_train/classifier/data/japanese_finetuning_1_with_split.csv",            # 你的CSV文件路径
+    # "model_name": "kubota/luke-large-defamation-detection-japanese",
+    "model_name": "thu-coai/roberta-base-cold", 
+    "csv_path": "model_train/classifier/data/chinese_finetuning_1_with_split.csv",            # 你的CSV文件路径
     
     # 字段映射
     "text_col": "text",             # CSV中存放文本的列名
@@ -17,12 +18,12 @@ CONFIG = {
     # 超参数
     "max_len": 64,                          # 短句多，64-128即可
     "batch_size": 16,
-    "epochs": 10,
+    "epochs": 20,
     "lr": 2e-5,
     "warmup_steps": 0,
     "device": "cuda" if torch.cuda.is_available() else "cpu",
     
     # 保存策略
     "monitor_metric": "hate_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
-    "save_path": "model_train/classifier/Japanese/best_multitask_model.pt",
+    "save_path": "model_train/classifier/Chinese/best_multitask_model.pt",
 }

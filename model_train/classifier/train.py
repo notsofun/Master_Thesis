@@ -34,17 +34,16 @@ def train():
     
     logger.info(f"训练集大小: {len(train_df)}, 验证集大小: {len(val_df)}")
 
-    # 计算仇恨文本的权重 (针对 134/2000 的不平衡)
-    # pos_weight = negative_samples / positive_samples
+    # 计算仇恨文本的权重
     neg_count = (train_df[CONFIG["hate_label_col"]] == 0).sum()
     pos_count = (train_df[CONFIG["hate_label_col"]] == 1).sum()
     hate_weight = torch.tensor([neg_count / max(pos_count, 1)]).to(CONFIG["device"])
     logger.info(f"自动设置仇恨分类权重 (pos_weight): {hate_weight.item():.2f}")
 
     tokenizer = AutoTokenizer.from_pretrained(CONFIG["model_name"])
-    logger.info(f"本次微调的基座模型是{CONFIG["model_name"]}")
+    logger.info(f"本次微调的基座模型是{CONFIG['model_name']}")
     model = MultiTaskClassifier(CONFIG["model_name"]).to(CONFIG["device"])
-    logger.info(f"我们使用该设备{CONFIG["device"]}")
+    logger.info(f"我们使用该设备{CONFIG['device']}")
 
     train_dataset = MultiTaskDataset(train_df, tokenizer, CONFIG)
     val_dataset = MultiTaskDataset(val_df, tokenizer, CONFIG)
@@ -63,7 +62,7 @@ def train():
         model.train()
         total_loss = 0
         
-        for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}/{CONFIG["epochs"]} [Train]"):
+        for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}/{CONFIG['epochs']} [Train]"):
             optimizer.zero_grad()
             
             input_ids = batch['input_ids'].to(CONFIG["device"])
@@ -76,7 +75,6 @@ def train():
             loss_rel = criterion_rel(rel_logits, rel_labels)
             loss_hate = criterion_hate(hate_logits, hate_labels)
             
-            # 总损失平衡 (可以根据需要调整权重)
             loss = loss_rel + loss_hate 
             
             loss.backward()
@@ -85,7 +83,8 @@ def train():
 
         # --- 验证阶段 ---
         model.eval()
-        val_results = {"rel_true": [], "rel_pred": [], "hate_true": [], "hate_pred": []}
+        # 新增 val_texts 用来记录原始文本
+        val_results = {"rel_true": [], "rel_pred": [], "hate_true": [], "hate_pred": [], "texts": []}
         
         with torch.no_grad():
             for batch in tqdm(val_loader, desc=f"Epoch {epoch+1} [Val]"):
@@ -94,11 +93,14 @@ def train():
                 
                 rel_logits, hate_logits = model(input_ids, attention_mask)
                 
-                # Sigmoid 激活并转为 0/1 判定
+                # 解码文本并存入结果
+                batch_texts = [tokenizer.decode(g, skip_special_tokens=True) for g in input_ids]
+                val_results["texts"].extend(batch_texts)
+                
                 val_results["rel_true"].extend(batch['rel_labels'].cpu().numpy())
-                val_results["rel_pred"].extend(torch.sigmoid(rel_logits).cpu().numpy() > 0.5)
+                val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.5).astype(int))
                 val_results["hate_true"].extend(batch['hate_labels'].cpu().numpy())
-                val_results["hate_pred"].extend(torch.sigmoid(hate_logits).cpu().numpy() > 0.5)
+                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.5).astype(int))
 
         # 计算指标
         metrics = {
@@ -118,15 +120,32 @@ def train():
         if current_score > best_score:
             best_score = current_score
             
-            # --- 新增：确保文件夹存在 ---
             save_dir = os.path.dirname(CONFIG["save_path"])
             if save_dir and not os.path.exists(save_dir):
                 os.makedirs(save_dir, exist_ok=True)
-                logger.info(f"创建了不存在的目录: {save_dir}")
-            # --------------------------
-
+            
             torch.save(model.state_dict(), CONFIG["save_path"])
             logger.info(f">>> 检测到更好的 {CONFIG['monitor_metric']}: {best_score:.4f}, 模型已保存。")
+
+            # ==========================================
+            # 新增：错误分析导出逻辑 (仅针对 Hate 任务)
+            # ==========================================
+            error_analysis_list = []
+            for t, true_val, pred_val in zip(val_results["texts"], val_results["hate_true"], val_results["hate_pred"]):
+                if true_val != pred_val:
+                    error_analysis_list.append({
+                        "Text": t,
+                        "True_Hate": int(true_val),
+                        "Pred_Hate": int(pred_val),
+                        "Error_Type": "漏报(FN)" if true_val == 1 else "误报(FP)"
+                    })
+            
+            if error_analysis_list:
+                error_df = pd.DataFrame(error_analysis_list)
+                error_log_path = os.path.join(save_dir, f"error_analysis_epoch_{epoch+1}.csv")
+                error_df.to_csv(error_log_path, index=False, encoding='utf_8_sig')
+                logger.info(f"!!! 已导出错误样本至: {error_log_path}")
+            # ==========================================
 
 if __name__ == "__main__":
     try:
@@ -134,8 +153,6 @@ if __name__ == "__main__":
         train()
         logger.info("训练正常结束。")
     except Exception as e:
-        # 核心：使用 logger.exception 记录完整的报错堆栈信息
         logger.error("!!! 训练过程中发生崩溃 !!!")
         logger.exception(e) 
-        # 确保报错后程序能正常退出，并提示
         sys.exit(1)

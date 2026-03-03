@@ -4,7 +4,7 @@ from datetime import datetime
 import inspect
 
 
-def setup_logging():
+def setup_logging(name:str = 'train'):
     # 1. 获取调用该函数的脚本路径 (例如 train.py)
     caller_frame = inspect.currentframe().f_back
     caller_file = caller_frame.f_globals['__file__']
@@ -18,7 +18,7 @@ def setup_logging():
         os.makedirs(log_dir)
     
     # 生成日志文件名
-    log_filename = datetime.now().strftime("%Y%m%d_%H%M%S_train.log")
+    log_filename = datetime.now().strftime(f"%Y%m%d_%H%M%S_{name}.log")
     log_path = os.path.join(log_dir, log_filename)
 
     # 配置 Logger

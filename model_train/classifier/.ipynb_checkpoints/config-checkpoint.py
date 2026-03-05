@@ -25,5 +25,5 @@ CONFIG = {
     
     # 保存策略
     "monitor_metric": "combined_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
-    "save_path": "model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both.pt",
+    "save_path": "model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both_focal_loss.pt",
 }

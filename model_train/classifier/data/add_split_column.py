@@ -21,6 +21,7 @@ from pathlib import Path
 import sys
 import pandas as pd
 import numpy as np
+from collections import defaultdict
 
 def stratified_split(df, hate_col, christ_col, val_size, seed):
     from sklearn.model_selection import StratifiedShuffleSplit
@@ -72,9 +73,44 @@ def process_file(path: Path, val_size: float, seed: int, inplace: bool):
     df[hate_col] = df[hate_col].map(label_map).fillna(0).astype(int)
     df[christ_col] = df[christ_col].map(label_map).fillna(0).astype(int)
 
-    # 3. 执行分层切分 (此时 df 已经是数值了)
-    mask = stratified_split(df, hate_col, christ_col, val_size, seed)
-    df["split"] = ["val" if m else "train" for m in mask]
+    # 3. 处理 group_id 逻辑
+    if 'group_id' in df.columns:
+        # 分离有 group_id 和没有的行
+        has_group = df[df['group_id'].notna() & (df['group_id'] != '')].copy()
+        no_group = df[~(df['group_id'].notna() & (df['group_id'] != ''))].copy()
+        
+        # 处理有 group 的部分
+        if not has_group.empty:
+            # 按 group_id 分组，计算每个 group 的代表标签（众数）
+            groups = has_group.groupby('group_id')
+            group_reps = []
+            for gid, gdf in groups:
+                hate_mode = gdf[hate_col].mode()[0] if not gdf[hate_col].mode().empty else 0
+                christ_mode = gdf[christ_col].mode()[0] if not gdf[christ_col].mode().empty else 0
+                group_reps.append({'group_id': gid, 'hate_rep': hate_mode, 'christ_rep': christ_mode})
+            
+            group_df = pd.DataFrame(group_reps)
+            
+            # 对 groups 做分层抽样
+            group_mask = stratified_split(group_df, 'hate_rep', 'christ_rep', val_size, seed)
+            
+            # 创建 group_id 到 split 的映射
+            group_split = {row['group_id']: 'val' if m else 'train' for row, m in zip(group_df.to_dict('records'), group_mask)}
+            
+            # 为 has_group 设置 split
+            has_group['split'] = has_group['group_id'].map(group_split)
+        
+        # 处理无 group 的部分
+        if not no_group.empty:
+            no_group_mask = stratified_split(no_group, hate_col, christ_col, val_size, seed)
+            no_group['split'] = ['val' if m else 'train' for m in no_group_mask]
+        
+        # 合并
+        df = pd.concat([has_group, no_group], ignore_index=True)
+    else:
+        # 没有 group_id 列，正常分层抽样
+        mask = stratified_split(df, hate_col, christ_col, val_size, seed)
+        df["split"] = ["val" if m else "train" for m in mask]
 
     # 4. 打印分布检查（确保分层成功）
     train_pos = df[df["split"]=="train"][hate_col].sum()

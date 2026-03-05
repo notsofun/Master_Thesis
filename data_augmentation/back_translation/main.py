@@ -54,23 +54,25 @@ class DataAugmenter:
             words.insert(ins_idx, random.choice(self.punctuations))
         return "".join(words)
 
-def process_row(row, augmenter, config):
+def process_row(row, augmenter, config, group_id):
     """单行处理函数，供线程池调用"""
     original_text = str(row[config["text_column"]])
     
-    # 提取所有标签的值
+    # 提取所有标签的值和其他字段
     labels_dict = {col: row[col] for col in config["label_columns"]}
+    other_fields = {col: row[col] for col in row.index if col not in config["label_columns"] and col != config["text_column"]}
     local_results = []
 
     def create_new_entry(new_text, method_name):
-        entry = {config["text_column"]: new_text, "method": method_name}
-        entry.update(labels_dict) # 合并标签数据
+        entry = {config["text_column"]: new_text, "method": method_name, "group_id": group_id}
+        entry.update(labels_dict)  # 合并标签数据
+        entry.update(other_fields)  # 合并其他字段
         return entry
 
     # 1. 批量处理回译
     for lang in config["back_trans_langs"]:
         bt_text = augmenter.back_translate_logic(original_text, lang)
-        time.sleep(0.4) # 稍微降低频率防止被封
+        time.sleep(0.4)  # 稍微降低频率防止被封
         if bt_text and bt_text != original_text:
             local_results.append(create_new_entry(bt_text, f"BT_{lang}"))
             
@@ -105,19 +107,37 @@ def run():
 
     augmenter = DataAugmenter(CONFIG)
     new_rows = []
+    original_rows = []
+
+    # 为每个目标行分配 group_id
+    target_df = target_df.copy()
+    target_df['group_id'] = range(len(target_df))
 
     # 2. 多线程执行
     with ThreadPoolExecutor(max_workers=CONFIG["max_workers"]) as executor:
-        futures = [executor.submit(process_row, row, augmenter, CONFIG) for _, row in target_df.iterrows()]
+        futures = [executor.submit(process_row, row, augmenter, CONFIG, group_id) for (_, row), group_id in zip(target_df.iterrows(), target_df['group_id'])]
         
         for future in tqdm(as_completed(futures), total=len(futures), desc="数据增强进度"):
             res = future.result()
             if res:
                 new_rows.extend(res)
 
+    # 为原始行添加 method 和 group_id
+    for _, row in target_df.iterrows():
+        original_entry = row.to_dict()
+        original_entry['method'] = 'original'
+        original_rows.append(original_entry)
+
     # 3. 合并与保存
     aug_df = pd.DataFrame(new_rows)
-    final_df = pd.concat([df, aug_df], ignore_index=True)
+    original_aug_df = pd.DataFrame(original_rows)
+    
+    # 处理不符合条件的行：添加 method 和 group_id
+    non_target_df = df[~condition].copy()
+    non_target_df['method'] = 'original'
+    non_target_df['group_id'] = -1
+    
+    final_df = pd.concat([non_target_df, original_aug_df, aug_df], ignore_index=True)
     
     # 根据文本去重，保留第一次出现的（通常是原数据）
     final_df.drop_duplicates(subset=[CONFIG["text_column"]], keep='first', inplace=True)

@@ -1,0 +1,11 @@
+2026-03-06 05:59:31,813 - INFO - 开始训练流程...
+2026-03-06 05:59:31,813 - INFO - 日志将保存至: /root/autodl-tmp/Master_Thesis/model_train/classifier/logs/20260306_055931_train.log
+2026-03-06 05:59:31,845 - INFO - 训练集大小: 5249, 验证集大小: 584
+2026-03-06 05:59:33,485 - INFO - 本次微调的基座模型是thu-coai/roberta-base-cold
+2026-03-06 05:59:34,578 - INFO - 我们使用该设备cuda
+2026-03-06 05:59:49,469 - INFO - Epoch 1 结果: {'rel_acc': 0.9023972602739726, 'rel_f1': 0.9200561009817672, 'hate_acc': 0.9606164383561644, 'hate_f1': 0.902127659574468, 'combined_f1': 0.9110918802781176, 'hate_recall': 0.8833333333333333, 'total_loss': 0.14545748532271313}
+2026-03-06 05:59:50,246 - INFO - >>> 检测到更好的 combined_f1: 0.9111, 模型已保存。
+2026-03-06 05:59:50,251 - INFO - !!! 已导出错误样本至: model_train/classifier/Chinese/error_analysis_epoch_1.csv
+2026-03-06 06:00:04,687 - INFO - Epoch 2 结果: {'rel_acc': 0.940068493150685, 'rel_f1': 0.9521203830369357, 'hate_acc': 0.9726027397260274, 'hate_f1': 0.9365079365079365, 'combined_f1': 0.944314159772436, 'hate_recall': 0.9833333333333333, 'total_loss': 0.038973825319180415}
+2026-03-06 06:00:05,593 - INFO - >>> 检测到更好的 combined_f1: 0.9443, 模型已保存。
+2026-03-06 06:00:05,605 - INFO - !!! 已导出错误样本至: model_train/classifier/Chinese/error_analysis_epoch_2.csv

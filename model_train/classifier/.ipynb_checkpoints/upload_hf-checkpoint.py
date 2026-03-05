@@ -1,13 +1,15 @@
 from huggingface_hub import HfApi
 import os
 
+# python model_train/classifier/upload_hf.py
+
 # ================= 配置区 =================
 # 你的 HF 用户名
 USER_NAME = "Zhidian2025" 
 # 仓库名称（会自动创建，如果是私有的记得在官网设为 Private）
 REPO_NAME = "Master-Thesis-Models" 
 # 本地模型文件的完整路径
-LOCAL_FILE_PATH = "model_train/classifier/Chinese/thu_best_multitask_model_back_translated.pt"
+LOCAL_FILE_PATH = "model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both.pt"
 # 上传到 HF 仓库后叫什么名字
 REMOTE_FILE_NAME = "Thu-Chinese-hate-v1.pt"
 # ==========================================

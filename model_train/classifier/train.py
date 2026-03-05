@@ -21,22 +21,29 @@ from dataset import MultiTaskDataset
 from models.base_model import MultiTaskClassifier
 
 class FocalLoss(nn.Module):
-    def __init__(self, alpha=1, gamma=2, reduction='mean'):
+    def __init__(self, alpha=0.25, gamma=2, reduction='mean'):
         super(FocalLoss, self).__init__()
         self.alpha = alpha
         self.gamma = gamma
         self.reduction = reduction
 
     def forward(self, inputs, targets):
+        # inputs: [batch, 1], targets: [batch, 1]
         BCE_loss = F.binary_cross_entropy_with_logits(inputs, targets, reduction='none')
         pt = torch.exp(-BCE_loss)
-        F_loss = self.alpha * (1 - pt) ** self.gamma * BCE_loss
+        
+        # --- 关键改进：根据标签选择 alpha_t ---
+        # 如果 targets 是 1，权重是 self.alpha
+        # 如果 targets 是 0，权重是 1 - self.alpha
+        alpha_t = targets * self.alpha + (1 - targets) * (1 - self.alpha)
+        
+        F_loss = alpha_t * (1 - pt) ** self.gamma * BCE_loss
+        
         if self.reduction == 'mean':
             return torch.mean(F_loss)
         elif self.reduction == 'sum':
             return torch.sum(F_loss)
-        else:
-            return F_loss
+        return F_loss
 
 # 初始化日志
 logger, LOG_FILE_PATH = setup_logging()
@@ -63,10 +70,24 @@ def train():
     
     train_loader = DataLoader(train_dataset, batch_size=CONFIG["batch_size"], shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=CONFIG["batch_size"])
+    
+    # --- 自动计算类别分布并动态设置 Alpha ---
+    def get_alpha(df, col_name):
+        # 计算正样本比例
+        pos_ratio = df[col_name].mean() 
+        # Alpha 为负样本比例，用于补偿少数的正样本
+        # 常用经验公式：alpha = 1 - pos_ratio
+        return 1 - pos_ratio
+    
+    alpha_rel = get_alpha(train_df, CONFIG["rel_label_col"])
+    alpha_hate = get_alpha(train_df, CONFIG["hate_label_col"])
+    
+    logger.info(f"自动计算的 Alpha -> Rel: {alpha_rel:.4f}, Hate: {alpha_hate:.4f}")
+    
+    # 损失函数初始化（传入动态 alpha）
+    criterion_rel = FocalLoss(alpha=alpha_rel, gamma=2)
+    criterion_hate = FocalLoss(alpha=alpha_hate, gamma=2)
 
-    # 损失函数与优化器
-    criterion_rel = FocalLoss(alpha=1, gamma=2)
-    criterion_hate = FocalLoss(alpha=1, gamma=2)
     optimizer = AdamW(model.parameters(), lr=CONFIG["lr"])
     
     best_score = -1

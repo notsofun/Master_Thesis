@@ -1,6 +1,8 @@
 from huggingface_hub import HfApi
 import os
 
+# python model_train/classifier/upload_hf.py
+
 # ================= 配置区 =================
 # 你的 HF 用户名
 USER_NAME = "Zhidian2025" 

@@ -5,8 +5,8 @@ import torch
 # ==========================================
 CONFIG = {
     # "model_name": "kubota/luke-large-defamation-detection-japanese",
-    "model_name": "tabularisai/multilingual-sentiment-analysis", 
-    "csv_path": "model_train/classifier/data/chinese_finetuning_1_with_split.csv",            # 你的CSV文件路径
+    "model_name": "thu-coai/roberta-base-cold", 
+    "csv_path": "model_train/classifier/data/chinese_finetuning_2_with_split.csv",            # 你的CSV文件路径
     
     # 字段映射
     "text_col": "text",             # CSV中存放文本的列名
@@ -24,6 +24,6 @@ CONFIG = {
     "device": "cuda" if torch.cuda.is_available() else "cpu",
     
     # 保存策略
-    "monitor_metric": "hate_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
-    "save_path": "model_train/classifier/Chinese/tabu_best_multitask_model.pt",
+    "monitor_metric": "combined_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
+    "save_path": "model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both.pt",
 }

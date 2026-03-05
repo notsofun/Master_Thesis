@@ -80,10 +80,9 @@ def train():
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
-
+    
         # --- 验证阶段 ---
         model.eval()
-        # 新增 val_texts 用来记录原始文本
         val_results = {"rel_true": [], "rel_pred": [], "hate_true": [], "hate_pred": [], "texts": []}
         
         with torch.no_grad():
@@ -93,7 +92,6 @@ def train():
                 
                 rel_logits, hate_logits = model(input_ids, attention_mask)
                 
-                # 解码文本并存入结果
                 batch_texts = [tokenizer.decode(g, skip_special_tokens=True) for g in input_ids]
                 val_results["texts"].extend(batch_texts)
                 
@@ -102,12 +100,17 @@ def train():
                 val_results["hate_true"].extend(batch['hate_labels'].cpu().numpy())
                 val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.5).astype(int))
 
-        # 计算指标
+        # 计算基础指标
+        rel_f1 = f1_score(val_results["rel_true"], val_results["rel_pred"])
+        hate_f1 = f1_score(val_results["hate_true"], val_results["hate_pred"])
+
+        # 新增：合并指标 (在这里计算组合分)
         metrics = {
             "rel_acc": accuracy_score(val_results["rel_true"], val_results["rel_pred"]),
-            "rel_f1": f1_score(val_results["rel_true"], val_results["rel_pred"]),
+            "rel_f1": rel_f1,
             "hate_acc": accuracy_score(val_results["hate_true"], val_results["hate_pred"]),
-            "hate_f1": f1_score(val_results["hate_true"], val_results["hate_pred"]),
+            "hate_f1": hate_f1,
+            "combined_f1": (rel_f1 + hate_f1) / 2,  # 算术平均，确保模型不偏科
             "hate_recall": recall_score(val_results["hate_true"], val_results["hate_pred"]),
             "total_loss": total_loss / len(train_loader)
         }
@@ -115,6 +118,7 @@ def train():
         logger.info(f"Epoch {epoch+1} 结果: {metrics}")
 
         # --- 保存逻辑 ---
+        # 此时只需在 CONFIG["monitor_metric"] 中填入 "combined_f1" 即可
         current_score = metrics[CONFIG["monitor_metric"]]
         
         if current_score > best_score:
@@ -127,9 +131,6 @@ def train():
             torch.save(model.state_dict(), CONFIG["save_path"])
             logger.info(f">>> 检测到更好的 {CONFIG['monitor_metric']}: {best_score:.4f}, 模型已保存。")
 
-            # ==========================================
-            # 新增：错误分析导出逻辑 (仅针对 Hate 任务)
-            # ==========================================
             error_analysis_list = []
             for t, true_val, pred_val in zip(val_results["texts"], val_results["hate_true"], val_results["hate_pred"]):
                 if true_val != pred_val:
@@ -145,8 +146,7 @@ def train():
                 error_log_path = os.path.join(save_dir, f"error_analysis_epoch_{epoch+1}.csv")
                 error_df.to_csv(error_log_path, index=False, encoding='utf_8_sig')
                 logger.info(f"!!! 已导出错误样本至: {error_log_path}")
-            # ==========================================
-
+                
 if __name__ == "__main__":
     try:
         logger.info("开始训练流程...")

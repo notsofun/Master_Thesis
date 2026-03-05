@@ -35,10 +35,10 @@ def filter_dataset():
     logging.info(f"原始数据总量: {original_count} 条")
 
     # 2. 执行筛选逻辑
-    # 目标：hate_speech == '是' 且 christianity_related == '否'
+    # 目标：hate_speech == '是' 或 christianity_related == '是'
     # 注意：这里使用了 str.strip() 消除可能存在的空格干扰
     condition = (
-        (df[CONFIG["col_hate"]].astype(str).str.strip() == "是") & 
+        (df[CONFIG["col_hate"]].astype(str).str.strip() == "是") | 
         (df[CONFIG["col_rel"]].astype(str).str.strip() == "是")
     )
     
@@ -54,7 +54,7 @@ def filter_dataset():
     if final_count > 0:
         filtered_df.to_csv(CONFIG["output_file"], index=False, encoding='utf-8-sig')
         logging.info(f"筛选完成！")
-        logging.info(f"符合条件 (是仇恨 & 非宗教相关) 的文本: {final_count} 条")
+        logging.info(f"符合条件 (是仇恨 或 宗教相关) 的文本: {final_count} 条")
         logging.info(f"过滤掉不符条件数据: {original_count - final_count} 条")
         logging.info(f"结果已保存至: {CONFIG['output_file']}")
     else:

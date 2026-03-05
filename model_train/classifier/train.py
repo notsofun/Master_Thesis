@@ -61,9 +61,7 @@ def train():
     logger.info(f"训练集大小: {len(train_df)}, 验证集大小: {len(val_df)}")
 
     tokenizer = AutoTokenizer.from_pretrained(CONFIG["model_name"])
-    logger.info(f"本次微调的基座模型是{CONFIG['model_name']}")
     model = MultiTaskClassifier(CONFIG["model_name"]).to(CONFIG["device"])
-    logger.info(f"我们使用该设备{CONFIG['device']}")
 
     train_dataset = MultiTaskDataset(train_df, tokenizer, CONFIG)
     val_dataset = MultiTaskDataset(val_df, tokenizer, CONFIG)
@@ -71,26 +69,32 @@ def train():
     train_loader = DataLoader(train_dataset, batch_size=CONFIG["batch_size"], shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=CONFIG["batch_size"])
     
-    # --- 自动计算类别分布并动态设置 Alpha ---
-    def get_alpha(df, col_name):
-        # 计算正样本比例
-        pos_ratio = df[col_name].mean() 
-        # Alpha 为负样本比例，用于补偿少数的正样本
-        # 常用经验公式：alpha = 1 - pos_ratio
-        return 1 - pos_ratio
-    
-    alpha_rel = get_alpha(train_df, CONFIG["rel_label_col"])
-    alpha_hate = get_alpha(train_df, CONFIG["hate_label_col"])
-    
-    logger.info(f"自动计算的 Alpha -> Rel: {alpha_rel:.4f}, Hate: {alpha_hate:.4f}")
-    
-    # 损失函数初始化（传入动态 alpha）
-    criterion_rel = FocalLoss(alpha=alpha_rel, gamma=2)
-    criterion_hate = FocalLoss(alpha=alpha_hate, gamma=2)
+    # --- 自动计算 Alpha ---
+    alpha_rel = 1 - train_df[CONFIG["rel_label_col"]].mean()
+    alpha_hate = 1 - train_df[CONFIG["hate_label_col"]].mean()
+    criterion_rel = FocalLoss(alpha=alpha_rel, gamma=3)
+    criterion_hate = FocalLoss(alpha=alpha_hate, gamma=3)
 
+    # ================= 修改点 1: 学习率与优化器设置 =================
+    # 建议将 CONFIG["lr"] 调小，例如 5e-6 或 1e-5
     optimizer = AdamW(model.parameters(), lr=CONFIG["lr"])
     
+    total_steps = len(train_loader) * CONFIG["epochs"]
+    # 设置 Warmup Step 为总步数的 10%
+    warmup_steps = int(total_steps * 0.1)
+    
+    scheduler = get_linear_schedule_with_warmup(
+        optimizer, 
+        num_warmup_steps=warmup_steps, 
+        num_training_steps=total_steps
+    )
+    # ============================================================
+
     best_score = -1
+    # ================= 修改点 2: 提前停止计数器 =================
+    patience = 3  # 如果连续 3 轮指标不涨，就停止
+    no_improve_epochs = 0
+    # ============================================================
     
     for epoch in range(CONFIG["epochs"]):
         model.train()
@@ -113,6 +117,7 @@ def train():
             
             loss.backward()
             optimizer.step()
+            scheduler.step()  # 更新学习率
             total_loss += loss.item()
     
         # --- 验证阶段 ---
@@ -126,44 +131,42 @@ def train():
                 
                 rel_logits, hate_logits = model(input_ids, attention_mask)
                 
+                # 解码用于错误分析
                 batch_texts = [tokenizer.decode(g, skip_special_tokens=True) for g in input_ids]
                 val_results["texts"].extend(batch_texts)
                 
                 val_results["rel_true"].extend(batch['rel_labels'].cpu().numpy())
                 val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.5).astype(int))
                 val_results["hate_true"].extend(batch['hate_labels'].cpu().numpy())
-                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.5).astype(int))
+                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.3).astype(int))
 
-        # 计算基础指标
+        # 计算指标
         rel_f1 = f1_score(val_results["rel_true"], val_results["rel_pred"])
         hate_f1 = f1_score(val_results["hate_true"], val_results["hate_pred"])
-
-        # 新增：合并指标 (在这里计算组合分)
         metrics = {
-            "rel_acc": accuracy_score(val_results["rel_true"], val_results["rel_pred"]),
             "rel_f1": rel_f1,
-            "hate_acc": accuracy_score(val_results["hate_true"], val_results["hate_pred"]),
             "hate_f1": hate_f1,
-            "combined_f1": (rel_f1 + hate_f1) / 2,  # 算术平均，确保模型不偏科
+            "combined_f1": (rel_f1 + hate_f1) / 2,
             "hate_recall": recall_score(val_results["hate_true"], val_results["hate_pred"]),
-            "total_loss": total_loss / len(train_loader)
+            "total_loss": total_loss / len(train_loader),
+            "lr": optimizer.param_groups[0]['lr'] # 记录当前学习率
         }
         
         logger.info(f"Epoch {epoch+1} 结果: {metrics}")
 
-        # --- 保存逻辑 ---
-        # 此时只需在 CONFIG["monitor_metric"] 中填入 "combined_f1" 即可
+        # --- 保存逻辑与提前停止逻辑 ---
         current_score = metrics[CONFIG["monitor_metric"]]
         
         if current_score > best_score:
             best_score = current_score
+            no_improve_epochs = 0 # 重置计数器
             
             save_dir = os.path.dirname(CONFIG["save_path"])
-            if save_dir and not os.path.exists(save_dir):
-                os.makedirs(save_dir, exist_ok=True)
+            if not os.path.exists(save_dir):
+                os.makedirs(save_dir)
             
             torch.save(model.state_dict(), CONFIG["save_path"])
-            logger.info(f">>> 检测到更好的 {CONFIG['monitor_metric']}: {best_score:.4f}, 模型已保存。")
+            logger.info(f">>> 指标提升，模型已保存。")
 
             error_analysis_list = []
             for t, true_val, pred_val in zip(val_results["texts"], val_results["hate_true"], val_results["hate_pred"]):
@@ -180,7 +183,16 @@ def train():
                 error_log_path = os.path.join(save_dir, f"error_analysis_epoch_{epoch+1}.csv")
                 error_df.to_csv(error_log_path, index=False, encoding='utf_8_sig')
                 logger.info(f"!!! 已导出错误样本至: {error_log_path}")
-                
+
+        else:
+            no_improve_epochs += 1
+            logger.info(f"--- 指标未提升 (已持续 {no_improve_epochs} 轮) ---")
+
+        # 触发提前停止
+        if no_improve_epochs >= patience:
+            logger.info(f"早停触发！连续 {patience} 轮没有进步，停止训练以防过拟合。")
+            break
+            
 if __name__ == "__main__":
     try:
         logger.info("开始训练流程...")

@@ -19,11 +19,11 @@ CONFIG = {
     "max_len": 64,                          # 短句多，64-128即可
     "batch_size": 16,
     "epochs": 10,
-    "lr": 2e-5,
+    "lr": 8e-6,
     "warmup_steps": 0,
     "device": "cuda" if torch.cuda.is_available() else "cpu",
     
     # 保存策略
     "monitor_metric": "combined_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
-    "save_path": "model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both_focal_loss.pt",
+    "save_path": "model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both_focal_loss_low_threshold.pt",
 }

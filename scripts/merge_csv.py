@@ -63,7 +63,7 @@ if __name__ == "__main__":
     # 在这里指定你的文件路径
     files_to_combine = [
         "data_augmentation/back_translation/data/back_translated_chinese.csv",
-        "model_train/classifier/data/chinese_finetuning_1.csv",
+        "model_train/classifier/data/chinese_finetuning.csv",
         # "C:/path/to/your/file3.csv" 
     ]
     

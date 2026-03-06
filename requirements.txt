@@ -26,6 +26,7 @@ cydifflib
 decorator
 Deprecated==1.3.1
 dill
+deepl
 distro==1.9.0
 docopt==0.6.2
 exceptiongroup

@@ -62,13 +62,13 @@ def process_csv_files(input_paths, output_path):
 if __name__ == "__main__":
     # 在这里指定你的文件路径
     files_to_combine = [
-        "data_augmentation/back_translation/data/back_translated_chinese.csv",
-        "model_train/classifier/data/chinese_finetuning.csv",
+        "data_augmentation/back_translation/data/back_translated_japanese.csv",
+        "model_train/classifier/data/japanese_finetuning.csv",
         # "C:/path/to/your/file3.csv" 
     ]
     
     # 指定输出路径
-    final_output = "model_train/classifier/data/chinese_finetuning_2.csv"
+    final_output = "model_train/classifier/data/japanese_finetuning_2.csv"
     
     # 执行
     process_csv_files(files_to_combine, final_output)

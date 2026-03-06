@@ -1,0 +1,13 @@
+2026-03-06 21:32:26,128 - INFO - 检测到本地权重文件: model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both_focal_loss.pt，跳过下载。
+2026-03-06 21:32:26,129 - INFO - 正在加载 Tokenizer 和模型至设备: cuda...
+2026-03-06 21:32:30,136 - INFO - 模型加载成功，进入评估模式。
+2026-03-06 21:32:30,136 - INFO - 正在读取数据: data_collection/Tieba/final_cleaned_data.csv
+2026-03-06 21:32:30,180 - INFO - 开始推理，总计数据量: 15181
+2026-03-06 21:32:42,797 - INFO - 推理结束，开始生成统计报告：
+2026-03-06 21:32:42,798 - INFO - === 宗教相关性任务 分布报告 ===
+2026-03-06 21:32:42,798 - INFO -   > Negative (0): 11885 条 (78.29%)
+2026-03-06 21:32:42,798 - INFO -   > Positive (1): 3296 条 (21.71%)
+2026-03-06 21:32:42,799 - INFO - === 仇恨言论检测任务 分布报告 ===
+2026-03-06 21:32:42,799 - INFO -   > Negative (0): 13494 条 (88.89%)
+2026-03-06 21:32:42,799 - INFO -   > Positive (1): 1687 条 (11.11%)
+2026-03-06 21:32:42,831 - INFO - 预测结果已保存至: data_detect/finetuned_detection/chinese_predictions.csv

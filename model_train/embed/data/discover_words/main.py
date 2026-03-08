@@ -1,3 +1,4 @@
+# python model_train/embed/data/discover_words/main.py
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -13,9 +14,9 @@ SEED_CSV_PATH = 'model_train/embed/data/seed_words.csv'
 
 # 2. 三语语料库路径 (假设每个 CSV 只有一列 'text')
 CORPUS_PATHS = {
-    'zh': 'data_detect/finetuned_detection/chinese_predictions.csv',
+    'zh': 'data_detect/finetuned_detection/chinese_final_religious_hate.csv',
     'en': 'data_collection/English_Existing/merged_deduped.csv',
-    'jp': 'data_detect/finetuned_detection/japanese_predictions.csv'
+    'jp': 'data_detect/finetuned_detection/japanese_final_religious_hate.csv'
 }
 
 # 3. 模型选择

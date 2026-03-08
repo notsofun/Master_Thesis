@@ -24,13 +24,13 @@ logger, LOG_FILE_PATH = setup_logging(name="fine-tuned_predictions")
 # ==========================================
 # 2. 配置参数
 # ==========================================
-MODEL_NAME = "thu-coai/roberta-base-cold"
-WEIGHTS_URL = "https://huggingface.co/Zhidian2025/Master-Thesis-Models/resolve/main/Thu-Chinese-hate-v1.pt"
-LOCAL_WEIGHTS_PATH = "model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both_focal_loss.pt"
+MODEL_NAME = "kubota/luke-large-defamation-detection-japanese"
+WEIGHTS_URL = "https://huggingface.co/Zhidian2025/Master-Thesis-Models/resolve/main/Kubota-Japanese-hate-v2.pt"
+LOCAL_WEIGHTS_PATH = "model_train/classifier/Japanese/Kubota-Japanese-hate-v2.pt"
 
-INPUT_CSV = "data_collection/Tieba/final_cleaned_data.csv"
+INPUT_CSV = "data_collection/5ch/raw_religious_ja.csv"
 TEXT_COLUMN = "text"
-OUTPUT_CSV = "data_detect/finetuned_detection/chinese_predictions.csv"
+OUTPUT_CSV = "data_detect/finetuned_detection/japanese_predictions.csv"
 
 BATCH_SIZE = 32 
 MAX_LENGTH = 256

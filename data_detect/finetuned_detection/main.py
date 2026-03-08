@@ -24,9 +24,9 @@ logger, LOG_FILE_PATH = setup_logging(name="fine-tuned_predictions")
 # ==========================================
 # 2. 配置参数
 # ==========================================
-MODEL_NAME = "thu-coai/roberta-base-cold"
+MODEL_NAME = "kubota/luke-large-defamation-detection-japanese"
 WEIGHTS_URL = "https://huggingface.co/Zhidian2025/Master-Thesis-Models/resolve/main/Kubota-Japanese-hate-v2.pt"
-LOCAL_WEIGHTS_PATH = "model_train/classifier/Japanese"
+LOCAL_WEIGHTS_PATH = "model_train/classifier/Japanese/Kubota-Japanese-hate-v2.pt"
 
 INPUT_CSV = "data_collection/5ch/raw_religious_ja.csv"
 TEXT_COLUMN = "text"

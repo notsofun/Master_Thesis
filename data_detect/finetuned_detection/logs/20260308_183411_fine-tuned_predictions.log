@@ -1,0 +1,3 @@
+2026-03-08 18:34:11,874 - INFO - 检测到本地权重文件: model_train/classifier/Japanese，跳过下载。
+2026-03-08 18:34:11,874 - INFO - 正在加载 Tokenizer 和模型至设备: cuda...
+2026-03-08 18:34:15,066 - ERROR - 模型初始化失败: [Errno 21] Is a directory: 'model_train/classifier/Japanese'

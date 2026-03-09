@@ -14,6 +14,7 @@ from nltk.corpus import stopwords
 
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('punkt_tab')
 
 # ================= 配置区域 =================
 # 1. 种子词典路径 (包含: 概念含义,中文隐喻/黑话,英文等价表达,日文等价表达,文化背景解释)

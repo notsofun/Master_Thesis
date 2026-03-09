@@ -8,6 +8,12 @@ import jieba
 import re
 from tqdm import tqdm
 from janome.tokenizer import Tokenizer as JanomeTokenizer
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+
+nltk.download('punkt')
+nltk.download('stopwords')
 
 # ================= 配置区域 =================
 # 1. 种子词典路径 (包含: 概念含义,中文隐喻/黑话,英文等价表达,日文等价表达,文化背景解释)
@@ -25,8 +31,7 @@ MODEL_NAME = 'intfloat/multilingual-e5-large-instruct'
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 # 4. 参数设置
-TOP_K_KEYWORDS = 1000  # 每种语言从语料中提取多少个高频词作为候选
-NEAREST_NEIGHBORS = 15  # 每个种子词找多少个近邻
+NEAREST_NEIGHBORS = 10  # 每个种子词找多少个近邻
 # ===========================================
 
 print(f"正在加载模型: {MODEL_NAME}...")
@@ -35,41 +40,60 @@ model = SentenceTransformer(MODEL_NAME, device=DEVICE)
 jt = JanomeTokenizer()
 
 def basic_tokenizer(text, lang):
+    text = str(text).lower()
+    
     if lang == 'zh':
         return " ".join(jieba.cut(text))
+    
     if lang == 'jp':
-        # 使用 Janome 进行日语分词，比直接切单字效果好得多
         return " ".join([token.surface for token in jt.tokenize(text)])
-    return text.lower()
+    
+    if lang == 'en':
+        tokens = word_tokenize(text)
+        return " ".join(tokens)
+    
+    return text
 
-def extract_candidates(file_path, lang):
+def extract_candidates(file_path, lang, top_k=500):
     print(f"正在分析 {lang} 语料库关键词...")
     df = pd.read_csv(file_path)
     
-    # 增加一个简单的清洗，去掉 URL 和标点，防止干扰 TF-IDF
+    # 1. 清洗：去掉URL和特殊噪音
     def clean_text(t):
-        t = re.sub(r'http\S+|www\S+|https\S+', '', str(t), flags=re.MULTILINE)
+        t = re.sub(r'http\S+|www\S+|https\S+', '', str(t))
+        # 过滤掉一些乱码或过短的干扰
         return t
 
     processed_text = df['text'].apply(clean_text).apply(lambda x: basic_tokenizer(x, lang))
     
-    # 关键修改点：token_pattern 允许单字词，并增加 max_df 防止常见词霸榜
+    # 2. 配置停用词
+    # 只有英文和部分语言有内置停用词表，中文通常需要自定义
+    stop_words_list = None
+    if lang == 'en':
+        stop_words_list = 'english' # 使用 sklearn 内置的英文停用词表
+    
+    # 3. 配置 TF-IDF
     vectorizer = TfidfVectorizer(
-        max_features=TOP_K_KEYWORDS,
-        token_pattern=r"(?u)\b\w+\b",  # 这里的 \w+ 允许匹配长度为 1 的词
-        stop_words=None, 
-        max_df=0.9,  # 过滤掉在 90% 文档里都出现的太常见的词
-        min_df=2     # 至少在 2 篇文章里出现过
+        max_features=top_k,
+        # token_pattern 需要覆盖中英日。对于已经分好词（有空格）的文本，
+        # 这个正则主要起到了“过滤掉纯标点符号”的作用
+        token_pattern=r"(?u)\b\w+\b", 
+        stop_words=stop_words_list,
+        max_df=0.85,  # 降低阈值，如果一个词在85%的文档都出现，那它太泛滥了
+        min_df=3,     # 提高门槛，至少在3篇文档出现，过滤掉偶发性的拼写错误
+        ngram_range=(1, 2), # 额外福利：允许提取“双词短语”（如 Snake oil），而不仅仅是单字
+        use_idf=True,
+        smooth_idf=True
     )
     
     try:
-        vectorizer.fit(processed_text)
+        tfidf_matrix = vectorizer.fit_transform(processed_text)
+        # 获取特征名（候选词）
+        candidates = vectorizer.get_feature_names_out()
+        return list(candidates)
     except ValueError as e:
-        print(f"警告：{lang} 语料库处理失败，可能是有效词太少。错误信息：{e}")
+        print(f"警告：{lang} 语料库有效词不足。错误：{e}")
         return []
-        
-    candidates = vectorizer.get_feature_names_out()
-    return candidates
 
 def find_neighbors(lang, seeds, corpus_candidates):
     """步骤 2: 词向量探测 (Nearest Neighbors)"""
@@ -123,7 +147,7 @@ def main():
     # 按相似度排序
     output_df = output_df.sort_values(by='similarity', ascending=False)
     
-    output_df.to_csv('discovered_candidates.csv', index=False)
+    output_df.to_csv('model_train/embed/data/discovered_candidates.csv', index=False)
     print("\n[完成] 挖掘出的候选词已保存至 'discovered_candidates.csv'")
     print("建议人工检查相似度在 0.7 - 0.9 之间的词汇，这些通常是极佳的隐喻对齐点。")
 

@@ -1,0 +1,40 @@
+2026-03-10 22:38:46,874 - INFO - 开始最终关键词分析
+2026-03-10 22:38:46,875 - INFO - 输出目录: ./output
+2026-03-10 22:38:46,875 - INFO - 开始分析 zh 语言，路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_preanalysis\final_kw_analysis\../../data_detect/finetuned_detection/chinese_final_religious_hate.csv
+2026-03-10 22:38:46,884 - INFO - 成功加载 1070 条文本
+2026-03-10 22:38:46,887 - DEBUG - Building prefix dict from the default dictionary ...
+2026-03-10 22:38:47,400 - DEBUG - Dumping model to file cache C:\Users\11037\AppData\Local\Temp\jieba.cache
+2026-03-10 22:38:47,446 - DEBUG - Loading model cost 0.559 seconds.
+2026-03-10 22:38:47,446 - DEBUG - Prefix dict has been built successfully.
+2026-03-10 22:38:47,645 - INFO - 文档数: 1070, 唯一词汇数: 7491
+2026-03-10 22:38:47,645 - INFO - 过滤后词汇数: 746
+2026-03-10 22:38:47,927 - INFO - 共现对数: 14388
+2026-03-10 22:38:47,955 - INFO - 已保存 zh 词频统计到 ./output\zh/zh_top_terms.csv
+2026-03-10 22:38:48,010 - INFO - 已保存 zh 共现分析到 ./output\zh/zh_cooccurrence_pmi.csv
+2026-03-10 22:38:48,055 - INFO - 已保存 zh T-score排序到 ./output\zh/zh_cooccurrence_tscore.csv
+2026-03-10 22:38:48,058 - INFO - 已保存 zh 摘要到 ./output\zh/zh_summary.json
+2026-03-10 22:38:48,058 - INFO - 开始分析 en 语言，路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_preanalysis\final_kw_analysis\../../data_collection/English_Existing/merged_deduped.csv
+2026-03-10 22:38:48,366 - INFO - 成功加载 58940 条文本
+2026-03-10 22:39:13,513 - INFO - 文档数: 58940, 唯一词汇数: 74483
+2026-03-10 22:39:13,532 - INFO - 过滤后词汇数: 22892
+2026-03-10 22:41:54,742 - INFO - 共现对数: 4997349
+2026-03-10 22:41:59,736 - INFO - 已保存 en 词频统计到 ./output\en/en_top_terms.csv
+2026-03-10 22:42:22,268 - INFO - 已保存 en 共现分析到 ./output\en/en_cooccurrence_pmi.csv
+2026-03-10 22:42:40,644 - INFO - 已保存 en T-score排序到 ./output\en/en_cooccurrence_tscore.csv
+2026-03-10 22:42:40,648 - INFO - 已保存 en 摘要到 ./output\en/en_summary.json
+2026-03-10 22:42:41,177 - INFO - 开始分析 jp 语言，路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_preanalysis\final_kw_analysis\../../data_detect/finetuned_detection/japanese_final_religious_hate.csv
+2026-03-10 22:42:41,234 - INFO - 成功加载 1445 条文本
+2026-03-10 22:42:50,086 - INFO - 文档数: 1445, 唯一词汇数: 9661
+2026-03-10 22:42:50,088 - INFO - 过滤后词汇数: 1936
+2026-03-10 22:42:54,266 - INFO - 共现对数: 171182
+2026-03-10 22:42:54,459 - INFO - 已保存 jp 词频统计到 ./output\jp/jp_top_terms.csv
+2026-03-10 22:42:55,009 - INFO - 已保存 jp 共现分析到 ./output\jp/jp_cooccurrence_pmi.csv
+2026-03-10 22:42:55,475 - INFO - 已保存 jp T-score排序到 ./output\jp/jp_cooccurrence_tscore.csv
+2026-03-10 22:42:55,475 - INFO - 已保存 jp 摘要到 ./output\jp/jp_summary.json
+2026-03-10 22:42:55,475 - INFO - === 最终关键词分析完成 ===
+2026-03-10 22:42:55,475 - INFO - 结果已保存到: C:\Users\11037\output
+2026-03-10 22:42:55,475 - INFO - 
+=== 分析摘要 ===
+2026-03-10 22:42:55,483 - INFO - ZH Top 5 词汇: ['的', '是', '了', '我', '你']
+2026-03-10 22:42:55,483 - INFO - EN Top 5 词汇: ['the', 'to', 'of', 'and', 'a']
+2026-03-10 22:42:55,483 - INFO - JP Top 5 词汇: ['の', 'だ', 'は', 'に', 'が']

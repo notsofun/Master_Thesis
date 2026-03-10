@@ -1,0 +1,42 @@
+2026-03-10 22:45:41,325 - INFO - 开始最终关键词分析
+2026-03-10 22:45:41,325 - INFO - 输出目录: ./output
+2026-03-10 22:45:41,387 - INFO - 成功加载 zh 停用词，共 2312 个
+2026-03-10 22:45:41,387 - INFO - 开始分析 zh 语言，路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_preanalysis\final_kw_analysis\../../data_detect/finetuned_detection/chinese_final_religious_hate.csv
+2026-03-10 22:45:41,407 - INFO - 成功加载 1070 条文本
+2026-03-10 22:45:41,415 - DEBUG - Building prefix dict from the default dictionary ...
+2026-03-10 22:45:41,415 - DEBUG - Loading model from cache C:\Users\11037\AppData\Local\Temp\jieba.cache
+2026-03-10 22:45:41,994 - DEBUG - Loading model cost 0.579 seconds.
+2026-03-10 22:45:41,994 - DEBUG - Prefix dict has been built successfully.
+2026-03-10 22:45:42,274 - INFO - 文档数: 1070, 唯一词汇数: 6760
+2026-03-10 22:45:42,275 - INFO - 过滤后词汇数: 428
+2026-03-10 22:45:42,477 - INFO - 共现对数: 1410
+2026-03-10 22:45:42,496 - INFO - 已保存 zh 词频统计到 ./output\zh/zh_top_terms.csv
+2026-03-10 22:45:42,504 - INFO - 已保存 zh 共现分析到 ./output\zh/zh_cooccurrence_pmi.csv
+2026-03-10 22:45:42,513 - INFO - 已保存 zh T-score排序到 ./output\zh/zh_cooccurrence_tscore.csv
+2026-03-10 22:45:42,514 - INFO - 已保存 zh 摘要到 ./output\zh/zh_summary.json
+2026-03-10 22:45:42,514 - INFO - 开始分析 en 语言，路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_preanalysis\final_kw_analysis\../../data_collection/English_Existing/merged_deduped.csv
+2026-03-10 22:45:42,851 - INFO - 成功加载 58940 条文本
+2026-03-10 22:46:22,686 - INFO - 文档数: 58940, 唯一词汇数: 74172
+2026-03-10 22:46:22,753 - INFO - 过滤后词汇数: 22585
+2026-03-10 22:47:58,148 - INFO - 共现对数: 2896539
+2026-03-10 22:48:03,554 - INFO - 已保存 en 词频统计到 ./output\en/en_top_terms.csv
+2026-03-10 22:48:28,121 - INFO - 已保存 en 共现分析到 ./output\en/en_cooccurrence_pmi.csv
+2026-03-10 22:48:52,185 - INFO - 已保存 en T-score排序到 ./output\en/en_cooccurrence_tscore.csv
+2026-03-10 22:48:52,187 - INFO - 已保存 en 摘要到 ./output\en/en_summary.json
+2026-03-10 22:48:52,430 - INFO - 成功加载 jp 停用词，共 134 个
+2026-03-10 22:48:52,430 - INFO - 开始分析 jp 语言，路径: C:\Users\11037\Documents\GitHub\Master_Thesis\data_preanalysis\final_kw_analysis\../../data_detect/finetuned_detection/japanese_final_religious_hate.csv
+2026-03-10 22:48:52,441 - INFO - 成功加载 1445 条文本
+2026-03-10 22:49:08,557 - INFO - 文档数: 1445, 唯一词汇数: 9547
+2026-03-10 22:49:08,558 - INFO - 过滤后词汇数: 1840
+2026-03-10 22:49:14,348 - INFO - 共现对数: 88122
+2026-03-10 22:49:14,471 - INFO - 已保存 jp 词频统计到 ./output\jp/jp_top_terms.csv
+2026-03-10 22:49:14,786 - INFO - 已保存 jp 共现分析到 ./output\jp/jp_cooccurrence_pmi.csv
+2026-03-10 22:49:15,014 - INFO - 已保存 jp T-score排序到 ./output\jp/jp_cooccurrence_tscore.csv
+2026-03-10 22:49:15,014 - INFO - 已保存 jp 摘要到 ./output\jp/jp_summary.json
+2026-03-10 22:49:15,022 - INFO - === 最终关键词分析完成 ===
+2026-03-10 22:49:15,022 - INFO - 结果已保存到: C:\Users\11037\Documents\GitHub\Master_Thesis\data_preanalysis\final_kw_analysis\output
+2026-03-10 22:49:15,022 - INFO - 
+=== 分析摘要 ===
+2026-03-10 22:49:15,022 - INFO - ZH Top 5 词汇: ['上帝', '耶稣', '基督教', '说', '圣经']
+2026-03-10 22:49:15,022 - INFO - EN Top 5 词汇: ['church', '-', 'catholic', "'", 'god']
+2026-03-10 22:49:15,022 - INFO - JP Top 5 词汇: ['てる', '統一教会', '人', 'よ', 'キリスト']

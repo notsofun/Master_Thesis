@@ -1,0 +1,64 @@
+2026-03-10 22:18:51,375 - INFO - 已加载字体: SourceHanSansSC-Regular.otf
+2026-03-10 22:18:51,416 - INFO - 成功加载聚类结果，共 3000 条记录
+2026-03-10 22:18:51,503 - INFO - 每个簇的关键词分析完成
+2026-03-10 22:18:51,503 - INFO - 簇 0 关键词: 耶稣, 基督教, 上帝, 圣经, 就是
+2026-03-10 22:18:51,503 - INFO - 簇 1 关键词: ない, キリスト, から, 統一教会, てる
+2026-03-10 22:18:51,504 - INFO - 簇 2 关键词: the, and, to, of, you
+2026-03-10 22:18:51,504 - INFO - 簇 3 关键词: the, and, to, of, is
+2026-03-10 22:18:51,507 - INFO - 簇中语言分布:
+2026-03-10 22:18:51,508 - INFO - lang             en    jp    zh
+cluster_kmeans                 
+0                 0     0  1000
+1                 0  1000     0
+2               469     0     0
+3               531     0     0
+2026-03-10 22:18:51,518 - INFO - 簇 0 仅包含语言: ['zh']
+2026-03-10 22:18:51,519 - INFO - 簇 1 仅包含语言: ['jp']
+2026-03-10 22:18:51,519 - INFO - 簇 2 仅包含语言: ['en']
+2026-03-10 22:18:51,520 - INFO - 簇 3 仅包含语言: ['en']
+2026-03-10 22:18:51,521 - INFO - 分析结果保存至 c:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\result\cluster_analysis.txt
+2026-03-10 22:18:51,926 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,929 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,929 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,930 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,930 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,930 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,930 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,932 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,933 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,934 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,975 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,976 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,976 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,977 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,977 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,979 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,979 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,980 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,981 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,981 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,981 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,982 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,982 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,984 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,986 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,988 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,990 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,992 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,994 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,995 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,996 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,996 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,997 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,998 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,999 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:51,999 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,000 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,000 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,004 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,005 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,006 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,006 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,007 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-10 22:18:52,028 - INFO - 可视化图保存至 'unsupervised_classification\pics\knn_cluster_visualization.png'
+2026-03-10 22:18:52,070 - INFO - KNN 聚类分析与可视化完成

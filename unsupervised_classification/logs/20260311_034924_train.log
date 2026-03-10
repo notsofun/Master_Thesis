@@ -1,0 +1,189 @@
+2026-03-11 03:49:24,850 - INFO - 已加载字体: /root/autodl-tmp/Master_Thesis/SourceHanSansSC-Regular.otf
+2026-03-11 03:49:25,018 - INFO - 正在使用设备: cuda
+2026-03-11 03:49:29,181 - INFO - 模型 intfloat/multilingual-e5-large-instruct 加载成功。
+2026-03-11 03:49:29,189 - INFO - 成功加载 zh 语料: 100 条记录
+2026-03-11 03:49:29,555 - INFO - 成功加载 en 语料: 100 条记录
+2026-03-11 03:49:29,568 - INFO - 成功加载 jp 语料: 100 条记录
+2026-03-11 03:49:29,569 - INFO - 总计处理文本量: 300
+2026-03-11 03:49:29,569 - INFO - 执行多语言预分词...
+2026-03-11 03:49:29,569 - DEBUG - Building prefix dict from the default dictionary ...
+2026-03-11 03:49:29,569 - DEBUG - Loading model from cache /tmp/jieba.cache
+2026-03-11 03:49:30,303 - DEBUG - Loading model cost 0.734 seconds.
+2026-03-11 03:49:30,304 - DEBUG - Prefix dict has been built successfully.
+2026-03-11 03:49:33,327 - INFO - 开始生成语义嵌入 (Embedding)...
+2026-03-11 03:49:35,511 - INFO - UMAP 降维...
+2026-03-11 03:49:43,158 - INFO - 执行 K-Means...
+2026-03-11 03:49:46,309 - INFO - 执行 HDBSCAN...
+2026-03-11 03:49:46,342 - INFO - 正在生成对比图并标注关键词...
+2026-03-11 03:49:46,453 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,454 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,455 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,455 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,455 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,456 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,456 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,458 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,460 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,461 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,461 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,462 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,462 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,464 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,468 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,469 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,475 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,475 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,476 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,476 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,565 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,565 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,565 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,566 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,566 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,567 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,567 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,570 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,570 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,571 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,573 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,574 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,574 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,575 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,575 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,581 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,588 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,588 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,589 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,589 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,683 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,684 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,685 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,686 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,687 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,687 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,690 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,692 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,693 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,694 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,695 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,695 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,696 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,699 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,701 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,706 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,709 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,710 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,712 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,737 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,739 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,740 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,741 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,742 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,743 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,750 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,753 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,755 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,756 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,757 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,757 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,758 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,763 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,782 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,784 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,785 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,787 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,806 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,807 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,808 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,809 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,809 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,810 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,814 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,816 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,817 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,818 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,819 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,820 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,820 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,824 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,839 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,841 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,843 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:46,844 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,369 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,369 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,369 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,370 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,370 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,371 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,371 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,373 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,373 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,373 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,380 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,380 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,381 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,381 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,381 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,382 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,383 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,383 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,384 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,385 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,385 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,388 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,388 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,390 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,391 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,392 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,392 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,393 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,393 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,396 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,397 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,398 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,399 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,399 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,399 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,402 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,404 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,405 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,406 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,418 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,418 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,419 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,420 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,420 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,421 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,424 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,426 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,426 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,427 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,427 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,428 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,429 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,431 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,446 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,448 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,449 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,450 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,461 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,462 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,463 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,463 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,464 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,464 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,467 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,469 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,470 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,470 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,471 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,472 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,472 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,475 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,485 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,487 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,488 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,492 - WARNING - findfont: Font family 'Source Han Sans SC' not found.
+2026-03-11 03:49:47,492 - INFO - 可视化图片已保存至: unsupervised_classification/pics/clustering_keywords_comparison.png
+2026-03-11 03:49:47,500 - INFO - Process Completed.

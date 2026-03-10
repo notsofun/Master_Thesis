@@ -155,3 +155,5 @@ wsproto
 xxhash
 yarl
 deep-translator
+umap-learn
+hdbscan

@@ -140,7 +140,7 @@ def main():
     parser.add_argument(
         "--outdir",
         type=pathlib.Path,
-        default=pathlib.Path("model_eval/embed/retry_results"),
+        default=pathlib.Path("model_eval/embed/final_results"),
     )
     args = parser.parse_args()
 
@@ -165,18 +165,16 @@ def main():
         "/root/autodl-tmp/models/AI-ModelScope/snowflake-arctic-embed-m-v1.5",
     ]
 
-    retry_models = [
-        "shibing624/text2vec-base-multilingual",
-        "Alibaba-NLP/gte-multilingual-base",
-        # "Alibaba-NLP/gte-Qwen2-1.5B-instruct",
+    final_models = [
+        "sentence-transformers/paraphrase-multilingual-mpnet-base-v2", 
         "intfloat/multilingual-e5-large-instruct",
         # "BAAI/bge-m3",
     ]
         
     results = []
-    n = len(retry_models)
+    n = len(final_models)
     fig, axes = plt.subplots(1, n, figsize=(5 * n, 5)) if n > 1 else (None, [None])
-    for i, m in enumerate(retry_models):
+    for i, m in enumerate(final_models):
         r = evaluate_model(m, df_eval)
         results.append(r)
         if n > 1:

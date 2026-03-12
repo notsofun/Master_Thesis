@@ -170,6 +170,8 @@ def main():
         "intfloat/multilingual-e5-large-instruct",
         # "BAAI/bge-m3",
     ]
+
+    BAI_Model = ["BAAI/bge-m3"]
         
     results = []
     n = len(final_models)

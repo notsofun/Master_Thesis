@@ -147,6 +147,7 @@ tzdata
 urllib3
 uvloop
 wcwidth
+einops
 webdriver_manager
 websocket-client
 Wikipedia-API==0.8.1

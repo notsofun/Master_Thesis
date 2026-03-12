@@ -78,6 +78,7 @@ multiprocess
 nest_asyncio
 networkx
 numexpr
+nltk
 numpy==1.26.4
 openai==2.21.0
 outcome
@@ -146,6 +147,7 @@ tzdata
 urllib3
 uvloop
 wcwidth
+einops
 webdriver_manager
 websocket-client
 Wikipedia-API==0.8.1
@@ -154,3 +156,5 @@ wsproto
 xxhash
 yarl
 deep-translator
+umap-learn
+hdbscan

@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import torch
 import json
-os.environ["TRANSFORMERS_OFFLINE"] = "0"
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 
 # -------- helpers -------------------------------------------------
 
@@ -67,8 +67,8 @@ def evaluate_model(model_name, df):
     print(f"正在评估模型: {model_name}")
     
     # --- 修改部分：自动检测设备 ---
-    # device = "cuda" if torch.cuda.is_available() else "cpu"
-    device = 'cpu'
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    # device = 'cpu'
     print(f"使用设备: {device}")
     
     # 在初始化时显式传入 device
@@ -152,16 +152,19 @@ def main():
     test_suites = load_testset(str(args.testset))
     df_eval = flatten_suite(test_suites)
 
-    base_path = "/root/autodl-tmp/models" 
-    
-    # 先跑这几个已经存在的模型试试
     models_to_test = [
-        # os.path.join(base_path, "jina-embeddings-v3"),
-        # os.path.join(base_path, "KaLM-embedding-multilingual-mini-v1"),
-        os.path.join(base_path, "multilingual-e5-base"),
-        os.path.join(base_path, "snowflake-arctic-embed-m-v1.5"),
+        # "/root/autodl-tmp/models/AI-ModelScope/multilingual-e5-large-instruct",
+        "/root/autodl-tmp/models/sentence-transformers/LaBSE",
+        # "/root/autodl-tmp/models/AI-ModelScope/gte-Qwen2-1___5B-instruct",
+        "/root/autodl-tmp/models/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "/root/autodl-tmp/models/HIT-TMG/KaLM-embedding-multilingual-mini-v1",
+        # "/root/autodl-tmp/models/shibing624/text2vec-base-multilingual",
+        # "/root/autodl-tmp/models/AI-ModelScope/gte-multilingual-base",
+        "/root/autodl-tmp/models/sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+        "/root/autodl-tmp/models/AI-ModelScope/multilingual-e5-base",
+        "/root/autodl-tmp/models/AI-ModelScope/snowflake-arctic-embed-m-v1.5",
     ]
-
+        
     results = []
     n = len(models_to_test)
     fig, axes = plt.subplots(1, n, figsize=(5 * n, 5)) if n > 1 else (None, [None])

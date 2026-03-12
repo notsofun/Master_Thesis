@@ -140,7 +140,7 @@ def main():
     parser.add_argument(
         "--outdir",
         type=pathlib.Path,
-        default=pathlib.Path("model_eval/embed/retry_results"),
+        default=pathlib.Path("model_eval/embed/BAAI_results"),
     )
     args = parser.parse_args()
 
@@ -172,11 +172,13 @@ def main():
         "intfloat/multilingual-e5-large-instruct",
         # "BAAI/bge-m3",
     ]
+
+    BAI_Model = ["BAAI/bge-m3"]
         
     results = []
-    n = len(retry_models)
+    n = len(BAI_Model)
     fig, axes = plt.subplots(1, n, figsize=(5 * n, 5)) if n > 1 else (None, [None])
-    for i, m in enumerate(retry_models):
+    for i, m in enumerate(BAI_Model):
         r = evaluate_model(m, df_eval)
         results.append(r)
         if n > 1:

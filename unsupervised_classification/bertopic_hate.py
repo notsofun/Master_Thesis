@@ -29,9 +29,7 @@ for lib in ['numba', 'matplotlib', 'hdbscan', 'umap', 'transformers', 'urllib3',
     logging.getLogger(lib).setLevel(logging.ERROR)
 
 def setup_logger():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    log_dir = os.path.join(current_dir, 'logs')
+    log_dir = 'unsupervised_classification/logs'
     
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)

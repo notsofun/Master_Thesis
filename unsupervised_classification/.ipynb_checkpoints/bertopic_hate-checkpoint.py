@@ -17,6 +17,7 @@ from janome.tokenizer import Tokenizer as JanomeTokenizer
 import nltk
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.preprocessing import normalize
 
 # ==========================================
 # 1. 严格的日志与警告管理
@@ -28,9 +29,7 @@ for lib in ['numba', 'matplotlib', 'hdbscan', 'umap', 'transformers', 'urllib3',
     logging.getLogger(lib).setLevel(logging.ERROR)
 
 def setup_logger():
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    log_dir = os.path.join(current_dir, 'logs')
+    log_dir = 'unsupervised_classification/logs'
     
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
@@ -68,7 +67,7 @@ DATA_PATHS = {
 }
 
 # 输出目录配置
-OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results'
+OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results/second'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 for sub_dir in ['data', 'models', 'visualizations']:
     os.makedirs(os.path.join(OUTPUT_DIR, sub_dir), exist_ok=True)
@@ -82,6 +81,36 @@ except LookupError:
 # ==========================================
 # 3. 核心功能函数
 # ==========================================
+
+def align_embeddings(embeddings, languages):
+    """
+    embeddings: np.array, 形状为 (样本数, 1024)
+    languages: list 或 np.array, 每个样本对应的语种标签 ['zh', 'en', 'jp', ...]
+    """
+    aligned_embeddings = np.zeros_like(embeddings)
+    languages = np.array(languages)
+    unique_langs = np.unique(languages)
+    
+    print(f"正在对齐 {len(unique_langs)} 种语言的向量空间...")
+    
+    for lang in unique_langs:
+        # 1. 找到该语种对应的掩码
+        mask = (languages == lang)
+        lang_vecs = embeddings[mask]
+        
+        # 2. 计算该语种的几何中心 (Centroid)
+        centroid = lang_vecs.mean(axis=0)
+        
+        # 3. 平移：减去中心点
+        # 这消除了语种的‘全局偏置’，只保留了相对于该语种内部的语义差异
+        centered_vecs = lang_vecs - centroid
+        
+        # 4. 重新归一化 (针对 Cosine 相似度)
+        aligned_embeddings[mask] = normalize(centered_vecs)
+        
+    print("向量对齐完成。")
+    return aligned_embeddings
+
 def load_and_sample_data(selected_langs):
     """根据选择的语言加载并采样数据"""
     logger.info(f"正在加载数据集，目标语言: {selected_langs}")
@@ -153,8 +182,15 @@ def get_multilingual_stopwords():
         # 英文
         'christian', 'christians', 'church', 'jesus', 'bible', 'religion', 'god', 'pastor', 'faith'
     }
-    
-    return list(en_stops | zh_stops | jp_stops | domain_stops)
+    custom_stops = {
+    # 日语噪音
+    'てる', 'よ', 'さん', 'って', 'だろ', 'ね', 'ん', 'だ', 'から', 'が', 'に', 'も', 'な', 'の', 'は', 'を', 'で', 'と', 'した', 'ます', 'です',
+    # 英语噪音
+    'people', 'time', 'would', 'get', 'one', 'going', 'think', 'say', 'good', 'well', 'really',
+    # 中文噪音
+    '说', '没', '里', '个', '这', '那', '就', '你', '我', '他', '吧', '的', '了', '在', '是'
+    }
+    return list(en_stops | zh_stops | jp_stops | domain_stops | custom_stops)
 
 
 def visualize_umap_hdbscan(embeddings, langs, labels, outpath, title="UMAP + HDBSCAN"):
@@ -248,13 +284,14 @@ def run_topic_modeling_pipeline(langs_to_analyze):
     
     logger.info("正在生成 Embeddings (此过程可能较慢)...")
     embeddings = embedding_model.encode(tokenized_docs, show_progress_bar=True)
+    embeddings = align_embeddings(embeddings, df['lang'].tolist())
     np.save(os.path.join(OUTPUT_DIR, 'models/embeddings.npy'), embeddings)
 
     # 2.5. 生成 UMAP + HDBSCAN 可视化 (在拟合 BERTopic 之前)
     logger.info("生成 UMAP + HDBSCAN 可视化 (拟合前)...")
-    umap_vis = umap.UMAP(n_neighbors=15, n_components=2, min_dist=0.0, metric='cosine', random_state=42)
+    umap_vis = umap.UMAP(n_neighbors=50, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
     embs_2d = umap_vis.fit_transform(embeddings)
-    hdbscan_vis = hdbscan.HDBSCAN(min_cluster_size=15, metric='euclidean', cluster_selection_method='eom', prediction_data=True)
+    hdbscan_vis = hdbscan.HDBSCAN(min_cluster_size=10, metric='euclidean', cluster_selection_method='eom', prediction_data=True)
     hdb_labels = hdbscan_vis.fit_predict(embs_2d)
     visualize_umap_hdbscan(
         embs_2d,
@@ -266,26 +303,27 @@ def run_topic_modeling_pipeline(langs_to_analyze):
 
     # 3. 降维模型 (UMAP)
     logger.info("配置 UMAP 模型...")
-    umap_model = umap.UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
+    # umap_model = umap.UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
 
     # 4. 聚类模型 (HDBSCAN)
     logger.info("配置 HDBSCAN 模型...")
-    hdbscan_model = hdbscan.HDBSCAN(min_cluster_size=15, metric='euclidean', cluster_selection_method='eom', prediction_data=True)
+    # hdbscan_model = hdbscan.HDBSCAN(min_cluster_size=15, metric='euclidean', cluster_selection_method='eom', prediction_data=True)
     # logger.info(f"我们发现了{len(set(hdbscan_model.labels))}个簇")
 
     # 5. 向量化器 (CountVectorizer)
     logger.info("配置 CountVectorizer (加载自定义停用词)...")
     vectorizer_model = CountVectorizer(
         stop_words=get_multilingual_stopwords(),
-        token_pattern=r"(?u)\b\w+\b" # 允许单字通过，交由停用词表过滤
+        token_pattern=r"(?u)\b\w+\b", # 允许单字通过，交由停用词表过滤
+        min_df=3,
     )
 
     # 6. 初始化并训练 BERTopic
     logger.info("初始化并拟合 BERTopic 模型...")
     topic_model = BERTopic(
         embedding_model=embedding_model,
-        umap_model=umap_model,
-        hdbscan_model=hdbscan_model,
+        umap_model=umap_vis,
+        hdbscan_model=hdbscan_vis,
         vectorizer_model=vectorizer_model,
         language="multilingual",
         calculate_probabilities=False,
@@ -322,6 +360,12 @@ def run_topic_modeling_pipeline(langs_to_analyze):
         # 主题距离热力图 (Hierarchical view)
         fig_heatmap = topic_model.visualize_heatmap()
         fig_heatmap.write_html(os.path.join(OUTPUT_DIR, 'visualizations/topic_heatmap.html'))
+
+        hierarchical_topics = topic_model.hierarchical_topics(tokenized_docs)
+        fig_hierarchy = topic_model.visualize_hierarchy(hierarchical_topics=hierarchical_topics)
+        fig_hierarchy.write_html(os.path.join(OUTPUT_DIR, 'visualizations/hierarchy.html'))
+
+
     except Exception as e:
         logger.error(f"可视化生成失败: {e}")
 

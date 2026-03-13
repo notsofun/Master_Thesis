@@ -18,6 +18,7 @@ import nltk
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import normalize
+from scipy.stats import entropy
 
 # ==========================================
 # 1. 严格的日志与警告管理
@@ -67,7 +68,7 @@ DATA_PATHS = {
 }
 
 # 输出目录配置
-OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results/second'
+OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results/third'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 for sub_dir in ['data', 'models', 'visualizations']:
     os.makedirs(os.path.join(OUTPUT_DIR, sub_dir), exist_ok=True)
@@ -91,24 +92,16 @@ def align_embeddings(embeddings, languages):
     languages = np.array(languages)
     unique_langs = np.unique(languages)
     
-    print(f"正在对齐 {len(unique_langs)} 种语言的向量空间...")
+    logger.info(f"正在对齐 {len(unique_langs)} 种语言的向量空间...")
     
     for lang in unique_langs:
-        # 1. 找到该语种对应的掩码
         mask = (languages == lang)
         lang_vecs = embeddings[mask]
-        
-        # 2. 计算该语种的几何中心 (Centroid)
         centroid = lang_vecs.mean(axis=0)
-        
-        # 3. 平移：减去中心点
-        # 这消除了语种的‘全局偏置’，只保留了相对于该语种内部的语义差异
         centered_vecs = lang_vecs - centroid
-        
-        # 4. 重新归一化 (针对 Cosine 相似度)
         aligned_embeddings[mask] = normalize(centered_vecs)
         
-    print("向量对齐完成。")
+    logger.info("向量对齐完成。")
     return aligned_embeddings
 
 def load_and_sample_data(selected_langs):
@@ -228,36 +221,58 @@ def visualize_umap_hdbscan(embeddings, langs, labels, outpath, title="UMAP + HDB
     plt.savefig(outpath, dpi=200)
     plt.close()
 
-
 def check_clustering_quality(df, model):
-    logger.info("--- 聚类质量自我检查报告 ---")
+    logger.info("--- 聚类质量自我检查报告 (深度比例版) ---")
     
     # 1. 噪声比例统计
     total_count = len(df)
-    outlier_count = len(df[df['topic'] == -1])
+    outlier_count = len(df[df['topic'] == -1]).sum() if isinstance(df['topic'], np.ndarray) else len(df[df['topic'] == -1])
     outlier_ratio = (outlier_count / total_count) * 100
-    logger.info(f"噪声点占比: {outlier_ratio:.2f}% (建议保持在 10%-40% 之间)")
-    
-    if outlier_ratio > 50:
-        logger.warning("警告：噪声占比过高！建议增加 UMAP n_neighbors 或减小 HDBSCAN min_cluster_size。")
+    logger.info(f"噪声点占比: {outlier_ratio:.2f}% (目标区间: 10%-40%)")
 
-    # 2. 语言分布一致性 (核心指标：你的三语是否真的合体了)
+    # 2. 提取有效话题的语言分布
     lang_dist = df.groupby(['topic', 'lang']).size().unstack(fill_value=0)
-    # 过滤掉噪声簇 -1，看有效话题
     valid_topics = lang_dist.drop(index=-1, errors='ignore')
     
-    logger.info("\n前 5 个话题的语言构成 (行=话题, 列=语种计数):")
-    logger.info("\n" + valid_topics.head(5).to_string())
-    
-    # 检查是否有“纯语种话题”
-    pure_topics = valid_topics[(valid_topics > 0).sum(axis=1) == 1]
-    if len(pure_topics) > 0:
-        logger.info(f"发现 {len(pure_topics)} 个纯语种话题，跨语言对齐仍有提升空间。")
-    else:
-        logger.info("恭喜！所有话题均包含多种语言，跨语言语义对齐效果良好。")
+    if valid_topics.empty:
+        logger.warning("警告：没有发现有效聚类（全部为噪声），请检查 UMAP/HDBSCAN 参数。")
+        return
 
-    # 保存这份统计到 CSV
-    lang_dist.to_csv(os.path.join(OUTPUT_DIR, 'data/cluster_quality_check.csv'))
+    # 3. 计算语言渗透率与比例
+    topic_lang_pct = valid_topics.div(valid_topics.sum(axis=1), axis=0)
+    total_topics_count = len(valid_topics)
+
+    # 定义：如果某语种占比 > 90%，则视为该语种的“孤岛话题”
+    pure_threshold = 0.90
+    pure_mask = (topic_lang_pct > pure_threshold).any(axis=1)
+    pure_topics_count = pure_mask.sum()
+    
+    # 融合话题：至少有两种语言且主要语言占比不超过 90%
+    mixed_topics_count = total_topics_count - pure_topics_count
+    mixed_ratio = (mixed_topics_count / total_topics_count) * 100
+
+    logger.info(f"有效话题总数: {total_topics_count}")
+    logger.info(f"纯语种话题 (孤岛): {pure_topics_count} 个")
+    logger.info(f"跨语言融合话题: {mixed_topics_count} 个")
+    logger.info(f"【核心指标】跨语言融合比例: {mixed_ratio:.2f}% (越高说明语义对齐越广)")
+
+    # 4. 话题混杂度排名 (使用信息熵)
+    # 熵越大代表三语分布越平均
+    topic_lang_pct['entropy'] = topic_lang_pct.apply(entropy, axis=1)
+    top_mixed = topic_lang_pct.sort_values('entropy', ascending=False).head(5)
+
+    logger.info("\n--- 融合度最高（对齐最好）的 Top 5 话题分布 ---")
+    logger.info("\n" + top_mixed[['en', 'jp', 'zh', 'entropy']].to_string())
+
+    # 5. 决策建议
+    if mixed_ratio < 30:
+        logger.warning("建议：融合比例偏低，语种隔离严重。考虑增加 UMAP n_neighbors 或检查向量对齐。")
+    elif outlier_ratio > 45:
+        logger.warning("建议：融合比例尚可但噪声过多。尝试减小 HDBSCAN min_samples 或设置 epsilon。")
+
+    # 保存统计结果
+    os.makedirs(os.path.join(OUTPUT_DIR, 'data'), exist_ok=True)
+    topic_lang_pct.to_csv(os.path.join(OUTPUT_DIR, 'data/cluster_quality_detailed.csv'))
 
 # ==========================================
 # 4. 组装并执行 BERTopic 管线
@@ -278,20 +293,38 @@ def run_topic_modeling_pipeline(langs_to_analyze):
     logger.info("加载基座模型: intfloat/multilingual-e5-large-instruct")
     embedding_model = SentenceTransformer('intfloat/multilingual-e5-large-instruct')
     
-    # 加入诱导指令以强化语义对齐
-    # instruction = "Extract universal semantic patterns of religious hate speech, focusing on dehumanization, hypocrisy, or intellectual questioning."
-    # prompts = [f"Instruct: {instruction}\nQuery: {text}" for text in docs]
+    # 建议的指令：强调“攻击逻辑”而非具体“宗教词汇”
+    # instruction = (
+    #     "Identify cross-lingual patterns of religious criticism and hate speech. "
+    #     "Focus on universal themes like dehumanization, hypocrisy, and intellectual skepticism, "
+    #     "while ignoring language-specific identifiers."
+    # )
+    
+    # prompts = [f"instruct: {instruction}\nquery: {text}" for text in docs]    
     
     logger.info("正在生成 Embeddings (此过程可能较慢)...")
-    embeddings = embedding_model.encode(tokenized_docs, show_progress_bar=True)
+    embeddings = embedding_model.encode(docs, show_progress_bar=True)
     embeddings = align_embeddings(embeddings, df['lang'].tolist())
     np.save(os.path.join(OUTPUT_DIR, 'models/embeddings.npy'), embeddings)
 
     # 2.5. 生成 UMAP + HDBSCAN 可视化 (在拟合 BERTopic 之前)
     logger.info("生成 UMAP + HDBSCAN 可视化 (拟合前)...")
-    umap_vis = umap.UMAP(n_neighbors=50, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
+    umap_vis = umap.UMAP(
+    n_neighbors=25, 
+    n_components=5, 
+    min_dist=0.0, 
+    metric='cosine', 
+    random_state=42
+)
     embs_2d = umap_vis.fit_transform(embeddings)
-    hdbscan_vis = hdbscan.HDBSCAN(min_cluster_size=10, metric='euclidean', cluster_selection_method='eom', prediction_data=True)
+    hdbscan_vis = hdbscan.HDBSCAN(
+    min_cluster_size=10, 
+    min_samples=1,        # 关键修改：让聚类更包容
+    metric='euclidean',
+    cluster_selection_epsilon=0.1, 
+    cluster_selection_method='eom', 
+    prediction_data=True
+)
     hdb_labels = hdbscan_vis.fit_predict(embs_2d)
     visualize_umap_hdbscan(
         embs_2d,

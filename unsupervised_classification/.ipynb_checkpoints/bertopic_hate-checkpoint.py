@@ -68,7 +68,7 @@ DATA_PATHS = {
 }
 
 # 输出目录配置
-OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results/third'
+OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results/fourth'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 for sub_dir in ['data', 'models', 'visualizations']:
     os.makedirs(os.path.join(OUTPUT_DIR, sub_dir), exist_ok=True)
@@ -310,7 +310,7 @@ def run_topic_modeling_pipeline(langs_to_analyze):
     # 2.5. 生成 UMAP + HDBSCAN 可视化 (在拟合 BERTopic 之前)
     logger.info("生成 UMAP + HDBSCAN 可视化 (拟合前)...")
     umap_vis = umap.UMAP(
-    n_neighbors=25, 
+    n_neighbors=35, 
     n_components=5, 
     min_dist=0.0, 
     metric='cosine', 
@@ -318,8 +318,8 @@ def run_topic_modeling_pipeline(langs_to_analyze):
 )
     embs_2d = umap_vis.fit_transform(embeddings)
     hdbscan_vis = hdbscan.HDBSCAN(
-    min_cluster_size=10, 
-    min_samples=1,        # 关键修改：让聚类更包容
+    min_cluster_size=15, 
+    min_samples=2,        # 关键修改：让聚类更包容
     metric='euclidean',
     cluster_selection_epsilon=0.1, 
     cluster_selection_method='eom', 

@@ -5,3 +5,25 @@ data_detect/Japanese/.env
 data_preanalysis/final_kw_analysis/output/en/en_cooccurrence_pmi.csv
 data_preanalysis/final_kw_analysis/output/en/en_cooccurrence_tscore.csv
 *.pt
+# 1. 隐藏敏感信息
+.env
+*.env
+credentials.json
+
+# 2. 隐藏 Python 编译缓存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 3. 隐藏虚拟环境（非常重要，不要传到 Git）
+venv/
+.venv/
+env/
+
+# 4. 隐藏 IDE 配置
+.vscode/
+.idea/
+
+# 5. 隐藏系统临时文件
+.DS_Store
+Thumbs.db

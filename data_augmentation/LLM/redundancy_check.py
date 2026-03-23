@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from google import genai
 from dotenv import load_dotenv
 from google.genai import types
@@ -54,12 +54,12 @@ logger.addHandler(console_handler)
 load_dotenv()
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY")) 
 
-# 自动检测GPU，如果可用就用GPU，否则用CPU
+# 自动检测GPU（当前使用TF-IDF无GPU依赖）
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-logger.info(f"向量模型运行设备: {device.upper()}")
+logger.info(f"向量模型运行设备: {device.upper()}（TF-IDF计算模式）")
 
-# 本地轻量级模型，用于监控同质化
-embedder = SentenceTransformer('intfloat/multilingual-e5-small', device=device)
+# embedder不再强依赖，GPU不可用时直接用TF-IDF；如果你要保持句嵌入可选，也行
+embedder = None
 
 # --- API限流控制器 ---
 class RateLimiter:
@@ -137,32 +137,28 @@ def clean_text(text):
     text = re.sub(r'^[\d\.\-\*\s]+', '', text)
     return text.strip()
 
-def calculate_homogeneity(new_texts, existing_texts, existing_embs=None):
+def calculate_homogeneity_tfidf(new_texts, existing_texts, threshold=0.85):
     """
-    计算冗余率：新生成的文本中有多少比例与现有库高度相似 (>0.85)
-    existing_embs: 可选的预计算的旧文本embeddings，用于缓存
+    计算冗余率：新生成的文本中有多少比例与现有库高度相似 (>threshold)
+    基于TF-IDF + Cosine，适合短文本快速计算
     """
     if not existing_texts:
-        return 0.0, None  # 返回冗余率和新文本embeddings
-    
-    # 只需要新文本的embeddings
-    new_embs = embedder.encode(new_texts, show_progress_bar=False)
-    
-    # 如果没有提供旧embeddings，则计算
-    if existing_embs is None:
-        existing_embs = embedder.encode(existing_texts, show_progress_bar=False)
-    
-    # 计算新文本与旧文本库的相似度矩阵
-    sim_matrix = cosine_similarity(new_embs, existing_embs)
-    
-    # 找到每条新文本在旧库中的最大相似度
+        return 0.0
+
+    corpus = existing_texts + new_texts
+    vec = TfidfVectorizer(ngram_range=(1,2), min_df=1).fit_transform(corpus)
+    existing_vec = vec[:len(existing_texts)]
+    new_vec = vec[len(existing_texts):]
+
+    sim_matrix = cosine_similarity(new_vec, existing_vec)
     max_sims = np.max(sim_matrix, axis=1)
-    
-    # 统计相似度 > 0.85 的比例
-    redundant_count = np.sum(max_sims > 0.85)
-    h_rate = redundant_count / len(new_texts)
-    
-    return h_rate, new_embs
+
+    redundant_count = np.sum(max_sims > threshold)
+    return redundant_count / len(new_texts)
+
+# 兼容接口：老调用不改结构，用新的函数替换即可
+def calculate_homogeneity(new_texts, existing_texts, existing_embs=None):
+    return calculate_homogeneity_tfidf(new_texts, existing_texts)
 
 # --- 并行API调用函数 ---
 
@@ -222,9 +218,7 @@ def run_smart_generation(lang):
         existing_df = pd.read_csv(output_file)
         generated_pool = existing_df['result'].tolist()
         logger.info(f"检测到已有数据，从第 {len(generated_pool)} 条开始累计...")
-        # 预计算已有数据的embeddings
-        if generated_pool:
-            cached_embeddings = embedder.encode(generated_pool, show_progress_bar=False)
+        # 目前使用TF-IDF无需预缓存embedding
 
     # 2. 初始化 tqdm 进度条
     target_max = MILESTONES[-1]
@@ -263,7 +257,7 @@ def run_smart_generation(lang):
         # 3. 里程碑检查与同质化监控
         h_rate_display = "N/A"
         if current_idx > 0 and current_idx % 100 == 0:
-            h_rate, new_embs = calculate_homogeneity(new_items, generated_pool, cached_embeddings)
+            h_rate = calculate_homogeneity_tfidf(new_items, generated_pool)
             h_rate_display = f"{h_rate:.1%}"
             
             if h_rate > STOP_THRESHOLD:
@@ -297,9 +291,17 @@ def run_smart_generation(lang):
                 sample_size = min(1000, len(generated_pool))
                 sample_indices = np.random.choice(len(generated_pool), sample_size, replace=False)
                 sample_texts = [generated_pool[i] for i in sample_indices]
-                
-                sample_embeddings = embedder.encode(sample_texts, show_progress_bar=False)
-                avg_sim = np.mean(cosine_similarity(sample_embeddings))
+
+                # TF-IDF+cosine计算样本内部平均相似度
+                sample_vec = TfidfVectorizer(ngram_range=(1,2), min_df=1).fit_transform(sample_texts)
+                sim_mat = cosine_similarity(sample_vec)
+                # 对角线1.0不算，计算上三角或整体平均
+                n = sim_mat.shape[0]
+                if n > 1:
+                    avg_sim = (np.sum(sim_mat) - n) / (n * (n - 1))
+                else:
+                    avg_sim = 0.0
+
                 history_log.append({'milestone': m, 'avg_similarity': avg_sim})
                 logger.info(f"达到里程碑 {m}！采样相似度: {avg_sim:.4f} (样本大小: {sample_size})")
 

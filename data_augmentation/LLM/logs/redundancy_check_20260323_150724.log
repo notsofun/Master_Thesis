@@ -1,0 +1,8 @@
+[2026-03-23 15:07:24] INFO     | 向量模型运行设备: CPU（TF-IDF计算模式）
+[2026-03-23 15:07:24] INFO     | ============================================================
+[2026-03-23 15:07:24] INFO     | 开始数据合成任务
+[2026-03-23 15:07:24] INFO     | 日志文件: data_augmentation/LLM/logs/redundancy_check_20260323_150724.log
+[2026-03-23 15:07:24] INFO     | ============================================================
+[2026-03-23 15:07:24] INFO     | 开始处理 [ZH] 管线...
+[2026-03-23 15:21:18] INFO     | 达到里程碑 500！采样相似度: 0.0003 (样本大小: 500)
+[2026-03-23 15:22:21] WARNING  | API错误: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}

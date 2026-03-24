@@ -24,6 +24,7 @@ load_dotenv()
 # --- 路径配置 ---
 OUTPUT_BASE = "data_augmentation/LLM"
 LOG_DIR = os.path.join(OUTPUT_BASE, "logs")
+TEXT_DIR = os.path.join(OUTPUT_BASE, "generated_texts")
 os.makedirs(LOG_DIR, exist_ok=True)
 
 # --- 日志配置 ---
@@ -249,7 +250,7 @@ def run_smart_generation(lang):
     history_log = []
     pool_embeddings_tensor = None  # 切换语言重置向量缓存
     
-    output_file = os.path.join(OUTPUT_BASE, f"synthetic_{lang}_{timestamp}.csv")
+    output_file = os.path.join(TEXT_DIR, f"synthetic_{lang}_{timestamp}.csv")
     target_max = MILESTONES[-1]
     pbar = tqdm(total=target_max, desc=f"Progress ({lang})")
 

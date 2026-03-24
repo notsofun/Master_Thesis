@@ -1,0 +1,1010 @@
+2026-03-24 17:37:25,264 - INFO - Starting processing for language: EN
+2026-03-24 17:37:25,264 - INFO - Starting EN processing (async)
+2026-03-24 17:37:25,284 - INFO - Resuming from index 36
+2026-03-24 17:37:25,361 - INFO - Processing EN batch: 0-10/4928
+2026-03-24 17:37:25,361 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:37:25,363 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:37:25,366 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:37:43,363 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:37:43,368 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:37:47,800 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:37:47,804 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:37:49,887 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:37:49,891 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:38:07,453 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:38:07,457 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:38:10,250 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:38:10,252 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:38:25,710 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:38:25,713 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:38:36,081 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:38:36,085 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:38:41,871 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:01,236 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:03,277 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:03,280 - INFO - ≥…π¶¬ 100.00%£¨≤¢∑¢ ˝¥”3‘ˆº”µΩ4
+2026-03-24 17:39:03,815 - INFO - Processing EN batch: 10-20/4928
+2026-03-24 17:39:03,816 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:03,817 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:03,821 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:03,823 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:03,826 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:25,915 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:25,922 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:30,070 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:30,073 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:31,075 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:31,083 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:37,009 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:37,013 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:38,872 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:38,872 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:39:52,509 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:53,525 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:39:56,373 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:08,325 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:09,473 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:09,477 - INFO - ≥…π¶¬ 100.00%£¨≤¢∑¢ ˝¥”4‘ˆº”µΩ5
+2026-03-24 17:40:10,014 - INFO - Processing EN batch: 20-30/4928
+2026-03-24 17:40:10,015 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:10,018 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:10,018 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:10,019 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:10,020 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:10,024 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:30,512 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:30,514 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:36,122 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:36,125 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:37,823 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:37,824 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:38,599 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:38,605 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:40:42,076 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:52,043 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:40:56,152 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:01,832 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:02,710 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:11,750 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:11,753 - INFO - ≥…π¶¬ 100.00%£¨≤¢∑¢ ˝¥”5‘ˆº”µΩ6
+2026-03-24 17:41:12,286 - INFO - Processing EN batch: 30-40/4928
+2026-03-24 17:41:12,286 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:12,286 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:12,288 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:12,288 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:12,290 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:12,293 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:12,293 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:35,999 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:36,002 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:36,781 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:36,781 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:38,057 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:38,059 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:41:38,413 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:38,843 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:42,015 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:42,373 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:41:56,831 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:03,363 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:10,094 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:10,096 - INFO - ≥…π¶¬ 100.00%£¨≤¢∑¢ ˝¥”6‘ˆº”µΩ7
+2026-03-24 17:42:10,629 - INFO - Processing EN batch: 40-50/4928
+2026-03-24 17:42:10,633 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:10,633 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:10,633 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:10,633 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:10,633 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:10,641 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:10,641 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:10,644 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:31,469 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:31,471 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:35,973 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:35,974 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:42:38,606 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:39,298 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:39,547 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:39,651 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:43,782 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:48,037 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:42:57,041 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:03,164 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:03,173 - INFO - ≥…π¶¬ 100.00%£¨≤¢∑¢ ˝¥”7‘ˆº”µΩ8
+2026-03-24 17:43:03,824 - INFO - Processing EN batch: 50-60/4928
+2026-03-24 17:43:03,825 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,827 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,830 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,832 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,836 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,840 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,842 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,844 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:03,846 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:23,428 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:23,430 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:43:26,224 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:28,434 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:30,369 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:30,412 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:30,705 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:32,408 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:34,442 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:37,191 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:59,610 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:43:59,612 - INFO - ≥…π¶¬ 100.00%£¨≤¢∑¢ ˝¥”8‘ˆº”µΩ9
+2026-03-24 17:44:00,260 - INFO - Processing EN batch: 60-70/4928
+2026-03-24 17:44:00,262 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,264 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,268 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,268 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,268 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,270 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,270 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,270 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,272 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:00,274 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:23,318 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:26,161 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:26,224 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:26,627 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:28,991 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:29,006 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:31,511 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:31,776 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:32,651 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:39,381 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:44:39,385 - INFO - ≥…π¶¬ 100.00%£¨≤¢∑¢ ˝¥”9‘ˆº”µΩ10
+2026-03-24 17:44:39,905 - INFO - Processing EN batch: 70-80/4928
+2026-03-24 17:44:39,906 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,906 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,907 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,908 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,909 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,909 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,910 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,913 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,916 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:44:39,916 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:05,203 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:05,912 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:06,793 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:07,935 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:08,595 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:09,561 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:11,703 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:12,062 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:14,431 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:15,281 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:45:16,202 - INFO - Processing EN batch: 80-90/4928
+2026-03-24 17:45:16,205 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,206 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,210 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,212 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,213 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,214 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,215 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,216 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,217 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,218 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:16,903 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:16,903 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:16,904 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:16,904 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:16,905 - WARNING - [EN-77-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:16,910 - WARNING - [EN-76-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:16,910 - WARNING - [EN-77-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:16,911 - WARNING - [EN-76-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:16,992 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:16,994 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:16,997 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:16,998 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:17,008 - WARNING - [EN-80-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:17,008 - WARNING - [EN-79-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:17,009 - WARNING - [EN-80-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:17,009 - WARNING - [EN-78-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:17,323 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:17,325 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:17,326 - WARNING - [EN-78-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:17,326 - WARNING - [EN-79-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:17,906 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:17,908 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:17,908 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:17,911 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:18,004 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:18,006 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:18,009 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:18,011 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:18,290 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,292 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,294 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,294 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,296 - WARNING - [EN-77-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:18,296 - WARNING - [EN-76-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:18,297 - WARNING - [EN-76-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:18,297 - WARNING - [EN-77-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:18,341 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:18,342 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:18,527 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,529 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,529 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,531 - WARNING - [EN-80-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:18,531 - WARNING - [EN-80-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:18,532 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:18,532 - WARNING - [EN-78-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:18,534 - WARNING - [EN-79-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:19,198 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:19,209 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:19,211 - WARNING - [EN-78-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:19,212 - WARNING - [EN-79-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:20,316 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:20,316 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:20,318 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:20,322 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:20,543 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:20,546 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:20,546 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:20,550 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:21,200 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:21,202 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:22,727 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:22,731 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:22,732 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:22,733 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:22,733 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:22,734 - WARNING - [EN-77-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:22,735 - WARNING - [EN-78-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:22,735 - WARNING - [EN-77-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:22,735 - WARNING - [EN-79-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:22,735 - WARNING - [EN-76-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:24,720 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:24,720 - WARNING - [EN-80-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:25,055 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:25,060 - WARNING - [EN-80-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:28,435 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:28,444 - WARNING - [EN-76-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:30,787 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:30,794 - WARNING - [EN-78-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:34,160 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:34,160 - WARNING - [EN-79-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:34,160 - ERROR - Failed to process 76-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,161 - ERROR - Failed to process 76-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 77-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 77-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 78-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 78-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 79-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 79-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 80-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,162 - ERROR - Failed to process 80-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:34,667 - INFO - Processing EN batch: 90-100/4928
+2026-03-24 17:45:34,667 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,667 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,669 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,669 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,669 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,669 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,669 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,676 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,676 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,676 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:34,949 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:34,949 - WARNING - [EN-81-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,269 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,270 - WARNING - [EN-81-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,524 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,526 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,527 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,533 - WARNING - [EN-85-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,534 - WARNING - [EN-84-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,536 - WARNING - [EN-82-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,549 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,551 - WARNING - [EN-82-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,634 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,636 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,636 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,636 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:35,636 - WARNING - [EN-83-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,641 - WARNING - [EN-84-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,641 - WARNING - [EN-83-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,642 - WARNING - [EN-85-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:35,966 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,254 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:36,266 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,539 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:36,541 - WARNING - [EN-81-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:36,541 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,545 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,545 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,548 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,649 - WARNING - [EN-81-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:36,650 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,650 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,655 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,659 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:36,873 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:36,876 - WARNING - [EN-84-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:37,050 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:37,056 - WARNING - [EN-83-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:37,059 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:37,060 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:37,062 - WARNING - [EN-84-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:37,062 - WARNING - [EN-85-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:37,067 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:37,068 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:37,069 - WARNING - [EN-82-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:37,069 - WARNING - [EN-85-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:37,077 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:37,077 - WARNING - [EN-82-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:37,121 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:37,121 - WARNING - [EN-83-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:38,549 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:38,662 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:38,872 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:38,872 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:38,879 - WARNING - [EN-81-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:38,879 - WARNING - [EN-81-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:38,879 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,067 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,067 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,068 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,068 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,068 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,068 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,146 - WARNING - [EN-84-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,147 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,367 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,367 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,367 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,369 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,369 - WARNING - [EN-83-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,369 - WARNING - [EN-85-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,369 - WARNING - [EN-82-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,369 - WARNING - [EN-85-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,419 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,421 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,421 - WARNING - [EN-83-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,421 - WARNING - [EN-82-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,464 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:39,464 - WARNING - [EN-84-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:39,464 - ERROR - Failed to process 81-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,468 - ERROR - Failed to process 81-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,468 - ERROR - Failed to process 82-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,470 - ERROR - Failed to process 82-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,470 - ERROR - Failed to process 83-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,470 - ERROR - Failed to process 83-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,470 - ERROR - Failed to process 84-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,470 - ERROR - Failed to process 84-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,470 - ERROR - Failed to process 85-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,470 - ERROR - Failed to process 85-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:39,978 - INFO - Processing EN batch: 100-110/4928
+2026-03-24 17:45:39,979 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,979 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,983 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,984 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,984 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,987 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,992 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,995 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,996 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:39,998 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:40,249 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,251 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,252 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,252 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,255 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,255 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,257 - WARNING - [EN-88-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,258 - WARNING - [EN-90-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,258 - WARNING - [EN-87-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,258 - WARNING - [EN-87-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,259 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,261 - WARNING - [EN-86-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,262 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,264 - WARNING - [EN-86-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,264 - WARNING - [EN-89-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,264 - WARNING - [EN-90-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,280 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,284 - WARNING - [EN-88-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:40,302 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:40,304 - WARNING - [EN-89-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,278 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,280 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,281 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,283 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,284 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,285 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,287 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,290 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,290 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,298 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:41,625 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,626 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,626 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,626 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,627 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,627 - WARNING - [EN-90-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,630 - WARNING - [EN-90-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,630 - WARNING - [EN-89-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,630 - WARNING - [EN-88-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,630 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,631 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,631 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,632 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,632 - WARNING - [EN-89-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,633 - WARNING - [EN-87-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,633 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:41,634 - WARNING - [EN-86-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,634 - WARNING - [EN-87-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,634 - WARNING - [EN-86-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:41,634 - WARNING - [EN-88-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:43,619 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,625 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,625 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,625 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,628 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,628 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,646 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,646 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,648 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,648 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:43,870 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:43,870 - WARNING - [EN-89-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:43,923 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:43,925 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:43,927 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:43,946 - WARNING - [EN-89-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,076 - WARNING - [EN-90-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,080 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:44,081 - WARNING - [EN-90-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,081 - WARNING - [EN-87-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,117 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:44,117 - WARNING - [EN-88-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,124 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:44,124 - WARNING - [EN-88-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,124 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:44,124 - WARNING - [EN-86-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,209 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:44,211 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:44,213 - WARNING - [EN-87-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,222 - WARNING - [EN-86-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:44,222 - ERROR - Failed to process 86-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,224 - ERROR - Failed to process 86-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,224 - ERROR - Failed to process 87-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,224 - ERROR - Failed to process 87-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,224 - ERROR - Failed to process 88-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,224 - ERROR - Failed to process 88-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,224 - ERROR - Failed to process 89-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,226 - ERROR - Failed to process 89-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,226 - ERROR - Failed to process 90-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,226 - ERROR - Failed to process 90-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:44,734 - INFO - Processing EN batch: 110-120/4928
+2026-03-24 17:45:44,735 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,739 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,739 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,739 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,743 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,743 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,743 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,743 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,748 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,774 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:44,999 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:44,999 - WARNING - [EN-93-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,003 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,007 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,008 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,008 - WARNING - [EN-91-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,008 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,008 - WARNING - [EN-91-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,008 - WARNING - [EN-94-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,008 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,015 - WARNING - [EN-92-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,015 - WARNING - [EN-95-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,015 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,023 - WARNING - [EN-93-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,029 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,029 - WARNING - [EN-92-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,056 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,058 - WARNING - [EN-94-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:45,058 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:45,058 - WARNING - [EN-95-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,001 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,032 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,035 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,037 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,039 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,039 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,039 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,039 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,068 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,068 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:46,130 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 17:45:46,142 - WARNING - [EN-92-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The service is currently unavailable.', 'status': 'UNAVAILABLE'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,276 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,277 - WARNING - [EN-93-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,279 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,281 - WARNING - [EN-93-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,285 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,289 - WARNING - [EN-95-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,290 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,292 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,292 - WARNING - [EN-94-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,295 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,295 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,304 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,309 - WARNING - [EN-91-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,310 - WARNING - [EN-91-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,310 - WARNING - [EN-92-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,310 - WARNING - [EN-94-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:46,312 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:46,314 - WARNING - [EN-95-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,146 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,298 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,298 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,324 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,324 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,348 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,348 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,348 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,348 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,348 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:48,410 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,417 - WARNING - [EN-92-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,472 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,472 - WARNING - [EN-93-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,591 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,593 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,599 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,601 - WARNING - [EN-95-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,601 - WARNING - [EN-91-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,605 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,607 - WARNING - [EN-93-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,607 - WARNING - [EN-91-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,607 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,609 - WARNING - [EN-94-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,639 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,641 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,643 - WARNING - [EN-92-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,643 - WARNING - [EN-95-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,748 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:48,750 - WARNING - [EN-94-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:48,750 - INFO - ≥…π¶¬ 66.67%£¨≤¢∑¢ ˝¥”10ΩµµÕµΩ9
+2026-03-24 17:45:48,750 - ERROR - Failed to process 91-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 91-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 92-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 92-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 93-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 93-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 94-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 94-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 95-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:48,750 - ERROR - Failed to process 95-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:49,257 - INFO - Processing EN batch: 120-130/4928
+2026-03-24 17:45:49,257 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,260 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,260 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,262 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,262 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,262 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,262 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,262 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,267 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,267 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:49,539 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,540 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,541 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,542 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,544 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,546 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,546 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,546 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,547 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,547 - WARNING - [EN-99-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-97-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-99-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-98-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-96-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-96-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-100-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-97-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,547 - WARNING - [EN-100-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:49,577 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:49,577 - WARNING - [EN-98-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:50,560 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,560 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,562 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,562 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,566 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,568 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,570 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,570 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,572 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,573 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:50,833 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:50,841 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:50,842 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:50,843 - WARNING - [EN-99-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:50,844 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:50,845 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:50,845 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:50,847 - WARNING - [EN-97-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:50,849 - WARNING - [EN-99-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:50,850 - WARNING - [EN-100-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:50,852 - WARNING - [EN-96-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:50,855 - WARNING - [EN-100-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:51,021 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:51,022 - WARNING - [EN-98-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:51,132 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:51,132 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:51,133 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:51,135 - WARNING - [EN-98-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:51,136 - WARNING - [EN-96-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:51,136 - WARNING - [EN-97-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:52,847 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:52,848 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:52,848 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:52,848 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:52,848 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:52,848 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,039 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,108 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,110 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,110 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,110 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,110 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,112 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,112 - WARNING - [EN-100-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,117 - WARNING - [EN-99-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,117 - WARNING - [EN-100-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,117 - WARNING - [EN-99-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,117 - WARNING - [EN-97-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,117 - WARNING - [EN-96-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,139 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,139 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,139 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,381 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,383 - WARNING - [EN-97-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,389 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,389 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,397 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:53,397 - WARNING - [EN-96-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,397 - WARNING - [EN-98-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,404 - WARNING - [EN-98-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:53,404 - INFO - ≥…π¶¬ 61.54%£¨≤¢∑¢ ˝¥”9ΩµµÕµΩ8
+2026-03-24 17:45:53,405 - ERROR - Failed to process 96-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 96-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 97-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 97-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 98-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 98-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 99-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 99-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 100-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,409 - ERROR - Failed to process 100-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:45:53,919 - INFO - Processing EN batch: 130-140/4928
+2026-03-24 17:45:53,922 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,922 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,927 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,930 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,930 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,930 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,939 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,941 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:53,943 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:54,017 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,020 - WARNING - [EN-101-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model, limit: 150, model: gemini-2.5-pro\nPlease retry in 6.293394486s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}, 'quotaValue': '150'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,160 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,160 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,162 - WARNING - [EN-103-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model, limit: 150, model: gemini-2.5-pro\nPlease retry in 6.157460439s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}, 'quotaValue': '150'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,164 - WARNING - [EN-105-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model, limit: 150, model: gemini-2.5-pro\nPlease retry in 6.157269754s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}, 'quotaValue': '150'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,165 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,165 - WARNING - [EN-104-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model, limit: 150, model: gemini-2.5-pro\nPlease retry in 6.157256982s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}, 'quotaValue': '150'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,169 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,175 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,176 - WARNING - [EN-103-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,178 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,179 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,179 - WARNING - [EN-104-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,181 - WARNING - [EN-101-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,181 - WARNING - [EN-102-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:54,218 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:54,218 - WARNING - [EN-102-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,019 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,183 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,185 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,191 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,192 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,195 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,197 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,199 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,223 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:55,258 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,259 - WARNING - [EN-105-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model, limit: 150, model: gemini-2.5-pro\nPlease retry in 5.053677681s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}, 'quotaValue': '150'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '5s'}]}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,279 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 503 Service Unavailable"
+2026-03-24 17:45:55,280 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,281 - WARNING - [EN-102-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The service is currently unavailable.', 'status': 'UNAVAILABLE'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,281 - WARNING - [EN-104-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model, limit: 150, model: gemini-2.5-pro\nPlease retry in 5.036340852s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}, 'quotaValue': '150'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '5s'}]}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,320 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,322 - WARNING - [EN-101-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,427 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,428 - WARNING - [EN-103-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,480 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,485 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,486 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,489 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:55,490 - WARNING - [EN-103-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,490 - WARNING - [EN-101-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,490 - WARNING - [EN-104-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:55,490 - WARNING - [EN-102-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,278 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,279 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,282 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,327 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,439 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,490 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,491 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,491 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,491 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,551 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,551 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,557 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,559 - WARNING - [EN-104-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,559 - WARNING - [EN-102-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,559 - WARNING - [EN-101-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,559 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:57,592 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,597 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,598 - WARNING - [EN-103-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,598 - WARNING - [EN-105-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,811 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,811 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,817 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,819 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,819 - WARNING - [EN-101-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,819 - WARNING - [EN-104-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,819 - WARNING - [EN-102-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,819 - WARNING - [EN-103-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:45:57,847 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:57,847 - WARNING - [EN-105-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:45:58,857 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:45:58,937 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:45:58,940 - WARNING - [EN-105-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model, limit: 150, model: gemini-2.5-pro\nPlease retry in 1.375459338s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-pro'}, 'quotaValue': '150'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:00,944 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,209 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:01,209 - WARNING - [EN-105-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:01,211 - INFO - ≥…π¶¬ 57.14%£¨≤¢∑¢ ˝¥”8ΩµµÕµΩ7
+2026-03-24 17:46:01,211 - ERROR - Failed to process 101-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,213 - ERROR - Failed to process 101-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,213 - ERROR - Failed to process 102-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,213 - ERROR - Failed to process 102-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,213 - ERROR - Failed to process 103-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,213 - ERROR - Failed to process 103-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,213 - ERROR - Failed to process 104-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,213 - ERROR - Failed to process 104-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,214 - ERROR - Failed to process 105-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,214 - ERROR - Failed to process 105-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:01,717 - INFO - Processing EN batch: 140-150/4928
+2026-03-24 17:46:01,717 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,720 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,726 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,728 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,729 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,729 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,734 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:01,736 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:02,016 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,017 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,018 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,018 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,018 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,020 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,021 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,025 - WARNING - [EN-109-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:02,025 - WARNING - [EN-107-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:02,026 - WARNING - [EN-108-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:02,027 - WARNING - [EN-106-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:02,027 - WARNING - [EN-109-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:02,027 - WARNING - [EN-107-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:02,029 - WARNING - [EN-106-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:02,031 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:02,031 - WARNING - [EN-108-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,038 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,040 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,042 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,044 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,047 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,048 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,049 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,051 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:03,266 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,269 - WARNING - [EN-108-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,320 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,323 - WARNING - [EN-108-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,323 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,331 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,334 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,335 - WARNING - [EN-107-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,336 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,336 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,339 - WARNING - [EN-106-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,339 - WARNING - [EN-107-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,341 - WARNING - [EN-109-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,341 - WARNING - [EN-106-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:03,358 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:03,363 - WARNING - [EN-109-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,278 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,326 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,347 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,348 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,350 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,353 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,355 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,356 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,521 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,538 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,540 - WARNING - [EN-108-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,540 - WARNING - [EN-108-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,542 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,542 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:05,576 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,623 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,623 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,623 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,626 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,627 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,629 - WARNING - [EN-107-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,633 - WARNING - [EN-106-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,633 - WARNING - [EN-109-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,635 - WARNING - [EN-109-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,635 - WARNING - [EN-106-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,635 - WARNING - [EN-107-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,788 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,792 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:05,792 - WARNING - [EN-110-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:05,795 - WARNING - [EN-110-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:06,797 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:06,797 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:07,052 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:07,054 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:07,057 - WARNING - [EN-110-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:07,064 - WARNING - [EN-110-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:09,055 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,057 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,362 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:09,367 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:09,372 - WARNING - [EN-110-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:09,372 - WARNING - [EN-110-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:09,372 - INFO - ≥…π¶¬ 53.33%£¨≤¢∑¢ ˝¥”7ΩµµÕµΩ6
+2026-03-24 17:46:09,372 - ERROR - Failed to process 106-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,372 - ERROR - Failed to process 106-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,376 - ERROR - Failed to process 107-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,376 - ERROR - Failed to process 107-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,376 - ERROR - Failed to process 108-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,378 - ERROR - Failed to process 108-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,378 - ERROR - Failed to process 109-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,378 - ERROR - Failed to process 109-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,378 - ERROR - Failed to process 110-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,378 - ERROR - Failed to process 110-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:09,887 - INFO - Processing EN batch: 150-160/4928
+2026-03-24 17:46:09,887 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,889 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,889 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,892 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,894 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,894 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:09,894 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:10,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:10,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:10,146 - WARNING - [EN-114-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:10,148 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:10,148 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:10,149 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:10,149 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:10,149 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:10,155 - WARNING - [EN-113-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:10,156 - WARNING - [EN-112-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:10,157 - WARNING - [EN-112-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:10,157 - WARNING - [EN-113-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:10,157 - WARNING - [EN-111-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:10,157 - WARNING - [EN-111-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 1/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝1√Î∫Û÷ÿ ‘
+2026-03-24 17:46:11,167 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:11,170 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:11,173 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:11,173 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:11,177 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:11,181 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:11,182 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:11,420 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:11,425 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:11,428 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:11,428 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:11,428 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:11,428 - WARNING - [EN-114-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:11,428 - WARNING - [EN-111-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:11,428 - WARNING - [EN-111-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:11,428 - WARNING - [EN-112-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:11,428 - WARNING - [EN-112-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:11,428 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:11,428 - WARNING - [EN-113-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:11,472 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:11,472 - WARNING - [EN-113-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 2/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝2√Î∫Û÷ÿ ‘
+2026-03-24 17:46:13,452 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,453 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,453 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,453 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,461 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,461 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,471 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,727 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:13,739 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:13,742 - WARNING - [EN-112-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:13,745 - WARNING - [EN-113-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:13,745 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,747 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,794 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:13,794 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:13,794 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:13,794 - WARNING - [EN-112-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:13,794 - WARNING - [EN-113-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:13,794 - WARNING - [EN-111-japanese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:13,794 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:13,794 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:13,794 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-03-24 17:46:13,794 - WARNING - [EN-114-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:13,794 - WARNING - [EN-111-chinese] API«Î«Û ß∞‹ (≥¢ ‘ 3/3): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}£¨µ»¥˝4√Î∫Û÷ÿ ‘
+2026-03-24 17:46:40,394 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:46:43,208 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:46:44,606 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:46:44,609 - INFO - ≥…π¶¬ 51.88%£¨≤¢∑¢ ˝¥”6ΩµµÕµΩ5
+2026-03-24 17:46:44,610 - ERROR - Failed to process 111-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:44,610 - ERROR - Failed to process 111-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:44,610 - ERROR - Failed to process 112-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:44,611 - ERROR - Failed to process 112-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:44,611 - ERROR - Failed to process 113-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:44,611 - ERROR - Failed to process 113-japanese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:44,611 - ERROR - Failed to process 114-chinese: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'Your project has exceeded its spending cap.', 'status': 'RESOURCE_EXHAUSTED'}}
+2026-03-24 17:46:45,145 - INFO - Processing EN batch: 160-170/4928
+2026-03-24 17:46:45,146 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:45,147 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:45,152 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:45,156 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:45,159 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:46:45,160 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:08,153 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:08,158 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:08,662 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:08,668 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:12,028 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:12,035 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:13,825 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:13,829 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:15,439 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:16,912 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:38,378 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:41,886 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:42,736 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:42,736 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:47:42,739 - INFO - ≥…π¶¬ 54.71%£¨≤¢∑¢ ˝¥”5ΩµµÕµΩ4
+2026-03-24 17:47:43,352 - INFO - Processing EN batch: 170-180/4928
+2026-03-24 17:47:43,353 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:43,354 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:43,356 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:43,357 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:47:43,363 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:48:10,714 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:10,717 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:48:12,529 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:12,532 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:48:16,727 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:16,735 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:48:19,299 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:19,301 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:48:19,961 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:19,961 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-24 17:48:40,378 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:44,514 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:45,047 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:46,927 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+2026-03-24 17:48:55,643 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"

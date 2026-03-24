@@ -1,0 +1,1235 @@
+2026-03-24 17:49:57,645 - INFO - Starting processing for language: EN
+2026-03-24 17:49:57,645 - INFO - Starting EN processing (async)
+2026-03-24 17:49:57,665 - INFO - Resuming from index 121
+2026-03-24 17:49:57,759 - INFO - Processing EN batch: 0-10/4758
+2026-03-24 17:49:57,762 - WARNING - [EN-121-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:49:57,764 - WARNING - [EN-121-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:49:57,764 - WARNING - [EN-122-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:49:58,772 - WARNING - [EN-121-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:49:58,772 - WARNING - [EN-121-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:49:58,772 - WARNING - [EN-122-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:00,782 - WARNING - [EN-121-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:00,782 - WARNING - [EN-121-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:00,782 - WARNING - [EN-122-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:00,784 - WARNING - [EN-122-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:00,784 - WARNING - [EN-123-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:00,784 - WARNING - [EN-123-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:01,793 - WARNING - [EN-122-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:01,793 - WARNING - [EN-123-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:01,793 - WARNING - [EN-123-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:03,798 - WARNING - [EN-122-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:03,798 - WARNING - [EN-123-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:03,798 - WARNING - [EN-123-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:03,800 - WARNING - [EN-124-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:03,800 - WARNING - [EN-124-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:03,800 - WARNING - [EN-125-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:04,806 - WARNING - [EN-124-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:04,806 - WARNING - [EN-124-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:04,806 - WARNING - [EN-125-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:06,808 - WARNING - [EN-124-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:06,808 - WARNING - [EN-124-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:06,808 - WARNING - [EN-125-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:06,808 - WARNING - [EN-125-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:07,809 - WARNING - [EN-125-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:09,816 - WARNING - [EN-125-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:09,816 - INFO - 成功率0.00%，并发数从3降低到2
+2026-03-24 17:50:09,816 - ERROR - Failed to process 121-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,818 - ERROR - Failed to process 121-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,818 - ERROR - Failed to process 122-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,820 - ERROR - Failed to process 122-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,820 - ERROR - Failed to process 123-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,820 - ERROR - Failed to process 123-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,820 - ERROR - Failed to process 124-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,820 - ERROR - Failed to process 124-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,820 - ERROR - Failed to process 125-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:09,820 - ERROR - Failed to process 125-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:10,322 - INFO - Processing EN batch: 10-20/4758
+2026-03-24 17:50:10,322 - WARNING - [EN-126-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:10,324 - WARNING - [EN-126-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:10,324 - WARNING - [EN-127-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:11,332 - WARNING - [EN-126-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:11,332 - WARNING - [EN-126-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:11,332 - WARNING - [EN-127-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:13,343 - WARNING - [EN-126-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:13,343 - WARNING - [EN-126-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:13,343 - WARNING - [EN-127-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:13,345 - WARNING - [EN-127-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:13,345 - WARNING - [EN-128-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:13,345 - WARNING - [EN-128-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:14,351 - WARNING - [EN-127-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:14,351 - WARNING - [EN-128-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:14,351 - WARNING - [EN-128-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:16,360 - WARNING - [EN-127-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:16,361 - WARNING - [EN-128-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:16,365 - WARNING - [EN-128-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:16,365 - WARNING - [EN-129-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:16,365 - WARNING - [EN-129-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:16,367 - WARNING - [EN-130-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:17,373 - WARNING - [EN-129-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:17,373 - WARNING - [EN-129-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:17,373 - WARNING - [EN-130-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:19,383 - WARNING - [EN-129-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:19,383 - WARNING - [EN-129-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:19,383 - WARNING - [EN-130-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:19,383 - WARNING - [EN-130-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:20,393 - WARNING - [EN-130-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:22,401 - WARNING - [EN-130-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:22,401 - INFO - 成功率0.00%，并发数从2降低到1
+2026-03-24 17:50:22,401 - ERROR - Failed to process 126-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 126-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 127-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 127-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 128-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 128-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 129-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 129-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,401 - ERROR - Failed to process 130-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,404 - ERROR - Failed to process 130-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:22,911 - INFO - Processing EN batch: 20-30/4758
+2026-03-24 17:50:22,912 - WARNING - [EN-131-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:22,912 - WARNING - [EN-131-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:23,919 - WARNING - [EN-131-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:23,920 - WARNING - [EN-131-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:25,932 - WARNING - [EN-131-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:25,934 - WARNING - [EN-131-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:25,934 - WARNING - [EN-132-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:25,935 - WARNING - [EN-132-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:26,940 - WARNING - [EN-132-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:26,940 - WARNING - [EN-132-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:28,951 - WARNING - [EN-132-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:28,951 - WARNING - [EN-132-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:28,952 - WARNING - [EN-133-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:28,952 - WARNING - [EN-133-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:29,959 - WARNING - [EN-133-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:29,960 - WARNING - [EN-133-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:31,961 - WARNING - [EN-133-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:31,961 - WARNING - [EN-133-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:31,964 - WARNING - [EN-134-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:31,964 - WARNING - [EN-134-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:32,969 - WARNING - [EN-134-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:32,969 - WARNING - [EN-134-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:34,980 - WARNING - [EN-134-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:34,980 - WARNING - [EN-134-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:34,983 - WARNING - [EN-135-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:35,007 - WARNING - [EN-135-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:35,995 - WARNING - [EN-135-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:35,998 - WARNING - [EN-135-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:38,012 - WARNING - [EN-135-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:38,013 - WARNING - [EN-135-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:38,013 - ERROR - Failed to process 131-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,014 - ERROR - Failed to process 131-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,014 - ERROR - Failed to process 132-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,014 - ERROR - Failed to process 132-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,014 - ERROR - Failed to process 133-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,016 - ERROR - Failed to process 133-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,016 - ERROR - Failed to process 134-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,016 - ERROR - Failed to process 134-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,016 - ERROR - Failed to process 135-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,016 - ERROR - Failed to process 135-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:38,519 - INFO - Processing EN batch: 30-40/4758
+2026-03-24 17:50:38,521 - WARNING - [EN-136-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:38,521 - WARNING - [EN-136-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:39,531 - WARNING - [EN-136-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:39,531 - WARNING - [EN-136-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:41,540 - WARNING - [EN-136-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:41,540 - WARNING - [EN-136-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:41,541 - WARNING - [EN-137-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:41,541 - WARNING - [EN-137-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:42,545 - WARNING - [EN-137-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:42,545 - WARNING - [EN-137-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:44,546 - WARNING - [EN-137-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:44,547 - WARNING - [EN-137-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:44,548 - WARNING - [EN-138-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:44,548 - WARNING - [EN-138-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:45,559 - WARNING - [EN-138-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:45,560 - WARNING - [EN-138-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:47,563 - WARNING - [EN-138-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:47,563 - WARNING - [EN-138-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:47,563 - WARNING - [EN-139-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:47,563 - WARNING - [EN-139-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:48,569 - WARNING - [EN-139-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:48,570 - WARNING - [EN-139-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:50,571 - WARNING - [EN-139-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:50,571 - WARNING - [EN-139-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:50,571 - WARNING - [EN-140-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:50,571 - WARNING - [EN-140-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:51,577 - WARNING - [EN-140-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:51,577 - WARNING - [EN-140-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:53,585 - WARNING - [EN-140-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:53,585 - WARNING - [EN-140-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:53,586 - ERROR - Failed to process 136-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,586 - ERROR - Failed to process 136-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,586 - ERROR - Failed to process 137-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,586 - ERROR - Failed to process 137-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,586 - ERROR - Failed to process 138-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,586 - ERROR - Failed to process 138-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,586 - ERROR - Failed to process 139-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,587 - ERROR - Failed to process 139-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,587 - ERROR - Failed to process 140-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:53,587 - ERROR - Failed to process 140-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:50:54,114 - INFO - Processing EN batch: 40-50/4758
+2026-03-24 17:50:54,115 - WARNING - [EN-141-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:54,116 - WARNING - [EN-141-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:55,118 - WARNING - [EN-141-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:55,119 - WARNING - [EN-141-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:57,125 - WARNING - [EN-141-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:57,125 - WARNING - [EN-141-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:50:57,125 - WARNING - [EN-142-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:57,127 - WARNING - [EN-142-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:50:58,132 - WARNING - [EN-142-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:50:58,132 - WARNING - [EN-142-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:00,138 - WARNING - [EN-142-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:00,139 - WARNING - [EN-142-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:00,140 - WARNING - [EN-143-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:00,140 - WARNING - [EN-143-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:01,149 - WARNING - [EN-143-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:01,150 - WARNING - [EN-143-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:03,167 - WARNING - [EN-143-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:03,167 - WARNING - [EN-143-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:03,169 - WARNING - [EN-144-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:03,170 - WARNING - [EN-144-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:04,185 - WARNING - [EN-144-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:04,186 - WARNING - [EN-144-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:06,196 - WARNING - [EN-144-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:06,197 - WARNING - [EN-144-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:06,197 - WARNING - [EN-145-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:06,197 - WARNING - [EN-145-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:07,212 - WARNING - [EN-145-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:07,214 - WARNING - [EN-145-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:09,217 - WARNING - [EN-145-chinese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:09,218 - WARNING - [EN-145-japanese] API请求失败 (尝试 3/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待4秒后重试
+2026-03-24 17:51:09,218 - ERROR - Failed to process 141-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,219 - ERROR - Failed to process 141-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,221 - ERROR - Failed to process 142-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,221 - ERROR - Failed to process 142-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,221 - ERROR - Failed to process 143-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,221 - ERROR - Failed to process 143-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,221 - ERROR - Failed to process 144-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,222 - ERROR - Failed to process 144-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,222 - ERROR - Failed to process 145-chinese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,228 - ERROR - Failed to process 145-japanese: 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden
+2026-03-24 17:51:09,736 - INFO - Processing EN batch: 50-60/4758
+2026-03-24 17:51:09,736 - WARNING - [EN-146-chinese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:09,740 - WARNING - [EN-146-japanese] API请求失败 (尝试 1/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待1秒后重试
+2026-03-24 17:51:10,747 - WARNING - [EN-146-chinese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试
+2026-03-24 17:51:10,747 - WARNING - [EN-146-japanese] API请求失败 (尝试 2/3): 1 validation error for GenerateContentConfig
+safety_config
+  Extra inputs are not permitted [type=extra_forbidden, input_value=[SafetySetting(
+  categor...K_NONE: 'BLOCK_NONE'>
+)], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden，等待2秒后重试

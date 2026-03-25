@@ -1,0 +1,7 @@
+2026-03-25 10:34:54,613 - INFO - Starting processing for language: EN
+2026-03-25 10:34:54,613 - INFO - Starting EN processing (async)
+2026-03-25 10:34:54,637 - INFO - Resuming from index 595
+2026-03-25 10:34:54,655 - INFO - Processing EN batch: 0-10/1310
+2026-03-25 10:34:54,659 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-25 10:34:54,661 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-25 10:34:54,662 - INFO - AFC is enabled with max remote calls: 10.

@@ -4,10 +4,10 @@ import torch
 # 1. 配置中心 (在此修改你的字段和参数)
 # ==========================================
 CONFIG = {
-    "model_name": "kubota/luke-large-defamation-detection-japanese",
-    # "model_name": "thu-coai/roberta-base-cold", 
-    "train_csv_path": "path/to/train.csv",
-    "val_csv_path": "path/to/val.csv",
+    # "model_name": "kubota/luke-large-defamation-detection-japanese",
+    "model_name": "thu-coai/roberta-base-cold", 
+    "train_csv_path": "model_train/classifier/data/chinese_finetuning_final.csv",
+    "val_csv_path": "model_train/classifier/data/final_annotated_Chinese_val.csv",
     
     # 字段映射
     "text_col": "text",             # CSV中存放文本的列名
@@ -26,5 +26,5 @@ CONFIG = {
     
     # 保存策略
     "monitor_metric": "combined_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
-    "save_path": "model_train/classifier/Japanese/final_data.pt",
+    "save_path": "model_train/classifier/Chinese/final_data.pt",
 }

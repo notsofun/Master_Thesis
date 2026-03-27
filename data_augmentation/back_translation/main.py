@@ -94,7 +94,7 @@ def run():
 
     df = pd.read_csv(CONFIG["input_file"])
     
-    condition = (df[CONFIG["label_columns"]] == '是').any(axis=1)
+    condition = (df[CONFIG["label_columns"]] == 1 ).any(axis=1)
     target_df = df[condition].copy()
     non_target_df = df[~condition].copy()
 

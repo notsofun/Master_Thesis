@@ -54,9 +54,8 @@ logger, LOG_FILE_PATH = setup_logging()
 def train():
     logger.info(f"日志将保存至: {LOG_FILE_PATH}")
     # 加载数据
-    df = pd.read_csv(CONFIG["csv_path"])
-    train_df = df[df[CONFIG["split_col"]] == CONFIG["train_val_split"][0]].reset_index(drop=True)
-    val_df = df[df[CONFIG["split_col"]] == CONFIG["train_val_split"][1]].reset_index(drop=True)
+    train_df = pd.read_csv(CONFIG["train_csv_path"]).reset_index(drop=True)
+    val_df = pd.read_csv(CONFIG["val_csv_path"]).reset_index(drop=True)
     
     logger.info(f"训练集大小: {len(train_df)}, 验证集大小: {len(val_df)}")
 
@@ -81,7 +80,7 @@ def train():
     
     total_steps = len(train_loader) * CONFIG["epochs"]
     # 设置 Warmup Step 为总步数的 10%
-    warmup_steps = int(total_steps * 0.1)
+    warmup_steps = int(total_steps * 0.2)
     
     scheduler = get_linear_schedule_with_warmup(
         optimizer, 
@@ -136,9 +135,9 @@ def train():
                 val_results["texts"].extend(batch_texts)
                 
                 val_results["rel_true"].extend(batch['rel_labels'].cpu().numpy())
-                val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.5).astype(int))
+                val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.6).astype(int))
                 val_results["hate_true"].extend(batch['hate_labels'].cpu().numpy())
-                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.3).astype(int))
+                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.6).astype(int))
 
         # 计算指标
         rel_f1 = f1_score(val_results["rel_true"], val_results["rel_pred"])

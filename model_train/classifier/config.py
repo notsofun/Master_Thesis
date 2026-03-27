@@ -20,8 +20,8 @@ CONFIG = {
     "max_len": 64,                          # 短句多，64-128即可
     "batch_size": 16,
     "epochs": 10,
-    "lr": 8e-6,
-    "warmup_steps": 0,
+    "lr": 5e-6,
+    "warmup_steps": 0.3,
     "device": "cuda" if torch.cuda.is_available() else "cpu",
     
     # 保存策略

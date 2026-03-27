@@ -80,7 +80,7 @@ def train():
     
     total_steps = len(train_loader) * CONFIG["epochs"]
     # 设置 Warmup Step 为总步数的 10%
-    warmup_steps = int(total_steps * 0.1)
+    warmup_steps = int(total_steps * 0.2)
     
     scheduler = get_linear_schedule_with_warmup(
         optimizer, 
@@ -135,9 +135,9 @@ def train():
                 val_results["texts"].extend(batch_texts)
                 
                 val_results["rel_true"].extend(batch['rel_labels'].cpu().numpy())
-                val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.5).astype(int))
+                val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.6).astype(int))
                 val_results["hate_true"].extend(batch['hate_labels'].cpu().numpy())
-                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.3).astype(int))
+                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.6).astype(int))
 
         # 计算指标
         rel_f1 = f1_score(val_results["rel_true"], val_results["rel_pred"])

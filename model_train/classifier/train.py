@@ -54,9 +54,8 @@ logger, LOG_FILE_PATH = setup_logging()
 def train():
     logger.info(f"日志将保存至: {LOG_FILE_PATH}")
     # 加载数据
-    df = pd.read_csv(CONFIG["csv_path"])
-    train_df = df[df[CONFIG["split_col"]] == CONFIG["train_val_split"][0]].reset_index(drop=True)
-    val_df = df[df[CONFIG["split_col"]] == CONFIG["train_val_split"][1]].reset_index(drop=True)
+    train_df = pd.read_csv(CONFIG["train_csv_path"]).reset_index(drop=True)
+    val_df = pd.read_csv(CONFIG["val_csv_path"]).reset_index(drop=True)
     
     logger.info(f"训练集大小: {len(train_df)}, 验证集大小: {len(val_df)}")
 

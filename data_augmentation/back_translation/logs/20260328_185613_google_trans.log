@@ -1,0 +1,6 @@
+2026-03-28 18:56:13,614 - WARNING - Compute Engine Metadata server unavailable on attempt 1 of 3. Reason: [Errno 64] Host is down
+2026-03-28 18:56:13,614 - WARNING - Compute Engine Metadata server unavailable on attempt 2 of 3. Reason: [Errno 64] Host is down
+2026-03-28 18:56:13,614 - WARNING - Compute Engine Metadata server unavailable on attempt 3 of 3. Reason: [Errno 64] Host is down
+2026-03-28 18:56:13,614 - WARNING - Authentication failed using Compute Engine authentication due to unavailable metadata server.
+2026-03-28 18:56:13,614 - ERROR - Google Translate 初始化失败: Could not automatically determine credentials. Please set GOOGLE_APPLICATION_CREDENTIALS or explicitly create credentials and re-run the application. For more information, please see https://cloud.google.com/docs/authentication/getting-started
+2026-03-28 18:56:13,614 - INFO - 提示：请确保已安装 google-cloud-translate 并正确配置了认证信息。

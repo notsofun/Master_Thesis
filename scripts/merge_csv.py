@@ -52,12 +52,12 @@ def process_csv_files(input_paths, output_path):
 if __name__ == "__main__":
     # 在这里指定你的文件路径
     files_to_combine = [
-        "data_augmentation/back_translation/data/back_translated_japansese.csv",
-        "model_train/classifier/data/final_annotated_japanese_train.csv",
+        "data_augmentation/back_translation/data/back_translated_chinese_gt.csv",
+        "model_train/classifier/data/final_annotated_chinese_train.csv",
     ]
     
     # 指定输出路径
-    final_output = "model_train/classifier/data/japanese_finetuning_final.csv"
+    final_output = "model_train/classifier/data/chinese_finetuning_final.csv"
     
     # 执行
     process_csv_files(files_to_combine, final_output)

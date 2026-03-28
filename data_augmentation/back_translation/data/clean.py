@@ -4,8 +4,8 @@ import logging
 
 # ================= 配置区域 =================
 CONFIG = {
-    "input_file": "model_train/classifier/data/final_annotated_Chinese_train.csv",       # 原始导出的文件名
-    "output_file": "data_augmentation/back_translation/data/Chinese.csv", # 筛选后准备增强的文件名
+    "input_file": "model_train/classifier/data/final_annotated_Japanese_train.csv",       # 原始导出的文件名
+    "output_file": "data_augmentation/back_translation/data/Japanese.csv", # 筛选后准备增强的文件名
     "col_hate": "hate_speech",          # 仇恨言论列名
     "col_rel": "christianity_related",  # 宗教相关性列名
     "col_text": "text",                 # 文本列名

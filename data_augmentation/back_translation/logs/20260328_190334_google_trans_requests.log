@@ -1,0 +1,6 @@
+2026-03-28 19:03:34,981 - INFO - 🚀 开始处理宗教仇恨正样本，共计: 66 条
+2026-03-28 19:03:34,982 - INFO - 📈 剩余待处理行数: 66
+2026-03-28 19:03:46,136 - INFO - 🧮 正在执行批量语义质检...
+2026-03-28 19:03:46,247 - INFO - Use pytorch device_name: mps
+2026-03-28 19:03:46,247 - INFO - Load pretrained SentenceTransformer: paraphrase-multilingual-MiniLM-L12-v2
+2026-03-28 19:03:55,753 - INFO - ✨ 增强完成！保存至: data_augmentation/back_translation/data/back_translated_japansese_gt.csv

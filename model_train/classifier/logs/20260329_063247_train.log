@@ -1,0 +1,24 @@
+2026-03-29 06:32:47,749 - INFO - 开始训练流程...
+2026-03-29 06:32:47,750 - INFO - 日志将保存至: /root/autodl-tmp/Master_Thesis/model_train/classifier/logs/20260329_063247_train.log
+2026-03-29 06:32:47,772 - INFO - 训练集大小: 3400, 验证集大小: 600
+2026-03-29 06:32:50,051 - ERROR - !!! 训练过程中发生崩溃 !!!
+2026-03-29 06:32:50,051 - ERROR - Subclasses of Dataset should implement __getitem__.
+Traceback (most recent call last):
+  File "/root/autodl-tmp/Master_Thesis/model_train/classifier/train.py", line 238, in <module>
+    train()
+  File "/root/autodl-tmp/Master_Thesis/model_train/classifier/train.py", line 127, in train
+    for batch in tqdm(train_loader, desc=f"Epoch {epoch+1}/{CONFIG['epochs']} [Train]"):
+  File "/root/venv/lib/python3.12/site-packages/tqdm/std.py", line 1181, in __iter__
+    for obj in iterable:
+  File "/root/venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 741, in __next__
+    data = self._next_data()
+           ^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 801, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+            ~~~~~~~~~~~~^^^^^
+  File "/root/venv/lib/python3.12/site-packages/torch/utils/data/dataset.py", line 59, in __getitem__
+    raise NotImplementedError("Subclasses of Dataset should implement __getitem__.")
+NotImplementedError: Subclasses of Dataset should implement __getitem__.

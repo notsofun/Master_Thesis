@@ -1,0 +1,12 @@
+2026-03-29 06:06:47,676 - INFO - 开始训练流程...
+2026-03-29 06:06:47,676 - INFO - 日志将保存至: /root/autodl-tmp/Master_Thesis/model_train/classifier/logs/20260329_060647_train.log
+2026-03-29 06:06:47,702 - INFO - 训练集大小: 4223, 验证集大小: 600
+2026-03-29 06:06:50,839 - ERROR - !!! 训练过程中发生崩溃 !!!
+2026-03-29 06:06:50,839 - ERROR - name 'np' is not defined
+Traceback (most recent call last):
+  File "/root/autodl-tmp/Master_Thesis/model_train/classifier/train.py", line 233, in <module>
+    train()
+  File "/root/autodl-tmp/Master_Thesis/model_train/classifier/train.py", line 170, in train
+    best_rel_t, best_rel_f1 = find_best_threshold(np.array(val_results["rel_true"]), np.array(val_results["rel_probs"]))
+                                                  ^^
+NameError: name 'np' is not defined

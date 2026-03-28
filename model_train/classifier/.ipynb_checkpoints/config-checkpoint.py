@@ -6,7 +6,7 @@ import torch
 CONFIG = {
     # "model_name": "kubota/luke-large-defamation-detection-japanese",
     "model_name": "thu-coai/roberta-base-cold", 
-    "train_csv_path": "model_train/classifier/data/chinese_finetuning_final.csv",
+    "train_csv_path": "model_train/classifier/data/final_annotated_Chinese_train.csv",
     "val_csv_path": "model_train/classifier/data/final_annotated_Chinese_val.csv",
     
     # 字段映射
@@ -26,5 +26,5 @@ CONFIG = {
     
     # 保存策略
     "monitor_metric": "combined_f1",            # 可选: 'hate_f1', 'hate_acc', 'rel_f1', 'total_loss'
-    "save_path": "model_train/classifier/Chinese/final_data.pt",
+    "save_path": "model_train/classifier/Chinese/final_data_1.pt",
 }

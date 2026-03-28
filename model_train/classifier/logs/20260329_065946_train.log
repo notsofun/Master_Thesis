@@ -1,0 +1,63 @@
+2026-03-29 06:59:46,298 - INFO - 开始 5-Fold 交叉验证训练流程...
+2026-03-29 06:59:47,594 - INFO - 
+============================== 正在训练 Fold 1/5 ==============================
+2026-03-29 07:00:06,309 - INFO - Fold 1 Epoch 1: Rel_F1=0.6335, Hate_F1=0.3462, Combined=0.4898
+2026-03-29 07:00:06,616 - INFO - >>> Fold 1 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_0.pt
+2026-03-29 07:00:24,001 - INFO - Fold 1 Epoch 2: Rel_F1=0.6565, Hate_F1=0.3721, Combined=0.5143
+2026-03-29 07:00:24,702 - INFO - >>> Fold 1 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_0.pt
+2026-03-29 07:00:42,175 - INFO - Fold 1 Epoch 3: Rel_F1=0.6320, Hate_F1=0.3500, Combined=0.4910
+2026-03-29 07:00:59,579 - INFO - Fold 1 Epoch 4: Rel_F1=0.6406, Hate_F1=0.3607, Combined=0.5006
+2026-03-29 07:01:17,069 - INFO - Fold 1 Epoch 5: Rel_F1=0.6074, Hate_F1=0.3380, Combined=0.4727
+2026-03-29 07:01:17,070 - INFO - Fold 1 触发早停。
+2026-03-29 07:01:17,070 - INFO - 
+============================== 正在训练 Fold 2/5 ==============================
+2026-03-29 07:01:34,980 - INFO - Fold 2 Epoch 1: Rel_F1=0.5583, Hate_F1=0.3380, Combined=0.4482
+2026-03-29 07:01:35,361 - INFO - >>> Fold 2 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_1.pt
+2026-03-29 07:01:52,716 - INFO - Fold 2 Epoch 2: Rel_F1=0.6007, Hate_F1=0.3438, Combined=0.4722
+2026-03-29 07:01:53,463 - INFO - >>> Fold 2 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_1.pt
+2026-03-29 07:02:10,664 - INFO - Fold 2 Epoch 3: Rel_F1=0.5826, Hate_F1=0.3824, Combined=0.4825
+2026-03-29 07:02:11,389 - INFO - >>> Fold 2 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_1.pt
+2026-03-29 07:02:28,623 - INFO - Fold 2 Epoch 4: Rel_F1=0.6043, Hate_F1=0.3836, Combined=0.4939
+2026-03-29 07:02:29,297 - INFO - >>> Fold 2 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_1.pt
+2026-03-29 07:02:46,354 - INFO - Fold 2 Epoch 5: Rel_F1=0.6025, Hate_F1=0.3667, Combined=0.4846
+2026-03-29 07:03:03,801 - INFO - Fold 2 Epoch 6: Rel_F1=0.5992, Hate_F1=0.3514, Combined=0.4753
+2026-03-29 07:03:20,979 - INFO - Fold 2 Epoch 7: Rel_F1=0.5846, Hate_F1=0.3390, Combined=0.4618
+2026-03-29 07:03:20,979 - INFO - Fold 2 触发早停。
+2026-03-29 07:03:20,979 - INFO - 
+============================== 正在训练 Fold 3/5 ==============================
+2026-03-29 07:03:38,443 - INFO - Fold 3 Epoch 1: Rel_F1=0.5863, Hate_F1=0.4691, Combined=0.5277
+2026-03-29 07:03:38,732 - INFO - >>> Fold 3 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_2.pt
+2026-03-29 07:03:55,605 - INFO - Fold 3 Epoch 2: Rel_F1=0.6105, Hate_F1=0.4878, Combined=0.5492
+2026-03-29 07:03:56,240 - INFO - >>> Fold 3 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_2.pt
+2026-03-29 07:04:13,327 - INFO - Fold 3 Epoch 3: Rel_F1=0.6508, Hate_F1=0.4694, Combined=0.5601
+2026-03-29 07:04:13,923 - INFO - >>> Fold 3 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_2.pt
+2026-03-29 07:04:30,845 - INFO - Fold 3 Epoch 4: Rel_F1=0.6473, Hate_F1=0.4615, Combined=0.5544
+2026-03-29 07:04:47,765 - INFO - Fold 3 Epoch 5: Rel_F1=0.6350, Hate_F1=0.4231, Combined=0.5291
+2026-03-29 07:05:04,518 - INFO - Fold 3 Epoch 6: Rel_F1=0.6338, Hate_F1=0.4536, Combined=0.5437
+2026-03-29 07:05:04,518 - INFO - Fold 3 触发早停。
+2026-03-29 07:05:04,519 - INFO - 
+============================== 正在训练 Fold 4/5 ==============================
+2026-03-29 07:05:22,906 - INFO - Fold 4 Epoch 1: Rel_F1=0.6009, Hate_F1=0.5405, Combined=0.5707
+2026-03-29 07:05:23,173 - INFO - >>> Fold 4 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_3.pt
+2026-03-29 07:05:40,508 - INFO - Fold 4 Epoch 2: Rel_F1=0.6234, Hate_F1=0.5238, Combined=0.5736
+2026-03-29 07:05:41,385 - INFO - >>> Fold 4 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_3.pt
+2026-03-29 07:05:59,085 - INFO - Fold 4 Epoch 3: Rel_F1=0.6245, Hate_F1=0.5128, Combined=0.5687
+2026-03-29 07:06:17,025 - INFO - Fold 4 Epoch 4: Rel_F1=0.6136, Hate_F1=0.5116, Combined=0.5626
+2026-03-29 07:06:34,877 - INFO - Fold 4 Epoch 5: Rel_F1=0.5905, Hate_F1=0.4865, Combined=0.5385
+2026-03-29 07:06:34,877 - INFO - Fold 4 触发早停。
+2026-03-29 07:06:34,878 - INFO - 
+============================== 正在训练 Fold 5/5 ==============================
+2026-03-29 07:06:52,944 - INFO - Fold 5 Epoch 1: Rel_F1=0.5882, Hate_F1=0.4000, Combined=0.4941
+2026-03-29 07:06:53,218 - INFO - >>> Fold 5 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_4.pt
+2026-03-29 07:07:10,194 - INFO - Fold 5 Epoch 2: Rel_F1=0.6030, Hate_F1=0.4839, Combined=0.5434
+2026-03-29 07:07:10,816 - INFO - >>> Fold 5 指标提升，模型保存至 model_train/classifier/Chinese/final_data_1_fold_4.pt
+2026-03-29 07:07:28,163 - INFO - Fold 5 Epoch 3: Rel_F1=0.6113, Hate_F1=0.4571, Combined=0.5342
+2026-03-29 07:07:45,744 - INFO - Fold 5 Epoch 4: Rel_F1=0.6035, Hate_F1=0.4571, Combined=0.5303
+2026-03-29 07:08:03,057 - INFO - Fold 5 Epoch 5: Rel_F1=0.6228, Hate_F1=0.4478, Combined=0.5353
+2026-03-29 07:08:03,057 - INFO - Fold 5 触发早停。
+2026-03-29 07:08:03,057 - INFO - 
+##################################################
+2026-03-29 07:08:03,057 - INFO - 5-Fold 训练完成！
+2026-03-29 07:08:03,057 - INFO - 各折最佳成绩: [0.5142907864370673, 0.4939084814922763, 0.5601176063645797, 0.5735930735930737, 0.5434280211844006]
+2026-03-29 07:08:03,057 - INFO - 平均 Combined F1: 0.5371 (+/- 0.0293)
+2026-03-29 07:08:03,057 - INFO - ##################################################

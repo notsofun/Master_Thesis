@@ -1,0 +1,7 @@
+2026-03-29 06:06:05,277 - INFO - 开始训练流程...
+2026-03-29 06:06:05,277 - INFO - 日志将保存至: /root/autodl-tmp/Master_Thesis/model_train/classifier/logs/20260329_060605_train.log
+2026-03-29 06:06:05,303 - INFO - 训练集大小: 4223, 验证集大小: 600
+2026-03-29 06:06:15,340 - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /thu-coai/roberta-base-cold/resolve/main/tokenizer_config.json (Caused by NewConnectionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable"))'), '(Request ID: ca4df3d0-0acc-406e-83e4-e49521e28c5a)')' thrown while requesting HEAD https://huggingface.co/thu-coai/roberta-base-cold/resolve/main/tokenizer_config.json
+2026-03-29 06:06:15,340 - WARNING - Retrying in 1s [Retry 1/5].
+2026-03-29 06:06:26,376 - WARNING - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /thu-coai/roberta-base-cold/resolve/main/tokenizer_config.json (Caused by NewConnectionError("HTTPSConnection(host=\'huggingface.co\', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable"))'), '(Request ID: ef05bb19-e163-44cd-8a5e-f0a9302768cf)')' thrown while requesting HEAD https://huggingface.co/thu-coai/roberta-base-cold/resolve/main/tokenizer_config.json
+2026-03-29 06:06:26,376 - WARNING - Retrying in 2s [Retry 2/5].

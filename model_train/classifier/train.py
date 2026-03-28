@@ -80,7 +80,7 @@ def train():
     
     total_steps = len(train_loader) * CONFIG["epochs"]
     # 设置 Warmup Step 为总步数的 10%
-    warmup_steps = int(total_steps * 0.2)
+    warmup_steps = int(total_steps * 0.1)
     
     scheduler = get_linear_schedule_with_warmup(
         optimizer, 
@@ -91,7 +91,7 @@ def train():
 
     best_score = -1
     # ================= 修改点 2: 提前停止计数器 =================
-    patience = 3  # 如果连续 3 轮指标不涨，就停止
+    patience = 5  # 如果连续 3 轮指标不涨，就停止
     no_improve_epochs = 0
     # ============================================================
     
@@ -112,7 +112,7 @@ def train():
             loss_rel = criterion_rel(rel_logits, rel_labels)
             loss_hate = criterion_hate(hate_logits, hate_labels)
             
-            loss = loss_rel + loss_hate 
+            loss = loss_rel + loss_hate
             
             loss.backward()
             optimizer.step()
@@ -135,9 +135,9 @@ def train():
                 val_results["texts"].extend(batch_texts)
                 
                 val_results["rel_true"].extend(batch['rel_labels'].cpu().numpy())
-                val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.6).astype(int))
+                val_results["rel_pred"].extend((torch.sigmoid(rel_logits).cpu().numpy() > 0.5).astype(int))
                 val_results["hate_true"].extend(batch['hate_labels'].cpu().numpy())
-                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.6).astype(int))
+                val_results["hate_pred"].extend((torch.sigmoid(hate_logits).cpu().numpy() > 0.5).astype(int))
 
         # 计算指标
         rel_f1 = f1_score(val_results["rel_true"], val_results["rel_pred"])

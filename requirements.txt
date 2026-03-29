@@ -41,6 +41,7 @@ ftfy==6.3.1
 fugashi==1.5.2
 gdown==5.2.1
 gmpy2
+gliner
 h11
 hf-xet
 httpcore

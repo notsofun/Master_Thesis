@@ -4,9 +4,11 @@ import pandas as pd
 
 # 获取当前目录
 current_dir = os.getcwd()
+print(f'current dir is {current_dir}')
 
 # 查找所有 *_predictions.csv 文件
-prediction_files = glob.glob(os.path.join(current_dir, '*_predictions.csv'))
+prediction_files = glob.glob(os.path.join(current_dir, '*_predictions_llm.csv'))
+print(f'we have {prediction_files}')
 
 for file_path in prediction_files:
     # 读取 CSV 文件
@@ -16,11 +18,11 @@ for file_path in prediction_files:
     filtered_df = df[(df['is_religion_related'] == 1) & (df['is_hate_speech'] == 1)]
     
     # 只保留 text 字段
-    output_df = filtered_df[['text']]
+    output_df = filtered_df[['response']]
     
     # 生成输出文件名
     base_name = os.path.basename(file_path)
-    output_name = base_name.replace('_predictions.csv', '_final_religious_hate.csv')
+    output_name = base_name.replace('_predictions_llm.csv', '_final_religious_hate_llm.csv')
     output_path = os.path.join(current_dir, output_name)
     
     # 保存到新 CSV 文件

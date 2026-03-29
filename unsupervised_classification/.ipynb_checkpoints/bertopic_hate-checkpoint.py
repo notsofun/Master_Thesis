@@ -30,16 +30,22 @@ for lib in ['numba', 'matplotlib', 'hdbscan', 'umap', 'transformers', 'urllib3',
     logging.getLogger(lib).setLevel(logging.ERROR)
 
 def setup_logger():
+    # 1. 定义文件夹路径
     log_dir = 'unsupervised_classification/logs'
     
+    # 2. 确保文件夹存在
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
+    
+    # 3. 生成文件名
     log_filename = datetime.now().strftime("topic_pipeline_%Y%m%d_%H%M.log")
+    
+    # 4. 【关键修改】拼接完整路径：将文件名放入文件夹中
+    log_path = os.path.join(log_dir, log_filename)
     
     logger = logging.getLogger("TopicPipeline")
     logger.setLevel(logging.INFO)
     
-    # 避免重复绑定 handler
     if not logger.handlers:
         formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
         
@@ -48,8 +54,8 @@ def setup_logger():
         ch.setFormatter(formatter)
         logger.addHandler(ch)
         
-        # 文件输出
-        fh = logging.FileHandler(log_filename, encoding='utf-8')
+        # 文件输出 - 使用拼接后的完整路径 log_path
+        fh = logging.FileHandler(log_path, encoding='utf-8')
         fh.setFormatter(formatter)
         logger.addHandler(fh)
         
@@ -62,13 +68,13 @@ logger = setup_logger()
 # ==========================================
 # 数据文件路径配置
 DATA_PATHS = {
-    'zh': 'data_detect/finetuned_detection/chinese_final_religious_hate.csv',
+    'zh': 'unsupervised_classification/fianl_data/chinese_religious_hate.csv',
     'en': 'data_collection/English_Existing/merged_deduped.csv',
-    'jp': 'data_detect/finetuned_detection/japanese_final_religious_hate.csv'
+    'jp': 'unsupervised_classification/fianl_data/japanese_religious_hate.csv'
 }
 
 # 输出目录配置
-OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results/fourth'
+OUTPUT_DIR = 'unsupervised_classification/topic_modeling_results/sixth'
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 for sub_dir in ['data', 'models', 'visualizations']:
     os.makedirs(os.path.join(OUTPUT_DIR, sub_dir), exist_ok=True)
@@ -121,7 +127,7 @@ def load_and_sample_data(selected_langs):
         
         if is_multi_lang:
             # 多语言模式：随机采样 1000 条
-            sample_size = min(1000, len(df))
+            sample_size = min(2000, len(df))
             df = df.sample(n=sample_size, random_state=42)
             logger.info(f"[{lang}] 采样了 {sample_size} 条数据 (多语言模式).")
         else:
@@ -310,7 +316,7 @@ def run_topic_modeling_pipeline(langs_to_analyze):
     # 2.5. 生成 UMAP + HDBSCAN 可视化 (在拟合 BERTopic 之前)
     logger.info("生成 UMAP + HDBSCAN 可视化 (拟合前)...")
     umap_vis = umap.UMAP(
-    n_neighbors=35, 
+    n_neighbors=30, 
     n_components=5, 
     min_dist=0.0, 
     metric='cosine', 
@@ -318,10 +324,10 @@ def run_topic_modeling_pipeline(langs_to_analyze):
 )
     embs_2d = umap_vis.fit_transform(embeddings)
     hdbscan_vis = hdbscan.HDBSCAN(
-    min_cluster_size=15, 
-    min_samples=2,        # 关键修改：让聚类更包容
+    min_cluster_size=20, 
+    min_samples=5,        # 关键修改：让聚类更包容
     metric='euclidean',
-    cluster_selection_epsilon=0.1, 
+    cluster_selection_epsilon=0.05, 
     cluster_selection_method='eom', 
     prediction_data=True
 )

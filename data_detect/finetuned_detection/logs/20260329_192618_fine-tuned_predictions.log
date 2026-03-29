@@ -1,0 +1,13 @@
+2026-03-29 19:26:18,610 - INFO - 检测到本地权重文件: model_train/classifier/Chinese/Thu-Chinese-hate-v1.pt，跳过下载。
+2026-03-29 19:26:18,610 - INFO - 正在加载 Tokenizer 和模型至设备: cuda...
+2026-03-29 19:26:22,366 - INFO - 模型加载成功，进入评估模式。
+2026-03-29 19:26:22,366 - INFO - 正在读取数据: data_augmentation/LLM/generated_texts/synthetic_output_en_1.csv
+2026-03-29 19:26:22,414 - INFO - 开始推理，总计数据量: 1250
+2026-03-29 19:26:24,499 - INFO - 推理结束，开始生成统计报告：
+2026-03-29 19:26:24,500 - INFO - === 宗教相关性任务 分布报告 ===
+2026-03-29 19:26:24,500 - INFO -   > Negative (0): 309 条 (24.72%)
+2026-03-29 19:26:24,500 - INFO -   > Positive (1): 941 条 (75.28%)
+2026-03-29 19:26:24,500 - INFO - === 仇恨言论检测任务 分布报告 ===
+2026-03-29 19:26:24,500 - INFO -   > Negative (0): 83 条 (6.64%)
+2026-03-29 19:26:24,500 - INFO -   > Positive (1): 1167 条 (93.36%)
+2026-03-29 19:26:24,539 - INFO - 预测结果已保存至: data_detect/finetuned_detection/chinese_predictions_llm.csv

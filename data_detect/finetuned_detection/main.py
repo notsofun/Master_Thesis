@@ -1,4 +1,4 @@
-# data_detect/finetuned_detection/main.py
+# python data_detect/finetuned_detection/main.py
 import pandas as pd
 import torch
 import os, sys
@@ -24,13 +24,13 @@ logger, LOG_FILE_PATH = setup_logging(name="fine-tuned_predictions")
 # ==========================================
 # 2. 配置参数
 # ==========================================
-MODEL_NAME = "kubota/luke-large-defamation-detection-japanese"
+MODEL_NAME = "thu-coai/roberta-base-cold"
 WEIGHTS_URL = "https://huggingface.co/Zhidian2025/Master-Thesis-Models/resolve/main/Kubota-Japanese-hate-v2.pt"
-LOCAL_WEIGHTS_PATH = "model_train/classifier/Japanese/Kubota-Japanese-hate-v2.pt"
+LOCAL_WEIGHTS_PATH = "model_train/classifier/Chinese/Thu-Chinese-hate-v1.pt"
 
-INPUT_CSV = "data_collection/5ch/raw_religious_ja.csv"
-TEXT_COLUMN = "text"
-OUTPUT_CSV = "data_detect/finetuned_detection/japanese_predictions.csv"
+INPUT_CSV = "data_augmentation/LLM/generated_texts/synthetic_output_en_1.csv"
+TEXT_COLUMN = "response"
+OUTPUT_CSV = "data_detect/finetuned_detection/chinese_predictions_llm.csv"
 
 BATCH_SIZE = 32 
 MAX_LENGTH = 256
@@ -95,7 +95,8 @@ def main():
         return
         
     logger.info(f"正在读取数据: {INPUT_CSV}")
-    df = pd.read_csv(INPUT_CSV)
+    df = pd.read_csv(INPUT_CSV,encoding='utf-8')
+    df = df[df['language'] == 'chinese'].reset_index(drop=True)
     df[TEXT_COLUMN] = df[TEXT_COLUMN].fillna("").astype(str)
     texts = df[TEXT_COLUMN].tolist()
     

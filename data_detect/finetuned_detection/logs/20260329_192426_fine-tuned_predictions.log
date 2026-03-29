@@ -1,0 +1,13 @@
+2026-03-29 19:24:26,553 - INFO - 检测到本地权重文件: model_train/classifier/Japanese/Kubota-Japanese-hate-v2.pt，跳过下载。
+2026-03-29 19:24:26,553 - INFO - 正在加载 Tokenizer 和模型至设备: cuda...
+2026-03-29 19:24:36,747 - INFO - 模型加载成功，进入评估模式。
+2026-03-29 19:24:36,747 - INFO - 正在读取数据: data_augmentation/LLM/generated_texts/synthetic_output_en_1.csv
+2026-03-29 19:24:36,797 - INFO - 开始推理，总计数据量: 1249
+2026-03-29 19:24:42,059 - INFO - 推理结束，开始生成统计报告：
+2026-03-29 19:24:42,060 - INFO - === 宗教相关性任务 分布报告 ===
+2026-03-29 19:24:42,060 - INFO -   > Negative (0): 82 条 (6.57%)
+2026-03-29 19:24:42,060 - INFO -   > Positive (1): 1167 条 (93.43%)
+2026-03-29 19:24:42,060 - INFO - === 仇恨言论检测任务 分布报告 ===
+2026-03-29 19:24:42,060 - INFO -   > Negative (0): 304 条 (24.34%)
+2026-03-29 19:24:42,060 - INFO -   > Positive (1): 945 条 (75.66%)
+2026-03-29 19:24:42,109 - INFO - 预测结果已保存至: data_detect/finetuned_detection/japanese_predictions_llm.csv

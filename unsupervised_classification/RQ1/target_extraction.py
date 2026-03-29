@@ -83,7 +83,7 @@ def analyze_topic_targets(df, output_dir="unsupervised_classification/RQ1/data")
 # ==========================================
 if __name__ == "__main__":
     # 假设你的 df 已经包含了 'text' 和 BERTopic 跑出来的 'topic' 列
-    df = pd.read_csv(r'unsupervised_classification\topic_modeling_results\fourth\data\document_topic_mapping.csv')
+    df = pd.read_csv(r'unsupervised_classification\topic_modeling_results\sixth\data\document_topic_mapping.csv')
     
     # 1. 运行提取 (本地 CPU 跑 3000 条大概需要 5-15 分钟)
     df_with_targets = extract_hate_targets(df) # 这里的 df 传入你实际的 DataFrame

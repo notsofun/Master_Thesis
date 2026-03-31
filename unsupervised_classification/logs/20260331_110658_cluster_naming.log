@@ -1,0 +1,7 @@
+2026-03-31 11:06:58,292 - INFO - 加载映射文件: unsupervised_classification\topic_modeling_results\sixth\data\document_topic_mapping.csv
+2026-03-31 11:06:58,361 - INFO - 加载向量: unsupervised_classification\topic_modeling_results\sixth\models\embeddings.npy
+2026-03-31 11:06:58,381 - INFO - 开始精修话题表示...
+2026-03-31 11:06:58,400 - INFO - 正在调用 Gemini (gemini-2.5-flash) 进行话题命名...
+2026-03-31 11:06:58,622 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:07:34,649 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-31 11:07:34,649 - ERROR - update_topics 内部崩溃: 'int' object is not subscriptable

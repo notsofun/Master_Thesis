@@ -1,0 +1,19 @@
+2026-03-31 11:46:20,108 - INFO - 加载映射文件: unsupervised_classification\topic_modeling_results\sixth\data\document_topic_mapping.csv
+2026-03-31 11:46:20,192 - INFO - 数据清洗完成。剩余样本数: 5965, 向量数: 5965
+2026-03-31 11:46:20,204 - INFO - 开始精修话题表示...
+2026-03-31 11:46:20,204 - INFO - CSV 中检测到的话题总数: 48 (包含 -1 则为 47 个有效话题)
+2026-03-31 11:46:20,212 - INFO - 模型当前加载的话题数: 48
+2026-03-31 11:46:20,238 - INFO - 成功为 47 个有效话题补全了代表性文档。
+2026-03-31 11:46:20,266 - INFO - 正在调用 Gemini (gemini-2.5-flash) 进行话题命名...
+2026-03-31 11:46:20,482 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:46:29,131 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-31 11:46:29,140 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:46:36,739 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-31 11:46:36,745 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:46:41,668 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-31 11:46:41,676 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:46:45,037 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-31 11:46:45,050 - INFO - 话题命名完成。
+2026-03-31 11:46:45,052 - INFO - 正在生成 DataMap 可视化...
+2026-03-31 11:46:45,053 - INFO - 正在将高维向量降维至 2D 以供 DataMap 绘图...
+2026-03-31 11:47:14,259 - ERROR - 可视化绘图失败: Input contains NaN.

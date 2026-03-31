@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import normalize
 from scipy.stats import entropy
+from naming_cluster import refine_topics
 
 # ==========================================
 # 1. 严格的日志与警告管理
@@ -373,6 +374,15 @@ def run_topic_modeling_pipeline(langs_to_analyze):
     topics, probs = topic_model.fit_transform(tokenized_docs, embeddings)
 
     # ==========================================
+    # 【新增步骤】话题命名精修
+    # ==========================================
+    try:
+        # 传入原始 docs 而非 tokenized_docs，方便 LLM 理解语义
+        topic_model = refine_topics(topic_model, docs, logger)
+    except Exception as e:
+        logger.error(f"LLM 命名失败，跳过该步骤: {e}")
+
+    # ==========================================
     # 5. 结果保存与可视化导出
     # ==========================================
     logger.info("执行完毕，正在导出分析结果...")
@@ -389,7 +399,7 @@ def run_topic_modeling_pipeline(langs_to_analyze):
     logger.info("正在生成可视化 HTML 图表...")
     try:
         # 词频条形图
-        fig_barchart = topic_model.visualize_barchart(top_n_topics=10)
+        fig_barchart = topic_model.visualize_barchart(top_n_topics=10, custom_labels=True)
         fig_barchart.write_html(os.path.join(OUTPUT_DIR, 'visualizations/topic_barchart.html'))
         
         # 聚类散点图 (2D 映射)

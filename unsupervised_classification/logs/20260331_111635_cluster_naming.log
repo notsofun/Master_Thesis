@@ -1,0 +1,11 @@
+2026-03-31 11:16:35,893 - INFO - 加载映射文件: unsupervised_classification\topic_modeling_results\sixth\data\document_topic_mapping.csv
+2026-03-31 11:16:35,970 - INFO - 加载向量: unsupervised_classification\topic_modeling_results\sixth\models\embeddings.npy
+2026-03-31 11:16:35,987 - INFO - 开始精修话题表示...
+2026-03-31 11:16:36,020 - INFO - 正在调用 Gemini (gemini-2.5-flash) 进行话题命名...
+2026-03-31 11:16:36,257 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:16:53,456 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-03-31 11:16:53,463 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:17:17,671 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:17:17,770 - INFO - AFC is enabled with max remote calls: 10.
+2026-03-31 11:17:18,052 - INFO - 话题命名完成。
+2026-03-31 11:17:18,052 - INFO - 正在生成 DataMap 可视化...

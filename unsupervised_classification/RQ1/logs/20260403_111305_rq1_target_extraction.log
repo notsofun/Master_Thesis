@@ -1,0 +1,19 @@
+2026-04-03 11:13:05,857 - INFO - 日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_111305_rq1_target_extraction.log
+2026-04-03 11:13:05,861 - INFO - ============================================================
+2026-04-03 11:13:05,861 - INFO - Stage viz: 生成可视化图表
+2026-04-03 11:13:05,861 - INFO - ============================================================
+2026-04-03 11:13:05,861 - INFO -   使用 checkpoint: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/checkpoint_layer12.csv
+2026-04-03 11:13:05,998 - INFO -   Topic 汇总: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_targets_v3.csv
+2026-04-03 11:13:07,586 - INFO - [Font] 找到 CJK 字体: Hiragino Sans (/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc)
+2026-04-03 11:13:07,587 - INFO - [Font] CJK 字体已配置: Hiragino Sans
+2026-04-03 11:13:07,592 - INFO -   [VIZ] 图1: 类别堆叠横条图
+2026-04-03 11:13:07,928 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_category_stacked.png
+2026-04-03 11:13:07,928 - INFO -   [VIZ] 图2: Top-N 实体条形图矩阵（双语标签）
+2026-04-03 11:13:07,931 - INFO -     翻译完成: 63 个实体
+2026-04-03 11:13:09,196 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_top_targets_bilingual.png
+2026-04-03 11:13:09,196 - INFO -   [VIZ] 图3: 全局 Top-20 实体排行（双语）
+2026-04-03 11:13:09,633 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_global_top20_bilingual.png
+2026-04-03 11:13:09,633 - INFO -   [VIZ] 图4: 语言×类别热力图
+2026-04-03 11:13:10,636 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_lang_category_heatmap.png
+2026-04-03 11:13:10,636 - INFO -   ✅ 所有图表已保存至 /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data
+2026-04-03 11:13:10,637 - INFO - 全部完成。

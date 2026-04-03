@@ -1,0 +1,31 @@
+2026-04-03 10:19:40,951 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_101940_rq1_target_extraction.log
+2026-04-03 10:19:40,955 - INFO - 读取数据: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/topic_modeling_results/sixth/data/document_topic_mapping.csv
+2026-04-03 10:19:41,023 - INFO -   共 5965 条，列: ['text', 'source', 'lang', 'post_id', 'tokenized_text', 'topic']
+2026-04-03 10:19:41,023 - INFO - ============================================================
+2026-04-03 10:19:41,023 - INFO - RQ1 Target Extraction v3 — Hybrid Pipeline START
+2026-04-03 10:19:41,023 - INFO -   数据量: 5965 条 | LLM: ✓ gemini
+2026-04-03 10:19:41,023 - INFO - ============================================================
+2026-04-03 10:19:41,024 - INFO - [1/4] 加载 spaCy 多语言模型...
+2026-04-03 10:19:45,758 - INFO - [spaCy] 已加载 en_core_web_trf
+2026-04-03 10:19:48,211 - INFO - [spaCy] 已加载 zh_core_web_trf
+2026-04-03 10:19:49,750 - INFO - [spaCy] 已加载 ja_core_news_trf
+2026-04-03 10:19:49,750 - INFO - [2/4] Layer 1 (spaCy) + Layer 2 (词典) 提取...
+2026-04-03 10:30:23,164 - INFO -   Layer 1+2 完成：总实体 10117 个，需 LLM 兜底：3617 条
+2026-04-03 10:30:23,165 - INFO - [3/4] Layer 3 LLM 兜底（gemini），共 3617 条...
+2026-04-03 10:30:24,838 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:30:29,790 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:30:29,904 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:30:33,780 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:30:33,889 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:30:43,918 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:30:44,029 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:30:46,389 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:30:46,496 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:30:51,600 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:30:51,709 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:30:58,661 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:30:58,770 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:31:02,657 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:31:02,766 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 10:31:07,264 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 10:31:07,371 - INFO - AFC is enabled with max remote calls: 10.

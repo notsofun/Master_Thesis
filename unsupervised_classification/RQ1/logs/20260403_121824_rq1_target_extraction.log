@@ -1,0 +1,53 @@
+2026-04-03 12:18:24,724 - INFO - 日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_121824_rq1_target_extraction.log
+2026-04-03 12:18:24,727 - INFO - ============================================================
+2026-04-03 12:18:24,727 - INFO - Stage viz: 生成可视化图表
+2026-04-03 12:18:24,727 - INFO - ============================================================
+2026-04-03 12:18:24,727 - INFO -   使用 checkpoint: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/checkpoint_llm.csv
+2026-04-03 12:18:24,880 - INFO -   Topic 汇总: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_targets_v3.csv
+2026-04-03 12:18:25,199 - INFO - [Font] 找到 CJK 字体: Hiragino Sans (/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc)
+2026-04-03 12:18:25,199 - INFO - [Font] CJK 字体已配置: Hiragino Sans
+2026-04-03 12:18:25,204 - INFO -   [VIZ] 图1: 类别堆叠横条图
+2026-04-03 12:18:25,556 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_category_stacked.png
+2026-04-03 12:18:25,556 - INFO -   [VIZ] 图2: Top-N 实体条形图矩阵（双语标签）
+2026-04-03 12:18:26,390 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:26,717 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:26,719 - WARNING - [Translate] Gemini 批次失败 (行 0-8): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 10000, model: gemini-2.5-flash\nPlease retry in 13h41m33.316821535s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '49293s'}]}}
+2026-04-03 12:18:26,719 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:26,822 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:26,825 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:26,931 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:26,933 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:27,014 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:27,016 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:27,118 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:27,120 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:27,204 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:27,206 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:27,315 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:27,316 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:27,408 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:27,409 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:27,489 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:27,495 - INFO - [Translate] Gemini API 翻译了 8 个新词，已缓存
+2026-04-03 12:18:27,495 - INFO -     翻译完成: 69 个实体
+2026-04-03 12:18:28,851 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_top_targets_bilingual.png
+2026-04-03 12:18:28,851 - INFO -   [VIZ] 图3: 全局 Top-20 实体排行（双语）
+2026-04-03 12:18:28,962 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:29,133 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:29,135 - WARNING - [Translate] Gemini 批次失败 (行 0-4): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 10000, model: gemini-2.5-flash\nPlease retry in 13h41m30.899185686s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '10000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '49290s'}]}}
+2026-04-03 12:18:29,135 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:29,230 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:29,232 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:29,329 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:29,331 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:29,414 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:29,415 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:18:29,489 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-03 12:18:29,492 - INFO - [Translate] Gemini API 翻译了 4 个新词，已缓存
+2026-04-03 12:18:29,852 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_global_top20_bilingual.png
+2026-04-03 12:18:29,852 - INFO -   [VIZ] 图4: 语言×类别热力图
+2026-04-03 12:18:30,939 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_lang_category_heatmap.png
+2026-04-03 12:18:30,939 - INFO -   [VIZ] 图5: LLM 增益对比
+2026-04-03 12:18:31,038 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_llm_gain.png
+2026-04-03 12:18:31,038 - INFO -   ✅ 所有图表已保存至 /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data
+2026-04-03 12:18:31,040 - INFO - 全部完成。

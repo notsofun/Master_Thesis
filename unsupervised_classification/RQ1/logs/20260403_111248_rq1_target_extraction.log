@@ -1,0 +1,6 @@
+2026-04-03 11:12:48,352 - INFO - 日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_111248_rq1_target_extraction.log
+2026-04-03 11:12:48,356 - INFO - ============================================================
+2026-04-03 11:12:48,356 - INFO - Stage viz: 生成可视化图表
+2026-04-03 11:12:48,356 - INFO - ============================================================
+2026-04-03 11:12:48,356 - INFO -   使用 checkpoint: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/checkpoint_layer12.csv
+2026-04-03 11:12:48,567 - INFO -   Topic 汇总: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_targets_v3.csv

@@ -1,0 +1,556 @@
+2026-04-03 12:14:03,335 - INFO - 日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_121403_rq1_target_extraction.log
+2026-04-03 12:14:03,340 - INFO - ============================================================
+2026-04-03 12:14:03,340 - INFO - Stage 3: LLM 并发兜底
+2026-04-03 12:14:03,340 - INFO - ============================================================
+2026-04-03 12:14:03,406 - INFO -   读入 checkpoint: 5965 条  来自 /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/checkpoint_layer12.csv
+2026-04-03 12:14:03,635 - INFO -   需 LLM 兜底: 3511 / 5965 条  (并发=50, 模型=gemini-2-flash)
+2026-04-03 12:14:05,135 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,136 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,140 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,141 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,141 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,144 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,145 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,147 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,147 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,148 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,149 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,150 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,150 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,151 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,152 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,152 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,153 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,155 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,153 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,153 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,153 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,156 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,156 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,157 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,158 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,158 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,158 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,160 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,163 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,165 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,166 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,166 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,167 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,168 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,168 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,168 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,169 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,170 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,171 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,171 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,172 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,173 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,173 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,174 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,176 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,178 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,180 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,183 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,184 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,184 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:05,387 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,425 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,427 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,436 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,439 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,458 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,459 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,461 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,462 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,462 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,462 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,463 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,464 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,464 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,464 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,464 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,465 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,465 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,465 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,470 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,471 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,471 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,471 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,471 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,472 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,472 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,472 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,473 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,473 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,473 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,473 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,474 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,475 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,475 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,479 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,488 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,525 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,531 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,532 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,535 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,536 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,536 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,536 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,536 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,536 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,537 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,543 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,545 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,546 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:05,548 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,389 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,427 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,428 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,439 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,440 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,467 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,467 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,469 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,469 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,469 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,470 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,471 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,471 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,478 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,479 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,481 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,481 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,482 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,483 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,483 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,483 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,483 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,483 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,484 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,485 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,485 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,485 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,486 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,486 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,486 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,486 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,487 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,487 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,488 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,488 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,488 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,490 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,491 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,496 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,519 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,520 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,528 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,533 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,545 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,550 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,551 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,552 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,553 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,553 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,554 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,555 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,555 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,556 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,557 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,557 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:06,609 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,610 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,610 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,611 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,612 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,633 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,635 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,635 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,635 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,635 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,636 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,636 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,636 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,636 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,637 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,637 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,638 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,757 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,758 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,758 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,758 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,759 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,759 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,760 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,775 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,777 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,778 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,779 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,785 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,787 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,790 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,794 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,808 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,808 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,811 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,811 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,811 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,811 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,812 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,812 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,815 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,815 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,815 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,816 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:06,821 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,484 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,499 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,499 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,521 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,521 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,574 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,574 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,576 - ERROR -   [LLM #4393] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,576 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,577 - ERROR -   [LLM #5489] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,578 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,578 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,579 - ERROR -   [LLM #5493] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,579 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,583 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,583 - ERROR -   [LLM #3578] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,584 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,591 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,591 - ERROR -   [LLM #4389] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,592 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,615 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,615 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,616 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,616 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,616 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,641 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,642 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,644 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,644 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,644 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,645 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,646 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,646 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,648 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,648 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,648 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,648 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,659 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,661 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,663 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,692 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,692 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,695 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,695 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,696 - ERROR -   [LLM #3598] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,696 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,697 - ERROR -   [LLM #5488] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,698 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,699 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,699 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,700 - ERROR -   [LLM #702] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,700 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,701 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,701 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,701 - ERROR -   [LLM #1878] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,701 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,702 - ERROR -   [LLM #708] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,702 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,703 - ERROR -   [LLM #698] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,703 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,707 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,711 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,711 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,712 - ERROR -   [LLM #3580] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,712 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,712 - ERROR -   [LLM #711] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,712 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,713 - ERROR -   [LLM #1889] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,713 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,726 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,726 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,726 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,727 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,727 - ERROR -   [LLM #4390] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,728 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,728 - ERROR -   [LLM #699] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,728 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,729 - ERROR -   [LLM #4942] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,729 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,730 - ERROR -   [LLM #4392] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,730 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,730 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,730 - ERROR -   [LLM #697] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,730 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,739 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,739 - ERROR -   [LLM #701] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,740 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,759 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,762 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,763 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,763 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,763 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,763 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,763 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,763 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,765 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,770 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,774 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,775 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,775 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,778 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,778 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,780 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,780 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,781 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,781 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,784 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,786 - ERROR -   [LLM #4394] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,786 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,787 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,787 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,788 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,789 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,790 - ERROR -   [LLM #4943] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,790 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,791 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,792 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,795 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,799 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,800 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,807 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,807 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,808 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,809 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,809 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,813 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,814 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,814 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,815 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,815 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,815 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,817 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,817 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,818 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,818 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,824 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,893 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,893 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,893 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,893 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,895 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,895 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,895 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,895 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,895 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,895 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,896 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,896 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,896 - ERROR -   [LLM #3597] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,896 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,899 - ERROR -   [LLM #1892] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,899 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,899 - ERROR -   [LLM #4946] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,899 - ERROR -   [LLM #1880] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,901 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,901 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,901 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,902 - ERROR -   [LLM #5490] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,902 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,902 - ERROR -   [LLM #5491] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,902 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,903 - ERROR -   [LLM #4940] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,903 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,903 - ERROR -   [LLM #4939] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,903 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,904 - ERROR -   [LLM #3593] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,904 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,904 - ERROR -   [LLM #1877] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,904 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,905 - ERROR -   [LLM #1879] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,905 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,905 - ERROR -   [LLM #4395] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,905 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,971 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,971 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,971 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,971 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,973 - ERROR -   [LLM #5492] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,973 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:08,973 - ERROR -   [LLM #4945] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,973 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,974 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,974 - ERROR -   [LLM #3581] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:08,974 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:08,979 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,037 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,037 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,038 - ERROR -   [LLM #4944] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,038 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,039 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,039 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,039 - ERROR -   [LLM #1882] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,040 - ERROR -   [LLM #4396] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,040 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,040 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,040 - ERROR -   [LLM #705] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,041 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,041 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,041 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,041 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,041 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,042 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,042 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,043 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,043 - ERROR -   [LLM #710] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,044 - ERROR -   [LLM #3615] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,044 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,044 - ERROR -   [LLM #1886] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,045 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,045 - ERROR -   [LLM #4391] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,045 - ERROR -   [LLM #4941] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,045 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,045 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,045 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,045 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,046 - ERROR -   [LLM #1891] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,046 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,047 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,049 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,049 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,050 - ERROR -   [LLM #3587] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,050 - ERROR -   [LLM #5495] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,050 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,050 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,051 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,051 - ERROR -   [LLM #5494] 彻底失败: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/gemini-2-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-03 12:14:09,051 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,083 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,097 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,108 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,108 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,109 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,168 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,170 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,187 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,211 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,232 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,235 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,247 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,247 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,248 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,248 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,248 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,249 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,250 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,251 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,255 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,290 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,663 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,663 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,665 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,698 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,698 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,739 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,753 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,753 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,754 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,760 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,767 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,777 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,778 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,779 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,781 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,788 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,789 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,791 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,792 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,793 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,803 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,805 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,808 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,809 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,809 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,812 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,832 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,874 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,874 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,875 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,878 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,878 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,880 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,880 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,881 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,881 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,882 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,887 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,888 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,902 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:09,903 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,974 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,975 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:09,981 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,046 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,047 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,050 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,086 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,099 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,108 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,110 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,110 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,110 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,139 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,140 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,140 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,140 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,140 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,143 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,160 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,172 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,172 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,187 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,187 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,188 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,189 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,213 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,213 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,217 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,234 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,234 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,235 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,240 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,251 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,251 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,251 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,251 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,252 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,252 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,252 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,253 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,254 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,257 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,291 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,291 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 12:14:10,293 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,307 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,312 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,326 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,326 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,335 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,336 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,337 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,337 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,338 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,339 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-03 12:14:10,368 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2-flash:generateContent "HTTP/1.1 404 Not Found"

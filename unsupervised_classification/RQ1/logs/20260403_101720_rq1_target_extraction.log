@@ -1,0 +1,12 @@
+2026-04-03 10:17:20,629 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_101720_rq1_target_extraction.log
+2026-04-03 10:17:20,633 - INFO - 读取数据: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/topic_modeling_results/sixth/data/document_topic_mapping.csv
+2026-04-03 10:17:20,697 - INFO -   共 5965 条，列: ['text', 'source', 'lang', 'post_id', 'tokenized_text', 'topic']
+2026-04-03 10:17:20,697 - INFO - ============================================================
+2026-04-03 10:17:20,697 - INFO - RQ1 Target Extraction v3 — Hybrid Pipeline START
+2026-04-03 10:17:20,697 - INFO -   数据量: 5965 条 | LLM: ✓ gemini
+2026-04-03 10:17:20,697 - INFO - ============================================================
+2026-04-03 10:17:20,697 - INFO - [1/4] 加载 spaCy 多语言模型...
+2026-04-03 10:17:25,199 - WARNING - [spaCy] en_core_web_trf 不可用，已回退至 en_core_web_sm
+2026-04-03 10:17:27,121 - WARNING - [spaCy] zh_core_web_trf 不可用，已回退至 zh_core_web_sm
+2026-04-03 10:17:27,962 - WARNING - [spaCy] ja_core_news_trf 不可用，已回退至 ja_core_news_sm
+2026-04-03 10:17:27,962 - INFO - [2/4] Layer 1 (spaCy) + Layer 2 (词典) 提取...

@@ -1,0 +1,25 @@
+2026-04-03 11:03:14,968 - INFO - 日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_110314_rq1_target_extraction.log
+2026-04-03 11:03:14,971 - INFO - ============================================================
+2026-04-03 11:03:14,971 - INFO - Stage viz: 生成可视化图表
+2026-04-03 11:03:14,971 - INFO - ============================================================
+2026-04-03 11:03:14,971 - INFO -   使用 checkpoint: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/checkpoint_layer12.csv
+2026-04-03 11:03:15,107 - INFO -   Topic 汇总: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_targets_v3.csv
+2026-04-03 11:03:15,357 - INFO - [Font] 找到 CJK 字体: Hiragino Sans (/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc)
+2026-04-03 11:03:15,357 - INFO - [Font] CJK 字体已配置: Hiragino Sans
+2026-04-03 11:03:15,361 - INFO -   [VIZ] 图1: 类别堆叠横条图
+2026-04-03 11:03:15,709 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_category_stacked.png
+2026-04-03 11:03:15,709 - INFO -   [VIZ] 图2: Top-N 实体条形图矩阵（双语标签）
+2026-04-03 11:03:16,655 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 11:03:18,489 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 11:03:18,496 - INFO - [Translate] Gemini API 翻译了 15 个新词，已缓存
+2026-04-03 11:03:18,496 - INFO -     翻译完成: 63 个实体
+2026-04-03 11:03:19,831 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_top_targets_bilingual.png
+2026-04-03 11:03:19,832 - INFO -   [VIZ] 图3: 全局 Top-20 实体排行（双语）
+2026-04-03 11:03:19,922 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-03 11:03:21,180 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-03 11:03:21,188 - INFO - [Translate] Gemini API 翻译了 3 个新词，已缓存
+2026-04-03 11:03:21,493 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_global_top20_bilingual.png
+2026-04-03 11:03:21,493 - INFO -   [VIZ] 图4: 语言×类别热力图
+2026-04-03 11:03:22,773 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_lang_category_heatmap.png
+2026-04-03 11:03:22,773 - INFO -   ✅ 所有图表已保存至 /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data
+2026-04-03 11:03:22,774 - INFO - 全部完成。

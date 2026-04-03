@@ -1,0 +1,14 @@
+2026-04-03 10:51:29,349 - INFO - 日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260403_105129_rq1_target_extraction.log
+2026-04-03 10:51:29,353 - INFO - ============================================================
+2026-04-03 10:51:29,353 - INFO - Stage viz: 生成可视化图表
+2026-04-03 10:51:29,353 - INFO - ============================================================
+2026-04-03 10:51:29,353 - INFO -   使用 checkpoint: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/checkpoint_layer12.csv
+2026-04-03 10:51:29,488 - INFO -   Topic 汇总: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_targets_v3.csv
+2026-04-03 10:51:29,960 - INFO -   [VIZ] 图1: 类别堆叠横条图
+2026-04-03 10:51:30,366 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_category_stacked.png
+2026-04-03 10:51:30,367 - INFO -   [VIZ] 图2: Top-N 实体条形图矩阵
+2026-04-03 10:51:31,261 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_top5_targets.png
+2026-04-03 10:51:31,261 - INFO -   [VIZ] 图3: 语言×类别热力图
+2026-04-03 10:51:33,788 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_lang_category_heatmap.png
+2026-04-03 10:51:33,788 - INFO -   ✅ 所有图表已保存至 /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data
+2026-04-03 10:51:33,789 - INFO - 全部完成。

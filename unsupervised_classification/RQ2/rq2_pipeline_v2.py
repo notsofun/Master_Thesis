@@ -145,7 +145,8 @@ FRAME_ZH = {
     "other":                  "其他",
 }
 
-# 仅用于图表展示的有效框架（排除 noise）
+# Gemini 可输出完整标签集合；图表展示仍排除 noise
+GEMINI_FRAME_KEYS = list(FRAME_EN.keys())
 FRAME_KEYS = [k for k in FRAME_EN if k != "noise"]
 
 # ── 停用动词 ──────────────────────────────────────────────────────────────────
@@ -241,12 +242,87 @@ _NOISE_VERBS = {
     "譲歩","呼ば","信仰","もらう","認め","バックアップ",
 }
 
-def rule_classify(text: str) -> str:
-    """规则分类器：先检测噪声，再匹配框架关键词。"""
-    t = text.lower().strip()
-    # 纯噪声：短于3字符，或命中中性动词表
-    if len(t) <= 2 or t in _NOISE_VERBS:
+def normalize_text(text: str, max_len: int | None = None) -> str:
+    """压缩空白，避免 cache key / prompt 被噪声字符放大。"""
+    cleaned = re.sub(r"\s+", " ", str(text or "")).strip()
+    return cleaned[:max_len] if max_len else cleaned
+
+
+def build_classification_key(predicate: str, context: str = "",
+                             lang: str = "", target: str = "") -> str:
+    """新版分类键：predicate + context + lang + target。"""
+    payload = {
+        "predicate": normalize_text(predicate, 120),
+        "context": normalize_text(context, 220),
+        "lang": normalize_text(lang).lower(),
+        "target": normalize_text(target, 80).lower(),
+    }
+    return json.dumps(payload, ensure_ascii=False, sort_keys=True)
+
+
+def attach_classification_keys(df: pd.DataFrame) -> pd.DataFrame:
+    """确保 raw/labeled DataFrame 都带有新版 classification_key 列。"""
+    out = df.copy()
+    for col in ["predicate", "context", "lang", "target"]:
+        if col not in out.columns:
+            out[col] = ""
+    out["classification_key"] = [
+        build_classification_key(
+            predicate=row.predicate,
+            context=row.context,
+            lang=row.lang,
+            target=row.target,
+        )
+        for row in out[["predicate", "context", "lang", "target"]].itertuples(index=False)
+    ]
+    return out
+
+
+def has_frame_signal(text: str) -> bool:
+    t = normalize_text(text).lower()
+    if not t:
+        return False
+    return any(kw in t for kws in FRAME_RULES.values() for kw in kws)
+
+
+def is_obvious_neutral_predicate(text: str, context: str = "", target: str = "") -> bool:
+    """
+    Gemini 前规则过滤：只拦截明显中性/功能性谓词，避免它们吞掉英语分布。
+    这里故意保守，只处理“明显是 noise”的情况。
+    """
+    t = normalize_text(text).lower()
+    support_text = " | ".join([
+        normalize_text(context, 220).lower(),
+        normalize_text(target).lower(),
+    ])
+    if not t:
+        return True
+    if re.fullmatch(r"[a-z']+", t) and len(t) <= 2:
+        return True
+    if len(t) == 1 and not re.search(r"[a-z]", t):
+        return True
+    if has_frame_signal(t) or has_frame_signal(support_text):
+        return False
+    if t in _NOISE_VERBS:
+        return True
+    en_tokens = re.findall(r"[a-z']+", t)
+    if en_tokens and all(tok in _NOISE_VERBS or tok in STOP_VERBS for tok in en_tokens):
+        return True
+    return False
+
+
+def rule_classify(predicate: str, context: str = "",
+                  target: str = "", lang: str = "") -> str:
+    """规则分类器：先检测明显噪声，再结合上下文/target 做 fallback 归类。"""
+    pred = normalize_text(predicate).lower()
+    if is_obvious_neutral_predicate(pred, context=context, target=target):
         return "noise"
+    t = " | ".join([
+        pred,
+        normalize_text(target).lower(),
+        normalize_text(context, 220).lower(),
+        normalize_text(lang).lower(),
+    ])
     for frame, kws in FRAME_RULES.items():
         if any(kw in t for kw in kws):
             return frame
@@ -275,14 +351,29 @@ def load_cache() -> dict:
     if CACHE_PATH.exists():
         with open(CACHE_PATH, encoding="utf-8") as f:
             data = json.load(f)
-        log.info(f"[CACHE] 加载已有缓存 {len(data)} 条")
-        return data
+        if not data:
+            return {}
+        sample_key = next(iter(data.keys()))
+        if isinstance(sample_key, str) and sample_key.startswith("{") and '"context"' in sample_key:
+            log.info(f"[CACHE] 加载新版缓存 {len(data)} 条")
+            return data
+        log.warning("[CACHE] 检测到旧版 predicate-only 缓存；新版将按 predicate+context+lang+target 重建")
+        return {}
     return {}
 
 def save_cache(cache: dict):
     with open(CACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False, indent=2)
     log.debug(f"[CACHE] 缓存已写盘 {len(cache)} 条")
+
+
+def build_classification_instances(raw_df: pd.DataFrame) -> list[dict]:
+    """按新版 classification_key 去重，构造 Gemini 输入实例。"""
+    cols = ["classification_key", "predicate", "context", "lang", "target"]
+    inst_df = (attach_classification_keys(raw_df)[cols]
+               .drop_duplicates(subset=["classification_key"], keep="first")
+               .reset_index(drop=True))
+    return inst_df.to_dict("records")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -446,13 +537,29 @@ def extract_expressions(text: str, lang: str, target_vocab: list[str],
 # STEP 2：Gemini 框架归因（异步并发 + APIRequester + 缓存）
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def _build_classify_prompt(batch: list[str]) -> str:
-    frame_list = "\n".join(f"  {k}: {FRAME_EN[k]} / {FRAME_ZH[k]}" for k in FRAME_KEYS)
-    numbered   = "\n".join(f"{i+1}. {p}" for i, p in enumerate(batch))
+def _lang_for_prompt(lang: str) -> str:
+    return {"en": "English", "zh": "Chinese", "jp": "Japanese"}.get(str(lang).lower(), str(lang))
+
+
+def _build_classify_prompt(batch: list[dict]) -> str:
+    frame_list = "\n".join(
+        f"  {k}: {FRAME_EN[k]} / {FRAME_ZH[k]}" for k in GEMINI_FRAME_KEYS
+    )
+    numbered = "\n\n".join(
+        "\n".join([
+            f"{i+1}.",
+            f"predicate: {normalize_text(item['predicate'], 120)}",
+            f"target: {normalize_text(item['target'], 80)}",
+            f"lang: {_lang_for_prompt(item['lang'])}",
+            f"context: {normalize_text(item['context'], 220)}",
+        ])
+        for i, item in enumerate(batch)
+    )
     return f"""You are classifying hate speech rhetoric patterns in a multilingual study
 (Chinese / Japanese / English) about religious hate speech.
 
-For each predicate/verb phrase below, choose the SINGLE best framing type from the list:
+For each input below, choose the SINGLE best framing type from the list.
+Each input contains predicate + target + lang + context. Use all four fields together:
 {frame_list}
 
 Classification hints:
@@ -465,20 +572,22 @@ Classification hints:
 - institutional_rot      → systemic cover-up, protecting perpetrators, hierarchy complicity (包庇/组织腐败)
 - social_exclusion       → excommunication, banning, expelling, denying sacraments (开除/逐出/排除)
 - rhetorical_attack      → mocking, sarcasm, criticism, debunking (讽刺/批判/嘲笑/糾弾)
+- noise                  → semantically neutral / supportive / meta / irrelevant predicate with no attack framing signal
 - other                  → ONLY use when the predicate clearly fits none of the above
 
 IMPORTANT: Prefer a specific frame over "other". Short verbs in CJK languages often carry
 strong frame signals — check the context carefully before choosing "other".
+If the predicate itself is neutral but the context clearly carries attack framing, classify by the context instead of returning noise.
 
-Predicates to classify:
+Inputs to classify:
 {numbered}
 
 Reply ONLY with compact JSON mapping index to frame key.
 Example: {{"1":"moral_accusation","2":"dehumanization","3":"rhetorical_attack"}}
-Valid keys: {FRAME_KEYS}"""
+Valid keys: {GEMINI_FRAME_KEYS}"""
 
 
-async def classify_frames_async(predicates: list[str], cache: dict,
+async def classify_frames_async(instances: list[dict], cache: dict,
                                  api_key: str, raw_df: pd.DataFrame) -> dict[str, str]:
     """
     使用项目统一的 APIRequester（令牌桶限流 + 动态并发 + 指数退避）。
@@ -495,11 +604,28 @@ async def classify_frames_async(predicates: list[str], cache: dict,
     client    = google_genai.Client(api_key=api_key)
     requester = APIRequester(client, model="gemini-2.5-flash", max_retries=5)
 
-    to_do = [p for p in predicates if p not in cache]
-    log.info(f"[GEMINI] 需分类 {len(to_do)} 条，已缓存 {len(predicates)-len(to_do)} 条")
+    obvious_noise = 0
+    for item in instances:
+        cache_key = item["classification_key"]
+        if cache_key in cache:
+            continue
+        if is_obvious_neutral_predicate(
+            item["predicate"],
+            context=item["context"],
+            target=item["target"],
+        ):
+            cache[cache_key] = "noise"
+            obvious_noise += 1
+    if obvious_noise:
+        save_cache(cache)
+        log.info(f"[RULE-PREFILTER] 先规则过滤 {obvious_noise} 条明显中性 predicate → noise")
+
+    to_do = [item for item in instances if item["classification_key"] not in cache]
+    log.info(f"[GEMINI] 需分类 {len(to_do)} 条，已缓存/预过滤 {len(instances)-len(to_do)} 条")
 
     if not to_do:
-        return {p: cache.get(p, "other") for p in predicates}
+        return {item["classification_key"]: cache.get(item["classification_key"], "other")
+                for item in instances}
 
     BATCH    = 40
     batches  = [to_do[i:i+BATCH] for i in range(0, len(to_do), BATCH)]
@@ -528,33 +654,45 @@ async def classify_frames_async(predicates: list[str], cache: dict,
             m = re.search(r'\{[^{}]+\}', raw, re.DOTALL)
             if m:
                 parsed = json.loads(m.group())
-                for i, pred in enumerate(batch):
+                for i, item in enumerate(batch):
                     label = parsed.get(str(i+1), "other")
                     label = label if label in FRAME_ZH else "other"
-                    cache[pred]        = label
-                    batch_result[pred] = label
+                    cache_key = item["classification_key"]
+                    cache[cache_key]        = label
+                    batch_result[cache_key] = label
                 log.info(f"[GEMINI] {task_name}: {len(batch)} 条完成")
             else:
                 log.warning(f"[GEMINI] {task_name} JSON解析失败: {raw[:80]}")
-                for pred in batch:
-                    label              = rule_classify(pred)
-                    cache[pred]        = label
-                    batch_result[pred] = label
+                for item in batch:
+                    label = rule_classify(
+                        predicate=item["predicate"],
+                        context=item["context"],
+                        target=item["target"],
+                        lang=item["lang"],
+                    )
+                    cache_key = item["classification_key"]
+                    cache[cache_key]        = label
+                    batch_result[cache_key] = label
         except Exception as e:
             log.error(f"[GEMINI] {task_name} 最终失败({e})，回退规则分类")
-            for pred in batch:
-                label              = rule_classify(pred)
-                cache[pred]        = label
-                batch_result[pred] = label
+            for item in batch:
+                label = rule_classify(
+                    predicate=item["predicate"],
+                    context=item["context"],
+                    target=item["target"],
+                    lang=item["lang"],
+                )
+                cache_key = item["classification_key"]
+                cache[cache_key]        = label
+                batch_result[cache_key] = label
 
         # ── 断点续传①：更新 key-label 缓存 ──────────────────────────────
         save_cache(cache)
 
         # ── 断点续传②：把本批对应的原始行（含frame_type）append写入CSV ──
-        # 找出 raw_df 中 predicate 属于本批的所有行
-        batch_mask = raw_df["predicate"].isin(batch_result.keys())
+        batch_mask = raw_df["classification_key"].isin(batch_result.keys())
         batch_rows = raw_df[batch_mask].copy()
-        batch_rows["frame_type"] = batch_rows["predicate"].map(batch_result)
+        batch_rows["frame_type"] = batch_rows["classification_key"].map(batch_result)
         batch_rows.to_csv(
             LABELED_PATH,
             mode="a",                              # append
@@ -582,13 +720,14 @@ async def classify_frames_async(predicates: list[str], cache: dict,
     save_cache(cache)
     stats = requester.concurrency_manager.get_stats()
     log.info(f"[GEMINI] 完成统计: {stats}")
-    return {p: cache.get(p, "other") for p in predicates}
+    return {item["classification_key"]: cache.get(item["classification_key"], "other")
+            for item in instances}
 
 
-def classify_frames_gemini(predicates: list[str], cache: dict,
+def classify_frames_gemini(instances: list[dict], cache: dict,
                             api_key: str, raw_df: pd.DataFrame) -> dict[str, str]:
     """同步入口，内部用 asyncio.run() 驱动异步逐批请求。"""
-    return asyncio.run(classify_frames_async(predicates, cache, api_key, raw_df))
+    return asyncio.run(classify_frames_async(instances, cache, api_key, raw_df))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -876,22 +1015,40 @@ def run_reclassify_other(no_gemini: bool = False):
     log.info("[RECLASSIFY] --reclassify-other 模式启动")
     log.info("=" * 60)
 
-    # ── 1. 加载现有 cache，找出 other ────────────────────────────────────
-    cache = load_cache()
-    if not cache:
-        log.error("[RECLASSIFY] 缓存为空，请先完整运行管线")
+    if not RAW_CSV.exists():
+        log.error(f"[RECLASSIFY] 找不到 {RAW_CSV}，无法重分类")
         sys.exit(1)
 
-    other_preds = [p for p, label in cache.items() if label == "other"]
-    log.info(f"[RECLASSIFY] 缓存中共 {len(cache)} 条，other: {len(other_preds)} 条")
+    raw_df = attach_classification_keys(pd.read_csv(RAW_CSV))
+
+    # ── 1. 加载现有 cache；如 cache 为旧版，则尝试从 labeled CSV 回填 ─────
+    cache = load_cache()
+    if not cache and LABEL_CSV.exists():
+        labeled_df = attach_classification_keys(pd.read_csv(LABEL_CSV))
+        cache = dict(zip(labeled_df["classification_key"], labeled_df["frame_type"]))
+        log.info(f"[RECLASSIFY] 旧 cache 不可用，已从 labeled CSV 回填 {len(cache)} 条")
+    if not cache:
+        log.error("[RECLASSIFY] 没有可用 cache/labeled 结果，请先跑一次 Step2")
+        sys.exit(1)
+
+    instances = build_classification_instances(raw_df)
+    instance_map = {item["classification_key"]: item for item in instances}
+    other_keys = [k for k, label in cache.items() if label == "other" and k in instance_map]
+    log.info(f"[RECLASSIFY] 当前实例共 {len(instances)} 条，other: {len(other_keys)} 条")
 
     # ── 2. 规则分类器先过一遍（用更新后的 FRAME_RULES + _NOISE_VERBS） ──
     rule_fixed = 0
     noise_fixed = 0
-    for pred in other_preds:
-        new_label = rule_classify(pred)
+    for key in other_keys:
+        item = instance_map[key]
+        new_label = rule_classify(
+            predicate=item["predicate"],
+            context=item["context"],
+            target=item["target"],
+            lang=item["lang"],
+        )
         if new_label != "other":
-            cache[pred] = new_label
+            cache[key] = new_label
             if new_label == "noise":
                 noise_fixed += 1
             else:
@@ -900,105 +1057,42 @@ def run_reclassify_other(no_gemini: bool = False):
     log.info(f"[RECLASSIFY] 规则分类器修复: {rule_fixed} 条改为具体框架, {noise_fixed} 条标为 noise")
 
     # ── 3. 对剩余 other 用 Gemini 重分类 ─────────────────────────────────
-    still_other = [p for p in other_preds if cache.get(p) == "other"]
+    still_other_keys = [k for k in other_keys if cache.get(k) == "other"]
+    still_other = [instance_map[k] for k in still_other_keys]
     log.info(f"[RECLASSIFY] 规则后仍为 other: {len(still_other)} 条，送 Gemini 重分类")
 
     if still_other and not no_gemini:
         api_key = get_api_key()
         if api_key:
-            # 构建一个最小化的 raw_df（仅含 still_other 行，用于 per-batch append）
-            if RAW_CSV.exists():
-                raw_df_full = pd.read_csv(RAW_CSV)
-                raw_df_sub  = raw_df_full[raw_df_full["predicate"].isin(still_other)].copy()
-            else:
-                # raw CSV 不存在时，构造一个虚拟 DataFrame（仅 predicate 列）
-                raw_df_sub = pd.DataFrame({"predicate": still_other,
-                                           "topic": -1, "lang": "unk", "layer": "unk",
-                                           "target": "", "verb": "", "role": "", "context": ""})
-
-            # 用 Gemini 重分类（重用现有逐批机制，但 labeled_path 先不覆盖旧文件）
-            TEMP_LABEL = OUT_DIR / "rq2_framing_labeled_reclassify_temp.csv"
-            if TEMP_LABEL.exists():
-                TEMP_LABEL.unlink()
-
-            # 临时替换 OUT_DIR/labeled 路径，在 classify_frames_async 内部会写 LABELED_PATH
-            # 但 classify_frames_async 硬编码了 LABELED_PATH=OUT_DIR/"rq2_framing_labeled.csv"
-            # 为避免破坏正在进行中的文件，这里直接调用异步核心但不写中间 labeled
-            import asyncio, time
-            from google import genai as google_genai
-            from data_augmentation.LLM.google_api import APIRequester
-
-            async def _reclassify_batch():
-                client    = google_genai.Client(api_key=api_key)
-                requester = APIRequester(client, model="gemini-2.5-flash", max_retries=5)
-                BATCH  = 40
-                batches = [still_other[i:i+BATCH] for i in range(0, len(still_other), BATCH)]
-                n_total = len(still_other)
-                n_done  = 0
-                t_start = time.time()
-
-                pbar = tqdm(total=n_total, desc="Gemini重分类", unit="pred",
-                            bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]")
-
-                for batch_idx, batch in enumerate(batches):
-                    prompt    = _build_classify_prompt(batch)
-                    task_name = f"Reclassify-{batch_idx+1}/{len(batches)}"
-                    try:
-                        raw = await requester.request_async(prompt, temperature=0.1,
-                                                            task_name=task_name)
-                        m = re.search(r'\{[^{}]+\}', raw, re.DOTALL)
-                        if m:
-                            parsed = json.loads(m.group())
-                            for i, pred in enumerate(batch):
-                                label = parsed.get(str(i+1), "other")
-                                label = label if label in FRAME_ZH else "other"
-                                cache[pred] = label
-                            log.info(f"[RECLASSIFY] {task_name}: {len(batch)} 条完成")
-                        else:
-                            log.warning(f"[RECLASSIFY] {task_name} JSON解析失败，回退规则")
-                            for pred in batch:
-                                cache[pred] = rule_classify(pred)
-                    except Exception as e:
-                        log.error(f"[RECLASSIFY] {task_name} 失败({e})，回退规则")
-                        for pred in batch:
-                            cache[pred] = rule_classify(pred)
-
-                    save_cache(cache)
-                    n_done += len(batch)
-                    pbar.update(len(batch))
-                    elapsed   = time.time() - t_start
-                    rate      = n_done / elapsed if elapsed > 0 else 1
-                    remaining = (n_total - n_done) / rate if rate > 0 else 0
-                    log.info(
-                        f"[RECLASSIFY] 进度 {n_done}/{n_total} "
-                        f"({n_done/n_total*100:.1f}%) | "
-                        f"已用 {elapsed/60:.1f}min | 预计剩余 {remaining/60:.1f}min"
-                    )
-                pbar.close()
-                stats = requester.concurrency_manager.get_stats()
-                log.info(f"[RECLASSIFY] Gemini统计: {stats}")
-
-            asyncio.run(_reclassify_batch())
+            raw_df_sub = raw_df[raw_df["classification_key"].isin(still_other_keys)].copy()
+            for key in still_other_keys:
+                cache.pop(key, None)
+            classify_frames_gemini(still_other, cache, api_key, raw_df_sub)
         else:
             log.warning("[RECLASSIFY] 无 API key，仅用规则分类器处理剩余 other")
-            for pred in still_other:
-                cache[pred] = rule_classify(pred)
+            for item in still_other:
+                cache[item["classification_key"]] = rule_classify(
+                    predicate=item["predicate"],
+                    context=item["context"],
+                    target=item["target"],
+                    lang=item["lang"],
+                )
             save_cache(cache)
     elif still_other and no_gemini:
         log.info("[RECLASSIFY] --no-gemini 模式，仅用规则分类器处理剩余 other")
-        for pred in still_other:
-            cache[pred] = rule_classify(pred)
+        for item in still_other:
+            cache[item["classification_key"]] = rule_classify(
+                predicate=item["predicate"],
+                context=item["context"],
+                target=item["target"],
+                lang=item["lang"],
+            )
         save_cache(cache)
 
     save_cache(cache)
 
     # ── 4. 从 raw CSV + 更新后的 cache 重建完整 labeled CSV ──────────────
-    if not RAW_CSV.exists():
-        log.error(f"[RECLASSIFY] 找不到 {RAW_CSV}，无法重建 labeled CSV")
-        sys.exit(1)
-
-    raw_df = pd.read_csv(RAW_CSV)
-    raw_df["frame_type"] = raw_df["predicate"].map(cache).fillna("other")
+    raw_df["frame_type"] = raw_df["classification_key"].map(cache).fillna("other")
     raw_df.to_csv(LABEL_CSV, index=False, encoding="utf-8-sig")
 
     # 统计效果
@@ -1083,7 +1177,7 @@ def main():
         if not RAW_CSV.exists():
             log.error(f"[STEP1] --from-raw 指定跳过提取，但找不到 {RAW_CSV}")
             sys.exit(1)
-        raw_df = pd.read_csv(RAW_CSV)
+        raw_df = attach_classification_keys(pd.read_csv(RAW_CSV))
         log.info(f"[STEP1] ⏭ 跳过提取，加载已有 {RAW_CSV.name}: {len(raw_df)} 条")
     else:
         doc_df = pd.read_csv(DOC_PATH)
@@ -1109,6 +1203,7 @@ def main():
                 raw_records.append({"topic": tid, "lang": lang, **e})
 
         raw_df = pd.DataFrame(raw_records)
+        raw_df = attach_classification_keys(raw_df)
         raw_df.to_csv(RAW_CSV, index=False, encoding="utf-8-sig")
         log.info(f"[STEP1] ✅ {len(raw_df)} 条 → {RAW_CSV.name}")
 
@@ -1122,54 +1217,54 @@ def main():
 
     # 如果 labeled CSV 已有部分中间结果（上次断点续传留下的），
     # 从中找出已完成的 predicate，跳过它们（效果等同于 cache，但保证行级结果存在）
-    already_labeled_preds: set[str] = set()
+    already_labeled_keys: set[str] = set()
     if LABEL_CSV.exists():
         try:
-            done_df = pd.read_csv(LABEL_CSV, usecols=["predicate"])
-            already_labeled_preds = set(done_df["predicate"].dropna().unique())
-            log.info(f"[STEP2] 检测到已有 labeled CSV，已完成 {len(already_labeled_preds)} 个唯一谓语，跳过")
+            done_df = attach_classification_keys(pd.read_csv(LABEL_CSV))
+            already_labeled_keys = set(done_df["classification_key"].dropna().unique())
+            log.info(f"[STEP2] 检测到已有 labeled CSV，已完成 {len(already_labeled_keys)} 条唯一分类输入，跳过")
         except Exception as e:
             log.warning(f"[STEP2] 读取旧 labeled CSV 失败({e})，将整体重跑")
-            already_labeled_preds = set()
-        # 清理 labeled CSV 中已有记录，避免重复 append（把旧文件备份，然后重写去重版）
-        # 只在续跑场景下做此操作
-        if already_labeled_preds:
-            old_labeled = pd.read_csv(LABEL_CSV)
-            old_labeled.drop_duplicates(subset=["predicate","target","topic","lang"], keep="last")\
-                       .to_csv(LABEL_CSV, index=False, encoding="utf-8-sig")
-            log.info(f"[STEP2] 已清理 labeled CSV 重复行")
+            already_labeled_keys = set()
 
-    # 把已完成的 pred 也更新进 cache（防止 cache 未命中导致重跑）
-    if already_labeled_preds and LABEL_CSV.exists():
-        done_full = pd.read_csv(LABEL_CSV, usecols=["predicate","frame_type"]).dropna()
+    # 把已完成的 classification_key 也更新进 cache（防止 cache 未命中导致重跑）
+    if already_labeled_keys and LABEL_CSV.exists():
+        done_full = attach_classification_keys(pd.read_csv(LABEL_CSV)).dropna(subset=["frame_type"])
         for _, r in done_full.iterrows():
-            if r["predicate"] not in cache:
-                cache[r["predicate"]] = r["frame_type"]
+            if r["classification_key"] not in cache:
+                cache[r["classification_key"]] = r["frame_type"]
 
-    # 需要分类的谓语 = 全集 - 已在 cache 中的（cache 已含 already_labeled_preds）
-    all_preds = raw_df["predicate"].unique().tolist()
-    log.info(f"[STEP2] 唯一谓语总计 {len(all_preds)} 条")
+    instances = build_classification_instances(raw_df)
+    log.info(f"[STEP2] 唯一分类输入总计 {len(instances)} 条")
 
     api_key = "" if args.no_gemini else get_api_key()
 
     if api_key:
         log.info("[STEP2] 使用 Gemini 异步逐批分类（APIRequester + 进度条）")
         # 如果是全新运行，先删除旧的 labeled CSV 避免 append 到残留数据上
-        if not already_labeled_preds and LABEL_CSV.exists():
+        if not already_labeled_keys and LABEL_CSV.exists():
             LABEL_CSV.unlink()
             log.info("[STEP2] 清除旧 labeled CSV，重新开始")
-        frame_map = classify_frames_gemini(all_preds, cache, api_key, raw_df)
+        frame_map = classify_frames_gemini(instances, cache, api_key, raw_df)
     else:
         log.warning("[STEP2] 无 API key，使用规则分类器（一次性完成，无进度条）")
-        frame_map = {p: rule_classify(p) for p in all_preds}
-        raw_df["frame_type"] = raw_df["predicate"].map(frame_map).fillna("other")
+        frame_map = {
+            item["classification_key"]: rule_classify(
+                predicate=item["predicate"],
+                context=item["context"],
+                target=item["target"],
+                lang=item["lang"],
+            )
+            for item in instances
+        }
+        raw_df["frame_type"] = raw_df["classification_key"].map(frame_map).fillna("other")
         raw_df.to_csv(LABEL_CSV, index=False, encoding="utf-8-sig")
         log.info(f"[STEP2] ✅ → {LABEL_CSV.name}")
 
     # ── 合并最终 labeled 结果（Gemini路径下 labeled CSV 已被逐批写入） ──
     if api_key:
         # 用 cache 补全所有行（理论上 labeled CSV 已完整，此处双保险）
-        raw_df["frame_type"] = raw_df["predicate"].map(cache).fillna("other")
+        raw_df["frame_type"] = raw_df["classification_key"].map(cache).fillna("other")
         # 重写一次完整去重版本作为最终文件
         raw_df.to_csv(LABEL_CSV, index=False, encoding="utf-8-sig")
         log.info(f"[STEP2] ✅ 最终 labeled CSV 已整合 → {LABEL_CSV.name}")

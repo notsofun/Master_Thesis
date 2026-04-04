@@ -1,0 +1,20 @@
+2026-04-04 12:40:01,693 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_124001_rq2_pipeline.log
+2026-04-04 12:40:02,307 - INFO - ============================================================
+2026-04-04 12:40:02,307 - INFO - RQ2 管线 v2.3 启动
+2026-04-04 12:40:02,307 - INFO - ============================================================
+2026-04-04 12:40:02,317 - INFO - [STEP1] ⏭ 跳过提取，加载已有 rq2_raw_extractions.csv: 1862 条
+2026-04-04 12:40:02,317 - INFO - [STEP2] 框架归因开始...
+2026-04-04 12:40:02,319 - INFO - [STEP2] 唯一谓语总计 1146 条
+2026-04-04 12:40:02,320 - INFO - [STEP2] 使用 Gemini 异步逐批分类（APIRequester + 进度条）
+2026-04-04 12:40:02,404 - INFO - [GEMINI] 需分类 1146 条，已缓存 0 条
+2026-04-04 12:40:02,404 - INFO - [GEMINI] 共 29 个批次，逐批串行（进度可见）...
+2026-04-04 12:40:02,424 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:40:02,743 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:40:02,745 - WARNING - [RQ2-Batch-1/29] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:40:02,746 - WARNING - API错误，背压倍数: 1.20x，等待 0.60秒...
+2026-04-04 12:40:03,347 - WARNING - [RQ2-Batch-1/29] 等待 1.20秒后重试 (第1/5次)
+2026-04-04 12:40:04,549 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:40:04,767 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:40:04,771 - WARNING - [RQ2-Batch-1/29] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:40:04,771 - WARNING - API错误，背压倍数: 1.44x，等待 0.72秒...
+2026-04-04 12:40:05,493 - WARNING - [RQ2-Batch-1/29] 等待 2.88秒后重试 (第2/5次)

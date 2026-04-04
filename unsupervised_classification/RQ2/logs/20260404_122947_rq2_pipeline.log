@@ -1,0 +1,59 @@
+2026-04-04 12:29:47,994 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_122947_rq2_pipeline.log
+2026-04-04 12:29:50,307 - INFO - ============================================================
+2026-04-04 12:29:50,307 - INFO - RQ2 管线 v2.2 启动
+2026-04-04 12:29:50,307 - INFO - ============================================================
+2026-04-04 12:29:50,371 - INFO - [DATA] 3435 条 | {'jp': 1241, 'en': 1120, 'zh': 1074}
+2026-04-04 12:29:50,373 - INFO - [VOCAB] 加载 47 个 topic 的 target 词表
+2026-04-04 12:29:57,141 - INFO - [SPACY] 多语言模型加载成功
+2026-04-04 12:29:57,141 - INFO - [STEP1] 三层互补提取开始...
+2026-04-04 12:31:06,343 - INFO - [STEP1] ✅ 1862 条 → rq2_raw_extractions.csv
+2026-04-04 12:31:06,344 - INFO - [STEP2] 框架归因开始...
+2026-04-04 12:31:06,348 - INFO - [STEP2] 唯一谓语 1146 条
+2026-04-04 12:31:06,348 - INFO - [STEP2] 使用 Gemini 异步并发分类（APIRequester）
+2026-04-04 12:31:06,486 - INFO - [GEMINI] 需分类 1146 条，已缓存 0 条
+2026-04-04 12:31:06,486 - INFO - [GEMINI] 共 29 个批次，APIRequester 并发控制中...
+2026-04-04 12:31:06,487 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:06,490 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:06,490 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:07,036 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:07,037 - WARNING - [RQ2-Batch-0] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:07,038 - WARNING - API错误，背压倍数: 1.20x，等待 0.60秒...
+2026-04-04 12:31:07,058 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:07,059 - WARNING - [RQ2-Batch-2] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:07,059 - WARNING - API错误，背压倍数: 1.44x，等待 0.72秒...
+2026-04-04 12:31:07,156 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:07,157 - WARNING - [RQ2-Batch-1] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:07,157 - WARNING - API错误，背压倍数: 1.73x，等待 0.86秒...
+2026-04-04 12:31:07,639 - WARNING - [RQ2-Batch-0] 等待 1.73秒后重试 (第1/5次)
+2026-04-04 12:31:07,780 - WARNING - [RQ2-Batch-2] 等待 1.73秒后重试 (第1/5次)
+2026-04-04 12:31:08,023 - WARNING - [RQ2-Batch-1] 等待 1.73秒后重试 (第1/5次)
+2026-04-04 12:31:09,371 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:09,509 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:09,554 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:09,555 - WARNING - [RQ2-Batch-0] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:09,555 - WARNING - API错误，背压倍数: 2.07x，等待 1.04秒...
+2026-04-04 12:31:09,700 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:09,710 - WARNING - [RQ2-Batch-2] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:09,710 - WARNING - API错误，背压倍数: 2.49x，等待 1.24秒...
+2026-04-04 12:31:09,753 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:09,970 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:09,974 - WARNING - [RQ2-Batch-1] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:09,974 - WARNING - API错误，背压倍数: 2.50x，等待 1.25秒...
+2026-04-04 12:31:10,593 - WARNING - [RQ2-Batch-0] 等待 5.00秒后重试 (第2/5次)
+2026-04-04 12:31:10,956 - WARNING - [RQ2-Batch-2] 等待 5.00秒后重试 (第2/5次)
+2026-04-04 12:31:11,225 - WARNING - [RQ2-Batch-1] 等待 5.00秒后重试 (第2/5次)
+2026-04-04 12:31:15,595 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:15,899 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:15,902 - WARNING - [RQ2-Batch-0] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:15,902 - WARNING - API错误，背压倍数: 2.50x，等待 1.25秒...
+2026-04-04 12:31:15,957 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:16,172 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:16,176 - WARNING - [RQ2-Batch-2] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:16,176 - WARNING - API错误，背压倍数: 2.50x，等待 1.25秒...
+2026-04-04 12:31:16,227 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:31:16,773 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-04-04 12:31:16,778 - WARNING - [RQ2-Batch-1] API错误: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-04-04 12:31:16,779 - WARNING - API错误，背压倍数: 2.50x，等待 1.25秒...
+2026-04-04 12:31:17,154 - WARNING - [RQ2-Batch-0] 等待 10.00秒后重试 (第3/5次)
+2026-04-04 12:31:17,428 - WARNING - [RQ2-Batch-2] 等待 10.00秒后重试 (第3/5次)
+2026-04-04 12:31:18,030 - WARNING - [RQ2-Batch-1] 等待 10.00秒后重试 (第3/5次)

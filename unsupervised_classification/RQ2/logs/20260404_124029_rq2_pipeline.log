@@ -1,0 +1,142 @@
+2026-04-04 12:40:29,791 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_124029_rq2_pipeline.log
+2026-04-04 12:40:30,397 - INFO - ============================================================
+2026-04-04 12:40:30,397 - INFO - RQ2 管线 v2.3 启动
+2026-04-04 12:40:30,397 - INFO - ============================================================
+2026-04-04 12:40:30,408 - INFO - [STEP1] ⏭ 跳过提取，加载已有 rq2_raw_extractions.csv: 1862 条
+2026-04-04 12:40:30,408 - INFO - [STEP2] 框架归因开始...
+2026-04-04 12:40:30,409 - INFO - [STEP2] 唯一谓语总计 1146 条
+2026-04-04 12:40:30,409 - INFO - [STEP2] 使用 Gemini 异步逐批分类（APIRequester + 进度条）
+2026-04-04 12:40:30,479 - INFO - [GEMINI] 需分类 1146 条，已缓存 0 条
+2026-04-04 12:40:30,480 - INFO - [GEMINI] 共 29 个批次，逐批串行（进度可见）...
+2026-04-04 12:40:30,497 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:40:55,141 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:40:55,154 - INFO - [GEMINI] RQ2-Batch-1/29: 40 条完成
+2026-04-04 12:40:55,181 - INFO - [GEMINI] 进度 40/1146 (3.5%) | 已用 0.4min | 预计剩余 11.4min
+2026-04-04 12:40:55,181 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:41:19,925 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:41:19,940 - INFO - [GEMINI] RQ2-Batch-2/29: 40 条完成
+2026-04-04 12:41:19,956 - INFO - [GEMINI] 进度 80/1146 (7.0%) | 已用 0.8min | 预计剩余 11.0min
+2026-04-04 12:41:19,956 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:41:37,103 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:41:37,109 - INFO - [GEMINI] RQ2-Batch-3/29: 40 条完成
+2026-04-04 12:41:37,117 - INFO - [GEMINI] 进度 120/1146 (10.5%) | 已用 1.1min | 预计剩余 9.5min
+2026-04-04 12:41:37,118 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:41:57,987 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:41:57,993 - INFO - [GEMINI] RQ2-Batch-4/29: 40 条完成
+2026-04-04 12:41:58,008 - INFO - [GEMINI] 进度 160/1146 (14.0%) | 已用 1.5min | 预计剩余 9.0min
+2026-04-04 12:41:58,008 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:42:17,840 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:42:17,852 - INFO - [GEMINI] RQ2-Batch-5/29: 40 条完成
+2026-04-04 12:42:17,860 - INFO - [GEMINI] 进度 200/1146 (17.5%) | 已用 1.8min | 预计剩余 8.5min
+2026-04-04 12:42:17,860 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:42:37,415 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:42:37,419 - INFO - [GEMINI] RQ2-Batch-6/29: 40 条完成
+2026-04-04 12:42:37,428 - INFO - [GEMINI] 进度 240/1146 (20.9%) | 已用 2.1min | 预计剩余 8.0min
+2026-04-04 12:42:37,428 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:43:01,396 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:43:01,407 - INFO - [GEMINI] RQ2-Batch-7/29: 40 条完成
+2026-04-04 12:43:01,427 - INFO - [GEMINI] 进度 280/1146 (24.4%) | 已用 2.5min | 预计剩余 7.8min
+2026-04-04 12:43:01,429 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:43:25,748 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:43:25,754 - INFO - [GEMINI] RQ2-Batch-8/29: 40 条完成
+2026-04-04 12:43:25,761 - INFO - [GEMINI] 进度 320/1146 (27.9%) | 已用 2.9min | 预计剩余 7.5min
+2026-04-04 12:43:25,761 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:43:43,592 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:43:43,600 - INFO - [GEMINI] RQ2-Batch-9/29: 40 条完成
+2026-04-04 12:43:43,617 - INFO - [GEMINI] 进度 360/1146 (31.4%) | 已用 3.2min | 预计剩余 7.0min
+2026-04-04 12:43:43,618 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:44:02,115 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:44:02,117 - INFO - [GEMINI] RQ2-Batch-10/29: 40 条完成
+2026-04-04 12:44:02,122 - INFO - [GEMINI] 进度 400/1146 (34.9%) | 已用 3.5min | 预计剩余 6.6min
+2026-04-04 12:44:02,122 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:44:17,578 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:44:17,586 - INFO - [GEMINI] RQ2-Batch-11/29: 40 条完成
+2026-04-04 12:44:17,595 - INFO - [GEMINI] 进度 440/1146 (38.4%) | 已用 3.8min | 预计剩余 6.1min
+2026-04-04 12:44:17,596 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:44:38,354 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:44:38,365 - INFO - [GEMINI] RQ2-Batch-12/29: 40 条完成
+2026-04-04 12:44:38,378 - INFO - [GEMINI] 进度 480/1146 (41.9%) | 已用 4.1min | 预计剩余 5.7min
+2026-04-04 12:44:38,378 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:44:59,650 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:44:59,656 - INFO - [GEMINI] RQ2-Batch-13/29: 40 条完成
+2026-04-04 12:44:59,666 - INFO - [GEMINI] 进度 520/1146 (45.4%) | 已用 4.5min | 预计剩余 5.4min
+2026-04-04 12:44:59,666 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:45:23,106 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:45:23,112 - INFO - [GEMINI] RQ2-Batch-14/29: 40 条完成
+2026-04-04 12:45:23,131 - INFO - [GEMINI] 进度 560/1146 (48.9%) | 已用 4.9min | 预计剩余 5.1min
+2026-04-04 12:45:23,132 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:45:38,850 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:45:38,881 - INFO - [GEMINI] RQ2-Batch-15/29: 40 条完成
+2026-04-04 12:45:38,924 - INFO - [GEMINI] 进度 600/1146 (52.4%) | 已用 5.1min | 预计剩余 4.7min
+2026-04-04 12:45:38,924 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:45:59,928 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:45:59,938 - INFO - [GEMINI] RQ2-Batch-16/29: 40 条完成
+2026-04-04 12:45:59,967 - INFO - [GEMINI] 进度 640/1146 (55.8%) | 已用 5.5min | 预计剩余 4.3min
+2026-04-04 12:45:59,972 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:46:21,852 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:46:21,863 - INFO - [GEMINI] RQ2-Batch-17/29: 40 条完成
+2026-04-04 12:46:21,888 - INFO - [GEMINI] 进度 680/1146 (59.3%) | 已用 5.9min | 预计剩余 4.0min
+2026-04-04 12:46:21,889 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:46:39,909 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:46:39,912 - INFO - [GEMINI] RQ2-Batch-18/29: 40 条完成
+2026-04-04 12:46:39,919 - INFO - [GEMINI] 进度 720/1146 (62.8%) | 已用 6.2min | 预计剩余 3.6min
+2026-04-04 12:46:39,920 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:47:02,226 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:47:02,235 - INFO - [GEMINI] RQ2-Batch-19/29: 40 条完成
+2026-04-04 12:47:02,249 - INFO - [GEMINI] 进度 760/1146 (66.3%) | 已用 6.5min | 预计剩余 3.3min
+2026-04-04 12:47:02,250 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:47:31,102 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:47:31,110 - INFO - [GEMINI] RQ2-Batch-20/29: 40 条完成
+2026-04-04 12:47:31,129 - INFO - [GEMINI] 进度 800/1146 (69.8%) | 已用 7.0min | 预计剩余 3.0min
+2026-04-04 12:47:31,129 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:48:01,827 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:48:01,831 - INFO - [GEMINI] RQ2-Batch-21/29: 40 条完成
+2026-04-04 12:48:01,840 - INFO - [GEMINI] 进度 840/1146 (73.3%) | 已用 7.5min | 预计剩余 2.7min
+2026-04-04 12:48:01,840 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:48:32,850 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:48:32,858 - INFO - [GEMINI] RQ2-Batch-22/29: 40 条完成
+2026-04-04 12:48:32,877 - INFO - [GEMINI] 进度 880/1146 (76.8%) | 已用 8.0min | 预计剩余 2.4min
+2026-04-04 12:48:32,878 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:49:04,915 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:49:04,922 - INFO - [GEMINI] RQ2-Batch-23/29: 40 条完成
+2026-04-04 12:49:04,948 - INFO - [GEMINI] 进度 920/1146 (80.3%) | 已用 8.6min | 预计剩余 2.1min
+2026-04-04 12:49:04,949 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:49:42,029 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:49:42,037 - INFO - [GEMINI] RQ2-Batch-24/29: 40 条完成
+2026-04-04 12:49:42,061 - INFO - [GEMINI] 进度 960/1146 (83.8%) | 已用 9.2min | 预计剩余 1.8min
+2026-04-04 12:49:42,061 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:50:15,452 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:50:15,456 - INFO - [GEMINI] RQ2-Batch-25/29: 40 条完成
+2026-04-04 12:50:15,467 - INFO - [GEMINI] 进度 1000/1146 (87.3%) | 已用 9.7min | 预计剩余 1.4min
+2026-04-04 12:50:15,468 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:50:56,926 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:50:56,930 - INFO - [GEMINI] RQ2-Batch-26/29: 40 条完成
+2026-04-04 12:50:56,938 - INFO - [GEMINI] 进度 1040/1146 (90.8%) | 已用 10.4min | 预计剩余 1.1min
+2026-04-04 12:50:56,939 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:51:17,714 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:51:17,725 - INFO - [GEMINI] RQ2-Batch-27/29: 40 条完成
+2026-04-04 12:51:17,749 - INFO - [GEMINI] 进度 1080/1146 (94.2%) | 已用 10.8min | 预计剩余 0.7min
+2026-04-04 12:51:17,749 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:51:48,660 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:51:48,664 - INFO - [GEMINI] RQ2-Batch-28/29: 40 条完成
+2026-04-04 12:51:48,675 - INFO - [GEMINI] 进度 1120/1146 (97.7%) | 已用 11.3min | 预计剩余 0.3min
+2026-04-04 12:51:48,675 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 12:52:01,332 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-04 12:52:01,336 - INFO - [GEMINI] RQ2-Batch-29/29: 26 条完成
+2026-04-04 12:52:01,346 - INFO - [GEMINI] 进度 1146/1146 (100.0%) | 已用 11.5min | 预计剩余 0.0min
+2026-04-04 12:52:01,348 - INFO - [GEMINI] 完成统计: {'success_count': 29, 'error_count': 0, 'rate_limit_hits': 0, 'current_concurrency': 3, 'backoff_multiplier': 1.0, 'success_rate': 1.0}
+2026-04-04 12:52:01,391 - INFO - [STEP2] ✅ 最终 labeled CSV 已整合 → rq2_framing_labeled.csv
+2026-04-04 12:52:01,391 - INFO - [STEP3] 聚合分析与可视化...
+2026-04-04 12:52:01,546 - INFO - [VIZ] 开始生成可视化，共 1862 条记录
+2026-04-04 12:52:01,549 - INFO - [VIZ] 语言分布: {'jp': 771, 'en': 546, 'zh': 545}
+2026-04-04 12:52:01,549 - INFO - [VIZ] 框架分布: {'other': 792, 'cognitive_manipulation': 255, 'institutional_rot': 190, 'moral_accusation': 174, 'sexual_abuse_frame': 145, 'dehumanization': 120, 'economic_exploitation': 117, 'political_interference': 69}
+2026-04-04 12:52:01,549 - INFO - [VIZ] 提取层级: {'svo': 1430, 'window': 432}
+2026-04-04 12:52:01,650 - INFO - [VIZ] ✅ 图A: rq2_A_topic_frame_heatmap.html
+2026-04-04 12:52:01,693 - INFO - [VIZ] ✅ 图B: rq2_B_lang_frame_bar.html
+2026-04-04 12:52:01,715 - INFO - [VIZ] ✅ 图C: rq2_C_target_frame_matrix.html
+2026-04-04 12:52:01,865 - INFO - [VIZ] ✅ 图D: rq2_D_sunburst_lang_topic_frame.html
+2026-04-04 12:52:01,872 - INFO - [VIZ] ✅ 图E (词频CSV) saved
+2026-04-04 12:52:01,904 - INFO - [VIZ] ✅ 汇总CSV saved: rq2_aggregated_summary.csv
+2026-04-04 12:52:01,906 - INFO - ============================================================
+2026-04-04 12:52:01,906 - INFO - ✅ 全部完成。日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_124029_rq2_pipeline.log
+2026-04-04 12:52:01,906 - INFO - ============================================================

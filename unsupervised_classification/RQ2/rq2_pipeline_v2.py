@@ -637,13 +637,10 @@ async def classify_frames_async(instances: list[dict], cache: dict,
     # 如果是续跑，labeled CSV 可能已有部分行；先检查写入模式
     labeled_header_written = LABELED_PATH.exists()
 
-    log.info(f"[GEMINI] 共 {len(batches)} 个批次，逐批串行（进度可见）...")
+    log.info(f"[GEMINI] 共 {len(batches)} 个批次，并行处理（进度可见）...")
 
-    # tqdm 进度条：单位是"条谓语"，方便估算剩余时间
-    pbar = tqdm(total=n_total, desc="Gemini分类", unit="pred",
-                bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]")
-
-    for batch_idx, batch in enumerate(batches):
+    # 并行处理所有批次，使用as_completed实时处理完成的任务
+    async def process_batch(batch_idx: int, batch: list[dict]) -> tuple[int, dict]:
         prompt    = _build_classify_prompt(batch)
         task_name = f"RQ2-Batch-{batch_idx+1}/{len(batches)}"
         batch_result: dict[str, str] = {}
@@ -686,6 +683,19 @@ async def classify_frames_async(instances: list[dict], cache: dict,
                 cache[cache_key]        = label
                 batch_result[cache_key] = label
 
+        return batch_idx, batch_result
+
+    # 创建并行任务
+    tasks = [process_batch(batch_idx, batch) for batch_idx, batch in enumerate(batches)]
+    
+    # tqdm 进度条：单位是"条谓语"，方便估算剩余时间
+    pbar = tqdm(total=n_total, desc="Gemini分类", unit="pred",
+                bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]")
+
+    # 使用as_completed实时处理完成的任务
+    for coro in asyncio.as_completed(tasks):
+        batch_idx, batch_result = await coro
+        
         # ── 断点续传①：更新 key-label 缓存 ──────────────────────────────
         save_cache(cache)
 
@@ -703,8 +713,8 @@ async def classify_frames_async(instances: list[dict], cache: dict,
         labeled_header_written = True              # 之后的批次不再写 header
 
         # ── 进度更新 ─────────────────────────────────────────────────────
-        n_done += len(batch)
-        pbar.update(len(batch))
+        n_done += len(batch_result)
+        pbar.update(len(batch_result))
 
         elapsed   = time.time() - t_start
         rate      = n_done / elapsed if elapsed > 0 else 1

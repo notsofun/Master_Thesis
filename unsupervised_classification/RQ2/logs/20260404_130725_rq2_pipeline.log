@@ -1,0 +1,10 @@
+2026-04-04 13:07:25,669 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_130725_rq2_pipeline.log
+2026-04-04 13:07:26,326 - INFO - ============================================================
+2026-04-04 13:07:26,326 - INFO - [RECLASSIFY] --reclassify-other 模式启动
+2026-04-04 13:07:26,326 - INFO - ============================================================
+2026-04-04 13:07:26,327 - INFO - [CACHE] 加载已有缓存 1146 条
+2026-04-04 13:07:26,327 - INFO - [RECLASSIFY] 缓存中共 1146 条，other: 573 条
+2026-04-04 13:07:26,330 - INFO - [RECLASSIFY] 规则分类器修复: 15 条改为具体框架, 251 条标为 noise
+2026-04-04 13:07:26,330 - INFO - [RECLASSIFY] 规则后仍为 other: 307 条，送 Gemini 重分类
+2026-04-04 13:07:26,446 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-04 13:07:44,648 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"

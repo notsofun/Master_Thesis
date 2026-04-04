@@ -49,7 +49,10 @@ Gemini调用设计：
 可视化重跑（无需重新调API）：
   python rq2_pipeline_v2.py --viz-only
 
-框架类型（8类）：
+可视化重跑（无需重新调API）：
+  python rq2_pipeline_v2.py --reclassify-other  ← 只对 other 重分类，不重跑 Step1
+
+框架类型（10类，v2.3新增 social_exclusion + rhetorical_attack）：
   cognitive_manipulation  认知操纵/洗脑
   moral_accusation        道德指控/伪善
   dehumanization          非人化/病理化
@@ -57,7 +60,10 @@ Gemini调用设计：
   economic_exploitation   经济剥削
   political_interference  政治干预
   institutional_rot       制度性腐败
+  social_exclusion        社会排斥/逐出  (v2.3新增)
+  rhetorical_attack       修辞攻击/讽刺  (v2.3新增)
   other                   其他
+  [noise]                 真噪声（过滤，不进图表）
 """
 
 import os
@@ -107,31 +113,40 @@ FRAME_TYPES = {
 # 纯 key → 短标签（用于图表轴标签，两行：中文 + EN）
 FRAME_LABEL_BILINGUAL = {k: v for k, v in FRAME_TYPES.items()}
 
-# key → 仅中文（用于 CSV 人读）
+# key → 英文全称（图表主标签）
+FRAME_EN = {
+    "cognitive_manipulation": "Cognitive Manipulation",
+    "moral_accusation":       "Moral Accusation",
+    "dehumanization":         "Dehumanization",
+    "sexual_abuse_frame":     "Sexual Abuse / Cover-up",
+    "economic_exploitation":  "Economic Exploitation",
+    "political_interference": "Political Interference",
+    "institutional_rot":      "Institutional Rot",
+    # ── v2.3 新增两类，覆盖原 other 中的漏网案例 ──────────────────
+    "social_exclusion":       "Social Exclusion",      # 拒绝圣礼/开除/排斥
+    "rhetorical_attack":      "Rhetorical Attack",     # 讽刺/批判/质疑（不含明确暴力）
+    # ── 真噪声标签（不出现在图表中，仅用于过滤） ─────────────────
+    "noise":                  "[noise]",
+    "other":                  "Other / Unclassified",
+}
+
+# key → 中日文对照（CSV 人读 + 图表副标签保留原文）
 FRAME_ZH = {
     "cognitive_manipulation": "认知操纵/洗脑",
     "moral_accusation":       "道德指控/伪善",
     "dehumanization":         "非人化/病理化",
-    "sexual_abuse_frame":     "性侵虐待指控",
+    "sexual_abuse_frame":     "性侵虐待/掩盖",
     "economic_exploitation":  "经济剥削",
     "political_interference": "政治干预",
     "institutional_rot":      "制度性腐败",
+    "social_exclusion":       "社会排斥/逐出",
+    "rhetorical_attack":      "修辞攻击/讽刺批判",
+    "noise":                  "[噪声-不展示]",
     "other":                  "其他",
 }
 
-# key → 仅英文（用于英文轴标签）
-FRAME_EN = {
-    "cognitive_manipulation": "Cognitive\nManipulation",
-    "moral_accusation":       "Moral\nAccusation",
-    "dehumanization":         "Dehumanization",
-    "sexual_abuse_frame":     "Sexual Abuse\nFrame",
-    "economic_exploitation":  "Economic\nExploitation",
-    "political_interference": "Political\nInterference",
-    "institutional_rot":      "Institutional\nRot",
-    "other":                  "Other",
-}
-
-FRAME_KEYS = list(FRAME_ZH.keys())
+# 仅用于图表展示的有效框架（排除 noise）
+FRAME_KEYS = [k for k in FRAME_EN if k != "noise"]
 
 # ── 停用动词 ──────────────────────────────────────────────────────────────────
 STOP_VERBS = {
@@ -150,37 +165,88 @@ FRAME_RULES = {
     "cognitive_manipulation": [
         "brainwash","manipulate","deceive","indoctrinat","cult","洗脑","欺骗","操控",
         "骗","蒙蔽","蛊惑","愚弄","騙す","洗脳","マインドコントロール","狂信",
+        "mislead","delude","程序","蒙骗","诱导","信仰足","心理控制",
     ],
     "moral_accusation": [
         "hypocrit","corrupt","liar","fraud","cheat","immoral","sinful","伪善","虚伪",
         "腐败","堕落","无耻","丧尽天良","偽善","腐敗","汚職","不正",
+        "讽刺","阴阳怪气","道貌岸然","邪恶","肮脏","罪孽","shame","disgrace",
+        "condemn","condemning","骂","批","抨击","指责",
     ],
     "dehumanization": [
         "parasite","pest","virus","vermin","cancer","monster","predator","toxic",
         "毒瘤","寄生虫","害虫","病毒","恶魔","ゴキブリ","害悪","癌",
+        "garbage","trash","filth","邪教","カルト","cult","异端","heretic",
     ],
     "sexual_abuse_frame": [
-        "abuse","molest","rape","pedophil","assault","child","victim",
+        "abuse","molest","rape","pedophil","assault","child","victim","scandal",
         "猥亵","性侵","儿童","受害者","丑闻","强奸","恋童","痴漢","性的虐待","児童",
-        "封口","掩盖","隐瞒","揉み消す",
+        "封口","掩盖","隐瞒","揉み消す","cover up","grooming","harass",
+        "修女","大腿","性","搭上",  # 覆盖中文语料里的隐晦描述
     ],
     "economic_exploitation": [
         "extort","scam","donation","献金","敛财","骗钱","封口费",
-        "搜刮","诈骗","お布施","搾取","詐欺",
+        "搜刮","诈骗","お布施","搾取","詐欺","霊感商法","money","财","钱",
+        "collect","fund","collect money","金もらう","もらう","金",
     ],
     "political_interference": [
         "election","vote","politic","lobby","自民党","选举","干政","渗透",
-        "政党","国会","議員","選挙","政権",
+        "政党","国会","議員","選挙","政権","government","parliament",
+        "政治家","安倍","バックアップ","选票","操纵","政权","影响力",
     ],
     "institutional_rot": [
         "institution","systemic","cover","protect","silence","impunity",
         "体制","官官相护","系统性","掩盖","包庇","教廷","バチカン",
-        "rotten","rot","组织腐败","罗马",
+        "rotten","rot","组织腐败","罗马","hierarchy","diocese","bishop",
+        "任命","调到","management","ran","run the","protect abuser",
+        "烂到根","官官","制度","组织",
+    ],
+    # ── v2.3 新增 ─────────────────────────────────────────────────────────
+    "social_exclusion": [
+        "excommunicat","ban","forbid","expel","reject","deny","refuse",
+        "开除","逐出","排斥","禁止","不准","拒绝","离开","驱逐",
+        "禁じ","排除","拒否","除名","追放",
+        "kick out","bar from","denied sacrament","圣餐","洗礼","天堂",
+    ],
+    "rhetorical_attack": [
+        "criticiz","mock","ridicul","sarcas","condemn","challenge","attack",
+        "讽刺","嘲","批评","质疑","反驳","驳斥","揭露","揭批","戳穿",
+        "嘲笑","批判","arguement","argue","debunk","absurd","ridiculous",
+        "皮肉","やり玉","批判","糾弾","非難","おかしい","おかし",
     ],
 }
 
+# 真实噪声：语义上完全中性的动词，与仇恨表达无关
+_NOISE_VERBS = {
+    # EN
+    "believe","agree","hope","hear","care","wonder","speak","read",
+    "pray","thank","write","mean","remember","understand","consider","suggest",
+    "wait","love","trust","marry","value","think","know","want","feel",
+    "seem","become","set","arrive","attend","bless","bow","choose","check",
+    "build","bring","belong","bear","appear","appreciate","assure","answer",
+    "abide","accompany","acknowledge","admire","address","allow","back",
+    "call","can","follow","forgive","grow","help","include","join","keep",
+    "leave","listen","live","meet","miss","note","observe","participate",
+    "protect","provide","pursue","raise","reach","receive","remain","respect",
+    "return","share","stand","stay","stop","study","support","teach","tell",
+    "try","turn","visit","walk","watch","welcome","wish","work","write",
+    # ZH 中性动词
+    "变成","转转","一样","待人接物","确认","禁止","念叨","得到","需要",
+    "问问","找来","代行","开放","要求","想起","告诉","允许","完成",
+    "离开","跑光","支持","核心","对应","正确","叫爽","合着","献给",
+    "牺牲","离婚","设立","哭泣","独身制","命令","融合","报告",
+    "分裂","引导","承受","正视","忠于","管理","替代","健健康康",
+    # JP 中性动词
+    "知ら","なっ","やっ","作っ","あっ","なり","あり","活動","学べ",
+    "譲歩","呼ば","信仰","もらう","認め","バックアップ",
+}
+
 def rule_classify(text: str) -> str:
-    t = text.lower()
+    """规则分类器：先检测噪声，再匹配框架关键词。"""
+    t = text.lower().strip()
+    # 纯噪声：短于3字符，或命中中性动词表
+    if len(t) <= 2 or t in _NOISE_VERBS:
+        return "noise"
     for frame, kws in FRAME_RULES.items():
         if any(kw in t for kw in kws):
             return frame
@@ -381,25 +447,34 @@ def extract_expressions(text: str, lang: str, target_vocab: list[str],
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def _build_classify_prompt(batch: list[str]) -> str:
-    frame_list = "\n".join(f"  {k}: {FRAME_ZH[k]}" for k in FRAME_KEYS)
+    frame_list = "\n".join(f"  {k}: {FRAME_EN[k]} / {FRAME_ZH[k]}" for k in FRAME_KEYS)
     numbered   = "\n".join(f"{i+1}. {p}" for i, p in enumerate(batch))
     return f"""You are classifying hate speech rhetoric patterns in a multilingual study
 (Chinese / Japanese / English) about religious hate speech.
 
-For each predicate/verb phrase below, choose the SINGLE best framing type:
+For each predicate/verb phrase below, choose the SINGLE best framing type from the list:
 {frame_list}
 
-Hints:
-- sexual_abuse_frame  → child abuse, molestation, cover-up of clergy abuse
-- institutional_rot   → systemic corruption, silencing victims, protecting perpetrators
-- cognitive_manipulation → cult brainwashing, deceiving believers
-- economic_exploitation  → coerced donations, financial fraud against followers
+Classification hints:
+- cognitive_manipulation → cult brainwashing, deceiving/indoctrinating believers (洗脑/欺骗/蛊惑)
+- moral_accusation       → hypocrisy, corruption, moral condemnation (伪善/腐败/指责)
+- dehumanization         → calling groups parasites, cancer, pests (毒瘤/寄生虫/ゴキブリ)
+- sexual_abuse_frame     → child abuse, molestation, cover-up of clergy abuse (性侵/猥亵/儿童/揉み消す)
+- economic_exploitation  → coerced donations, financial fraud against followers (献金/敛财/霊感商法)
+- political_interference → lobbying, election manipulation, political infiltration (选举/干政/渗透)
+- institutional_rot      → systemic cover-up, protecting perpetrators, hierarchy complicity (包庇/组织腐败)
+- social_exclusion       → excommunication, banning, expelling, denying sacraments (开除/逐出/排除)
+- rhetorical_attack      → mocking, sarcasm, criticism, debunking (讽刺/批判/嘲笑/糾弾)
+- other                  → ONLY use when the predicate clearly fits none of the above
+
+IMPORTANT: Prefer a specific frame over "other". Short verbs in CJK languages often carry
+strong frame signals — check the context carefully before choosing "other".
 
 Predicates to classify:
 {numbered}
 
 Reply ONLY with compact JSON mapping index to frame key.
-Example: {{"1":"moral_accusation","2":"dehumanization"}}
+Example: {{"1":"moral_accusation","2":"dehumanization","3":"rhetorical_attack"}}
 Valid keys: {FRAME_KEYS}"""
 
 
@@ -541,10 +616,16 @@ def inject_font(html_path: Path):
 
 
 def frame_bilingual_label(key: str) -> str:
-    """返回 '中文\nEnglish' 双语标签（用于轴刻度）。"""
-    zh = FRAME_ZH.get(key, key)
+    """
+    英文为主、中文为副的双语轴标签。
+    格式：English Label\n(中文)
+    论文图表以英文为主，保留中文供对照。
+    """
     en = FRAME_EN.get(key, key)
-    return f"{zh}<br><sub>{en}</sub>"
+    zh = FRAME_ZH.get(key, "")
+    if zh and zh != en:
+        return f"{en}<br><sup>({zh})</sup>"
+    return en
 
 
 LANG_LABEL = {"en": "English 🇬🇧", "zh": "中文 🇨🇳", "jp": "日本語 🇯🇵"}
@@ -589,10 +670,17 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
 
     log.info(f"[VIZ] 开始生成可视化，共 {len(labeled_df)} 条记录")
     log.info(f"[VIZ] 语言分布: {labeled_df['lang'].value_counts().to_dict()}")
-    log.info(f"[VIZ] 框架分布: {labeled_df['frame_type'].value_counts().to_dict()}")
+    log.info(f"[VIZ] 框架分布（含noise）: {labeled_df['frame_type'].value_counts().to_dict()}")
     log.info(f"[VIZ] 提取层级: {labeled_df['layer'].value_counts().to_dict()}")
 
-    labeled_df["frame_zh"]  = labeled_df["frame_type"].map(FRAME_ZH)
+    # ── 过滤噪声（noise 不参与可视化，other 保留但排在末尾） ─────────────
+    noise_count = (labeled_df["frame_type"] == "noise").sum()
+    if noise_count:
+        log.info(f"[VIZ] 过滤 {noise_count} 条 noise 标签（占{noise_count/len(labeled_df)*100:.1f}%），不进入图表")
+    labeled_df = labeled_df[labeled_df["frame_type"] != "noise"].copy()
+
+    labeled_df["frame_en"]   = labeled_df["frame_type"].map(FRAME_EN)
+    labeled_df["frame_zh"]   = labeled_df["frame_type"].map(FRAME_ZH)
     labeled_df["lang_label"] = labeled_df["lang"].map(LANG_LABEL)
 
     # 双语轴标签列表（顺序与 FRAME_KEYS 一致）
@@ -619,10 +707,10 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     ))
     fig_a.update_layout(
         **_LAYOUT_BASE,
-        title=dict(text="图A: 各Topic主导攻击框架热力图<br><sup>Fig A: Dominant Framing per Topic (% within topic)</sup>",
+        title=dict(text="Fig A: Dominant Attack Framing per Topic (% within topic)<br><sup>各话题主导攻击框架热力图</sup>",
                    font=dict(size=14)),
-        xaxis=dict(title="攻击框架类型 / Framing Type", tickangle=-20),
-        yaxis=dict(title="话题 / Topic"),
+        xaxis=dict(title="Framing Type (攻击框架类型)", tickangle=-20),
+        yaxis=dict(title="Topic"),
         height=700,
     )
     p = OUT_DIR / "rq2_A_topic_frame_heatmap.html"
@@ -654,11 +742,11 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     fig_b.update_layout(
         **_LAYOUT_BASE,
         barmode="group",
-        title=dict(text="图B: 三语言攻击框架分布对比<br><sup>Fig B: Framing Distribution by Language (% within language)</sup>",
+        title=dict(text="Fig B: Attack Framing Distribution by Language (% within language)<br><sup>三语言攻击框架分布对比</sup>",
                    font=dict(size=14)),
-        xaxis=dict(title="攻击框架类型 / Framing Type", tickangle=-20),
-        yaxis=dict(title="占该语言总量的比例 (%) / % within Language"),
-        legend=dict(title="语言 / Language"),
+        xaxis=dict(title="Framing Type (攻击框架类型)", tickangle=-20),
+        yaxis=dict(title="% within Language (各语言内占比)"),
+        legend=dict(title="Language"),
         height=520,
     )
     p = OUT_DIR / "rq2_B_lang_frame_bar.html"
@@ -686,10 +774,10 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     ))
     fig_c.update_layout(
         **_LAYOUT_BASE,
-        title=dict(text="图C: RQ1 Target × 攻击框架矩阵<br><sup>Fig C: Attack Frame Matrix per Target (raw count)</sup>",
+        title=dict(text="Fig C: Attack Frame Matrix per Target (raw count)<br><sup>RQ1目标群体 × 攻击框架矩阵</sup>",
                    font=dict(size=14)),
-        xaxis=dict(title="攻击框架类型 / Framing Type", tickangle=-20),
-        yaxis=dict(title="被攻击目标 / Target"),
+        xaxis=dict(title="Framing Type (攻击框架类型)", tickangle=-20),
+        yaxis=dict(title="Target Group (被攻击目标)"),
         height=620,
     )
     p = OUT_DIR / "rq2_C_target_frame_matrix.html"
@@ -704,9 +792,10 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     sun["topic_label"] = sun["topic"].apply(lambda x: f"T{x}")
     sun["frame_zh"]    = sun["frame_type"].map(FRAME_ZH)
 
+    sun["frame_label"] = sun["frame_type"].map(FRAME_EN)
     fig_d = px.sunburst(
-        sun, path=["lang_label", "topic_label", "frame_zh"], values="count",
-        title="图D: 语言 → 话题 → 框架 三层旭日图（点击钻取）<br><sup>Fig D: Language → Topic → Frame Sunburst (interactive)</sup>",
+        sun, path=["lang_label", "topic_label", "frame_label"], values="count",
+        title="Fig D: Language → Topic → Framing Type (interactive sunburst)<br><sup>语言 → 话题 → 框架 三层旭日图（点击钻取）</sup>",
         color="count", color_continuous_scale="RdYlBu_r",
     )
     fig_d.update_layout(**_LAYOUT_BASE, height=720)
@@ -769,6 +858,162 @@ def run_viz_only():
     aggregate_and_visualize(df)
 
 
+def run_reclassify_other(no_gemini: bool = False):
+    """
+    --reclassify-other 模式：只对缓存中标为 'other' 的条目重新分类。
+
+    流程：
+    1. 读取 rq2_framing_cache.json，找出所有 label=='other' 的谓语
+    2. 先用更新后的 rule_classify() 过一遍（捕获新增关键词能命中的）
+    3. 剩下仍为 other 的，重新送 Gemini（用含新框架类型的 prompt）
+    4. 更新 cache + 重写 rq2_framing_labeled.csv（从 raw CSV + 新 cache 重建）
+    5. 重跑可视化
+    """
+    LABEL_CSV = OUT_DIR / "rq2_framing_labeled.csv"
+    RAW_CSV   = OUT_DIR / "rq2_raw_extractions.csv"
+
+    log.info("=" * 60)
+    log.info("[RECLASSIFY] --reclassify-other 模式启动")
+    log.info("=" * 60)
+
+    # ── 1. 加载现有 cache，找出 other ────────────────────────────────────
+    cache = load_cache()
+    if not cache:
+        log.error("[RECLASSIFY] 缓存为空，请先完整运行管线")
+        sys.exit(1)
+
+    other_preds = [p for p, label in cache.items() if label == "other"]
+    log.info(f"[RECLASSIFY] 缓存中共 {len(cache)} 条，other: {len(other_preds)} 条")
+
+    # ── 2. 规则分类器先过一遍（用更新后的 FRAME_RULES + _NOISE_VERBS） ──
+    rule_fixed = 0
+    noise_fixed = 0
+    for pred in other_preds:
+        new_label = rule_classify(pred)
+        if new_label != "other":
+            cache[pred] = new_label
+            if new_label == "noise":
+                noise_fixed += 1
+            else:
+                rule_fixed += 1
+
+    log.info(f"[RECLASSIFY] 规则分类器修复: {rule_fixed} 条改为具体框架, {noise_fixed} 条标为 noise")
+
+    # ── 3. 对剩余 other 用 Gemini 重分类 ─────────────────────────────────
+    still_other = [p for p in other_preds if cache.get(p) == "other"]
+    log.info(f"[RECLASSIFY] 规则后仍为 other: {len(still_other)} 条，送 Gemini 重分类")
+
+    if still_other and not no_gemini:
+        api_key = get_api_key()
+        if api_key:
+            # 构建一个最小化的 raw_df（仅含 still_other 行，用于 per-batch append）
+            if RAW_CSV.exists():
+                raw_df_full = pd.read_csv(RAW_CSV)
+                raw_df_sub  = raw_df_full[raw_df_full["predicate"].isin(still_other)].copy()
+            else:
+                # raw CSV 不存在时，构造一个虚拟 DataFrame（仅 predicate 列）
+                raw_df_sub = pd.DataFrame({"predicate": still_other,
+                                           "topic": -1, "lang": "unk", "layer": "unk",
+                                           "target": "", "verb": "", "role": "", "context": ""})
+
+            # 用 Gemini 重分类（重用现有逐批机制，但 labeled_path 先不覆盖旧文件）
+            TEMP_LABEL = OUT_DIR / "rq2_framing_labeled_reclassify_temp.csv"
+            if TEMP_LABEL.exists():
+                TEMP_LABEL.unlink()
+
+            # 临时替换 OUT_DIR/labeled 路径，在 classify_frames_async 内部会写 LABELED_PATH
+            # 但 classify_frames_async 硬编码了 LABELED_PATH=OUT_DIR/"rq2_framing_labeled.csv"
+            # 为避免破坏正在进行中的文件，这里直接调用异步核心但不写中间 labeled
+            import asyncio, time
+            from google import genai as google_genai
+            from data_augmentation.LLM.google_api import APIRequester
+
+            async def _reclassify_batch():
+                client    = google_genai.Client(api_key=api_key)
+                requester = APIRequester(client, model="gemini-2.5-flash", max_retries=5)
+                BATCH  = 40
+                batches = [still_other[i:i+BATCH] for i in range(0, len(still_other), BATCH)]
+                n_total = len(still_other)
+                n_done  = 0
+                t_start = time.time()
+
+                pbar = tqdm(total=n_total, desc="Gemini重分类", unit="pred",
+                            bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]")
+
+                for batch_idx, batch in enumerate(batches):
+                    prompt    = _build_classify_prompt(batch)
+                    task_name = f"Reclassify-{batch_idx+1}/{len(batches)}"
+                    try:
+                        raw = await requester.request_async(prompt, temperature=0.1,
+                                                            task_name=task_name)
+                        m = re.search(r'\{[^{}]+\}', raw, re.DOTALL)
+                        if m:
+                            parsed = json.loads(m.group())
+                            for i, pred in enumerate(batch):
+                                label = parsed.get(str(i+1), "other")
+                                label = label if label in FRAME_ZH else "other"
+                                cache[pred] = label
+                            log.info(f"[RECLASSIFY] {task_name}: {len(batch)} 条完成")
+                        else:
+                            log.warning(f"[RECLASSIFY] {task_name} JSON解析失败，回退规则")
+                            for pred in batch:
+                                cache[pred] = rule_classify(pred)
+                    except Exception as e:
+                        log.error(f"[RECLASSIFY] {task_name} 失败({e})，回退规则")
+                        for pred in batch:
+                            cache[pred] = rule_classify(pred)
+
+                    save_cache(cache)
+                    n_done += len(batch)
+                    pbar.update(len(batch))
+                    elapsed   = time.time() - t_start
+                    rate      = n_done / elapsed if elapsed > 0 else 1
+                    remaining = (n_total - n_done) / rate if rate > 0 else 0
+                    log.info(
+                        f"[RECLASSIFY] 进度 {n_done}/{n_total} "
+                        f"({n_done/n_total*100:.1f}%) | "
+                        f"已用 {elapsed/60:.1f}min | 预计剩余 {remaining/60:.1f}min"
+                    )
+                pbar.close()
+                stats = requester.concurrency_manager.get_stats()
+                log.info(f"[RECLASSIFY] Gemini统计: {stats}")
+
+            asyncio.run(_reclassify_batch())
+        else:
+            log.warning("[RECLASSIFY] 无 API key，仅用规则分类器处理剩余 other")
+            for pred in still_other:
+                cache[pred] = rule_classify(pred)
+            save_cache(cache)
+    elif still_other and no_gemini:
+        log.info("[RECLASSIFY] --no-gemini 模式，仅用规则分类器处理剩余 other")
+        for pred in still_other:
+            cache[pred] = rule_classify(pred)
+        save_cache(cache)
+
+    save_cache(cache)
+
+    # ── 4. 从 raw CSV + 更新后的 cache 重建完整 labeled CSV ──────────────
+    if not RAW_CSV.exists():
+        log.error(f"[RECLASSIFY] 找不到 {RAW_CSV}，无法重建 labeled CSV")
+        sys.exit(1)
+
+    raw_df = pd.read_csv(RAW_CSV)
+    raw_df["frame_type"] = raw_df["predicate"].map(cache).fillna("other")
+    raw_df.to_csv(LABEL_CSV, index=False, encoding="utf-8-sig")
+
+    # 统计效果
+    new_other_count = (raw_df["frame_type"] == "other").sum()
+    new_other_pct   = new_other_count / len(raw_df) * 100 if len(raw_df) > 0 else 0
+    log.info(f"[RECLASSIFY] ✅ labeled CSV 已重建: {len(raw_df)} 行")
+    log.info(f"[RECLASSIFY] 重分类后 other 占比: {new_other_pct:.1f}% (原来约42.5%)")
+    log.info(f"[RECLASSIFY] 框架分布: {raw_df['frame_type'].value_counts().to_dict()}")
+
+    # ── 5. 重跑可视化 ─────────────────────────────────────────────────────
+    log.info("[RECLASSIFY] 自动重跑可视化...")
+    aggregate_and_visualize(raw_df)
+    log.info("[RECLASSIFY] ✅ 全部完成")
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -795,8 +1040,9 @@ def main():
         epilog="""
 运行模式:
   完整运行         python rq2_pipeline_v2.py
-  跳过Step1        python rq2_pipeline_v2.py --from-raw          # 已有raw_extractions.csv
-  只重跑可视化     python rq2_pipeline_v2.py --viz-only           # 已有framing_labeled.csv
+  跳过Step1        python rq2_pipeline_v2.py --from-raw              # 已有raw_extractions.csv
+  只重跑可视化     python rq2_pipeline_v2.py --viz-only               # 已有framing_labeled.csv
+  修复other过多    python rq2_pipeline_v2.py --reclassify-other       # 只对缓存中other条目重分类
   规则分类(无API)  python rq2_pipeline_v2.py --no-gemini
   调试模式         python rq2_pipeline_v2.py --max-rows 100 --no-gemini
 """,
@@ -809,10 +1055,20 @@ def main():
                         help="跳过Gemini，全用规则分类器（调试/离线用）")
     parser.add_argument("--max-rows",  type=int, default=None,
                         help="调试：只处理前N行文档（仅影响Step1）")
+    parser.add_argument("--reclassify-other", action="store_true",
+                        help=(
+                            "只对缓存中标为 'other' 的条目重新分类（用更新后的规则+Gemini）。\n"
+                            "无需从头重跑，直接修复 other 占比过高的问题。\n"
+                            "完成后自动重建 labeled CSV 并重跑可视化。"
+                        ))
     args = parser.parse_args()
 
     if args.viz_only:
         run_viz_only()
+        return
+
+    if args.reclassify_other:
+        run_reclassify_other(no_gemini=args.no_gemini)
         return
 
     log.info("=" * 60)

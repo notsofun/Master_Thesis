@@ -1,0 +1,30 @@
+2026-04-04 13:08:08,834 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_130808_rq2_pipeline.log
+2026-04-04 13:08:09,443 - INFO - ============================================================
+2026-04-04 13:08:09,443 - INFO - RQ2 管线 v2.3 启动
+2026-04-04 13:08:09,443 - INFO - ============================================================
+2026-04-04 13:08:09,513 - INFO - [DATA] 3435 条 | {'jp': 1241, 'en': 1120, 'zh': 1074}
+2026-04-04 13:08:09,515 - INFO - [VOCAB] 加载 47 个 topic 的 target 词表
+2026-04-04 13:08:13,601 - INFO - [SPACY] 多语言模型加载成功
+2026-04-04 13:08:13,601 - INFO - [STEP1] 三层互补提取开始...
+2026-04-04 13:09:21,643 - INFO - [STEP1] ✅ 1862 条 → rq2_raw_extractions.csv
+2026-04-04 13:09:21,644 - INFO - [STEP2] 框架归因开始...
+2026-04-04 13:09:21,656 - INFO - [STEP2] 检测到已有 labeled CSV，已完成 1146 个唯一谓语，跳过
+2026-04-04 13:09:21,671 - INFO - [STEP2] 已清理 labeled CSV 重复行
+2026-04-04 13:09:21,696 - INFO - [STEP2] 唯一谓语总计 1146 条
+2026-04-04 13:09:21,696 - INFO - [STEP2] 使用 Gemini 异步逐批分类（APIRequester + 进度条）
+2026-04-04 13:09:21,820 - INFO - [GEMINI] 需分类 0 条，已缓存 1146 条
+2026-04-04 13:09:21,836 - INFO - [STEP2] ✅ 最终 labeled CSV 已整合 → rq2_framing_labeled.csv
+2026-04-04 13:09:21,836 - INFO - [STEP3] 聚合分析与可视化...
+2026-04-04 13:09:21,923 - INFO - [VIZ] 开始生成可视化，共 1862 条记录
+2026-04-04 13:09:21,926 - INFO - [VIZ] 语言分布: {'jp': 771, 'en': 546, 'zh': 545}
+2026-04-04 13:09:21,926 - INFO - [VIZ] 框架分布（含noise）: {'other': 792, 'cognitive_manipulation': 255, 'institutional_rot': 190, 'moral_accusation': 174, 'sexual_abuse_frame': 145, 'dehumanization': 120, 'economic_exploitation': 117, 'political_interference': 69}
+2026-04-04 13:09:21,926 - INFO - [VIZ] 提取层级: {'svo': 1430, 'window': 432}
+2026-04-04 13:09:22,032 - INFO - [VIZ] ✅ 图A: rq2_A_topic_frame_heatmap.html
+2026-04-04 13:09:22,074 - INFO - [VIZ] ✅ 图B: rq2_B_lang_frame_bar.html
+2026-04-04 13:09:22,101 - INFO - [VIZ] ✅ 图C: rq2_C_target_frame_matrix.html
+2026-04-04 13:09:22,261 - INFO - [VIZ] ✅ 图D: rq2_D_sunburst_lang_topic_frame.html
+2026-04-04 13:09:22,271 - INFO - [VIZ] ✅ 图E (词频CSV) saved
+2026-04-04 13:09:22,303 - INFO - [VIZ] ✅ 汇总CSV saved: rq2_aggregated_summary.csv
+2026-04-04 13:09:22,305 - INFO - ============================================================
+2026-04-04 13:09:22,305 - INFO - ✅ 全部完成。日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_130808_rq2_pipeline.log
+2026-04-04 13:09:22,305 - INFO - ============================================================

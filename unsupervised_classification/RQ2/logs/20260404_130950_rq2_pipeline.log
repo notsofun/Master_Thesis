@@ -1,0 +1,26 @@
+2026-04-04 13:09:50,082 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_130950_rq2_pipeline.log
+2026-04-04 13:09:50,681 - INFO - ============================================================
+2026-04-04 13:09:50,681 - INFO - RQ2 管线 v2.3 启动
+2026-04-04 13:09:50,681 - INFO - ============================================================
+2026-04-04 13:09:50,690 - INFO - [STEP1] ⏭ 跳过提取，加载已有 rq2_raw_extractions.csv: 1862 条
+2026-04-04 13:09:50,690 - INFO - [STEP2] 框架归因开始...
+2026-04-04 13:09:50,695 - INFO - [STEP2] 检测到已有 labeled CSV，已完成 1146 个唯一谓语，跳过
+2026-04-04 13:09:50,714 - INFO - [STEP2] 已清理 labeled CSV 重复行
+2026-04-04 13:09:50,736 - INFO - [STEP2] 唯一谓语总计 1146 条
+2026-04-04 13:09:50,736 - INFO - [STEP2] 使用 Gemini 异步逐批分类（APIRequester + 进度条）
+2026-04-04 13:09:50,812 - INFO - [GEMINI] 需分类 0 条，已缓存 1146 条
+2026-04-04 13:09:50,824 - INFO - [STEP2] ✅ 最终 labeled CSV 已整合 → rq2_framing_labeled.csv
+2026-04-04 13:09:50,824 - INFO - [STEP3] 聚合分析与可视化...
+2026-04-04 13:09:50,921 - INFO - [VIZ] 开始生成可视化，共 1862 条记录
+2026-04-04 13:09:50,923 - INFO - [VIZ] 语言分布: {'jp': 771, 'en': 546, 'zh': 545}
+2026-04-04 13:09:50,923 - INFO - [VIZ] 框架分布（含noise）: {'other': 792, 'cognitive_manipulation': 255, 'institutional_rot': 190, 'moral_accusation': 174, 'sexual_abuse_frame': 145, 'dehumanization': 120, 'economic_exploitation': 117, 'political_interference': 69}
+2026-04-04 13:09:50,923 - INFO - [VIZ] 提取层级: {'svo': 1430, 'window': 432}
+2026-04-04 13:09:50,993 - INFO - [VIZ] ✅ 图A: rq2_A_topic_frame_heatmap.html
+2026-04-04 13:09:51,030 - INFO - [VIZ] ✅ 图B: rq2_B_lang_frame_bar.html
+2026-04-04 13:09:51,055 - INFO - [VIZ] ✅ 图C: rq2_C_target_frame_matrix.html
+2026-04-04 13:09:51,203 - INFO - [VIZ] ✅ 图D: rq2_D_sunburst_lang_topic_frame.html
+2026-04-04 13:09:51,209 - INFO - [VIZ] ✅ 图E (词频CSV) saved
+2026-04-04 13:09:51,240 - INFO - [VIZ] ✅ 汇总CSV saved: rq2_aggregated_summary.csv
+2026-04-04 13:09:51,242 - INFO - ============================================================
+2026-04-04 13:09:51,242 - INFO - ✅ 全部完成。日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260404_130950_rq2_pipeline.log
+2026-04-04 13:09:51,242 - INFO - ============================================================

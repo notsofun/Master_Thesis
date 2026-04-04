@@ -99,7 +99,7 @@ def extract_tactic_lenient(text, lang, targets_to_search):
 
 def main():
     doc_path = r'unsupervised_classification\topic_modeling_results\sixth\data\document_topic_mapping.csv'
-    rq1_path = r'unsupervised_classification\RQ1\data\rq1_topic_targets_summary.csv'
+    rq1_path = r'unsupervised_classification\RQ1\data\rq1_topic_targets_v3.csv'
     
     doc_df = pd.read_csv(doc_path)
     # 使用优化后的解析器

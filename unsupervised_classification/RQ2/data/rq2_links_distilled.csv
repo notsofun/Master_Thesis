@@ -1,1642 +1,1706 @@
 ﻿Source,Target,Weight
-Topic 1,Catholic Church,198
-Topic 1,Christianity,137
-Topic 2,priests,112
-Topic 5,priests,111
-Topic 16,military,105
-Topic 3,priests,99
-Topic 2,laity,90
-Topic 2,women,89
-Topic 8,Catholic Church,79
-Topic 6,priests,74
-Topic 1,Trump,70
+Topic 1,Catholic,197
+Topic 0,日本人,108
+Topic 5,Vatican,107
+Topic 3,Catholics,96
+Topic 2,bishops,89
+Topic 8,Priests/Clergy,78
+Topic 7,Christian,72
+Topic 1,Trump,71
+Topic 6,bishops,71
+Topic 18,Catholic,63
 Topic 17,Christianity,56
-Topic 18,priests,54
-Topic 13,Christianity,54
-Topic 4,上帝,45
-Topic 0,日本会議,39
-Topic 7,prophets,37
+Topic 16,Canadian,54
+Topic 6,神职人员,38
 Topic 2,Church (General),37
-Topic 11,Christianity,35
-priests,Do: think,35
-Topic 19,pharisee,33
+Topic 19,Pharisee,33
+Topic 13,Catholic,33
 Topic 19,Jesus,32
-Topic 10,Christianity,30
-Topic 14,Christianity,30
+Topic 2,Priests/Clergy,31
 Topic 1,Jesus,29
-Topic 15,Catholic Church,28
-Topic 19,Christianity,27
-Topic 19,god,23
+Topic 15,Catholic,28
 Topic 6,Church (General),23
-Topic 3,Church (General),23
-Topic 5,Church (General),23
 Topic 2,Jesus,23
-priests,Do: believe,23
-priests,Do: know,22
-Topic 12,priests,21
-Topic 7,god,20
-Topic 1,bishops,20
-Catholic Church,Do: think,20
-Topic 2,god,20
-Topic 18,politics,20
-priests,Do: have,19
+Topic 3,Church (General),23
+Topic 14,Unification Church,23
+Topic 6,主教,22
+Topic 5,Church (General),22
+Topic 2,主教,22
+Topic 10,Christian,21
+Topic 12,Priests/Clergy,21
+Topic 1,基督徒,21
 Topic 5,Jesus,19
+Topic 1,Christian,19
+Topic 19,法利赛人,19
+Topic 7,神棍,18
 Jesus,Do: say,18
-priests,Do: agree,17
-Catholic Church,Do: know,15
-Topic 2,people,15
-Topic 3,gay men,15
-Topic 7,man,14
-Topic 8,Church (General),14
-Catholic Church,Do: have,14
+Topic 16,Canada,18
+Catholic,Do: think,18
+bishops,Do: believe,17
+Topic 2,信徒,17
+Topic 6,Jesus,16
+Catholic,Do: know,16
+Topic 0,山上,16
+Topic 6,Priests/Clergy,15
+Topic 1,川普,15
+bishops,Do: think,14
+Topic 11,Muslims,14
+bishops,Do: have,14
 Topic 9,Jesus,14
 Topic 12,Jesus,13
+Vatican,Do: think,13
 Topic 7,Jesus,13
-priests,Do: hope,13
-priests,Is: sure,11
-Topic 8,women,11
-Church (General),Do: teach,11
-priests,Do: say,10
-Catholic Church,Do: believe,10
-Topic 7,宗教,10
-Topic 5,god,10
-Topic 12,people,10
-Catholic Church,Do: say,10
-priests,Do: see,10
-Christianity,Act_on: do,10
-priests,Do: like,10
+Topic 8,Church (General),13
+Church (General),Do: teach,13
+Catholic,Do: have,12
+Topic 14,中国,12
+Catholic,Do: believe,11
+Topic 1,トランプ,11
+Topic 5,Catholic,11
+Topic 11,Christian,11
+Jesus,Act_on: tell,11
+Catholic,Do: agree,10
 Topic 12,Church (General),10
-Jesus,Act_on: tell,9
+Catholic,Do: find,10
+Catholic,Do: say,10
+Topic 0,ネトウヨ,10
+Topic 0,創価学会,10
+Topic 10,犹太人,10
+Topic 18,NCR,9
+Topic 2,イエス・キリスト,9
+Topic 0,韓国,9
+Topic 3,信徒,9
 Topic 3,Jesus,9
-Topic 18,ncr,9
-Christianity,Do: think,9
-Christianity,Do: have,9
-Topic 4,妇人,9
-Topic 14,people,8
-Christianity,Do: come,8
-Topic 7,Church (General),8
-priests,Do: find,8
-Christianity,Do: say,8
-Catholic Church,Is: sure,8
-Topic 6,cc,8
+Topic 3,Priests/Clergy,8
+Topic 8,主教,8
+Catholic,Do: see,8
+Topic 8,Catholic,8
 Topic 4,Priests/Clergy,8
-Topic 6,bishops,8
-Church (General),Do: have,7
-Catholic Church,Do: want,7
-Topic 16,trudeau,7
+bishops,Do: agree,8
+Topic 16,Justin,8
+日本人,Act_on: する,8
+bishops,Do: hope,8
+Topic 7,Church (General),8
+Catholic,Is: sure,8
+Topic 5,Priests/Clergy,8
+Topic 2,教皇,8
+Topic 7,基督教,8
+Topic 13,Unification Church,7
+Topic 9,イエス・キリスト,7
+Vatican,Do: know,7
+Topic 14,信徒,7
+Topic 8,Christian,7
+Catholic,Do: want,7
 Topic 8,Jesus,7
+Topic 15,Church (General),7
+bishops,Do: know,7
+Christian,Do: have,7
+Catholic,Do: like,7
+Canadian,Do: think,7
 Topic 18,Church (General),7
-women,Act_on: ordain,7
-Topic 8,woman,7
-Topic 0,Abe (Politician),7
-Christianity,Do: take,7
-military,Do: think,7
-priests,Do: do,7
-Catholic Church,Do: do,7
-Topic 16,homer,7
-Topic 15,luther,7
+Topic 16,Trudeau,7
+Topic 16,Christian,7
+Christian,Do: think,6
+Catholic,Do: vote,6
+日本人,Do: する,6
+Jesus,Do: do,6
+Topic 7,イエス・キリスト,6
+Catholic,Do: do,6
+Church (General),Do: have,6
+Topic 12,Catholic,6
+Topic 4,教堂,6
+Topic 4,修女,6
+Church (General),Act_on: leave,6
 Jesus,Do: teach,6
-Christianity,Do: make,6
-priests,Do: understand,6
-Topic 13,Catholic Church,6
-Catholic Church,Do: find,6
-Topic 13,people,6
-Topic 3,bishops,6
-Christianity,Do: find,6
-Topic 0,裁判所も買収して,6
-Catholic Church,Do: go,6
-Topic 0,警察も買収しまくり,6
-Topic 9,イエス,6
-Topic 13,religion,6
-priests,Do: read,6
-Catholic Church,Do: agree,6
-priests,Do: hear,5
-pharisee,Do: believe,5
-priests,Do: feel,5
-women,Act_on: call,5
-Church (General),Do: make,5
-priests,Do: suspect,5
+Priests/Clergy,Do: have,6
+Topic 6,教皇,6
+Topic 6,梵蒂冈,6
+Topic 0,Abe (Politician),6
+Catholics,Do: think,6
+日本人,Act_on: 騙す,5
+Topic 12,天主教徒,5
+Topic 11,基督徒,5
+Priests/Clergy,Do: say,5
+Priests/Clergy,Act_on: ordain,5
+日本人,Do: いる,5
+Topic 15,カトリック,5
+Topic 13,主教,5
+Topic 10,イエス・キリスト,5
+Jesus,Do: want,5
+Priests/Clergy,Do: hear,5
+Pharisee,Do: believe,5
+Christian,Do: believe,5
+Priests/Clergy,Do: know,5
+Jesus,Act_on: lead,5
 Topic 9,Confucius,5
-Topic 2,bishops,5
-Catholic Church,Do: see,5
-priests,Do: want,5
-god,Do: want,5
-priests,Do: wonder,5
-Catholic Church,Do: like,5
-Church (General),Act_on: leave,5
-Jesus,Do: do,5
-god,Act_on: love,5
-priests,Do: tell,4
-Christianity,Do: hope,4
-Christianity,Do: go,4
-Jesus,Act_on: lead,4
-Christianity,Do: look,4
-Christianity,Do: care,4
-Jesus,Do: want,4
-priests,Do: go,4
-Catholic Church,Do: mean,4
-Christianity,Do: know,4
-women,Do: have,4
-priests,Do: ’m,4
-laity,Do: have,4
-Church (General),Do: say,4
-priests,Do: love,4
-priests,Do: meet,4
-Catholic Church,Do: teach,4
-Topic 16,islam,4
-Church (General),Do: change,4
-priests,Do: suggest,4
-Catholic Church,Do: hear,4
-priests,Act_on: ordain,4
-Topic 3,baum,4
-bishops,Do: have,4
-Christianity,Is: Christian,4
-Topic 11,Jesus,4
-Topic 19,Church (General),4
-god,Do: have,4
-god,Do: call,4
-Trump,Act_on: elect,4
-women,Do: ordain,4
+Topic 17,基督教,5
+Church (General),Do: make,5
+Priests/Clergy,Do: think,5
+Topic 3,LGBT,5
+Catholic,Do: hope,5
+Christian,Do: doubt,5
+Topic 14,基督教,5
+Topic 19,基督徒,4
+Catholic,Do: need,4
 Topic 10,Jesus,4
-Christianity,Do: do,4
-Catholic Church,Do: remember,4
-Topic 0,検察,4
-裁判所も買収して,Do: 買収,4
+Topic 4,基督狗,4
+Church (General),Do: come,4
+Catholic,Do: worship,4
+Topic 16,Islam,4
+Topic 8,教団,4
 Abe (Politician),Do: _,4
-警察も買収しまくり,Do: 買収,4
-priests,Do: take,4
-Topic 9,孔庆东,4
-women,Act_on: include,3
-日本会議,Act_on: する,3
-Catholic Church,Do: get,3
-Catholic Church,Do: wonder,3
-Christianity,Do: seem,3
-priests,Do: pray,3
-military,Do: speak,3
-women,Act_on: choose,3
-Christianity,Do: pray,3
-Topic 12,god,3
-Topic 17,god,3
-Christianity,Do: guess,3
-god,Do: create,3
-Church (General),Do: come,3
-priests,Do: forgive,3
-Trump,Do: win,3
+Topic 10,基督教,4
+Christian,Do: agree,4
+Catholic,Do: go,4
+Trump,Act_on: elect,4
+Topic 9,洪秀全,4
+日本人,Do: なる,4
+Church (General),Do: say,4
+bishops,Is: sure,4
+Topic 11,基督教,4
+Catholics,Do: ’m,4
+Vatican,Do: have,4
+Catholic,Do: take,4
+bishops,Do: say,4
+Church (General),Do: change,4
+Christianity,Do: think,4
+Topic 19,Church (General),4
+Vatican,Do: believe,4
+Topic 13,Christian,4
+Priests/Clergy,Do: want,4
+Catholic,Do: read,4
+Catholics,Do: know,4
+Catholic,Do: mean,4
+Priests/Clergy,Is: sure,4
+Catholic,Do: remember,4
+Topic 11,Jesus,4
+Jesus,Act_on: teach,4
+Christian,Do: say,4
+Catholics,Do: hope,3
+Catholics,Do: say,3
+トランプ,Act_on: 支持,3
+Christian,Do: find,3
+Topic 5,Christian,3
 Jesus,Act_on: follow,3
-Topic 10,wright,3
-Catholic Church,Do: take,3
+Catholic,Do: write,3
+Priests/Clergy,Do: need,3
+Catholic,Do: care,3
+神职人员,Do: 管,3
+Vatican,Is: sure,3
+Topic 17,キリスト者,3
+日本人,Do: 増える,3
+Unification Church,Do: think,3
+Unification Church,Do: have,3
+Priests/Clergy,Do: guess,3
+神职人员,Do: 有,3
+Topic 12,主教,3
+Trump,Do: win,3
+Vatican,Do: understand,3
+日本人,Do: 苦しめる,3
+Catholics,Do: agree,3
+主教,Do: 有,3
+日本人,Do: 洗脳,3
+Topic 8,信徒,3
+Unification Church,Do: pray,3
+Priests/Clergy,Do: tell,3
+Topic 19,信徒,3
+Canadian,Do: believe,3
 Christianity,Do: ask,3
-politics,Do: seem,3
-Catholic Church,Do: write,3
-Topic 19,people,3
-Catholic Church,Do: come,3
-priests,Do: spend,3
-military,Do: believe,3
-Jesus,Act_on: teach,3
-Church (General),Do: do,3
-laity,Is: good,3
+Christian,Do: wonder,3
+Christian,Do: prefer,3
+Priests/Clergy,Do: wonder,3
+Christian,Do: read,3
+Pharisee,Do: think,3
+Topic 5,信徒,3
 Jesus,Act_on: help,3
-priests,Do: need,3
-pharisee,Do: think,3
-Topic 9,god,3
-Catholic Church,Do: ask,3
-Christianity,Do: teach,3
-prophets,Do: do,3
-Christianity,Do: work,3
-Christianity,Do: start,3
-priests,Do: assure,3
-Catholic Church,Do: mention,3
-Christianity,Do: mean,3
-Catholic Church,Do: feel,3
-Catholic Church,Do: vote,3
-Catholic Church,Is: sorry,3
-Topic 16,Christianity,3
-Topic 6,pope,3
-Christianity,Act_on: see,3
-prophets,Do: go,3
-Topic 12,pharisees,3
-Christianity,Act_on: have,3
-god,Do: love,3
-priests,Do: get,3
-上帝,Act_on: 没有,3
-Christianity,Do: understand,3
+Jesus,Act_on: ask,3
+Topic 14,神棍,3
+Church (General),Do: do,3
+信徒,Do: 信教,3
+bishops,Do: do,3
+Catholics,Do: want,3
+Priests/Clergy,Do: go,3
+Priests/Clergy,Do: mention,3
+bishops,Do: want,3
 Jesus,Do: know,3
-Jesus,Do: have,3
-Topic 14,Church (General),3
+Catholic,Do: start,3
+Catholics,Do: like,3
 Trump,Do: say,3
-man,Do: create,2
-god,Do: make,2
-Catholic Church,Do: need,2
-Catholic Church,Do: tell,2
-politics,Act_on: call,2
-military,Do: hope,2
-priests,Do: guess,2
-priests,Is: willing,2
-Catholic Church,Do: keep,2
-Topic 4,Jesus,2
-priests,Act_on: shelter,2
-priests,Do: criticize,2
-bishops,Act_on: teach,2
-Catholic Church,Is: Catholic,2
-Catholic Church,Do: wait,2
-Church (General),Act_on: protect,2
-Jesus,Act_on: get,2
-god,Act_on: thank,2
-Christianity,Do: remember,2
-Jesus,Act_on: kill,2
-god,Is: merciful,2
-Jesus,Do: show,2
-Jesus,Do: go,2
-Christianity,Do: ’,2
-military,Do: seem,2
-Confucius,Do: think,2
-people,Do: say,2
-women,Do: treat,2
-Catholic Church,Do: guess,2
-god,Do: choose,2
-Christianity,Do: raise,2
-military,Do: have,2
-military,Is: sure,2
-military,Do: do,2
+Topic 13,Ontario,3
+bishops,Do: go,3
+Topic 14,Christian,3
+Catholics,Do: find,3
+Priests/Clergy,Do: get,3
+Jesus,Do: have,3
+Topic 11,绿教,3
+Vatican,Do: see,3
+日本人,Act_on: 差別,3
+Catholic,Do: tell,3
+Catholic,Act_on: include,3
+Christian,Do: raise,3
+Vatican,Do: read,3
+Topic 4,基督徒,3
+基督教,Do: 说,2
+日本人,Do: 働く,2
+イエス・キリスト,Do: 生まれる,2
+神职人员,Act_on: 让,2
+Topic 14,教堂,2
+日本人,Do: 持つ,2
+Vatican,Do: get,2
+Topic 9,格里菲斯,2
+教堂,Act_on: 回到,2
+修女,Do: 搭上,2
+日本人,Do: 結婚,2
+イエス・キリスト,Do: 主張,2
 Jesus,Do: forgive,2
-military,Is: clear,2
-Catholic Church,Is: surprised,2
-homer,Act_on: change,2
-Jesus,Do: save,2
-military,Do: like,2
-Topic 18,msw,2
-日本会議,Act_on: 破壊,2
-日本会議,Do: する,2
-Jesus,Act_on: prevent,2
-Christianity,Is: time,2
-god,Do: use,2
-priests,Do: study,2
-上帝,Do: 失去,2
-priests,Do: learn,2
-pharisee,Do: do,2
-日本会議,Do: 苦しめる,2
-women,Do: go,2
-日本会議,Act_on: 飛ばす,2
-Christianity,Is: important,2
-イエス,Do: 主張,2
-上帝,Do: 给,2
-god,Act_on: reject,2
-Christianity,Do: want,2
-Jesus,Do: give,2
-priests,Act_on: call,2
-Christianity,Is: better,2
-man,Do: have,2
-laity,Act_on: make,2
-laity,Do: take,2
-Church (General),Do: want,2
-Church (General),Do: reach,2
-women,Is: priests,2
-priests,Do: talk,2
-Trump,Is: Christian,2
-Topic 6,snap,2
-priests,Do: support,2
-god,Do: promise,2
-god,Do: bless,2
-priests,Do: reject,2
-Topic 4,bluto,2
+Canadian,Is: sure,2
+Vatican,Do: do,2
+Topic 17,Jesus,2
+Christian,Do: do,2
+Catholic,Is: embarrassed,2
+Vatican,Do: hear,2
+Christianity,Do: guess,2
+日本人,Act_on: 飛ばす,2
+日本人,Act_on: 破壊,2
+日本人,Do: 見える,2
+イエス・キリスト,Do: する,2
+基督徒,Act_on: 说,2
 Church (General),Act_on: lead,2
-Christianity,Do: need,2
-Christianity,Do: agree,2
-priests,Do: provide,2
-priests,Is: interested,2
-Christianity,Is: clear,2
-bishops,Do: learn,2
-Christianity,Act_on: face,2
-Christianity,Is: inappropriate,2
-priests,Do: disagree,2
-women,Do: move,2
-bishops,Do: take,2
-laity,Do: seem,2
-priests,Do: misinterpret,2
-Church (General),Do: permit,2
-Catholic Church,Do: stop,2
-Jesus,Act_on: ignore,2
-Christianity,Is: opinion,2
-military,Do: remember,2
-Jesus,Do: institute,2
-Christianity,Do: believe,2
-Christianity,Is: way,2
-military,Do: find,2
-military,Do: lose,2
-people,Do: want,2
-Catholic Church,Is: round,2
-priests,Do: question,2
-Church (General),Do: become,2
-priests,Is: supporter,2
-Jesus,Is: God,2
-Church (General),Do: offer,2
-Catholic Church,Is: -,2
-priests,Do: care,2
-priests,Do: speak,2
-priests,Do: let,2
-women,Act_on: have,2
-Catholic Church,Is: pro,2
-people,Do: get,2
 Church (General),Do: ordain,2
-Christianity,Is: matter,2
-Christianity,Do: state,2
-Christianity,Is: sorry,2
-Catholic Church,Do: pay,2
-god,Act_on: need,2
-Jesus,Act_on: ask,2
-priests,Do: call,2
-women,Is: willing,2
-Church (General),Do: reject,2
-man,Act_on: have,2
-bishops,Do: tell,2
-Jesus,Do: live,2
-bishops,Do: want,2
-laity,Do: make,2
-Trump,Do: speak,2
-Christianity,Is: life,2
-priests,Do: recall,2
-prophets,Do: give,2
-Christianity,Act_on: read,2
-Catholic Church,Do: understand,2
-Catholic Church,Is: interested,2
-priests,Do: object,2
-priests,Is: sorry,2
-priests,Do: wish,2
-god,Do: send,2
-people,Act_on: serve,2
-Church (General),Do: need,2
-Catholic Church,Do: hope,2
-priests,Do: make,2
-laity,Is: doctrine,2
-Christianity,Is: war,2
-Christianity,Act_on: miss,2
-Catholic Church,Do: hate,2
-women,Do: give,2
-Church (General),Act_on: shut,2
-luther,Do: die,2
-laity,Is: women,2
-priests,Is: afraid,2
-Trump,Is: plant,2
-Christianity,Do: become,2
-military,Do: wonder,2
-priests,Is: surprised,2
-women,Do: exercise,2
-laity,Is: time,2
-Jesus,Do: choose,2
-Christianity,Do: feel,2
+Vatican,Do: suggest,2
+bishops,Do: misinterpret,2
+bishops,Is: sorry,2
 Church (General),Act_on: run,2
-Catholic Church,Do: watch,2
-pharisee,Do: go,2
-Catholic Church,Do: suspect,2
-god,Do: limit,2
-laity,Do: go,2
+Catholics,Do: believe,2
+bishops,Do: suspect,2
+Topic 19,基督,2
+Priests/Clergy,Do: live,2
 Church (General),Do: continue,2
-priests,Do: live,2
-Christianity,Is: good,2
+Catholic,Do: support,2
+Catholic,Do: ask,2
+Catholic,Do: suspect,2
+Jesus,Do: live,2
+Catholics,Do: see,2
+Topic 13,信徒,2
+Catholics,Do: have,2
+bishops,Do: read,2
+Confucius,Do: think,2
+Catholic,Do: fear,2
+Christianity,Do: say,2
+Vatican,Do: spend,2
+Priests/Clergy,Do: pay,2
+神职人员,Do: 看,2
+Unification Church,Do: care,2
+Christian,Act_on: practise,2
+bishops,Do: feel,2
+Unification Church,Do: say,2
+Jesus,Is: God,2
+Church (General),Do: reject,2
+Catholic,Do: work,2
+Topic 15,Pope,2
+Christian,Do: need,2
+基督徒,Do: 想,2
+Canadian,Do: wonder,2
+Topic 16,Catholics,2
+Church (General),Act_on: shut,2
+Trump,Is: plant,2
+Church (General),Do: know,2
+Priests/Clergy,Do: let,2
+Topic 7,基督徒,2
+Christian,Do: understand,2
+Pharisee,Do: go,2
+Pharisee,Do: do,2
+Priests/Clergy,Is: -,2
+Christianity,Act_on: do,2
 Christianity,Is: okay,2
-pharisee,Do: have,2
-gay men,Do: do,2
-military,Do: go,2
-Christianity,Is: sure,2
-gay men,Act_on: ask,2
-Christianity,Is: simple,2
-gay men,Act_on: tell,2
-Topic 7,moses,2
+Catholic,Do: feel,2
+Church (General),Do: become,2
+Jesus,Do: institute,2
+Jesus,Do: warn,2
+Christian,Do: support,2
+Christian,Is: worthy,2
+Catholic,Is: sorry,2
+Canadian,Do: find,2
+Christianity,Do: know,2
+Christianity,Do: understand,2
+Catholics,Do: do,2
+Christian,Do: know,2
+Catholic,Do: watch,2
+Vatican,Do: feel,2
 Jesus,Act_on: convince,2
-Christianity,Do: doubt,2
-上帝,Act_on: 有,2
+Jesus,Do: choose,2
+Catholic,Do: miss,2
+Catholics,Do: assure,2
 Trump,Is: empathatic,2
-Christianity,Act_on: get,2
-women,Do: serve,2
-日本会議,Do: 気取り,1
-妇人,Act_on: 見る,1
-上帝,Do: 罪告,1
-妇人,Act_on: 造出,1
-妇人,Do: 知道,1
-宗教,Do: 形容,1
-上帝,Do: 创造,1
-孔庆东,Do: 回复,1
-孔庆东,Act_on: 传回,1
-上帝,Do: 买,1
-妇人,Do: 做,1
-妇人,Do: 嫁,1
-日本会議,Act_on: 言う,1
-イエス,Do: 生まれる,1
-日本会議,Act_on: 侵略,1
-警察も買収しまくり,Do: 追う,1
-Church (General),Act_on: characterise,1
-Christianity,Do: reposte,1
-日本会議,Do: 破壊,1
-イエス,Do: 実在,1
-日本会議,Do: なる,1
-Topic 17,栖雲居士さんの,1
-栖雲居士さんの,Do: 支配,1
-日本会議,Do: 脅かす,1
-日本会議,Do: 気づく,1
-イエス,Do: 存在,1
-イエス,Do: つるむ,1
-宗教,Act_on: 信,1
-妇人,Do: 回答,1
-Topic 9,封建迷信,1
-封建迷信,Act_on: 封建,1
-宗教,Do: 建立,1
-Christianity,Do: reject,1
-Christianity,Do: give,1
-Christianity,Is: certain,1
-bishops,Do: condemn,1
-Catholic Church,Do: encourage,1
-priests,Is: witness,1
-pharisee,Do: guess,1
-pharisee,Do: need,1
-god,Is: Love,1
-Jesus,Act_on: thank,1
-Catholic Church,Do: venture,1
-Christianity,Is: meaningful,1
-Trump,Do: lead,1
-politics,Act_on: do,1
-politics,Act_on: point,1
-priests,Do: miss,1
-prophets,Do: take,1
-moses,Do: make,1
-man,Act_on: bite,1
-prophets,Do: behold,1
-prophets,Do: live,1
-prophets,Do: continue,1
-Christianity,Is: plan,1
-priests,Do: admit,1
-priests,Do: interpret,1
-gay men,Act_on: lead,1
-women,Do: consider,1
-laity,Do: see,1
-Jesus,Do: care,1
-Christianity,Is: ironic,1
-women,Do: make,1
-Christianity,Act_on: reposte,1
-Christianity,Do: apply,1
-Christianity,Act_on: fund,1
-Church (General),Do: create,1
-pharisee,Is: sorry,1
-pharisee,Do: spit,1
-people,Is: able,1
-god,Is: who,1
-Trump,Do: make,1
-priests,Is: troll,1
-politics,Do: make,1
-Trump,Act_on: influence,1
-Trump,Do: look,1
-ncr,Act_on: read,1
-Christianity,Is: mosque,1
-Catholic Church,Do: destroy,1
-moses,Do: lift,1
-priests,Do: change,1
-Jesus,Do: rest,1
-Church (General),Do: fit,1
-Church (General),Is: political,1
-politics,Is: What,1
-laity,Do: uplift,1
-Jesus,Act_on: label,1
-priests,Do: deny,1
-Christianity,Do: lump,1
-trudeau,Do: apologize,1
-Church (General),Is: honest,1
-women,Do: show,1
-women,Do: deny,1
-priests,Do: commit,1
-priests,Do: sadden,1
-religion,Act_on: practice,1
-Catholic Church,Is: Evangelical,1
-priests,Is: old,1
-people,Do: rebel,1
-Christianity,Do: stay,1
-Christianity,Do: object,1
-Christianity,Do: represent,1
-Christianity,Do: write,1
-Christianity,Do: play,1
-priests,Is: -,1
-priests,Is: cana,1
-women,Do: choose,1
-laity,Is: best,1
-women,Do: receive,1
-women,Do: accord,1
-gay men,Is: friends,1
-priests,Do: move,1
-Jesus,Do: sire,1
-priests,Do: urge,1
-Trump,Act_on: correct,1
-Trump,Is: Catholic,1
-baum,Do: come,1
-Church (General),Is: What,1
-Church (General),Is: pure,1
-Church (General),Do: believe,1
-Church (General),Do: live,1
-luther,Do: marry,1
-luther,Do: sing,1
-Church (General),Do: force,1
-gay men,Act_on: force,1
-Jesus,Act_on: set,1
-Trump,Is: heartbeat,1
-people,Act_on: write,1
-laity,Do: resolve,1
-laity,Do: demonstrate,1
-Church (General),Act_on: shutdown,1
-Christianity,Do: kick,1
-Confucius,Do: suspect,1
-Jesus,Do: commission,1
-laity,Do: stand,1
-luther,Do: leave,1
-Catholic Church,Act_on: make,1
-Catholic Church,Do: comment,1
-Christianity,Is: little,1
-Christianity,Do: tell,1
-laity,Is: Pope,1
-laity,Is: bishops,1
-Jesus,Do: marry,1
-god,Do: ensure,1
-Topic 11,muslims,1
-muslims,Do: do,1
-military,Do: state,1
-Jesus,Do: remove,1
-priests,Is: likely,1
-Church (General),Act_on: face,1
-bishops,Do: measure,1
-bishops,Do: recognize,1
-Jesus,Is: man,1
-politics,Do: happen,1
-priests,Is: grateful,1
-priests,Do: hop,1
-priests,Is: straight,1
-priests,Is: traditionalist,1
-priests,Do: witness,1
-laity,Do: recognize,1
-priests,Act_on: have,1
-Jesus,Is: what,1
-Trump,Is: like,1
-Jesus,Do: hang,1
-Christianity,Act_on: place,1
+Church (General),Do: need,2
+Priests/Clergy,Act_on: create,2
+Canada,Is: country,2
+Vatican,Do: criticize,2
+Priests/Clergy,Act_on: shelter,2
+Catholic,Do: get,2
+Catholic,Do: come,2
+Catholic,Do: understand,2
+Priests/Clergy,Is: interested,2
+bishops,Do: find,2
+Catholic,Is: troll,2
+Jesus,Do: go,2
+Christian,Do: teach,2
+Church (General),Do: offer,2
+bishops,Do: see,2
+Jesus,Do: give,2
+Priests/Clergy,Is: Catholic,2
+Trump,Is: Christian,2
+Christian,Do: make,2
+bishops,Do: support,2
+bishops,Do: meet,2
+神职人员,Do: 听,2
+Jesus,Act_on: prevent,2
+中国,Do: なる,2
+ネトウヨ,Do: 触れる,2
+Topic 18,カトリック,2
+Catholic,Is: supporter,2
+Jesus,Act_on: rap,2
+Catholic,Is: old,2
+Christian,Is: sure,2
+Priests/Clergy,Do: assure,2
+主教,Act_on: 到,2
+Jesus,Act_on: get,2
+Canadian,Do: have,2
+Muslims,Do: find,2
+Catholics,Do: take,2
+Church (General),Do: want,2
+Priests/Clergy,Do: do,2
+Jesus,Act_on: kill,2
+Topic 19,教徒,2
+日本人,Do: 騙す,2
+Topic 11,イスラム,2
+山上,Act_on: 叩く,2
+Catholic,Do: teach,2
+Catholic,Do: hear,2
+神职人员,Do: 设早,2
+Catholic,Do: wait,2
+Catholic,Do: give,2
+Catholics,Do: wish,2
+Vatican,Do: wonder,2
+Jesus,Act_on: ignore,2
+Priests/Clergy,Do: understand,2
+Church (General),Act_on: protect,2
+Priests/Clergy,Act_on: protect,2
+bishops,Do: wonder,2
+Jesus,Do: show,2
+Trump,Do: speak,2
+Pharisee,Do: have,2
+Vatican,Do: agree,2
+主教,Act_on: 当上,2
+川普,Act_on: 给,2
+Topic 12,イエス・キリスト,2
+日本人,Act_on: 苦しめる,2
+カトリック,Act_on: 自称,2
+Topic 8,カトリック,2
+イエス・キリスト,Do: 読む,2
+Topic 4,神棍,2
+Christian,Do: follow,2
+Priests/Clergy,Act_on: call,2
+Church (General),Do: reach,2
+bishops,Is: interested,2
+Vatican,Do: study,2
+Vatican,Do: pray,2
+Church (General),Do: permit,2
+Vatican,Do: like,2
+イエス・キリスト,Do: 壊す,2
+信徒,Do: 搞,2
+Priests/Clergy,Act_on: send,2
+Priests/Clergy,Do: remember,2
+Topic 9,基督教,2
+Topic 17,基督徒,2
+日本人,Act_on: 救う,2
+基督教,Do: 搞,2
+Topic 4,Jesus,2
+Canadian,Do: like,2
+Topic 18,天主教,2
+Catholic,Do: keep,2
+Catholic,Is: surprised,2
+bishops,Do: forgive,2
+Catholics,Do: suspect,2
+Jesus,Do: save,2
+Christianity,Do: teach,2
+bishops,Do: like,2
+Canadian,Do: remember,2
+Topic 18,MSW,2
+Canadian,Do: hope,2
+日本人,Do: いう,2
+山上,Do: 狙う,2
+神棍,Act_on: 出来,1
+基督狗,Act_on: 对付,1
+日本人,Act_on: 務める,1
+信徒,Do: 变成,1
+日本人,Do: 関わる,1
+基督徒,Act_on: 処刑,1
+日本人,Do: 衰亡,1
+韓国,Act_on: 支配,1
+カトリック,Do: 信用,1
+神棍,Do: 用いる,1
+基督教,Do: 作る,1
+日本人,Do: 潰れる,1
+洪秀全,Act_on: 问问,1
+格里菲斯,Do: 坏,1
+神职人员,Do: 告诉,1
+神职人员,Do: 无耻,1
+主教,Do: 红衣主教,1
+犹太人,Do: 写,1
+日本人,Act_on: 売る,1
+カトリック,Do: 見える,1
+山上,Do: 殺す,1
+トランプ,Do: ?,1
+神职人员,Do: 入る,1
+神职人员,Do: 載る,1
+神棍,Do: 逆らう,1
+日本人,Act_on: 侵略,1
+Vatican,Do: ignore,1
+Trump,Is: person,1
+Canadian,Do: speak,1
+Christianity,Do: re,1
+bishops,Do: speak,1
+Unification Church,Act_on: allow,1
+Christian,Do: preach,1
+Christian,Do: witness,1
+Catholics,Is: aware,1
+Catholics,Is: acts,1
+Christianity,Act_on: remove,1
+Christianity,Do: defend,1
+Christianity,Do: like,1
+Jesus,Act_on: preserve,1
+Vatican,Do: exclude,1
+Vatican,Do: say,1
+Vatican,Do: follow,1
+MSW,Is: correct,1
+bishops,Do: let,1
+bishops,Do: wait,1
+Christian,Act_on: set,1
+bishops,Do: appreciate,1
+Christian,Do: refer,1
+Catholic,Do: describe,1
+Vatican,Do: consider,1
+Vatican,Do: reject,1
+Vatican,Do: provide,1
+Catholics,Do: limit,1
+bishops,Do: accuse,1
+Priests/Clergy,Do: release,1
+Catholic,Do: love,1
+Jesus,Act_on: rid,1
+Trump,Do: strangle,1
+Catholic,Do: prelate,1
+bishops,Do: trust,1
+Priests/Clergy,Act_on: need,1
+Catholic,Is: American,1
+Catholic,Is: Catholic,1
+Jesus,Act_on: love,1
+Jesus,Act_on: bless,1
+Jesus,Act_on: keep,1
+Trump,Act_on: blame,1
+Pharisee,Do: miss,1
+Pharisee,Do: entrust,1
+bishops,Do: name,1
+Catholic,Act_on: forbid,1
+Vatican,Do: shake,1
+Vatican,Is: happy,1
+Priests/Clergy,Do: mean,1
+Catholic,Do: meet,1
+Christian,Do: condemn,1
+Priests/Clergy,Do: respect,1
+Catholic,Act_on: have,1
+NCR,Do: become,1
+Pharisee,Do: answer,1
+Pharisee,Do: say,1
+Pharisee,Is: Christian,1
+Catholic,Is: pro,1
+Catholic,Is: -,1
+Catholic,Is: abortion,1
+Vatican,Do: acknowledge,1
+Vatican,Do: point,1
+Vatican,Do: forgive,1
+Islam,Is: responsible,1
+Christian,Do: expect,1
+Catholic,Do: argue,1
+bishops,Do: defend,1
+bishops,Act_on: teach,1
+Priests/Clergy,Do: accuse,1
+基督徒,Act_on: 相信,1
+基督徒,Act_on: 接受,1
+信徒,Act_on: 进化,1
+Trump,Do: express,1
+Unification Church,Do: know,1
+Unification Church,Is: Christian,1
+Unification Church,Is: Catholic,1
+Jesus,Do: attack,1
+Priests/Clergy,Do: abandon,1
+Church (General),Do: get,1
+Church (General),Do: begin,1
 Trump,Do: come,1
 Jesus,Act_on: show,1
 Church (General),Act_on: understand,1
-women,Is: products,1
+bishops,Do: hear,1
+bishops,Do: advocate,1
+bishops,Is: grounded,1
 Church (General),Do: join,1
-people,Is: 50,1
-military,Do: live,1
+Christian,Do: attribute,1
+Christian,Do: get,1
+Christian,Do: guess,1
+Christian,Do: like,1
+Canadian,Do: live,1
+Justin,Act_on: tell,1
+Christian,Act_on: wield,1
+Catholic,Is: who,1
+Christian,Do: recognize,1
+NCR,Is: publication,1
+NCR,Do: lead,1
+Catholic,Do: suggest,1
+Church (General),Do: 多,1
+梵蒂冈,Do: 清,1
+神职人员,Do: 动得,1
+主教,Do: 切割,1
+Priests/Clergy,Do: object,1
+Vatican,Do: find,1
+神职人员,Do: 调到,1
+主教,Do: 开,1
+神职人员,Act_on: 有,1
+神职人员,Do: 酗酒,1
+Christian,Do: tell,1
+Trump,Is: like,1
+Jesus,Do: hang,1
+Pharisee,Do: spit,1
+Trump,Do: make,1
+Catholic,Do: arrive,1
+Jesus,Do: commission,1
+Catholic,Act_on: make,1
+Catholic,Do: comment,1
+Catholic,Act_on: espouse,1
+Trump,Act_on: influence,1
+Trump,Do: look,1
+NCR,Act_on: read,1
+Unification Church,Do: destroy,1
+Catholic,Is: part,1
+Catholic,Do: object,1
+Muslims,Do: write,1
+Muslims,Do: play,1
+Canadian,Act_on: enter,1
+神职人员,Do: 供,1
+主教,Do: 折磨,1
+神职人员,Do: 孤立,1
+主教,Do: 占着茅坑不拉屎,1
+信徒,Do: 看,1
+基督徒,Do: 争,1
+基督教,Do: 至上,1
+基督教,Do: 会,1
+基督狗,Do: 摸,1
+信徒,Act_on: 当成,1
+基督教,Act_on: 反,1
+主教,Do: 打,1
+信徒,Do: 打破,1
+教徒,Do: 惊掉,1
+Pharisee,Do: need,1
+Pharisee,Is: sorry,1
+Trump,Do: lead,1
+Catholics,Do: admit,1
+Catholics,Do: interpret,1
+Church (General),Act_on: characterise,1
+Christianity,Do: reposte,1
+Christianity,Act_on: reposte,1
+Christianity,Do: reject,1
+Christianity,Do: give,1
+Christianity,Is: certain,1
+Christianity,Do: look,1
+Catholic,Is: award,1
+Priests/Clergy,Is: cana,1
+Priests/Clergy,Is: witness,1
+Pharisee,Do: guess,1
+川普,Do: 找,1
+基督,Do: 诞生,1
+教堂,Act_on: 变成,1
+中国,Do: 想,1
+神棍,Do: 拿来,1
+信徒,Act_on: 忽悠,1
+信徒,Do: 有,1
+梵蒂冈,Do: 送回,1
+教皇,Do: 没有,1
+神职人员,Do: 绝,1
+信徒,Do: 占,1
+主教,Act_on: 轮到,1
+教皇,Do: 跑,1
+主教,Do: 跑,1
+川普,Do: 退出,1
+川普,Do: 算,1
+基督徒,Act_on: 算,1
+信徒,Act_on: 改,1
+基督教,Do: 造人,1
+基督徒,Act_on: 让,1
+教堂,Act_on: 捐,1
+主教,Do: 懂,1
+主教,Do: 金贵,1
+信徒,Do: 盯,1
+基督徒,Act_on: 迫害,1
+Jesus,Do: care,1
+Church (General),Do: create,1
+Christian,Do: fail,1
+Christian,Do: state,1
+Christian,Do: want,1
+Christian,Do: quote,1
+Catholic,Act_on: tell,1
+Jesus,Act_on: thank,1
+Catholic,Do: venture,1
+Church (General),Is: pure,1
+Jesus,Act_on: label,1
+Catholics,Do: deny,1
+Catholics,Do: love,1
+Christian,Do: lump,1
+Trudeau,Do: apologize,1
+Church (General),Is: honest,1
+Priests/Clergy,Do: commit,1
+bishops,Do: sadden,1
+Catholics,Do: need,1
+Catholic,Do: wonder,1
+信徒,Do: 少,1
+神棍,Act_on: 让,1
+中国,Do: 带回,1
+信徒,Act_on: 改到,1
+基督教,Act_on: 自称,1
+Jesus,Act_on: set,1
+Trump,Is: heartbeat,1
+Unification Church,Act_on: shutdown,1
+Unification Church,Do: feel,1
+Christian,Do: kick,1
+Priests/Clergy,Is: Evangelical,1
+Priests/Clergy,Do: teach,1
+Catholics,Is: old,1
+Catholics,Is: surprised,1
+Catholics,Do: move,1
+Catholics,Do: learn,1
+Catholics,Do: change,1
+Jesus,Do: rest,1
+Church (General),Do: fit,1
+Church (General),Is: political,1
+Church (General),Is: What,1
+基督教,Do: 揭示,1
+基督徒,Do: 找,1
+川普,Do: 要求,1
+基督,Do: 误解,1
+法利赛人,Do: 误解,1
+信徒,Act_on: 选择,1
+基督徒,Act_on: 当,1
+法利赛人,Do: 选择,1
+信徒,Act_on: 没,1
+主教,Do: 包庇,1
+教堂,Act_on: 看,1
+犹太人,Act_on: 搞,1
+基督教,Act_on: 喷,1
+Catholic,Act_on: practice,1
+Christian,Is: scientist,1
+Church (General),Do: force,1
 Jesus,Is: Church,1
-Catholic Church,Do: talk,1
+Catholic,Do: talk,1
 Trump,Do: claim,1
-Catholic Church,Is: aware,1
-Jesus,Act_on: give,1
-god,Act_on: ask,1
-Jesus,Do: fill,1
-Christianity,Is: electors,1
-Christianity,Is: lucky,1
-Christianity,Do: use,1
-Christianity,Is: amazed,1
-Christianity,Is: Administration,1
-Christianity,Is: taught,1
-laity,Do: further,1
-laity,Is: inclusive,1
-priests,Is: one,1
-man,Is: corrupt,1
+Confucius,Do: suspect,1
+Jesus,Do: marry,1
+Jesus,Do: sire,1
+Catholics,Do: urge,1
+Trump,Act_on: correct,1
+Trump,Is: Catholic,1
+Vatican,Do: tell,1
+Priests/Clergy,Is: likely,1
+Church (General),Act_on: face,1
+Church (General),Do: believe,1
+Church (General),Do: live,1
+基督教,Act_on: 要求,1
+神棍,Do: 咒,1
+Jesus,Do: remove,1
+Priests/Clergy,Do: call,1
+Pope,Do: know,1
+Catholic,Is: lucky,1
+Catholic,Do: use,1
+Catholic,Is: amazed,1
+Jesus,Is: man,1
+Catholic,Is: grateful,1
+Catholic,Do: hop,1
+Catholics,Is: straight,1
+Catholics,Is: traditionalist,1
+Catholics,Do: witness,1
 Jesus,Act_on: send,1
-Christianity,Do: live,1
-Christianity,Do: bring,1
-Christianity,Act_on: like,1
-priests,Do: forgave,1
+Christian,Do: live,1
+Priests/Clergy,Act_on: have,1
+Jesus,Is: what,1
+Muslims,Do: do,1
+Canadian,Do: state,1
+主教,Do: 高人一等,1
+基督徒,Act_on: 帮,1
+基督徒,Do: 挨,1
+Trump,Do: 斥,1
+基督徒,Do: 破,1
+主教,Do: 看懵,1
+主教,Act_on: 让,1
+主教,Do: 估计,1
+神职人员,Do: 搞,1
+主教,Do: 变,1
+主教,Act_on: 谢谢,1
+教皇,Do: 方济,1
+梵蒂冈,Act_on: 骂,1
+神职人员,Do: 干嘛,1
+Catholic,Do: prefer,1
+Trump,Do: choose,1
+Catholic,Do: listen,1
+bishops,Do: recall,1
+Vatican,Is: one,1
+Christian,Do: disagree,1
+Catholic,Do: honor,1
+Jesus,Is: Who,1
+Jesus,Act_on: give,1
+Jesus,Do: fill,1
+Jesus,Do: sort,1
+Trump,Do: move,1
+Catholic,Do: recommend,1
+bishops,Do: forgave,1
+Jesus,Act_on: include,1
+Catholic,Is: aware,1
+Priests/Clergy,Is: gay,1
+Christianity,Do: have,1
+Christianity,Is: Christian,1
+Christianity,Is: God,1
+Catholic,Act_on: put,1
+Catholic,Do: admire,1
+Church (General),Do: consider,1
+Catholics,Act_on: forget,1
+bishops,Is: afraid,1
+Christian,Do: love,1
+Christian,Is: pleased,1
 Church (General),Do: grow,1
 Church (General),Act_on: do,1
 bishops,Do: prefer,1
-prophets,Do: come,1
-prophets,Do: speak,1
-prophets,Do: point,1
-Catholic Church,Do: honor,1
-Jesus,Is: Who,1
-prophets,Is: Son,1
-prophets,Is: man,1
-god,Act_on: perfect,1
-prophets,Do: work,1
-prophets,Do: possess,1
-god,Do: give,1
-Christianity,Is: darn,1
-Christianity,Is: foolish,1
-Catholic Church,Do: run,1
-military,Act_on: ignore,1
-military,Is: dark,1
-ncr,Is: publication,1
-ncr,Do: lead,1
-politics,Is: perspective,1
-bishops,Do: let,1
-Christianity,Is: difficult,1
-priests,Do: abandon,1
-Church (General),Do: get,1
-people,Is: responsible,1
-women,Do: need,1
-Church (General),Do: begin,1
-Catholic Church,Do: recommend,1
-Christianity,Act_on: divide,1
-Church (General),Do: consider,1
-women,Do: prove,1
-laity,Is: enough,1
-Catholic Church,Is: comfortable,1
+Catholic,Is: comfortable,1
 Trump,Do: cross,1
-Catholic Church,Do: prefer,1
-Trump,Do: choose,1
-Catholic Church,Do: listen,1
-Church (General),Do: treat,1
-priests,Is: all,1
-priests,Is: gay,1
-gay men,Is: attracted,1
-gay men,Act_on: pretend,1
-Jesus,Do: sort,1
-Trump,Do: move,1
-Christianity,Is: God,1
-bishops,Do: put,1
-Christianity,Is: writing,1
-priests,Do: advocate,1
-priests,Is: grounded,1
-women,Act_on: lie,1
-Christianity,Do: put,1
-women,Do: demand,1
-Christianity,Act_on: admit,1
-Christianity,Is: fine,1
-Christianity,Do: stop,1
-Trump,Do: express,1
-people,Do: deal,1
-Catholic Church,Do: admire,1
-Catholic Church,Is: positioned,1
-Christianity,Do: contribute,1
-Trump,Is: sinner,1
-priests,Do: look,1
-Trump,Act_on: bring,1
-Christianity,Act_on: stick,1
-laity,Is: right,1
+基督徒,Do: 盯,1
+法利赛人,Act_on: 不要,1
+法利赛人,Act_on: 怎样,1
+法利赛人,Act_on: 给,1
+神棍,Act_on: 说,1
+主教,Do: 盯,1
+主教,Do: 折腾,1
+Topic 9,孙悟空,1
+孙悟空,Act_on: 问,1
+信徒,Act_on: 当,1
+教皇,Act_on: 当上,1
+主教,Do: 管,1
+信徒,Do: 保佑,1
+神棍,Act_on: 信,1
+Catholics,Act_on: call,1
+Catholics,Is: all,1
+Justin,Do: dare,1
 Church (General),Do: practice,1
-god,Do: bind,1
 Jesus,Do: become,1
-priests,Do: participate,1
-god,Act_on: lend,1
-Christianity,Do: support,1
+Priests/Clergy,Do: participate,1
+Justin,Is: divisive,1
 Jesus,Do: pronounce,1
+Vatican,Do: recall,1
 Jesus,Act_on: respect,1
+Jesus,Do: throw,1
 Church (General),Is: clergy,1
-politics,Do: rank,1
-Christianity,Do: keep,1
-islam,Do: prohibit,1
-military,Do: disturb,1
-islam,Do: scar,1
-homer,Act_on: scar,1
-Catholic Church,Do: speak,1
-Catholic Church,Do: waste,1
-priests,Do: harp,1
-people,Do: kneel,1
-priests,Act_on: favor,1
-priests,Do: doubt,1
-Church (General),Do: know,1
+Catholic,Do: question,1
+Priests/Clergy,Act_on: favor,1
+Priests/Clergy,Do: feel,1
+Church (General),Do: treat,1
+Priests/Clergy,Do: come,1
+基督狗,Act_on: 观察,1
+Priests/Clergy,Do: celebrate,1
+Church (General),Act_on: rule,1
+Jesus,Act_on: require,1
+bishops,Do: doubt,1
 Church (General),Do: prove,1
 Jesus,Do: feel,1
 Jesus,Act_on: create,1
 Jesus,Act_on: remind,1
-bishops,Do: suggest,1
-Christianity,Act_on: spell,1
-Christianity,Act_on: hand,1
-Christianity,Is: heroisms,1
-Church (General),Is: one,1
-man,Act_on: friggin,1
-god,Is: interested,1
-god,Do: show,1
-Church (General),Do: stop,1
-Christianity,Do: recall,1
-people,Act_on: include,1
-Christianity,Is: surprise,1
-Christianity,Is: wonder,1
+Trump,Is: sinner,1
+Vatican,Do: look,1
+Trump,Act_on: bring,1
+Jesus,Do: hope,1
 Church (General),Act_on: serve,1
-god,Do: rest,1
 Jesus,Act_on: welcome,1
-Christianity,Do: evolve,1
-priests,Do: celebrate,1
-Church (General),Act_on: rule,1
-Jesus,Act_on: require,1
-Christianity,Do: require,1
-god,Do: ask,1
-Christianity,Act_on: foist,1
-Christianity,Is: Catholic,1
-people,Do: give,1
-pharisees,Do: award,1
-Jesus,Do: attack,1
-pharisees,Act_on: attack,1
-Christianity,Is: majority,1
-pharisee,Do: say,1
-Christianity,Do: die,1
-pharisee,Is: Christian,1
-Christianity,Is: critical,1
-laity,Do: fall,1
-Christianity,Is: what,1
-Christianity,Act_on: keep,1
-Catholic Church,Is: abortion,1
-Catholic Church,Is: who,1
-Priests/Clergy,Do: mean,1
-politics,Is: question,1
-priests,Do: give,1
-laity,Do: depend,1
-laity,Act_on: instigate,1
-laity,Is: grab,1
-military,Do: concern,1
-Christianity,Is: Christians,1
-priests,Do: remember,1
+Christian,Is: bond,1
+Canadian,Do: lose,1
+Canadian,Do: concern,1
+bishops,Do: remember,1
 Jesus,Do: stand,1
+Priests/Clergy,Do: focus,1
+Priests/Clergy,Is: unsure,1
+Priests/Clergy,Do: identify,1
+Christian,Do: evolve,1
+Islam,Do: prohibit,1
+Canadian,Do: disturb,1
+Canada,Do: take,1
+Islam,Do: scar,1
+Priests/Clergy,Do: speak,1
+Priests/Clergy,Do: see,1
+Priests/Clergy,Do: waste,1
+Vatican,Do: harp,1
 Church (General),Do: take,1
-religion,Do: do,1
-Christianity,Do: get,1
-Christianity,Do: drill,1
-woman,Act_on: throw,1
-Catholic Church,Do: focus,1
-Catholic Church,Is: unsure,1
-women,Act_on: see,1
-Catholic Church,Do: identify,1
-bishops,Do: proclaim,1
-Christianity,Do: run,1
-god,Do: provide,1
-people,Do: need,1
-religion,Act_on: use,1
-Catholic Church,Do: demonstrate,1
-Catholic Church,Do: lobby,1
-laity,Act_on: see,1
-Christianity,Act_on: exercise,1
-Christianity,Is: call,1
-Christianity,Act_on: put,1
-Church (General),Do: go,1
-Catholic Church,Do: obsess,1
-Catholic Church,Do: assure,1
-priests,Do: salute,1
-prophets,Do: choose,1
-Catholic Church,Do: choke,1
-Catholic Church,Do: suppose,1
-Catholic Church,Do: laugh,1
-people,Act_on: regard,1
-priests,Do: attest,1
+Christian,Is: astounded,1
+Catholic,Do: choke,1
+Catholic,Do: suppose,1
+Catholic,Do: laugh,1
+Catholic,Do: stop,1
+Catholic,Do: allow,1
+Vatican,Do: attest,1
+Christianity,Do: seem,1
 Christianity,Act_on: interpret,1
 Jesus,Do: promise,1
-Jesus,Do: stress,1
-religion,Do: go,1
-Catholic Church,Do: work,1
-Catholic Church,Do: try,1
-Catholic Church,Is: realist,1
-politics,Is: snap,1
-ncr,Do: become,1
-Priests/Clergy,Do: hear,1
-Christianity,Do: speak,1
-pharisee,Do: answer,1
-god,Act_on: believe,1
-Jesus,Act_on: keep,1
-Trump,Act_on: blame,1
-pharisee,Do: miss,1
-people,Act_on: miss,1
-pharisee,Do: entrust,1
-Jesus,Act_on: take,1
-women,Is: victims,1
+Church (General),Is: one,1
+Christian,Do: desire,1
+Church (General),Do: stop,1
+Catholic,Do: recall,1
+Catholic,Do: demonstrate,1
+Catholic,Do: lobby,1
+信徒,Do: 干点,1
+神职人员,Do: 稀罕,1
+洪秀全,Do: 有,1
+洪秀全,Do: 承认,1
+主教,Do: 追责,1
+主教,Do: 听腻,1
+川普,Do: 出卖,1
+基督徒,Do: 支持,1
+川普,Do: 没,1
+基督徒,Do: 看作,1
+川普,Do: 看,1
+教皇,Do: 狡皇,1
+主教,Act_on: 追究,1
+基督教,Act_on: 谈,1
+川普,Act_on: 投给,1
+Catholics,Do: question,1
+bishops,Do: shutter,1
 Jesus,Do: enjoy,1
-pharisee,Do: look,1
+Pharisee,Do: look,1
 Trump,Act_on: denounce,1
-Christianity,Is: instrument,1
-priests,Act_on: salute,1
-snap,Do: aim,1
-snap,Do: implode,1
-Church (General),Do: view,1
-Christianity,Is: friend,1
-Jesus,Do: champion,1
-priests,Do: quote,1
-priests,Do: drift,1
-laity,Is: true,1
-laity,Is: part,1
-women,Is: Fatherhood,1
-laity,Act_on: exercise,1
-laity,Is: coincidence,1
-Church (General),Do: leave,1
-laity,Is: corruptions,1
-laity,Is: teachings,1
-bishops,Do: name,1
-priests,Act_on: protect,1
-military,Do: astound,1
-homer,Act_on: astound,1
-military,Do: happen,1
-Priests/Clergy,Do: guess,1
-laity,Do: shrink,1
-priests,Do: appreciate,1
-priests,Do: shutter,1
-laity,Is: Vatican,1
-laity,Is: practices,1
-Christianity,Act_on: blab,1
-Catholic Church,Do: react,1
-Catholic Church,Is: free,1
-Church (General),Is: wrong,1
-Church (General),Act_on: use,1
-women,Do: die,1
-Church (General),Do: crawl,1
+Catholic,Is: free,1
+Jesus,Do: stress,1
+Catholic,Do: try,1
+Catholic,Is: realist,1
+Jesus,Act_on: take,1
+Church (General),Do: go,1
+Priests/Clergy,Do: obsess,1
+bishops,Do: salute,1
+Priests/Clergy,Act_on: salute,1
+Unification Church,Do: view,1
+Christian,Is: content,1
+信徒,Do: 信,1
 Jesus,Is: critical,1
-pharisee,Do: hope,1
-Christianity,Do: pay,1
+Pharisee,Do: hope,1
 Trump,Do: manage,1
-bluto,Do: take,1
-bluto,Act_on: chug,1
-Priests/Clergy,Do: need,1
-cc,Do: rap,1
-cc,Act_on: have,1
-cc,Do: provide,1
-Christianity,Is: hostile,1
-priests,Do: assert,1
-laity,Is: issue,1
-Catholic Church,Do: describe,1
-priests,Do: acknowledge,1
-priests,Do: point,1
-people,Do: pass,1
-Jesus,Act_on: bless,1
-Catholic Church,Act_on: allow,1
-Catholic Church,Is: embarrassed,1
-woman,Is: more,1
-Christianity,Is: disgusting,1
+Priests/Clergy,Act_on: provide,1
+Christian,Is: hostile,1
+bishops,Do: assert,1
+Catholic,Is: fine,1
 Christianity,Do: watch,1
+Christian,Do: realize,1
+Jesus,Do: champion,1
+Christian,Act_on: receive,1
+Vatican,Do: quote,1
+Vatican,Do: talk,1
+Vatican,Do: drift,1
+Church (General),Do: leave,1
+Vatican,Do: hope,1
+Unification Church,Act_on: use,1
+Church (General),Do: crawl,1
+洪秀全,Do: 不如,1
+法利赛人,Act_on: 差遣,1
+主教,Do: 信,1
+天主教,Do: 黑,1
+犹太人,Do: 结合,1
+主教,Do: 帮,1
+神职人员,Do: 狗改不了吃屎,1
+基督教,Do: 多,1
+天主教徒,Do: 要求,1
+天主教徒,Do: 来,1
+信徒,Do: 排除,1
+犹太人,Do: 借着,1
+教徒,Act_on: 劝,1
+法利赛人,Act_on: 骂,1
+Catholic,Do: contaminate,1
+Catholic,Do: await,1
+Catholic,Do: ’m,1
+Church (General),Is: happy,1
+Priests/Clergy,Do: pass,1
 Christianity,Do: suppose,1
 Christianity,Do: sense,1
-Catholic Church,Do: ’m,1
-prophets,Do: say,1
-Christianity,Is: political,1
-Catholic Church,Do: advise,1
-Topic 6,Catholic Church,1
-priests,Do: attend,1
+Christianity,Act_on: blab,1
+Vatican,Do: attend,1
 Church (General),Act_on: attend,1
-Christianity,Do: craft,1
-Catholic Church,Do: end,1
-women,Do: avail,1
+Vatican,Do: go,1
+Catholic,Do: end,1
+Canada,Do: swamp,1
+Christian,Do: immigrate,1
 Church (General),Do: keep,1
-military,Is: more,1
+Church (General),Is: wrong,1
+Priests/Clergy,Do: hole,1
+Priests/Clergy,Act_on: free,1
+Christian,Do: list,1
+Catholic,Do: swear,1
+bishops,Do: list,1
+Priests/Clergy,Is: shocked,1
+Priests/Clergy,Is: older,1
+Canadian,Act_on: have,1
+Catholics,Do: lead,1
 Jesus,Do: ordain,1
-Christianity,Is: circle,1
-cc,Do: follow,1
-cc,Do: point,1
-prophets,Do: reveal,1
-prophets,Do: get,1
-priests,Do: cringe,1
-priests,Do: hole,1
-god,Act_on: fear,1
-pharisee,Do: love,1
-pharisee,Do: trust,1
-god,Is: fan,1
-god,Is: relationship,1
-Catholic Church,Do: challenge,1
-Christianity,Act_on: pass,1
-Catholic Church,Is: deplorables,1
-Catholic Church,Do: happen,1
-Catholic Church,Do: consider,1
-Catholic Church,Do: contaminate,1
-Catholic Church,Do: await,1
-women,Do: occupy,1
-women,Act_on: say,1
-people,Act_on: mean,1
-Christianity,Do: preach,1
-Christianity,Act_on: name,1
-Christianity,Do: witness,1
-priests,Is: aware,1
-priests,Is: acts,1
-Christianity,Do: appear,1
-Christianity,Act_on: remove,1
-Christianity,Do: defend,1
-Christianity,Do: like,1
-Church (General),Is: happy,1
-Catholic Church,Do: pass,1
-Catholic Church,Is: life,1
-Catholic Church,Do: let,1
-Trump,Is: extension,1
-women,Do: do,1
-priests,Is: administrator,1
-laity,Is: more,1
-Catholic Church,Act_on: leave,1
-priests,Act_on: free,1
-laity,Act_on: do,1
-Catholic Church,Do: swear,1
-Topic 6,bishop,1
-bishop,Do: commission,1
-cc,Act_on: discredit,1
-cc,Is: infected,1
-priests,Do: list,1
-Catholic Church,Is: shocked,1
-Catholic Church,Is: older,1
-prophets,Do: contend,1
-Catholic Church,Is: Republican,1
+Pharisee,Do: love,1
+Pharisee,Do: trust,1
+Unification Church,Do: take,1
+Unification Church,Do: challenge,1
+Catholic,Do: happen,1
+Catholic,Do: consider,1
+Priests/Clergy,Is: life,1
+Christian,Do: try,1
+基督徒,Do: 动手,1
+基督徒,Act_on: 处理,1
+Topic 17,Church (General),1
+Church (General),Do: ow,1
+信徒,Do: 强,1
+LGBT,Act_on: 盯,1
+信徒,Do: 流失,1
+主教,Act_on: 包括,1
+基督徒,Do: 吸烟,1
+基督徒,Act_on: 像,1
+川普,Do: 榜上有名,1
+基督教,Act_on: 恶心,1
+Christian,Do: wish,1
+bishops,Do: cringe,1
+Catholic,Do: notice,1
+Catholic,Is: Republican,1
 Jesus,Do: speak,1
-Christianity,Do: match,1
-Catholic Church,Do: stand,1
-Catholic Church,Is: bitter,1
-Catholic Church,Do: fail,1
-Christianity,Act_on: explain,1
-Christianity,Is: serious,1
-wright,Do: refer,1
-wright,Do: think,1
-wright,Act_on: have,1
+Christian,Is: serious,1
 Jesus,Do: get,1
+Canada,Act_on: push,1
+Canada,Do: fade,1
+Justin,Act_on: leave,1
+Justin,Act_on: love,1
+Justin,Act_on: hat,1
 Trump,Do: follow,1
 Trump,Do: find,1
-Catholic Church,Do: catch,1
-Christianity,Do: choose,1
-Christianity,Do: re,1
-gay men,Act_on: condemn,1
-priests,Do: limit,1
-bishops,Do: accuse,1
-god,Do: preserve,1
-priests,Do: exclude,1
-priests,Do: face,1
-god,Act_on: face,1
-priests,Do: consider,1
-Trump,Is: person,1
-Christianity,Act_on: use,1
-Christianity,Is: voter,1
-Christianity,Is: understandable,1
-priests,Do: tempt,1
-priests,Do: exploit,1
-Catholic Church,Do: notice,1
-Christianity,Do: allow,1
-man,Do: desire,1
-military,Is: deliberate,1
-military,Is: war,1
-people,Act_on: force,1
-Catholic Church,Do: bid,1
-Christianity,Is: funny,1
-priests,Do: notice,1
-bishops,Do: quote,1
-priests,Do: confuse,1
-Catholic Church,Act_on: condescend,1
-Catholic Church,Do: call,1
-military,Do: upset,1
-Trump,Act_on: see,1
-military,Is: expenditure,1
-military,Is: interesting,1
-people,Do: divorce,1
-laity,Act_on: divorce,1
-laity,Act_on: leave,1
-Christianity,Do: fit,1
-Catholic Church,Act_on: insult,1
+Trump,Is: extension,1
+bishops,Is: administrator,1
+Canada,Do: transform,1
+Priests/Clergy,Is: pro,1
+Catholic,Do: confuse,1
+Catholic,Do: spend,1
+Christian,Act_on: target,1
+Catholic,Act_on: insult,1
 Confucius,Do: have,1
-priests,Do: assume,1
-priests,Is: tire,1
-priests,Is: Catholic,1
-priests,Do: describe,1
-Topic 12,Catholic Church,1
-Catholic Church,Act_on: describe,1
-Christianity,Act_on: reject,1
-military,Is: best,1
-military,Is: bad,1
-military,Do: fear,1
-laity,Is: that,1
-women,Do: gain,1
-Christianity,Do: stand,1
-woman,Do: suffer,1
-woman,Do: die,1
-priests,Do: release,1
-Catholic Church,Is: glad,1
-Catholic Church,Is: nice,1
-priests,Is: happy,1
-priests,Do: follow,1
-msw,Is: correct,1
-Catholic Church,Do: invite,1
-people,Do: receive,1
-people,Act_on: hire,1
-man,Do: travel,1
-military,Do: understand,1
+Vatican,Do: assume,1
+Catholic,Act_on: condescend,1
+Catholic,Do: call,1
+Catholic,Act_on: call,1
+Christian,Do: choose,1
+Canada,Act_on: leave,1
+Canada,Is: British,1
+Canada,Do: learn,1
+Trump,Act_on: see,1
+Catholics,Do: tempt,1
+Priests/Clergy,Do: exploit,1
+Priests/Clergy,Do: suspect,1
+bishops,Do: call,1
+Catholic,Do: abide,1
+Priests/Clergy,Do: love,1
+Christian,Do: stand,1
+Catholic,Do: invite,1
+Canadian,Do: understand,1
 Church (General),Act_on: support,1
+Catholic,Is: bitter,1
+Christian,Do: explain,1
+Christian,Is: fine,1
+Christian,Do: err,1
+Catholic,Do: bid,1
+Catholics,Do: notice,1
+Catholic,Is: fractured,1
+Catholic,Is: hostile,1
+主教,Act_on: 帮,1
+主教,Do: 长,1
+主教,Do: 迈一步,1
+信徒,Do: 快,1
+信徒,Do: 一样,1
+法利赛人,Do: 给,1
+法利赛人,Do: 犯嘀咕,1
+信徒,Do: 改革,1
+绿教,Do: 论,1
+基督狗,Act_on: 冲向,1
+基督徒,Act_on: 干掉,1
+主教,Do: 传教,1
+神职人员,Do: 知道,1
+主教,Do: 负责,1
+Christian,Act_on: reject,1
+Canadian,Do: fear,1
+Jesus,Act_on: define,1
+Catholics,Do: try,1
 Trump,Do: insult,1
-prophets,Is: god,1
-prophets,Do: die,1
-prophets,Is: 1,1
-priests,Do: wait,1
-god,Is: source,1
-god,Do: join,1
-people,Act_on: direct,1
-people,Do: reject,1
-Catholic Church,Is: American,1
-prophets,Is: alive,1
+Christian,Do: spew,1
 Trump,Act_on: throw,1
+Unification Church,Do: believe,1
 bishops,Act_on: soak,1
 bishops,Act_on: castigate,1
-priests,Is: wrong,1
-women,Do: handle,1
-priests,Is: Anglicans,1
-women,Act_on: come,1
-Jesus,Act_on: rid,1
-Christianity,Act_on: turn,1
-priests,Do: ignore,1
-priests,Do: shake,1
-Christianity,Act_on: set,1
-laity,Do: become,1
-laity,Do: collapse,1
-laity,Is: Protestant,1
-military,Is: business,1
-Christianity,Do: mile,1
-prophets,Is: Christian,1
-Jesus,Do: warn,1
-Christianity,Is: candidate,1
-Jesus,Is: human----not,1
-Christianity,Do: exist,1
-Trump,Do: have,1
-Church (General),Do: end,1
-women,Do: see,1
-god,Do: expect,1
-Jesus,Is: willing,1
-priests,Do: state,1
-Jesus,Act_on: define,1
-priests,Do: try,1
-Christianity,Do: subscribe,1
-Christianity,Act_on: assert,1
-Jesus,Do: believe,1
-pope,Do: approve,1
-priests,Act_on: consider,1
-women,Do: become,1
-islam,Is: responsible,1
-Trump,Do: strangle,1
-Catholic Church,Do: prelate,1
-priests,Do: trust,1
-priests,Act_on: need,1
-laity,Is: petition,1
-Jesus,Act_on: love,1
-gay men,Do: instruct,1
-military,Do: visit,1
-military,Do: consider,1
-Christianity,Act_on: understand,1
-Trump,Do: give,1
+bishops,Is: wrong,1
+Vatican,Do: suspect,1
+Priests/Clergy,Act_on: consider,1
+bishops,Is: Anglicans,1
+Priests/Clergy,Is: tire,1
+Priests/Clergy,Do: describe,1
+Catholic,Act_on: describe,1
+Canada,Do: experience,1
 Trump,Do: read,1
-priests,Do: listen,1
-priests,Do: reach,1
-priests,Do: discover,1
-homer,Act_on: spare,1
-politics,Is: members,1
-women,Do: begin,1
-Priests/Clergy,Do: tell,1
-Priests/Clergy,Do: recite,1
-Priests/Clergy,Do: say,1
-Trump,Do: invent,1
-Church (General),Is: false,1
-priests,Do: click,1
-people,Do: forgive,1
-Church (General),Act_on: forgive,1
-people,Is: sick,1
-Catholic Church,Do: miss,1
+Catholics,Act_on: ask,1
+Catholics,Do: listen,1
+Catholics,Do: reach,1
+Catholics,Do: discover,1
+Jesus,Is: human----not,1
+Priests/Clergy,Do: like,1
+Priests/Clergy,Do: hate,1
+Trump,Do: have,1
+bishops,Do: reject,1
+Church (General),Do: end,1
+Jesus,Is: willing,1
+bishops,Do: state,1
+Priests/Clergy,Do: listen,1
 bishops,Do: make,1
-Christianity,Do: wonder,1
-military,Is: harmful,1
-Christianity,Is: 2019,1
-people,Do: believe,1
-priests,Do: shock,1
-Christianity,Act_on: make,1
-Catholic Church,Do: vow,1
-prophets,Is: alone,1
-prophets,Act_on: send,1
-prophets,Act_on: recognize,1
-prophets,Do: place,1
-women,Do: conform,1
-Christianity,Act_on: burn,1
+Vatican,Do: make,1
+bishops,Do: click,1
+Church (General),Act_on: forgive,1
+Catholic,Do: vow,1
+Catholic,Do: hate,1
 Church (General),Do: dig,1
-military,Is: shadow,1
-military,Do: call,1
-military,Do: put,1
-military,Is: safe,1
-military,Do: end,1
-military,Do: mean,1
-military,Do: say,1
-military,Do: come,1
-military,Is: what,1
-priests,Act_on: create,1
-people,Do: choose,1
+Canadian,Do: call,1
+Canadian,Do: put,1
+Justin,Act_on: defend,1
 Church (General),Do: commit,1
-laity,Act_on: oppose,1
-laity,Act_on: defend,1
-laity,Do: appear,1
-military,Is: easy,1
-military,Do: know,1
-military,Is: warm,1
-military,Is: money,1
-people,Do: treat,1
+Christian,Do: subscribe,1
+Jesus,Do: believe,1
+Christian,Do: institute,1
+Catholic,Act_on: kick,1
+Canadian,Do: visit,1
+Canadian,Do: consider,1
+Trump,Do: give,1
+Catholics,Do: shock,1
+Catholics,Do: despair,1
+Catholics,Do: guess,1
+Vatican,Is: surprised,1
+Catholic,Act_on: lie,1
 Church (General),Act_on: burn,1
 Trump,Do: precede,1
-god,Is: father,1
-上帝,Do: 决定,1
-Church (General),Do: 多,1
-baum,Do: educate,1
-baum,Is: active,1
-Christianity,Is: unfortunate,1
-Christianity,Do: argue,1
-Christianity,Is: old,1
-priests,Do: defend,1
-Christianity,Is: un,1
-Christianity,Is: -,1
 Church (General),Do: shoot,1
 Church (General),Do: celebrate,1
-Christianity,Do: stab,1
-pharisee,Do: explain,1
-military,Is: talk,1
-military,Act_on: put,1
-Church (General),Do: recognize,1
+Christian,Do: stab,1
+Priests/Clergy,Do: recite,1
+Topic 15,Jesus,1
+Jesus,Do: point,1
+Christian,Do: hate,1
+Trump,Do: invent,1
+Church (General),Is: false,1
+信徒,Do: 站,1
 Church (General),Act_on: recognize,1
 Church (General),Do: preserve,1
-ncr,Do: tell,1
-ncr,Do: prefer,1
-Christianity,Do: weaken,1
+NCR,Do: tell,1
+NCR,Do: prefer,1
 Trump,Is: man,1
-women,Do: listen,1
 Church (General),Do: lay,1
 Church (General),Do: protect,1
 Trump,Act_on: hate,1
-priests,Is: person,1
-priests,Do: despair,1
-Christianity,Is: you,1
-Christianity,Is: sad,1
-Trump,Is: horrible,1
-god,Act_on: worship,1
-politics,Do: amaze,1
-god,Is: Male,1
-laity,Is: logical,1
-laity,Is: fair,1
-Church (General),Is: fair,1
-people,Do: see,1
-laity,Act_on: get,1
-women,Do: know,1
-women,Do: feel,1
-people,Do: know,1
-women,Do: hold,1
-pharisee,Is: happy,1
-women,Act_on: get,1
-people,Do: make,1
-women,Act_on: give,1
-laity,Is: surprising,1
-god,Act_on: call,1
-Catholic Church,Do: respect,1
-Church (General),Act_on: have,1
-上帝,Do: 来,1
-上帝,Do: 关在,1
-宗教,Do: 忌惮,1
-上帝,Do: 抛弃,1
-上帝,Do: 说,1
-上帝,Do: 存在,1
-Catholic Church,Do: raise,1
-Catholic Church,Do: disagree,1
-Church (General),Do: learn,1
-military,Do: prefer,1
-military,Is: problem,1
-military,Is: thing,1
-military,Do: appreciate,1
-Jesus,Act_on: reference,1
-bishops,Do: dance,1
-Trump,Is: AntiChrist,1
-priests,Do: answer,1
-bishops,Act_on: include,1
-priests,Do: fear,1
-women,Act_on: ban,1
+Catholic,Is: willing,1
+Catholic,Is: person,1
+Christian,Is: sterile,1
+Christianity,Do: do,1
+Canadian,Do: know,1
+Canadian,Do: stay,1
+Catholics,Is: sure,1
+Canadian,Do: say,1
+Canadian,Do: come,1
+Church (General),Do: recognize,1
+主教,Do: 教义,1
+犹太人,Do: 玩,1
+基督教,Do: 怜悯,1
+主教,Do: 提出,1
+基督徒,Do: 搞,1
+法利赛人,Do: 念,1
+法利赛人,Act_on: 得到,1
+主教,Act_on: 读,1
+基督徒,Do: 看见,1
+基督徒,Act_on: 问,1
+主教,Do: 占,1
+神职人员,Do: 追责,1
+信徒,Do: 干,1
 Church (General),Do: face,1
+Ontario,Act_on: take,1
 Jesus,Do: set,1
-pharisee,Do: see,1
+Pharisee,Do: see,1
 Church (General),Do: seem,1
-priests,Do: ask,1
-Catholic Church,Is: troll,1
-Topic 16,harper,1
-Catholic Church,Is: disgusted,1
-woman,Do: do,1
-woman,Act_on: know,1
-woman,Do: want,1
-military,Is: lie,1
-military,Is: _,1
-trudeau,Is: post,1
-trudeau,Is: -,1
-trudeau,Is: feminist,1
-islam,Act_on: claim,1
-military,Act_on: report,1
-military,Do: see,1
-military,Is: darkness,1
-military,Is: white,1
-cc,Act_on: sidestep,1
-Catholic Church,Do: quit,1
-Catholic Church,Do: start,1
-Catholic Church,Do: read,1
-Trump,Act_on: endorse,1
-Trump,Is: bigot,1
-military,Act_on: prefer,1
-military,Do: guarantee,1
-military,Do: suspect,1
+Christian,Do: apologize,1
+Church (General),Is: fair,1
+Pharisee,Is: happy,1
+Pharisee,Do: explain,1
+bishops,Do: ask,1
+Priests/Clergy,Do: raise,1
+Christian,Do: give,1
+Christian,Is: aware,1
+Priests/Clergy,Do: disagree,1
+Church (General),Do: learn,1
+Canadian,Do: mean,1
+Canada,Do: suffer,1
+Canadian,Do: see,1
+Canadian,Is: white,1
+Canadian,Do: prefer,1
+Canadian,Do: guarantee,1
+Canadian,Do: suspect,1
 Jesus,Do: crucify,1
-Catholic Church,Is: apologist,1
-laity,Is: God,1
-god,Do: view,1
-people,Do: stand,1
-Christianity,Do: participate,1
-Topic 18,Catholic Church,1
-Catholic Church,Do: march,1
-baum,Do: admit,1
-priests,Do: die,1
-military,Is: possible,1
-Christianity,Do: design,1
-Christianity,Do: measure,1
-pharisee,Is: sure,1
-priests,Act_on: put,1
-harper,Act_on: support,1
-trudeau,Act_on: thank,1
-Christianity,Is: vice,1
+Catholic,Is: apologist,1
+Catholic,Is: round,1
+Trump,Is: horrible,1
+Canadian,Do: appreciate,1
+Jesus,Act_on: reference,1
+Trump,Is: AntiChrist,1
+Vatican,Do: answer,1
+bishops,Act_on: include,1
+bishops,Do: fear,1
+Trudeau,Is: -,1
+天主教徒,Do: 认,1
+神棍,Do: 瞎扯,1
+天主教,Act_on: 自称,1
+梵蒂冈,Do: 帮主教们,1
+神职人员,Do: 困死,1
+信徒,Act_on: 说,1
+主教,Do: 宣布,1
+天主教徒,Do: 没,1
+基督徒,Act_on: 成,1
+基督徒,Do: 难说,1
+川普,Do: 普输,1
+Church (General),Act_on: 发,1
+主教,Act_on: 当,1
+Trudeau,Is: feminist,1
+Islam,Act_on: claim,1
+Catholic,Act_on: recruit,1
+Unification Church,Do: participate,1
+Topic 16,Harper,1
+Harper,Act_on: support,1
+Trudeau,Act_on: thank,1
 Trump,Is: child,1
-Catholic Church,Is: nastier,1
-priests,Do: add,1
-priests,Act_on: forgive,1
+Catholic,Is: nastier,1
+bishops,Do: add,1
+Priests/Clergy,Act_on: forgive,1
 Church (General),Do: fight,1
-homer,Act_on: force,1
-military,Do: read,1
-military,Do: doubt,1
-trudeau,Act_on: critisize,1
-Catholic Church,Do: deny,1
-Catholic Church,Do: worship,1
-luther,Do: demand,1
-Catholic Church,Do: disobey,1
-Christianity,Is: fault,1
-religion,Act_on: get,1
-religion,Act_on: keep,1
-Christianity,Do: see,1
-Catholic Church,Act_on: vilify,1
-laity,Act_on: put,1
-Church (General),Do: hold,1
-laity,Is: admissible,1
-military,Act_on: discuss,1
-Christianity,Is: anonymous,1
-military,Do: refer,1
-priests,Is: tired,1
-military,Act_on: appreciate,1
-women,Act_on: allow,1
-priests,Is: men,1
-Jesus,Act_on: bring,1
-priests,Do: guide,1
-ncr,Do: use,1
-military,Do: get,1
-military,Act_on: add,1
-military,Do: tell,1
-priests,Do: enjoy,1
-Church (General),Do: help,1
-homer,Do: appeal,1
-上帝,Act_on: 信仰,1
-Catholic Church,Do: 斥,1
-priests,Do: imagine,1
-people,Act_on: have,1
-Christianity,Do: suspect,1
-Christianity,Is: something,1
-priests,Do: hate,1
-Church (General),Do: solve,1
-Jesus,Act_on: abandon,1
-Catholic Church,Act_on: have,1
-Christianity,Do: resist,1
-Christianity,Is: true,1
+Jesus,Act_on: treat,1
+Catholic,Do: quit,1
+Trump,Act_on: endorse,1
+Catholic,Is: disgusted,1
+Canada,Do: break,1
+Trudeau,Is: post,1
 Trump,Do: do,1
 Church (General),Act_on: hate,1
-military,Do: exist,1
-military,Act_on: know,1
-Christianity,Is: reaction,1
-Trump,Act_on: normalize,1
-priests,Do: mention,1
-priests,Is: scared,1
-priests,Is: furious,1
-gay men,Do: 维持,1
-孔庆东,Act_on: 开,1
-上帝,Do: 发笑,1
-上帝,Act_on: 安排,1
-上帝,Do: 上课,1
-妇人,Act_on: 变成,1
-宗教,Do: 存在,1
-上帝,Act_on: 见,1
-上帝,Do: 可以,1
-上帝,Act_on: 称,1
-上帝,Act_on: 当,1
-laity,Do: stop,1
-laity,Is: vocation,1
-women,Is: missionaries,1
-women,Act_on: support,1
-laity,Is: manifestation,1
-Catholic Church,Do: point,1
-Catholic Church,Do: give,1
-people,Do: seem,1
-god,Act_on: define,1
+Trump,Is: bigot,1
+Church (General),Act_on: vilify,1
+Priests/Clergy,Do: remind,1
+Christian,Do: build,1
+Church (General),Do: hold,1
+Catholic,Do: march,1
+Catholics,Do: pray,1
+Catholics,Do: die,1
+Christian,Do: absorb,1
+Christian,Do: see,1
+Christian,Do: swallow,1
+Christian,Do: ask,1
+Christian,Do: go,1
+Christian,Do: belove,1
+Priests/Clergy,Is: men,1
+Jesus,Act_on: bring,1
+Pharisee,Is: sure,1
+Priests/Clergy,Act_on: put,1
+NCR,Do: use,1
+Canadian,Do: get,1
+Canadian,Do: tell,1
+Vatican,Do: enjoy,1
+Church (General),Do: help,1
+Catholic,Do: practice,1
+Canadian,Do: doubt,1
+Trudeau,Act_on: critisize,1
+Church (General),Is: sorry,1
+Catholic,Do: deny,1
+Catholic,Do: disobey,1
+Priests/Clergy,Do: provide,1
+Vatican,Do: hate,1
+Church (General),Do: solve,1
+Jesus,Act_on: abandon,1
+Catholic,Do: point,1
 Jesus,Do: incarnate,1
-Christianity,Is: interesting,1
-laity,Do: mean,1
+Catholics,Do: tell,1
+Catholics,Do: speak,1
+Canada,Is: product,1
+Canada,Is: principles,1
+Canada,Do: build,1
+LGBT,Act_on: have,1
+Christianity,Is: anonymous,1
+Canadian,Do: refer,1
+Canada,Do: have,1
+Vatican,Is: tired,1
+Justin,Do: appreciate,1
+Priests/Clergy,Do: marry,1
+Church (General),Do: dictate,1
+Christian,Do: belong,1
+Church (General),Do: wait,1
+Church (General),Act_on: carry,1
+Priests/Clergy,Is: willing,1
+Priests/Clergy,Do: guide,1
+Christian,Do: back,1
+Trump,Act_on: normalize,1
+Catholic,Do: mention,1
+Catholic,Is: scared,1
+Catholic,Is: furious,1
+Catholic,Do: imagine,1
+Catholics,Do: understand,1
+Christian,Is: something,1
+Catholic,Do: doubt,1
+Catholics,Do: disagree,1
+Priests/Clergy,Act_on: interview,1
+Jesus,Act_on: put,1
+Priests/Clergy,Act_on: pay,1
+Priests/Clergy,Do: act,1
+Christian,Is: shameful,1
+Catholic,Do: remain,1
+Christian,Do: shoot,1
 Church (General),Do: adapt,1
 Confucius,Do: wonder,1
 Jesus,Is: speaker,1
 Church (General),Do: find,1
-women,Do: come,1
-Priests/Clergy,Do: want,1
-priests,Do: fault,1
-Christianity,Is: responsibility,1
-Christianity,Is: guy,1
+Catholics,Do: hear,1
+bishops,Do: fault,1
 Church (General),Act_on: skew,1
 Jesus,Do: fix,1
-priests,Do: marry,1
-laity,Is: misogyny,1
-women,Is: different,1
-laity,Is: biology,1
-laity,Is: notion,1
-Church (General),Do: dictate,1
-god,Act_on: bend,1
-Church (General),Do: wait,1
-laity,Do: wait,1
-priests,Act_on: pay,1
-god,Is: constant,1
-priests,Do: act,1
-women,Act_on: shut,1
-women,Do: leave,1
-women,Do: carry,1
-Church (General),Act_on: carry,1
-laity,Act_on: respect,1
-laity,Is: church,1
-prophets,Do: exist,1
-man,Act_on: read,1
-prophets,Do: travel,1
-Catholic Church,Is: force,1
-Catholic Church,Act_on: put,1
-Catholic Church,Do: fear,1
-laity,Act_on: repeat,1
-people,Do: invite,1
-women,Act_on: shoot,1
-military,Is: worked,1
-military,Act_on: use,1
-Topic 17,author,1
-author,Do: say,1
-laity,Is: characteristic,1
-Church (General),Is: patriarchal,1
-Church (General),Do: stand,1
-laity,Do: change,1
-people,Act_on: prevent,1
-priests,Do: pay,1
-Trump,Act_on: give,1
-Trump,Act_on: support,1
-priests,Do: argue,1
-priests,Act_on: interview,1
-priests,Do: accept,1
-Christianity,Is: context,1
-Catholic Church,Do: forget,1
-Church (General),Is: agency,1
-priests,Is: homilists,1
-bishops,Do: continue,1
-bishops,Act_on: use,1
-Christianity,Is: years,1
-military,Do: spin,1
-military,Is: assertion,1
-Christianity,Is: shameful,1
-priests,Do: remain,1
-Christianity,Is: objective,1
-Christianity,Is: reporting,1
-Christianity,Is: echoing,1
-women,Is: subject,1
-man,Is: subject,1
-man,Is: greater,1
-politics,Is: great,1
-politics,Is: Church,1
-laity,Act_on: try,1
-Christianity,Do: reveal,1
-Christianity,Act_on: describe,1
-Christianity,Is: report,1
-luther,Act_on: impact,1
-Christianity,Is: two,1
+Christianity,Is: sorry,1
 Christianity,Act_on: point,1
 Christianity,Do: disagree,1
 Christianity,Do: claim,1
 Christianity,Do: post,1
-Christianity,Act_on: want,1
 Trump,Is: Jesus,1
-politics,Is: fine,1
-priests,Do: worry,1
-politics,Act_on: take,1
-priests,Act_on: harm,1
-priests,Do: figure,1
-priests,Is: God,1
-Jesus,Do: rebuke,1
-pharisee,Act_on: rebuke,1
-pharisee,Do: thank,1
-Jesus,Is: liar,1
-bishops,Is: clueless,1
-Trump,Do: humiliate,1
-Catholic Church,Do: refer,1
-Christianity,Is: all,1
-pope,Do: suggest,1
-priests,Do: receive,1
-Christianity,Is: easy,1
-Christianity,Act_on: follow,1
-women,Do: beat,1
-laity,Is: fault,1
-Christianity,Do: forget,1
-Christianity,Act_on: forget,1
-Christianity,Do: address,1
-Christianity,Is: whatever,1
-Church (General),Do: declare,1
-Church (General),Do: ammnede,1
-Christianity,Do: figure,1
+Priests/Clergy,Do: accept,1
+Priests/Clergy,Do: ask,1
+Catholic,Do: exercise,1
+Christian,Do: hear,1
+Church (General),Is: patriarchal,1
+Church (General),Do: stand,1
+Catholic,Do: pay,1
+Trump,Act_on: give,1
+Trump,Act_on: support,1
+Catholics,Do: argue,1
+Catholics,Act_on: teach,1
+Priests/Clergy,Do: refer,1
+Priests/Clergy,Is: clueless,1
+Vatican,Do: receive,1
+Muslims,Do: guess,1
+Canadian,Do: go,1
+Vatican,Do: love,1
+Vatican,Do: take,1
 Church (General),Do: allow,1
-priests,Do: presume,1
-priests,Do: preach,1
-Christianity,Is: reply,1
-Catholic Church,Is: what,1
-women,Act_on: point,1
-priests,Is: consumer,1
-laity,Is: consecration,1
-women,Do: shackle,1
-women,Is: inferior,1
-women,Do: seduce,1
-women,Act_on: seduce,1
-women,Do: create,1
-laity,Do: come,1
-Church (General),Do: choke,1
-Church (General),Is: strapped,1
-Christianity,Is: Conservative,1
-Christianity,Is: Veteran,1
-Christianity,Do: express,1
+Muslims,Do: believe,1
+Catholic,Act_on: view,1
+Pope,Act_on: hold,1
+Christianity,Do: state,1
+Topic 17,Christian,1
+Christian,Do: pray,1
+Christianity,Is: two,1
+Christian,Do: presume,1
+Muslims,Do: state,1
+Catholic,Is: what,1
+Catholic,Is: Protestants,1
+Catholic,Do: worry,1
+Topic 18,priests,1
+priests,Act_on: harm,1
+Catholic,Do: figure,1
+Priests/Clergy,Is: God,1
+Priests/Clergy,Do: talk,1
+Unification Church,Do: do,1
+Jesus,Do: rebuke,1
+Priests/Clergy,Do: forget,1
+Church (General),Is: agency,1
+Priests/Clergy,Is: homilists,1
+Trump,Do: humiliate,1
+LGBT,Is: active,1
+Catholics,Do: preach,1
+Catholics,Do: feel,1
+教皇,Act_on: 当,1
+基督徒,Do: 有,1
+法利赛人,Do: 这样,1
+信徒,Do: 别死,1
+信徒,Do: 给,1
+法利赛人,Do: 像,1
+犹太人,Do: 犯,1
+梵蒂冈,Do: 抓,1
+梵蒂冈,Do: 赐,1
+法利赛人,Do: 恨,1
+教皇,Act_on: 到,1
+神职人员,Act_on: 感谢,1
+主教,Do: 放,1
+Pharisee,Act_on: rebuke,1
+Pharisee,Do: thank,1
+Jesus,Is: liar,1
+Muslims,Do: hope,1
+Muslims,Is: Conservative,1
+Muslims,Is: Veteran,1
+Muslims,Do: express,1
 Jesus,Do: intend,1
 Church (General),Act_on: intend,1
-Abe (Politician),Act_on: use,1
-Topic 0,Church (General),1
-Jesus,Do: rise,1
-Christianity,Is: absurd,1
-priests,Act_on: elevate,1
-bishops,Do: say,1
-priests,Do: blame,1
-trudeau,Do: set,1
-military,Act_on: set,1
-bishops,Do: visit,1
-Christianity,Do: imply,1
-priests,Do: challenge,1
+Christian,Is: sorry,1
+Christian,Do: forget,1
+Unification Church,Do: address,1
+Church (General),Do: declare,1
+Church (General),Do: ammnede,1
+Vatican,Do: challenge,1
+Catholics,Do: presume,1
+Priests/Clergy,Is: devoted,1
+Priests/Clergy,Do: state,1
 Jesus,Act_on: crucify,1
-priests,Do: dare,1
+Vatican,Do: dare,1
 Church (General),Do: show,1
-priests,Is: unaware,1
+bishops,Is: unaware,1
+bishops,Is: consumer,1
+Church (General),Do: choke,1
+Church (General),Is: strapped,1
+Jesus,Is: Savior,1
+Priests/Clergy,Do: boyz,1
+Abe (Politician),Act_on: use,1
+Topic 0,Unification Church,1
+Jesus,Do: rise,1
+Christian,Is: absurd,1
+Priests/Clergy,Act_on: elevate,1
+Catholic,Is: formidable,1
+Catholic,Is: opponent,1
+Jesus,Act_on: direct,1
+Jesus,Act_on: protect,1
+Catholics,Do: blame,1
+Trudeau,Do: set,1
+Jesus,Do: break,1
 Jesus,Do: shun,1
-Catholic Church,Do: check,1
+Catholic,Do: check,1
 Jesus,Do: command,1
 Church (General),Do: discriminate,1
 bishops,Do: pursue,1
-people,Do: challenge,1
 Trump,Act_on: back,1
-Catholic Church,Do: post,1
-Catholic Church,Is: devoted,1
-Catholic Church,Do: state,1
-women,Act_on: lead,1
-Catholic Church,Do: stick,1
-Jesus,Is: Savior,1
-god,Do: hat,1
-god,Do: judge,1
-priests,Do: boyz,1
-Catholic Church,Do: allows,1
-Christianity,Do: hear,1
-Christianity,Is: Lutheran,1
-Jesus,Do: use,1
-Topic 5,Catholic Church,1
-Catholic Church,Do: appear,1
-Christianity,Do: apologize,1
-Christianity,Is: Correct,1
-Christianity,Act_on: try,1
-Catholic Church,Do: hold,1
-Catholic Church,Do: gag,1
-priests,Do: teach,1
-priests,Do: admire,1
-bishops,Do: call,1
-bishops,Do: endorse,1
-Jesus,Do: break,1
-pharisees,Act_on: tell,1
-priests,Is: example,1
-priests,Act_on: send,1
-Jesus,Do: deal,1
-god,Do: allow,1
-Jesus,Do: steer,1
-priests,Do: put,1
+Catholic,Do: post,1
+Vatican,Do: learn,1
+Vatican,Do: object,1
+Catholics,Do: put,1
 Jesus,Act_on: exploit,1
-Catholic Church,Do: forgive,1
-Jesus,Do: watch,1
-priests,Do: prefer,1
-priests,Do: leave,1
-priests,Is: Unitarian,1
-Catholic Church,Do: make,1
-women,Do: grant,1
-Catholic Church,Is: impressed,1
-Christianity,Do: continue,1
-Catholic Church,Is: convinced,1
-Catholic Church,Act_on: subvert,1
+Catholic,Do: follow,1
+Priests/Clergy,Do: stick,1
+Priests/Clergy,Do: make,1
+Catholic,Is: impressed,1
+Catholic,Act_on: accompany,1
+Christian,Do: recall,1
+Christian,Do: buy,1
+Unification Church,Do: hear,1
+Christian,Do: miss,1
+Unification Church,Is: Lutheran,1
+Jesus,Do: use,1
+Catholic,Do: appear,1
+Muslims,Do: apologize,1
+Muslims,Do: feel,1
 Trump,Act_on: bless,1
-Christianity,Do: call,1
-Christianity,Do: justify,1
-god,Act_on: deny,1
-ncr,Do: know,1
-Christianity,Act_on: look,1
-laity,Do: unfold,1
-Jesus,Do: select,1
-laity,Is: presumption,1
-women,Act_on: make,1
+Christianity,Do: come,1
+NCR,Do: know,1
+Unification Church,Do: hold,1
+Catholic,Do: gag,1
+bishops,Do: suggest,1
+bishops,Do: teach,1
+bishops,Do: admire,1
+bishops,Do: disagree,1
 bishops,Do: stand,1
-priests,Do: address,1
+Priests/Clergy,Do: address,1
 Jesus,Do: touch,1
-Jesus,Act_on: divide,1
-Christianity,Is: university,1
-Christianity,Is: more,1
-Christianity,Do: act,1
-laity,Is: clear,1
-women,Is: valuable,1
-military,Is: inmates,1
-military,Is: wrong,1
-priests,Do: promise,1
-priests,Is: priest,1
-Church (General),Do: deny,1
-prophets,Do: think,1
-prophets,Do: have,1
-priests,Do: plant,1
-priests,Is: angry,1
+Priests/Clergy,Is: example,1
+Jesus,Do: deal,1
+Jesus,Do: steer,1
+Catholics,Is: afraid,1
+Priests/Clergy,Do: agree,1
+Catholics,Is: priest,1
+Catholics,Do: meet,1
+Catholic,Do: forgive,1
+Jesus,Do: watch,1
+Vatican,Do: prefer,1
+Catholic,Do: leave,1
+Catholic,Is: Unitarian,1
+Catholic,Do: plant,1
+Catholic,Is: angry,1
+Christianity,Do: take,1
 Christianity,Is: best,1
-上帝,Act_on: 反抗,1
-上帝,Do: 分化,1
-上帝,Do: 做,1
-Jesus,Act_on: threaten,1
-Jesus,Do: blast,1
-Catholic Church,Do: expect,1
-Christianity,Is: obvious,1
-Trump,Do: bow,1
-Catholic Church,Is: happy,1
-priests,Do: work,1
-god,Do: keep,1
-Christianity,Is: complimentary,1
-pope,Do: require,1
+Christianity,Do: make,1
+Christianity,Do: continue,1
+Christianity,Do: hope,1
+Catholic,Is: convinced,1
+Christian,Do: suppose,1
+Christian,Do: bombard,1
+Trump,Is: antithesis,1
+Trump,Do: show,1
+bishops,Do: care,1
+Jesus,Do: select,1
 Jesus,Do: come,1
 Church (General),Do: sag,1
-Christianity,Do: prefer,1
-gay men,Do: seek,1
+Catholic,Do: forbid,1
+Jesus,Act_on: divide,1
+bishops,Do: guess,1
+Ontario,Do: argue,1
+Ontario,Do: insist,1
+Christian,Do: exclude,1
+Canada,Do: get,1
+Priests/Clergy,Do: promise,1
+創価学会,Do: 後援,1
+教皇,Do: 動く,1
+日本人,Do: 譲歩,1
+イエス・キリスト,Do: 決める,1
+Church (General),Do: deny,1
+Christian,Do: remember,1
+Christian,Do: join,1
 Christianity,Is: therapy,1
 Trump,Is: abomination,1
-Christianity,Act_on: sugarcoat,1
 Trump,Do: represent,1
-Catholic Church,Do: A63UYiHy,1
-上帝,Do: 熟害,1
-上帝,Do: 见,1
-妇人,Do: 露,1
-上帝,Do: 问,1
-上帝,Do: 听从,1
-上帝,Do: 惩罚,1
-上帝,Act_on: 发掘,1
-上帝,Do: �狂,1
-上帝,Do: 无所不知,1
-Church (General),Act_on: 发,1
-検察,Do: する,1
-日本会議,Act_on: 取る,1
-Trump,Is: antithesis,1
-Christianity,Is: shame,1
-Trump,Do: show,1
-Christianity,Do: belie,1
-Jesus,Do: think,1
-god,Do: do,1
-Christianity,Is: possible,1
-Christianity,Is: necessary,1
+Jesus,Act_on: threaten,1
+Jesus,Do: blast,1
+Catholic,Do: expect,1
+Trump,Do: bow,1
+Catholic,Is: happy,1
+Vatican,Do: work,1
 Jesus,Is: skeptical,1
+教皇,Do: 让,1
+神职人员,Act_on: 骗,1
+主教,Do: 碎,1
+神职人员,Do: 告,1
+主教,Do: 避孕,1
+信徒,Do: 吹,1
+基督教,Do: 立国,1
+神职人员,Act_on: 笑死,1
+神职人员,Act_on: 想,1
+信徒,Do: 成,1
+法利赛人,Do: 当,1
+主教,Do: 清醒,1
 Church (General),Do: follow,1
-日本会議,Do: 壊す,1
-日本会議,Do: 後援,1
-宗教,Act_on: 学ぶ,1
-ncr,Do: 下ろす,1
-日本会議,Do: 言う,1
-日本会議,Do: 洗脳,1
-日本会議,Do: 結婚,1
-日本会議,Do: 急増,1
-日本会議,Do: ある,1
-women,Act_on: 言う,1
+日本人,Do: 壊す,1
+绿教,Do: ある,1
+基督教,Act_on: 極める,1
+韓国,Do: 教える,1
+カトリック,Do: つるむ,1
+基督教,Act_on: する,1
+イエス・キリスト,Do: 気付く,1
+韓国,Do: する,1
+基督教,Act_on: 学ぶ,1
+NCR,Do: 下ろす,1
+ネトウヨ,Do: 発狂,1
+信徒,Do: 使う,1
+イエス・キリスト,Do: 任命,1
+日本人,Act_on: ぶつ,1
+ネトウヨ,Act_on: 演ずる,1
+日本人,Do: 選ぶ,1
+Jesus,Do: think,1
+Catholic,Is: Christian,1
+犹太人,Do: 叫爹,1
+基督教,Act_on: 只有,1
+犹太人,Do: 尊重,1
+犹太人,Do: 改,1
+主教,Do: 拔,1
+主教,Act_on: 叫,1
+基督徒,Do: 算,1
+主教,Do: 搞,1
+主教,Do: 严,1
+神棍,Do: ...,1
+イエス・キリスト,Do: 言う,1
+韓国,Do: 言う,1
+日本人,Do: 持てる,1
+基督教,Act_on: 名乗る,1
+日本人,Act_on: 信ずる,1
+イエス・キリスト,Do: なる,1
+Topic 17,クリスチャン,1
+クリスチャン,Act_on: 自称,1
+キリスト者,Do: 守る,1
+キリスト者,Do: いる,1
+山上,Do: 引く,1
+日本人,Act_on: 支配,1
+中国,Do: 見せる,1
+Topic 0,LDP (Japan),1
+LDP (Japan),Do: GIF,1
+信徒,Do: 要求,1
+ネトウヨ,Do: 擁護,1
+イスラム,Act_on: する,1
+トランプ,Do: 勝つ,1
+ネトウヨ,Do: 言い訳,1
+カトリック,Do: ある,1
+主教,Do: 怼,1
+創価学会,Do: 洗脳,1
+日本人,Act_on: 洗脳,1
+日本人,Act_on: 追う,1
+日本人,Do: 貢ぐ,1
+日本人,Act_on: 徴兵,1
+中国,Act_on: 戻す,1
+山上,Act_on: する,1
+日本人,Act_on: 取る,1
+創価学会,Do: 手引き,1
+創価学会,Act_on: 潰す,1
+山上,Do: 起こす,1
+創価学会,Do: 作る,1
+創価学会,Act_on: する,1
+信徒,Do: 向かう,1
+教皇,Do: 憎悪,1
+信徒,Do: 考える,1
+日本人,Do: 逮捕,1
+中国,Do: する,1
+川普,Act_on: 摸到,1
+主教,Do: 死,1
+基督徒,Do: 迫害,1
+川普,Do: 一样,1
+神棍,Act_on: 叫,1
+基督徒,Act_on: 上,1
+法利赛人,Act_on: 保持,1
+法利赛人,Do: 在乎,1
+法利赛人,Do: 说,1
+教堂,Act_on: 指望,1
+天主教徒,Act_on: 看,1
+イエス・キリスト,Do: 晴らす,1
+教堂,Do: 呪う,1
+山上,Act_on: 批判,1
+LGBT,Do: 差別,1
+カトリック,Do: なる,1
+基督徒,Act_on: 名乗れる,1
+トランプ,Do: 離脱,1
+中国,Do: 牛耳る,1
+日本人,Do: 急増,1
+信徒,Act_on: 増やす,1
+法利赛人,Do: いる,1
+韓国,Act_on: 認める,1
+カトリック,Do: 残す,1
+日本人,Do: 自覚,1
+日本人,Do: 納得,1
+神棍,Do: いる,1
+日本人,Do: ある,1
+教団,Do: 見る,1
+日本人,Do: 気取り,1
 Jesus,Do: 取る,1
-警察も買収しまくり,Do: 行う,1
-日本会議,Do: 出る,1
-検察,Do: 載せる,1
-日本会議,Do: 切る,1
-宗教,Act_on: 極める,1
-日本会議,Act_on: 支配,1
-Abe (Politician),Do: GIF,1
-日本会議,Do: 騙す,1
-検察,Do: 取る,1
-上帝,Do: 询问,1
-上帝,Do: 指,1
-日本会議,Do: 作る,1
-宗教,Do: やる,1
-日本会議,Act_on: 腐る,1
-日本会議,Act_on: 差別,1
-宗教,Act_on: 呼吁,1
-上帝,Do: …………,1
-上帝,Act_on: 看见,1
-上帝,Do: 认识,1
-上帝,Do: 指引,1
-孔庆东,Do: 架钉,1
-上帝,Act_on: 认,1
-法官,Do: 问,1
-Topic 17,栖雲居士,1
-栖雲居士,Act_on: 撃つ,1
-検察,Do: 作る,1
-日本会議,Act_on: ひく,1
-日本会議,Do: 衰亡,1
-日本会議,Act_on: 売る,1
-日本会議,Act_on: 象徴,1
-日本会議,Do: 協力,1
-日本会議,Do: 働く,1
-msw,Act_on: 作る,1
-裁判所も買収して,Do: 判断,1
-宗教,Do: 算是,1
+修女,Do: 死ぬ,1
+信徒,Do: 分成,1
+主教,Do: 找来,1
+主教,Act_on: 代行,1
+神棍,Act_on: 发现,1
+神棍,Do: 做,1
+神棍,Act_on: 有,1
+川普,Act_on: 捧,1
+主教,Act_on: 感谢,1
+主教,Do: 模仿,1
+イエス・キリスト,Do: 来る,1
+イエス・キリスト,Do: 代表,1
+イエス・キリスト,Act_on: 代表,1
+イエス・キリスト,Act_on: 呼ぶ,1
+犹太人,Do: 知る,1
+トランプ,Do: 晒す,1
+イエス・キリスト,Do: 重視,1
+基督徒,Act_on: 浄化,1
+日本人,Do: 出る,1
+創価学会,Do: ある,1
+神棍,Do: 憎む,1
+神棍,Act_on: 捏造,1
+基督教,Do: 批判,1
+教団,Do: 経営,1
+教団,Do: 納める,1
+日本人,Do: 手伝う,1
+日本人,Do: 作る,1
+神棍,Do: 創る,1
+神棍,Do: 創造,1
+日本人,Do: 自省,1
+日本人,Do: 怯える,1
+教皇,Do: 出す,1
+日本人,Do: いける,1
+中国,Act_on: 引く,1
+日本人,Act_on: 狙う,1
+LGBT,Act_on: 認める,1
+日本人,Act_on: 破滅,1
+基督教,Do: やる,1
+教堂,Do: やる,1
+神职人员,Do: 名乗る,1
+日本人,Act_on: 絶滅,1
+イエス・キリスト,Do: 許す,1
+中国,Do: 住む,1
+绿教,Do: いや,1
+神棍,Do: 進化,1
+日本人,Act_on: 腐る,1
+山上,Do: 計画,1
+基督徒,Do: する,1
+イエス・キリスト,Do: つるむ,1
+修女,Do: 奪う,1
+修女,Act_on: する,1
+基督徒,Do: 怯える,1
+基督教,Act_on: 騙る,1
+創価学会,Do: 絡む,1
+中国,Do: 与える,1
+山上,Do: 取る,1
+主教,Do: 弾圧,1
+信徒,Do: 祈る,1
+日本人,Do: 破壊,1
+イエス・キリスト,Do: 実在,1
+神棍,Do: 超える,1
+神棍,Act_on: ありがたい,1
+イエス・キリスト,Act_on: 演ずる,1
+イエス・キリスト,Do: 出す,1
+キリスト者,Act_on: 行う,1
+Topic 7,クリスチャン,1
+クリスチャン,Do: 実証,1
+イエス・キリスト,Do: 証明,1
+イエス・キリスト,Do: 追う,1
+Vatican,Do: ?,1
+山上,Do: やる,1
+日本人,Do: 脅かす,1
+創価学会,Do: 気づく,1
+カトリック,Do: ヅラ,1
+山上,Do: 潰す,1
+ネトウヨ,Do: ?,1
+ネトウヨ,Do: 吠える,1
+イエス・キリスト,Do: 存在,1
+信徒,Do: 望む,1
+日本人,Do: つく,1
+修女,Do: 語る,1
+山上,Do: 擁護,1
+ネトウヨ,Do: 持つ,1
+日本人,Act_on: 置く,1
+日本人,Do: 食べる,1
+基督教,Do: なる,1
+日本人,Do: 言う,1
 Abe (Politician),Do: 保護,1
-Church (General),Do: ?,1
-妇人,Act_on: 带,1
-裁判所も買収して,Act_on: 傍聴,1
-Topic 4,法官,1
-上帝,Do: 抚摸,1
+ネトウヨ,Do: 知る,1
+創価学会,Do: 批判,1
+教皇,Do: 乞う,1
+日本人,Do: 言い訳,1
+イスラム,Do: 繰る,1
+Topic 0,北朝鮮,1
+北朝鮮,Do: 支援,1
+教団,Do: する,1
+基督教,Act_on: 信,1
+教皇,Act_on: 写信,1
+中国,Do: 有,1
+韓国,Do: 似る,1
+韓国,Act_on: 占領,1
+日本人,Do: 消える,1
+山上,Do: 破壊,1
+山上,Do: 考える,1
+教皇,Act_on: する,1
+MSW,Act_on: 作る,1
+トランプ,Do: 出る,1
+神棍,Do: 理解,1
+日本人,Act_on: 言う,1
+日本人,Act_on: 象徴,1
+トランプ,Act_on: おだてる,1
+Priests/Clergy,Do: face,1
+Christian,Do: assault,1
+Catholic,Is: glad,1
+Catholic,Is: nice,1
+Topic 14,基督徒,1
+基督徒,Act_on: 有,1
+主教,Do: 大,1
+格里菲斯,Do: 有,1
+日本人,Act_on: 増やす,1
+韓国,Act_on: 象徴,1
+日本人,Do: 協力,1
+韓国,Do: 育つ,1
+日本人,Act_on: ひく,1
+トランプ,Do: 支持,1
+トランプ,Do: 見る,1
+日本人,Do: やる,1

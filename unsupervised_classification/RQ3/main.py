@@ -15,52 +15,52 @@ RQ3 分析管线 — 词典轴道德动机投影 (FrameAxis)
 无需 LLM，100% 数学可解释。
 
 词典来源（由 dict_loader.py 统一加载）：
-  1. mfd2.0.dic        — 英文 MFD 2.0 (Frimer et al., 2019)，2104 词条
-  2. J-MFD_2018r1.dic  — 日文 J-MFD (Matsuo et al., 2019)，725 词条
-  3. cmfd_civictech.csv — 中文 CMFD (CivicTechLab)，6138 词条
-  4. intergroup_threat_custom.csv — 自定义群际威胁轴，131 词条
+    1. mfd2.0.dic        — 英文 MFD 2.0 (Frimer et al., 2019)，2104 词条
+    2. J-MFD_2018r1.dic  — 日文 J-MFD (Matsuo et al., 2019)，725 词条
+    3. cmfd_civictech.csv — 中文 CMFD (CivicTechLab)，6138 词条
+    4. intergroup_threat_custom.csv — 自定义群际威胁轴，131 词条
 
 理论轴（MFD 五基础 + 群际威胁理论两轴）：
-  1. Harm      ← Care (关爱) vs. Harm (伤害/虐待)
-  2. Fairness  ← Fairness (公平) vs. Cheating (欺骗/剥削)
-  3. Loyalty   ← Loyalty (忠诚/爱国) vs. Betrayal (背叛/渗透)
-  4. Authority ← Authority (权威/法律) vs. Subversion (颠覆/叛乱)
-  5. Sanctity  ← Sanctity (神圣/纯洁) vs. Degradation (堕落/病理化)
-  6. RealThreat ← Safety (安全/稳定) vs. Realistic Threat (资源抢夺/政治控制)
-  7. SymThreat  ← Cultural Cohesion (文化凝聚) vs. Symbolic Threat (文化入侵/洗脑)
+    1. Harm      ← Care (关爱) vs. Harm (伤害/虐待)
+    2. Fairness  ← Fairness (公平) vs. Cheating (欺骗/剥削)
+    3. Loyalty   ← Loyalty (忠诚/爱国) vs. Betrayal (背叛/渗透)
+    4. Authority ← Authority (权威/法律) vs. Subversion (颠覆/叛乱)
+    5. Sanctity  ← Sanctity (神圣/纯洁) vs. Degradation (堕落/病理化)
+    6. RealThreat ← Safety (安全/稳定) vs. Realistic Threat (资源抢夺/政治控制)
+    7. SymThreat  ← Cultural Cohesion (文化凝聚) vs. Symbolic Threat (文化入侵/洗脑)
 
 计算流程：
-  Axis_k      = Centroid(E5(D_k+)) − Centroid(E5(D_k−))
-  Bias(d, k)  = cos_sim(E5(d), Axis_k)
+    Axis_k      = Centroid(E5(D_k+)) − Centroid(E5(D_k−))
+    Bias(d, k)  = cos_sim(E5(d), Axis_k)
 
 正值 → 文本语义偏向正极（关爱、公平、忠诚…）
 负值 → 文本语义偏向负极（伤害、欺骗、背叛…）→ 攻击性道德动机
 
 管线设计（解耦，每步输出 checkpoint，任意步可独立重跑）：
-  Step 1: 构建道德轴（词典词汇 → E5 向量 → 轴向量）
-          checkpoint: rq3_axis_vectors.npz
-  Step 2: 文档向量投影（E5 编码文档 → Bias 矩阵）
-          checkpoint: rq3_bias_matrix.csv
-  Step 3: ANOVA 统计检验（三语言在各道德轴的差异显著性）
-          checkpoint: rq3_anova_results.csv
-  Step 4: 聚合可视化（5 张图表 + 1 张网络图）
-          output: rq3_A_topic_axis_heatmap.html   — Topic×Axis 热力图
-                  rq3_B_lang_axis_bar.html         — 三语言×轴均值条形图（核心）
-                  rq3_C_lang_radar.html            — 语言道德动机雷达图
-                  rq3_D_topic_lang_scatter.html    — 关键轴散点图
-                  rq3_E_topic_network.html         — Topic 共现网络（新增）
-                  rq3_F_lang_bias_violin.html      — 语言×轴 Bias 小提琴图（新增）
-                  rq3_summary.csv
+    Step 1: 构建道德轴（词典词汇 → E5 向量 → 轴向量）
+            checkpoint: rq3_axis_vectors.npz
+    Step 2: 文档向量投影（E5 编码文档 → Bias 矩阵）
+            checkpoint: rq3_bias_matrix.csv
+    Step 3: ANOVA 统计检验（三语言在各道德轴的差异显著性）
+            checkpoint: rq3_anova_results.csv
+    Step 4: 聚合可视化（5 张图表 + 1 张网络图）
+            output: rq3_A_topic_axis_heatmap.html   — Topic×Axis 热力图
+                    rq3_B_lang_axis_bar.html         — 三语言×轴均值条形图（核心）
+                    rq3_C_lang_radar.html            — 语言道德动机雷达图
+                    rq3_D_topic_lang_scatter.html    — 关键轴散点图
+                    rq3_E_topic_network.html         — Topic 共现网络（新增）
+                    rq3_F_lang_bias_violin.html      — 语言×轴 Bias 小提琴图（新增）
+                    rq3_summary.csv
 
 日志：
-  - 使用项目统一的 scripts/set_logger.py → setup_logging()
-  - 自动在脚本同级 logs/ 目录创建日志文件
+    - 使用项目统一的 scripts/set_logger.py → setup_logging()
+    - 自动在脚本同级 logs/ 目录创建日志文件
 
-运行模式：
-  完整运行           python unsupervised_classification/RQ3/main.py
-  跳过轴构建         python unsupervised_classification/RQ3/main.py --from-bias             # 已有 bias_matrix.csv
-  只重跑可视化       python unsupervised_classification/RQ3/main.py --viz-only              # 已有 bias_matrix.csv
-  调试（小数据）     python unsupervised_classification/RQ3/main.py --max-docs 200
+    运行模式：
+    完整运行           python unsupervised_classification/RQ3/main.py
+    跳过轴构建         python unsupervised_classification/RQ3/main.py --from-bias             # 已有 bias_matrix.csv
+    只重跑可视化       python unsupervised_classification/RQ3/main.py --viz-only              # 已有 bias_matrix.csv
+    调试（小数据）     python unsupervised_classification/RQ3/main.py --max-docs 200
 
 作者: Zhidian  |  日期: 2026-04
 """
@@ -753,6 +753,319 @@ def _build_topic_exemplar_chart(topic_lang_df: pd.DataFrame):
     log.info(f"[STEP4] ✅ 图E2: {p2.name}")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# 新维度可视化：By Language & By Topic
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def _build_language_level_analysis(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
+    """
+    新图G：语言层次分析 — 三个子图
+      - G1: 语言×轴 热力图（按绝对均值 Bias）
+      - G2: 三语言在 PCA 空间的位置（中心）+ 椭圆（std）
+      - G3: 语言×轴 箱线图（展示分布）
+    
+    这是 "by language" 的完整角度，与现有 "by topic-language" 互补。
+    """
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+    
+    df = bias_df.copy()
+    df["lang"] = df["lang"].apply(normalize_lang).replace({"ja": "jp"})
+    
+    bias_cols = [f"bias_{k}" for k in AXIS_KEYS]
+    bilingual_x = [axis_bilingual_label(k) for k in AXIS_KEYS]
+    
+    log.info("[STEP4] 图G: 语言层次分析")
+    
+    # ── G1: 语言×轴 热力图 ────────────────────────────────────────────────
+    lang_axis_stats = []
+    for lang in ["en", "zh", "jp"]:
+        lang_data = df[df["lang"] == lang]
+        for key in AXIS_KEYS:
+            mean_val = lang_data[f"bias_{key}"].mean()
+            std_val = lang_data[f"bias_{key}"].std()
+            n = len(lang_data)
+            lang_axis_stats.append({
+                "lang": lang,
+                "axis": key,
+                "mean_bias": mean_val,
+                "std_bias": std_val,
+                "n": n,
+                "axis_label": AXIS_LABEL_EN[key],
+            })
+    
+    lang_axis_df = pd.DataFrame(lang_axis_stats)
+    lang_means_pivot = lang_axis_df.pivot(index="lang", columns="axis", values="mean_bias").reindex(
+        index=["en", "zh", "jp"], columns=AXIS_KEYS
+    )
+    lang_stds_pivot = lang_axis_df.pivot(index="lang", columns="axis", values="std_bias").reindex(
+        index=["en", "zh", "jp"], columns=AXIS_KEYS
+    )
+    
+    heat_text = np.array([
+        [f"{lang_means_pivot.iloc[i, j]:+.3f}" for j in range(len(AXIS_KEYS))]
+        for i in range(3)
+    ])
+    
+    fig_g1 = go.Figure(go.Heatmap(
+        z=lang_means_pivot.values,
+        x=bilingual_x,
+        y=[LANG_LABEL[l] for l in ["en", "zh", "jp"]],
+        colorscale="RdBu",
+        zmid=0,
+        text=heat_text,
+        texttemplate="%{text}",
+        textfont=dict(size=11),
+        colorbar=dict(title="Mean Bias"),
+        hovertemplate="<b>%{y}</b><br>%{x}<br>mean: %{z:+.4f}<extra></extra>",
+    ))
+    fig_g1.update_layout(
+        **_LAYOUT_BASE,
+        title=dict(
+            text=(
+                "Fig G1: Language-Axis Mean Bias Heatmap<br>"
+                "<sup>三语言在各道德轴的绝对均值；正值=正向动机，负值=攻击性动机</sup>"
+            ),
+            font=dict(size=12),
+        ),
+        xaxis=dict(title="Moral Axis", tickangle=-15),
+        yaxis=dict(title="Language"),
+        height=400,
+    )
+    p = DATA_DIR / "rq3_G1_lang_axis_heatmap.html"
+    fig_g1.write_html(str(p))
+    inject_font(p)
+    log.info(f"[STEP4] ✅ 图G1: {p.name}")
+    
+    # ── G2: 三语言在 z-score PCA 空间的中心点 + 椭圆 ────────────────────
+    z_cols = [f"z_{k}" for k in AXIS_KEYS]
+    df_z = df[df["topic"] >= 0].copy()
+    
+    # 每个语言的中心和 STD
+    lang_centers = []
+    for lang in ["en", "zh", "jp"]:
+        lang_z = df_z[df_z["lang"] == lang][z_cols].values
+        scores, _, _ = _compute_pca_projection(lang_z)
+        center_pc1 = scores[:, 0].mean()
+        center_pc2 = scores[:, 1].mean()
+        std_pc1 = scores[:, 0].std()
+        std_pc2 = scores[:, 1].std()
+        lang_centers.append({
+            "lang": lang,
+            "pc1": center_pc1,
+            "pc2": center_pc2,
+            "std_pc1": std_pc1,
+            "std_pc2": std_pc2,
+        })
+    
+    lang_centers_df = pd.DataFrame(lang_centers)
+    
+    fig_g2 = go.Figure()
+    
+    # 添加椭圆和中心点
+    for _, row in lang_centers_df.iterrows():
+        lang = row["lang"]
+        # 椭圆（1倍std）
+        theta = np.linspace(0, 2*np.pi, 100)
+        ellipse_x = row["pc1"] + row["std_pc1"] * np.cos(theta)
+        ellipse_y = row["pc2"] + row["std_pc2"] * np.sin(theta)
+        fig_g2.add_trace(go.Scatter(
+            x=ellipse_x, y=ellipse_y,
+            mode="lines",
+            name=f"{lang.upper()} (±1σ)",
+            line=dict(color=LANG_COLOR[lang], width=2, dash="dash"),
+            hoverinfo="skip",
+        ))
+        # 中心点
+        fig_g2.add_trace(go.Scatter(
+            x=[row["pc1"]], y=[row["pc2"]],
+            mode="markers+text",
+            name=LANG_LABEL[lang],
+            marker=dict(size=15, color=LANG_COLOR[lang]),
+            text=[lang.upper()],
+            textposition="top center",
+            textfont=dict(size=13, color=LANG_COLOR[lang]),
+            hovertemplate=f"<b>{LANG_LABEL[lang]}</b><br>PC1: %{{x:.3f}}<br>PC2: %{{y:.3f}}<extra></extra>",
+        ))
+    
+    fig_g2.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.3)
+    fig_g2.add_vline(x=0, line_dash="dash", line_color="gray", opacity=0.3)
+    
+    fig_g2.update_layout(
+        **_LAYOUT_BASE,
+        title=dict(
+            text=(
+                "Fig G2: Languages in Moral Motivation PCA Space<br>"
+                "<sup>按语言汇总的 z-score 中心；PC1=攻击性程度，PC2=动机类型差异</sup>"
+            ),
+            font=dict(size=12),
+        ),
+        xaxis=dict(title="PC1: Negativity Gradient (←负向 | 正向→)", zeroline=True),
+        yaxis=dict(title="PC2: Motivation Type Contrast", zeroline=True),
+        legend=dict(yanchor="top", y=0.99, xanchor="right", x=0.99),
+        height=600,
+        width=800,
+    )
+    p = DATA_DIR / "rq3_G2_lang_pca_space.html"
+    fig_g2.write_html(str(p))
+    inject_font(p)
+    log.info(f"[STEP4] ✅ 图G2: {p.name}")
+    
+    # ── G3: 语言×轴 箱线图（去掉原来的box实现） ─────────────────────────
+    # 改为回归最初的 box 绘制（不重复，兼容现有逻辑）
+    log.info("[STEP4] ✅ 图G3: 跳过（已由图F覆盖）")
+    
+    return lang_axis_df
+
+
+def _build_topic_level_analysis(bias_df: pd.DataFrame):
+    """
+    新图H：话题层次分析 — 两个子图
+      - H1: 话题×轴 热力图（按绝对均值，只显示文档数≥10的话题）
+      - H2: 话题在 PCA 空间的位置（中心）
+    
+    这是 "by topic" 的完整角度，与现有 "by topic-language" 互补。
+    """
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+    
+    df = bias_df.copy()
+    df["lang"] = df["lang"].apply(normalize_lang).replace({"ja": "jp"})
+    
+    bias_cols = [f"bias_{k}" for k in AXIS_KEYS]
+    z_cols = [f"z_{k}" for k in AXIS_KEYS]
+    bilingual_x = [axis_bilingual_label(k) for k in AXIS_KEYS]
+    
+    log.info("[STEP4] 图H: 话题层次分析")
+    
+    # ── H1: 话题×轴 热力图 ────────────────────────────────────────────
+    topic_axis_stats = []
+    for topic in sorted(df[df["topic"] >= 0]["topic"].unique()):
+        topic_data = df[df["topic"] == topic]
+        if len(topic_data) >= 10:  # 只保留≥10条消息的话题
+            topic_label = TOPIC_LABELS.get(topic, f"Topic {topic}")
+            for key in AXIS_KEYS:
+                mean_val = topic_data[f"bias_{key}"].mean()
+                std_val = topic_data[f"bias_{key}"].std()
+                n = len(topic_data)
+                topic_axis_stats.append({
+                    "topic": topic,
+                    "topic_label": topic_label,
+                    "axis": key,
+                    "mean_bias": mean_val,
+                    "std_bias": std_val,
+                    "n": n,
+                })
+    
+    topic_axis_df = pd.DataFrame(topic_axis_stats)
+    
+    # 按负向程度（所有轴的均值）排序
+    topic_locs = topic_axis_df.groupby("topic_label")["mean_bias"].mean().sort_values()
+    
+    topic_means_pivot = (
+        topic_axis_df.pivot_table(index="topic_label", columns="axis", values="mean_bias")
+        .reindex(columns=AXIS_KEYS)
+        .reindex(index=topic_locs.index)
+    )
+    
+    heat_text = np.array([
+        [f"{topic_means_pivot.iloc[i, j]:+.3f}" if not np.isnan(topic_means_pivot.iloc[i, j]) else "–" 
+         for j in range(len(AXIS_KEYS))]
+        for i in range(len(topic_means_pivot))
+    ])
+    
+    fig_h1 = go.Figure(go.Heatmap(
+        z=topic_means_pivot.values,
+        x=bilingual_x,
+        y=topic_means_pivot.index.tolist(),
+        colorscale="RdBu",
+        zmid=0,
+        text=heat_text,
+        texttemplate="%{text}",
+        textfont=dict(size=9),
+        colorbar=dict(title="Mean Bias"),
+        hovertemplate="<b>%{y}</b><br>%{x}<br>mean: %{z:+.4f}<extra></extra>",
+    ))
+    fig_h1.update_layout(
+        **_LAYOUT_BASE,
+        title=dict(
+            text=(
+                "Fig H1: Topic-Axis Mean Bias Heatmap<br>"
+                "<sup>不同话题的道德关注点重排序；只显示文档数≥10的话题；按总体负向程度从上到下排序</sup>"
+            ),
+            font=dict(size=12),
+        ),
+        xaxis=dict(title="Moral Axis", tickangle=-15),
+        yaxis=dict(title="Topic"),
+        height=max(600, len(topic_means_pivot) * 18),
+    )
+    p = DATA_DIR / "rq3_H1_topic_axis_heatmap.html"
+    fig_h1.write_html(str(p))
+    inject_font(p)
+    log.info(f"[STEP4] ✅ 图H1: {p.name}")
+    
+    # ── H2: 话题在 PCA 空间的位置 ───────────────────────────────────────
+    topic_centers = []
+    df_z = df[df["topic"] >= 0].copy()
+    for topic in sorted(df_z["topic"].unique()):
+        topic_z = df_z[df_z["topic"] == topic][z_cols].values
+        if len(topic_z) >= 10:
+            scores, _, _ = _compute_pca_projection(topic_z)
+            center_pc1 = scores[:, 0].mean()
+            center_pc2 = scores[:, 1].mean()
+            topic_label = TOPIC_LABELS.get(topic, f"Topic {topic}")
+            topic_centers.append({
+                "topic": topic,
+                "topic_label": topic_label,
+                "pc1": center_pc1,
+                "pc2": center_pc2,
+                "n_docs": len(topic_z),
+            })
+    
+    topic_centers_df = pd.DataFrame(topic_centers)
+    
+    fig_h2 = go.Figure(go.Scatter(
+        x=topic_centers_df["pc1"],
+        y=topic_centers_df["pc2"],
+        mode="markers+text",
+        marker=dict(
+            size=topic_centers_df["n_docs"].apply(lambda x: max(5, min(20, x / 3))),
+            color=topic_centers_df["pc1"],
+            colorscale="RdBu",
+            colorbar=dict(title="PC1: Negativity"),
+            line=dict(width=1, color="white"),
+        ),
+        text=[f"T{int(t)}" for t in topic_centers_df["topic"]],
+        textposition="middle center",
+        textfont=dict(size=9),
+        customdata=topic_centers_df[["topic_label", "n_docs"]],
+        hovertemplate="<b>%{customdata[0]}</b><br>Docs: %{customdata[1]}<br>PC1: %{x:.3f}<br>PC2: %{y:.3f}<extra></extra>",
+    ))
+    
+    fig_h2.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.3)
+    fig_h2.add_vline(x=0, line_dash="dash", line_color="gray", opacity=0.3)
+    
+    fig_h2.update_layout(
+        **_LAYOUT_BASE,
+        title=dict(
+            text=(
+                "Fig H2: Topics in Moral Motivation PCA Space<br>"
+                "<sup>按话题汇总的 z-score 中心；气泡大小=话题文档数；红=负向/攻击性强，蓝=正向</sup>"
+            ),
+            font=dict(size=12),
+        ),
+        xaxis=dict(title="PC1: Negativity Gradient (←负向 | 正向→)", zeroline=True),
+        yaxis=dict(title="PC2: Motivation Type Contrast", zeroline=True),
+        height=700,
+    )
+    p = DATA_DIR / "rq3_H2_topic_pca_space.html"
+    fig_h2.write_html(str(p))
+    inject_font(p)
+    log.info(f"[STEP4] ✅ 图H2: {p.name}")
+    
+    return topic_axis_df
+
+
 def _build_violin_plot(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
     """
     图F: 语言 × 轴 Bias 分布小提琴图（By-语言分析）
@@ -1201,6 +1514,14 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
     # ── 图F: 语言 × 轴 Bias 分布小提琴图 ─────────────────────────────────
     log.info("[STEP4] 图F: 语言×轴 Bias 分布小提琴图")
     _build_violin_plot(bias_df, anova_df)
+
+    # ── 图G: 语言层次分析（新增：By Language） ────────────────────────────────
+    log.info("[STEP4] 图G: 语言层次分析")
+    _build_language_level_analysis(bias_df, anova_df)
+
+    # ── 图H: 话题层次分析（新增：By Topic） ──────────────────────────────────
+    log.info("[STEP4] 图H: 话题层次分析")
+    _build_topic_level_analysis(bias_df)
 
     # ── CSV 汇总（论文附录） ───────────────────────────────────────────────
     summary_rows = []

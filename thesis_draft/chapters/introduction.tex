@@ -1,0 +1,33 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+\documentclass[../CLthesis.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+% END OF SUBFILES HEADER
+
+\begin{document}
+\chapter{Introduction}%
+\label{chap:intro}
+
+\section{Motivation}
+
+The rise of social media has dramatically amplified the reach and persistence of hate speech online \citep{castano-pulgarin_internet_2021, matamoros-fernandez_racism_2021}. While computational approaches to hate speech detection have advanced considerably over the past decade \citep{jahan_systematic_2023, ramos_comprehensive_2024}, the field remains heavily skewed toward English-language data and Western social contexts. Research attention has concentrated particularly on antisemitism and Islamophobia, leaving other forms of religious hostility — especially those rooted in non-Western cultural and historical dynamics — largely unexamined \citep{scheitle2020, Evolvi2018}.
+
+East Asia presents a distinct and underexplored case. Christianity arrived in China, Japan, and Korea as a foreign religion tied to missionary activity and, later, to colonial and geopolitical entanglements. This historical background has shaped a particular kind of religious hostility: one in which Christians are cast not merely as spiritually deviant, but as culturally alien, politically suspect, or socially corrupting \citep{yang2011religion, mullins2021religion}. Yet despite the scale and distinctiveness of anti-Christian discourse in these digital spaces — from Chinese social media platforms like Weibo and Tieba to Japanese forums like 5ch and X — no computational study has systematically mapped its content, targets, or rhetorical structure across languages.
+
+This thesis addresses that gap. Rather than treating hate speech detection as a binary classification problem, we take an unsupervised approach to uncover the fine-grained structure of anti-Christian discourse across Chinese, Japanese, and English online texts. The goal is not merely to identify hate speech, but to understand \emph{who} is being targeted and \emph{how} hatred is expressed — questions that binary classifiers are structurally ill-equipped to answer \citep{elsherief_latent_2021, ollagnier_unsupervised_2023}.
+
+\section{Research Questions}
+
+This thesis is organized around three research questions:
+
+\begin{enumerate}
+    \item \textbf{RQ1: Who are the targets?} What entities — institutions, figures, or groups — are most frequently attacked in anti-Christian discourse across Chinese, Japanese, and English online texts, and how do these targets differ across languages?
+    \item \textbf{RQ2: How is hatred expressed?} What are the dominant rhetorical and thematic attack frameworks (e.g., allegations of sexual abuse, cognitive manipulation, political interference, moral hypocrisy) used to articulate anti-Christian hostility, and do these patterns vary cross-linguistically?
+    \item \textbf{RQ3: Why do people hate?} What underlying moral motivations, as characterized by Moral Foundations Theory, drive anti-Christian rhetoric in each language community, and can vector-space projection methods reveal cross-linguistic differences in these motivations?
+\end{enumerate}
+
+\section{Thesis Structure}
+
+The remainder of this thesis is organized as follows. Chapter~2 reviews related work on hate speech detection, covering the evolution from traditional machine learning approaches to transformer-based models, the specific challenges of religious hate speech, and the theoretical frameworks used to interpret hate discourse. Chapter~3 describes the data collection and annotation pipeline, including the crawling of Chinese and Japanese social media data, the construction of a multilingual religious hate speech dataset, and the fine-tuning of language models for hate speech detection. Chapter~4 presents the unsupervised analytical pipeline: how sentences are embedded into a shared multilingual vector space, how BERTopic is used for topic modelling, and how a FrameAxis-based approach is applied to project texts onto moral motivation axes. Chapter~5 presents and discusses the results for each research question, including cross-linguistic comparisons of attack targets, rhetorical frameworks, and moral motivations. Chapter~6 concludes with a summary of findings, limitations of the current approach, and directions for future work.
+
+\subfilebibliography
+\end{document}

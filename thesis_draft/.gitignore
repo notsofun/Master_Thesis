@@ -1,0 +1,32 @@
+.idea
+
+# LaTeX temporary files
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.synctex.gz
+
+# BibTeX files
+*.bbl
+*.blg
+
+# LaTeX output files
+*.pdf
+*.dvi
+*.ps
+
+# LaTeX editor temporary files
+*.fls
+*.fdb_latexmk
+
+# Custom LaTeX files
+*.sty
+*.cls
+
+# Miscellaneous
+*.backup
+*~
+

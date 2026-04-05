@@ -1,0 +1,29 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+\begin{document}
+
+\chapter{Conclusion}%
+\label{chap:conclusion}
+
+\section{Scientific Writing Hints}
+\begin{itemize}
+\item Does your study support the conclusions? 
+\item Does your conclusion summarize all your main findings and results?
+\item Do you present the main results in the form of concrete numbers? Do you avoid vague statements?
+
+\item Does the introduction and conclusion give a complete short version of your study? Do they correspond with the abstract?
+\end{itemize}
+
+% self-defined macro: include bibliography even when compiling a single chapter
+\subfilebibliography
+\end{document}

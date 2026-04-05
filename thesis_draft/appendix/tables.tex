@@ -1,0 +1,97 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+\chapter{Additional Tables}%
+\label{appendix:tables}
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{llcr}
+		\toprule
+		Part of Speech & POS Abbreviation & Example & Count in Corpus \\
+		\midrule
+		Noun           & NN               & dog     & 1530           \\
+		Verb           & VB               & run     & 1375           \\
+		Adjective      & JJ               & quick   & 980            \\
+		Adverb         & RB               & quickly & 870            \\
+		Pronoun        & PRP              & she     & 530            \\
+		Determiner     & DT               & the     & 1625           \\
+		Preposition    & IN               & in      & 1435           \\
+		Conjunction    & CC               & and     & 775            \\
+		Modal          & MD               & can     & 620            \\
+		Interjection   & UH               & oh      & 115            \\
+		\midrule
+		Total          &                  &         & 9485           \\
+		\bottomrule
+	\end{tabular}
+	
+
+	\caption[An Additional Table]{Some potentially very large table in the appendix}% Caption before the label for better cross-referencing support.
+	\label{tab:appendix_postags}
+\end{table}
+
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{llcr}
+		\toprule
+		Part of Speech & POS Abbreviation & Example & Count in Corpus \\
+		\midrule
+		Noun           & NN               & dog     & 1530           \\
+		Verb           & VB               & run     & 1375           \\
+		Adjective      & JJ               & quick   & 980            \\
+		Adverb         & RB               & quickly & 870            \\
+		Pronoun        & PRP              & she     & 530            \\
+		Determiner     & DT               & the     & 1625           \\
+		Preposition    & IN               & in      & 1435           \\
+		Conjunction    & CC               & and     & 775            \\
+		Modal          & MD               & can     & 620            \\
+		Interjection   & UH               & oh      & 115            \\
+		\midrule
+		Total          &                  &         & 9485           \\
+		\bottomrule
+	\end{tabular}
+	
+
+	\caption[An Additional Table]{Some potentially very large table in the appendix}% Caption before the label for better cross-referencing support.
+	\label{tab:appendix_postags2}
+\end{table}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{llcr}
+		\toprule
+		Part of Speech & POS Abbreviation & Example & Count in Corpus \\
+		\midrule
+		Noun           & NN               & dog     & 1530           \\
+		Verb           & VB               & run     & 1375           \\
+		Adjective      & JJ               & quick   & 980            \\
+		Adverb         & RB               & quickly & 870            \\
+		Pronoun        & PRP              & she     & 530            \\
+		Determiner     & DT               & the     & 1625           \\
+		Preposition    & IN               & in      & 1435           \\
+		Conjunction    & CC               & and     & 775            \\
+		Modal          & MD               & can     & 620            \\
+		Interjection   & UH               & oh      & 115            \\
+		\midrule
+		Total          &                  &         & 9485           \\
+		\bottomrule
+	\end{tabular}
+	
+
+	\caption[An Additional Table]{Some potentially very large table in the appendix}% Caption before the label for better cross-referencing support.
+	\label{tab:appendix_postags3}
+\end{table}
+\end{document}

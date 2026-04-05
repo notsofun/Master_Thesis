@@ -1,0 +1,24 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+\begin{document}
+
+\phantomsection% to get the hyperlinks in PDF) right
+\addcontentsline{toc}{chapter}{Acknowledgment}
+\chapter*{Acknowledgment}
+
+I want to thank X, Y and Z for their precious help.
+And many thanks to whoever for proofreading the present text.
+
+\newpage
+
+\end{document}

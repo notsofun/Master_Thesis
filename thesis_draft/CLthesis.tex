@@ -1,0 +1,242 @@
+% We are using KOMA-Script class. See http://mirrors.ctan.org/macros/latex/contrib/koma-script/doc/scrguide-en.pdf
+\documentclass[a4paper,12pt,
+listof=totoc,% add list of figures
+bibliography=totoc% add bibliography to Table of Contents
+]
+{scrreprt}
+
+% Enable one folder for images that are used in the main document and in the separate subfiles for the
+% chapters that can be compiled separately
+\usepackage[pdftex]{graphicx}
+\graphicspath{{images/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF settings
+\usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{%
+  pdfauthor={Firstname Lastname},
+  pdftitle={Title without any line breaks},
+  citebordercolor=[rgb]{0.33,0.66,0.4},
+  linkbordercolor=[rgb]{0.8,0.73,0.45},
+  urlbordercolor=[rgb]{0.77,0.31,0.32},
+  pdfborder={0 0 0.1}, % Adjust the third value as needed for border thickness (0 removes borders)
+}
+% Use the same font for URLs as surrounding text
+\urlstyle{same}
+
+% Helpful for komascript: Needs to come after hypersetup
+\usepackage{bookmark}
+% Needed for the \includepdf command for the declaration of independent authorship
+\usepackage{pdfpages}
+\usepackage{amsmath}
+
+%% Add your packages here
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts 
+
+% If you need better Unicode support, use the libertine font
+%\usepackage[sfdefault]{libertine}
+\usepackage[scaled]{helvet}
+\usepackage{inconsolata}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition of the page layout
+\setlength{\topmargin}{-1.2cm}
+\setlength{\oddsidemargin}{0.5cm} 
+\setlength{\evensidemargin}{0.5cm}
+
+\setlength{\textheight}{24.5cm} 
+\setlength{\textwidth}{15cm}
+
+\usepackage{setspace} % Line spacing
+\onehalfspacing  %\doublespace or \singlespace
+
+
+\setlength{\footskip}{1.2cm} 
+\setlength{\footnotesep}{0.4cm}
+
+% Adjust footnotes
+\deffootnote[1em]{1em}{1em}{\textsuperscript{\thefootnotemark\ }}
+% Syntax: \deffootnote[mark width]{indent}{parindent}{definition}
+% mark width: space for the footnote marker
+% indent: indentation of the first line of footnotes
+% parindent: indentation of the following lines in the footnote
+% definition: how the footnote mark is formatted
+
+% Ensure that footnotes are numbered continuously throughout the document
+\counterwithout{footnote}{chapter}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header and Footer specification 
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles% Reset defaults
+\cfoot[\pagemark]{\pagemark}
+\ihead{\chaptername~\headmark}
+\pagestyle{scrheadings}
+% Set the header to footnote-size font and avoid italic
+\setkomafont{pagehead}{\footnotesize\normalfont}
+% If you also want to adjust the footer font size
+\setkomafont{pagefoot}{\footnotesize\normalfont}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, fit, backgrounds, calc, shapes.geometric}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Limit the depth of the table of contents
+\setcounter{secnumdepth}{3}
+% Include only up to subsubsections in the Table of Contents
+\setcounter{tocdepth}{3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography and References
+\usepackage{natbib}
+% See the introduction for example uses of \cite commands and its variants
+\newcommand{\citeposs}[1]{\citeauthor{#1}'s (\citeyear{#1})} % to get "Author's (Year)"
+\bibliographystyle{acl_natbib}
+% Define a bibliography command that only shows up when compiling a subfile
+% Put before \end{document} in subfiles to show bibliography
+\providecommand{\subfilebibliography}{
+\ifSubfilesClassLoaded{
+  \bibliography{biblio/thesis}}{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Managing multilingual content (hyphenation etc.)
+% ngerman: Neue Rechtschreibung; english: American English
+\usepackage[ngerman,english]{babel}
+\selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nicer table layout with \toprule, \midrule, \bottomrule
+\usepackage{booktabs} 
+% for long tables spanning multiple pages consider using the longtable package
+% \usepackage{longtable}
+
+
+% See help for multi-file tex projects
+% https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
+\usepackage{subfiles} % Best loaded last in the preamble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+% See folder `chapters` for the individual chapters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Paragraph formatting for Front Matter
+\parskip=0cm
+\parindent=0cm
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page: Adapt to your thesis type and language by 
+% For BA: German (Title can be in English)
+%\subfile{chapters/titlepage-ba}
+% For MA: English 
+\subfile{chapters/titlepage-ma}
+% For ifi Master of Science thesis  CL
+%\subfile{chapters/titlepage-ifi}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract: Mandatory in English and German
+\subfile{chapters/abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Acknowledgment: Optional
+% \subfile{chapters/acknowledgment}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mandatory Table of Contents
+
+\tableofcontents
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Not recommended: List of Figures
+
+%\listoffigures
+%\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Not recommended: List of Tables
+
+%\listoftables
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Recommended: List of Acronyms
+
+\phantomsection%
+\addcontentsline{toc}{chapter}{List of Acronyms}
+\include{chapters/acronyms}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Setup of Main Matter
+\clearpage
+% page numbering arabic, start with 1
+\pagenumbering{arabic}
+
+% Paragraph formatting
+\setlength{\parskip}{0.3cm}
+\setlength{\parindent}{0cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main Matter: Each chapter as a separate file
+% Add/remove your chapter files as need be
+\subfile{chapters/introduction}
+
+\subfile{chapters/related_work}
+
+\subfile{chapters/material}
+
+\subfile{chapters/methods}
+
+\subfile{chapters/results}
+
+\subfile{chapters/conclusion}
+
+\subfile{chapters/sample_chapter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography: For main document
+\renewcommand{\bibsection}{}% Suppress the standard sections
+
+\phantomsection%
+\addcontentsline{toc}{chapter}{References}%
+\chapter*{References}
+\begin{flushleft}
+\bibliography{biblio/thesis}
+\end{flushleft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix for additional material
+\appendix
+
+% Header for the appendix
+\ihead{Appendix~\headmark}
+% Sample chapter with tables etc.
+\subfile{appendix/tables}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mandatory for CL students: Declaration of independent authorship
+% Please sign and scan this document and include it as a PDF
+% For ifi students: please adapt to your requirements and decomment accordingly
+
+\includepdf[pages=-]{appendix/declaration_of_independent_authorship.pdf}
+
+\end{document}

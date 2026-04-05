@@ -1,0 +1,128 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+\begin{document}
+
+\chapter{Related Work}%
+\label{chap:related-work}
+
+\section{Religious Hate Speech and the Anti-Christian Blind Spot}
+
+Existing research shows that religious hostility is a critical but unevenly studied type of identity-based abuse. Rather than viewing it merely as the expression of negative feelings or general toxicity, researchers in communication and computational linguistics categorize religious hate speech as targeted attacks on a faith group. These attacks typically manifest through dehumanizing metaphors, the promotion of harmful stereotypes, and the circulation of conspiracy theories \citep{paz_hate_2020, castano-pulgarin_internet_2021}. While scholars have successfully developed frameworks to tell the difference between attacking a marginalized group of people and simply criticizing a religion's doctrinal rules or institutional practices, applying these definitions in practice remains challenging. The boundaries of what constitutes religious hate are heavily dependent on specific cultural and religious contexts \citep{bilewicz_hate_2020, thomson_identity-based_2021}.
+
+A closer look at the current empirical landscape reveals a significant imbalance: the vast majority of computational models and qualitative studies focus heavily on Islamophobia, antisemitism, and sectarian conflicts within Western or Middle Eastern regions. For example, \citet{albadi_are_2018} conducted an in-depth study of religious abuse on Arabic Twitter, highlighting the linguistic nuances required to detect anti-Islamic sentiment in native digital environments. Similarly, \citet{vidgen_detecting_2020} proposed a granular framework specifically designed to detect Islamophobia, breaking it down into ``weak" and ``strong" categories to capture both overt threats and subtle prejudices. While these studies represent significant progress, this concentrated focus leaves a large scholarly blind spot regarding hate speech directed at Christians. 
+
+In English-language literature and Western sociological frameworks, Christianity is often viewed as a dominant cultural and political majority. This structural positioning leads to a common assumption in computational research that anti-Christian words are less harmful, or less urgent to detect, than hate speech directed at traditional minority groups \citep{Yancey2014, scheitle2020}. Consequently, models are rarely optimized to detect hostility against Christians. However, this ``majority-centric" view ignores how religious demographics and power dynamics change dramatically in international digital spaces. 
+
+Recent sociological studies emphasize that anti-Christian rhetoric in non-Western contexts is often mixed with local nationalism, anti-Western sentiment, and post-colonial historical memory \citep{yang2011religion, mullins2021religion}. Supporting this, research by \citet{schlag_153detecting_2025} further distinguishes the perception of faith online, noting a significant pattern where ``religion" is frequently associated with negative sentiment and intense politicization, whereas ``spirituality" maintains more positive connotations. This suggests that religious hate speech is often not a critique of faith itself, but a reaction to the perceived political role of religious institutions. This finding is particularly relevant to the East Asian digital landscape, where anti-Christian rhetoric is frequently utilized as a tool for nationalistic mobilization or to mark "foreign" cultural intrusion. Despite this sociological reality, there remains a conspicuous dearth of comparative, cross-linguistic computational research, particularly within Chinese and Japanese digital ecosystems \citep{joshi2020state}. By failing to look beyond the Western ``majority vs. minority" binary, current scholarship lacks the theoretical depth and the empirical data to detect and understand religious hostility in non-Western contexts where Christians constitute a targeted minority.
+
+\section{Computational Methods and Datasets: Beyond Binary Detection}
+
+Most computational research on hate speech originally started as an automatic detection problem, predominantly treated as a binary classification task (e.g., hateful versus non-hateful). Early foundational work demonstrated that relying on simple keyword matching or dictionary-based approaches is inadequate. For instance, \citet{davidson_automated_2017} showed that the mere presence of bad words or profanity is not enough to identify real hostility, as certain communities use slurs in a reclaimed or colloquial manner. For a long time, the field's primary measure of success was improving binary classification accuracy and F1 scores using traditional machine learning classifiers like Support Vector Machines (SVM) and early neural networks.
+
+To support these detection goals, datasets and benchmarks continuously evolved to capture more complex forms of abuse. A major milestone was the introduction of ToxiGen \citep{hartvigsen_toxigen_2022}, which utilized large-scale machine generation to target ``implicit hate." Implicit hate refers to speech that avoids explicit slurs and looks normal on the surface, but carries hidden malice through coded language or harmful insinuations. Later benchmarks moved toward explainability. HateXplain \citep{mathew_hatexplain_2021} and ETHOS \citep{mollas_ethos_2022} not only provided binary labels but also added human-annotated explainable reasons (rationales) and detailed multi-label categories, forcing models to identify exactly which part of a sentence constituted the abuse. Recently, Large Language Models (LLMs) have become the new standard for these tasks \citep{jahan_systematic_2023, rawat_hate_2024, ramos_comprehensive_2024, albladi_hate_2025}. Fine-tuned GPT-style models and zero-shot prompting techniques are now highly scalable and often outperform traditional architectures \citep{choudhary_hate_2025}. By 2025, the field has further advanced toward multimodal benchmarks, such as Multi3Hate \citep{bbui_multi3hate_2025}, which require models to understand context from both text and images, as well as new frameworks utilizing LLMs to generate high-fidelity ``reasoning chains" to explain model decisions \citep{hashir-targe-2025}.
+
+Despite these impressive technical leaps, a gap remains between engineering progress and social science critique. \citet{matamoros-fernandez_racism_2021} strongly argue that treating hate speech purely as an algorithmic classification problem strips away deeper issues like social power dynamics, historical oppression, and platform ideology. This critique is especially relevant for implicit hate, which relies heavily on shared cultural stereotypes and indirect meanings that algorithms struggle to parse \citep{elsherief_latent_2021}. Even in advanced multimodal settings \citep{kapil_transformer_2025}, broader engineering surveys confirm that models still mainly focus on predicting ``if" a post is hateful to maximize benchmark scores, rather than meaningfully explaining ``why" it is hateful within a specific societal context \citep{mannepalli_comprehensive_2025}. Furthermore, sociological research on platforms like X (formerly Twitter) shows that scholarly attention often shifts toward mapping diffusion patterns and evaluating platform moderation policies, while the internal rhetorical logic and ideological construction of the hateful discourse itself receives far less analysis \citep{matarin_propagation_2025}.
+
+While some recent computational work explores proactive interventions, such as generating hope speech or automated counter-narratives to mitigate online harm \citep{sharma_stop_2025, jiang_rezg_2025}, these efforts still fundamentally prioritize the technical challenge of recognizing and responding to hate. Because the underlying models are mostly trained on Western datasets, they still lack the cultural sensitivity and structural knowledge required to decode specific localized logics behind the hate \citep{zou2025, cui2025, huang2025, vintar2025}.
+
+\section{Cross-Lingual Research, Low-Resource Challenges, and the East Asian Gap}
+
+As the limitations of English-only models became apparent, multilingual hate speech detection grew quickly, though language coverage remains highly uneven. Foundational cross-lingual studies proved that knowledge could be transferred from resource-rich languages to other languages using models like multilingual BERT (mBERT) and XLM-RoBERTa \citep{corazza_multilingual_2020, aluru_deep_2020}. Newer methods extend this transferability to strictly low-resource languages where human-annotated data is scarce \citep{bigoulaeva_addressing_2022}. Furthermore, recent research has addressed these data gaps by creating specialized datasets for linguistic variants like Austrian German \citep{pachinger_austrotox_2024} and providing fine-grained, span-level annotations to help models identify the exact parts of a text that are offensive \citep{pachinger_disaggregated_nodate}. 
+
+In these low-resource settings, researchers have introduced methodological innovations such as self-supervised learning, semantic data augmentation, and cross-lingual contrastive learning to improve model robustness \citep{hashmi_self-supervised_2025}. However, even with these sophisticated algorithmic advances, current cross-lingual research still largely optimizes for transfer performance (i.e., maintaining high F1 scores across languages) rather than interpreting the sociocultural nuances of why certain discourse counts as hateful in the target language \citep{hashmi_self-supervised_2025, sharma_stop_2025}.
+
+This problem is particularly obvious in East Asian contexts. Chinese-language research has made recent progress in creating localized datasets and developing task-specific models \citep{rao_robertachinese_2023}. Yet, systematic reviews indicate that Chinese hate speech detection still struggles significantly to catch implicit abuse, largely due to the widespread use of homophones, historical idioms, and politically sensitive coded language \citep{xiao_chinese_2024}. At the same time, Japanese remains largely absent from the primary comparative literature and is severely underrepresented in major multilingual hate speech benchmarks \citep{corazza_multilingual_2020, aluru_deep_2020, bigoulaeva_addressing_2022}. 
+
+This linguistic gap is not just a technical issue of missing data; it fundamentally limits our theoretical understanding of cultural differences in online hostility. As \citet{lee_exploring_2024} show in their comparative work, what people consider offensive or hateful changes greatly across different communities even within similar geographic regions. Therefore, hate speech categories are not universally stable across Chinese, Japanese, and English digital settings. We cannot simply translate Western categories (like those found in HateXplain) to successfully decode the unique political and digital cultures of Sinophone and Japanese spaces. Methodologically, the present study aligns with the fine-grained, interpretable approach proposed by \citet{ollagnier_unsupervised_2023} and the recent push to generate explainable rationales in complex environments \citep{hashir-targe-2025}. However, while these works and multicultural benchmarks \citep{bbui_multi3hate_2025} successfully capture granular variation, they rarely provide a comparative, cross-lingual account of how hate is discursively and ideologically structured across fundamentally different writing systems and religious histories.
+
+
+
+\section{Unsupervised Classification and Clustering Approaches in Hate Speech}
+
+Beyond supervised detection tasks, the broader field of artificial intelligence has witnessed a paradigm shift toward representation learning and unsupervised methodologies. Recent comprehensive reviews across diverse domains, such as medical image classification \citep{kim_transfer_2022}, adaptive e-learning \citep{gligorea_adaptive_2023}, industrial automation \citep{elahi_comprehensive_2023}, and financial fraud detection \citep{ali_financial_2022}, demonstrate a clear trajectory. Researchers are increasingly moving away from traditional algorithms (e.g., standard SVMs and ANNs) toward deep feature extraction and hybrid models that combine the strengths of different methodologies to handle complex, unstructured data \citep{azevedo_hybrid_2024}.
+
+In the realm of natural language processing and hate speech detection, a similar evolution has occurred. Early systems, such as the Lexical Syntactic Feature (LSF) architecture proposed by \citet{chen_detecting_2012}, relied heavily on hand-authored rules and predefined dictionaries to detect offensive content. Today, as highlighted by \citet{ramos_comprehensive_2024}, the field is dominated by Transformer-based architectures. To maximize the effectiveness of these models, techniques like domain-adaptive pretraining have proven highly beneficial in tailoring general language models to specific tasks \citep{gururangan_dont_2020}. Furthermore, in cross-lingual scenarios where labeled data is scarce, researchers have successfully leveraged cross-lingual transfer learning and domain-specific word embeddings to detect abuse without relying entirely on large annotated datasets \citep{bigoulaeva_addressing_2022, monnar_cross-lingual_2024}.
+
+Despite the success of these deep learning models, supervised learning inherently restricts analysis to predefined categories. To uncover hidden patterns and implicit target groups without human bias, the field has recently embraced unsupervised classification and clustering techniques. A notable contribution is the work of \citet{ollagnier_unsupervised_2023}, who proposed a full unsupervised pipeline using multilingual embeddings and spectral clustering to perform fine-grained hate speech target community detection. Similarly, the development of BERTopic \citep{grootendorst_bertopic_2022} has provided a highly effective method for short-text topic modeling by combining transformer embeddings with a class-based TF-IDF procedure. Expanding on these modular approaches, \citet{schlag_153detecting_2025} introduce the use of conceptual maps as a tool for visualizing associations within large religious datasets. Their work demonstrates the potential of combining quantitative AI detection with qualitative mapping to capture the nuance of faith-related discourse.
+
+However, while these unsupervised methods—particularly BERTopic, spectral clustering, and conceptual mapping—are highly effective at grouping data and identifying the ``targets" or associations involved, a critical gap remains. Most existing clustering studies stop at identifying what the topics are or how they are associated. They lack a structured, qualitative framework to interpret the narrative tactics within these clusters or the deeper ideological motivations driving them. In other words, current unsupervised approaches are excellent at computational grouping but fall short in providing a systematic, framed interpretation of the discourse. 
+
+Our study acknowledges the computational strengths of these recent innovations but aims to address their interpretive shortcomings. By introducing a systematic \emph{who}--\emph{how}--\emph{why} analytical framework, this thesis bridges the gap between advanced topic clustering and structured sociological analysis, moving beyond mapping associations to decoding the logic of hostility. Detailed explanations of how clustering algorithms are integrated into this qualitative framework will be elaborated in the Methodology chapter.
+\section{Positioning of the Present Study}
+
+Building upon the empirical, methodological, and theoretical gaps identified in the existing literature, this thesis addresses three critical limitations simultaneously. First, it expands the empirical scope of religious hate speech research by specifically focusing on anti-Christian hostility across Chinese, Japanese, and English digital ecosystems. By moving beyond the heavily studied English language and traditional Western minority targets, this study provides vital insights into how Christianity is uniquely targeted and discursively framed in non-Anglophone contexts where its social position is historically and culturally distinct.
+
+Second, this research introduces a robust cross-lingual framework that utilizes English-language data and existing rationale-based models as an anchor to improve detection in lower-resource Chinese and Japanese settings. Unlike traditional cross-lingual models that only care about maximizing classification accuracy, this approach uses advanced transformer-based embeddings and clustering to capture the specific linguistic details and rhetorical strategies of anti-Christian abuse across different scripts.
+
+Third, to overcome the interpretive limitations of current unsupervised classification methods discussed in Section 1.4, the present study proposes a systematic \emph{who}--\emph{how}--\emph{why} analytical framework (illustrated in Figure \ref{fig:research_framework}). Target groups and thematic clusters are identified computationally (\emph{who}), specific narrative frames and tactics are extracted from these clusters (\emph{how}), and the broader ideological logic is interpreted by projecting these findings onto theoretical sociological dimensions (\emph{why}). This framework ensures that clustering is not just an endpoint, but a foundation for deep qualitative analysis.
+
+\begin{figure}[htbp]
+    \centering
+    \resizebox{\textwidth}{!}{
+        \begin{tikzpicture}[
+            node distance=0.8cm and 1.5cm,
+            data/.style={rectangle, draw=black!60, fill=gray!10, rounded corners, minimum width=2.2cm, minimum height=0.7cm, align=center, font=\sffamily\small},
+            stage/.style={rectangle, draw=blue!80, thick, fill=blue!5, rounded corners, minimum width=6.5cm, minimum height=1.2cm, align=center, font=\sffamily\small},
+            contrib/.style={rectangle, draw=orange!80, thick, fill=orange!5, rounded corners, minimum width=3.5cm, minimum height=1cm, align=center, font=\sffamily\small},
+            arrow/.style={->, >=Stealth, thick, draw=black!70},
+            groupbox/.style={rectangle, draw=gray, dashed, rounded corners, inner sep=10pt}
+        ]
+
+        \node[stage] (how) {\textbf{Stage 2: HOW (Discursive Form)}\\SVO Extraction \& Framing Analysis};
+        \node[stage, above=0.7cm of how] (who) {\textbf{Stage 1: WHO (Target Identity)}\\Identity Clustering \& Relational Distance};
+        \node[stage, below=0.7cm of how] (why) {\textbf{Stage 3: WHY (Ideological Logic)}\\Theoretical Projection \& Latent Dimensions};
+
+        \draw[arrow] (who) -- (how);
+        \draw[arrow] (how) -- (why);
+
+        \begin{scope}[on background layer]
+            \node[groupbox, fill=blue!2, fit=(who)(how)(why)] (framework_box) {};
+            \node[above=0.1cm of framework_box, font=\sffamily\bfseries\footnotesize] {The Who--How--Why Framework (based on BERTopic)};
+        \end{scope}
+
+        \node[data, left=2.2cm of how] (cn) {Chinese\\Corpus};
+        \node[data, above=0.4cm of cn] (en) {English\\Corpus};
+        \node[data, below=0.4cm of cn] (jp) {Japanese\\Corpus};
+
+        \draw[arrow] (en.east) -- ([yshift=0.2cm]who.west);
+        \draw[arrow] (cn.east) -- (who.west);
+        \draw[arrow] (jp.east) -- ([yshift=-0.2cm]who.west);
+
+        \begin{scope}[on background layer]
+            \node[groupbox, fill=gray!5, fit=(en)(cn)(jp)] (data_box) {};
+            \node[above=0.1cm of data_box, font=\sffamily\bfseries\footnotesize] {Multilingual Inputs};
+        \end{scope}
+
+        \node[contrib, right=2.2cm of who] (con1) {1. Cross-Lingual\\Datasets};
+        \node[contrib, right=2.2cm of how] (con2) {2. Narrative Frame\\Mapping};
+        \node[contrib, right=2.2cm of why] (con3) {3. Ideological\\Interpretation};
+
+        \draw[arrow] (who.east) -- (con1.west);
+        \draw[arrow] (how.east) -- (con2.west);
+        \draw[arrow] (why.east) -- (con3.west);
+
+        \begin{scope}[on background layer]
+            \node[groupbox, fill=orange!5, fit=(con1)(con2)(con3)] (contrib_box) {};
+            \node[above=0.1cm of contrib_box, font=\sffamily\bfseries\footnotesize] {Contributions};
+        \end{scope}
+
+        \end{tikzpicture}
+    } 
+    \caption{The research architecture of the present study. The pipeline integrates multilingual inputs into a three-stage computational framework that moves from clustering (Who) and framing analysis (How) to ideological projection (Why).}
+    \label{fig:research_framework}
+\end{figure}
+
+The main contributions of this study are therefore threefold. It provides new Chinese and Japanese datasets and detection models tailored for studying anti-Christian hate speech; it proposes a novel cross-lingual framework designed to transfer detection and interpretation across diverse cultural contexts; and it demonstrates how quantitative unsupervised methods can be combined with structured sociological frameworks to produce a fine-grained, \emph{who}--\emph{how}--\emph{why} account of religious hostility.
+% self-defined macro: include bibliography even when compiling a single chapter
+\subfilebibliography
+\end{document}

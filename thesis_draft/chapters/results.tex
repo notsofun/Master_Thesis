@@ -1,0 +1,93 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+\begin{document}
+
+\chapter{Results and Discussion}%
+\label{chap:results}
+
+\section{Scientific Writing Hints}
+\subsection{Results}
+\begin{itemize}
+\item Do you explain and formalize the main quantitative evaluation measures?
+\item Are the most important results qualitatively described?
+\item Are the results credible and valid?
+\item Are there  descriptive statistics of the results? Are they well presented?
+\item Do you show results from a baseline system or SOTA systems?
+\item Do you give enough examples? 
+\item Is there an error analysis? Is there an ablation study?
+\item Do you use tables and figures where appropriate?
+\end{itemize}
+\subsection{Discussion and Future Work}
+\begin{itemize}
+
+\item Does it answer the research question? 
+\item Are the results interpreted in relation to the goal of the study?
+\item Are the problems and limitations of the study critically assessed?
+\item Are the most important references made to related work and methods?
+\item Do you mention potential improvements for future work or next steps?
+\item Does your study support the conclusions? 
+
+\end{itemize}
+
+\section{BLEU Scores}%
+\label{sec:bleuscores}
+
+
+\begin{table}[tbp]
+	\centering
+	\begin{tabular}{ll|ccr|r}
+		\textbf{Language Pair}     & \textbf{ABC}   & \textbf{YYY}   \\
+		\midrule
+		EN$\rightarrow$DE & 20.56 & 32.53 \\
+		DE$\rightarrow$EN & 43.35 & 52.53 \\
+		\bottomrule
+	\end{tabular}
+	\caption[ABC BLEU scores]{BLEU scores of different MT systems}%
+	\label{tab:bleuresults}
+\end{table}
+
+And we can reference the large table in the appendix as Table \ref{appendix:tables}
+
+\section{Evaluation}%
+\label{sec:evaluation}
+We saw in Section \ref{sec:bleuscores}
+
+We will see in subsection \ref{subsec:moreeval} some more evaluations.
+
+\subsection{More evaluation}%
+\label{subsec:moreeval}
+
+
+\section{Citations}
+Although BLEU scores should be taken with caution (see \citet{Callison-Burch2006})
+or if you prefer to cite like this: \citep{Callison-Burch2006} \ldots
+
+to cite: \cite[30-31]{Koehn2005} \\
+to cite within parentheses/brackets: \citep{Koehn2005}, \citep[30-32]{Koehn2005}\\
+
+to cite within the text: \citet{Koehn2005}, \citet[37]{Koehn2005}\\
+only the author(s): \citeauthor{Callison-Burch2006}\\
+only the year: \citeyear{Callison-Burch2006}\\
+Or a web site \cite{Melby:2001}.
+\section{Graphics}
+
+\begin{figure}[tbp]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Rosetta_Stone.jpg}
+	\caption[The Rosetta Stone]{The Rosetta Stone as depicted in \citet[p.204]{Koehn2005}.}%
+	\label{fig:rosetta}
+\end{figure}
+
+%\reffig{#1: label}
+And then reference it as Figure \ref{fig:rosetta} is easy.
+
+% self-defined macro: include bibliography even when compiling a single chapter
+\subfilebibliography
+\end{document}

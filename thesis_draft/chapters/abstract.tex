@@ -1,0 +1,45 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+\begin{document}
+
+\phantomsection% to get the hyperlinks (and bookmarks in PDF) right for index, list of files, bibliography, etc.
+\addcontentsline{toc}{chapter}{Abstract}
+
+\begin{abstract}
+    \begin{otherlanguage}{english}% Switch to English, in case the main language is not English
+
+        \section*{Abstract}
+        This is the place to put your abstract in English.
+        \begin{itemize}
+            \item the background/goal
+            \item the methods
+            \item the evaluation and main results
+            \item the conclusions
+        \end{itemize}
+
+    \end{otherlanguage}
+    %  A German Abstract is optional if there is an English one.
+    %  \newpage \thispagestyle{empty}%if both languages need more than one page
+
+    % \begin{otherlanguage}{ngerman}% Switch to German for this part
+
+    %    \section*{Zusammenfassung}
+    %    Und hier sollte die Zusammenfassung auf Deutsch erscheinen. Kann auch auf separater Seite erscheinen.
+
+    % \end{otherlanguage}
+
+\end{abstract}
+
+\newpage
+
+\end{document}

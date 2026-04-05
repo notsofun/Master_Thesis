@@ -14,14 +14,20 @@ RQ3 分析管线 — 词典轴道德动机投影 (FrameAxis)
 将文档的 E5 多语言向量投影到这些轴上，计算语义偏移（Bias），
 无需 LLM，100% 数学可解释。
 
-理论轴（Moral Foundations Dictionary 2.0 + Intergroup Threat Lexicon）：
+词典来源（由 dict_loader.py 统一加载）：
+  1. mfd2.0.dic        — 英文 MFD 2.0 (Frimer et al., 2019)，2104 词条
+  2. J-MFD_2018r1.dic  — 日文 J-MFD (Matsuo et al., 2019)，725 词条
+  3. cmfd_civictech.csv — 中文 CMFD (CivicTechLab)，6138 词条
+  4. intergroup_threat_custom.csv — 自定义群际威胁轴，131 词条
+
+理论轴（MFD 五基础 + 群际威胁理论两轴）：
   1. Harm      ← Care (关爱) vs. Harm (伤害/虐待)
   2. Fairness  ← Fairness (公平) vs. Cheating (欺骗/剥削)
   3. Loyalty   ← Loyalty (忠诚/爱国) vs. Betrayal (背叛/渗透)
   4. Authority ← Authority (权威/法律) vs. Subversion (颠覆/叛乱)
   5. Sanctity  ← Sanctity (神圣/纯洁) vs. Degradation (堕落/病理化)
-  6. RealThreat ← Safety (安全/稳定) vs. RealThreat (资源抢夺/政治控制)
-  7. SymThreat  ← Cohesion (文化凝聚) vs. SymThreat (文化入侵/信仰崩塌)
+  6. RealThreat ← Safety (安全/稳定) vs. Realistic Threat (资源抢夺/政治控制)
+  7. SymThreat  ← Cultural Cohesion (文化凝聚) vs. Symbolic Threat (文化入侵/洗脑)
 
 计算流程：
   Axis_k      = Centroid(E5(D_k+)) − Centroid(E5(D_k−))
@@ -37,11 +43,13 @@ RQ3 分析管线 — 词典轴道德动机投影 (FrameAxis)
           checkpoint: rq3_bias_matrix.csv
   Step 3: ANOVA 统计检验（三语言在各道德轴的差异显著性）
           checkpoint: rq3_anova_results.csv
-  Step 4: 聚合可视化（47 Topic × 7 Axis 热力图、语言雷达图等）
-          output: rq3_A_topic_axis_heatmap.html
-                  rq3_B_lang_radar.html
-                  rq3_C_lang_axis_bar.html
-                  rq3_D_topic_lang_scatter.html
+  Step 4: 聚合可视化（5 张图表 + 1 张网络图）
+          output: rq3_A_topic_axis_heatmap.html   — Topic×Axis 热力图
+                  rq3_B_lang_axis_bar.html         — 三语言×轴均值条形图（核心）
+                  rq3_C_lang_radar.html            — 语言道德动机雷达图
+                  rq3_D_topic_lang_scatter.html    — 关键轴散点图
+                  rq3_E_topic_network.html         — Topic 共现网络（新增）
+                  rq3_F_lang_bias_violin.html      — 语言×轴 Bias 小提琴图（新增）
                   rq3_summary.csv
 
 日志：
@@ -98,264 +106,88 @@ from scripts.set_logger import setup_logging
 load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
 
 # 模块级 logger 占位（由 __main__ 初始化后替换）
-log, _ = setup_logging(name="RQ3_pipeline")
+import logging as _logging
+log: _logging.Logger = _logging.getLogger(__name__)
+
+# ── 词典加载器（从文件读取，替代硬编码） ──────────────────────────────────────
+from dict_loader import load_moral_axes, get_axis_words
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# 一、理论轴词典（MFD 2.0 + 群际威胁词典，多语言对齐）
+# 一、轴元数据（标签、描述）— 词汇本身由 dict_loader 动态加载
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# 格式: {axis_key: {"pos": [...], "neg": [...], "label_en": "...", "label_zh": "..."}}
-# 正极 = 道德正向 / 安全侧；负极 = 道德负向 / 攻击侧
-# 词汇覆盖中英日，保证跨语言 E5 质心对齐的合法性
-
-MORAL_AXES: dict[str, dict] = {
-
-    # ── Harm/Care axis（伤害/关爱） ──────────────────────────────────────────
-    "harm": {
-        "label_en": "Harm",
-        "label_zh": "伤害轴",
-        "label_desc": "Care(+) vs. Harm(−)",
-        "pos": [
-            # EN – care pole
-            "care", "caring", "protect", "protection", "nurture", "nurturing",
-            "safe", "safety", "compassion", "empathy", "kindness", "gentle",
-            "heal", "healing", "support", "comfort", "welfare", "wellbeing",
-            "guardian", "guardian", "mercy", "loving", "tender",
-            # ZH – 关爱极
-            "关爱", "保护", "呵护", "慈悲", "善待", "仁慈", "温柔",
-            "救助", "关怀", "爱护", "养育", "同情", "怜悯", "安慰",
-            # JA – 保護・ケア極
-            "保護", "ケア", "優しい", "思いやり", "慈悲", "慈しみ",
-            "守る", "助ける", "救う", "安全", "安心", "癒し",
-        ],
-        "neg": [
-            # EN – harm pole
-            "harm", "hurt", "abuse", "violence", "cruel", "cruelty",
-            "torture", "damage", "injure", "injury", "bully", "oppress",
-            "assault", "attack", "molest", "exploit", "wound", "beat",
-            "terrorize", "traumatize", "brutal", "savage", "vicious",
-            # ZH – 伤害极
-            "伤害", "虐待", "暴力", "残忍", "折磨", "欺凌", "压迫",
-            "攻击", "骚扰", "猥亵", "剥削", "创伤", "毒害", "毁灭",
-            "摧残", "凌辱", "蹂躏",
-            # JA – 危害極
-            "危害", "暴力", "虐待", "残酷", "拷問", "いじめ", "傷つける",
-            "攻撃", "搾取", "ハラスメント", "性的虐待",
-        ],
-    },
-
-    # ── Fairness axis（公平/欺骗） ───────────────────────────────────────────
-    "fairness": {
-        "label_en": "Fairness",
-        "label_zh": "公平轴",
-        "label_desc": "Fairness(+) vs. Cheating(−)",
-        "pos": [
-            # EN
-            "fair", "fairness", "justice", "equal", "equality", "rights",
-            "honest", "honesty", "impartial", "unbiased", "equitable",
-            "transparent", "accountability", "integrity", "legitimate",
-            "proportional", "deserve", "merit",
-            # ZH
-            "公平", "正义", "平等", "公正", "权利", "诚实",
-            "廉洁", "守信", "透明", "负责", "合法", "合理",
-            # JA
-            "公平", "正義", "平等", "誠実", "公正", "権利",
-            "正直", "透明性", "責任", "合法", "公明正大",
-        ],
-        "neg": [
-            # EN
-            "cheat", "cheating", "fraud", "deception", "deceive", "lie",
-            "scam", "exploit", "corrupt", "corruption", "bribe", "bribery",
-            "manipulate", "manipulation", "swindle", "unfair", "biased",
-            "rigged", "dishonest", "illegitimate", "hypocrisy",
-            # ZH
-            "欺骗", "欺诈", "诈骗", "腐败", "舞弊", "贿赂",
-            "操控", "虚伪", "伪善", "不公", "偏袒", "歪曲",
-            "蒙蔽", "骗取", "勾结", "黑幕",
-            # JA
-            "詐欺", "偽善", "汚職", "不正", "腐敗", "騙す",
-            "操作", "不公平", "贈収賄", "欺く", "ごまかし",
-        ],
-    },
-
-    # ── Loyalty axis（忠诚/背叛） ────────────────────────────────────────────
-    "loyalty": {
-        "label_en": "Loyalty",
-        "label_zh": "忠诚轴",
-        "label_desc": "Loyalty(+) vs. Betrayal(−)",
-        "pos": [
-            # EN
-            "loyal", "loyalty", "patriot", "patriotism", "devoted", "devotion",
-            "solidarity", "unity", "faithful", "allegiance", "cohesion",
-            "teamwork", "commitment", "trustworthy", "dependable",
-            # ZH
-            "忠诚", "爱国", "团结", "凝聚", "奉献", "忠心",
-            "义气", "同心", "一致", "守护", "坚守",
-            # JA
-            "忠誠", "愛国", "団結", "連帯", "献身", "信義",
-            "一致", "守る", "絆", "仲間", "協力",
-        ],
-        "neg": [
-            # EN
-            "betray", "betrayal", "traitor", "treason", "infiltrate", "infiltration",
-            "subvert", "sabotage", "defect", "defection", "backstab",
-            "collude", "collusion", "turncoat", "disloyal", "treacherous",
-            "sedition", "conspire", "conspiracy",
-            # ZH
-            "背叛", "叛徒", "叛国", "渗透", "颠覆", "勾结",
-            "叛变", "出卖", "通敌", "内奸", "卧底", "阴谋",
-            "破坏", "腐蚀", "侵蚀",
-            # JA
-            "裏切り", "反逆", "売国", "浸透", "転覆", "共謀",
-            "内通", "スパイ", "陰謀", "破壊", "裏切る",
-        ],
-    },
-
-    # ── Authority axis（权威/颠覆） ──────────────────────────────────────────
-    "authority": {
-        "label_en": "Authority",
-        "label_zh": "权威轴",
-        "label_desc": "Authority(+) vs. Subversion(−)",
-        "pos": [
-            # EN
-            "authority", "order", "law", "discipline", "respect", "tradition",
-            "hierarchy", "institution", "rule", "obedience", "structure",
-            "stability", "convention", "orthodox", "legitimate authority",
-            # ZH
-            "权威", "秩序", "法律", "纪律", "尊重", "传统",
-            "制度", "规则", "服从", "规范", "稳定", "正统",
-            # JA
-            "権威", "秩序", "法律", "規律", "尊重", "伝統",
-            "制度", "ルール", "服従", "安定", "正統",
-        ],
-        "neg": [
-            # EN
-            "subvert", "subversion", "rebel", "rebellion", "defy", "defiance",
-            "overthrow", "undermine", "anarchy", "chaos", "disorder",
-            "radical", "extremist", "insurgent", "revolt", "sedition",
-            "destabilize", "corrupt institution", "rogue",
-            # ZH
-            "颠覆", "叛乱", "反抗", "破坏秩序", "混乱", "无法无天",
-            "激进", "极端", "推翻", "叛逆", "违法", "腐蚀制度",
-            # JA
-            "転覆", "反乱", "反抗", "無政府", "混乱", "過激",
-            "急進", "制度破壊", "反体制", "反逆",
-        ],
-    },
-
-    # ── Sanctity axis（圣洁/堕落） ───────────────────────────────────────────
-    "sanctity": {
-        "label_en": "Sanctity",
-        "label_zh": "圣洁轴",
-        "label_desc": "Sanctity(+) vs. Degradation(−)",
-        "pos": [
-            # EN
-            "sacred", "pure", "holy", "sanctity", "divine", "righteous",
-            "wholesome", "virtuous", "blessed", "reverence", "dignity",
-            "spiritual", "noble", "honorable", "clean", "innocent",
-            # ZH
-            "神圣", "纯洁", "圣洁", "正直", "高尚", "虔诚",
-            "尊严", "清白", "美德", "敬畏", "荣耀", "崇高",
-            # JA
-            "神聖", "清純", "清浄", "高潔", "崇高", "尊厳",
-            "神聖な", "神々しい", "畏敬", "清い",
-        ],
-        "neg": [
-            # EN
-            "degrade", "degradation", "filth", "filthy", "corrupt", "pollution",
-            "parasite", "pest", "vermin", "cancer", "disease", "virus",
-            "disgusting", "perverse", "perverted", "degenerate", "immoral",
-            "contaminate", "defile", "blaspheme", "heretic", "obscene",
-            "grotesque", "toxic", "pathological",
-            # ZH
-            "堕落", "腐化", "肮脏", "寄生虫", "毒瘤", "害虫",
-            "病毒", "败类", "恶魔", "渣滓", "邪恶", "变态",
-            "龌龊", "下流", "异端", "亵渎",
-            # JA
-            "堕落", "汚染", "寄生虫", "害悪", "ゴキブリ", "ウイルス",
-            "邪悪", "汚い", "卑劣", "腐敗", "不浄", "汚らわしい",
-        ],
-    },
-
-    # ── Realistic Threat axis（现实威胁） ─────────────────────────────────────
-    "realistic_threat": {
-        "label_en": "Realistic Threat",
-        "label_zh": "现实威胁轴",
-        "label_desc": "Safety(+) vs. Realistic Threat(−)",
-        "pos": [
-            # EN – safety / stability pole
-            "safe", "safety", "secure", "security", "stable", "stability",
-            "sovereign", "sovereignty", "independent", "independence",
-            "protected", "autonomy", "self-determination", "peaceful",
-            # ZH
-            "安全", "稳定", "主权", "独立", "自主", "和平",
-            "保障", "领土", "秩序", "安宁",
-            # JA
-            "安全", "安定", "主権", "独立", "自主", "平和",
-            "保障", "領土", "秩序",
-        ],
-        "neg": [
-            # EN – realistic threat pole
-            "invasion", "takeover", "control", "dominate", "dominance",
-            "steal", "resource", "exploit resource", "political control",
-            "infiltrate government", "lobby", "lobbying", "foreign influence",
-            "colonize", "colonization", "occupy", "economic threat",
-            "competition", "displacement", "replace", "replacement",
-            # ZH
-            "入侵", "控制", "夺权", "资源掠夺", "政治渗透",
-            "游说", "外国势力", "殖民", "占领", "经济威胁",
-            "势力扩张", "抢占", "侵占", "干政",
-            # JA
-            "侵略", "支配", "乗っ取り", "資源収奪", "政治工作",
-            "ロビー活動", "外国勢力", "植民地化", "占領",
-            "経済的脅威", "勢力拡大",
-        ],
-    },
-
-    # ── Symbolic Threat axis（象征威胁） ──────────────────────────────────────
-    "symbolic_threat": {
-        "label_en": "Symbolic Threat",
-        "label_zh": "象征威胁轴",
-        "label_desc": "Cultural Cohesion(+) vs. Symbolic Threat(−)",
-        "pos": [
-            # EN – cultural cohesion pole
-            "culture", "heritage", "tradition", "identity", "community",
-            "shared value", "common ground", "unity", "cohesion", "civilization",
-            "national identity", "cultural pride", "indigenous", "native",
-            # ZH
-            "文化", "传统", "认同", "共同体", "文明",
-            "民族认同", "文化自信", "本土", "根源", "凝聚力",
-            # JA
-            "文化", "伝統", "アイデンティティ", "共同体", "文明",
-            "民族", "文化的誇り", "固有", "国民性",
-        ],
-        "neg": [
-            # EN – symbolic threat pole
-            "brainwash", "indoctrinate", "cult", "sect", "heresy",
-            "false belief", "superstition", "irrationality", "backward",
-            "anti-intellectual", "pseudoscience", "delusion", "fanaticism",
-            "cultural invasion", "westernize", "erode culture",
-            "destroy tradition", "foreign religion", "alien belief",
-            # ZH
-            "洗脑", "邪教", "迷信", "愚昧", "落后", "反智",
-            "文化入侵", "侵蚀", "破坏传统", "外来宗教",
-            "异端", "蛊惑", "盲目崇拜",
-            # JA
-            "洗脳", "カルト", "迷信", "非合理", "反知性",
-            "文化侵略", "伝統破壊", "外来宗教", "狂信",
-            "マインドコントロール", "妄信",
-        ],
-    },
+# 轴元数据（标签仅用于图表显示，词汇来自 dict_loader.py）
+AXIS_LABELS: dict[str, dict[str, str]] = {
+    "harm":             {"en": "Harm",            "zh": "伤害轴",     "desc": "Care(+) vs. Harm(−)"},
+    "fairness":         {"en": "Fairness",         "zh": "公平轴",     "desc": "Fairness(+) vs. Cheating(−)"},
+    "loyalty":          {"en": "Loyalty",          "zh": "忠诚轴",     "desc": "Loyalty(+) vs. Betrayal(−)"},
+    "authority":        {"en": "Authority",        "zh": "权威轴",     "desc": "Authority(+) vs. Subversion(−)"},
+    "sanctity":         {"en": "Sanctity",         "zh": "圣洁轴",     "desc": "Sanctity(+) vs. Degradation(−)"},
+    "realistic_threat": {"en": "Realistic Threat", "zh": "现实威胁轴", "desc": "Safety(+) vs. Realistic Threat(−)"},
+    "symbolic_threat":  {"en": "Symbolic Threat",  "zh": "象征威胁轴", "desc": "Cultural Cohesion(+) vs. Symbolic Threat(−)"},
 }
 
 # 轴名列表（保持顺序，与可视化顺序一致）
-AXIS_KEYS = list(MORAL_AXES.keys())
+AXIS_KEYS = list(AXIS_LABELS.keys())
 
-# 双语标签映射（用于图表轴标签）
-AXIS_LABEL_EN = {k: v["label_en"] for k, v in MORAL_AXES.items()}
-AXIS_LABEL_ZH = {k: v["label_zh"] for k, v in MORAL_AXES.items()}
-AXIS_LABEL_DESC = {k: v["label_desc"] for k, v in MORAL_AXES.items()}
+# 快捷访问映射（用于图表轴标签）
+AXIS_LABEL_EN   = {k: v["en"]   for k, v in AXIS_LABELS.items()}
+AXIS_LABEL_ZH   = {k: v["zh"]   for k, v in AXIS_LABELS.items()}
+AXIS_LABEL_DESC = {k: v["desc"] for k, v in AXIS_LABELS.items()}
+
+# Topic 英文标签（来自 datamap_plot.py）
+TOPIC_LABELS: dict[int, str] = {
+    -1: "Inclusion and Reform Challenges",
+     0: "Separation of Church & State / Japan",
+     1: "Christians and Trump's Politics",
+     2: "Women and Ordination",
+     3: "LGBTQ Issues and Youth Alienation",
+     4: "Religion, Sexuality, and Violence",
+     5: "Catholic-Lutheran Communion Disputes",
+     6: "Church Abuse Victims",
+     7: "Religion and Natural Disasters",
+     8: "Pro-Life and Women's Autonomy",
+     9: "Divine-Human Nature / Jesus",
+    10: "Conflicts and Reflections on the Bible",
+    11: "2017 Pakistan Religious Violence",
+    12: "Communion for Divorced and Remarried",
+    13: "Religion in Public vs. Catholic Schools",
+    14: "Public Prayer and Religious Freedom",
+    15: "Authenticity and Faith in Catholicism",
+    16: "Canadian Immigration and Cultural Disputes",
+    17: "Pagan-Christian Conflicts",
+    18: "Internal Discussions in Catholicism",
+    19: "Doctrines of Religion and Salvation",
+    20: "Nuns and Religious Culture",
+    21: "Adventist Church",
+    22: "Social Observations and Religious Critique",
+    23: "Historical Critiques of Christian Violence",
+    24: "Reforms and Divisions in Catholicism",
+    25: "Social Division and Racial Antagonism",
+    26: "Priests and Complexities of Faith",
+    27: "Bakery and Religious Freedom Legal Conflicts",
+    28: "Burke vs. Pope Francis",
+    29: "Christian Principles and Criticisms",
+    30: "Christian Development / Denominational Differences",
+    31: "Antisemitism and Religious Persecution",
+    32: "Church Doctrine and Sacramental Validity",
+    33: "Healthcare Rights and Institutions",
+    34: "Church-State Relations and Charities",
+    35: "The Poor, Wealth, and Relief",
+    36: "Internal Divisions in Catholicism",
+    37: "Religious Beliefs and Social Phenomena",
+    38: "Opposition and Impact of Religious Beliefs",
+    39: "Religious Controversies and Social Critiques",
+    40: "Critique of Money and Religious Manipulation",
+    41: "Catholic Stereotypes and Theology",
+    42: "Faith and Heresy Debates",
+    43: "Missionaries and Confucianism",
+    44: "Pope Francis: Conflicts and Mercy",
+    45: "Life and Responsibility",
+    46: "Religious Beliefs and Social Controversies",
+}
+
 
 LANG_LABEL = {"en": "English 🇬🇧", "zh": "中文 🇨🇳", "jp": "日本語 🇯🇵"}
 LANG_COLOR = {"en": "#4C78A8", "zh": "#F58518",  "jp": "#54A24B"}
@@ -474,12 +306,18 @@ def build_axis_vectors(model) -> dict[str, np.ndarray]:
     log.info("[STEP1] 开始构建道德轴向量...")
     log.info(f"[STEP1] 共 {len(AXIS_KEYS)} 个轴: {AXIS_KEYS}")
 
+    # 从文件词典加载各轴词汇（MFD 2.0 + J-MFD + CMFD + 自定义威胁词典）
+    moral_axes_vocab = load_moral_axes()
+
     axis_vectors: dict[str, np.ndarray] = {}
 
     for key in tqdm(AXIS_KEYS, desc="构建轴向量", unit="轴"):
-        axis_def = MORAL_AXES[key]
-        pos_words = axis_def["pos"]
-        neg_words = axis_def["neg"]
+        pos_words = get_axis_words(key, "pos", moral_axes_vocab)
+        neg_words = get_axis_words(key, "neg", moral_axes_vocab)
+
+        if not pos_words or not neg_words:
+            log.warning(f"[STEP1]   轴 [{key}] 词汇为空（pos={len(pos_words)}, neg={len(neg_words)}），跳过")
+            continue
 
         log.info(f"[STEP1]   轴 [{key}]: 正极 {len(pos_words)} 词, 负极 {len(neg_words)} 词")
 
@@ -696,6 +534,344 @@ def run_anova(bias_df: pd.DataFrame) -> pd.DataFrame:
 # Step 4: 聚合可视化
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def _build_topic_network(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
+    """
+    图E: Topic 共现网络（交互式 Plotly）
+
+    节点设计：
+      - 每个 Topic 是一个节点
+      - 节点大小 = 该 Topic 文档总数
+      - 节点颜色 = 该 Topic 在"最显著轴"（ANOVA η² 最大轴）上的平均 Bias
+        （红色=攻击动机强，蓝色=偏正向）
+      - 节点内显示 Topic 英文短标签
+      - Hover 显示：Topic 标签、语言占比（en/zh/jp %）、各轴 Bias 均值
+
+    边设计：
+      - 两个 Topic 的 Bias 向量余弦相似度 > 阈值 时连边
+      - 边粗细 = 相似度大小
+      - 布局用 Fruchterman-Reingold (networkx spring layout)
+
+    另单独输出 rq3_E2_topic_lang_pie.html：
+      每个 Topic 的语言占比条形图（stacked bar，横轴=Topic，颜色=语言）
+    """
+    import plotly.graph_objects as go
+    try:
+        import networkx as nx
+    except ImportError:
+        log.warning("[STEP4] networkx 未安装，跳过图E。pip install networkx")
+        return
+
+    bias_df = bias_df.copy()
+    bias_df["lang"] = bias_df["lang"].apply(normalize_lang).replace({"ja": "jp"})
+    bias_cols = [f"bias_{k}" for k in AXIS_KEYS]
+
+    # ── 计算每个 topic 的节点属性 ────────────────────────────────────────────
+    topic_ids = sorted([t for t in bias_df["topic"].unique() if t >= 0])
+
+    # 各 topic 平均 Bias 向量（用于连边相似度 + 颜色）
+    topic_bias_mean = (
+        bias_df[bias_df["topic"] >= 0]
+        .groupby("topic")[bias_cols].mean()
+    )
+
+    # 选取"主轴"：ANOVA η² 最大的轴（若无 ANOVA 结果则用 sanctity）
+    main_axis = "sanctity"
+    if anova_df is not None and not anova_df.empty and "eta_squared" in anova_df.columns:
+        valid = anova_df.dropna(subset=["eta_squared"])
+        if not valid.empty:
+            main_axis = valid.loc[valid["eta_squared"].idxmax(), "axis"]
+    main_col = f"bias_{main_axis}"
+    log.info(f"[E] 网络图颜色轴（η²最大）: {main_axis}")
+
+    # 各 topic 文档总数
+    topic_counts = bias_df[bias_df["topic"] >= 0]["topic"].value_counts()
+
+    # 各 topic 语言占比
+    topic_lang = (
+        bias_df[bias_df["topic"] >= 0]
+        .groupby(["topic", "lang"]).size()
+        .reset_index(name="n")
+    )
+    topic_total = topic_lang.groupby("topic")["n"].transform("sum")
+    topic_lang["pct"] = (topic_lang["n"] / topic_total * 100).round(1)
+
+    # ── 构建网络图 ────────────────────────────────────────────────────────────
+    # 仅使用在 topic_bias_mean 中存在的 topic（有足够文档的话题）
+    valid_topics = [t for t in topic_ids if t in topic_bias_mean.index]
+
+    G = nx.Graph()
+    for t in valid_topics:
+        G.add_node(t)
+
+    # 计算两两 topic Bias 向量余弦相似度，超过阈值则连边
+    SIM_THRESHOLD = 0.85   # 相似度阈值（0.85 表示道德动机高度相似）
+    bias_matrix = topic_bias_mean.loc[valid_topics, bias_cols].values
+    # L2 归一化
+    norms = np.linalg.norm(bias_matrix, axis=1, keepdims=True)
+    bias_matrix_norm = bias_matrix / (norms + 1e-12)
+    sim_mat = bias_matrix_norm @ bias_matrix_norm.T   # (n_topics × n_topics)
+
+    edge_weights = []
+    for i, ti in enumerate(valid_topics):
+        for j, tj in enumerate(valid_topics):
+            if j <= i:
+                continue
+            sim = float(sim_mat[i, j])
+            if sim >= SIM_THRESHOLD:
+                G.add_edge(ti, tj, weight=sim)
+                edge_weights.append(sim)
+
+    log.info(f"[E] 网络: {G.number_of_nodes()} 节点, {G.number_of_edges()} 条边 (阈值={SIM_THRESHOLD})")
+
+    # 布局（spring layout）
+    pos = nx.spring_layout(G, seed=42, k=2.5 / max(len(valid_topics) ** 0.5, 1))
+
+    # ── 构建 Plotly 图形 ──────────────────────────────────────────────────────
+    # 边迹
+    edge_x, edge_y, edge_hover = [], [], []
+    for (u, v, d) in G.edges(data=True):
+        x0, y0 = pos[u]
+        x1, y1 = pos[v]
+        edge_x += [x0, x1, None]
+        edge_y += [y0, y1, None]
+        edge_hover.append(f"T{u}↔T{v}: sim={d['weight']:.3f}")
+
+    edge_trace = go.Scatter(
+        x=edge_x, y=edge_y,
+        mode="lines",
+        line=dict(width=0.8, color="#BBBBBB"),
+        hoverinfo="none",
+        showlegend=False,
+    )
+
+    # 节点迹
+    node_x, node_y, node_sizes, node_colors = [], [], [], []
+    node_texts, node_hovers = [], []
+
+    for t in valid_topics:
+        if t not in pos:
+            continue
+        x, y = pos[t]
+        node_x.append(x)
+        node_y.append(y)
+
+        n_docs = int(topic_counts.get(t, 10))
+        # 节点大小：文档数映射到 [10, 45]
+        size = 10 + min(35, n_docs / max(topic_counts.max(), 1) * 35)
+        node_sizes.append(size)
+
+        # 节点颜色：主轴 Bias（负=红，正=蓝）
+        bias_val = float(topic_bias_mean.loc[t, main_col]) if main_col in topic_bias_mean.columns else 0.0
+        node_colors.append(bias_val)
+
+        # 节点文本（短标签）
+        label = TOPIC_LABELS.get(t, f"T{t}")
+        short = label[:22] + "…" if len(label) > 22 else label
+        node_texts.append(f"T{t}")
+
+        # Hover 内容
+        lang_info = topic_lang[topic_lang["topic"] == t]
+        lang_str = " | ".join(
+            f"{LANG_LABEL.get(r['lang'], r['lang'])}: {r['pct']:.0f}%"
+            for _, r in lang_info.iterrows()
+        )
+        bias_str = " | ".join(
+            f"{AXIS_LABEL_EN.get(k, k)}: {topic_bias_mean.loc[t, f'bias_{k}']:+.3f}"
+            for k in AXIS_KEYS if f"bias_{k}" in topic_bias_mean.columns
+        )
+        node_hovers.append(
+            f"<b>T{t}: {label}</b><br>"
+            f"文档数: {n_docs}<br>"
+            f"语言占比: {lang_str}<br>"
+            f"道德偏移: {bias_str}"
+        )
+
+    node_trace = go.Scatter(
+        x=node_x, y=node_y,
+        mode="markers+text",
+        text=node_texts,
+        textposition="top center",
+        textfont=dict(size=8),
+        hovertext=node_hovers,
+        hoverinfo="text",
+        marker=dict(
+            size=node_sizes,
+            color=node_colors,
+            colorscale="RdBu",
+            cmin=-0.04,
+            cmax=0.04,
+            colorbar=dict(
+                title=f"{AXIS_LABEL_EN.get(main_axis, main_axis)} Bias<br>(主轴颜色)",
+                thickness=12,
+                len=0.6,
+            ),
+            line=dict(width=1.2, color="white"),
+            showscale=True,
+        ),
+        showlegend=False,
+    )
+
+    fig_e = go.Figure(data=[edge_trace, node_trace])
+    fig_e.update_layout(
+        **_LAYOUT_BASE,
+        title=dict(
+            text=(
+                "Fig E: Topic Moral Motivation Network "
+                f"(cosine sim ≥ {SIM_THRESHOLD}, color={AXIS_LABEL_EN.get(main_axis,'?')} Bias)<br>"
+                "<sup>话题道德动机共现网络（节点大小=文档数，颜色=主轴偏移，连边=动机相似）</sup>"
+            ),
+            font=dict(size=13),
+        ),
+        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        height=780,
+        hovermode="closest",
+    )
+    p = DATA_DIR / "rq3_E_topic_network.html"
+    fig_e.write_html(str(p))
+    inject_font(p)
+    log.info(f"[STEP4] ✅ 图E: {p.name}")
+
+    # ── 图E2: Topic 语言占比堆叠条形图 ──────────────────────────────────────
+    all_topics_sorted = sorted(valid_topics)
+    lang_pct_pivot = (
+        topic_lang[topic_lang["topic"].isin(all_topics_sorted)]
+        .pivot(index="topic", columns="lang", values="pct")
+        .fillna(0)
+        .reindex(all_topics_sorted)
+    )
+
+    fig_e2 = go.Figure()
+    for lang in ["en", "zh", "jp"]:
+        if lang not in lang_pct_pivot.columns:
+            continue
+        x_labels = [
+            f"T{t}: {TOPIC_LABELS.get(t, '')[:18]}"
+            for t in lang_pct_pivot.index
+        ]
+        fig_e2.add_trace(go.Bar(
+            name=LANG_LABEL.get(lang, lang),
+            x=x_labels,
+            y=lang_pct_pivot[lang].values,
+            marker_color=LANG_COLOR[lang],
+            hovertemplate=f"{LANG_LABEL.get(lang, lang)}<br>%{{x}}<br>占比: %{{y:.1f}}%<extra></extra>",
+        ))
+
+    fig_e2.update_layout(
+        **_LAYOUT_BASE,
+        barmode="stack",
+        title=dict(
+            text=(
+                "Fig E2: Language Composition per Topic (stacked %)<br>"
+                "<sup>各话题语言构成占比（按语言堆叠）</sup>"
+            ),
+            font=dict(size=13),
+        ),
+        xaxis=dict(title="Topic", tickangle=-45, tickfont=dict(size=9)),
+        yaxis=dict(title="语言占比 (%)"),
+        legend=dict(title="Language"),
+        height=500,
+    )
+    p2 = DATA_DIR / "rq3_E2_topic_lang_composition.html"
+    fig_e2.write_html(str(p2))
+    inject_font(p2)
+    log.info(f"[STEP4] ✅ 图E2: {p2.name}")
+
+
+def _build_violin_plot(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
+    """
+    图F: 语言 × 轴 Bias 分布小提琴图（By-语言分析）
+
+    每个子图对应一个道德轴，展示三语言在该轴 Bias 的完整分布形态。
+    相比均值条形图，小提琴图能看出分布的偏态、双峰、离群点。
+    显著性标注来自 ANOVA 结果（同 图B）。
+    """
+    import plotly.graph_objects as go
+    from plotly.subplots import make_subplots
+
+    bias_df = bias_df.copy()
+    bias_df["lang"] = bias_df["lang"].apply(normalize_lang).replace({"ja": "jp"})
+
+    n_axes = len(AXIS_KEYS)
+    n_cols = min(3, n_axes)
+    n_rows = (n_axes + n_cols - 1) // n_cols
+
+    # 构建子图标题
+    subplot_titles = []
+    for key in AXIS_KEYS:
+        sig = ""
+        if anova_df is not None and not anova_df.empty:
+            row = anova_df[anova_df["axis"] == key]
+            if not row.empty:
+                sig = f" {row.iloc[0]['significant']}"
+        subplot_titles.append(
+            f"{AXIS_LABEL_EN.get(key, key)}<br>"
+            f"<sup>({AXIS_LABEL_ZH.get(key, '')}){sig}</sup>"
+        )
+
+    fig_f = make_subplots(
+        rows=n_rows, cols=n_cols,
+        subplot_titles=subplot_titles,
+        vertical_spacing=0.10,
+        horizontal_spacing=0.06,
+    )
+
+    for idx, key in enumerate(AXIS_KEYS):
+        row_idx = idx // n_cols + 1
+        col_idx = idx % n_cols + 1
+        col = f"bias_{key}"
+
+        for lang in ["en", "zh", "jp"]:
+            sub = bias_df[bias_df["lang"] == lang]
+            if sub.empty or col not in sub.columns:
+                continue
+            vals = sub[col].dropna().values
+            fig_f.add_trace(
+                go.Violin(
+                    y=vals,
+                    name=LANG_LABEL.get(lang, lang),
+                    box_visible=True,
+                    meanline_visible=True,
+                    fillcolor=LANG_COLOR[lang],
+                    opacity=0.65,
+                    line_color=LANG_COLOR[lang],
+                    showlegend=(idx == 0),   # 仅第一个子图显示图例
+                    legendgroup=lang,
+                    hovertemplate=(
+                        f"{LANG_LABEL.get(lang, lang)}<br>"
+                        f"{AXIS_LABEL_EN.get(key, key)}<br>"
+                        "Bias: %{y:.4f}<extra></extra>"
+                    ),
+                ),
+                row=row_idx, col=col_idx,
+            )
+
+        # 添加 y=0 参考线
+        fig_f.add_hline(
+            y=0, line_dash="dash", line_color="gray", opacity=0.4,
+            row=row_idx, col=col_idx,
+        )
+
+    fig_f.update_layout(
+        **_LAYOUT_BASE,
+        title=dict(
+            text=(
+                "Fig F: Moral Axis Bias Distribution by Language (Violin)<br>"
+                "<sup>三语言在各道德轴上的 Bias 分布（小提琴图；* p<0.05, ** p<0.01, *** p<0.001）</sup>"
+            ),
+            font=dict(size=13),
+        ),
+        violinmode="group",
+        height=300 * n_rows + 100,
+        legend=dict(title="Language", orientation="h", y=-0.05),
+    )
+
+    p = DATA_DIR / "rq3_F_lang_bias_violin.html"
+    fig_f.write_html(str(p))
+    inject_font(p)
+    log.info(f"[STEP4] ✅ 图F: {p.name}")
+
+
 def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
     """
     生成四张 Plotly 可视化图表：
@@ -911,6 +1087,14 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
     fig_d.write_html(str(p))
     inject_font(p)
     log.info(f"[STEP4] ✅ 图D: {p.name}")
+
+    # ── 图E: Topic 共现网络（道德动机 × 语言占比节点图） ─────────────────────
+    log.info("[STEP4] 图E: Topic 共现网络")
+    _build_topic_network(bias_df, anova_df)
+
+    # ── 图F: 语言 × 轴 Bias 分布小提琴图 ─────────────────────────────────
+    log.info("[STEP4] 图F: 语言×轴 Bias 分布小提琴图")
+    _build_violin_plot(bias_df, anova_df)
 
     # ── CSV 汇总（论文附录） ───────────────────────────────────────────────
     summary_rows = []

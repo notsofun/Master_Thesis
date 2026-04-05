@@ -1,0 +1,123 @@
+2026-04-05 11:12:05,215 - INFO - 日志文件: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\logs\20260405_111205_rq3_frameaxis.log
+2026-04-05 11:12:05,217 - INFO - ============================================================
+2026-04-05 11:12:05,217 - INFO - RQ3 管线启动：FrameAxis 道德动机投影
+2026-04-05 11:12:05,217 - INFO - ============================================================
+2026-04-05 11:12:05,305 - INFO - [DATA] 加载文档 3435 条 | 语言分布: {'jp': 1241, 'en': 1120, 'zh': 1074} | Topic 数量: 47
+2026-04-05 11:12:15,599 - INFO - [E5] 加载 multilingual-e5-large 编码器...
+2026-04-05 11:12:15,607 - INFO - Use pytorch device_name: cpu
+2026-04-05 11:12:15,607 - INFO - Load pretrained SentenceTransformer: intfloat/multilingual-e5-large
+2026-04-05 11:12:16,381 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:12:16,381 - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-05 11:12:16,531 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/modules.json "HTTP/1.1 200 OK"
+2026-04-05 11:12:16,830 - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/modules.json "HTTP/1.1 200 OK"
+2026-04-05 11:12:17,219 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/config_sentence_transformers.json "HTTP/1.1 404 Not Found"
+2026-04-05 11:12:17,384 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/config_sentence_transformers.json "HTTP/1.1 404 Not Found"
+2026-04-05 11:12:17,544 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:12:17,715 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/README.md "HTTP/1.1 200 OK"
+2026-04-05 11:12:17,895 - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/README.md "HTTP/1.1 200 OK"
+2026-04-05 11:12:18,059 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:12:18,102 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/modules.json "HTTP/1.1 200 OK"
+2026-04-05 11:12:18,259 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:12:18,409 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-05 11:12:18,549 - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/sentence_bert_config.json "HTTP/1.1 200 OK"
+2026-04-05 11:12:18,715 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-04-05 11:12:18,911 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:12:19,132 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/config.json "HTTP/1.1 200 OK"
+2026-04-05 11:12:19,289 - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/config.json "HTTP/1.1 200 OK"
+2026-04-05 11:12:19,545 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-04-05 11:12:19,747 - INFO - HTTP Request: GET https://huggingface.co/api/models/intfloat/multilingual-e5-large/xet-read-token/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3 "HTTP/1.1 200 OK"
+2026-04-05 11:46:10,853 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:46:11,049 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/config.json "HTTP/1.1 200 OK"
+2026-04-05 11:46:11,243 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:46:11,392 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 11:46:11,709 - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 11:46:11,913 - INFO - HTTP Request: GET https://huggingface.co/api/models/intfloat/multilingual-e5-large/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 11:46:12,069 - INFO - HTTP Request: GET https://huggingface.co/api/models/intfloat/multilingual-e5-large/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 11:46:12,733 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/sentencepiece.bpe.model "HTTP/1.1 302 Found"
+2026-04-05 11:46:12,876 - INFO - HTTP Request: GET https://huggingface.co/api/models/intfloat/multilingual-e5-large/xet-read-token/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3 "HTTP/1.1 200 OK"
+2026-04-05 11:46:17,677 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/tokenizer.json "HTTP/1.1 302 Found"
+2026-04-05 11:46:23,881 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-04-05 11:46:24,159 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:46:24,376 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-04-05 11:46:24,597 - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-04-05 11:46:24,775 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-04-05 11:46:27,482 - INFO - HTTP Request: GET https://huggingface.co/api/models/intfloat/multilingual-e5-large "HTTP/1.1 200 OK"
+2026-04-05 11:46:27,790 - INFO - HTTP Request: HEAD https://huggingface.co/intfloat/multilingual-e5-large/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 11:46:27,945 - INFO - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-05 11:46:28,124 - INFO - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/intfloat/multilingual-e5-large/3d7cfbdacd47fdda877c5cd8a79fbcc4f2a574f3/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+2026-04-05 11:46:28,426 - INFO - HTTP Request: GET https://huggingface.co/api/models/intfloat/multilingual-e5-large "HTTP/1.1 200 OK"
+2026-04-05 11:46:28,465 - INFO - [E5] 编码器加载完成
+2026-04-05 11:46:28,467 - INFO - [STEP1] 开始构建道德轴向量...
+2026-04-05 11:46:28,468 - INFO - [STEP1] 共 7 个轴: ['harm', 'fairness', 'loyalty', 'authority', 'sanctity', 'realistic_threat', 'symbolic_threat']
+2026-04-05 11:46:28,472 - INFO - [DICT] MFD 2.0 英文: 加载 2104 条词汇映射
+2026-04-05 11:46:28,473 - INFO - [DICT] J-MFD 日文: 加载 715 条词汇映射
+2026-04-05 11:46:28,638 - INFO - [DICT] CMFD 中文: 加载 5507 条词汇（极性由规则推断）
+2026-04-05 11:46:28,646 - INFO - [DICT] 群际威胁自定义词典: 加载 131 条
+2026-04-05 11:46:28,646 - INFO - [DICT] ✅ 词典合并完成：
+2026-04-05 11:46:28,646 - INFO -        [harm                ] pos=1619词  neg= 453词
+2026-04-05 11:46:28,647 - INFO -        [fairness            ] pos=1065词  neg= 371词
+2026-04-05 11:46:28,647 - INFO -        [loyalty             ] pos= 887词  neg= 124词
+2026-04-05 11:46:28,647 - INFO -        [authority           ] pos=1782词  neg= 226词
+2026-04-05 11:46:28,648 - INFO -        [sanctity            ] pos=1171词  neg= 538词
+2026-04-05 11:46:28,648 - INFO -        [realistic_threat    ] pos=  25词  neg=  40词
+2026-04-05 11:46:28,648 - INFO -        [symbolic_threat     ] pos=  25词  neg=  33词
+2026-04-05 11:46:28,650 - INFO - [STEP1]   轴 [harm]: 正极 1619 词, 负极 453 词
+2026-04-05 11:46:58,255 - INFO - [STEP1]   轴 [harm] 向量模长: 0.1987
+2026-04-05 11:46:58,255 - INFO - [STEP1]   轴 [fairness]: 正极 1065 词, 负极 371 词
+2026-04-05 11:47:20,147 - INFO - [STEP1]   轴 [fairness] 向量模长: 0.1912
+2026-04-05 11:47:20,148 - INFO - [STEP1]   轴 [loyalty]: 正极 887 词, 负极 124 词
+2026-04-05 11:47:35,431 - INFO - [STEP1]   轴 [loyalty] 向量模长: 0.1544
+2026-04-05 11:47:35,432 - INFO - [STEP1]   轴 [authority]: 正极 1782 词, 负极 226 词
+2026-04-05 11:48:04,253 - INFO - [STEP1]   轴 [authority] 向量模长: 0.1941
+2026-04-05 11:48:04,254 - INFO - [STEP1]   轴 [sanctity]: 正极 1171 词, 负极 538 词
+2026-04-05 11:48:29,553 - INFO - [STEP1]   轴 [sanctity] 向量模长: 0.1899
+2026-04-05 11:48:29,553 - INFO - [STEP1]   轴 [realistic_threat]: 正极 25 词, 负极 40 词
+2026-04-05 11:48:30,588 - INFO - [STEP1]   轴 [realistic_threat] 向量模长: 0.2468
+2026-04-05 11:48:30,589 - INFO - [STEP1]   轴 [symbolic_threat]: 正极 25 词, 负极 33 词
+2026-04-05 11:48:31,542 - INFO - [STEP1]   轴 [symbolic_threat] 向量模长: 0.2314
+2026-04-05 11:48:31,549 - INFO - [STEP1] ✅ 轴向量已保存: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_axis_vectors.npz
+2026-04-05 11:48:31,549 - INFO - [STEP2] 文档向量投影开始...
+2026-04-05 11:48:31,549 - INFO - [STEP2] 开始文档投影，共 3435 条文档...
+2026-04-05 12:03:09,117 - INFO - [STEP2] 文档编码完成，矩阵形状: (3435, 1024)
+2026-04-05 12:03:09,130 - INFO - [STEP2]   轴 [harm]: 均值=0.0560, std=0.1032, min=-0.1426, max=0.2364
+2026-04-05 12:03:09,130 - INFO - [STEP2]   轴 [fairness]: 均值=0.0669, std=0.1010, min=-0.1443, max=0.2342
+2026-04-05 12:03:09,131 - INFO - [STEP2]   轴 [loyalty]: 均值=0.0259, std=0.0681, min=-0.1354, max=0.1940
+2026-04-05 12:03:09,132 - INFO - [STEP2]   轴 [authority]: 均值=0.0224, std=0.0836, min=-0.1617, max=0.2244
+2026-04-05 12:03:09,133 - INFO - [STEP2]   轴 [sanctity]: 均值=0.0590, std=0.0974, min=-0.1585, max=0.2317
+2026-04-05 12:03:09,134 - INFO - [STEP2]   轴 [realistic_threat]: 均值=-0.0047, std=0.0275, min=-0.1120, max=0.1297
+2026-04-05 12:03:09,135 - INFO - [STEP2]   轴 [symbolic_threat]: 均值=-0.0356, std=0.0308, min=-0.1310, max=0.1339
+2026-04-05 12:03:09,220 - INFO - [STEP2] ✅ Bias 矩阵已保存: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_bias_matrix.csv (3435 行)
+2026-04-05 12:03:09,222 - INFO - [STEP3] 统计检验...
+2026-04-05 12:03:09,222 - INFO - [STEP3] ANOVA 统计检验开始...
+2026-04-05 12:03:09,250 - INFO - [STEP3]   [harm] F=32068.27, p=0.0000e+00, η²=0.9492, sig=*** | mean: en=-0.0739, zh=0.1765, jp=0.0690
+2026-04-05 12:03:09,261 - INFO - [STEP3]   [fairness] F=35568.20, p=0.0000e+00, η²=0.9540, sig=*** | mean: en=-0.0629, zh=0.1817, jp=0.0848
+2026-04-05 12:03:09,270 - INFO - [STEP3]   [loyalty] F=10807.88, p=0.0000e+00, η²=0.8630, sig=*** | mean: en=-0.0503, zh=0.1080, jp=0.0237
+2026-04-05 12:03:09,278 - INFO - [STEP3]   [authority] F=17686.50, p=0.0000e+00, η²=0.9116, sig=*** | mean: en=-0.0814, zh=0.1173, jp=0.0338
+2026-04-05 12:03:09,284 - INFO - [STEP3]   [sanctity] F=25365.82, p=0.0000e+00, η²=0.9366, sig=*** | mean: en=-0.0655, zh=0.1681, jp=0.0770
+2026-04-05 12:03:09,292 - INFO - [STEP3]   [realistic_threat] F=840.15, p=0.0000e+00, η²=0.3287, sig=*** | mean: en=0.0177, zh=-0.0123, jp=-0.0184
+2026-04-05 12:03:09,300 - INFO - [STEP3]   [symbolic_threat] F=543.86, p=0.0000e+00, η²=0.2407, sig=*** | mean: en=-0.0138, zh=-0.0469, jp=-0.0454
+2026-04-05 12:03:09,305 - INFO - [STEP3] ✅ ANOVA 结果已保存: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_anova_results.csv
+2026-04-05 12:03:09,306 - INFO - [STEP3] 显著差异轴 (p<0.05): ['harm', 'fairness', 'loyalty', 'authority', 'sanctity', 'realistic_threat', 'symbolic_threat']
+2026-04-05 12:03:09,306 - INFO - [STEP4] 聚合分析与可视化...
+2026-04-05 12:03:09,850 - INFO - [STEP4] 开始生成可视化，共 3435 条记录
+2026-04-05 12:03:09,853 - INFO - [STEP4] 语言分布: {'jp': 1241, 'en': 1120, 'zh': 1074}
+2026-04-05 12:03:09,853 - INFO - [STEP4] Topic 数量: 47
+2026-04-05 12:03:09,853 - INFO - [STEP4] 图A: Topic × Axis 热力图
+2026-04-05 12:03:10,322 - INFO - [STEP4] ✅ 图A: rq3_A_topic_axis_heatmap.html
+2026-04-05 12:03:10,322 - INFO - [STEP4] 图B: 语言 × 轴均值条形图
+2026-04-05 12:03:10,440 - INFO - [STEP4] ✅ 图B: rq3_B_lang_axis_bar.html
+2026-04-05 12:03:10,440 - INFO - [STEP4] 图C: 语言雷达图
+2026-04-05 12:03:10,529 - INFO - [STEP4] ✅ 图C: rq3_C_lang_radar.html
+2026-04-05 12:03:10,529 - INFO - [STEP4] 图D: 关键轴散点图
+2026-04-05 12:03:10,956 - INFO - [STEP4] ✅ 图D: rq3_D_topic_lang_scatter.html
+2026-04-05 12:03:10,956 - INFO - [STEP4] 图E: Topic 共现网络
+2026-04-05 12:03:11,468 - INFO - [E] 网络图颜色轴（η²最大）: fairness
+2026-04-05 12:03:11,478 - INFO - [E] 网络: 47 节点, 570 条边 (阈值=0.85)
+2026-04-05 12:03:11,641 - INFO - [STEP4] ✅ 图E: rq3_E_topic_network.html
+2026-04-05 12:03:11,726 - INFO - [STEP4] ✅ 图E2: rq3_E2_topic_lang_composition.html
+2026-04-05 12:03:11,726 - INFO - [STEP4] 图F: 语言×轴 Bias 分布小提琴图
+2026-04-05 12:03:11,894 - INFO - [STEP4] ✅ 图F: rq3_F_lang_bias_violin.html
+2026-04-05 12:03:11,915 - INFO - [STEP4] ✅ 汇总CSV: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_summary.csv
+2026-04-05 12:03:11,920 - INFO - ============================================================
+2026-04-05 12:03:11,920 - INFO - ✅ RQ3 全部完成。日志: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\logs\20260405_111205_rq3_frameaxis.log
+2026-04-05 12:03:11,920 - INFO - ============================================================

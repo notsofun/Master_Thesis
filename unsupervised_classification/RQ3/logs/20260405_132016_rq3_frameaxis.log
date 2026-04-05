@@ -1,0 +1,21 @@
+2026-04-05 13:20:16,707 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ3/logs/20260405_132016_rq3_frameaxis.log
+2026-04-05 13:20:16,730 - INFO - [STEP2] ✅ 从 checkpoint 加载 Bias 矩阵: 3435 行
+2026-04-05 13:20:16,853 - INFO - [STEP4] 开始生成可视化，共 3435 条记录
+2026-04-05 13:20:16,884 - INFO - [STEP4] 语言分布: {'jp': 1241, 'en': 1120, 'zh': 1074}
+2026-04-05 13:20:16,884 - INFO - [STEP4] Topic 数量: 47
+2026-04-05 13:20:16,884 - INFO - [STEP4] 图A: topic-language × axis 热力图（z-score）
+2026-04-05 13:20:17,035 - INFO - [STEP4] ✅ 图A: rq3_A_topic_axis_heatmap.html
+2026-04-05 13:20:17,036 - INFO - [STEP4] 图B: 语言层概览
+2026-04-05 13:20:17,116 - INFO - [STEP4] ✅ 图B: rq3_B_lang_axis_bar.html
+2026-04-05 13:20:17,116 - INFO - [STEP4] 图C: 轴关系热图
+2026-04-05 13:20:17,177 - INFO - [STEP4] ✅ 图C: rq3_C_lang_radar.html
+2026-04-05 13:20:17,177 - INFO - [STEP4] 图D: topic-language 动机空间图
+2026-04-05 13:20:17,220 - INFO - [STEP4] ✅ 图D: rq3_D_topic_lang_scatter.html
+2026-04-05 13:20:17,220 - INFO - [STEP4] 图E: topic 典型单元
+2026-04-05 13:20:17,260 - INFO - [STEP4] ✅ 图E: rq3_E_topic_network.html
+2026-04-05 13:20:17,295 - INFO - [STEP4] ✅ 图E2: rq3_E2_topic_lang_composition.html
+2026-04-05 13:20:17,296 - INFO - [STEP4] 图F: 语言×轴 Bias 分布小提琴图
+2026-04-05 13:20:17,390 - INFO - [STEP4] ✅ 图F: rq3_F_lang_bias_violin.html
+2026-04-05 13:20:17,416 - INFO - [STEP4] ✅ 汇总CSV: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ3/data/rq3_summary.csv
+2026-04-05 13:20:17,421 - INFO - [STEP4] ✅ Topic汇总CSV: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ3/data/rq3_topic_summary.csv
+2026-04-05 13:20:17,425 - INFO - ✅ 可视化重跑完成。日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ3/logs/20260405_132016_rq3_frameaxis.log

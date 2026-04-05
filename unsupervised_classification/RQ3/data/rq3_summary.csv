@@ -1,22 +1,22 @@
-﻿lang,lang_label,axis,axis_label,axis_desc,n_docs,mean_bias,std_bias,median_bias,q25_bias,q75_bias,most_negative_topic
-en,English 🇬🇧,authority,Authority,Authority(+) vs. Subversion(−),1120,-0.08138,0.02647,-0.08227,-0.09883,-0.06465,37
-en,English 🇬🇧,harm,Harm,Care(+) vs. Harm(−),1120,-0.07394,0.02345,-0.07358,-0.08897,-0.05813,39
-en,English 🇬🇧,sanctity,Sanctity,Sanctity(+) vs. Degradation(−),1120,-0.06548,0.02685,-0.06574,-0.08331,-0.04703,43
-en,English 🇬🇧,fairness,Fairness,Fairness(+) vs. Cheating(−),1120,-0.06288,0.02339,-0.06222,-0.07835,-0.04727,43
-en,English 🇬🇧,loyalty,Loyalty,Loyalty(+) vs. Betrayal(−),1120,-0.0503,0.02794,-0.05068,-0.06855,-0.03194,46
-en,English 🇬🇧,symbolic_threat,Symbolic Threat,Cultural Cohesion(+) vs. Symbolic Threat(−),1120,-0.01384,0.02945,-0.01473,-0.03404,0.00428,40
-en,English 🇬🇧,realistic_threat,Realistic Threat,Safety(+) vs. Realistic Threat(−),1120,0.01768,0.02423,0.01669,0.00157,0.03366,0
-jp,日本語 🇯🇵,symbolic_threat,Symbolic Threat,Cultural Cohesion(+) vs. Symbolic Threat(−),1241,-0.04541,0.02549,-0.04471,-0.06163,-0.02899,42
-jp,日本語 🇯🇵,realistic_threat,Realistic Threat,Safety(+) vs. Realistic Threat(−),1241,-0.01844,0.02257,-0.01784,-0.03288,-0.0042,25
-jp,日本語 🇯🇵,loyalty,Loyalty,Loyalty(+) vs. Betrayal(−),1241,0.02371,0.02422,0.02393,0.00812,0.03973,32
-jp,日本語 🇯🇵,authority,Authority,Authority(+) vs. Subversion(−),1241,0.03384,0.02464,0.03492,0.01677,0.05046,23
-jp,日本語 🇯🇵,harm,Harm,Care(+) vs. Harm(−),1241,0.06904,0.02488,0.07043,0.05361,0.08575,23
-jp,日本語 🇯🇵,sanctity,Sanctity,Sanctity(+) vs. Degradation(−),1241,0.077,0.02416,0.07813,0.0623,0.09286,25
-jp,日本語 🇯🇵,fairness,Fairness,Fairness(+) vs. Cheating(−),1241,0.08479,0.02253,0.08619,0.07227,0.09941,42
-zh,中文 🇨🇳,symbolic_threat,Symbolic Threat,Cultural Cohesion(+) vs. Symbolic Threat(−),1074,-0.04687,0.02557,-0.04688,-0.06458,-0.02979,39
-zh,中文 🇨🇳,realistic_threat,Realistic Threat,Safety(+) vs. Realistic Threat(−),1074,-0.01227,0.02071,-0.01154,-0.0255,0.00179,16
-zh,中文 🇨🇳,loyalty,Loyalty,Loyalty(+) vs. Betrayal(−),1074,0.10803,0.02327,0.10741,0.0913,0.1241,23
-zh,中文 🇨🇳,authority,Authority,Authority(+) vs. Subversion(−),1074,0.11731,0.02337,0.11731,0.10061,0.13254,23
-zh,中文 🇨🇳,sanctity,Sanctity,Sanctity(+) vs. Degradation(−),1074,0.16809,0.0223,0.16801,0.15385,0.18267,23
-zh,中文 🇨🇳,harm,Harm,Care(+) vs. Harm(−),1074,0.17654,0.02101,0.17731,0.1639,0.19087,23
-zh,中文 🇨🇳,fairness,Fairness,Fairness(+) vs. Cheating(−),1074,0.18169,0.01854,0.18197,0.17066,0.19443,23
+﻿lang,lang_label,axis,axis_label,axis_desc,n_docs,mean_bias,std_bias,se_bias,ci_low,ci_high,median_bias,q25_bias,q75_bias,relative_salience,axis_rank_within_lang,most_negative_topic
+en,English 🇬🇧,authority,Authority,Authority(+) vs. Subversion(−),1120,-0.08138,0.02647,0.00079,-0.08293,-0.07983,-0.08227,-0.09883,-0.06465,-0.03421,1,37
+en,English 🇬🇧,harm,Harm,Care(+) vs. Harm(−),1120,-0.07394,0.02345,0.0007,-0.07531,-0.07257,-0.07358,-0.08897,-0.05813,-0.02678,2,39
+en,English 🇬🇧,sanctity,Sanctity,Sanctity(+) vs. Degradation(−),1120,-0.06548,0.02685,0.0008,-0.06706,-0.06391,-0.06574,-0.08331,-0.04703,-0.01832,3,43
+en,English 🇬🇧,fairness,Fairness,Fairness(+) vs. Cheating(−),1120,-0.06288,0.02339,0.0007,-0.06425,-0.06151,-0.06222,-0.07835,-0.04727,-0.01572,4,43
+en,English 🇬🇧,loyalty,Loyalty,Loyalty(+) vs. Betrayal(−),1120,-0.0503,0.02794,0.00084,-0.05193,-0.04866,-0.05068,-0.06855,-0.03194,-0.00313,5,46
+en,English 🇬🇧,symbolic_threat,Symbolic Threat,Cultural Cohesion(+) vs. Symbolic Threat(−),1120,-0.01384,0.02945,0.00088,-0.01556,-0.01211,-0.01473,-0.03404,0.00428,0.03332,6,40
+en,English 🇬🇧,realistic_threat,Realistic Threat,Safety(+) vs. Realistic Threat(−),1120,0.01768,0.02423,0.00072,0.01626,0.0191,0.01669,0.00157,0.03366,0.06485,7,0
+jp,日本語 🇯🇵,symbolic_threat,Symbolic Threat,Cultural Cohesion(+) vs. Symbolic Threat(−),1241,-0.04541,0.02549,0.00072,-0.04683,-0.04399,-0.04471,-0.06163,-0.02899,-0.07748,1,42
+jp,日本語 🇯🇵,realistic_threat,Realistic Threat,Safety(+) vs. Realistic Threat(−),1241,-0.01844,0.02257,0.00064,-0.0197,-0.01718,-0.01784,-0.03288,-0.00419,-0.05052,2,25
+jp,日本語 🇯🇵,loyalty,Loyalty,Loyalty(+) vs. Betrayal(−),1241,0.02371,0.02422,0.00069,0.02236,0.02506,0.02393,0.00812,0.03973,-0.00837,3,32
+jp,日本語 🇯🇵,authority,Authority,Authority(+) vs. Subversion(−),1241,0.03384,0.02464,0.0007,0.03247,0.03521,0.03492,0.01677,0.05046,0.00176,4,23
+jp,日本語 🇯🇵,harm,Harm,Care(+) vs. Harm(−),1241,0.06904,0.02488,0.00071,0.06766,0.07043,0.07043,0.05361,0.08575,0.03697,5,23
+jp,日本語 🇯🇵,sanctity,Sanctity,Sanctity(+) vs. Degradation(−),1241,0.077,0.02416,0.00069,0.07566,0.07835,0.07813,0.0623,0.09286,0.04493,6,25
+jp,日本語 🇯🇵,fairness,Fairness,Fairness(+) vs. Cheating(−),1241,0.08479,0.02253,0.00064,0.08353,0.08604,0.08618,0.07227,0.09941,0.05271,7,42
+zh,中文 🇨🇳,symbolic_threat,Symbolic Threat,Cultural Cohesion(+) vs. Symbolic Threat(−),1074,-0.04687,0.02557,0.00078,-0.0484,-0.04534,-0.04688,-0.06458,-0.02979,-0.1458,1,39
+zh,中文 🇨🇳,realistic_threat,Realistic Threat,Safety(+) vs. Realistic Threat(−),1074,-0.01227,0.02071,0.00063,-0.01351,-0.01103,-0.01154,-0.0255,0.00179,-0.1112,2,16
+zh,中文 🇨🇳,loyalty,Loyalty,Loyalty(+) vs. Betrayal(−),1074,0.10803,0.02327,0.00071,0.10664,0.10943,0.10742,0.0913,0.1241,0.0091,3,23
+zh,中文 🇨🇳,authority,Authority,Authority(+) vs. Subversion(−),1074,0.11731,0.02337,0.00071,0.11591,0.1187,0.11731,0.10061,0.13254,0.01838,4,23
+zh,中文 🇨🇳,sanctity,Sanctity,Sanctity(+) vs. Degradation(−),1074,0.16809,0.0223,0.00068,0.16675,0.16942,0.16801,0.15385,0.18267,0.06915,5,23
+zh,中文 🇨🇳,harm,Harm,Care(+) vs. Harm(−),1074,0.17654,0.02101,0.00064,0.17528,0.1778,0.17731,0.1639,0.19087,0.07761,6,23
+zh,中文 🇨🇳,fairness,Fairness,Fairness(+) vs. Cheating(−),1074,0.18169,0.01854,0.00057,0.18058,0.1828,0.18197,0.17066,0.19443,0.08276,7,23

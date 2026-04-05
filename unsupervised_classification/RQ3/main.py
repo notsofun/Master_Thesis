@@ -57,10 +57,10 @@ RQ3 分析管线 — 词典轴道德动机投影 (FrameAxis)
   - 自动在脚本同级 logs/ 目录创建日志文件
 
 运行模式：
-  完整运行           python main.py
-  跳过轴构建         python main.py --from-bias             # 已有 bias_matrix.csv
-  只重跑可视化       python main.py --viz-only              # 已有 bias_matrix.csv
-  调试（小数据）     python main.py --max-docs 200
+  完整运行           python unsupervised_classification/RQ3/main.py
+  跳过轴构建         python unsupervised_classification/RQ3/main.py --from-bias             # 已有 bias_matrix.csv
+  只重跑可视化       python unsupervised_classification/RQ3/main.py --viz-only              # 已有 bias_matrix.csv
+  调试（小数据）     python unsupervised_classification/RQ3/main.py --max-docs 200
 
 作者: Zhidian  |  日期: 2026-04
 """
@@ -77,7 +77,6 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from dotenv import load_dotenv
-from scipy import stats as scipy_stats
 
 # ── 路径配置 ──────────────────────────────────────────────────────────────────
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -98,6 +97,7 @@ CKPT_AXIS   = DATA_DIR / "rq3_axis_vectors.npz"
 CKPT_BIAS   = DATA_DIR / "rq3_bias_matrix.csv"
 ANOVA_CSV   = DATA_DIR / "rq3_anova_results.csv"
 SUMMARY_CSV = DATA_DIR / "rq3_summary.csv"
+TOPIC_SUMMARY_CSV = DATA_DIR / "rq3_topic_summary.csv"
 
 # ── 日志：使用项目统一的 set_logger ──────────────────────────────────────────
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -191,6 +191,15 @@ TOPIC_LABELS: dict[int, str] = {
 
 LANG_LABEL = {"en": "English 🇬🇧", "zh": "中文 🇨🇳", "jp": "日本語 🇯🇵"}
 LANG_COLOR = {"en": "#4C78A8", "zh": "#F58518",  "jp": "#54A24B"}
+AXIS_COLOR = {
+    "harm": "#E45756",
+    "fairness": "#F58518",
+    "loyalty": "#72B7B2",
+    "authority": "#4C78A8",
+    "sanctity": "#54A24B",
+    "realistic_threat": "#B279A2",
+    "symbolic_threat": "#FF9DA6",
+}
 
 # 中日文字体注入（与 RQ2 完全一致）
 _FONT_CSS = """
@@ -441,6 +450,11 @@ def run_anova(bias_df: pd.DataFrame) -> pd.DataFrame:
       tukey_en_zh_p, tukey_en_jp_p, tukey_zh_jp_p
     """
     log.info("[STEP3] ANOVA 统计检验开始...")
+    try:
+        from scipy import stats as scipy_stats
+    except ImportError as e:
+        log.error("[STEP3] 需要 scipy 才能运行 ANOVA：pip install scipy")
+        raise ImportError("scipy is required for run_anova()") from e
 
     # 语言代码规范化
     bias_df = bias_df.copy()
@@ -534,209 +548,174 @@ def run_anova(bias_df: pd.DataFrame) -> pd.DataFrame:
 # Step 4: 聚合可视化
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def _build_topic_network(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
+def _safe_zscore(series: pd.Series) -> pd.Series:
+    """按组 z-score，避免标准差为 0 时产生 NaN。"""
+    std = float(series.std(ddof=0))
+    if std < 1e-12 or np.isnan(std):
+        return pd.Series(np.zeros(len(series)), index=series.index)
+    return (series - series.mean()) / std
+
+
+def _prepare_topic_language_profiles(bias_df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
-    图E: Topic 共现网络（交互式 Plotly）
+    生成两层数据：
+      1. 文档级 bias_df（附带各语言内部 z-score）
+      2. (lang, topic) 聚合后的 topic-language profile
 
-    节点设计：
-      - 每个 Topic 是一个节点
-      - 节点大小 = 该 Topic 文档总数
-      - 节点颜色 = 该 Topic 在"最显著轴"（ANOVA η² 最大轴）上的平均 Bias
-        （红色=攻击动机强，蓝色=偏正向）
-      - 节点内显示 Topic 英文短标签
-      - Hover 显示：Topic 标签、语言占比（en/zh/jp %）、各轴 Bias 均值
+    这里显式把“跨语言绝对均值”与“语言内部相对偏移”分开，
+    避免直接拿原始余弦值比较时，把 embedding 语言基线误读成社会学差异。
+    """
+    df = bias_df.copy()
+    df["lang"] = df["lang"].apply(normalize_lang).replace({"ja": "jp"})
 
-    边设计：
-      - 两个 Topic 的 Bias 向量余弦相似度 > 阈值 时连边
-      - 边粗细 = 相似度大小
-      - 布局用 Fruchterman-Reingold (networkx spring layout)
+    bias_cols = [f"bias_{k}" for k in AXIS_KEYS]
+    z_cols = []
+    for key in AXIS_KEYS:
+        col = f"bias_{key}"
+        z_col = f"z_{key}"
+        df[z_col] = df.groupby("lang")[col].transform(_safe_zscore)
+        z_cols.append(z_col)
 
-    另单独输出 rq3_E2_topic_lang_pie.html：
-      每个 Topic 的语言占比条形图（stacked bar，横轴=Topic，颜色=语言）
+    agg_spec = {"n_docs": ("topic", "size")}
+    for key in AXIS_KEYS:
+        agg_spec[f"bias_{key}"] = (f"bias_{key}", "mean")
+        agg_spec[f"z_{key}"] = (f"z_{key}", "mean")
+
+    topic_lang_df = (
+        df[df["topic"] >= 0]
+        .groupby(["lang", "topic"], as_index=False)
+        .agg(**agg_spec)
+    )
+    topic_lang_df["topic_label"] = topic_lang_df["topic"].map(TOPIC_LABELS).fillna(
+        topic_lang_df["topic"].map(lambda t: f"Topic {t}")
+    )
+    topic_lang_df["topic_short"] = topic_lang_df["topic_label"].map(
+        lambda s: s if len(s) <= 28 else s[:28] + "…"
+    )
+    topic_lang_df["row_label"] = topic_lang_df.apply(
+        lambda r: f"{r['lang'].upper()} · T{int(r['topic'])} · {r['topic_short']}",
+        axis=1,
+    )
+
+    z_matrix_cols = [f"z_{k}" for k in AXIS_KEYS]
+    topic_lang_df["dominant_negative_axis"] = (
+        topic_lang_df[z_matrix_cols].idxmin(axis=1).str.replace("z_", "", regex=False)
+    )
+    topic_lang_df["dominant_negative_z"] = topic_lang_df[z_matrix_cols].min(axis=1)
+    topic_lang_df["dominant_negative_axis_label"] = topic_lang_df["dominant_negative_axis"].map(
+        AXIS_LABEL_EN
+    )
+    topic_lang_df["dominant_negative_raw_bias"] = topic_lang_df.apply(
+        lambda r: r[f"bias_{r['dominant_negative_axis']}"], axis=1
+    )
+    return df, topic_lang_df
+
+
+def _compute_pca_projection(matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """用 SVD 计算二维 PCA 投影，不额外依赖 sklearn。"""
+    x = np.asarray(matrix, dtype=float)
+    x = x - x.mean(axis=0, keepdims=True)
+    if x.ndim != 2 or x.shape[0] == 0:
+        return np.zeros((0, 2)), np.zeros(2), np.zeros((x.shape[1] if x.ndim == 2 else 0, 2))
+    u, s, vt = np.linalg.svd(x, full_matrices=False)
+    comps = min(2, vt.shape[0])
+    scores = u[:, :comps] * s[:comps]
+    if comps < 2:
+        scores = np.pad(scores, ((0, 0), (0, 2 - comps)))
+    denom = max(x.shape[0] - 1, 1)
+    eigvals = (s ** 2) / denom
+    total = eigvals.sum() if eigvals.size else 1.0
+    explained = np.zeros(2)
+    explained[: min(2, eigvals.size)] = eigvals[:2] / total
+    loadings = vt[:2].T if vt.shape[0] >= 2 else np.pad(vt[:1].T, ((0, 0), (0, 1)))
+    return scores[:, :2], explained, loadings
+
+
+def _build_topic_exemplar_chart(topic_lang_df: pd.DataFrame):
+    """
+    图E: 每种语言中，哪些 topic 最明显地被某个“负向动机轴”主导。
+    用语言内部 z-score 的最小值做排序，更适合论文叙事。
     """
     import plotly.graph_objects as go
-    try:
-        import networkx as nx
-    except ImportError:
-        log.warning("[STEP4] networkx 未安装，跳过图E。pip install networkx")
+    from plotly.subplots import make_subplots
+
+    plot_df = topic_lang_df[topic_lang_df["n_docs"] >= 5].copy()
+    if plot_df.empty:
+        log.warning("[STEP4] 图E 跳过：topic-language 聚合结果为空")
         return
 
-    bias_df = bias_df.copy()
-    bias_df["lang"] = bias_df["lang"].apply(normalize_lang).replace({"ja": "jp"})
-    bias_cols = [f"bias_{k}" for k in AXIS_KEYS]
-
-    # ── 计算每个 topic 的节点属性 ────────────────────────────────────────────
-    topic_ids = sorted([t for t in bias_df["topic"].unique() if t >= 0])
-
-    # 各 topic 平均 Bias 向量（用于连边相似度 + 颜色）
-    topic_bias_mean = (
-        bias_df[bias_df["topic"] >= 0]
-        .groupby("topic")[bias_cols].mean()
+    fig_e = make_subplots(
+        rows=1, cols=3,
+        subplot_titles=[LANG_LABEL["en"], LANG_LABEL["zh"], LANG_LABEL["jp"]],
+        horizontal_spacing=0.06,
     )
 
-    # 选取"主轴"：ANOVA η² 最大的轴（若无 ANOVA 结果则用 sanctity）
-    main_axis = "sanctity"
-    if anova_df is not None and not anova_df.empty and "eta_squared" in anova_df.columns:
-        valid = anova_df.dropna(subset=["eta_squared"])
-        if not valid.empty:
-            main_axis = valid.loc[valid["eta_squared"].idxmax(), "axis"]
-    main_col = f"bias_{main_axis}"
-    log.info(f"[E] 网络图颜色轴（η²最大）: {main_axis}")
-
-    # 各 topic 文档总数
-    topic_counts = bias_df[bias_df["topic"] >= 0]["topic"].value_counts()
-
-    # 各 topic 语言占比
-    topic_lang = (
-        bias_df[bias_df["topic"] >= 0]
-        .groupby(["topic", "lang"]).size()
-        .reset_index(name="n")
-    )
-    topic_total = topic_lang.groupby("topic")["n"].transform("sum")
-    topic_lang["pct"] = (topic_lang["n"] / topic_total * 100).round(1)
-
-    # ── 构建网络图 ────────────────────────────────────────────────────────────
-    # 仅使用在 topic_bias_mean 中存在的 topic（有足够文档的话题）
-    valid_topics = [t for t in topic_ids if t in topic_bias_mean.index]
-
-    G = nx.Graph()
-    for t in valid_topics:
-        G.add_node(t)
-
-    # 计算两两 topic Bias 向量余弦相似度，超过阈值则连边
-    SIM_THRESHOLD = 0.85   # 相似度阈值（0.85 表示道德动机高度相似）
-    bias_matrix = topic_bias_mean.loc[valid_topics, bias_cols].values
-    # L2 归一化
-    norms = np.linalg.norm(bias_matrix, axis=1, keepdims=True)
-    bias_matrix_norm = bias_matrix / (norms + 1e-12)
-    sim_mat = bias_matrix_norm @ bias_matrix_norm.T   # (n_topics × n_topics)
-
-    edge_weights = []
-    for i, ti in enumerate(valid_topics):
-        for j, tj in enumerate(valid_topics):
-            if j <= i:
-                continue
-            sim = float(sim_mat[i, j])
-            if sim >= SIM_THRESHOLD:
-                G.add_edge(ti, tj, weight=sim)
-                edge_weights.append(sim)
-
-    log.info(f"[E] 网络: {G.number_of_nodes()} 节点, {G.number_of_edges()} 条边 (阈值={SIM_THRESHOLD})")
-
-    # 布局（spring layout）
-    pos = nx.spring_layout(G, seed=42, k=2.5 / max(len(valid_topics) ** 0.5, 1))
-
-    # ── 构建 Plotly 图形 ──────────────────────────────────────────────────────
-    # 边迹
-    edge_x, edge_y, edge_hover = [], [], []
-    for (u, v, d) in G.edges(data=True):
-        x0, y0 = pos[u]
-        x1, y1 = pos[v]
-        edge_x += [x0, x1, None]
-        edge_y += [y0, y1, None]
-        edge_hover.append(f"T{u}↔T{v}: sim={d['weight']:.3f}")
-
-    edge_trace = go.Scatter(
-        x=edge_x, y=edge_y,
-        mode="lines",
-        line=dict(width=0.8, color="#BBBBBB"),
-        hoverinfo="none",
-        showlegend=False,
-    )
-
-    # 节点迹
-    node_x, node_y, node_sizes, node_colors = [], [], [], []
-    node_texts, node_hovers = [], []
-
-    for t in valid_topics:
-        if t not in pos:
+    for col_idx, lang in enumerate(["en", "zh", "jp"], start=1):
+        sub = (
+            plot_df[plot_df["lang"] == lang]
+            .sort_values(["dominant_negative_z", "n_docs"], ascending=[True, False])
+            .head(10)
+            .sort_values("dominant_negative_z", ascending=False)
+        )
+        if sub.empty:
             continue
-        x, y = pos[t]
-        node_x.append(x)
-        node_y.append(y)
 
-        n_docs = int(topic_counts.get(t, 10))
-        # 节点大小：文档数映射到 [10, 45]
-        size = 10 + min(35, n_docs / max(topic_counts.max(), 1) * 35)
-        node_sizes.append(size)
+        colors = [AXIS_COLOR.get(a, "#999999") for a in sub["dominant_negative_axis"]]
+        hover = []
+        for _, row in sub.iterrows():
+            axis_bits = "<br>".join(
+                f"{AXIS_LABEL_EN[key]}: raw={row[f'bias_{key}']:+.3f}, z={row[f'z_{key}']:+.2f}"
+                for key in AXIS_KEYS
+            )
+            hover.append(
+                f"<b>{row['row_label']}</b><br>"
+                f"文档数: {int(row['n_docs'])}<br>"
+                f"主导负向动机: {row['dominant_negative_axis_label']}<br>"
+                f"相对强度 z: {row['dominant_negative_z']:+.2f}<br><br>"
+                f"{axis_bits}"
+            )
 
-        # 节点颜色：主轴 Bias（负=红，正=蓝）
-        bias_val = float(topic_bias_mean.loc[t, main_col]) if main_col in topic_bias_mean.columns else 0.0
-        node_colors.append(bias_val)
-
-        # 节点文本（短标签）
-        label = TOPIC_LABELS.get(t, f"T{t}")
-        short = label[:22] + "…" if len(label) > 22 else label
-        node_texts.append(f"T{t}")
-
-        # Hover 内容
-        lang_info = topic_lang[topic_lang["topic"] == t]
-        lang_str = " | ".join(
-            f"{LANG_LABEL.get(r['lang'], r['lang'])}: {r['pct']:.0f}%"
-            for _, r in lang_info.iterrows()
-        )
-        bias_str = " | ".join(
-            f"{AXIS_LABEL_EN.get(k, k)}: {topic_bias_mean.loc[t, f'bias_{k}']:+.3f}"
-            for k in AXIS_KEYS if f"bias_{k}" in topic_bias_mean.columns
-        )
-        node_hovers.append(
-            f"<b>T{t}: {label}</b><br>"
-            f"文档数: {n_docs}<br>"
-            f"语言占比: {lang_str}<br>"
-            f"道德偏移: {bias_str}"
-        )
-
-    node_trace = go.Scatter(
-        x=node_x, y=node_y,
-        mode="markers+text",
-        text=node_texts,
-        textposition="top center",
-        textfont=dict(size=8),
-        hovertext=node_hovers,
-        hoverinfo="text",
-        marker=dict(
-            size=node_sizes,
-            color=node_colors,
-            colorscale="RdBu",
-            cmin=-0.04,
-            cmax=0.04,
-            colorbar=dict(
-                title=f"{AXIS_LABEL_EN.get(main_axis, main_axis)} Bias<br>(主轴颜色)",
-                thickness=12,
-                len=0.6,
+        fig_e.add_trace(
+            go.Bar(
+                x=(-sub["dominant_negative_z"]).values,
+                y=sub["row_label"],
+                orientation="h",
+                marker_color=colors,
+                customdata=np.array(hover, dtype=object),
+                hovertemplate="%{customdata}<extra></extra>",
+                showlegend=False,
             ),
-            line=dict(width=1.2, color="white"),
-            showscale=True,
-        ),
-        showlegend=False,
-    )
+            row=1, col=col_idx,
+        )
+        fig_e.update_xaxes(title="Relative Attack Strength (-z)", row=1, col=col_idx)
+        fig_e.update_yaxes(automargin=True, row=1, col=col_idx)
 
-    fig_e = go.Figure(data=[edge_trace, node_trace])
     fig_e.update_layout(
         **_LAYOUT_BASE,
         title=dict(
             text=(
-                "Fig E: Topic Moral Motivation Network "
-                f"(cosine sim ≥ {SIM_THRESHOLD}, color={AXIS_LABEL_EN.get(main_axis,'?')} Bias)<br>"
-                "<sup>话题道德动机共现网络（节点大小=文档数，颜色=主轴偏移，连边=动机相似）</sup>"
+                "Fig E: Topic Exemplars by Dominant Negative Motive<br>"
+                "<sup>各语言中最典型的 topic-language 单元；长度越长表示其主导负向动机在本语言内部越突出</sup>"
             ),
             font=dict(size=13),
         ),
-        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-        height=780,
-        hovermode="closest",
+        height=620,
     )
     p = DATA_DIR / "rq3_E_topic_network.html"
     fig_e.write_html(str(p))
     inject_font(p)
     log.info(f"[STEP4] ✅ 图E: {p.name}")
 
-    # ── 图E2: Topic 语言占比堆叠条形图 ──────────────────────────────────────
-    all_topics_sorted = sorted(valid_topics)
+    # 图E2 保留：Topic 的语言构成占比
+    topic_lang = (
+        topic_lang_df.groupby(["topic", "lang"], as_index=False)["n_docs"].sum()
+    )
+    topic_lang["pct"] = (
+        topic_lang["n_docs"] / topic_lang.groupby("topic")["n_docs"].transform("sum") * 100
+    ).round(1)
+    all_topics_sorted = sorted(topic_lang["topic"].unique())
     lang_pct_pivot = (
-        topic_lang[topic_lang["topic"].isin(all_topics_sorted)]
-        .pivot(index="topic", columns="lang", values="pct")
+        topic_lang.pivot(index="topic", columns="lang", values="pct")
         .fillna(0)
         .reindex(all_topics_sorted)
     )
@@ -745,13 +724,9 @@ def _build_topic_network(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
     for lang in ["en", "zh", "jp"]:
         if lang not in lang_pct_pivot.columns:
             continue
-        x_labels = [
-            f"T{t}: {TOPIC_LABELS.get(t, '')[:18]}"
-            for t in lang_pct_pivot.index
-        ]
         fig_e2.add_trace(go.Bar(
             name=LANG_LABEL.get(lang, lang),
-            x=x_labels,
+            x=[f"T{t}: {TOPIC_LABELS.get(t, '')[:18]}" for t in lang_pct_pivot.index],
             y=lang_pct_pivot[lang].values,
             marker_color=LANG_COLOR[lang],
             hovertemplate=f"{LANG_LABEL.get(lang, lang)}<br>%{{x}}<br>占比: %{{y:.1f}}%<extra></extra>",
@@ -763,7 +738,7 @@ def _build_topic_network(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
         title=dict(
             text=(
                 "Fig E2: Language Composition per Topic (stacked %)<br>"
-                "<sup>各话题语言构成占比（按语言堆叠）</sup>"
+                "<sup>哪些话题是跨语言共享的，哪些更接近单语言主导</sup>"
             ),
             font=dict(size=13),
         ),
@@ -874,223 +849,354 @@ def _build_violin_plot(bias_df: pd.DataFrame, anova_df: pd.DataFrame | None):
 
 def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
     """
-    生成四张 Plotly 可视化图表：
-      图A: 47 Topic × 7 Axis Bias 热力图（各 Topic 的道德倾向全貌）
-      图B: 三语言 × 7 Axis 均值条形图（语言间道德动机对比，核心图）
-      图C: 语言雷达图（每种语言在7个轴上的 Bias 均值，直观展示动机剖面）
-      图D: 重要 Topic 的道德动机散点图（两轴散点，颜色=语言，展示语言聚集性）
+    新版图组把“绝对均值差异”和“语言内部 topic 结构”拆开表达：
+      图A: topic-language × axis 热力图（语言内部 z-score，主图）
+      图B: 语言层概览（上=raw mean±95%CI，下=语言内部相对显著性）
+      图C: 轴关系热图（overall + 分语言）
+      图D: topic-language 动机空间图（PCA biplot）
+      图E: 每种语言最典型的负向动机 topic
+      图E2: topic 语言构成
+      图F: raw bias 分布小提琴图
 
-    同时生成 rq3_summary.csv（论文附录）。
+    同时输出两个 CSV：
+      - rq3_summary.csv       语言×轴汇总（增强版）
+      - rq3_topic_summary.csv topic-language 级汇总（可直接写结果）
     """
     import plotly.graph_objects as go
-    import plotly.express as px
+    from plotly.subplots import make_subplots
 
     log.info(f"[STEP4] 开始生成可视化，共 {len(bias_df)} 条记录")
 
-    # 规范化语言列
-    bias_df = bias_df.copy()
-    bias_df["lang"] = bias_df["lang"].apply(normalize_lang).replace({"ja": "jp"})
+    bias_df, topic_lang_df = _prepare_topic_language_profiles(bias_df)
     log.info(f"[STEP4] 语言分布: {bias_df['lang'].value_counts().to_dict()}")
     log.info(f"[STEP4] Topic 数量: {bias_df['topic'].nunique()}")
 
     bias_cols = [f"bias_{k}" for k in AXIS_KEYS]
+    z_cols = [f"z_{k}" for k in AXIS_KEYS]
     bilingual_x = [axis_bilingual_label(k) for k in AXIS_KEYS]
 
-    # ── 图A: Topic × Axis Bias 热力图 ────────────────────────────────────────
-    log.info("[STEP4] 图A: Topic × Axis 热力图")
+    # ── 图A: topic-language × axis 热力图（语言内部 z-score） ─────────────────
+    log.info("[STEP4] 图A: topic-language × axis 热力图（z-score）")
 
-    # 取出现次数最多的 30 个 Topic（避免图太拥挤）
-    top_topics = bias_df["topic"].value_counts().head(30).index
-    topic_df = bias_df[bias_df["topic"].isin(top_topics)]
-
-    # 计算每个 Topic 在每个轴上的平均 Bias
-    topic_bias = (
-        topic_df.groupby("topic")[bias_cols].mean().round(4)
+    plot_topic_lang = topic_lang_df[topic_lang_df["n_docs"] >= 5].copy()
+    plot_topic_lang = plot_topic_lang.sort_values(
+        ["lang", "dominant_negative_axis", "dominant_negative_z", "n_docs"],
+        ascending=[True, True, True, False],
     )
-    topic_bias.index = [f"T{t}" for t in topic_bias.index]
+
+    heat_values = plot_topic_lang[z_cols].values
+    heat_text = np.vectorize(lambda v: f"{v:+.2f}")(heat_values)
+    customdata = np.dstack([
+        np.tile(plot_topic_lang["row_label"].values.reshape(-1, 1), (1, len(AXIS_KEYS))),
+        np.tile(plot_topic_lang["n_docs"].values.reshape(-1, 1), (1, len(AXIS_KEYS))),
+        np.array([[plot_topic_lang.iloc[i][f"bias_{k}"] for k in AXIS_KEYS] for i in range(len(plot_topic_lang))]),
+        np.array([[plot_topic_lang.iloc[i][f"z_{k}"] for k in AXIS_KEYS] for i in range(len(plot_topic_lang))]),
+    ])
 
     fig_a = go.Figure(go.Heatmap(
-        z=topic_bias.values,
+        z=heat_values,
         x=bilingual_x,
-        y=topic_bias.index.tolist(),
-        colorscale="RdBu",      # 红=负(攻击动机强), 蓝=正(正向语义)
+        y=plot_topic_lang["row_label"].tolist(),
+        colorscale="RdBu",
         zmid=0,
-        text=topic_bias.values.round(3),
+        zmin=-2.5,
+        zmax=2.5,
+        text=heat_text,
         texttemplate="%{text}",
-        colorbar=dict(title="Bias<br>(cos sim)"),
-        hovertemplate="Topic %{y}<br>轴: %{x}<br>Bias: %{z:.4f}<extra></extra>",
+        customdata=customdata,
+        colorbar=dict(title="Within-language<br>z-score"),
+        hovertemplate=(
+            "<b>%{customdata[0]}</b><br>"
+            "文档数: %{customdata[1]}<br>"
+            "轴: %{x}<br>"
+            "raw bias: %{customdata[2]:+.4f}<br>"
+            "within-lang z: %{customdata[3]:+.2f}<extra></extra>"
+        ),
     ))
     fig_a.update_layout(
         **_LAYOUT_BASE,
         title=dict(
             text=(
-                "Fig A: Moral Axis Bias per Topic (avg cosine similarity)<br>"
-                "<sup>各话题在七个道德轴上的平均语义偏移（红色=攻击性动机强）</sup>"
+                "Fig A: Topic-Language Moral Profile Heatmap (within-language z-score)<br>"
+                "<sup>主图：每一行是一个 topic-language 单元。红色表示该轴在该语言内部更偏负向、更能代表攻击性动机</sup>"
             ),
             font=dict(size=13),
         ),
         xaxis=dict(title="Moral Axis (道德维度)", tickangle=-15),
-        yaxis=dict(title="Topic"),
-        height=max(500, len(topic_bias) * 22),
+        yaxis=dict(title="Topic-Language Unit"),
+        height=max(700, len(plot_topic_lang) * 18),
     )
     p = DATA_DIR / "rq3_A_topic_axis_heatmap.html"
     fig_a.write_html(str(p))
     inject_font(p)
     log.info(f"[STEP4] ✅ 图A: {p.name}")
 
-    # ── 图B: 三语言 × 7 Axis 均值条形图（核心对比图） ─────────────────────
-    log.info("[STEP4] 图B: 语言 × 轴均值条形图")
+    # ── 图B: 语言概览（上=raw mean±CI, 下=相对显著性） ───────────────────────
+    log.info("[STEP4] 图B: 语言层概览")
 
-    lang_means = (
-        bias_df.groupby("lang")[bias_cols].mean().round(4)
+    lang_stats_rows = []
+    for lang in ["en", "zh", "jp"]:
+        lang_sub = bias_df[bias_df["lang"] == lang]
+        if lang_sub.empty:
+            continue
+        for key in AXIS_KEYS:
+            vals = lang_sub[f"bias_{key}"].dropna().values
+            n = len(vals)
+            mean = float(vals.mean())
+            se = float(vals.std(ddof=1) / np.sqrt(n)) if n > 1 else 0.0
+            ci = 1.96 * se
+            lang_stats_rows.append({
+                "lang": lang,
+                "axis": key,
+                "mean_bias": mean,
+                "se_bias": se,
+                "ci_low": mean - ci,
+                "ci_high": mean + ci,
+            })
+    lang_stats = pd.DataFrame(lang_stats_rows)
+    lang_stats["relative_salience"] = lang_stats.groupby("lang")["mean_bias"].transform(
+        lambda s: s - s.mean()
+    )
+    lang_means = lang_stats.pivot(index="lang", columns="axis", values="mean_bias").reindex(
+        index=["en", "zh", "jp"], columns=AXIS_KEYS
     )
 
-    fig_b = go.Figure()
+    fig_b = make_subplots(
+        rows=2, cols=1,
+        shared_xaxes=True,
+        vertical_spacing=0.12,
+        subplot_titles=[
+            "Raw mean bias with 95% CI",
+            "Relative salience within each language",
+        ],
+    )
     for lang in ["en", "zh", "jp"]:
-        if lang not in lang_means.index:
-            log.warning(f"[STEP4] 语言 {lang} 无数据，跳过图B中该语言")
+        sub = lang_stats[lang_stats["lang"] == lang]
+        if sub.empty:
             continue
-        means = lang_means.loc[lang].values
-        fig_b.add_trace(go.Bar(
-            name=LANG_LABEL.get(lang, lang),
-            x=bilingual_x,
-            y=means,
-            marker_color=LANG_COLOR[lang],
-            hovertemplate=(
-                f"{LANG_LABEL.get(lang, lang)}<br>"
-                "轴: %{x}<br>Bias均值: %{y:.4f}<extra></extra>"
+        sub = sub.set_index("axis").reindex(AXIS_KEYS).reset_index()
+        error_plus = sub["ci_high"] - sub["mean_bias"]
+        error_minus = sub["mean_bias"] - sub["ci_low"]
+        fig_b.add_trace(
+            go.Scatter(
+                x=bilingual_x,
+                y=sub["mean_bias"],
+                mode="lines+markers",
+                name=LANG_LABEL.get(lang, lang),
+                line=dict(color=LANG_COLOR[lang], width=2),
+                marker=dict(size=8),
+                error_y=dict(
+                    type="data",
+                    symmetric=False,
+                    array=error_plus,
+                    arrayminus=error_minus,
+                    thickness=1.2,
+                    width=3,
+                ),
+                hovertemplate=(
+                    f"{LANG_LABEL.get(lang, lang)}<br>"
+                    "轴: %{x}<br>"
+                    "均值: %{y:+.4f}<extra></extra>"
+                ),
+                legendgroup=lang,
             ),
-        ))
+            row=1, col=1,
+        )
+        fig_b.add_trace(
+            go.Scatter(
+                x=bilingual_x,
+                y=sub["relative_salience"],
+                mode="lines+markers",
+                name=LANG_LABEL.get(lang, lang),
+                line=dict(color=LANG_COLOR[lang], width=2, dash="dot"),
+                marker=dict(size=8),
+                hovertemplate=(
+                    f"{LANG_LABEL.get(lang, lang)}<br>"
+                    "轴: %{x}<br>"
+                    "相对显著性: %{y:+.4f}<extra></extra>"
+                ),
+                legendgroup=lang,
+                showlegend=False,
+            ),
+            row=2, col=1,
+        )
 
-    # 添加 y=0 参考线
-    fig_b.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.6)
-
-    # 在图上标注 ANOVA 显著性标记
+    fig_b.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.5, row=1, col=1)
+    fig_b.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.5, row=2, col=1)
     if anova_df is not None and not anova_df.empty:
         for i, key in enumerate(AXIS_KEYS):
             row = anova_df[anova_df["axis"] == key]
-            if not row.empty:
-                sig = row.iloc[0]["significant"]
-                if sig != "ns":
-                    fig_b.add_annotation(
-                        x=bilingual_x[i],
-                        y=lang_means[f"bias_{key}"].max() + 0.005,
-                        text=sig,
-                        showarrow=False,
-                        font=dict(size=12, color="red"),
-                    )
+            if not row.empty and row.iloc[0]["significant"] != "ns":
+                fig_b.add_annotation(
+                    x=bilingual_x[i],
+                    y=float(lang_stats[lang_stats["axis"] == key]["ci_high"].max()) + 0.01,
+                    text=row.iloc[0]["significant"],
+                    showarrow=False,
+                    font=dict(size=12, color="red"),
+                    row=1, col=1,
+                )
 
     fig_b.update_layout(
         **_LAYOUT_BASE,
-        barmode="group",
         title=dict(
             text=(
-                "Fig B: Moral Motivation Bias by Language "
-                "(avg cosine similarity to axis)<br>"
-                "<sup>三语言在七个道德动机轴上的平均偏移对比（* p<0.05, ** p<0.01, *** p<0.001）</sup>"
+                "Fig B: Language-Level Overview of Moral Motivation<br>"
+                "<sup>上图保留 raw bias；下图去掉语言整体基线后，展示每种语言内部哪些轴更突出</sup>"
             ),
             font=dict(size=13),
         ),
-        xaxis=dict(title="Moral Axis (道德维度)", tickangle=-15),
-        yaxis=dict(title="Avg Bias (平均余弦相似度)"),
-        legend=dict(title="Language"),
-        height=560,
+        xaxis2=dict(title="Moral Axis (道德维度)", tickangle=-15),
+        yaxis=dict(title="Raw mean bias"),
+        yaxis2=dict(title="Relative salience"),
+        legend=dict(title="Language", orientation="h", y=1.08),
+        height=760,
     )
     p = DATA_DIR / "rq3_B_lang_axis_bar.html"
     fig_b.write_html(str(p))
     inject_font(p)
     log.info(f"[STEP4] ✅ 图B: {p.name}")
 
-    # ── 图C: 语言雷达图（道德动机剖面） ──────────────────────────────────
-    log.info("[STEP4] 图C: 语言雷达图")
+    # ── 图C: 轴之间的联系（相关矩阵） ────────────────────────────────────────
+    log.info("[STEP4] 图C: 轴关系热图")
 
-    # 雷达图需要封闭（首尾相同）
-    theta_labels = [AXIS_LABEL_EN.get(k, k) for k in AXIS_KEYS]
-    theta_labels_closed = theta_labels + [theta_labels[0]]
-
-    fig_c = go.Figure()
-    for lang in ["en", "zh", "jp"]:
-        if lang not in lang_means.index:
-            continue
-        r_vals = lang_means.loc[lang].values.tolist()
-        r_vals_closed = r_vals + [r_vals[0]]
-        fig_c.add_trace(go.Scatterpolar(
-            r=r_vals_closed,
-            theta=theta_labels_closed,
-            fill="toself",
-            name=LANG_LABEL.get(lang, lang),
-            line=dict(color=LANG_COLOR[lang], width=2),
-            opacity=0.7,
-            hovertemplate="%{theta}: %{r:.4f}<extra></extra>",
-        ))
-
+    corr_targets = [("all", "All topic-language units"), ("en", LANG_LABEL["en"]), ("zh", LANG_LABEL["zh"]), ("jp", LANG_LABEL["jp"])]
+    fig_c = make_subplots(
+        rows=2, cols=2,
+        subplot_titles=[label for _, label in corr_targets],
+        horizontal_spacing=0.08,
+        vertical_spacing=0.14,
+    )
+    axis_short = [AXIS_LABEL_EN[k] for k in AXIS_KEYS]
+    for idx, (lang_key, label) in enumerate(corr_targets):
+        row_idx = idx // 2 + 1
+        col_idx = idx % 2 + 1
+        sub = topic_lang_df if lang_key == "all" else topic_lang_df[topic_lang_df["lang"] == lang_key]
+        corr = sub[z_cols].corr().fillna(0)
+        heatmap_kwargs = dict(
+            z=corr.values,
+            x=axis_short,
+            y=axis_short,
+            zmin=-1,
+            zmax=1,
+            zmid=0,
+            colorscale="RdBu",
+            text=np.vectorize(lambda v: f"{v:+.2f}")(corr.values),
+            texttemplate="%{text}",
+            hovertemplate="X: %{x}<br>Y: %{y}<br>r=%{z:+.2f}<extra></extra>",
+            showscale=(idx == 0),
+        )
+        if idx == 0:
+            heatmap_kwargs["colorbar"] = dict(title="corr")
+        fig_c.add_trace(
+            go.Heatmap(**heatmap_kwargs),
+            row=row_idx, col=col_idx,
+        )
     fig_c.update_layout(
         **_LAYOUT_BASE,
-        polar=dict(
-            radialaxis=dict(visible=True, range=[-0.05, 0.05]),
-        ),
         title=dict(
             text=(
-                "Fig C: Moral Motivation Profile by Language (Radar)<br>"
-                "<sup>三语言道德动机剖面雷达图（中心=0, 外侧=正极, 内侧=攻击动机强）</sup>"
+                "Fig C: Relations Among Moral Axes<br>"
+                "<sup>基于 topic-language 的语言内标准化 profile；能直接看出哪些轴在各语言里总是一起出现</sup>"
             ),
             font=dict(size=13),
         ),
-        legend=dict(title="Language"),
-        height=600,
+        height=820,
     )
     p = DATA_DIR / "rq3_C_lang_radar.html"
     fig_c.write_html(str(p))
     inject_font(p)
     log.info(f"[STEP4] ✅ 图C: {p.name}")
 
-    # ── 图D: Sanctity vs. Loyalty 散点图（展示两个最具区分性的轴） ─────────
-    log.info("[STEP4] 图D: 关键轴散点图")
+    # ── 图D: topic-language 动机空间（PCA biplot） ───────────────────────────
+    log.info("[STEP4] 图D: topic-language 动机空间图")
 
-    # 取两个最有区分性的轴：sanctity（圣洁/堕落）和 loyalty（忠诚/背叛）
-    # 这两轴在 Notion 设计方案中被特别强调
-    x_axis_key = "sanctity"
-    y_axis_key = "loyalty"
-
-    # 每个 (topic, lang) 的平均 Bias
-    scatter_df = (
-        bias_df.groupby(["topic", "lang"])[
-            [f"bias_{x_axis_key}", f"bias_{y_axis_key}"]
-        ].mean().reset_index().round(4)
+    scatter_df = topic_lang_df[topic_lang_df["n_docs"] >= 5].copy()
+    scores, explained, loadings = _compute_pca_projection(scatter_df[z_cols].values)
+    scatter_df["pc1"] = scores[:, 0]
+    scatter_df["pc2"] = scores[:, 1]
+    scatter_df["label_text"] = ""
+    label_candidates = scatter_df.assign(
+        extremeness=scatter_df["pc1"].abs() + scatter_df["pc2"].abs()
+    ).sort_values(["extremeness", "n_docs"], ascending=False).head(18).index
+    scatter_df.loc[label_candidates, "label_text"] = scatter_df.loc[label_candidates].apply(
+        lambda r: f"{r['lang'].upper()}-T{int(r['topic'])}", axis=1
     )
-    scatter_df["lang_label"] = scatter_df["lang"].map(LANG_LABEL)
-    scatter_df["topic_label"] = scatter_df["topic"].apply(lambda t: f"T{t}")
 
-    fig_d = px.scatter(
-        scatter_df,
-        x=f"bias_{x_axis_key}",
-        y=f"bias_{y_axis_key}",
-        color="lang",
-        color_discrete_map=LANG_COLOR,
-        hover_data=["topic_label", "lang_label"],
-        text="topic_label",
-        labels={
-            f"bias_{x_axis_key}": f"{AXIS_LABEL_EN[x_axis_key]} Bias ({AXIS_LABEL_DESC[x_axis_key]})",
-            f"bias_{y_axis_key}": f"{AXIS_LABEL_EN[y_axis_key]} Bias ({AXIS_LABEL_DESC[y_axis_key]})",
-        },
-        title=(
-            f"Fig D: Topic Clusters on Sanctity vs. Loyalty Axes<br>"
-            f"<sup>各话题在「{AXIS_LABEL_ZH[x_axis_key]}」与「{AXIS_LABEL_ZH[y_axis_key]}」上的分布（颜色=语言）</sup>"
+    fig_d = go.Figure()
+    for lang in ["en", "zh", "jp"]:
+        sub = scatter_df[scatter_df["lang"] == lang]
+        if sub.empty:
+            continue
+        hover = []
+        for _, row in sub.iterrows():
+            axis_bits = "<br>".join(
+                f"{AXIS_LABEL_EN[key]}: z={row[f'z_{key}']:+.2f}, raw={row[f'bias_{key}']:+.3f}"
+                for key in AXIS_KEYS
+            )
+            hover.append(
+                f"<b>{row['row_label']}</b><br>"
+                f"文档数: {int(row['n_docs'])}<br>"
+                f"主导负向动机: {row['dominant_negative_axis_label']}<br><br>"
+                f"{axis_bits}"
+            )
+        fig_d.add_trace(go.Scatter(
+            x=sub["pc1"],
+            y=sub["pc2"],
+            mode="markers+text",
+            text=sub["label_text"],
+            textposition="top center",
+            textfont=dict(size=9),
+            name=LANG_LABEL.get(lang, lang),
+            marker=dict(
+                size=8 + (sub["n_docs"] / sub["n_docs"].max() * 16),
+                color=LANG_COLOR[lang],
+                opacity=0.75,
+                line=dict(width=0.8, color="white"),
+            ),
+            customdata=np.array(hover, dtype=object),
+            hovertemplate="%{customdata}<extra></extra>",
+        ))
+
+    arrow_scale = max(scatter_df["pc1"].abs().max(), scatter_df["pc2"].abs().max(), 1.0) * 0.55
+    for idx, key in enumerate(AXIS_KEYS):
+        end_x = loadings[idx, 0] * arrow_scale
+        end_y = loadings[idx, 1] * arrow_scale
+        fig_d.add_trace(go.Scatter(
+            x=[0, end_x],
+            y=[0, end_y],
+            mode="lines+text",
+            text=["", AXIS_LABEL_EN[key]],
+            textposition="top center",
+            line=dict(color=AXIS_COLOR.get(key, "#666666"), width=2),
+            hovertemplate=f"{AXIS_LABEL_EN[key]} loading<extra></extra>",
+            showlegend=False,
+        ))
+
+    fig_d.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.4)
+    fig_d.add_vline(x=0, line_dash="dash", line_color="gray", opacity=0.4)
+    fig_d.update_layout(
+        **_LAYOUT_BASE,
+        title=dict(
+            text=(
+                "Fig D: Topic-Language Moral Profile Map (PCA biplot)<br>"
+                f"<sup>点=topic-language 单元；箭头=7个动机轴。PC1 解释 {explained[0]*100:.1f}% 方差，PC2 解释 {explained[1]*100:.1f}%</sup>"
+            ),
+            font=dict(size=13),
         ),
+        xaxis=dict(title="PC1"),
+        yaxis=dict(title="PC2"),
+        legend=dict(title="Language"),
+        height=720,
     )
-    fig_d.add_vline(x=0, line_dash="dash", line_color="gray", opacity=0.5)
-    fig_d.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.5)
-    fig_d.update_traces(textposition="top center", textfont_size=8)
-    fig_d.update_layout(**_LAYOUT_BASE, height=650, legend=dict(title="Language"))
 
     p = DATA_DIR / "rq3_D_topic_lang_scatter.html"
     fig_d.write_html(str(p))
     inject_font(p)
     log.info(f"[STEP4] ✅ 图D: {p.name}")
 
-    # ── 图E: Topic 共现网络（道德动机 × 语言占比节点图） ─────────────────────
-    log.info("[STEP4] 图E: Topic 共现网络")
-    _build_topic_network(bias_df, anova_df)
+    # ── 图E / E2: 最典型 topic + topic 语言构成 ──────────────────────────────
+    log.info("[STEP4] 图E: topic 典型单元")
+    _build_topic_exemplar_chart(topic_lang_df)
 
     # ── 图F: 语言 × 轴 Bias 分布小提琴图 ─────────────────────────────────
     log.info("[STEP4] 图F: 语言×轴 Bias 分布小提琴图")
@@ -1102,11 +1208,24 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         lang_sub = bias_df[bias_df["lang"] == lang]
         if lang_sub.empty:
             continue
+        lang_axis_means = {
+            key: float(lang_sub[f"bias_{key}"].mean()) for key in AXIS_KEYS
+        }
+        lang_grand_mean = float(np.mean(list(lang_axis_means.values())))
+        rank_map = {
+            axis: rank + 1
+            for rank, axis in enumerate(
+                sorted(AXIS_KEYS, key=lambda ax: lang_axis_means[ax] - lang_grand_mean)
+            )
+        }
         for key in AXIS_KEYS:
             col = f"bias_{key}"
             if col not in lang_sub.columns:
                 continue
             vals = lang_sub[col].dropna().values
+            n = len(vals)
+            se = float(vals.std(ddof=1) / np.sqrt(n)) if n > 1 else 0.0
+            ci = 1.96 * se
             # 找出每个 topic 内 Bias 最负的（攻击动机最强的）
             topic_means = lang_sub.groupby("topic")[col].mean()
             most_negative_topic = topic_means.idxmin() if not topic_means.empty else -1
@@ -1119,15 +1238,31 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
                 "n_docs":       int(len(vals)),
                 "mean_bias":    round(float(vals.mean()), 5),
                 "std_bias":     round(float(vals.std()),  5),
+                "se_bias":      round(se, 5),
+                "ci_low":       round(float(vals.mean() - ci), 5),
+                "ci_high":      round(float(vals.mean() + ci), 5),
                 "median_bias":  round(float(np.median(vals)), 5),
                 "q25_bias":     round(float(np.percentile(vals, 25)), 5),
                 "q75_bias":     round(float(np.percentile(vals, 75)), 5),
+                "relative_salience": round(lang_axis_means[key] - lang_grand_mean, 5),
+                "axis_rank_within_lang": rank_map[key],
                 "most_negative_topic": most_negative_topic,
             })
     summary_df = pd.DataFrame(summary_rows)
-    summary_df = summary_df.sort_values(["lang", "mean_bias"])
+    summary_df = summary_df.sort_values(["lang", "axis_rank_within_lang", "mean_bias"])
     summary_df.to_csv(SUMMARY_CSV, index=False, encoding="utf-8-sig")
     log.info(f"[STEP4] ✅ 汇总CSV: {SUMMARY_CSV}")
+
+    topic_summary_df = topic_lang_df.merge(
+        scatter_df[["lang", "topic", "pc1", "pc2"]],
+        on=["lang", "topic"],
+        how="left",
+    )
+    topic_summary_df = topic_summary_df.sort_values(
+        ["lang", "dominant_negative_z", "n_docs"], ascending=[True, True, False]
+    )
+    topic_summary_df.to_csv(TOPIC_SUMMARY_CSV, index=False, encoding="utf-8-sig")
+    log.info(f"[STEP4] ✅ Topic汇总CSV: {TOPIC_SUMMARY_CSV}")
 
     # ── 终端摘要 ──────────────────────────────────────────────────────────
     print("\n" + "=" * 70)
@@ -1140,11 +1275,20 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         label = LANG_LABEL.get(lang, lang)
         print(f"\n  {label}:")
         for key in AXIS_KEYS:
-            col = f"bias_{key}"
-            mean_val = lang_means.loc[lang, col]
+            mean_val = lang_means.loc[lang, key]
             bar = "▓" * int(abs(mean_val) * 500)
             direction = "←攻击" if mean_val < 0 else "→正向"
             print(f"    {AXIS_LABEL_EN[key]:20s}: {mean_val:+.4f} {direction} {bar}")
+        lang_topics = topic_lang_df[topic_lang_df["lang"] == lang].sort_values(
+            "dominant_negative_z"
+        ).head(3)
+        print("    典型 topic:")
+        for _, row in lang_topics.iterrows():
+            print(
+                f"      T{int(row['topic']):<2d} "
+                f"{row['dominant_negative_axis_label']:<18s} "
+                f"z={row['dominant_negative_z']:+.2f} | {row['topic_short']}"
+            )
     if anova_df is not None and not anova_df.empty:
         print("\n▶ ANOVA 显著性检验：")
         for _, row in anova_df.iterrows():

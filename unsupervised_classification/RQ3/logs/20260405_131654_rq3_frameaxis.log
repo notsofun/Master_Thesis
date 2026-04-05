@@ -1,0 +1,2 @@
+2026-04-05 13:16:54,802 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ3/logs/20260405_131654_rq3_frameaxis.log
+2026-04-05 13:16:54,843 - INFO - [STEP2] ✅ 从 checkpoint 加载 Bias 矩阵: 3435 行

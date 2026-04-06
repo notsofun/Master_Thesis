@@ -1,0 +1,24 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+\begin{document}
+
+\chapter{BerTopic: Analysis of Foundations}%
+\label{chap:bertopic}
+
+Copy and adapt the file \verb!chapters/sample_chapter.tex! to add additional chapters, e.g., for Related Work, Datasets, Methods, etc.
+
+The additional chapter files need to be included with the \verb!\subfile{}! command in the CLthesis.tex file.
+
+% self-defined macro: include bibliography even when compiling a single chapter
+\subfilebibliography
+\end{document}

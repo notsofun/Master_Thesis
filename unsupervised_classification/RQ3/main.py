@@ -669,9 +669,9 @@ def _build_topic_exemplar_chart(topic_lang_df: pd.DataFrame):
             )
             hover.append(
                 f"<b>{row['row_label']}</b><br>"
-                f"文档数: {int(row['n_docs'])}<br>"
-                f"主导负向动机: {row['dominant_negative_axis_label']}<br>"
-                f"相对强度 z: {row['dominant_negative_z']:+.2f}<br><br>"
+                f"Documents: {int(row['n_docs'])}<br>"
+                f"Dominant negative motive: {row['dominant_negative_axis_label']}<br>"
+                f"Relative strength z: {row['dominant_negative_z']:+.2f}<br><br>"
                 f"{axis_bits}"
             )
 
@@ -687,7 +687,7 @@ def _build_topic_exemplar_chart(topic_lang_df: pd.DataFrame):
             ),
             row=1, col=col_idx,
         )
-        fig_e.update_xaxes(title="Relative Attack Strength (-z)", row=1, col=col_idx)
+        fig_e.update_xaxes(title="Relative Attack Strength", row=1, col=col_idx)
         fig_e.update_yaxes(automargin=True, row=1, col=col_idx)
 
     fig_e.update_layout(
@@ -695,7 +695,7 @@ def _build_topic_exemplar_chart(topic_lang_df: pd.DataFrame):
         title=dict(
             text=(
                 "Fig E: Topic Exemplars by Dominant Negative Motive<br>"
-                "<sup>各语言中最典型的 topic-language 单元；长度越长表示其主导负向动机在本语言内部越突出</sup>"
+                "<sup>Most typical topic-language units for each language; length indicates relative strength within language</sup>"
             ),
             font=dict(size=13),
         ),
@@ -738,12 +738,12 @@ def _build_topic_exemplar_chart(topic_lang_df: pd.DataFrame):
         title=dict(
             text=(
                 "Fig E2: Language Composition per Topic (stacked %)<br>"
-                "<sup>哪些话题是跨语言共享的，哪些更接近单语言主导</sup>"
+                "<sup>Which topics are shared across languages, which dominated by single language</sup>"
             ),
             font=dict(size=13),
         ),
         xaxis=dict(title="Topic", tickangle=-45, tickfont=dict(size=9)),
-        yaxis=dict(title="语言占比 (%)"),
+        yaxis=dict(title="Language Distribution (%)"),
         legend=dict(title="Language"),
         height=500,
     )
@@ -991,7 +991,7 @@ def _build_topic_level_analysis(bias_df: pd.DataFrame):
         title=dict(
             text=(
                 "Fig H1: Topic-Axis Mean Bias Heatmap<br>"
-                "<sup>不同话题的道德关注点重排序；只显示文档数≥10的话题；按总体负向程度从上到下排序</sup>"
+                "<sup>Moral concerns vary by topic; only showing topics with ≥10 documents; sorted by overall negativity</sup>"
             ),
             font=dict(size=12),
         ),
@@ -1220,8 +1220,8 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         colorbar=dict(title="Within-language<br>z-score"),
         hovertemplate=(
             "<b>%{customdata[0]}</b><br>"
-            "文档数: %{customdata[1]}<br>"
-            "轴: %{x}<br>"
+            "Documents: %{customdata[1]}<br>"
+            "Axis: %{x}<br>"
             "raw bias: %{customdata[2]:+.4f}<br>"
             "within-lang z: %{customdata[3]:+.2f}<extra></extra>"
         ),
@@ -1231,11 +1231,11 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         title=dict(
             text=(
                 "Fig A: Topic-Language Moral Profile Heatmap (within-language z-score)<br>"
-                "<sup>主图：每一行是一个 topic-language 单元。红色表示该轴在该语言内部更偏负向、更能代表攻击性动机</sup>"
+                "<sup>Main heatmap: each row is a topic-language unit. Red indicates axis leans negative within language and represents attack motivation</sup>"
             ),
             font=dict(size=13),
         ),
-        xaxis=dict(title="Moral Axis (道德维度)", tickangle=-15),
+        xaxis=dict(title="Moral Axis", tickangle=-15),
         yaxis=dict(title="Topic-Language Unit"),
         height=max(700, len(plot_topic_lang) * 18),
     )
@@ -1308,8 +1308,8 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
                 ),
                 hovertemplate=(
                     f"{LANG_LABEL.get(lang, lang)}<br>"
-                    "轴: %{x}<br>"
-                    "均值: %{y:+.4f}<extra></extra>"
+                    "Axis: %{x}<br>"
+                    "Mean: %{y:+.4f}<extra></extra>"
                 ),
                 legendgroup=lang,
             ),
@@ -1325,8 +1325,8 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
                 marker=dict(size=8),
                 hovertemplate=(
                     f"{LANG_LABEL.get(lang, lang)}<br>"
-                    "轴: %{x}<br>"
-                    "相对显著性: %{y:+.4f}<extra></extra>"
+                    "Axis: %{x}<br>"
+                    "Relative Salience: %{y:+.4f}<extra></extra>"
                 ),
                 legendgroup=lang,
                 showlegend=False,
@@ -1354,11 +1354,11 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         title=dict(
             text=(
                 "Fig B: Language-Level Overview of Moral Motivation<br>"
-                "<sup>上图保留 raw bias；下图去掉语言整体基线后，展示每种语言内部哪些轴更突出</sup>"
+                "<sup>Top: raw bias values; Bottom: after removing language baseline, showing which axes are more prominent within each language</sup>"
             ),
             font=dict(size=13),
         ),
-        xaxis2=dict(title="Moral Axis (道德维度)", tickangle=-15),
+        xaxis2=dict(title="Moral Axis", tickangle=-15),
         yaxis=dict(title="Raw mean bias"),
         yaxis2=dict(title="Relative salience"),
         legend=dict(title="Language", orientation="h", y=1.08),
@@ -1409,7 +1409,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         title=dict(
             text=(
                 "Fig C: Relations Among Moral Axes<br>"
-                "<sup>基于 topic-language 的语言内标准化 profile；能直接看出哪些轴在各语言里总是一起出现</sup>"
+                "<sup>Based on within-language standardized profile; shows which axes tend to appear together in each language</sup>"
             ),
             font=dict(size=13),
         ),
@@ -1448,8 +1448,8 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
             )
             hover.append(
                 f"<b>{row['row_label']}</b><br>"
-                f"文档数: {int(row['n_docs'])}<br>"
-                f"主导负向动机: {row['dominant_negative_axis_label']}<br><br>"
+                f"Documents: {int(row['n_docs'])}<br>"
+                f"Dominant Negative Motive: {row['dominant_negative_axis_label']}<br><br>"
                 f"{axis_bits}"
             )
         fig_d.add_trace(go.Scatter(
@@ -1492,7 +1492,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         title=dict(
             text=(
                 "Fig D: Topic-Language Moral Profile Map (PCA biplot)<br>"
-                f"<sup>点=topic-language 单元；箭头=7个动机轴。PC1 解释 {explained[0]*100:.1f}% 方差，PC2 解释 {explained[1]*100:.1f}%</sup>"
+                f"<sup>Points=topic-language units; Arrows=7 moral axes. PC1 explains {explained[0]*100:.1f}% of variance, PC2 explains {explained[1]*100:.1f}%</sup>"
             ),
             font=dict(size=13),
         ),
@@ -1572,7 +1572,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
     summary_df = pd.DataFrame(summary_rows)
     summary_df = summary_df.sort_values(["lang", "axis_rank_within_lang", "mean_bias"])
     summary_df.to_csv(SUMMARY_CSV, index=False, encoding="utf-8-sig")
-    log.info(f"[STEP4] ✅ 汇总CSV: {SUMMARY_CSV}")
+    log.info(f"[STEP4] ✅ Summary CSV: {SUMMARY_CSV}")
 
     topic_summary_df = topic_lang_df.merge(
         scatter_df[["lang", "topic", "pc1", "pc2"]],
@@ -1583,7 +1583,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         ["lang", "dominant_negative_z", "n_docs"], ascending=[True, True, False]
     )
     topic_summary_df.to_csv(TOPIC_SUMMARY_CSV, index=False, encoding="utf-8-sig")
-    log.info(f"[STEP4] ✅ Topic汇总CSV: {TOPIC_SUMMARY_CSV}")
+    log.info(f"[STEP4] ✅ Topic Summary CSV: {TOPIC_SUMMARY_CSV}")
 
     # ── 终端摘要 ──────────────────────────────────────────────────────────
     print("\n" + "=" * 70)
@@ -1598,7 +1598,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         for key in AXIS_KEYS:
             mean_val = lang_means.loc[lang, key]
             bar = "▓" * int(abs(mean_val) * 500)
-            direction = "←攻击" if mean_val < 0 else "→正向"
+            direction = "← Attack" if mean_val < 0 else "→ Normative"
             print(f"    {AXIS_LABEL_EN[key]:20s}: {mean_val:+.4f} {direction} {bar}")
         lang_topics = topic_lang_df[topic_lang_df["lang"] == lang].sort_values(
             "dominant_negative_z"

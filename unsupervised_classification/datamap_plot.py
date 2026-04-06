@@ -44,62 +44,83 @@ def fast_plot_only(model_path, csv_path, embeddings_path, output_path):
     texts = clean_df['text'].tolist()
     topics = clean_df['topic'].astype(int).tolist()
 
-# 2. 加载已经命名好的模型
+    # 2. 加载已经命名好的模型
     topic_model = BERTopic.load(model_path, embedding_model=None)
 
     # ==================== 新增：应用英文标签 ====================
+    # 不在图中展示，到时候直接做个表放在论文正文
     english_topic_labels = {
-    -1: "Inclusion and Reform Challenges in the Church",
-    0: "Separation of Church & State and Corruption in Japan",
-    1: "Christians and Trump's Politics",
-    2: "Women and Ordination",
-    3: "LGBTQ Issues and Youth Alienation",
-    4: "Religion, Sexuality, and Violence",
-    5: "Catholic-Lutheran Communion Disputes",
-    6: "Church Abuse Victims and Support Mechanisms",
-    7: "Religion and Natural Disasters",
-    8: "Pro-Life and Women's Autonomy",
-    9: "Divine-Human Nature and Teachings of Jesus",
-    10: "Conflicts and Reflections on the Bible",
-    11: "2017 Pakistan Religious Violence & Media Bias",
-    12: "Communion for the Divorced and Remarried",
-    13: "Religion in Public vs. Catholic Schools",
-    14: "Public Prayer and Religious Freedom",
-    15: "Authenticity and Faith in Catholicism",
-    16: "Canadian Immigration and Cultural Disputes",
-    17: "Pagan-Christian Conflicts in Online Debates",
-    18: "Internal Discussions in Catholicism",
-    19: "Doctrines of Religion and Salvation",
-    20: "Nuns and Religious Culture",
-    21: "Adventist Church: Status and Challenges",
-    22: "Social Observations and Religious Critique",
-    23: "Historical Critiques of Christian Violence",
-    24: "Reforms and Divisions in the Catholic Church",
-    25: "Social Division and Racial Antagonism",
-    26: "Priests and Complexities of Faith",
-    27: "Bakery and Religious Freedom Legal Conflicts",
-    28: "Burke vs. Pope Francis & Future of the Church",
-    29: "Christian Principles and Criticisms",
-    30: "Christian Development and Denominational Differences",
-    31: "Antisemitism and Religious Persecution",
-    32: "Church Doctrine and Sacramental Validity",
-    33: "Healthcare Rights and Institutions",
-    34: "Church-State Relations and Charities",
-    35: "The Poor, Wealth, and Relief",
-    36: "Internal Divisions in Catholicism",
-    37: "Religious Beliefs and Social Phenomena",
-    38: "Opposition and Impact of Religious Beliefs",
-    39: "Religious Controversies and Social Critiques",
-    40: "Critique of Money and Religious Manipulation",
-    41: "Catholic Stereotypes and Theology",
-    42: "Faith and Heresy Debates",
-    43: "Missionaries and Encounter with Confucianism",
-    44: "Pope Francis: Internal Conflicts and Mercy",
-    45: "Life and Responsibility",
-    46: "Religious Beliefs and Social Controversies"
-}
-    # 强制将模型的自定义标签更新为你提供的英文标签
-    topic_model.set_topic_labels(english_topic_labels)
+        -1: "-1: Inclusion and Reform Challenges in the Church",
+        0: "0: Separation of Church & State and Corruption in Japan",
+        1: "1: Christians and Trump's Politics",
+        2: "2: Women and Ordination",
+        3: "3: LGBTQ Issues and Youth Alienation",
+        4: "4: Religion, Sexuality, and Violence",
+        5: "5: Catholic-Lutheran Communion Disputes",
+        6: "6: Church Abuse Victims and Support Mechanisms",
+        7: "7: Religion and Natural Disasters",
+        8: "8: Pro-Life and Women's Autonomy",
+        9: "9: Divine-Human Nature and Teachings of Jesus",
+        10: "10: Conflicts and Reflections on the Bible",
+        11: "11: 2017 Pakistan Religious Violence & Media Bias",
+        12: "12: Communion for the Divorced and Remarried",
+        13: "13: Religion in Public vs. Catholic Schools",
+        14: "14: Public Prayer and Religious Freedom",
+        15: "15: Authenticity and Faith in Catholicism",
+        16: "16: Canadian Immigration and Cultural Disputes",
+        17: "17: Pagan-Christian Conflicts in Online Debates",
+        18: "18: Internal Discussions in Catholicism",
+        19: "19: Doctrines of Religion and Salvation",
+        20: "20: Nuns and Religious Culture",
+        21: "21: Adventist Church: Status and Challenges",
+        22: "22: Social Observations and Religious Critique",
+        23: "23: Historical Critiques of Christian Violence",
+        24: "24: Reforms and Divisions in the Catholic Church",
+        25: "25: Social Division and Racial Antagonism",
+        26: "26: Priests and Complexities of Faith",
+        27: "27: Bakery and Religious Freedom Legal Conflicts",
+        28: "28: Burke vs. Pope Francis & Future of the Church",
+        29: "29: Christian Principles and Criticisms",
+        30: "30: Christian Development and Denominational Differences",
+        31: "31: Antisemitism and Religious Persecution",
+        32: "32: Church Doctrine and Sacramental Validity",
+        33: "33: Healthcare Rights and Institutions",
+        34: "34: Church-State Relations and Charities",
+        35: "35: The Poor, Wealth, and Relief",
+        36: "36: Internal Divisions in Catholicism",
+        37: "37: Religious Beliefs and Social Phenomena",
+        38: "38: Opposition and Impact of Religious Beliefs",
+        39: "39: Religious Controversies and Social Critiques",
+        40: "40: Critique of Money and Religious Manipulation",
+        41: "41: Catholic Stereotypes and Theology",
+        42: "42: Faith and Heresy Debates",
+        43: "43: Missionaries and Encounter with Confucianism",
+        44: "44: Pope Francis: Internal Conflicts and Mercy",
+        45: "45: Life and Responsibility",
+        46: "46: Religious Beliefs and Social Controversies"
+    }
+
+    # 短标签字典：编号 + 核心词 (控制在 2-4 个词以内)
+    short_labels_dict = {
+        -1: "-1: Church Reform", 0: "0: Japan Church/State", 1: "1: Trump Politics",
+        2: "2: Women Ordination", 3: "3: LGBTQ/Youth", 4: "4: Religion/Violence",
+        5: "5: Catholic-Lutheran", 6: "6: Abuse Support", 7: "7: Natural Disasters",
+        8: "8: Pro-Life", 9: "9: Jesus Teachings", 10: "10: Bible Reflections",
+        11: "11: Pakistan Violence", 12: "12: Divorced Communion", 13: "13: School Religion",
+        14: "14: Religious Freedom", 15: "15: Catholic Faith", 16: "16: Canada Immigration",
+        17: "17: Pagan vs Christian", 18: "18: Catholic Internal", 19: "19: Salvation Doctrine",
+        20: "20: Nuns Culture", 21: "21: Adventist Status", 22: "22: Social Critique",
+        23: "23: History/Violence", 24: "24: Catholic Division", 25: "25: Racial Issues",
+        26: "26: Priests' Faith", 27: "27: Bakery Legal", 28: "28: Burke vs Francis",
+        29: "29: Christian Principles", 30: "30: Denominations", 31: "31: Antisemitism",
+        32: "32: Church Doctrine", 33: "33: Healthcare Rights", 34: "34: Church Charities",
+        35: "35: Poverty Relief", 36: "36: Internal Divisions", 37: "37: Social Phenomena",
+        38: "38: Religious Impact", 39: "39: Social Critiques", 40: "40: Money Manipulation",
+        41: "41: Catholic Stereotype", 42: "42: Heresy Debates", 43: "43: Confucianism",
+        44: "44: Pope Francis", 45: "45: Life Responsibility", 46: "46: Social Controversy"
+    }
+        # 强制将模型的自定义标签更新为你提供的英文标签
+    topic_model.set_topic_labels(short_labels_dict)
     # ============================================================
 
     # 3. 2D 降维 (绘图必备)
@@ -112,18 +133,25 @@ def fast_plot_only(model_path, csv_path, embeddings_path, output_path):
     viz_topics = [t for t in sorted(list(set(topics))) if t >= 0][:30]
     
     try:
-        # custom_labels=True 现在会读取你刚刚 set 进去的英文标签
+        custom_datamap_settings = {
+            "label_font_size": 12,       # 调大字体
+            "label_wrap_width": 12,      # 自动换行
+            "label_linespacing": 1.2,    # 行间距
+        }
+        # B. 绘图并调整参数
         fig = topic_model.visualize_document_datamap(
             texts,
             reduced_embeddings=embeddings_2d,
             topics=viz_topics,
-            custom_labels=True, 
+            custom_labels=True,
+            datamap_kwds=custom_datamap_settings,
+            width=1500,
+            height=1000,
         )
         
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         fig.savefig(output_path, bbox_inches='tight', dpi=300)
-        print(f"恭喜！英文版图片已成功保存至: {output_path}")
-        
+        print(f"短标签版图片已保存: {output_path}")
     except Exception as e:
         print(f"绘图失败了: {e}")
 

@@ -1,0 +1,30 @@
+2026-04-06 10:46:25,138 - INFO - 日志文件: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\logs\20260406_104625_rq3_frameaxis.log
+2026-04-06 10:46:25,166 - INFO - [STEP2] ✅ 从 checkpoint 加载 Bias 矩阵: 3435 行
+2026-04-06 10:46:25,250 - INFO - [STEP4] 开始生成可视化，共 3435 条记录
+2026-04-06 10:46:25,308 - INFO - [STEP4] 语言分布: {'jp': 1241, 'en': 1120, 'zh': 1074}
+2026-04-06 10:46:25,308 - INFO - [STEP4] Topic 数量: 47
+2026-04-06 10:46:25,308 - INFO - [STEP4] 图A: topic-language × axis 热力图（z-score）
+2026-04-06 10:46:25,551 - INFO - [STEP4] ✅ 图A: rq3_A_topic_axis_heatmap.html
+2026-04-06 10:46:25,551 - INFO - [STEP4] 图B: 语言层概览
+2026-04-06 10:46:25,755 - INFO - [STEP4] ✅ 图B: rq3_B_lang_axis_bar.html
+2026-04-06 10:46:25,755 - INFO - [STEP4] 图C: 轴关系热图
+2026-04-06 10:46:25,830 - INFO - [STEP4] ✅ 图C: rq3_C_lang_radar.html
+2026-04-06 10:46:25,830 - INFO - [STEP4] 图D: topic-language 动机空间图
+2026-04-06 10:46:25,924 - INFO - [STEP4] ✅ 图D: rq3_D_topic_lang_scatter.html
+2026-04-06 10:46:25,925 - INFO - [STEP4] 图E: topic 典型单元
+2026-04-06 10:46:26,000 - INFO - [STEP4] ✅ 图E: rq3_E_topic_network.html
+2026-04-06 10:46:26,063 - INFO - [STEP4] ✅ 图E2: rq3_E2_topic_lang_composition.html
+2026-04-06 10:46:26,064 - INFO - [STEP4] 图F: 语言×轴 Bias 分布小提琴图
+2026-04-06 10:46:26,220 - INFO - [STEP4] ✅ 图F: rq3_F_lang_bias_violin.html
+2026-04-06 10:46:26,226 - INFO - [STEP4] 图G: 语言层次分析
+2026-04-06 10:46:26,228 - INFO - [STEP4] 图G: 语言层次分析
+2026-04-06 10:46:26,296 - INFO - [STEP4] ✅ 图G1: rq3_G1_lang_axis_heatmap.html
+2026-04-06 10:46:26,365 - INFO - [STEP4] ✅ 图G2: rq3_G2_lang_pca_space.html
+2026-04-06 10:46:26,365 - INFO - [STEP4] ✅ 图G3: 跳过（已由图F覆盖）
+2026-04-06 10:46:26,366 - INFO - [STEP4] 图H: 话题层次分析
+2026-04-06 10:46:26,368 - INFO - [STEP4] 图H: 话题层次分析
+2026-04-06 10:46:26,465 - INFO - [STEP4] ✅ 图H1: rq3_H1_topic_axis_heatmap.html
+2026-04-06 10:46:26,568 - INFO - [STEP4] ✅ 图H2: rq3_H2_topic_pca_space.html
+2026-04-06 10:46:26,595 - INFO - [STEP4] ✅ Summary CSV: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_summary.csv
+2026-04-06 10:46:26,604 - INFO - [STEP4] ✅ Topic Summary CSV: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_topic_summary.csv
+2026-04-06 10:46:26,612 - INFO - ✅ 可视化重跑完成。日志: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\logs\20260406_104625_rq3_frameaxis.log

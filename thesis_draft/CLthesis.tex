@@ -7,7 +7,7 @@ bibliography=totoc% add bibliography to Table of Contents
 
 % Enable one folder for images that are used in the main document and in the separate subfiles for the
 % chapters that can be compiled separately
-\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 \graphicspath{{images/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,16 +31,26 @@ bibliography=totoc% add bibliography to Table of Contents
 \usepackage{amsmath}
 
 %% Add your packages here
-
-
+\usepackage{xurl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fonts 
 
 % If you need better Unicode support, use the libertine font
-%\usepackage[sfdefault]{libertine}
-\usepackage[scaled]{helvet}
-\usepackage{inconsolata}
+\usepackage{xeCJK}
+% \usepackage[sfdefault]{libertine}
+
+\usepackage{fontspec}
+\setsansfont{TeX Gyre Heros}[
+    Scale=MatchUppercase,
+    BoldFont={* Bold}
+]
+
+\setmonofont{Inconsolata}
+
+\setCJKmainfont{FandolSong-Regular.otf}[AutoFakeBold=true]
+
+\addtokomafont{disposition}{\sffamily\bfseries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definition of the page layout
@@ -91,7 +101,9 @@ bibliography=totoc% add bibliography to Table of Contents
 \setcounter{secnumdepth}{3}
 % Include only up to subsubsections in the Table of Contents
 \setcounter{tocdepth}{3}
-
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{colortbl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography and References
@@ -205,6 +217,8 @@ bibliography=totoc% add bibliography to Table of Contents
 \subfile{chapters/material}
 
 \subfile{chapters/methods}
+
+\subfile{chapters/bertopic}
 
 \subfile{chapters/results}
 

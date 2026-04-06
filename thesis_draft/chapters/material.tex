@@ -8,11 +8,6 @@
 
 % Optional for standalone compilation of this chapter.
 % Remove these lines if the main thesis preamble already loads them.
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepackage{booktabs}
 
 % END OF SUBFILES HEADER
 
@@ -23,64 +18,11 @@
 \chapter{Datasets}%
 \label{chap:material}
 
-\section{Overview}
-\label{sec:data-overview}
+This chapter describes how we built the multilingual corpus of anti-Christian hate speech used in this study. The corpus covers three languages: English, Chinese, and Japanese.
 
-This study constructs a multilingual corpus of anti-Christian hate speech across three languages. The English component is assembled from four existing annotated resources --- HateXplain \citep{mathew_hatexplain_2021}, Jigsaw \citep{jigsaw-unintended-bias}, MLMA \citep{mlma}, and Measuring Hate Speech \citep{measuring-hate-speech} --- by filtering for Christian-target examples and deduplicating, yielding 58,940 texts (Table~\ref{tab:english-sources}). No new annotation was performed for English; the resulting corpus also serves as the seed pool for cross-lingual augmentation.
+For English, we assembled texts from four existing annotated datasets --- HateXplain \citep{mathew_hatexplain_2021}, Jigsaw \citep{jigsaw-unintended-bias}, MLMA \citep{mlma}, and Measuring Hate Speech \citep{measuring-hate-speech} --- by filtering for Christianity-targeted content and removing duplicates. This produced 58,940 English texts (Table~\ref{tab:english-sources}). No new annotation was carried out for English; this corpus also serves as the seed pool for cross-lingual augmentation.
 
-The Chinese and Japanese corpora are built through a two-stage pipeline. In the first stage, candidate texts are retrieved from online platforms, manually annotated with two binary labels (topic relevance and hatefulness), and then filtered by fine-tuned language-specific classifiers to obtain a native corpus. In the second stage, representative English texts are localized into Chinese and Japanese by an LLM and filtered by the same classifiers before being merged with the native data. Figure~\ref{fig:pipeline} illustrates the overall workflow.
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[
-  node distance=4mm and 5mm,
-  box/.style={draw, rounded corners, align=center, font=\small,
-              minimum width=2.8cm, minimum height=0.85cm, inner sep=3pt},
-  gbox/.style={draw, rounded corners, align=center, font=\small,
-               minimum width=2.8cm, minimum height=0.85cm, inner sep=3pt,
-               fill=gray!12},
-  arrow/.style={-{Latex[length=2mm]}, thick},
-  darrow/.style={-{Latex[length=2mm]}, thick, dashed}
-]
-
-%--- Row 1: ZH/JA native pipeline ---
-\node[box] (c1) {ZH/JA Crawling\\(Tieba; 5ch)};
-\node[box, right=of c1] (c2) {Manual\\Annotation};
-\node[box, right=of c2] (c3) {Classifier\\Fine-tuning};
-\node[box, right=of c3] (c4) {Native Corpus\\ZH: 1\,070 / JA: 1\,445};
-
-%--- Row 2: EN + augmentation ---
-\node[gbox, below=1.8cm of c1] (a1) {English Corpora\\(existing)\\58\,940 texts};
-\node[gbox, right=of a1] (a2) {Christian-target\\Filter \& Merge};
-\node[box, right=of a2] (a3) {LLM Localization\\(ZH \& JA)};
-\node[box, right=of a3] (a4) {Classifier\\Filtering};
-
-%--- Final node (right column, between rows) ---
-\node[box, right=5mm of c4, yshift=-0.93cm, minimum width=2.8cm] (final)
-      {Final Corpus\\ZH: 1\,965\\JA: 2\,360\\EN: 58\,940};
-
-%--- Row 1 arrows ---
-\draw[arrow] (c1) -- (c2);
-\draw[arrow] (c2) -- (c3);
-\draw[arrow] (c3) -- (c4);
-\draw[arrow] (c4) -- (final);
-
-%--- Row 2 arrows ---
-\draw[arrow] (a1) -- (a2);
-\draw[arrow] (a2) -- (a3);
-\draw[arrow] (a3) -- (a4);
-\draw[arrow] (a4) -- (final);
-
-%--- Cross connections ---
-% Same fine-tuned classifiers reused for filtering synthetic output
-\draw[darrow] (c3.south) -- ++(0,-0.35) -| (a4.north);
-% English pool also seeds the LLM localization
-\draw[arrow] (a2.north) -- ++(0,0.35) -| (a3.north);
-
-\end{tikzpicture}
-\caption{Two-stage dataset construction pipeline. \emph{Stage 1} (top row): Chinese and Japanese native corpora are built by crawling, manual annotation, and supervised classifier filtering. \emph{Stage 2} (bottom row): representative English texts are localized into Chinese and Japanese by an LLM, and the outputs are filtered by the same fine-tuned classifiers (dashed arrow) before merging with the native data. Shaded boxes indicate components derived entirely from existing resources.}
-\label{fig:pipeline}
-\end{figure}
+The Chinese and Japanese corpora were built from scratch through a two-stage pipeline. Stage~1 collects and annotates raw texts from online platforms, then trains language-specific classifiers to filter a native corpus. Stage~2 expands the corpus by translating representative English seed texts into the target language via an LLM, with the same classifiers used for quality filtering. Figure~\ref{fig:pipeline} gives a high-level overview of the full workflow, and the sections below describe each stage in detail.
 
 \begin{table}[htbp]
 \centering
@@ -97,58 +39,301 @@ MLMA                    & 4       \\
 Total                   & 58\,940 \\
 \bottomrule
 \end{tabular}
-\caption{Composition of the merged English corpus after Christian-target filtering and deduplication.}
+\caption{English corpus composition after Christianity-target filtering and deduplication.}
 \label{tab:english-sources}
 \end{table}
 
+
+%-------------------------------------------------------------------
+% FIGURE 1: Two-stage pipeline overview
+%-------------------------------------------------------------------
+\begin{figure}[htbp]
+\centering
+\begin{adjustbox}{width=\textwidth}
+\begin{tikzpicture}[
+  node distance=5mm and 9mm,
+  >=Latex,
+  % Native pipeline boxes (blue)
+  nbox/.style={
+    draw=blue!55!black, fill=blue!7,
+    rounded corners=3pt, align=center, font=\small,
+    text width=2.7cm, minimum height=1.2cm, line width=0.65pt
+  },
+  % Augmentation pipeline boxes (orange)
+  abox/.style={
+    draw=orange!65!black, fill=orange!7,
+    rounded corners=3pt, align=center, font=\small,
+    text width=2.7cm, minimum height=1.2cm, line width=0.65pt
+  },
+  % Final output box (green)
+  fbox/.style={
+    draw=green!55!black, fill=green!7,
+    rounded corners=3pt, align=center, font=\small\bfseries,
+    text width=2.9cm, minimum height=2.0cm, line width=0.8pt
+  },
+  % Stage label style
+  stagelabel/.style={font=\small\bfseries, rotate=90, anchor=south},
+  % Arrows
+  arr/.style={-{Latex[length=2.5mm]}, thick, color=gray!70!black},
+  darr/.style={-{Latex[length=2.5mm]}, thick, dashed, color=gray!60!black},
+]
+
+%% ---- Row 1: Stage 1 (Native) ----
+\node[nbox] (n1) {Raw Crawling\\{\footnotesize ZH: Tieba}\\{\footnotesize JA: 5ch}};
+\node[nbox, right=of n1] (n2) {Candidate\\Filtering \&\\Cleaning};
+\node[nbox, right=of n2] (n3) {Manual\\Annotation\\{\footnotesize (Label Studio)}};
+\node[nbox, right=of n3] (n4) {Classifier\\Fine-tuning\\{\footnotesize + Focal Loss}};
+
+%% ---- Row 2: Stage 2 (Augmentation) ----
+\node[abox, below=1.4cm of n1] (a1) {English Corpus\\{\footnotesize (58,940 texts)}};
+\node[abox, right=of a1] (a2) {Clustering \&\\Seed Selection\\{\footnotesize (diverse sample)}};
+\node[abox, right=of a2] (a3) {LLM\\Localization\\{\footnotesize (ZH \& JA)}};
+\node[abox, right=of a3] (a4) {Classifier\\Filtering\\{\footnotesize (reused model)}};
+
+%% ---- Final output (right side, vertically centred) ----
+\node[fbox, right=10mm of $(n4.east)!0.5!(a4.east)$] (final) {
+  Final Corpus\\[2pt]
+  \normalfont\footnotesize
+  ZH: \textbf{1,965}\\
+  JA: \textbf{2,360}\\
+  EN: \textbf{58,940}
+};
+
+%% ---- Stage labels ----
+\node[stagelabel, left=5mm of n1] {Native};
+\node[stagelabel, left=5mm of a1] {Augment};
+
+%% ---- Arrows: Stage 1 ----
+\draw[arr] (n1) -- (n2);
+\draw[arr] (n2) -- (n3);
+\draw[arr] (n3) -- (n4);
+\draw[arr] (n4.east) -- (final.north west);
+
+%% ---- Arrows: Stage 2 ----
+\draw[arr] (a1) -- (a2);
+\draw[arr] (a2) -- (a3);
+\draw[arr] (a3) -- (a4);
+\draw[arr] (a4.east) -- (final.south west);
+
+%% ---- Cross-stage: classifier reuse ----
+\draw[darr] (n4.south) -- ++(0,-0.45)
+  -| node[pos=0.28, fill=white, font=\scriptsize, inner sep=1.5pt] {model reuse}
+  (a4.north);
+
+\end{tikzpicture}
+\end{adjustbox}
+\caption{Two-stage corpus construction pipeline for Chinese and Japanese. Stage~1 builds a native corpus and trains language-specific classifiers. Stage~2 expands coverage by localising English seed texts via LLM; the same classifiers are reused for quality filtering.}
+\label{fig:pipeline}
+\end{figure}
+
+
+%===================================================================
 \section{Chinese Dataset}
 \label{sec:zh-data}
+%===================================================================
 
-\subsection{Native Data Collection}
+\subsection{Stage 1: Native Data Collection}
+\label{subsec:zh-native}
 
-Candidate texts were retrieved from Tieba and Weibo using a keyword list that combined neutral Christianity-related terms with expressions associated with anti-Christian hostility in Chinese online discourse. After initial inspection, Weibo was excluded because it contributed too few usable texts; Tieba became the sole platform. The raw pool of 78,874 texts was reduced to 15,181 through deduplication and relevance filtering.
+Raw candidate texts were collected from two Chinese social media platforms using a keyword list that combined neutral Christianity-related terms with expressions associated with anti-Christian hostility in Chinese online discourse.
 
-A sample of 4,000 texts was then annotated in Label Studio \citep{labelstudio} with two binary labels: \texttt{christianity\_related} (whether the text is substantively concerned with Christianity) and \texttt{hate\_speech} (whether it expresses target-directed hostility). The two-step design matters because Christian vocabulary occurs frequently in neutral, descriptive, or ironic contexts. Of the 4,000 annotated items, 613 were labeled Christianity-related and 152 as hate speech, confirming that explicit anti-Christian content is rare even within a curated candidate pool.
+\begin{itemize}
+  \item \textbf{Tieba} (Baidu's forum platform): 46,640 posts were crawled by feeding keywords into the search API.
+  \item \textbf{Weibo and HuggingFace datasets}: 19,820 additional texts were gathered from four publicly available Weibo-derived datasets (\texttt{liyucheng/zhihu\_26k}, \texttt{vilarin/weibo-2014}, \texttt{m4rque2/weibo\_automobile}, \texttt{Giacinta/weibo}).
+\end{itemize}
 
-A Chinese hate speech classifier was fine-tuned on these labels using THU-COAI RoBERTa-COLD \citep{thucoai-roberta-cold} and then applied to the full cleaned pool; only texts predicted as both Christianity-related and hateful were retained. This produced a native Chinese corpus of \textbf{1,070 texts}.
+After combining and deduplicating, the raw pool contained 78,874 texts. Weibo-derived sources were subsequently excluded because they contributed too few usable texts after keyword filtering (only 412 relevant posts), leaving Tieba as the sole native platform. Relevance filtering reduced the pool to \textbf{15,181 texts}.
 
-\subsection{Data Augmentation}
+To select the most informative 4,000 texts for annotation, we applied an ensemble detection approach using multiple pre-trained models. The models were run on all 15,181 candidates and the 4,000 texts on which the ensemble was \emph{least confident} (i.e.\ highest prediction uncertainty or most disagreement between models) were selected for human review. This active-learning-style selection strategy ensures the annotation budget is spent on genuinely ambiguous cases, which improves classifier training later.
 
-To expand stylistic and rhetorical coverage beyond what could be obtained from Tieba alone, this study employed LLM-based localization. An earlier design that used direct few-shot generation was not retained because its outputs were excessively repetitive; the final design instead anchors generation in diverse English seed texts sampled from the merged English corpus. The LLM was prompted to rewrite these seeds into culturally adapted Chinese --- preserving the underlying hostile logic while adopting lexical and register conventions typical of Chinese social media --- and the outputs were filtered by the same fine-tuned Chinese classifier. This step yielded 895 synthetic Chinese texts, which were merged with the native set to form a final Chinese corpus of \textbf{1,965 texts}.
+These 4,000 texts were then annotated in Label Studio \citep{labelstudio} with two binary labels:
+\begin{itemize}
+  \item \texttt{christianity\_related}: whether the post substantively concerns Christianity (not just a passing mention).
+  \item \texttt{hate\_speech}: whether it expresses target-directed hostility toward Christians.
+\end{itemize}
 
+The two-label design matters because Christian vocabulary appears frequently in neutral or ironic contexts. Table~\ref{tab:annotation-distribution} shows the resulting label counts: only 613 of 4,000 posts were Christianity-related, and only 152 were hate speech --- confirming that explicit anti-Christian content is rare even within a carefully curated pool.
+
+A Chinese hate speech classifier was then fine-tuned on these labels using THU-COAI RoBERTa-COLD \citep{thucoai-roberta-cold} as the backbone, with Focal Loss to address class imbalance. The fine-tuned classifier was applied to all 15,181 cleaned texts. Texts predicted as \emph{both} Christianity-related and hateful were retained, yielding a \textbf{native Chinese corpus of 1,070 texts} (1,687 predicted hateful; 3,296 predicted Christianity-related out of the full pool). Figure~\ref{fig:zh-funnel} illustrates the data reduction through each stage.
+
+%-------------------------------------------------------------------
+% FIGURE 2: Chinese data funnel
+%-------------------------------------------------------------------
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=0pt,
+    funnel_blue/.style={
+      trapezium, trapezium left angle=75, trapezium right angle=75,
+      draw=blue!60!black, fill=blue!12, align=center,
+      font=\small, minimum height=0.9cm, line width=0.6pt
+    },
+    funnel_orange/.style={
+      trapezium, trapezium left angle=75, trapezium right angle=75,
+      draw=orange!60!black, fill=orange!12, align=center,
+      font=\small, minimum height=0.9cm, line width=0.6pt
+    },
+    funnel_green/.style={
+      trapezium, trapezium left angle=75, trapezium right angle=75,
+      draw=green!60!black, fill=green!12, align=center,
+      font=\small, minimum height=0.9cm, line width=0.6pt
+    },
+]
+
+% We draw each trapezoid with decreasing text widths to simulate a funnel
+\def\wA{7.5cm}
+\def\wB{6.2cm}
+\def\wC{4.8cm}
+\def\wD{3.4cm}
+\def\wE{2.2cm}
+
+\node[funnel_blue, text width=\wA] (s1)
+  {Raw collected texts\\{\footnotesize Tieba + Weibo HF datasets: \textbf{78,874}}};
+
+\node[funnel_blue, text width=\wB, below=2mm of s1] (s2)
+  {After dedup \& relevance filtering\\{}{\footnotesize \textbf{15,181} texts}};
+
+\node[funnel_blue, text width=\wC, below=2mm of s2] (s3)
+  {Ensemble-selected for annotation\\{}{\footnotesize \textbf{4,000} texts (most uncertain)}};
+
+\node[funnel_orange, text width=\wD, below=2mm of s3] (s4)
+  {Annotated as hate speech\\{}{\footnotesize \textbf{152} texts}};
+
+\node[funnel_green, text width=\wE, below=2mm of s4] (s5)
+  {Classifier applied to full pool\\{}{\footnotesize Native corpus: \textbf{1,070}}};
+
+\end{tikzpicture}
+\caption{Data reduction funnel for the Chinese native corpus. Each step narrows the pool toward high-quality, verified anti-Christian hate speech.}
+\label{fig:zh-funnel}
+\end{figure}
+
+
+\subsection{Stage 2: LLM-Based Augmentation}
+\label{subsec:zh-aug}
+
+To extend stylistic and rhetorical coverage beyond what Tieba alone provides, we used LLM-based localization. An earlier design that generated hate speech directly from a few-shot prompt was discarded because outputs were repetitive and lacked diversity. The final approach instead anchors generation in diverse English seed texts.
+
+The augmentation process worked as follows:
+\begin{enumerate}
+  \item \textbf{Seed selection}: The 58,940 English texts were clustered in a shared embedding space. A representative sample of texts was selected from each cluster to ensure topical diversity.
+  \item \textbf{LLM localization}: The LLM was prompted to rewrite each seed text into culturally adapted Chinese, preserving the hostile logic while adopting the lexical and register conventions of Chinese social media.
+  \item \textbf{Classifier filtering}: The same fine-tuned Chinese classifier filtered the generated texts. 1,250 texts were processed; 1,167 (93.4\%) passed the hate speech filter and 941 (75.3\%) passed the Christianity-relevance filter. After requiring both conditions, \textbf{895 synthetic texts} were retained.
+\end{enumerate}
+
+The native and synthetic sets were merged to form the \textbf{final Chinese corpus of 1,965 texts}.
+
+
+%===================================================================
 \section{Japanese Dataset}
 \label{sec:ja-data}
+%===================================================================
 
-\subsection{Native Data Collection}
+\subsection{Stage 1: Native Data Collection}
+\label{subsec:ja-native}
 
-The Japanese pipeline followed the same procedure. Candidate texts were retrieved from 5ch and X; X was subsequently excluded due to access-quota constraints that prevented building a working pool of sufficient size. The raw pool (43,101 texts) was cleaned to 4,181.
+The Japanese pipeline followed the same overall procedure. Raw texts were collected from two platforms:
 
-Manual annotation in Label Studio covered 4,084 Japanese texts with the same two-label scheme. Of these, 690 were labeled Christianity-related and 102 as hate speech (hate ratio: 2.5\%, somewhat lower than Chinese). A LUKE-based Japanese classifier \citep{luke-japanese} was fine-tuned on these labels and applied to the cleaned pool; 1,445 texts predicted as both Christianity-related and hateful formed the native Japanese corpus (\textbf{1,445 texts}).
+\begin{itemize}
+  \item \textbf{5ch} (Japan's largest anonymous bulletin board): 26,737 posts were crawled by keyword.
+  \item \textbf{Common Crawl}: A targeted crawl of Japanese web text using religion-related keywords yielded 38,303 additional texts.
+\end{itemize}
 
-\subsection{Data Augmentation}
+After combining and deduplicating, the raw pool contained 65,040 texts. X (Twitter) was excluded due to access-quota constraints that prevented building a usable pool. After cleaning and relevance filtering, the pool was reduced to \textbf{43,101 texts}, and a second pass produced \textbf{4,181 usable candidates}.
 
-LLM-based localization for Japanese followed the same seed-based procedure, with the generation prompt adjusted to target register conventions common in Japanese online forums and on X \citep{cross-lingual-llm-localization, llm-style-transfer}. Post-generation filtering with the fine-tuned Japanese classifier retained 915 synthetic texts, which were merged with the native set to yield a final Japanese corpus of \textbf{2,360 texts}.
+Using the same ensemble-based uncertainty sampling, 4,084 texts were selected for annotation in Label Studio with the same two-label scheme. Of these, 690 were labeled Christianity-related and 102 as hate speech (hate ratio: 2.5\%, somewhat lower than Chinese). A LUKE-based Japanese classifier \citep{luke-japanese} was fine-tuned on these labels using Focal Loss and back-translation augmentation for the minority class, then applied to the 43,101-text pool. Texts predicted as both Christianity-related and hateful formed the \textbf{native Japanese corpus of 1,445 texts} (1,610 predicted hateful; 6,491 predicted Christianity-related). Figure~\ref{fig:ja-funnel} shows the corresponding data funnel.
 
+%-------------------------------------------------------------------
+% FIGURE 3: Japanese data funnel
+%-------------------------------------------------------------------
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=0pt,
+  funnel_blue/.style={
+    trapezium, trapezium left angle=75, trapezium right angle=75,
+    draw=blue!60!black, fill=blue!12, align=center,
+    font=\small, minimum height=0.9cm, line width=0.6pt
+  },
+  funnel_blue_dark/.style={
+    trapezium, trapezium left angle=75, trapezium right angle=75,
+    draw=blue!70!black, fill=blue!8, align=center,
+    font=\small, minimum height=0.9cm, line width=0.6pt
+  },
+  funnel_blue_mid/.style={
+    trapezium, trapezium left angle=75, trapezium right angle=75,
+    draw=blue!50!black, fill=blue!6, align=center,
+    font=\small, minimum height=0.9cm, line width=0.6pt
+  },
+  funnel_blue_light/.style={
+    trapezium, trapezium left angle=75, trapezium right angle=75,
+    draw=blue!40!black, fill=blue!5, align=center,
+    font=\small, minimum height=0.9cm, line width=0.6pt
+  },
+  funnel_orange/.style={
+    trapezium, trapezium left angle=75, trapezium right angle=75,
+    draw=orange!80!black, fill=orange!15, align=center,
+    font=\small, minimum height=0.9cm, line width=0.6pt
+  },
+  funnel_green/.style={
+    trapezium, trapezium left angle=75, trapezium right angle=75,
+    draw=green!70!black, fill=green!10, align=center,
+    font=\small, minimum height=0.9cm, line width=0.6pt
+  },
+]
+\def\wA{7.5cm}
+\def\wB{6.5cm}
+\def\wC{5.4cm}
+\def\wD{4.2cm}
+\def\wE{2.4cm}
+
+\node[funnel_blue, text width=\wA] (s1)
+  {Raw collected texts\\{\footnotesize 5ch + Common Crawl: \textbf{65,040}}};
+\node[funnel_blue_dark, text width=\wB, below=2mm of s1] (s2)
+  {After dedup \& relevance filtering\\{\footnotesize \textbf{43,101} texts}};
+\node[funnel_blue_mid, text width=\wC, below=2mm of s2] (s3)
+  {After candidate cleaning\\{\footnotesize \textbf{4,181} texts}};
+\node[funnel_blue_light, text width=\wD, below=2mm of s3] (s4)
+  {Ensemble-selected for annotation\\{\footnotesize \textbf{4,084} texts (most uncertain)}};
+\node[funnel_orange, text width=\wC, below=2mm of s4] (s5)
+  {Annotated as hate speech\\{\footnotesize \textbf{102} texts}};
+\node[funnel_green, text width=\wE, below=2mm of s5] (s6)
+  {Classifier applied to full pool\\{\footnotesize Native corpus: \textbf{1,445}}};
+\end{tikzpicture}
+\caption{Data reduction funnel for the Japanese native corpus.}
+\label{fig:ja-funnel}
+\end{figure}
+
+
+\subsection{Stage 2: LLM-Based Augmentation}
+\label{subsec:ja-aug}
+
+LLM-based localization for Japanese followed the same seed-based procedure. The generation prompt was adapted to target register conventions common in Japanese online forums, including the informal, anonymous posting style of 5ch \citep{cross-lingual-llm-localization, llm-style-transfer}. Post-generation filtering with the fine-tuned Japanese classifier processed 1,249 texts: 1,167 (93.4\%) passed Christianity-relevance and 945 (75.7\%) passed the hate speech filter. After requiring both, \textbf{915 synthetic texts} were retained.
+
+The native and synthetic sets were merged to form the \textbf{final Japanese corpus of 2,360 texts}.
+
+
+%===================================================================
 \section{Dataset Overview}
 \label{sec:data-stats}
+%===================================================================
 
 \subsection{Corpus Statistics}
 
-Table~\ref{tab:dataset-summary} reports the key size figures across construction stages. Table~\ref{tab:annotation-distribution} shows the label distributions in the manually annotated sets: hate speech is a minority class in both languages, underscoring the necessity of supervised filtering.
+Table~\ref{tab:dataset-summary} reports the corpus size across all construction stages. Table~\ref{tab:annotation-distribution} summarises the label distributions from the manual annotation phase for both languages. Hate speech is a minority class in both (3.8\% for Chinese, 2.5\% for Japanese), which motivated the use of Focal Loss and back-translation for classifier fine-tuning.
 
 \begin{table}[htbp]
 \centering
 \small
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Language & Raw & Cleaned & Annotated & Native & Synthetic & Final \\
+Language & Raw & Cleaned & Annotated & Native & Synthetic & \textbf{Final} \\
 \midrule
-Chinese  & 78\,874 & 15\,181 & 4\,000 & 1\,070 & 895 & 1\,965 \\
-Japanese & 43\,101 & 4\,181  & 4\,084 & 1\,445 & 915 & 2\,360 \\
-English  & ---     & ---     & ---    & \multicolumn{3}{c}{58\,940 (existing)} \\
+Chinese  & 78\,874 & 15\,181 & 4\,000 & 1\,070 & 895 & \textbf{1\,965} \\
+Japanese & 65\,040 & 43\,101 & 4\,084 & 1\,445 & 915 & \textbf{2\,360} \\
+English  & ---     & ---     & ---    & \multicolumn{3}{c}{\textbf{58\,940} (from existing corpora)} \\
 \bottomrule
 \end{tabular}
-\caption{Dataset sizes across the main construction stages. English is assembled from existing annotated corpora and is not augmented.}
+\caption{Dataset sizes across the main construction stages.}
 \label{tab:dataset-summary}
 \end{table}
 
@@ -163,48 +348,57 @@ Chinese  & 4\,000 & 613 & 152 & 3.8\% \\
 Japanese & 4\,084 & 690 & 102 & 2.5\% \\
 \bottomrule
 \end{tabular}
-\caption{Label distribution in the manually annotated Chinese and Japanese sets.}
+\caption{Label distribution in the manually annotated sets. The low hate ratio motivated the use of class-imbalance techniques during classifier fine-tuning.}
 \label{tab:annotation-distribution}
 \end{table}
 
-Figure~\ref{fig:corpus-composition} compares the native and synthetic contributions to the Chinese and Japanese final corpora. In both languages, the native component is larger, but synthetic data provides a meaningful supplement: roughly 46\% of Chinese texts and 39\% of Japanese texts are LLM-generated.
+Figure~\ref{fig:corpus-composition} compares native and synthetic contributions to the final Chinese and Japanese corpora. Synthetic data accounts for roughly 46\% of the Chinese corpus and 39\% of the Japanese corpus.
 
+%-------------------------------------------------------------------
+% FIGURE 4: Stacked bar chart — native vs synthetic
+%-------------------------------------------------------------------
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
   ybar stacked,
-  bar width=28pt,
-  width=0.65\textwidth,
-  height=6.5cm,
+  bar width=32pt,
+  width=0.62\textwidth,
+  height=7cm,
   ylabel={Number of texts},
   symbolic x coords={Chinese, Japanese},
   xtick=data,
-  ymin=0, ymax=2700,
+  ymin=0, ymax=2800,
   ytick={0,500,1000,1500,2000,2500},
-  legend style={at={(0.98,0.97)}, anchor=north east, legend columns=1,
-                font=\small, draw=gray!50},
+  legend style={
+    at={(0.5,1.05)},
+    anchor=south,
+    legend columns=-1,
+    font=\small,
+    draw=gray!40
+  },
   ymajorgrids=true,
-  grid style={dashed, gray!40},
+  grid style={dashed, gray!35},
   nodes near coords,
   nodes near coords style={font=\small},
   every node near coord/.append style={anchor=south},
-  enlarge x limits=0.4,
+  enlarge x limits=0.55,
   tick label style={font=\small},
   label style={font=\small},
 ]
-\addplot+[fill=blue!45, draw=blue!60] coordinates {(Chinese,1070) (Japanese,1445)};
+\addplot+[fill=blue!45, draw=blue!65] coordinates {(Chinese,1070) (Japanese,1445)};
 \addplot+[fill=orange!55, draw=orange!70] coordinates {(Chinese,895)  (Japanese,915)};
-\legend{Native, Synthetic}
+\legend{Native, Synthetic (LLM)}
 \end{axis}
 \end{tikzpicture}
-\caption{Composition of the Chinese and Japanese final corpora by data origin. The English corpus (58,940 texts, assembled from existing annotated resources) is excluded from this figure due to the large scale difference.}
+\caption{Composition of the Chinese and Japanese final corpora by data origin. The English corpus (58,940 texts from existing resources) is excluded due to scale.}
 \label{fig:corpus-composition}
 \end{figure}
 
+
 \subsection{Lexical Profile}
 
-To characterise the topical focus of each corpus, we extracted high-frequency content terms after language-specific tokenization (jieba for Chinese, janome for Japanese, TweetTokenizer for English), retaining only substantive words by filtering out function words, particles, and punctuation. Table~\ref{tab:top-keywords} reports the ten most frequent content terms per language.
+To characterise the topical focus of each corpus, we extracted high-frequency content terms after language-specific tokenisation (jieba for Chinese, janome for Japanese, TweetTokenizer for English), filtering out function words, particles, and punctuation. Table~\ref{tab:top-keywords} lists the ten most frequent terms per language.
 
 \begin{table}[htbp]
 \centering
@@ -225,15 +419,16 @@ Rank & Chinese & Japanese & English \\
 10 & Protestantism  & Catholic           & bishops   \\
 \bottomrule
 \end{tabular}
-\caption{Ten most frequent content terms per language in the final corpus (function words and particles excluded; Chinese and Japanese terms shown as English translations). Frequency counts are based on the native corpora (ZH: 1,070; JA: 1,445; EN: 58,940 texts).}
+\caption{Ten most frequent content terms per language (function words excluded; Chinese and Japanese terms shown as English translations). Counts based on the native corpora only (ZH: 1,070; JA: 1,445; EN: 58,940).}
 \label{tab:top-keywords}
 \end{table}
 
-The Chinese corpus is anchored by core religious referents --- God, Jesus, Christianity, Bible --- alongside institutional labels such as \textit{church} and \textit{priest}. The presence of \textit{China} among the top terms suggests a framing that links Christianity to national identity or foreign-influence narratives.
+The Chinese corpus is anchored by core religious referents (God, Jesus, Christianity, Bible) alongside institutional terms such as \textit{church} and \textit{priest}. The high frequency of \textit{China} suggests a framing that ties Christianity to foreign-influence or national identity narratives.
 
-The Japanese corpus is most distinctively characterised by \textit{Unification Church} (\textit{Toitsu Kyokai}), reflecting the heightened political salience of this organisation following the 2022 assassination of former Prime Minister Abe. This concentration indicates that Japanese anti-Christian discourse in the corpus is heavily intertwined with a specific domestic political event rather than with theological opposition alone. The co-occurrence of \textit{Abe} as the sixth most frequent term reinforces this reading. Broader Christian framing is nonetheless present in the remaining terms: Christ, church, religion, believer, Bible.
+The Japanese corpus is most distinctively shaped by \textit{Unification Church} (\textit{T\={o}itsu Ky\={o}kai}), reflecting the political salience of that organisation following the 2022 assassination of former Prime Minister Abe --- which appears directly as the sixth most frequent term. This indicates that Japanese anti-Christian discourse in the corpus is heavily intertwined with a specific domestic political event rather than theological opposition. Broader Christian framing is nonetheless present: Christ, church, religion, believer, Bible.
 
-In English, the highest-frequency terms cluster around institutional Catholicism --- \textit{church}, \textit{catholic}, \textit{pope}, \textit{catholics}, \textit{bishops} --- reflecting the composition of the source corpora, in which abuse scandals and Catholic institutional authority are prominent themes in online anti-Christian discourse.
+The English corpus clusters around institutional Catholicism (church, catholic, pope, catholics, bishops), consistent with the composition of the source corpora, where clergy abuse scandals and Catholic institutional authority are prominent themes.
+
 
 % self-defined macro: include bibliography even when compiling a single chapter
 \subfilebibliography

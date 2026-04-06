@@ -12,12 +12,112 @@
 % START OF DOCUMENT: Every chapter can be compiled separately
 \begin{document}
 
-\chapter{BerTopic: Analysis of Foundations}%
+\chapter{Experiment I: BERTopic-Based Discourse Classification}%
 \label{chap:bertopic}
 
-Copy and adapt the file \verb!chapters/sample_chapter.tex! to add additional chapters, e.g., for Related Work, Datasets, Methods, etc.
+This chapter presents the first experiment in our analytical framework: an unsupervised topic modelling of the multilingual discussion corpus using BERTopic. The goal is to identify the major thematic structures present across English, Japanese, and Chinese posts, without imposing any predefined category scheme. The resulting topic map provides a foundation for the subsequent supervised analyses in Chapters~\ref{chap:who}--\ref{chap:why}, which investigate who participates in these discourses, how they communicate, and why specific positions are adopted.
 
-The additional chapter files need to be included with the \verb!\subfile{}! command in the CLthesis.tex file.
+BERTopic was applied to the full multilingual corpus. The model first embeds each document using a multilingual sentence transformer (\texttt{[MODEL PLACEHOLDER]}), then reduces dimensionality with UMAP before clustering via HDBSCAN. Topic representations are finally extracted using a class-based TF-IDF weighting scheme. The key hyperparameters were set as follows: UMAP \texttt{n\_neighbors = [X]}, \texttt{n\_components = [X]}, \texttt{min\_dist = [X]}; HDBSCAN \texttt{min\_cluster\_size = [X]}, \texttt{min\_samples = [X]}. A total of 47 topics were extracted, with 2{,}530 documents assigned to the outlier class (Topic~$-1$). Figure~\ref{fig:datamap} provides an overview of the resulting topic landscape, where each point represents a document and colours indicate topic membership.
+
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=\textwidth]{RQ1/datamap_bertopic_labelled_cluster.png}
+    \caption{Document map of the BERTopic classification results. Each point represents one document; colours correspond to distinct topics. Topic labels are manually assigned based on keyword inspection.}
+    \label{fig:datamap}
+\end{figure}
+
+The 47 topics vary considerably in size (ranging from 20 to 499 documents) and in language composition. Rather than discussing every topic in detail, the following sections highlight a curated selection: three topics dominated by a single language community, three cross-lingual topics that draw participants from all three communities, and an analysis of the inter-topic relationships revealed by hierarchical clustering and pairwise similarity.
+
+%---------------------------------------------------------------
+\section{Monolingual and Cross-Lingual Topics}
+\label{sec:mono-cross}
+
+To characterise the thematic landscape, we distinguish between \textit{monolingual topics} --- those in which one language community accounts for the overwhelming majority of documents --- and \textit{cross-lingual topics}, where all three communities contribute meaningfully. Figure~\ref{fig:langdist} shows the language distribution across all 47 topics, making this distinction visually apparent.
+
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=\textwidth]{RQ1/language_distribution_per_topic.png}
+    \caption{Language composition per topic (stacked bar chart). Blue = English, orange = Japanese, green = Chinese. Topics with one dominant colour are monolingual; those with mixed colours are cross-lingual.}
+    \label{fig:langdist}
+\end{figure}
+
+\subsection{Monolingual Topics}
+
+Three topics stand out as essentially monolingual, each dominated by a distinct language community.
+
+\textbf{Topic~0 --- Japan Church/State (Japanese, 99.8\%).}
+Topic~0 is by far the largest topic in the corpus (499 documents) and is almost exclusively Japanese (entropy $\approx 0.07$). Its defining keywords are \begin{CJK}{UTF8}{min}統一教会\end{CJK} (\textit{Unification Church}), \begin{CJK}{UTF8}{min}安倍\end{CJK} (\textit{Abe}), \begin{CJK}{UTF8}{min}日本\end{CJK} (\textit{Japan}), and \begin{CJK}{UTF8}{min}韓国\end{CJK} (\textit{Korea}). Representative documents discuss the political ties between the Japanese Liberal Democratic Party --- and particularly former Prime Minister Shinzo Abe --- and the Holy Spirit Association for the Unification of World Christianity (commonly known as the Unification Church). The topic encapsulates public anger over the church's alleged influence on electoral politics, its ``spiritual sales'' practices targeting believers, and its transnational Korean–Japanese entanglement. This is a uniquely Japanese controversy, shaped by the 2022 assassination of Abe and the subsequent media scrutiny of LDP–church connections; the near-total absence of English or Chinese contributions confirms that it resonates almost exclusively within the Japanese public sphere.
+
+\textbf{Topic~23 --- Christian Identity/Behaviour (Japanese, 97.6\%).}
+Topic~23 (42 documents; entropy $\approx 0.11$) is the second most language-homogeneous topic and is again Japanese-dominant. Its keywords centre on \begin{CJK}{UTF8}{min}キリスト教徒\end{CJK} (\textit{Christian}), \begin{CJK}{UTF8}{min}教\end{CJK} (\textit{teaching}), and \begin{CJK}{UTF8}{min}キリスト教\end{CJK} (\textit{Christianity}). Documents in this cluster debate what it genuinely means to be a Christian in Japan --- distinguishing nominal affiliation from sincere practice, and questioning whether certain institutional behaviours are consistent with Christian ethics. The inward-looking, introspective register of these posts explains their language homogeneity: they address a distinctly Japanese experience of minority Christianity.
+
+\textbf{Topic~16 --- Canada Immigration (English, 91.8\%).}
+Topic~16 (61 documents; entropy $\approx 0.34$) is the most English-dominant topic in the dataset. Key terms include \textit{canada}, \textit{party}, \textit{immigrants}, and \textit{country}. Posts in this cluster discuss immigration policy in the Canadian context, frequently intersecting with questions of religious identity, multiculturalism, and conservative political values. The topic illustrates how English-speaking discussants situate religious discourse within a broader national political debate that has little traction in the Japanese or Chinese communities.
+
+\subsection{Cross-Lingual Topics}
+
+Three topics display high language entropy, meaning that all three communities contribute substantially. These cross-lingual clusters are of particular interest because they represent thematic concerns shared across linguistic and cultural boundaries.
+
+\textbf{Topic~2 --- Women's Ordination and Gender Roles (entropy = 1.05).}
+Topic~2 contains 208 documents with a near-balanced distribution: English (42\%), Chinese (38\%), and Japanese (20\%). Its top keywords --- \begin{CJK}{UTF8}{min}女性\end{CJK}/\textit{women}/\begin{CJK}{UTF8}{min}女人\end{CJK}, \begin{CJK}{UTF8}{min}聖職\end{CJK}/\textit{priests}/\begin{CJK}{UTF8}{min}男人\end{CJK} --- all converge on the question of gender within the Catholic Church. Representative documents across all three languages criticise the all-male priesthood as institutionalised misogyny. A Japanese post argues that only men can perform sacred rites, hold votes on church policy, and occupy every leadership position --- and frames this as ``the clearest possible sexism.'' A Chinese-language document echoes this, mocking the proposal for a female diaconate as a mere performance designed to preserve the status quo while giving women token ``flower-arranging'' roles. An English post deconstructs the theological rationale from a scriptural angle, noting that nothing in the Gospels forbids women from holding ordained roles. The convergence of critiques across three languages and cultural traditions suggests that gender inequality within Catholicism is perceived as a \textit{structural, universal} problem rather than a culturally specific grievance.
+
+\textbf{Topic~3 --- LGBTQ+ and Catholic Teaching (entropy = 1.10).}
+Topic~3 (149 documents; entropy = 1.10) is the most evenly distributed topic in the corpus: Chinese (36\%), Japanese (30\%), and English (34\%). Keywords include \begin{CJK}{UTF8}{UTF8}{min}同性恋\end{CJK}/\textit{gay}/\begin{CJK}{UTF8}{min}同性愛\end{CJK} and \textit{lgbt}, \textit{disordered}. Documents debate the Church's position on homosexuality --- specifically its characterisation of same-sex attraction as ``intrinsically disordered'' --- from theological, psychological, and rights-based perspectives. A Chinese post describes the rule barring openly gay men from the priesthood as forcing candidates to internalise a ``pathological and dangerous self-hatred.'' A Japanese comment similarly questions whether the prohibition is intellectually coherent. English posts frame the issue around democratic accountability, demanding that bishops state clearly whether they intend to enforce the rule and how. The cross-lingual symmetry of this topic indicates that the question of LGBTQ+ inclusion in Catholicism generates equivalent levels of controversy regardless of the discussant's national or linguistic background.
+
+\textbf{Topic~6 --- Clerical Abuse and Institutional Cover-Up (entropy = 1.08).}
+Topic~6 (122 documents) has a mixed composition: English (41\%), Japanese (27\%), Chinese (32\%). Keywords include \begin{CJK}{UTF8}{min}虐待\end{CJK}/\textit{abuse}/\begin{CJK}{UTF8}{min}受害者\end{CJK} (\textit{victims}), \begin{CJK}{UTF8}{min}聖職\end{CJK} (\textit{clergy}), \begin{CJK}{UTF8}{min}隠蔽\end{CJK} (\textit{cover-up}), and \begin{CJK}{UTF8}{min}儿童\end{CJK} (\textit{children}). Representative documents from all three language communities focus not merely on the acts of abuse themselves but on what they identify as systematic institutional concealment. A Japanese post states bluntly that church leadership ``prioritises the organisation's reputation and money'' over victims' wellbeing, urging survivors to speak out publicly rather than accept silent suffering. A second Japanese document identifies the structural root of the problem: the institution's implicit hierarchy of priorities --- organisational scandal avoidance above all else --- makes genuine reform impossible. This framing is mirrored in Chinese and English posts. The cross-lingual coherence of Topic~6 suggests that the clerical abuse crisis is experienced as a \textit{global institutional failure}, generating a shared critical discourse that transcends language boundaries.
+
+%---------------------------------------------------------------
+\section{Hierarchical Relationships Between Topics}
+\label{sec:hierarchy}
+
+Figure~\ref{fig:hierarchy} presents the hierarchical clustering of the 47 topics, computed on the basis of topic embedding similarity. The dendrogram reveals which topics are semantically proximate and how thematic clusters are nested within broader super-topics.
+
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=\textwidth]{RQ1/hierarchical_clustering_bertopic.png}
+    \caption{Hierarchical clustering of BERTopic topics based on topic embedding similarity. Topics that merge at low distances (left side of the dendrogram) are closely related; those merging at greater distances share only broad thematic affinity.}
+    \label{fig:hierarchy}
+\end{figure}
+
+Several groupings are visible in the dendrogram. At the top of the hierarchy, a broad cluster unites many of the Japanese-dominant topics --- including Topics 0 (Japan Church/State), 17, 31, and 23 --- reflecting the shared vocabulary and discourse norms of the Japanese-language threads. These topics merge at a relatively short distance, indicating that their linguistic surface features create a strong intra-group coherence even when their substantive content differs (e.g., church-state relations versus intra-Christian identity debates).
+
+A second major cluster groups the ethically contested topics together: Topics~2 (Women's Ordination), 3 (LGBTQ+), 6 (Clerical Abuse), 12 (Divorce and Remarriage), and 27 (Gay and Law) tend to merge before connecting to politically oriented topics such as Topic~1 (Trump/Politics) or Topic~16 (Canada Immigration). This grouping suggests that the model correctly captures a distinction between \textit{intra-ecclesial moral debates} and \textit{religion-in-politics} discussions, even without being given any explicit category labels.
+
+A third cluster of Chinese-dominant topics --- including Topics~20, 26, 37, and 43 --- also emerges as a coherent group at the level of language, paralleling the Japanese-language cluster. However, within this Chinese-language grouping, the dendrogram further separates topics by content: folk religion and Buddhism (Topics 37, 43) diverge earlier from discussions of Catholic-specific practices (Topics 44, 28).
+
+Topics related to science and religion (Topic~7) and salvation doctrine (Topic~19) form a small but distinct cluster, merging with Catholic practice topics (Topic~5, liturgy/mass) only at a high hierarchical distance. This indicates that epistemological debates --- about evolution, evidence, and the compatibility of faith with reason --- occupy a relatively separate discursive space from liturgical or governance concerns within the corpus.
+
+Overall, the hierarchical structure suggests that language of origin is one of the strongest organising forces in the data, followed by thematic domain (ethics, politics, practice, theology). This ordering will be important when interpreting the supervised classification results in later chapters.
+
+%---------------------------------------------------------------
+\section{Inter-Topic Similarity}
+\label{sec:similarity}
+
+Figure~\ref{fig:similarity} displays the pairwise cosine similarity matrix computed over topic embeddings. Each cell represents the semantic proximity between two topics; darker cells indicate higher similarity.
+
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=0.85\textwidth]{RQ1/유사도_Ber.png}
+    \caption{Pairwise cosine similarity matrix of topic embeddings. Diagonal entries (self-similarity = 1.0) are shown in dark blue; off-diagonal cells indicate the degree to which two topics share embedding space.}
+    \label{fig:similarity}
+\end{figure}
+
+The matrix reveals that the vast majority of topic pairs have very low similarity scores, clustering near zero. This is consistent with BERTopic's HDBSCAN-based clustering mechanism, which pushes topic embeddings apart in the reduced dimensional space: once topics are formed, they tend to be well-separated by construction. The near-zero off-diagonal values confirm that the 47 topics are largely \textit{semantically distinct}, with little bleed-over between thematic clusters.
+
+A small number of topic pairs show marginally elevated similarity. Notably, topics within the same language community --- particularly the Japanese-dominant and Chinese-dominant clusters identified in the hierarchical analysis --- tend to exhibit slightly higher pairwise similarity than cross-language topic pairs. This is consistent with the finding from Section~\ref{sec:hierarchy} that language acts as a strong organising factor. Beyond this language-induced similarity, however, no pair of substantively different topics reaches a cosine score high enough to suggest genuine thematic overlap.
+
+In practical terms, the low inter-topic similarity implies that the 47 topics can be treated as largely independent units for downstream analysis: documents assigned to Topic~2 (Women's Ordination) and Topic~6 (Clerical Abuse), for example, share little latent content despite both falling under the broad umbrella of Catholic institutional critique. This granularity is a strength for our subsequent research questions, as it allows us to target specific discourse types with precision.
+
+%---------------------------------------------------------------
+\section{Summary and Transition}
+\label{sec:bertopic-summary}
+
+This chapter has established the thematic map of multilingual Catholic discourse through unsupervised BERTopic modelling. The 47 extracted topics range from highly language-specific clusters --- most notably the Japanese-dominant Topic~0 on the Unification Church–Abe controversy --- to genuinely cross-lingual debates on gender, sexuality, and institutional abuse that attract roughly equal participation from English, Japanese, and Chinese speakers.
+
+Several structural insights emerge from this first experiment. First, \textit{language is the strongest organising factor} in the corpus: monolingual topics arise not only because of culturally specific events (e.g., the Abe assassination and its political fallout) but also because of distinct discourse norms and intra-community references that do not translate across linguistic boundaries. Second, \textit{certain ethical concerns transcend language}: the debates on women's ordination, LGBTQ+ inclusion, and clerical abuse converge across all three communities with strikingly similar critical frames, suggesting that these are experienced as universal institutional failings rather than culturally localised grievances. Third, \textit{the topics are semantically well-separated}, as confirmed by the low inter-topic similarity scores, which gives us confidence that subsequent analyses of specific topic clusters will not be confounded by category overlap.
+
+These findings motivate the structure of the remaining chapters. Rather than treating the corpus as a single undifferentiated whole, we use the topic classifications established here to stratify the data for deeper investigation. Chapters~\ref{chap:who} through~\ref{chap:why} follow a \textit{who~$\rightarrow$ how~$\rightarrow$ why} logic: we first ask who participates in these discourses (participant profiles and community structures), then how they communicate (rhetorical and linguistic strategies), and finally why they take the positions they do (underlying value systems and argumentation patterns). The BERTopic topic labels serve as a principled organisational backbone for all three stages of this analysis.
 
 % self-defined macro: include bibliography even when compiling a single chapter
 \subfilebibliography

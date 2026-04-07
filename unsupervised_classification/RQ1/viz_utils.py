@@ -32,22 +32,22 @@ logger = logging.getLogger(__name__)
 # 按优先级排列的候选字体（覆盖 Mac / Windows / Linux）
 _FONT_CANDIDATES = [
     # ── macOS ──
-    "Hiragino Sans",          # 日文首选（macOS）
-    "Hiragino Sans GB",       # 中文（macOS）
     "PingFang SC",            # 简体中文（macOS）
     "PingFang TC",            # 繁体中文
+    "Hiragino Sans GB",       # 中文（macOS）
+    "Hiragino Sans",          # 日文首选（macOS）
     "Apple SD Gothic Neo",    # 韩文（顺带支持CJK）
     # ── Windows ──
     "Microsoft YaHei",        # 微软雅黑（Win 中文）
+    "SimHei",                 # 黑体
+    "SimSun",                 # 宋体
     "Yu Gothic",              # 游ゴシック（Win 日文）
     "Meiryo",                 # メイリオ（Win 日文）
     "MS Gothic",
-    "SimHei",                 # 黑体
-    "SimSun",                 # 宋体
     # ── Linux / 通用 ──
     "Noto Sans CJK SC",       # Noto 简中
-    "Noto Sans CJK JP",       # Noto 日文
     "Noto Sans CJK TC",       # Noto 繁中
+    "Noto Sans CJK JP",       # Noto 日文
     "Noto CJK",
     "Source Han Sans",        # 思源黑体
     "WenQuanYi Micro Hei",    # 文泉驿
@@ -55,7 +55,8 @@ _FONT_CANDIDATES = [
 ]
 
 _CJK_FONT_PATH: Optional[str] = None   # 注册后的字体文件路径
-_CJK_FONT_NAME: Optional[str] = None   # 注册后的字体名称
+_CJK_FONT_NAME: Optional[str] = None   # 主字体名称
+_CJK_FONT_FALLBACKS: list[str] = []   # 完整 fallback chain
 
 
 def _find_cjk_font_file() -> tuple[Optional[str], Optional[str]]:
@@ -146,7 +147,7 @@ def setup_cjk_font() -> Optional[str]:
         from viz_utils import setup_cjk_font
         cjk_font_name = setup_cjk_font()
     """
-    global _CJK_FONT_PATH, _CJK_FONT_NAME
+    global _CJK_FONT_PATH, _CJK_FONT_NAME, _CJK_FONT_FALLBACKS
 
     if _CJK_FONT_NAME:       # 已初始化，直接返回缓存
         return _CJK_FONT_NAME
@@ -209,11 +210,12 @@ def setup_cjk_font() -> Optional[str]:
 def get_cjk_font_prop():
     """
     返回可用于 ax.set_yticklabels(..., fontproperties=prop) 的 FontProperties 对象。
-    ★ 改進：使用 family 参数而不是 fname，这样能充分利用全局的 fallback chain
+    ★ 改进：使用 family 列表，让 matplotlib 尝试整个 fallback chain。
     """
     import matplotlib.font_manager as fm
+    if _CJK_FONT_FALLBACKS:
+        return fm.FontProperties(family=_CJK_FONT_FALLBACKS)
     if _CJK_FONT_NAME:
-        # 优先使用 family 参数，让 matplotlib 自动处理 fallback chain
         return fm.FontProperties(family=_CJK_FONT_NAME)
     if _CJK_FONT_PATH:
         return fm.FontProperties(fname=_CJK_FONT_PATH)

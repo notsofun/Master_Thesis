@@ -999,7 +999,7 @@ def _draw_all(summary_df: pd.DataFrame, df_full: pd.DataFrame, output_dir: Path)
     # 预收集全部实体，批量翻译（一次 API 调用）
     all_entities_flat: list[str] = []
     topic_entries_cache: dict = {}
-    show = topic_ids[:24]
+    show = topic_ids
 
     for tid in show:
         rows = summary_df[summary_df["Topic_ID"] == tid]
@@ -1020,10 +1020,17 @@ def _draw_all(summary_df: pd.DataFrame, df_full: pd.DataFrame, output_dir: Path)
     logger.info(f"    翻译完成: {len(trans_map)} 个实体")
 
     # 绘图
-    ncols = 4
+    if len(show) <= 12:
+        ncols = 3
+    elif len(show) <= 20:
+        ncols = 4
+    elif len(show) <= 35:
+        ncols = 5
+    else:
+        ncols = 6
     nrows = (len(show) + ncols - 1) // ncols
-    fig2, axes = plt.subplots(nrows, ncols, figsize=(ncols * 5.0, nrows * 3.8))
-    flat = axes.flatten() if len(show) > 1 else [axes]
+    fig2, axes = plt.subplots(nrows, ncols, figsize=(ncols * 4.2, max(3.6, nrows * 2.6)), squeeze=False)
+    flat = axes.flatten()
 
     from viz_utils import bilingual_label
     for i, tid in enumerate(show):

@@ -1,0 +1,26 @@
+2026-04-07 13:20:35,919 - INFO - 日志: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/logs/20260407_132035_rq1_target_extraction.log
+2026-04-07 13:20:35,924 - INFO - ============================================================
+2026-04-07 13:20:35,924 - INFO - Stage viz: 生成可视化图表
+2026-04-07 13:20:35,924 - INFO - ============================================================
+2026-04-07 13:20:35,924 - INFO -   使用 checkpoint: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/checkpoint_llm.csv
+2026-04-07 13:20:36,082 - INFO -   Topic 汇总: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/data/rq1_topic_targets_v3.csv
+2026-04-07 13:20:36,696 - INFO - [Font] 找到 CJK 字体: Hiragino Sans
+2026-04-07 13:20:36,696 - INFO - [Font] 找到 CJK 字体: Hiragino Sans GB
+2026-04-07 13:20:36,696 - INFO - [Font] 找到 CJK 字体: Apple SD Gothic Neo
+2026-04-07 13:20:36,696 - INFO - [Font] Fallback chain 已配置: Hiragino Sans, Hiragino Sans GB, Apple SD Gothic Neo
+2026-04-07 13:20:36,701 - INFO -   [VIZ] 图1: 类别堆叠横条图
+2026-04-07 13:20:37,063 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/visualizations/rq1_topic_category_stacked.png
+2026-04-07 13:20:37,063 - INFO -   [VIZ] 图2: Top-N 实体条形图矩阵（双语标签）
+2026-04-07 13:20:38,090 - INFO - AFC is enabled with max remote calls: 10.
+2026-04-07 13:20:50,564 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-04-07 13:20:50,585 - INFO - [Translate] Gemini API 翻译了 34 个新词，已缓存
+2026-04-07 13:20:50,586 - INFO -     翻译完成: 126 个实体
+2026-04-07 13:20:52,884 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/visualizations/rq1_topic_top_targets_bilingual.png
+2026-04-07 13:20:52,884 - INFO -   [VIZ] 图3: 全局 Top-20 实体排行（双语）
+2026-04-07 13:20:53,338 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/visualizations/rq1_global_top20_bilingual.png
+2026-04-07 13:20:53,338 - INFO -   [VIZ] 图4: 语言×类别热力图
+2026-04-07 13:20:55,988 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/visualizations/rq1_lang_category_heatmap.png
+2026-04-07 13:20:55,989 - INFO -   [VIZ] 图5: LLM 增益对比
+2026-04-07 13:20:56,211 - INFO -     ✓ /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/visualizations/rq1_llm_gain.png
+2026-04-07 13:20:56,211 - INFO -   ✅ 所有图表已保存至 /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ1/visualizations
+2026-04-07 13:20:56,213 - INFO - 全部完成。

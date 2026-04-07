@@ -12,12 +12,84 @@
 % START OF DOCUMENT: Every chapter can be compiled separately
 \begin{document}
 
-\chapter{Sample Chapter}%
-\label{chap:sample-chapter}
+\chapter{RQ1: Who Are the Targets of Online Hate Speech?}%
+\label{chap:who}
 
-Copy and adapt the file \verb!chapters/sample_chapter.tex! to add additional chapters, e.g., for Related Work, Datasets, Methods, etc.
+Building on the BERTopic discourse classification described in Chapter~\ref{chap:bertopic} and the target extraction pipeline detailed in Chapter~\ref{chap:methods}, the following results address the first research question: \textit{who} or \textit{what} is targeted in online hate speech about Christianity across English, Chinese, and Japanese communities. Using the 47 extracted topics as the unit of analysis, we identify the most frequently mentioned target entities per language community, examine how target types vary across topical contexts, and compare the structural composition of targets between languages.
 
-The additional chapter files need to be included with the \verb!\subfile{}! command in the CLthesis.tex file.
+%---------------------------------------------------------------
+\section{Top Hate Targets by Language Community}
+\label{sec:rq1-top-targets}
+
+Figure~\ref{fig:rq1-top20} shows the twenty most frequently mentioned hate-speech targets in each language community, with original-language labels alongside English translations. Although the three communities share a common religious subject matter, the composition of their top targets diverges considerably.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{RQ1/rq1_global_top20_bilingual.png}
+    \caption{Top 20 hate-speech targets per language community (EN, ZH, JA), ranked by total mention frequency across all topics. Labels are shown in the original language with English translations.}
+    \label{fig:rq1-top20}
+\end{figure}
+
+\textbf{English.}
+The English top-20 is anchored by Jesus (209 mentions), followed by denominational identity labels --- \textit{Catholic} (114), \textit{Christian} (108), \textit{Catholics} (96) --- and then \textit{Trump} (94) as a distinctly political target. Clerical role-categories (\textit{priests}, 72; \textit{bishops}, 23) and civic-political referents (\textit{Canada}, 26; \textit{LGBT}/\textit{LGBTQ}, 22/11) round out the list. The co-presence of Catholic media outlets \textit{NCR} (National Catholic Reporter, 15) and the abbreviation \textit{MSW} (Michael Sean Winters, 7) suggests that English-speaking discussants partly target journalistic voices within the Church rather than solely institutional actors. The overall picture is of a discourse that freely mixes theological critique (Jesus, the Church) with contemporary political figures and civil-rights framing.
+
+\textbf{Chinese.}
+In Chinese-language posts, 耶稣 (\textit{Jesus}, 201) is the most frequently targeted individual, but the list is dominated by role-based and institutional targets: 教会 (\textit{church}, 306 — the single highest count across all three languages), 神父 (\textit{priest}, 164), 主教 (\textit{bishop}, 70), 信徒 (\textit{believers}, 70), and 修女 (\textit{nuns}, 43). A notable entry absent from the other two languages is 神棍 (\textit{religious fraudster/charlatan}, 30) --- a colloquial, pejorative compound that frames clergy not merely as morally deficient but as deliberate imposters. The high frequency of 教皇 (\textit{Pope}, 49) --- appearing alongside 教皇方济各 (\textit{Pope Francis}, 19) as a more specific variant --- extends the target profile upward through the clerical hierarchy, indicating that Chinese-language criticism does not stop at parish-level clergy but reaches the apex of Catholic institutional authority. Chinese targets thus skew toward the clerical hierarchy and institutional structures of the Church, framed in a register that foregrounds deception and exploitation of ordinary believers.
+
+\textbf{Japanese.}
+The Japanese list is structurally different from both its counterparts. 統一教会 (\textit{Unification Church / Family Federation for World Peace and Unification}, 473) dwarfs every other target in the entire dataset, reflecting the near-total dominance of Topic~0 in Japanese-language posts. It is followed immediately by 安倍晋三 (\textit{Shinzo Abe}, 92) and 自民党 (\textit{Liberal Democratic Party}, 59) --- neither of which has any equivalent in the English or Chinese top-20. 韓国 (\textit{South Korea}, 16) appears as a geopolitical entity, encoding the Church's foreign origins as part of the critique. Only from the seventh position onward do generic religious labels appear (キリスト教 [\textit{Christianity}], カトリック [\textit{Catholicism}], トランプ [\textit{Trump}], イエス・キリスト [\textit{Jesus Christ}]). This ordering makes clear that Japanese hate speech about religion is, in its most prevalent form, a discourse about domestic political corruption rather than theological controversy.
+
+\textbf{Cross-lingual commonalities and divergences.}
+All three communities target Jesus/耶稣/イエス・キリスト and some form of Catholic identity label, confirming that there exists a shared transnational core of religiously-grounded hostility. However, the framing diverges sharply: English targets combine doctrinal and political critique; Chinese targets foreground clerical hierarchy and institutional exploitation; Japanese targets are overwhelmingly anchored in a nationally-specific political scandal. The presence of Trump in both the English (\textit{Trump}, 94) and Japanese (トランプ, 34) top-20s but not in Chinese is a secondary cross-lingual link, suggesting that the global figure of Trump activates religious hostility in two of the three communities but not the third.
+
+%---------------------------------------------------------------
+\section{Target Category Distribution by Topic}
+\label{sec:rq1-by-topic}
+
+To understand how the \textit{type} of target shifts across different discursive contexts, Figure~\ref{fig:rq1-stacked} presents the distribution of target macro-categories --- Individual, Group/Ide\allowbreak ntity, and Institution --- for each of the 47 topics, stacked by entity count. Topics are listed in descending order of size.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{RQ1/rq1_topic_category_stacked.png}
+    \caption{Target category distribution by topic. Each bar represents one of the 47 topics, stacked by entity-count contribution from five broad category types: Religious Group, Organization, Specific Person, Social Identity, and Political Group. Topics are ordered by size (descending).}
+    \label{fig:rq1-stacked}
+\end{figure}
+
+Across all 47 topics, Group/Identity targets (comprising spaCy's \texttt{NORP} label together with the LLM-assigned \textit{Social Identity}, \textit{Religious Group}, and \textit{Political Group} categories) constitute the single most common macro-category, dominating 29 topics and accounting for the plurality of entity mentions in topics representing 1{,}662 documents. Individual targets (combining \texttt{PERSON} and \textit{Specific Person}) lead in 12 topics (1{,}019 docs), and Institution targets (\texttt{ORG} and \textit{Organization}) lead in the remaining 6 topics (754 docs). The predominance of group-level targets suggests that online hate speech in this corpus is oriented primarily toward identities and collectivities rather than specific persons.
+
+\textbf{Group/Identity-dominant topics.}
+Within the Group/Identity cluster, the degree of concentration varies. Topic~3 (LGBTQ+ and Catholic teaching, $n=149$) exemplifies maximal group-targeting: 70\% of all entity mentions are Group/Identity labels (LGBT, LGBTQ, priests as a role-category, 信徒 [\textit{believers}]), reflecting a discourse that is fundamentally about contested social identities rather than named actors. Topic~23 (Japanese-language critique of Christianity, $n=42$) reaches 94\% Group/Identity, targeting キリスト教 (\textit{Christianity}) and its practitioners as an undifferentiated collective. Topics~15, 20, 41, and 42 similarly concentrate hostility onto denominational or doctrinal collectives (Catholics, nuns, heretics, Calvinists) with minimal individual specificity. In contrast, Topics~2, 5, and 8 --- all centred on clerical abuse and the Church's response to it --- retain a more balanced three-way distribution because they mix role-based group labels (priests, bishops) with both specific individuals (Pope Francis) and institutional bodies (the Catholic Church).
+
+\textbf{Individual-dominant topics.}
+The twelve Individual-dominant topics share a common logic: a specific named actor or historically personalised figure serves as the focal point around which hostility coalesces. Topic~9 (Christological mockery, $n=103$) is the extreme case, with 75\% Individual, because 耶稣 (\textit{Jesus}) absorbs the overwhelming majority of entity mentions. Similarly, Topic~28 (the Burke-Francis rift, $n=35$) reaches 65\% Individual, naming Cardinal Burke (伯克 / バーク) and Pope Francis (教皇方济各 / フランシスコ教皇) as opposing protagonists in an intra-Church power struggle. Topic~1 (Trump and Christian nationalism, $n=312$) is the largest Individual-dominant topic: at 49\% Individual, Trump operates as a lightning rod that draws together Catholic, evangelical, and politically-inflected hostility across all three language communities.
+
+\textbf{Institution-dominant topics.}
+Institution dominance is concentrated in six topics. Topic~0 (Unification Church, $n=499$) is the clearest example: despite being the largest topic in the corpus, 48\% of its entity mentions fall on organisational entities --- 統一教会 as an institution, 自民党 as a party, 創価学会 (\textit{Sōka Gakkai}) as a comparator --- while individual figures and group identities play secondary roles. Topic~30 (comparison of Christian denominations, $n=30$) reaches 71\% Institution, because its targets are denominational structures themselves: 基督教 (\textit{Protestant Christianity}), 天主教 (\textit{Catholicism}), 东正教 (\textit{Eastern Orthodoxy}). Topic~34 similarly centres on the institutional landscape of Chinese Catholicism (天主教会, 教会). These institution-dominant topics share an analytical rather than emotionally charged register: the primary object of attention is an organisational system, its failures, or its internal divisions, rather than the individuals who populate it.
+
+%---------------------------------------------------------------
+\section{Target Category Distribution by Language}
+\label{sec:rq1-by-language}
+
+Figure~\ref{fig:rq1-heatmap} aggregates the target category composition at the language level, expressing each category as a percentage of all entity mentions in posts of that language. The heatmap reveals three structurally distinct target profiles that map onto the three communities.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{RQ1/rq1_lang_category_heatmap.png}
+    \caption{Target category distribution by language (\%). Rows represent language communities (EN, JA, ZH); columns represent entity categories. Cell values indicate the percentage of all entity mentions in a given language that fall into each category. Colour intensity reflects percentage magnitude.}
+    \label{fig:rq1-heatmap}
+\end{figure}
+
+\textbf{English: named individuals and religious group labels.}
+English-language posts exhibit the highest proportions of \textit{Specific Person} ($\approx$24\%) and \texttt{NORP} ($\approx$26\%) of any language community. This reflects the dual logic identified in Section~\ref{sec:rq1-top-targets}: English discourse simultaneously targets named political actors (Trump, Pope Francis, Trudeau, Harper) and broad religiopolitical identity groups (Catholics, Christians, Evangelicals) as collective entities. The relatively high \texttt{ORG} share ($\approx$14\%) is driven by references to Catholic institutions (the Church, the Vatican) and media organisations. \textit{Social Identity} ($\approx$18\%) adds a layer of lay-identity targeting (believers, progressives) alongside the institutional critique. Overall, English hate-speech targeting is \textit{personified and politicised}: it names specific individuals and constructs them as emblematic of the groups they represent.
+
+\textbf{Japanese: political group as a distinct signature.}
+The most structurally distinctive feature of the Japanese profile is the elevated \textit{Political Group} share, which reaches the highest value across all three languages. This directly reflects Topic~0's targeting of 自民党 (\textit{LDP}), alongside less-prominent but consistent references to other political organisations across Topics~14 and 31. No other language community produces a comparably strong Political Group signal, confirming that the politicisation of religious discourse in Japan takes a specifically \textit{organisational-partisan} form: the critique is directed at party structures and their institutional entanglement with religious bodies, rather than at individual politicians or diffuse cultural identities. \textit{Organization} and \texttt{NORP} together account for a further substantial share, reflecting how Japanese posts also name religious organisations (統一教会, キリスト教) as collective actors. The relative absence of a strong \textit{Specific Person} category --- despite Abe's prominence --- indicates that even named individuals in Japanese discourse tend to be processed as institutional representatives rather than as autonomous targets.
+
+\textbf{Chinese: social identity and role-based targeting.}
+Chinese posts show the highest \textit{Social Identity} share ($\approx$21\%) across all three languages, with \texttt{NORP} ($\approx$16\%) and \texttt{ORG}/\textit{Organization} each adding further weight. Together these reflect a targeting strategy oriented toward role-based and membership-based categories: 信徒 (\textit{believers}), 基督徒 (\textit{Christians}), 神棍 (\textit{religious fraudsters}), 传教士 (\textit{missionaries}), 修女 (\textit{nuns}). \textit{Specific Person} is comparatively low ($\approx$7\%), indicating that Chinese hate speech targets types of religious actors --- defined by their position in the clerical or lay hierarchy --- more often than particular individuals. The \textit{Religion Group} category ($\approx$7\%) also contributes more in Chinese than in English or Japanese, in part because of topics that frame Christianity as a belief system to be compared or contrasted with Buddhism, Taoism, Confucianism, and Islam (Topics~37 and~38).
+
+\textbf{Synthesis.}
+The three language communities thus exhibit complementary emphases in how they construct the object of hostility. English discourse \textit{personalises and politicises}, naming individual actors within a framework of cultural and political contestation. Japanese discourse \textit{institutionalises and partisanises}, directing hostility at organisational structures and their political affiliations. Chinese discourse \textit{collectivises and role-categorises}, targeting practitioners and clergy by their social or professional identity rather than by name. This tripartite structure suggests that online hate speech about Christianity is not a uniform phenomenon but is shaped by the specific political cultures, recent historical events, and rhetorical conventions of each language community.
 
 % self-defined macro: include bibliography even when compiling a single chapter
 \subfilebibliography

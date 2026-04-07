@@ -17,11 +17,16 @@
 
 This chapter presents the first experiment in our analytical framework: an unsupervised topic modelling of the multilingual discussion corpus using BERTopic. The goal is to identify the major thematic structures present across English, Japanese, and Chinese posts, without imposing any predefined category scheme. The resulting topic map provides a foundation for the subsequent supervised analyses in Chapters~\ref{chap:who}--\ref{chap:why}, which investigate who participates in these discourses, how they communicate, and why specific positions are adopted.
 
-BERTopic was applied to the full multilingual corpus. The model first embeds each document using a multilingual sentence transformer (\texttt{[MODEL PLACEHOLDER]}), then reduces dimensionality with UMAP before clustering via HDBSCAN. Topic representations are finally extracted using a class-based TF-IDF weighting scheme. The key hyperparameters were set as follows: UMAP \texttt{n\_neighbors = [X]}, \texttt{n\_components = [X]}, \texttt{min\_dist = [X]}; HDBSCAN \texttt{min\_cluster\_size = [X]}, \texttt{min\_samples = [X]}. A total of 47 topics were extracted, with 2{,}530 documents assigned to the outlier class (Topic~$-1$). Figure~\ref{fig:datamap} provides an overview of the resulting topic landscape, where each point represents a document and colours indicate topic membership.
+BERTopic was applied to the full multilingual corpus. The model first embeds each document using a multilingual sentence transformer (\texttt{intfloat/multilingual- \allowbreak e5-large-instruct}), then reduces dimensionality with UMAP before clustering via HDBSCAN. Topic representations are finally extracted using a class-based TF-IDF weighting scheme. The key hyperparameters for the topic modeling process were configured as follows:
+\begin{description}
+    \item[UMAP:] \texttt{n\_neighbors = 30}, \texttt{n\_components = 5}, \texttt{min\_dist = 0.0}
+    \item[HDBSCAN:] \texttt{min\_cluster\_size = 20}, \texttt{min\_samples = 5}
+\end{description}
+A total of 47 topics were extracted, with 2{,}530 documents assigned to the outlier class (Topic~$-1$). Figure~\ref{fig:datamap} provides an overview of the resulting topic landscape, where each point represents a document and colours indicate topic membership.
 
-\begin{figure}[htbp]
+\begin{figure}[t]
     \centering
-    % \includegraphics[width=\textwidth]{RQ1/datamap_bertopic_labelled_cluster.png}
+    \includegraphics[width=1\textwidth]{foundations/datamap_bertopic_labelled_cluster.png}
     \caption{Document map of the BERTopic classification results. Each point represents one document; colours correspond to distinct topics. Topic labels are manually assigned based on keyword inspection.}
     \label{fig:datamap}
 \end{figure}
@@ -36,10 +41,11 @@ To characterise the thematic landscape, we distinguish between \textit{monolingu
 
 \begin{figure}[htbp]
     \centering
-    % \includegraphics[width=\textwidth]{RQ1/language_distribution_per_topic.png}
-    \caption{Language composition per topic (stacked bar chart). Blue = English, orange = Japanese, green = Chinese. Topics with one dominant colour are monolingual; those with mixed colours are cross-lingual.}
+    \includegraphics[width=\textwidth]{foundations/language_distribution_per_topic.png}
+    \caption{Language composition per topic (stacked bar chart). Blue = English, orange = Chinese, green = Japanese. Topics with one dominant colour are monolingual; those with mixed colours are cross-lingual.}
     \label{fig:langdist}
 \end{figure}
+
 
 \subsection{Monolingual Topics}
 
@@ -71,24 +77,24 @@ Topic~7 (119 documents) is similarly balanced: English (39\%), Japanese (30\%), 
 \section{Hierarchical Relationships Between Topics}
 \label{sec:hierarchy}
 
-Figure~\ref{fig:hierarchy} presents the hierarchical clustering of the 47 topics, computed on the basis of topic embedding similarity. The dendrogram reveals which topics are semantically proximate and how thematic clusters are nested within broader super-topics.
+Figure~\ref{fig:hierarchy} presents the hierarchical clustering of the 47 topics, computed on the basis of topic embedding similarity. The dendrogram reveals which topics are semantically proximate and how specific thematic clusters are nested within broader super-topics.
 
 \begin{figure}[htbp]
     \centering
-    % \includegraphics[width=\textwidth]{RQ1/hierarchical_clustering_bertopic.png}
+    \includegraphics[width=\textwidth]{foundations/hierarchical_clustering_bertopic.png}
     \caption{Hierarchical clustering of BERTopic topics based on topic embedding similarity. Topics that merge at low distances (left side of the dendrogram) are closely related; those merging at greater distances share only broad thematic affinity.}
     \label{fig:hierarchy}
 \end{figure}
 
-Several groupings are visible in the dendrogram. At the top of the hierarchy, a broad cluster unites many of the Japanese-dominant topics --- including Topics 0 (Japan Church/State), 17, 31, and 23 --- reflecting the shared vocabulary and discourse norms of the Japanese-language threads. These topics merge at a relatively short distance, indicating that their linguistic surface features create a strong intra-group coherence even when their substantive content differs (e.g., church-state relations versus intra-Christian identity debates).
+At the highest level (the rightmost split), the dendrogram divides the topics into two main super-clusters. Rather than clustering strictly by language, the model clearly organizes topics by thematic domain. The upper super-cluster largely focuses on outgroups, other religions, and specific regional issues, while the lower super-cluster contains global political discourse and internal church debates.
 
-A second major cluster groups the ethically contested topics together: Topics~2 (Women's Ordination), 3 (LGBTQ+), 6 (Clerical Abuse), 12 (Divorce and Remarriage), and 27 (Gay and Law) tend to merge before connecting to politically oriented topics such as Topic~1 (Trump/Politics) or Topic~16 (Canada Immigration). This grouping suggests that the model correctly captures a distinction between \textit{intra-ecclesial moral debates} and \textit{religion-in-politics} discussions, even without being given any explicit category labels.
+In the lower half of the dendrogram, a distinct socio-political cluster (marked in black) emerges. This branch groups highly politicized topics together, including Topic 1 (Trump/vote), Topic 25 (White America), Topic 11 (Islam/terror), and Topic 0 (Unification Church/Abe/Japan). This indicates a strong thematic link in the discourse connecting global right-wing politics, race, and high-profile religio-political controversies, crossing English, Japanese, and Chinese linguistic boundaries.
 
-A third cluster of Chinese-dominant topics --- including Topics~20, 26, 37, and 43 --- also emerges as a coherent group at the level of language, paralleling the Japanese-language cluster. However, within this Chinese-language grouping, the dendrogram further separates topics by content: folk religion and Buddhism (Topics 37, 43) diverge earlier from discussions of Catholic-specific practices (Topics 44, 28).
+Also within the lower half is a large, dense cluster (marked in cyan) focused on internal church practices and social controversies. Here, topics regarding standard church rituals (Topic 5 on mass/liturgy, Topic 32 on sacraments) are grouped with highly contested ethical and moral issues. Specifically, Topic 6 (clerical abuse/victims), Topic 3 (gay/homosexuality), Topic 2 (women), and Topic 12 (divorce) merge closely together. This shows the model successfully captures a cohesive "intra-ecclesial debate" space.
 
-Topics related to science and religion (Topic~7) and salvation doctrine (Topic~19) form a small but distinct cluster, merging with Catholic practice topics (Topic~5, liturgy/mass) only at a high hierarchical distance. This indicates that epistemological debates --- about evolution, evidence, and the compatibility of faith with reason --- occupy a relatively separate discursive space from liturgical or governance concerns within the corpus.
+The upper half of the dendrogram groups topics that generally deal with entities outside of mainstream Catholicism or specific societal outgroups. For example, the top green branch groups discussions around other faiths and regions, such as Topic 38 (cults/Islam/Judaism) and Topic 37 (China/Buddhism). Below that, a yellow cluster groups Topic 46 (Jews), Topic 16 (Canada/immigrants), and Topic 27 (business/gays). In the context of hate speech and toxic discourse, these clusters likely represent discussions targeted at minority groups or secular societal shifts.
 
-Overall, the hierarchical structure suggests that language of origin is one of the strongest organising forces in the data, followed by thematic domain (ethics, politics, practice, theology). This ordering will be important when interpreting the supervised classification results in later chapters.
+Overall, the hierarchical structure shows that thematic domain—such as secular politics, internal church morality, and external religious/social outgroups—is the strongest organizing force in the data. The presence of mixed-language keywords within these tightly knit clusters highlights the cross-lingual consistency of the topic model, which will be crucial for interpreting the supervised classification results in later chapters.
 
 %---------------------------------------------------------------
 \section{Inter-Topic Similarity}
@@ -96,9 +102,9 @@ Overall, the hierarchical structure suggests that language of origin is one of t
 
 Figure~\ref{fig:similarity} displays the pairwise cosine similarity matrix computed over topic embeddings. Each cell represents the semantic proximity between two topics; darker cells indicate higher similarity.
 
-\begin{figure}[htbp]
+\begin{figure}[t]
     \centering
-    % \includegraphics[width=0.85\textwidth]{RQ1/유사도_Ber.png}
+    \includegraphics[width=0.85\textwidth]{images/foundations/similarity_Ber.png}
     \caption{Pairwise cosine similarity matrix of topic embeddings. Diagonal entries (self-similarity = 1.0) are shown in dark blue; off-diagonal cells indicate the degree to which two topics share embedding space.}
     \label{fig:similarity}
 \end{figure}

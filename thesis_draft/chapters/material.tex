@@ -139,12 +139,74 @@ Raw candidate texts were collected from two Chinese social media platforms using
 
 \begin{itemize}
   \item \textbf{Tieba} (Baidu's forum platform): 46,640 posts were crawled by feeding keywords into the search API.
-  \item \textbf{Weibo and HuggingFace datasets}: 19,820 additional texts were gathered from four publicly available Weibo-derived datasets (\texttt{liyucheng/zhihu\_26k}, \texttt{vilarin/weibo-2014}, \texttt{m4rque2/weibo\_automobile}, \texttt{Giacinta/weibo}).
+  \item \textbf{Weibo and HuggingFace datasets}: 19,820 additional texts were gathered from four publicly available Weibo-derived datasets on HuggingFace Hub: \texttt{liyucheng/zhihu\_26k}, \texttt{vilarin/weibo-2014}, \texttt{m4rque2/weibo\_automobile}, and \texttt{Giacinta/weibo}.
 \end{itemize}
 
 After combining and deduplicating, the raw pool contained 78,874 texts. Weibo-derived sources were subsequently excluded because they contributed too few usable texts after keyword filtering (only 412 relevant posts), leaving Tieba as the sole native platform. Relevance filtering reduced the pool to \textbf{15,181 texts}.
 
-To select the most informative 4,000 texts for annotation, we applied an ensemble detection approach using multiple pre-trained models. The models were run on all 15,181 candidates and the 4,000 texts on which the ensemble was \emph{least confident} (i.e.\ highest prediction uncertainty or most disagreement between models) were selected for human review. This active-learning-style selection strategy ensures the annotation budget is spent on genuinely ambiguous cases, which improves classifier training later.
+To select the most informative 4,000 texts for annotation, we applied an ensemble detection pipeline using three pre-trained Chinese hate speech classifiers: THUCOAIModel \citep{thucoai-roberta-cold}, MoritModel, and DavidcliaoModel \citep{liao2021hatespeech}. Each model scored every candidate independently, and the 4,000 texts with the highest inter-model disagreement --- i.e.\ where the models gave conflicting predictions --- were selected for human review. This active-learning-style strategy ensures the annotation budget is spent on genuinely ambiguous cases, which improves classifier training more than randomly sampled data would. Figure~\ref{fig:ensemble} illustrates the pipeline.
+
+%-------------------------------------------------------------------
+% FIGURE: Ensemble detection pipeline for annotation selection
+%-------------------------------------------------------------------
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+  node distance=5mm and 7mm,
+  >=Latex,
+  poolbox/.style={
+    draw=blue!55!black, fill=blue!7, rounded corners=3pt,
+    align=center, font=\small, text width=2.8cm, minimum height=1.0cm, line width=0.6pt
+  },
+  modelbox/.style={
+    draw=purple!55!black, fill=purple!6, rounded corners=3pt,
+    align=center, font=\small, text width=2.2cm, minimum height=1.0cm, line width=0.6pt
+  },
+  decidebox/.style={
+    diamond, draw=orange!65!black, fill=orange!8,
+    align=center, font=\small, text width=1.8cm, minimum height=1.0cm,
+    aspect=2.2, line width=0.6pt
+  },
+  outbox/.style={
+    draw=green!55!black, fill=green!7, rounded corners=3pt,
+    align=center, font=\small, text width=2.5cm, minimum height=1.0cm, line width=0.6pt
+  },
+  arr/.style={-{Latex[length=2.2mm]}, thick, color=gray!70!black},
+]
+
+%% Input pool
+\node[poolbox] (pool) {Candidate pool\\{\footnotesize 15,181 texts}};
+
+%% Three models (spread below)
+\node[modelbox, below left=1.2cm and 1.5cm of pool]  (m1) {Model 1\\{\footnotesize THUCOAI}};
+\node[modelbox, below=1.8cm of pool]                  (m2) {Model 2\\{\footnotesize Morit}};
+\node[modelbox, below right=1.2cm and 1.5cm of pool] (m3) {Model 3\\{\footnotesize Davidcliao}};
+
+%% Aggregation
+\node[decidebox, below=1.8cm of m2] (agg) {High\\disagreement?};
+
+%% Two outputs
+\node[outbox, below left=1.0cm and 1.2cm of agg]  (yes) {Select for\\annotation\\{\footnotesize 4,000 texts}};
+\node[outbox, below right=1.0cm and 1.2cm of agg] (no)  {Discard /\\skip};
+
+%% Arrows from pool to models
+\draw[arr] (pool.south) -- (m1.north);
+\draw[arr] (pool.south) -- (m2.north);
+\draw[arr] (pool.south) -- (m3.north);
+
+%% Arrows from models to aggregation
+\draw[arr] (m1.south) -- (agg.north west);
+\draw[arr] (m2.south) -- (agg.north);
+\draw[arr] (m3.south) -- (agg.north east);
+
+%% Decision arrows
+\draw[arr] (agg.south west) -- node[left, font=\scriptsize]{Yes} (yes.north);
+\draw[arr] (agg.south east) -- node[right, font=\scriptsize]{No} (no.north);
+
+\end{tikzpicture}
+\caption{Ensemble-based annotation selection. Three pre-trained classifiers score every candidate independently; texts with high inter-model disagreement are prioritised for human annotation, following an active-learning rationale.}
+\label{fig:ensemble}
+\end{figure}
 
 These 4,000 texts were then annotated in Label Studio \citep{labelstudio} with two binary labels:
 \begin{itemize}
@@ -154,7 +216,32 @@ These 4,000 texts were then annotated in Label Studio \citep{labelstudio} with t
 
 The two-label design matters because Christian vocabulary appears frequently in neutral or ironic contexts. Table~\ref{tab:annotation-distribution} shows the resulting label counts: only 613 of 4,000 posts were Christianity-related, and only 152 were hate speech --- confirming that explicit anti-Christian content is rare even within a carefully curated pool.
 
-A Chinese hate speech classifier was then fine-tuned on these labels using THU-COAI RoBERTa-COLD \citep{thucoai-roberta-cold} as the backbone, with Focal Loss to address class imbalance. The fine-tuned classifier was applied to all 15,181 cleaned texts. Texts predicted as \emph{both} Christianity-related and hateful were retained, yielding a \textbf{native Chinese corpus of 1,070 texts} (1,687 predicted hateful; 3,296 predicted Christianity-related out of the full pool). Figure~\ref{fig:zh-funnel} illustrates the data reduction through each stage.
+A Chinese hate speech classifier was then fine-tuned on these labels using THU-COAI RoBERTa-COLD as the backbone \citep{thucoai-roberta-cold}. Two key techniques addressed the severe class imbalance (hate ratio: 3.8\%): \textbf{Focal Loss}, which up-weights hard-to-classify minority samples during training, and \textbf{back-translation augmentation}, which expanded the positive-class training set by translating hate speech samples through multiple pivot languages (English, Korean, French, German) and back. The final training set contained 4,223 texts (hate ratio: 22.5\% after augmentation); the validation set was kept free of any back-translated twins of training items to prevent data leakage.
+
+Table~\ref{tab:zh-finetune} reports the fine-tuning results per epoch. The model reached its best generalisation at Epoch~3 (Combined F1 = 0.7145), after which hate recall began to drop --- a sign of overfitting --- and early stopping was triggered at Epoch~6. Compared to the THU-COAI baseline (hate-speech F1 = 0.17 on the held-out test set), the fine-tuned model represents a substantial improvement.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}crrrr@{}}
+\toprule
+Epoch & Rel F1 & Hate F1 & Combined F1 & Hate Recall \\
+\midrule
+1 & 0.891 & 0.591 & 0.741 & \textbf{0.840} \\
+2 & 0.887 & 0.623 & 0.755 & 0.800 \\
+\textbf{3} & \textbf{0.894} & \textbf{0.635} & \textbf{0.7145} & 0.760 \\
+4 & 0.882 & 0.601 & 0.742 & 0.700 \\
+5 & 0.876 & 0.589 & 0.733 & 0.660 \\
+6 & 0.871 & 0.541 & 0.706 & 0.540 \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Baseline (THU-COAI, no fine-tuning): Hate F1 = 0.172}} \\
+\bottomrule
+\end{tabular}
+\caption{Chinese classifier fine-tuning results by epoch. Combined F1 = average of Rel F1 and Hate F1. Best epoch highlighted in bold; early stopping triggered at Epoch~6.}
+\label{tab:zh-finetune}
+\end{table}
+
+The fine-tuned classifier was applied to all 15,181 cleaned texts. Texts predicted as \emph{both} Christianity-related and hateful were retained, yielding a \textbf{native Chinese corpus of 1,070 texts} (1,687 predicted hateful; 3,296 predicted Christianity-related out of the full pool). Figure~\ref{fig:zh-funnel} illustrates the data reduction through each stage.
 
 %-------------------------------------------------------------------
 % FIGURE 2: Chinese data funnel
@@ -240,7 +327,32 @@ The Japanese pipeline followed the same overall procedure. Raw texts were collec
 
 After combining and deduplicating, the raw pool contained 65,040 texts. X (Twitter) was excluded due to access-quota constraints that prevented building a usable pool. After cleaning and relevance filtering, the pool was reduced to \textbf{43,101 texts}, and a second pass produced \textbf{4,181 usable candidates}.
 
-Using the same ensemble-based uncertainty sampling, 4,084 texts were selected for annotation in Label Studio with the same two-label scheme. Of these, 690 were labeled Christianity-related and 102 as hate speech (hate ratio: 2.5\%, somewhat lower than Chinese). A LUKE-based Japanese classifier \citep{luke-japanese} was fine-tuned on these labels using Focal Loss and back-translation augmentation for the minority class, then applied to the 43,101-text pool. Texts predicted as both Christianity-related and hateful formed the \textbf{native Japanese corpus of 1,445 texts} (1,610 predicted hateful; 6,491 predicted Christianity-related). Figure~\ref{fig:ja-funnel} shows the corresponding data funnel.
+Using the same ensemble-based uncertainty sampling (Figure~\ref{fig:ensemble}), 4,084 texts were selected for annotation in Label Studio with the same two-label scheme. The Japanese ensemble consisted of three models selected after an LLM-as-a-judge screening on 250 texts: KubotaModel (85.6\% accuracy), LukeModel (81.2\%), and YukiModel (88.0\%) \citep{luke-japanese}. Of the 4,084 annotated texts, 690 were labeled Christianity-related and 102 as hate speech (hate ratio: 2.5\%, somewhat lower than Chinese).
+
+A LUKE-based Japanese classifier was fine-tuned on these labels using the same Focal Loss and back-translation augmentation strategy \citep{luke-japanese}. The back-translated training set contained 4,028 texts (hate ratio: 16.0\% after augmentation). Table~\ref{tab:ja-finetune} shows the epoch-level results. The model peaked at Epoch~3 (Combined F1 = 0.7356), with Religion F1 consistently above 0.89 throughout training. Compared to the LUKE baseline (hate-speech F1 = 0.29), the fine-tuned model again shows a substantial gain.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}crrrr@{}}
+\toprule
+Epoch & Rel F1 & Hate F1 & Combined F1 & Hate Recall \\
+\midrule
+1 & 0.899 & 0.381 & 0.640 & \textbf{0.923} \\
+2 & 0.892 & 0.532 & 0.712 & 0.885 \\
+\textbf{3} & \textbf{0.893} & \textbf{0.579} & \textbf{0.7356} & 0.673 \\
+4 & 0.889 & 0.553 & 0.721 & 0.654 \\
+5 & 0.878 & 0.562 & 0.720 & 0.654 \\
+6 & 0.877 & 0.519 & 0.698 & 0.539 \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Baseline (LUKE, no fine-tuning): Hate F1 = 0.294}} \\
+\bottomrule
+\end{tabular}
+\caption{Japanese classifier fine-tuning results by epoch. Best epoch highlighted in bold; early stopping triggered at Epoch~6. Hate Recall is notably high at Epoch~1 due to Focal Loss aggressively targeting minority samples early in training.}
+\label{tab:ja-finetune}
+\end{table}
+
+The fine-tuned classifier was applied to the 43,101-text pool. Texts predicted as both Christianity-related and hateful formed the \textbf{native Japanese corpus of 1,445 texts} (1,610 predicted hateful; 6,491 predicted Christianity-related). Figure~\ref{fig:ja-funnel} shows the corresponding data funnel.
 
 %-------------------------------------------------------------------
 % FIGURE 3: Japanese data funnel
@@ -307,7 +419,7 @@ Using the same ensemble-based uncertainty sampling, 4,084 texts were selected fo
 \subsection{Stage 2: LLM-Based Augmentation}
 \label{subsec:ja-aug}
 
-LLM-based localization for Japanese followed the same seed-based procedure. The generation prompt was adapted to target register conventions common in Japanese online forums, including the informal, anonymous posting style of 5ch \citep{cross-lingual-llm-localization, llm-style-transfer}. Post-generation filtering with the fine-tuned Japanese classifier processed 1,249 texts: 1,167 (93.4\%) passed Christianity-relevance and 945 (75.7\%) passed the hate speech filter. After requiring both, \textbf{915 synthetic texts} were retained.
+LLM-based localization for Japanese followed the same seed-based procedure. The generation prompt was adapted to target register conventions common in Japanese online forums, including the informal, anonymous posting style of 5ch. Post-generation filtering with the fine-tuned Japanese classifier processed 1,249 texts: 1,167 (93.4\%) passed Christianity-relevance and 945 (75.7\%) passed the hate speech filter. After requiring both, \textbf{915 synthetic texts} were retained.
 
 The native and synthetic sets were merged to form the \textbf{final Japanese corpus of 2,360 texts}.
 

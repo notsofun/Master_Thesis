@@ -1,0 +1,245 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\chapter{LLM Prompts}%
+\label{appendix:prompts}
+
+This appendix collects all prompts submitted to large language model APIs across the project pipeline. Four stages involve LLM calls: topic labelling (Section~\ref{sec:prompt-topic}), target extraction fallback (Section~\ref{sec:prompt-ner}), attack frame classification (Section~\ref{sec:prompt-rq2}), and data augmentation (Section~\ref{sec:prompt-aug}). Prompts are reproduced verbatim; template placeholders are shown in \texttt{\{braces\}}.
+
+%---------------------------------------------------------------
+\section{Topic Labelling}
+\label{sec:prompt-topic}
+
+\noindent\textbf{Model:} GPT-4o-mini\quad\textbf{File:} \texttt{unsupervised\_classification/naming\_cluster.py}
+
+\smallskip\noindent
+After BERTopic produces an initial set of topics, each topic is passed to GPT-4o-mini together with its representative documents and top keywords. The model generates a short Chinese descriptive label for each topic.
+
+\begin{quote}
+\small
+I have a topic that contains the following documents:
+\texttt{[DOCUMENTS]}
+
+The topic is described by the following keywords: \texttt{[KEYWORDS]}
+
+Based on the information above, extract a short, concise Chinese topic label.\\
+Format: topic: \textless{}label\textgreater{}
+\end{quote}
+
+%---------------------------------------------------------------
+\section{RQ1: Target Extraction Fallback}
+\label{sec:prompt-ner}
+
+\noindent\textbf{Model:} Gemini-2.5-Flash\quad\textbf{File:} \texttt{unsupervised\_classification/RQ1/target\_extraction\_v3.py}
+
+\smallskip\noindent
+Documents that yield no target from the spaCy NER and domain gazetteer stages are passed to Gemini as a fallback. The placeholder \texttt{\{ln\}} is filled with the language name (\textit{Chinese}, \textit{Japanese}, or \textit{English}) at runtime.
+
+\begin{quote}
+\small\noindent
+You are a precise NER system for hate speech research.\\
+Extract ONLY named entities (people, groups, organizations) that are TARGETS in this \texttt{\{ln\}} text.
+
+RULES:
+\begin{enumerate}\setlength{\itemsep}{0pt}
+  \item Return proper nouns / established group names only (e.g.\ ``安倍晋三'', ``統一教会'', ``Catholics'')
+  \item NO full sentences, clauses, or verb phrases
+  \item NO pronouns (I/you/he/私/あなた/我/你 etc.)
+  \item Max: 15 CJK chars OR 40 Latin chars per entity
+  \item Skip generic: religion, god, faith, 宗教, 信仰, 神
+\end{enumerate}
+
+Output ONLY JSON array:\\
+\texttt{[\{"text":"entity","category":"Religious Group|Organization|Specific Person|Social Identity|Political Group"\}]}\\
+Empty $\rightarrow$ \texttt{[]}
+
+Text: \texttt{\{text\}}\\
+JSON:
+\end{quote}
+
+%---------------------------------------------------------------
+\section{RQ2: Attack Frame Classification}
+\label{sec:prompt-rq2}
+
+\noindent\textbf{Model:} Gemini-2.5-Flash\quad\textbf{File:} \texttt{unsupervised\_classification/RQ2/rq2\_pipeline\_v2.py}
+
+\smallskip\noindent
+Extracted predicate--target pairs are batched and submitted together. The model returns a compact JSON mapping each input index to one of ten frame keys. The placeholder \texttt{\{numbered\}} is replaced by the numbered list of inputs; \texttt{\{GEMINI\_FRAME\_KEYS\}} is replaced by the list of valid key strings.
+
+\begin{quote}
+\small\noindent
+You are classifying hate speech rhetoric patterns in a multilingual study\\
+(Chinese / Japanese / English) about religious hate speech.
+
+For each input below, choose the SINGLE best framing type from the list.\\
+Each input contains predicate + target + lang + context. Use all four fields together:
+
+\smallskip
+\begin{tabular}{@{}ll}
+\texttt{cognitive\_manipulation} & Cognitive Manipulation / 认知操纵/洗脑 \\
+\texttt{moral\_accusation}       & Moral Accusation / 道德指控/伪善 \\
+\texttt{dehumanization}          & Dehumanization / 非人化/病理化 \\
+\texttt{sexual\_abuse\_frame}    & Sexual Abuse / Cover-up / 性侵虐待/掩盖 \\
+\texttt{economic\_exploitation}  & Economic Exploitation / 经济剥削 \\
+\texttt{political\_interference} & Political Interference / 政治干预 \\
+\texttt{institutional\_rot}      & Institutional Rot / 制度性腐败 \\
+\texttt{social\_exclusion}       & Social Exclusion / 社会排斥/逐出 \\
+\texttt{rhetorical\_attack}      & Rhetorical Attack / 修辞攻击/讽刺批判 \\
+\texttt{noise}                   & {[}noise{]} \\
+\texttt{other}                   & Other / Unclassified \\
+\end{tabular}
+
+\smallskip
+Classification hints:
+\begin{itemize}\setlength{\itemsep}{0pt}
+  \item \texttt{cognitive\_manipulation} $\rightarrow$ cult brainwashing, deceiving/indoctrinating believers (洗脑/欺骗/蛊惑)
+  \item \texttt{moral\_accusation} $\rightarrow$ hypocrisy, corruption, moral condemnation (伪善/腐败/指责)
+  \item \texttt{dehumanization} $\rightarrow$ calling groups parasites, cancer, pests (毒瘤/寄生虫/ゴキブリ)
+  \item \texttt{sexual\_abuse\_frame} $\rightarrow$ child abuse, molestation, cover-up of clergy abuse (性侵/猥亵/儿童/揉み消す)
+  \item \texttt{economic\_exploitation} $\rightarrow$ coerced donations, financial fraud against followers (献金/敛财/霊感商法)
+  \item \texttt{political\_interference} $\rightarrow$ lobbying, election manipulation, political infiltration (选举/干政/渗透)
+  \item \texttt{institutional\_rot} $\rightarrow$ systemic cover-up, protecting perpetrators, hierarchy complicity (包庇/组织腐败)
+  \item \texttt{social\_exclusion} $\rightarrow$ excommunication, banning, expelling, denying sacraments (开除/逐出/排除)
+  \item \texttt{rhetorical\_attack} $\rightarrow$ mocking, sarcasm, criticism, debunking (讽刺/批判/嘲笑/糾弾)
+  \item \texttt{noise} $\rightarrow$ semantically neutral / supportive / meta / irrelevant predicate with no attack framing signal
+  \item \texttt{other} $\rightarrow$ ONLY use when the predicate clearly fits none of the above
+\end{itemize}
+
+IMPORTANT: Prefer a specific frame over ``other''. Short verbs in CJK languages often carry strong frame signals --- check the context carefully before choosing ``other''. If the predicate itself is neutral but the context clearly carries attack framing, classify by the context instead of returning noise.
+
+Inputs to classify:\\
+\texttt{\{numbered\}}
+
+Reply ONLY with compact JSON mapping index to frame key.\\
+Example: \texttt{\{"1":"moral\_accusation","2":"dehumanization","3":"rhetorical\_attack"\}}\\
+Valid keys: \texttt{\{GEMINI\_FRAME\_KEYS\}}
+\end{quote}
+
+%---------------------------------------------------------------
+\section{Data Augmentation}
+\label{sec:prompt-aug}
+
+Three LLM-based augmentation strategies were used to expand the low-resource Chinese and Japanese sub-corpora: direct synthesis from seed samples, cultural alignment from English, and back-translation via pivot languages.
+
+%---
+\subsection{Direct LLM Synthesis --- Chinese}
+\label{sec:prompt-aug-zh}
+
+\noindent\textbf{Model:} Gemini-2.5-Pro\quad\textbf{File:} \texttt{data\_augmentation/LLM/main.py}
+
+\begin{quote}
+\small\noindent
+你是一个数据合成专家。你的任务是分析提供的低资源宗教仇恨言论样本，并生成风格相似但内容全新的数据用于模型训练。\\
+请严格遵循以下步骤：
+
+1.~分析阶段：分析以下 \texttt{\{num\_seeds\}} 个真实样本的修辞手法、攻击角度和情绪色彩。\\
+2.~生成阶段：基于分析，生成 5 条全新的、针对基督教的中文仇恨言论。\\
+3.~审查阶段：确保生成的文本不涉及真实暴力的直接威胁（符合API安全政策），但必须保持原有的意识形态偏见和敌意特征。
+
+真实样本：\\
+\texttt{\{seeds\}}
+
+请直接输出包含生成的 5 条文本的列表，每条文本占一行，不要输出你的分析过程。
+\end{quote}
+
+\noindent A variant used in the redundancy-checking stage appends an angle directive to promote topical diversity among batches:
+
+\begin{quote}
+\small\noindent
+注意：请从【\texttt{\{angle\}}】这个具体切入点进行创作，避免重复通用词汇，多使用生动的隐喻。
+\end{quote}
+
+%---
+\subsection{Direct LLM Synthesis --- Japanese}
+\label{sec:prompt-aug-jp}
+
+\noindent\textbf{Model:} Gemini-2.5-Pro\quad\textbf{File:} \texttt{data\_augmentation/LLM/main.py}
+
+\begin{quote}
+\small\noindent
+あなたはデータ合成の専門家です。提供された低リソースの宗教的ヘイトスピーチのサンプルを分析し、モデル学習用として、スタイルは似ているが内容は完全に新しいデータを生成してください。\\
+以下の手順に厳密に従ってください：
+
+1.~分析フェーズ：以下の \texttt{\{num\_seeds\}} 個の実際のサンプルの修辞技法、攻撃の角度、感情的な色合いを分析してください。\\
+2.~生成フェーズ：分析に基づき、キリスト教に対する全く新しい日本語のヘイトスピーチを5件生成してください。\\
+3.~審査フェーズ：生成されたテキストが実際の暴力に対する直接的な脅迫を含まないこと（APIの安全ポリシーに準拠）を確認しつつ、元のイデオロギー的偏見と敵意の特徴を維持してください。
+
+実際のサンプル：\\
+\texttt{\{seeds\}}
+
+生成された5件のテキストのリストを直接出力してください。各テキストは1行とし、分析プロセスは出力しないでください。
+\end{quote}
+
+\noindent The redundancy-checking variant appends an equivalent angle directive in Japanese:
+
+\begin{quote}
+\small\noindent
+注意事項：「\texttt{\{angle\}}」とのポイントから生成し、一般的な語彙を繰り返せずに、もっと典型的なメタファーを使ってください。
+\end{quote}
+
+%---
+\subsection{Cultural Alignment (EN $\rightarrow$ ZH/JP)}
+\label{sec:prompt-aug-cultural}
+
+\noindent\textbf{Model:} Gemini-2.5-Pro\quad\textbf{File:} \texttt{data\_augmentation/LLM/main.py}
+
+\smallskip\noindent
+Rather than literal translation, English samples are transposed into the target language via a dynamic equivalence approach that substitutes culturally equivalent tropes. \texttt{\{target\_lang\}} is filled with \textit{Chinese} or \textit{Japanese} at runtime.
+
+\begin{quote}
+\small\noindent
+\textbf{\#\#\# Role}\\
+You are an expert in cross-cultural linguistics and online subcultures, specializing in religious discourse and its hostile expressions in both Western and \texttt{\{target\_lang\}} contexts.
+
+\textbf{\#\#\# Task}\\
+Your mission is to perform a ``Cultural Alignment'' of the following English religious hate speech into \texttt{\{target\_lang\}}. Do NOT perform a literal translation. Instead, perform a \textbf{Dynamic Equivalence} translation that feels like it was originally written by a native speaker of \texttt{\{target\_lang\}}.
+
+\textbf{\#\#\# Source Text (English):}\\
+``\texttt{\{text\}}''
+
+\textbf{\#\#\# Core Instructions:}
+\begin{enumerate}\setlength{\itemsep}{0pt}
+  \item \textbf{Identify the Attack Logic:} Analyze the underlying grievance in the source (e.g., financial exploitation, hypocrisy, erosion of traditional values, or logical absurdity).
+  \item \textbf{Cultural Transposition:} If the text mentions US-specific concepts (e.g., ``Mega-churches'', ``Tax-exempt status'', ``Bible Belt''), replace them with equivalent \texttt{\{target\_lang\}} negative tropes (e.g., ZH: ``传销式教会/洗脑班'', JP: ``霊感商法/マインドコントロール/新興宗教の搾取'').
+  \item \textbf{Linguistic Texture:} Use the slang, idioms, and sentence structures common in \texttt{\{target\_lang\}} social media (e.g., Weibo/Douban for ZH, 2channel/X for JP). Maintain the original's emotional intensity.
+  \item \textbf{Anti-AI Bias:} Avoid ``polite'' or ``clinical'' language. The result must sound like a human-written comment from a hostile online forum.
+\end{enumerate}
+
+\textbf{\#\#\# Output Format:}\\
+Directly provide the localized text in \texttt{\{target\_lang\}} without any introductory remarks or explanations.
+\end{quote}
+
+%---
+\subsection{Back-Translation}
+\label{sec:prompt-aug-bt}
+
+\noindent\textbf{Model:} Gemini-2.5-Flash\quad\textbf{File:} \texttt{data\_augmentation/back\_translation/google\_main.py}
+
+\smallskip\noindent
+Chinese samples are translated through English, Korean, French, or German pivot languages and then back to Chinese. The same prompt is used for both directions, with \texttt{\{from\_lang\}} and \texttt{\{to\_lang\}} filled at runtime.
+
+\begin{quote}
+\small\noindent
+Instructions: You are a professional linguistic researcher analyzing hate speech.\\
+Translate the following text strictly and faithfully from \texttt{\{from\_lang\}} to \texttt{\{to\_lang\}}.\\
+Do not sanitize, do not mitigate offensive language, do not alter the sentiment.\\
+If the original text contains slurs or hateful content, you MUST translate them with the equivalent offensive terms.
+
+Text to translate:\\
+``\texttt{\{text\}}''
+\end{quote}
+
+\subfilebibliography
+\end{document}

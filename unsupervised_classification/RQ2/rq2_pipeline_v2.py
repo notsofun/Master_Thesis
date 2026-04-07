@@ -47,7 +47,7 @@ Gemini调用设计：
   rq2_E_top_verbs_[en/zh/jp].csv
 
 可视化重跑（无需重新调API）：
-  python rq2_pipeline_v2.py --viz-only
+  python unsupervised_classification/RQ2/rq2_pipeline_v2.py --viz-only
 
 可视化重跑（无需重新调API）：
   python rq2_pipeline_v2.py --reclassify-other  ← 只对 other 重分类，不重跑 Step1
@@ -836,8 +836,7 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     bilingual_x = [frame_bilingual_label(k) for k in FRAME_KEYS]
 
     # ── 图A: Topic × Frame 热力图 ──────────────────────────────────────
-    top20_topics = labeled_df["topic"].value_counts().head(20).index
-    tf = (labeled_df[labeled_df["topic"].isin(top20_topics)]
+    tf = (labeled_df
           .groupby(["topic", "frame_type"]).size()
           .reset_index(name="count"))
     tf["pct"] = (tf["count"] / tf.groupby("topic")["count"].transform("sum") * 100).round(1)
@@ -851,16 +850,23 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
         colorscale="Blues",
         text=tf_pivot.values.round(1),
         texttemplate="%{text}%",
-        colorbar=dict(title="占比 %"),
+        colorbar=dict(title="Percentage %"),
         hovertemplate="Topic %{y}<br>框架: %{x}<br>占比: %{z:.1f}%<extra></extra>",
     ))
+    dynamic_height_a = len(tf_pivot) * 22 + 200
+
     fig_a.update_layout(
         **_LAYOUT_BASE,
-        title=dict(text="Fig A: Dominant Attack Framing per Topic (% within topic)<br><sup>各话题主导攻击框架热力图</sup>",
-                   font=dict(size=14)),
-        xaxis=dict(title="Framing Type (攻击框架类型)", tickangle=-20),
-        yaxis=dict(title="Topic"),
-        height=700,
+        title=dict(text="Fig A: Dominant Attack Framing per Topic (% within topic)",
+                font=dict(size=14)),
+        xaxis=dict(title="Framing Type", tickangle=-20),
+        yaxis=dict(
+            title="Topic",
+            tickmode='linear', 
+            dtick=1,
+            automargin=True
+        ),
+        height=dynamic_height_a,
     )
     p = OUT_DIR / "rq2_A_topic_frame_heatmap.html"
     fig_a.write_html(str(p))
@@ -891,7 +897,7 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     fig_b.update_layout(
         **_LAYOUT_BASE,
         barmode="group",
-        title=dict(text="Fig B: Attack Framing Distribution by Language (% within language)<br><sup>三语言攻击框架分布对比</sup>",
+        title=dict(text="Fig B: Attack Framing Distribution by Language (% within language)",
                    font=dict(size=14)),
         xaxis=dict(title="Framing Type (攻击框架类型)", tickangle=-20),
         yaxis=dict(title="% within Language (各语言内占比)"),
@@ -904,13 +910,13 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     log.info(f"[VIZ] ✅ 图B: {p.name}")
 
     # ── 图C: Target × Frame 矩阵（原始频次） ───────────────────────────
-    top15 = labeled_df["target"].value_counts().head(15).index
-    tgf = (labeled_df[labeled_df["target"].isin(top15)]
+    top30 = labeled_df["target"].value_counts().head(30).index
+    tgf = (labeled_df[labeled_df["target"].isin(top30)]
            .groupby(["target", "frame_type"]).size()
            .reset_index(name="count"))
     tgf_pivot = (tgf.pivot(index="target", columns="frame_type", values="count")
                     .reindex(columns=FRAME_KEYS, fill_value=0).fillna(0))
-
+    dynamic_height = max(600, len(tgf_pivot) * 20 + 150)
     fig_c = go.Figure(go.Heatmap(
         z=tgf_pivot.values,
         x=bilingual_x,
@@ -918,16 +924,16 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
         colorscale="Reds",
         text=tgf_pivot.values.astype(int),
         texttemplate="%{text}",
-        colorbar=dict(title="频次 / Count"),
-        hovertemplate="Target: %{y}<br>框架: %{x}<br>频次: %{z}<extra></extra>",
+        colorbar=dict(title="Count"),
+        hovertemplate="Target: %{y}<br>{x}<br>{z}<extra></extra>",
     ))
     fig_c.update_layout(
         **_LAYOUT_BASE,
-        title=dict(text="Fig C: Attack Frame Matrix per Target (raw count)<br><sup>RQ1目标群体 × 攻击框架矩阵</sup>",
+        title=dict(text="Fig C: Attack Frame Matrix per Target (raw count)",
                    font=dict(size=14)),
-        xaxis=dict(title="Framing Type (攻击框架类型)", tickangle=-20),
-        yaxis=dict(title="Target Group (被攻击目标)"),
-        height=620,
+        xaxis=dict(title="Framing Type", tickangle=-20),
+        yaxis=dict(title="Target Group",dtick=1),
+        height=dynamic_height,
     )
     p = OUT_DIR / "rq2_C_target_frame_matrix.html"
     fig_c.write_html(str(p))
@@ -944,7 +950,7 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     sun["frame_label"] = sun["frame_type"].map(FRAME_EN)
     fig_d = px.sunburst(
         sun, path=["lang_label", "topic_label", "frame_label"], values="count",
-        title="Fig D: Language → Topic → Framing Type (interactive sunburst)<br><sup>语言 → 话题 → 框架 三层旭日图（点击钻取）</sup>",
+        title="Fig D: Language → Topic → Framing Type (interactive sunburst)",
         color="count", color_continuous_scale="RdYlBu_r",
     )
     fig_d.update_layout(**_LAYOUT_BASE, height=720)

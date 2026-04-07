@@ -1,0 +1,13 @@
+2026-04-07 14:30:13,916 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ2/logs/20260407_143013_rq2_pipeline.log
+2026-04-07 14:30:14,565 - INFO - [VIZ-ONLY] 加载 1862 条，重跑可视化
+2026-04-07 14:30:14,653 - INFO - [VIZ] 开始生成可视化，共 1862 条记录
+2026-04-07 14:30:14,658 - INFO - [VIZ] 语言分布: {'jp': 771, 'en': 546, 'zh': 545}
+2026-04-07 14:30:14,658 - INFO - [VIZ] 框架分布（含noise）: {'noise': 491, 'rhetorical_attack': 346, 'moral_accusation': 226, 'sexual_abuse_frame': 217, 'political_interference': 155, 'cognitive_manipulation': 125, 'economic_exploitation': 112, 'institutional_rot': 106, 'social_exclusion': 42, 'dehumanization': 38, 'other': 4}
+2026-04-07 14:30:14,659 - INFO - [VIZ] 提取层级: {'svo': 1430, 'window': 432}
+2026-04-07 14:30:14,659 - INFO - [VIZ] 过滤 491 条 noise 标签（占26.4%），不进入图表
+2026-04-07 14:30:14,732 - INFO - [VIZ] ✅ 图A: rq2_A_topic_frame_heatmap.html
+2026-04-07 14:30:14,771 - INFO - [VIZ] ✅ 图B: rq2_B_lang_frame_bar.html
+2026-04-07 14:30:14,799 - INFO - [VIZ] ✅ 图C: rq2_C_target_frame_matrix.html
+2026-04-07 14:30:14,944 - INFO - [VIZ] ✅ 图D: rq2_D_sunburst_lang_topic_frame.html
+2026-04-07 14:30:14,953 - INFO - [VIZ] ✅ 图E (词频CSV) saved
+2026-04-07 14:30:14,978 - INFO - [VIZ] ✅ 汇总CSV saved: rq2_aggregated_summary.csv

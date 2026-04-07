@@ -55,12 +55,14 @@ To understand how the \textit{type} of target shifts across different discursive
     \label{fig:rq1-stacked}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{sidewaysfigure}
     \centering
-    \includegraphics[width=\textwidth]{RQ1/rq1_topic_top_targets_bilingual.png}
+    % width 设置为 \textwidth 即可填满旋转后的页面高度
+    \includegraphics[width=0.8\textwidth]{RQ1/rq1_topic_top_targets_bilingual.png}
+    
     \caption{Top-$N$ hate-speech targets per topic for the 24 largest topics, with bilingual labels (original language + English translation). Bar colours encode entity category; topic identifiers and document counts are shown in each panel header.}
     \label{fig:rq1-topic-targets}
-\end{figure}
+\end{sidewaysfigure}
 
 Across all 47 topics and 4{,}688 LLM-categorised entity mentions, \textit{Social Identity} is the most frequent category overall (1{,}479 mentions, 31.5\%), followed by \textit{Organization} (1{,}322, 28.2\%), \textit{Specific Person} (935, 19.9\%), \textit{Religious Group} (676, 14.4\%), and \textit{Political Group} (276, 5.9\%). At the topic level, \textit{Social Identity} is the dominant category in 23 of the 47 topics; \textit{Religious Group} leads in 10; \textit{Organization} and \textit{Specific Person} each lead in 7; and \textit{Political Group} does not lead any topic independently. The prevalence of \textit{Social Identity} across the majority of topics reflects a discourse that primarily frames its objects of hostility as role-based or membership-based collectives rather than named institutions or individuals.
 
@@ -79,6 +81,7 @@ Ten topics are led by \textit{Religious Group}. Topic~23 ($n=42$, Japanese-langu
 \textbf{Cross-topic patterns.}
 Several structural regularities emerge when the stacked profiles in Figure~\ref{fig:rq1-stacked} are read alongside the entity-level detail in Figure~\ref{fig:rq1-topic-targets}. First, \textit{Political Group} never achieves topic-level dominance on its own, but it functions as a consistent secondary presence in Topics~0, 1, 14, 16, 25, 31, and~36 --- all involving explicit intersections of religion with electoral or party politics --- reaching its highest absolute count (157 mentions) in Topic~0 due to the LDP's role in the Abe--Unification Church scandal. Second, topics in which \textit{Specific Person} is dominant tend to be more homogeneous in entity composition: a named individual anchors the discourse, causing other entity types to recede. Third, the smaller topics (below $n=30$) in Figure~\ref{fig:rq1-stacked} are almost uniformly thin in absolute entity count, making category-level proportions volatile; interpretive weight should rest on the larger topics where distributional patterns are more stable.
 
+
 %---------------------------------------------------------------
 \section{Target Category Distribution by Language}
 \label{sec:rq1-by-language}
@@ -92,6 +95,7 @@ Figure~\ref{fig:rq1-heatmap} aggregates the target category composition at the l
     \label{fig:rq1-heatmap}
 \end{figure}
 
+
 \textbf{English: individual persons and collective identity labels.}
 English-language posts are dominated by two categories that together account for over half of all entity mentions: \texttt{PERSON} (30.4\%) and \texttt{NORP} (25.8\%). The high \texttt{PERSON} share reflects the breadth of spaCy's person-entity detection across English text, capturing both religious figures (Jesus, Pope Francis) and contemporary political actors (Trump, Trudeau, Harper) without further disambiguation. \texttt{NORP} encodes the parallel targeting of broad religiopolitical collectivities --- \textit{Catholics}, \textit{Christians}, \textit{Evangelicals} --- as named groups. \texttt{ORG} (14.8\%) and \textit{Social Identity} (12.6\%) add institutional and lay-identity layers (\textit{the Church, the Vatican}; \textit{believers, progressives, conservatives}). By contrast, \textit{Specific Person} (3.0\%) and \textit{Political Group} (0.2\%) are minimal, suggesting that English posts rely on spaCy-extracted person and group labels rather than the LLM-enriched distinctions: named individuals are captured as generic \texttt{PERSON} entities rather than flagged as uniquely prominent figures. Overall, English hate-speech targeting is \textit{broad and identity-anchored}: it mentions individuals and groups in roughly equal measure, without concentrating sharply on any single actor or institution.
 
@@ -104,4 +108,7 @@ Chinese posts show the highest \textit{Social Identity} proportion of any langua
 \textbf{Synthesis.}
 When categories are collapsed into macro-types, group-level targeting (NORP, Social Identity, Religious Group, Political Group combined) accounts for a remarkably consistent share across all three languages: approximately 41\% for both English and Japanese, and 41\% for Chinese. The apparent cross-lingual similarity, however, conceals sharp differences in \textit{which} subcategories drive this share. In English, group targeting is dominated by \texttt{NORP} (collective identity labels detected by spaCy); in Japanese, it is driven by \textit{Social Identity} and \textit{Religious Group} (LLM-enriched role categories); in Chinese, it is distributed across both \texttt{NORP} and \textit{Social Identity}. The contrasts are sharpest for institutional and individual targeting: Japanese uniquely concentrates on a named organisation (\textit{Organization}, 34\%) paired with a named person (\textit{Specific Person}, 24\%), while English spreads individual mentions broadly via the generic \texttt{PERSON} category (30\%), and Chinese blends both approaches. This tripartite structure confirms that online hate speech about Christianity is not a uniform cross-cultural phenomenon, but is shaped by the specific political events, linguistic conventions, and NER capabilities that structure how each community names and frames its objects of hostility.
 
-% self-de
+
+% self-defined macro: include bibliography even when compiling a single chapter
+\subfilebibliography
+\end{document}

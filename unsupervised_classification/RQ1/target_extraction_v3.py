@@ -61,6 +61,7 @@ logger: _logging.Logger = _logging.getLogger(__name__)
 # ── 路径配置 ──────────────────────────────────────────────
 THIS_DIR   = Path(__file__).resolve().parent
 DATA_DIR   = THIS_DIR / "data"
+VIS_DIR = THIS_DIR / "visualizations"
 CKPT_L12   = DATA_DIR / "checkpoint_layer12.csv"
 CKPT_LLM   = DATA_DIR / "checkpoint_llm.csv"
 DEFAULT_INPUT = (
@@ -916,7 +917,7 @@ def run_viz(
     summary_df.to_csv(summary_path, index=False, encoding="utf-8-sig")
     logger.info(f"  Topic 汇总: {summary_path}")
 
-    _draw_all(summary_df, df, output_dir)
+    _draw_all(summary_df, df, VIS_DIR)
 
 
 def _draw_all(summary_df: pd.DataFrame, df_full: pd.DataFrame, output_dir: Path):

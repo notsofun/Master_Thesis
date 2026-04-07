@@ -88,7 +88,8 @@ def _find_cjk_font_file() -> tuple[Optional[str], Optional[str]]:
             str(Path.home() / ".fonts"),
         ]
 
-    # 先用 fontManager 索引查
+    # 先用 fontManager 索引查，收集所有可用的候选字体
+    found_fonts = []
     fallback_droid = None
     for candidate in _FONT_CANDIDATES:
         if candidate in name_to_path:
@@ -97,7 +98,11 @@ def _find_cjk_font_file() -> tuple[Optional[str], Optional[str]]:
                 fallback_droid = (candidate, path)   # 保底备用
                 continue
             logger.info(f"[Font] 找到 CJK 字体: {candidate} ({path})")
-            return candidate, path
+            found_fonts.append((candidate, path))
+    
+    # 如果找到至少一个字体，返回第一个（但后续会配置所有的作为 fallback）
+    if found_fonts:
+        return found_fonts[0]
 
     # 再按文件名在 extra_paths 里查
     cjk_keywords = ["CJK", "Noto", "YaHei", "Gothic", "Hiragino",
@@ -134,8 +139,8 @@ def _find_cjk_font_file() -> tuple[Optional[str], Optional[str]]:
 
 def setup_cjk_font() -> Optional[str]:
     """
-    配置 matplotlib 使用 CJK 字体。
-    返回字体名称（可传给 FontProperties），None 表示未找到。
+    配置 matplotlib 使用 CJK 字体，支持多字体 fallback chain。
+    返回主字体名称（可传给 FontProperties），None 表示未找到。
 
     调用方式（可视化函数开头）：
         from viz_utils import setup_cjk_font
@@ -150,38 +155,68 @@ def setup_cjk_font() -> Optional[str]:
     import matplotlib.pyplot as plt
     import matplotlib.font_manager as fm
 
-    name, path = _find_cjk_font_file()
-    if not name:
+    # 收集所有可用的候选字体
+    available_fonts: list[str] = []
+    name_to_path: dict[str, str] = {
+        f.name: f.fname for f in fm.fontManager.ttflist
+    }
+
+    # 按優先級查找並收集所有可用字體
+    for candidate in _FONT_CANDIDATES:
+        if candidate in name_to_path:
+            if "Droid" not in candidate:  # 先跳過只支持CJK的字體
+                available_fonts.append(candidate)
+                logger.info(f"[Font] 找到 CJK 字体: {candidate}")
+    
+    # 如果沒找到，再加上 Droid Sans Fallback
+    if not available_fonts:
+        for candidate in _FONT_CANDIDATES:
+            if candidate in name_to_path and "Droid" in candidate:
+                available_fonts.append(candidate)
+                logger.warning(f"[Font] 只找到 {candidate}（仅支持CJK）")
+                break
+
+    if not available_fonts:
+        logger.warning("[Font] 未找到任何 CJK 字体，图表中文/日文将显示为方块。")
         return None
 
-    _CJK_FONT_NAME = name
-    _CJK_FONT_PATH = path
+    # 設定主字體（第一個找到的）
+    main_font = available_fonts[0]
+    _CJK_FONT_NAME = main_font
+    
+    # 取得主字體的路徑（用於 FontProperties）
+    if main_font in name_to_path:
+        _CJK_FONT_PATH = name_to_path[main_font]
 
-    # 注册字体（如果是从文件路径发现的）
-    if path and path not in {f.fname for f in fm.fontManager.ttflist}:
-        fm.fontManager.addfont(path)
-
-    # 将 CJK 字体插入 sans-serif 列表首位，同时保留 DejaVu Sans 作为 Latin 后备
+    # ★ 核心改進：配置所有可用字体作為 fallback chain
+    # 這樣當某個字在主字體中缺失時，會自動嘗試下一個字體
     current = plt.rcParams.get("font.sans-serif", [])
-    if name not in current:
-        plt.rcParams["font.sans-serif"] = [name] + [
-            f for f in current if f != name
-        ]
+    
+    # 构造新的字体列表：所有找到的 CJK 字体 + 现有的 Latin 字体
+    fallback_list = available_fonts + [f for f in current if f not in available_fonts]
+    
+    plt.rcParams["font.sans-serif"] = fallback_list
     plt.rcParams["axes.unicode_minus"] = False
 
-    logger.info(f"[Font] CJK 字体已配置: {name}")
-    return name
+    logger.info(
+        f"[Font] Fallback chain 已配置: {', '.join(available_fonts[:3])}"
+        f"{'...' if len(available_fonts) > 3 else ''}"
+    )
+    return main_font
+
 
 
 def get_cjk_font_prop():
     """
     返回可用于 ax.set_yticklabels(..., fontproperties=prop) 的 FontProperties 对象。
+    ★ 改進：使用 family 参数而不是 fname，这样能充分利用全局的 fallback chain
     """
     import matplotlib.font_manager as fm
+    if _CJK_FONT_NAME:
+        # 优先使用 family 参数，让 matplotlib 自动处理 fallback chain
+        return fm.FontProperties(family=_CJK_FONT_NAME)
     if _CJK_FONT_PATH:
         return fm.FontProperties(fname=_CJK_FONT_PATH)
-    if _CJK_FONT_NAME:
-        return fm.FontProperties(family=_CJK_FONT_NAME)
     return None
 
 

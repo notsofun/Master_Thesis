@@ -12,12 +12,115 @@
 % START OF DOCUMENT: Every chapter can be compiled separately
 \begin{document}
 
-\chapter{Sample Chapter}%
-\label{chap:sample-chapter}
+\chapter{RQ2: How Is Hatred Expressed?}%
+\label{chap:how}
 
-Copy and adapt the file \verb!chapters/sample_chapter.tex! to add additional chapters, e.g., for Related Work, Datasets, Methods, etc.
+Building on the topic structure established in Chapter~\ref{chap:bertopic} and the target profiles described in Chapter~\ref{chap:who}, this chapter addresses the second research question: \textit{how} is anti-Christian hatred expressed across English, Chinese, and Japanese online communities? Using the three-layer predicate extraction pipeline and the LLM-assisted frame classification method described in Chapter~\ref{chap:methods}, each predicate--target pair extracted from the corpus was assigned to the single most fitting category from a ten-class attack-frame taxonomy by \texttt{Gemini-2.5-Flash}. The resulting frame labels were then aggregated at the topic, language, and target levels. The following sections report those results in turn.
 
-The additional chapter files need to be included with the \verb!\subfile{}! command in the CLthesis.tex file.
+%---------------------------------------------------------------
+\section{Attack Frame Distribution by Topic}
+\label{sec:rq2-by-topic}
+
+Figure~\ref{fig:rq2-topic} shows the dominant attack frame for each of the 47 topics, with bar lengths encoding total classified predicate counts per topic. Across topics, \textit{Rhetorical Attack} is the single most frequent dominant frame, leading in approximately half of all topics. However, several topics diverge sharply from this baseline and are anchored by qualitatively distinct attack strategies.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{RQ2/rq2_topic_tactic.png}
+    \caption{Attack frame distribution by topic. Each bar represents one of the 47 BERTopic topics, coloured by frame type. Bar length encodes total classified predicate count. Topics are ordered by size (descending).}
+    \label{fig:rq2-topic}
+\end{figure}
+
+\textbf{Rhetorical Attack as default.}
+The majority of topics, spanning all three language communities, are dominated by \textit{Rhetorical Attack} --- a catch-all frame encompassing sarcasm, mockery, and critical invective that does not resolve into a more specific allegation. Topics~1 (\textit{Trump and Christian nationalism}), 2 (\textit{gender and women in the Church}), 5, 7, 8, 9, and 19 all fall into this pattern, suggesting that much cross-lingual hate speech against Christianity operates at the level of general ridicule rather than substantiated accusation.
+
+\textbf{Topic 0: political frame dominates.}
+Topic~0 (\textit{Unification Church / Abe scandal}, $n=499$) is the single largest topic and is uniquely dominated by \textit{Political Interference} (119 classified predicates), reflecting the Japanese-language discourse's overwhelming focus on the Abe--LDP--Unification Church nexus. This is the only topic in the corpus where \textit{Political Interference} achieves outright dominance.
+
+\textbf{Topic 6: sexual abuse frame dominates.}
+Topic~6 (\textit{clerical sexual abuse and cover-up}, $n=122$) produces the single highest frame count in the entire dataset: 159 predicates labelled as \textit{Sexual Abuse Frame}, accompanied by substantial \textit{Institutional Rot} (6) and \textit{Moral Accusation} (6) co-occurrences. The clustering of abuse, cover-up, and moral condemnation within a single topic confirms that this discourse is coherently organised around allegations of systemic misconduct, not scattered accusations.
+
+\textbf{Moral Accusation topics.}
+Topics~3 (\textit{LGBTQ+ and Catholic teaching}), 11 (\textit{Islam and terrorism framing}), 12, 22, 23, and~24 are each led by \textit{Moral Accusation}, indicating that in contexts touching on social values and inter-religious comparison, attackers tend to frame hostility as ethical condemnation of hypocrisy or double standards rather than as ridicule.
+
+\textbf{Cognitive Manipulation topics.}
+Topics~13 (\textit{religious education in public schools}), 17 (\textit{end-times and apocalyptic discourse}), 24, 36, and~43 are dominated by \textit{Cognitive Manipulation}. These topics share a focus on how religious institutions recruit or control believers, with indoctrination and brainwashing as the central accusation.
+
+\textbf{Economic Exploitation topics.}
+\textit{Economic Exploitation} leads Topics~21 (\textit{denominational comparisons}), 34, 37, and~40, all of which involve allegations of financial misconduct by religious organisations --- particularly in the Japanese-language sub-corpus, where coerced donations (\textit{霊感商法}, spirit-based sales fraud) are a recurring concern.
+
+%---------------------------------------------------------------
+\section{Attack Frame Distribution by Language}
+\label{sec:rq2-by-language}
+
+Figure~\ref{fig:rq2-lang} aggregates attack frames at the language level. The three communities share some overlap in frame repertoire but differ substantially in which frames are most activated.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{RQ2/rq2_lang_tactic.png}
+    \caption{Attack frame distribution by language community (EN, ZH, JA). Bar length encodes total classified predicate count per frame. Frames are sorted by overall frequency.}
+    \label{fig:rq2-lang}
+\end{figure}
+
+\textbf{English: rhetoric and moral accusation.}
+English-language posts rely primarily on \textit{Rhetorical Attack} (114 predicates, 46\% of EN total), followed by \textit{Moral Accusation} (54, 22\%) and \textit{Sexual Abuse Frame} (35, 14\%). The remaining frames each contribute fewer than 15 predicates. This relatively narrow profile suggests that English-language hate speech operates chiefly through dismissive sarcasm and broad moral condemnation, with sexual abuse accusations concentrated in specific abuse-related topics (Topics~6, 3, 15).
+
+\textbf{Japanese: political and economic frames are prominent.}
+Japanese posts show the most evenly distributed frame profile of the three languages. \textit{Political Interference} leads (141, 20\%), closely followed by \textit{Rhetorical Attack} (124, 18\%), \textit{Moral Accusation} (109, 16\%), \textit{Economic Exploitation} (96, 14\%), and \textit{Cognitive Manipulation} (73, 10\%). The high scores for \textit{Political Interference} and \textit{Economic Exploitation} are driven almost entirely by Topic~0 and are direct reflections of the Abe--Unification Church scandal discourse, in which allegations of political capture (\textit{支配}, \textit{作っ}) and financial predation (\textit{献金}, donation extortion; \textit{詐欺}, fraud; \textit{搾取}, exploitation) dominate.
+
+\textbf{Chinese: sexual abuse and institutional rot.}
+Chinese posts are distinguished by the highest absolute counts for \textit{Sexual Abuse Frame} (114, 26\%) and \textit{Institutional Rot} (53, 12\%) across all three languages. \textit{Rhetorical Attack} (108, 25\%) and \textit{Moral Accusation} (63, 14\%) are also strong. The prominence of the sexual abuse frame is reflected in verbs such as 性侵 (\textit{sexual assault}), 丑闻 (\textit{scandal}), and 猥亵 (\textit{molestation}), while institutional rot centres on cover-up vocabulary: 官官相护 (\textit{officials shielding each other}), 包庇 (\textit{cover up}).
+
+Table~\ref{tab:rq2-top-verbs} summarises the most representative predicates per frame and language, illustrating how the same abstract frame category is lexically realised across the three communities.
+
+\begin{table}[htbp]
+\centering
+\caption{Representative predicates by attack frame and language community. Verbs are listed in descending frequency order; original-language forms are retained.}
+\label{tab:rq2-top-verbs}
+\small
+\begin{tabular}{lp{3.5cm}p{3.5cm}p{3.5cm}}
+\hline
+\textbf{Frame} & \textbf{English} & \textbf{Chinese} & \textbf{Japanese} \\
+\hline
+Cognitive Manip. & brainwashed, brainwashing & 洗脑, 渗透, 忽悠 & 洗脳, 狂信, マインドコントロール \\
+Moral Accusation & corrupt, silence, abuses & 堕落, 宣布, 腐败 & 苦しめ, 詐欺, 殺さ \\
+Dehumanization & contaminate & 毒瘤, 揭露, 干掉 & 害悪, ゴキブリ \\
+Sexual Abuse & abuse, pedophile, rape & 性侵, 丑闻, 猥亵 & 性的虐待, 児童, 隠蔽 \\
+Economic Exploit. & defrauding, exploits & 敛财, 捐给 & 献金, 詐欺, 搾取 \\
+Political Interf. & strangle, apologize & 渗透, 伴随 & 支配, 作っ, 選挙 \\
+Institutional Rot & cover ups, protect, shelter & 官官相护, 包庇 & 腐敗, 隠蔽, 性的虐待 \\
+Rhetorical Attack & hate, miss, remember & 不如, 一样 & 破壊, 壊滅, 作っ \\
+Social Exclusion & kick, exclude, forbid & 取缔, 指责 & 差別, 認めろ \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Cross-lingual comparison.}
+All three languages use \textit{Cognitive Manipulation} vocabulary centred on a brainwashing metaphor (EN: \textit{brainwashed}; ZH: 洗脑; JA: 洗脳), suggesting a shared cultural schema for framing religious recruitment as psychological coercion. Dehumanisation vocabulary is sparse in English but more developed in Chinese (毒瘤, \textit{malignant tumour/cancer}; 干掉, \textit{eliminate}) and Japanese (害悪, \textit{harmful evil}; ゴキブリ, \textit{cockroach}). The \textit{Economic Exploitation} frame is lexically richest in Japanese (献金, 詐欺, 搾取), reflecting the vocabulary of the \textit{霊感商法} (spirit-based fraud) debate that has been central to the Unification Church controversy in Japan.
+
+%---------------------------------------------------------------
+\section{Attack Frames by Target: Connecting RQ1 and RQ2}
+\label{sec:rq2-by-target}
+
+Figure~\ref{fig:rq2-target} plots the attack frame distribution for the most frequently targeted entities identified in Chapter~\ref{chap:who}, making explicit the relationship between \textit{who} is attacked and \textit{how} they are attacked.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{RQ2/rq2_target_tactic.png}
+    \caption{Attack frame distribution by target entity. Each bar represents a high-frequency target from Chapter~\ref{chap:who}, stacked by frame type. Bar length encodes total predicate count directed at that target.}
+    \label{fig:rq2-target}
+\end{figure}
+
+\textbf{Clergy targets: sexual abuse and institutional rot.}
+The most consistent cross-lingual pattern is the alignment between clerical role-targets and the \textit{Sexual Abuse Frame}. English \textit{priests} are targeted with \textit{Sexual Abuse Frame} in 22 predicates (50\% of their total), supported by \textit{Moral Accusation} (10) and \textit{Institutional Rot} (8). Chinese 神父 (\textit{priest}) follow the same logic: \textit{Sexual Abuse Frame} leads with 61 predicates (55\%), followed by \textit{Rhetorical Attack} (18) and \textit{Institutional Rot} (16). Chinese 主教 (\textit{bishop}) and 教皇 (\textit{Pope}) are likewise dominated by \textit{Sexual Abuse Frame} (23 and 18 respectively). The Chinese 教会 (\textit{church}) as an institutional target absorbs the broadest range of frames --- \textit{Sexual Abuse Frame} (73), \textit{Rhetorical Attack} (68), \textit{Institutional Rot} (45), \textit{Moral Accusation} (37), \textit{Cognitive Manipulation} (25), \textit{Economic Exploitation} (13) --- reflecting its role as the organisational locus for all forms of clerical misconduct.
+
+\textbf{Institutional targets in Japan: political capture and financial exploitation.}
+Japanese targets show the sharpest contrast with the clerical abuse pattern. 統一教会 (\textit{Unification Church}) is attacked primarily through \textit{Political Interference} (80 predicates, 31\%) and \textit{Economic Exploitation} (51, 20\%), not through the sexual abuse frame that dominates clerical targets in English and Chinese. 自民党 (\textit{Liberal Democratic Party}) is almost exclusively a \textit{Political Interference} target (22 predicates, 67\%), and 安倍晋三 (\textit{Shinzo Abe}) receives \textit{Moral Accusation} (11) alongside \textit{Political Interference} (8), encoding him simultaneously as a morally culpable individual and a political actor. 日本人 (\textit{Japanese people}) is targeted through \textit{Economic Exploitation} (21) and \textit{Cognitive Manipulation} (14) --- frames that construct Japanese citizens as victims of the Unification Church's financial and psychological predation, rather than perpetrators.
+
+\textbf{Identity targets: rhetoric and moral accusation.}
+Generic identity labels are attacked with a different frame logic. English \textit{catholic} / \textit{catholics} and \textit{christian} are predominantly targeted through \textit{Rhetorical Attack} (32, 18, and 19 respectively) and, for \textit{christian}, \textit{Moral Accusation} (16). Japanese キリスト教 (\textit{Christianity}) and カトリック (\textit{Catholicism}) receive \textit{Rhetorical Attack} and \textit{Moral Accusation} in roughly equal measure. Chinese 基督徒 (\textit{Christians}) are targeted by \textit{Moral Accusation} (5) and \textit{Rhetorical Attack} (5) in equal shares, with notable \textit{Dehumanization} (3), distinguishing them from the more rhetorical targeting of their English and Japanese counterparts.
+
+\textbf{Cross-target synthesis.}
+Three structural regularities emerge from Figure~\ref{fig:rq2-target}. First, the \textit{Sexual Abuse Frame} concentrates tightly on named or role-based clerical individuals across languages, regardless of language community: wherever priests, bishops, or the institutional church appear as targets, abuse allegations are the primary attack vector. Second, the \textit{Political Interference} and \textit{Economic Exploitation} frames are almost entirely confined to Japanese targets associated with the Unification Church scandal; they do not generalise to clerical or identity targets in English or Chinese. Third, \textit{Rhetorical Attack} and \textit{Moral Accusation} function as default frames for collective identity labels across all three languages, operating at a level of generality that does not require a specific institutional allegation. Together, these regularities reveal that attack frame selection in online hate speech is not random but is structured by the social category of the target: institutions attract systemic frame allegations; individuals attract specific misconduct frames; collective identities attract diffuse rhetorical and moral condemnation.
 
 % self-defined macro: include bibliography even when compiling a single chapter
 \subfilebibliography

@@ -1,0 +1,49 @@
+# ═══════════════════════════════════════════════════════════════════
+# Thesis Pipeline — 主配置文件
+# 用法：python pipeline/run_pipeline.py [--config pipeline/config.yaml] [其他参数]
+# 所有参数均可被命令行参数覆盖
+# ═══════════════════════════════════════════════════════════════════
+
+# 输入数据：BERTopic 输出的文档-话题映射表（必须含 text / lang / topic 列）
+input: "unsupervised_classification/topic_modeling_results/sixth/data/document_topic_mapping.csv"
+
+# 输出根目录（所有阶段产物 + 汇总报告均写入此处）
+output: "pipeline/outputs"
+
+# 语言过滤（zh / en / ja / auto）
+# auto = 不过滤，保留全部语言
+lang: "auto"
+
+# ── 各阶段开关 ──────────────────────────────────────────────────────
+stages:
+  who: true    # RQ1：目标实体识别
+  how: true    # RQ2：修辞策略提取
+  why: true    # RQ3：道德动机投影
+
+# ── WHO / RQ1 参数 ──────────────────────────────────────────────────
+who:
+  # full = layer12 + llm + viz；layer12 = 仅 spaCy+词典（无 API 消耗）
+  stage: "full"
+  spacy_fallback: false        # 显存不足时改为 true，使用轻量 spaCy
+  llm_type: "gemini"           # gemini / openai
+  llm_model: "gemini-2.5-flash-lite"
+  concurrency: 50              # LLM 并发数
+  top_n: 10                    # 每 Topic 展示 Top-N 实体
+
+# ── HOW / RQ2 参数 ──────────────────────────────────────────────────
+how:
+  no_gemini: false             # true = 跳过 Gemini，仅用规则分类器（离线/调试）
+  max_rows: null               # 调试：只处理前 N 条文档（null = 全量）
+
+# ── WHY / RQ3 参数 ──────────────────────────────────────────────────
+why:
+  max_docs: null               # 调试：只处理前 N 条文档（null = 全量）
+  batch_size: 64               # E5 编码批大小（显存不足时调小）
+  from_bias: false             # true = 跳过轴构建+编码，从已有 bias_matrix 开始
+
+# ── 导出选项 ────────────────────────────────────────────────────────
+export:
+  formats:                     # 支持：jsonl, csv, markdown
+    - jsonl
+    - csv
+    - markdown

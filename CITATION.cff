@@ -1,0 +1,9 @@
+cff-version: "1.2"
+author:
+  - family-names: "User"
+    given-names: "Notsofun"
+title: "Master Thesis Title"
+date: "2026-04-08"
+version: "1.0"
+url: "https://github.com/notsofun/Master_Thesis"
+note: "Unpublished thesis"

@@ -54,7 +54,7 @@ Topic modelling is used to discover the thematic structure of the corpus without
 
 \subsection{Multilingual Sentence Embeddings}
 
-All documents — Chinese, Japanese, and English — are encoded using \texttt{intfloat/multilingual-e5-large-instruct} \citep{wang2024multilinguale5textembeddings}, a large multilingual encoder pre-trained on a diverse mixture of supervised and weakly supervised multilingual data. The E5-large model maps texts from all three languages into a shared 1024-dimensional embedding space, making cross-lingual semantic comparisons possible without translation.
+All documents — Chinese, Japanese, and English — are encoded using \texttt{intfloat/mult\allowbreak lingual-e5-large-instruct} \citep{wang2024multilinguale5textembeddings}, a large multilingual encoder pre-trained on a diverse mixture of supervised and weakly supervised multilingual data. The E5-large model maps texts from all three languages into a shared 1024-dimensional embedding space, making cross-lingual semantic comparisons possible without translation.
 
 \subsection{Cross-Lingual Centroid Alignment}
 
@@ -62,7 +62,15 @@ A practical challenge in multilingual topic modelling is that even within a shar
 
 \subsection{Dimensionality Reduction and Clustering}
 
-Before clustering, the 1024-dimensional aligned embeddings are reduced to 5 dimensions using UMAP with parameters \texttt{n\_neighbors=30}, \texttt{min\_dist=0.0}, and cosine metric. These settings prioritize local neighbourhood preservation and allow tight cluster formation. The resulting low-dimensional embeddings are then passed to HDBSCAN with \texttt{min\_cluster\_size=20}, \texttt{min\_samples=5}, \texttt{cluster\_selection\_epsilon=0.05}, and the excess-of-mass (\texttt{eom}) cluster selection method. HDBSCAN is preferred over k-means or other partition-based methods because it (a) does not require a pre-specified number of clusters, (b) identifies outliers as noise rather than forcing them into the nearest cluster, and (c) can detect clusters of varying density and shape \citep{campello_density-based_2013}. Documents assigned to topic $-1$ are treated as noise and excluded from subsequent analyses.
+To extract meaningful thematic patterns, we employ a two-stage pipeline consisting of non-linear dimensionality reduction followed by density-based clustering:
+
+\begin{itemize}
+    \item \textbf{Dimensionality Reduction}: The 1024-dimensional aligned embeddings are projected into a 5-dimensional latent space using \texttt{UMAP}. To prioritize the preservation of local topological structures and facilitate dense cluster formation, we set \texttt{n\_neighbors=30}, \texttt{min\_dist=0.0}, and utilize the \texttt{cosine} metric.
+    
+    \item \textbf{Density-Based Clustering}: The reduced embeddings are processed via \texttt{HDBSCAN} with a \texttt{min\_cluster\_size} of 20 and \texttt{min\_samples} of 5. We utilize the \textit{excess-of-mass} (\texttt{eom}) method with \texttt{cluster\_selection\_epsilon=0.05} to refine cluster membership.
+\end{itemize}
+
+\noindent \textbf{Rationale and Noise Handling}: Compared to partition-based methods like K-Means, \texttt{HDBSCAN} is preferred as it (i) handles clusters of arbitrary shapes and varying densities, (ii) obviates the need for a pre-defined cluster count, and (iii) robustly identifies outliers \citep{campello_density-based_2013}. Consequently, documents assigned to the \texttt{-1} label are treated as stochastic noise and excluded from subsequent analysis to ensure thematic consistency.
 
 \subsection{Keyword Extraction and Topic Labelling}
 
@@ -291,24 +299,26 @@ Because the five MFD foundations are empirically highly correlated within our co
   darr/.style={-{Stealth[length=4pt]}, thick, gray}
 ]
 
-% dictionary row
+% --- Dictionary Row (Layer 1) ---
 \node[dictbox] (mfd)  {MFD 2.0\\(EN)};
-\node[dictbox, right=0.3cm of mfd]  (jmfd) {J-MFD\\(JP)};
-\node[dictbox, right=0.3cm of jmfd] (cmfd) {CMFD\\(ZH)};
-\node[dictbox, right=0.3cm of cmfd] (cust) {Custom\\Threat};
+\node[dictbox, right=0.4cm of mfd]  (jmfd) {J-MFD\\(JP)};
+\node[dictbox, right=0.4cm of jmfd] (cmfd) {CMFD\\(ZH)};
+\node[dictbox, right=0.4cm of cmfd] (cust) {Custom\\Threat};
 
-\node[box, below=0.6cm of jmfd, xshift=0.6cm] (axis)
+\node[box, below=0.9cm of jmfd, xshift=1.1cm] (axis)
       {Axis vectors $\mathbf{a}_k$ (pos pole $-$ neg pole)\\ 7 axes: Harm, Fairness, Loyalty,\\ Authority, Sanctity, Real/Symbolic Threat};
 
+% --- Pipeline Nodes (Layer 3-6) ---
 \node[box, below=of axis] (enc)  {E5-large: encode all documents};
 \node[box, below=of enc]  (proj) {Cosine projection $\rightarrow$ Bias$(d,k)$};
 \node[box, below=of proj] (stat) {ANOVA per axis + per-topic $z$-scores};
 \node[box, below=of stat] (out)  {\textbf{Output:} moral motivation profiles by language $\times$ topic};
 
 \draw[darr] (mfd.south)  |- (axis.west);
-\draw[darr] (jmfd.south) -- (axis.north);
-\draw[darr] (cmfd.south) |- (axis.east);
 \draw[darr] (cust.south) |- (axis.east);
+
+\draw[darr] (jmfd.south) -- (jmfd.south |- axis.north);
+\draw[darr] (cmfd.south) -- (cmfd.south |- axis.north);
 
 \draw[arr] (axis) -- (enc);
 \draw[arr] (enc)  -- (proj);

@@ -136,6 +136,18 @@ AXIS_LABEL_EN   = {k: v["en"]   for k, v in AXIS_LABELS.items()}
 AXIS_LABEL_ZH   = {k: v["zh"]   for k, v in AXIS_LABELS.items()}
 AXIS_LABEL_DESC = {k: v["desc"] for k, v in AXIS_LABELS.items()}
 
+
+def format_p_value(value: float, precision: int = 3) -> str:
+    """
+    Format p-values for display/export without collapsing tiny values to 0.0.
+    """
+    value = float(value)
+    if value == 0.0:
+        return f"<{np.nextafter(0.0, 1.0):.{precision}e}"
+    if value < 1e-4:
+        return f"{value:.{precision}e}"
+    return f"{value:.6f}".rstrip("0").rstrip(".")
+
 # Topic 英文标签（来自 datamap_plot.py）
 TOPIC_LABELS: dict[int, str] = {
     -1: "Inclusion and Reform Challenges",
@@ -506,14 +518,14 @@ def run_anova(bias_df: pd.DataFrame) -> pd.DataFrame:
             _, p_pair = scipy_stats.ttest_ind(
                 groups[la], groups[lb], equal_var=False
             )
-            tukey_pairs[f"tukey_{la}_{lb}_p"] = round(float(p_pair), 6)
+            tukey_pairs[f"tukey_{la}_{lb}_p"] = float(p_pair)
 
         row = {
             "axis":        key,
             "axis_label":  AXIS_LABEL_EN[key],
             "axis_desc":   AXIS_LABEL_DESC[key],
             "F_stat":      round(float(f_stat), 4),
-            "p_value":     round(float(p_val), 6),
+            "p_value":     float(p_val),
             "eta_squared": round(float(eta_sq), 4),
             "significant": "***" if p_val < 0.001 else
                            "**"  if p_val < 0.01  else
@@ -528,13 +540,16 @@ def run_anova(bias_df: pd.DataFrame) -> pd.DataFrame:
         results.append(row)
 
         log.info(
-            f"[STEP3]   [{key}] F={f_stat:.2f}, p={p_val:.4e}, "
+            f"[STEP3]   [{key}] F={f_stat:.2f}, p={format_p_value(p_val)}, "
             f"η²={eta_sq:.4f}, sig={row['significant']} | "
             f"mean: en={row['mean_en']:.4f}, zh={row['mean_zh']:.4f}, jp={row['mean_jp']:.4f}"
         )
 
     anova_df = pd.DataFrame(results)
-    anova_df.to_csv(ANOVA_CSV, index=False, encoding="utf-8-sig")
+    anova_export_df = anova_df.copy()
+    for col in ["p_value", "tukey_en_zh_p", "tukey_en_jp_p", "tukey_zh_jp_p"]:
+        anova_export_df[col] = anova_export_df[col].apply(format_p_value)
+    anova_export_df.to_csv(ANOVA_CSV, index=False, encoding="utf-8-sig")
     log.info(f"[STEP3] ✅ ANOVA 结果已保存: {ANOVA_CSV}")
 
     # 终端摘要
@@ -1615,7 +1630,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         for _, row in anova_df.iterrows():
             print(
                 f"  [{row['axis']:20s}] F={row['F_stat']:.2f}, "
-                f"p={row['p_value']:.4e}, η²={row['eta_squared']:.4f} {row['significant']}"
+                f"p={format_p_value(row['p_value'])}, ??={row['eta_squared']:.4f} {row['significant']}"
             )
     print(f"\n▶ 输出文件目录: {DATA_DIR}")
     print("=" * 70)

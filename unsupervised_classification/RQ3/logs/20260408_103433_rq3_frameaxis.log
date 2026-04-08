@@ -1,0 +1,48 @@
+2026-04-08 10:34:33,175 - INFO - 日志文件: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\logs\20260408_103433_rq3_frameaxis.log
+2026-04-08 10:34:33,176 - INFO - ============================================================
+2026-04-08 10:34:33,178 - INFO - RQ3 管线启动：FrameAxis 道德动机投影
+2026-04-08 10:34:33,180 - INFO - ============================================================
+2026-04-08 10:34:33,181 - INFO - [STEP1/2] ⏭ --from-bias: 跳过轴构建与文档编码
+2026-04-08 10:34:33,211 - INFO - [STEP2] ✅ 从 checkpoint 加载 Bias 矩阵: 3435 行
+2026-04-08 10:34:33,216 - INFO - [STEP3] 统计检验...
+2026-04-08 10:34:33,216 - INFO - [STEP3] ANOVA 统计检验开始...
+2026-04-08 10:34:34,926 - INFO - [STEP3]   [harm] F=32068.18, p=0.0000e+00, η²=0.9492, sig=*** | mean: en=-0.0739, zh=0.1765, jp=0.0690
+2026-04-08 10:34:34,948 - INFO - [STEP3]   [fairness] F=35568.11, p=0.0000e+00, η²=0.9540, sig=*** | mean: en=-0.0629, zh=0.1817, jp=0.0848
+2026-04-08 10:34:34,954 - INFO - [STEP3]   [loyalty] F=10807.87, p=0.0000e+00, η²=0.8630, sig=*** | mean: en=-0.0503, zh=0.1080, jp=0.0237
+2026-04-08 10:34:34,961 - INFO - [STEP3]   [authority] F=17686.51, p=0.0000e+00, η²=0.9116, sig=*** | mean: en=-0.0814, zh=0.1173, jp=0.0338
+2026-04-08 10:34:34,965 - INFO - [STEP3]   [sanctity] F=25365.83, p=0.0000e+00, η²=0.9366, sig=*** | mean: en=-0.0655, zh=0.1681, jp=0.0770
+2026-04-08 10:34:34,977 - INFO - [STEP3]   [realistic_threat] F=840.15, p=1.0285e-297, η²=0.3287, sig=*** | mean: en=0.0177, zh=-0.0123, jp=-0.0184
+2026-04-08 10:34:34,983 - INFO - [STEP3]   [symbolic_threat] F=543.86, p=6.7134e-206, η²=0.2407, sig=*** | mean: en=-0.0138, zh=-0.0469, jp=-0.0454
+2026-04-08 10:34:34,994 - INFO - [STEP3] ✅ ANOVA 结果已保存: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_anova_results.csv
+2026-04-08 10:34:34,994 - INFO - [STEP3] 显著差异轴 (p<0.05): ['harm', 'fairness', 'loyalty', 'authority', 'sanctity', 'realistic_threat', 'symbolic_threat']
+2026-04-08 10:34:34,995 - INFO - [STEP4] 聚合分析与可视化...
+2026-04-08 10:34:35,102 - INFO - [STEP4] 开始生成可视化，共 3435 条记录
+2026-04-08 10:34:35,144 - INFO - [STEP4] 语言分布: {'jp': 1241, 'en': 1120, 'zh': 1074}
+2026-04-08 10:34:35,144 - INFO - [STEP4] Topic 数量: 47
+2026-04-08 10:34:35,144 - INFO - [STEP4] 图A: topic-language × axis 热力图（z-score）
+2026-04-08 10:34:35,418 - INFO - [STEP4] ✅ 图A: rq3_A_topic_axis_heatmap.html
+2026-04-08 10:34:35,421 - INFO - [STEP4] 图B: 语言层概览
+2026-04-08 10:34:35,649 - INFO - [STEP4] ✅ 图B: rq3_B_lang_axis_bar.html
+2026-04-08 10:34:35,649 - INFO - [STEP4] 图C: 轴关系热图
+2026-04-08 10:34:35,738 - INFO - [STEP4] ✅ 图C: rq3_C_lang_radar.html
+2026-04-08 10:34:35,738 - INFO - [STEP4] 图D: topic-language 动机空间图
+2026-04-08 10:34:35,836 - INFO - [STEP4] ✅ 图D: rq3_D_topic_lang_scatter.html
+2026-04-08 10:34:35,837 - INFO - [STEP4] 图E: topic 典型单元
+2026-04-08 10:34:35,936 - INFO - [STEP4] ✅ 图E: rq3_E_topic_network.html
+2026-04-08 10:34:36,016 - INFO - [STEP4] ✅ 图E2: rq3_E2_topic_lang_composition.html
+2026-04-08 10:34:36,021 - INFO - [STEP4] 图F: 语言×轴 Bias 分布小提琴图
+2026-04-08 10:34:36,253 - INFO - [STEP4] ✅ 图F: rq3_F_lang_bias_violin.html
+2026-04-08 10:34:36,254 - INFO - [STEP4] 图G: 语言层次分析
+2026-04-08 10:34:36,256 - INFO - [STEP4] 图G: 语言层次分析
+2026-04-08 10:34:36,332 - INFO - [STEP4] ✅ 图G1: rq3_G1_lang_axis_heatmap.html
+2026-04-08 10:34:36,404 - INFO - [STEP4] ✅ 图G2: rq3_G2_lang_pca_space.html
+2026-04-08 10:34:36,405 - INFO - [STEP4] ✅ 图G3: 跳过（已由图F覆盖）
+2026-04-08 10:34:36,405 - INFO - [STEP4] 图H: 话题层次分析
+2026-04-08 10:34:36,409 - INFO - [STEP4] 图H: 话题层次分析
+2026-04-08 10:34:36,541 - INFO - [STEP4] ✅ 图H1: rq3_H1_topic_axis_heatmap.html
+2026-04-08 10:34:36,659 - INFO - [STEP4] ✅ 图H2: rq3_H2_topic_pca_space.html
+2026-04-08 10:34:36,685 - INFO - [STEP4] ✅ Summary CSV: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_summary.csv
+2026-04-08 10:34:36,697 - INFO - [STEP4] ✅ Topic Summary CSV: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\data\rq3_topic_summary.csv
+2026-04-08 10:34:36,713 - INFO - ============================================================
+2026-04-08 10:34:36,715 - INFO - ✅ RQ3 全部完成。日志: C:\Users\11037\Documents\GitHub\Master_Thesis\unsupervised_classification\RQ3\logs\20260408_103433_rq3_frameaxis.log
+2026-04-08 10:34:36,715 - INFO - ============================================================

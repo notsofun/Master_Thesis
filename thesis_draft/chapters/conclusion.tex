@@ -1,29 +1,60 @@
 % ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
-
-% Allow independent compilation of this section for efficiency
 \documentclass[../CLthesis.tex]{subfiles}
-
-% Add the graphics path for subfiles support
 \graphicspath{{\subfix{../images/}}}
-
 % END OF SUBFILES HEADER
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% START OF DOCUMENT: Every chapter can be compiled separately
 \begin{document}
 
 \chapter{Conclusion}%
 \label{chap:conclusion}
 
-\section{Scientific Writing Hints}
-\begin{itemize}
-\item Does your study support the conclusions? 
-\item Does your conclusion summarize all your main findings and results?
-\item Do you present the main results in the form of concrete numbers? Do you avoid vague statements?
+This thesis set out to investigate whether transformer-based, cross-lingual computational methods can move the analysis of religious hate speech beyond binary detection toward a structured, interpretable account of how online hostility against Christianity is organised across Chinese, Japanese, and English. The answer, supported by the evidence assembled across seven empirical chapters, is yes --- with important qualifications about the scope of what each component achieves and the constraints that remain.
 
-\item Does the introduction and conclusion give a complete short version of your study? Do they correspond with the abstract?
-\end{itemize}
+% ------------------------------------------------------------------
+\section{Summary of Main Findings}
+\label{sec:conclusion-findings}
+% ------------------------------------------------------------------
 
-% self-defined macro: include bibliography even when compiling a single chapter
+The thesis addressed three research questions through a sequential analytical pipeline applied to a multilingual corpus of 63,265 texts (58,940 English, 1,965 Chinese, 2,360 Japanese).
+
+\textbf{RQ1: Who is targeted?}
+Named entity recognition, domain lexicon matching, and LLM-assisted fallback together identified 4,688 categorised target mentions across 47 BERTopic topics. All three communities attack Jesus and the Catholic institutional Church, confirming a shared transnational core to anti-Christian hostility. Beyond this core, target structures diverge sharply. The Chinese corpus is dominated by institutional and clerical targets (教会 accounts for the highest mention count of any entity in the dataset; 神父, 主教, and 教皇 follow), framed through a register of deception and exploitation captured by the distinctive pejorative 神棍. The Japanese corpus is almost entirely absorbed by a single politically-situated narrative: 統一教会, 安倍晋三, and 自民党 account for the three highest-frequency Japanese targets, reflecting the political fallout of the 2022 assassination. English targeting is the broadest: Jesus (209 mentions), Catholic identity labels, Trump (94), and clergy role categories are all prominent, indicating a discourse that mixes theological critique with contemporary political antagonism.
+
+\textbf{RQ2: How is hatred expressed?}
+The ten-class attack frame taxonomy, applied via a three-layer predicate extraction and LLM classification pipeline, revealed that frame selection is not random but is systematically shaped by target category: clerical role targets attract the Sexual Abuse Frame across all three languages (50\% of English and 55\% of Chinese predicates directed at priests); collective identity labels attract Rhetorical Attack and Moral Accusation; and the Japanese Unification Church -- LDP target pair uniquely attracts Political Interference (20\% of Japanese predicates, the highest single-frame share in any language) and Economic Exploitation (14\%). This target-to-frame regularity indicates that hate speech operates according to genre-like rhetorical conventions rather than as an undifferentiated expression of hostility.
+
+\textbf{RQ3: Why do people hate?}
+FrameAxis projection of all documents onto seven moral axes --- five Moral Foundations and two Intergroup Threat dimensions --- revealed a fundamental divergence in moral motivation profiles. One-way ANOVA across the three language groups returned statistically significant differences on all seven axes ($p < 10^{-200}$ for all; $\eta^2$ ranging from 0.24 to 0.95), confirming that the observed cross-lingual differences are not artefacts of sampling. English-language discourse is negatively aligned across all five classical Moral Foundations simultaneously (mean scores: Authority~$-0.081$, Harm~$-0.074$, Sanctity~$-0.065$, Fairness~$-0.063$, Loyalty~$-0.050$), constituting a broad moral condemnation. Chinese and Japanese discourse, by contrast, show positive alignment on the classical foundations but negative alignment on the Symbolic Threat (Chinese: $-0.047$; Japanese: $-0.045$) and Realistic Threat axes (Chinese: $-0.012$; Japanese: $-0.018$). English discourse attacks Christianity for moral failure within a shared ethical framework; East Asian discourse frames it as a danger to cultural identity or social cohesion. PCA of the moral axes explains 80.6\% of total variance in two components, where PC1 captures overall attack orientation and PC2 separates threat-based from condemnation-based hostility.
+
+% ------------------------------------------------------------------
+\section{Contributions of the Thesis}
+\label{sec:conclusion-contributions}
+% ------------------------------------------------------------------
+
+The findings support three contributions corresponding to those claimed in Chapter~\ref{chap:intro}.
+
+\textbf{Empirical contribution.}
+This thesis provides the first systematic comparative analysis of anti-Christian hate speech across Chinese, Japanese, and English online discourse, extending the empirical scope of religious hate speech research beyond the Islamophobia and antisemitism that currently dominate the literature. The corpus of 63,265 texts reveals discourse structures that prior work has not described: the near-total capture of Japanese anti-Christian online discourse by a single politically-situated narrative centred on the Unification Church--LDP nexus; a Chinese discourse organised around clerical deception and institutional exploitation, anchored by the culturally specific pejorative 神棍; and an English discourse that intermixes theological critique, clerical abuse allegations, and contemporary political antagonism across a broad target range. The cross-lingual moral motivation analysis further shows that English and East Asian communities do not simply share the same anti-Christian hostility at different intensities: they inhabit structurally different rhetorical modes, with English discourse framing Christianity as morally culpable within a shared ethical system and East Asian discourse framing it as a danger to cultural identity or social cohesion.
+
+\textbf{Technical and methodological contribution.}
+The thesis develops a reusable \emph{who--how--why} pipeline that demonstrates how multilingual semantic representations, unsupervised thematic scaffolding, and structured interpretive analysis can be combined into a coherent framework for cross-lingual hate speech research. The multilingual E5-large-instruct embeddings, combined with cross-lingual centroid alignment, enabled genuine cross-lingual topic modelling without translation, yielding 47 semantically well-separated topics of which three --- the Conservative--Liberal Church rift (entropy~=~1.097), LGBTQ+ and Catholic Teaching (entropy~=~1.095), and the Science--Faith debate (entropy~=~1.092) --- show near-perfectly balanced language distributions, providing empirical validation that the alignment procedure is effective. The language-specific classifier fine-tuning, combined with Focal Loss and back-translation augmentation, raised hate-speech detection from Hate F1~=~0.172 to 0.635 on Chinese and from 0.294 to 0.579 on Japanese. The three-layer NLP architecture (spaCy NER~$\to$~domain gazetteer~$\to$~LLM fallback) addresses the zero-subject constructions that make standard dependency-based entity extraction unreliable in CJK text, a challenge underrepresented in multilingual hate speech benchmarks.
+
+\textbf{Practical contribution.}
+The \emph{who--how--why} framework provides a structured analytical approach whose components --- the domain gazetteer, frame taxonomy, and moral projection axes --- can each be adapted to other hate speech targets through substitution rather than redesign. The finding that attack frame selection is systematically determined by target category (clergy attract the Sexual Abuse Frame; collective identities attract Rhetorical Attack and Moral Accusation; Japanese institutional targets attract Political Interference and Economic Exploitation) suggests that frame-aware detection can surface attack patterns that token-level keyword matching and binary classifiers cannot recover. These findings are directly relevant to platform content moderation and to researchers working on racial, ethnic, or political hate speech in low-resource cross-lingual settings.
+
+% ------------------------------------------------------------------
+\section{Limitations}
+\label{sec:conclusion-limitations}
+% ------------------------------------------------------------------
+
+Three limitations bound the generalisability of these conclusions. First, the keyword-based corpus construction captures only surface-visible anti-Christian hate speech; implicit hostility that avoids keyword triggers is systematically excluded, meaning the analysis characterises the lexically legible portion of the discourse rather than its full population. Second, the LLM-based components (target fallback, frame classification) introduce non-determinism and were validated through pilot testing rather than a formal inter-rater reliability study; the reported frame distributions should therefore be interpreted as approximate rather than precisely calibrated. Third, the cross-sectional corpus lacks timestamps, preventing any analysis of how specific triggering events shift discourse patterns over time; the moral motivation profiles reflect structural distributions across the corpus, not dynamic processes of discourse formation.
+
+% ------------------------------------------------------------------
+\section{Broader Significance}
+\label{sec:conclusion-significance}
+% ------------------------------------------------------------------
+
+Beyond the specific case of anti-Christian hate speech, this thesis demonstrates that transformer-based cross-lingual methods can be assembled into an interpretable analytical pipeline that serves social-scientific questions rather than benchmark optimisation alone. The who-how-why framework, together with the unsupervised thematic scaffolding that supports it, is not specific to Christianity: the gazetteer, frame taxonomy, and moral projection axes can each be adapted to other hate speech targets through substitution rather than redesign. In this sense, the thesis contributes not only an empirical account of a specific and underexamined form of online hostility, but a reusable methodological template for structured cross-lingual hate speech analysis in computational linguistics and digital humanities research.
+
 \subfilebibliography
 \end{document}

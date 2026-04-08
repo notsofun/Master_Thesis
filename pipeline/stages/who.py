@@ -1,10 +1,10 @@
 """
-pipeline/stages/who.py — WHO 阶段封装（RQ1 目标实体识别）
-==========================================================
-复用 unsupervised_classification/RQ1/target_extraction_v3.py，
-通过 subprocess 调用保持脚本完整性，避免 module-level 路径初始化冲突。
+pipeline/stages/who.py — WHO Stage Wrapper (RQ1 Target Entity Identification)
+=============================================================================
+Reuses unsupervised_classification/RQ1/target_extraction_v3.py,
+Calls via subprocess to maintain script integrity, avoiding module-level path initialization conflicts.
 
-运行后从 checkpoint CSV 读取结果，转换为统一 Schema。
+After execution, reads checkpoint CSV and converts results to unified schema.
 """
 
 import logging
@@ -17,25 +17,24 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
-# 仓库根目录（相对于本文件向上两层）
+# Repository root (two levels up from this file)
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 RQ1_SCRIPT   = PROJECT_ROOT / "unsupervised_classification" / "RQ1" / "target_extraction_v3.py"
 RQ1_DATA_DIR = PROJECT_ROOT / "unsupervised_classification" / "RQ1" / "data"
 
 
 def run(config: dict) -> bool:
-    """
-    调用 RQ1 脚本完成目标实体识别。
-    返回 True = 成功，False = 失败。
+    """Call RQ1 script to complete target entity identification.
+    Return True = success, False = failure.
 
-    config 字段（来自 config.yaml 的 who 节）：
+    Config fields (from config.yaml who section):
       stage          : layer12 / llm / full
       spacy_fallback : bool
       llm_type       : gemini / openai
-      llm_model      : 模型名
-      concurrency    : LLM 并发数
-      top_n          : Top-N 实体
-      input          : 输入 CSV 路径（document_topic_mapping.csv）
+      llm_model      : model name
+      concurrency    : LLM concurrency
+      top_n          : Top-N entities
+      input          : input CSV path (document_topic_mapping.csv)
     """
     who_cfg  = config.get("who", {})
     stage    = who_cfg.get("stage", "full")
@@ -55,25 +54,24 @@ def run(config: dict) -> bool:
     if who_cfg.get("spacy_fallback", False):
         cmd.append("--spacy-fallback")
 
-    logger.info(f"[WHO] 启动 RQ1 脚本: {' '.join(cmd)}")
+    logger.info(f"[WHO] Starting RQ1 script: {' '.join(cmd)}")
     result = subprocess.run(cmd, cwd=str(PROJECT_ROOT))
 
     if result.returncode != 0:
-        logger.error(f"[WHO] RQ1 脚本退出码 {result.returncode}，请检查上方日志")
+        logger.error(f"[WHO] RQ1 script exited with code {result.returncode}, check logs above")
         return False
 
-    logger.info("[WHO] ✅ RQ1 完成")
+    logger.info("[WHO] ✅ RQ1 completed")
     return True
 
 
 def collect(config: dict) -> list[dict]:
-    """
-    从 RQ1 输出的 checkpoint CSV 读取结果，转换为统一 Schema 列表。
-    每条记录对应一个 (topic, lang) 组合，包含该组合的 Top 实体。
+    """Read RQ1 checkpoint CSV, convert to unified schema list.
+    Each record corresponds to a (topic, lang) combination with Top entities.
 
-    返回：list of TopicTargets.to_dict()
+    Return: list of TopicTargets.to_dict()
     """
-    # 优先读 LLM checkpoint，其次 layer12 checkpoint，最后 rq1 汇总文件
+    # Priority: LLM checkpoint > layer12 checkpoint > summarized rq1 file
     candidates = [
         RQ1_DATA_DIR / "checkpoint_llm.csv",
         RQ1_DATA_DIR / "checkpoint_layer12.csv",

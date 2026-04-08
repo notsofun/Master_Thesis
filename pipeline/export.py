@@ -1,12 +1,12 @@
 """
-pipeline/export.py — 结果导出工具
-===================================
-支持三种格式：
-  1. JSONL  — 机器可读，每行一个 JSON 对象（per-document 记录）
-  2. CSV    — 论文附录，各阶段分表输出（who/how/why/summary）
-  3. Markdown — 论文 Discussion 章节可直接粘贴的汇总报告
+pipeline/export.py — Result Export Utility
+==========================================
+Supports three formats:
+  1. JSONL  — Machine-readable, one JSON object per line (per-document records)
+  2. CSV    — Paper appendix, multi-table output by stage (who/how/why/summary)
+  3. Markdown — Paper Discussion section, ready-to-paste summary report
 
-所有导出均写入同一 output_dir，文件名带时间戳前缀（便于版本追踪）。
+All exports written to same output_dir, filenames prefixed with timestamp (for version tracking).
 """
 
 import json
@@ -17,14 +17,14 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
-# 时间戳前缀（每次运行统一，由 export_all 设定）
+# Timestamp prefix (consistent across entire run, set by export_all)
 _TS = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 
 def export_all(result, output_dir: Path, formats: list[str]) -> list[Path]:
     """
-    根据 formats 列表导出所有格式。
-    返回已生成的文件路径列表。
+    Export all formats based on formats list.
+    Return list of generated file paths.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     files: list[Path] = []
@@ -51,10 +51,10 @@ def export_jsonl(result, output_dir: Path) -> list[Path]:
     """
     files: list[Path] = []
 
-    # ── per-document 三层合并 ─────────────────────────────────────────────
+    # -- per-document three-layer merge
     doc_path = output_dir / f"{_TS}_pipeline_results.jsonl"
     with open(doc_path, "w", encoding="utf-8") as f:
-        # HOW records 携带 text，以 text 为 key 关联 WHY bias
+        # HOW records carry text, use text as key to associate WHY bias
         why_index = _index_why(result.why_results)
 
         for rec in result.how_results:
@@ -80,7 +80,7 @@ def export_jsonl(result, output_dir: Path) -> list[Path]:
     files.append(doc_path)
     logger.info(f"[EXPORT] JSONL → {doc_path.name}")
 
-    # ── 元信息 + 统计摘要 ─────────────────────────────────────────────────
+    # -- metadata + statistical summary
     meta_path = output_dir / f"{_TS}_pipeline_meta.json"
     meta = {
         "run_timestamp":    result.run_timestamp,
@@ -112,39 +112,39 @@ def export_jsonl(result, output_dir: Path) -> list[Path]:
 
 def export_csv(result, output_dir: Path) -> list[Path]:
     """
-    导出四张 CSV：
-      who_targets.csv      — 每个 (topic, lang) 的 Top 实体 + 频次
-      how_expressions.csv  — 每条修辞框架记录（text / predicate / frame_type …）
-      why_bias_matrix.csv  — 每条文档的道德轴偏移分
-      pipeline_summary.csv — 跨三层的聚合统计（论文 Results 直接引用）
+    Export four CSV files:
+      who_targets.csv      — Top entities + counts for each (topic, lang)
+      how_expressions.csv  — Each rhetorical frame record (text / predicate / frame_type …)
+      why_bias_matrix.csv  — Each document's moral axis bias scores
+      pipeline_summary.csv — Cross-three-layer aggregated stats (paper Results direct reference)
     """
     try:
         import pandas as pd
     except ImportError:
-        logger.error("[EXPORT] pandas 未安装，跳过 CSV 导出")
+        logger.error("[EXPORT] pandas not installed, skipping CSV export")
         return []
 
     files: list[Path] = []
 
-    # ── WHO: 实体频次表 ───────────────────────────────────────────────────
+    # -- WHO: entity frequency table
     who_rows = result.who_df_records
     if who_rows:
         p = output_dir / f"{_TS}_who_targets.csv"
         pd.DataFrame(who_rows).sort_values(["topic", "lang", "count"], ascending=[True, True, False])\
           .to_csv(p, index=False, encoding="utf-8-sig")
         files.append(p)
-        logger.info(f"[EXPORT] WHO CSV → {p.name} ({len(who_rows)} 行)")
+        logger.info(f"[EXPORT] WHO CSV → {p.name} ({len(who_rows)} rows)")
 
-    # ── HOW: 修辞框架记录 ─────────────────────────────────────────────────
+    # -- HOW: rhetorical frame records
     if result.how_results:
         p = output_dir / f"{_TS}_how_expressions.csv"
         pd.DataFrame(result.how_results).to_csv(p, index=False, encoding="utf-8-sig")
         files.append(p)
-        logger.info(f"[EXPORT] HOW CSV → {p.name} ({len(result.how_results)} 行)")
+        logger.info(f"[EXPORT] HOW CSV → {p.name} ({len(result.how_results)} rows)")
 
-    # ── WHY: 道德轴偏移矩阵 ───────────────────────────────────────────────
+    # -- WHY: moral axis bias matrix
     if result.why_results:
-        # 展平 bias dict 到各列
+        # Flatten bias dict to columns
         why_flat = []
         for r in result.why_results:
             row = {"topic": r["topic"], "lang": r["lang"], "text": r["text"]}
@@ -153,9 +153,9 @@ def export_csv(result, output_dir: Path) -> list[Path]:
         p = output_dir / f"{_TS}_why_bias_matrix.csv"
         pd.DataFrame(why_flat).to_csv(p, index=False, encoding="utf-8-sig")
         files.append(p)
-        logger.info(f"[EXPORT] WHY CSV → {p.name} ({len(why_flat)} 行)")
+        logger.info(f"[EXPORT] WHY CSV → {p.name} ({len(why_flat)} rows)")
 
-    # ── 跨三层聚合摘要 ────────────────────────────────────────────────────
+    # -- Cross-three-layer aggregated summary
     summary_rows = _build_summary_rows(result)
     if summary_rows:
         p = output_dir / f"{_TS}_pipeline_summary.csv"
@@ -168,8 +168,8 @@ def export_csv(result, output_dir: Path) -> list[Path]:
 
 def _build_summary_rows(result) -> list[dict]:
     """
-    构建跨三层的聚合摘要行：
-    每行 = 一个 (topic, lang) 组合，包含：
+    Build cross-three-layer aggregated summary rows:
+    Each row = one (topic, lang) combination, containing:
       - WHO: top targets
       - HOW: dominant frame type
       - WHY: mean bias scores
@@ -181,12 +181,12 @@ def _build_summary_rows(result) -> list[dict]:
 
     rows: list[dict] = []
 
-    # 构建 WHO 索引
+    # Build WHO index
     who_idx: dict[tuple, list] = {}
     for w in result.who_results:
         who_idx[(w["topic"], w["lang"])] = w.get("targets", [])[:5]
 
-    # 构建 HOW 聚合（dominant frame per topic-lang）
+    # Build HOW aggregation (dominant frame per topic-lang)
     how_idx: dict[tuple, dict] = {}
     for h in result.how_results:
         key = (h.get("topic"), h.get("lang"))
@@ -195,7 +195,7 @@ def _build_summary_rows(result) -> list[dict]:
             how_idx[key] = {}
         how_idx[key][ft] = how_idx[key].get(ft, 0) + 1
 
-    # 构建 WHY 聚合（mean bias per topic-lang）
+    # Build WHY aggregation (mean bias per topic-lang)
     why_sums: dict[tuple, dict] = {}
     why_cnts: dict[tuple, int] = {}
     for w in result.why_results:
@@ -207,7 +207,7 @@ def _build_summary_rows(result) -> list[dict]:
             why_sums[key][ax] = why_sums[key].get(ax, 0.0) + val
         why_cnts[key] += 1
 
-    # 合并所有 (topic, lang) 组合
+    # Merge all (topic, lang) combinations
     all_keys = set(who_idx) | set(how_idx) | set(why_sums)
     for (topic, lang) in sorted(all_keys):
         row: dict = {"topic": topic, "lang": lang}
@@ -297,7 +297,7 @@ def export_markdown(result, output_dir: Path) -> list[Path]:
         lines.append(f"| `{ft}` | {cnt} | {pct}% |")
     lines.append("")
 
-    # HOW 聚合摘要（如有）
+    # -- HOW aggregated summary (if exists)
     if result.how_summary:
         lines += [
             f"### Aggregated Summary (first 10 rows)",
@@ -326,7 +326,7 @@ def export_markdown(result, output_dir: Path) -> list[Path]:
         lines.append(f"| {ax} | {mean:.4f} {direction} |")
     lines.append("")
 
-    # WHY 统计摘要（如有）
+    # -- WHY statistical summary (if exists)
     why_anova = [r for r in result.why_summary if r.get("_type") == "anova"]
     if why_anova:
         lines += [

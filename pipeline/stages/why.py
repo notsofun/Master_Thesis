@@ -1,11 +1,11 @@
 """
-pipeline/stages/why.py — WHY 阶段封装（RQ3 道德动机投影）
-==========================================================
-复用 unsupervised_classification/RQ3/main.py。
-通过 subprocess 调用，避免模块级路径初始化冲突。
+pipeline/stages/why.py — WHY Stage Wrapper (RQ3 Moral Motivation Projection)
+===========================================================================
+Reuses unsupervised_classification/RQ3/main.py.
+Calls via subprocess, avoiding module-level path initialization conflicts.
 
-collect() 读取 rq3_bias_matrix.csv / rq3_anova_results.csv / rq3_summary.csv，
-转换为统一 Schema。
+collect() reads rq3_bias_matrix.csv / rq3_anova_results.csv / rq3_summary.csv,
+converts to unified schema.
 """
 
 import logging
@@ -21,24 +21,23 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 RQ3_SCRIPT   = PROJECT_ROOT / "unsupervised_classification" / "RQ3" / "main.py"
 RQ3_DATA_DIR = PROJECT_ROOT / "unsupervised_classification" / "RQ3" / "data"
 
-# RQ3 产出的关键文件
+# RQ3 output key files
 BIAS_CSV  = RQ3_DATA_DIR / "rq3_bias_matrix.csv"
 ANOVA_CSV = RQ3_DATA_DIR / "rq3_anova_results.csv"
 SUMMARY_CSV = RQ3_DATA_DIR / "rq3_summary.csv"
 
-# 7 个道德轴名称（与 RQ3/main.py 保持一致）
+# 7 moral axis names (consistent with RQ3/main.py)
 MORAL_AXES = ["Harm", "Fairness", "Loyalty", "Authority", "Sanctity", "RealThreat", "SymThreat"]
 
 
 def run(config: dict) -> bool:
-    """
-    调用 RQ3 脚本完成道德动机投影。
-    返回 True = 成功，False = 失败。
+    """Call RQ3 script to complete moral motivation projection.
+    Return True = success, False = failure.
 
-    config 字段（来自 config.yaml 的 why 节）：
-      max_docs   : int  — 调试：仅处理前 N 条文档
-      batch_size : int  — E5 编码批大小
-      from_bias  : bool — 跳过轴构建+编码，从已有 bias_matrix 开始
+    Config fields (from config.yaml why section):
+      max_docs   : int  -- debug: process only first N documents
+      batch_size : int  -- E5 encoding batch size
+      from_bias  : bool -- skip axis building+encoding, start from existing bias_matrix
     """
     why_cfg = config.get("why", {})
 
@@ -54,25 +53,24 @@ def run(config: dict) -> bool:
     if why_cfg.get("from_bias", False):
         cmd.append("--from-bias")
 
-    logger.info(f"[WHY] 启动 RQ3 脚本: {' '.join(cmd)}")
+    logger.info(f"[WHY] Starting RQ3 script: {' '.join(cmd)}")
     result = subprocess.run(cmd, cwd=str(PROJECT_ROOT))
 
     if result.returncode != 0:
-        logger.error(f"[WHY] RQ3 脚本退出码 {result.returncode}，请检查上方日志")
+        logger.error(f"[WHY] RQ3 script exited with code {result.returncode}, check logs above")
         return False
 
-    logger.info("[WHY] ✅ RQ3 完成")
+    logger.info("[WHY] ✅ RQ3 completed")
     return True
 
 
 def collect(config: dict) -> tuple[list[dict], list[dict]]:
-    """
-    读取 RQ3 输出结果，返回 (per-document 道德偏移记录列表, 统计摘要列表)。
+    """Read RQ3 results, return (per-document moral bias record list, statistical summary list).
 
-    per-document 记录：MoralBiasRecord.to_dict() 格式
+    Per-document records: MoralBiasRecord.to_dict() format
       topic / lang / text / bias: {axis → float}
 
-    统计摘要：rq3_summary.csv 原样转 dict 列表（论文用）
+    Statistical summary: rq3_summary.csv converted to dict list (for paper)
     """
     records: list[dict] = []
     summary: list[dict] = []

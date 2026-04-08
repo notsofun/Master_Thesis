@@ -1,11 +1,11 @@
 """
-pipeline/stages/how.py — HOW 阶段封装（RQ2 修辞策略提取）
-===========================================================
-复用 unsupervised_classification/RQ2/rq2_pipeline_v2.py。
-通过 subprocess 调用，避免模块级路径初始化冲突。
+pipeline/stages/how.py — HOW Stage Wrapper (RQ2 Rhetorical Strategy Extraction)
+==============================================================================
+Reuses unsupervised_classification/RQ2/rq2_pipeline_v2.py.
+Calls via subprocess, avoiding module-level path initialization conflicts.
 
-collect() 读取 rq2_framing_labeled.csv 和 rq2_aggregated_summary.csv，
-转换为统一 Schema。
+collect() reads rq2_framing_labeled.csv and rq2_aggregated_summary.csv,
+converts to unified schema.
 """
 
 import logging
@@ -21,19 +21,18 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 RQ2_SCRIPT   = PROJECT_ROOT / "unsupervised_classification" / "RQ2" / "rq2_pipeline_v2.py"
 RQ2_DATA_DIR = PROJECT_ROOT / "unsupervised_classification" / "RQ2" / "data"
 
-# RQ2 产出的关键文件
+# RQ2 output key files
 LABELED_CSV  = RQ2_DATA_DIR / "rq2_framing_labeled.csv"
 SUMMARY_CSV  = RQ2_DATA_DIR / "rq2_aggregated_summary.csv"
 
 
 def run(config: dict) -> bool:
-    """
-    调用 RQ2 脚本完成修辞策略提取与框架分类。
-    返回 True = 成功，False = 失败。
+    """Call RQ2 script to complete rhetorical strategy extraction and frame classification.
+    Return True = success, False = failure.
 
-    config 字段（来自 config.yaml 的 how 节）：
-      no_gemini : bool  — 跳过 Gemini，仅用规则分类器
-      max_rows  : int   — 调试：仅处理前 N 行文档
+    Config fields (from config.yaml how section):
+      no_gemini : bool  -- skip Gemini, use rule classifier only
+      max_rows  : int   -- debug: process only first N rows of documents
     """
     how_cfg = config.get("how", {})
 
@@ -46,25 +45,24 @@ def run(config: dict) -> bool:
     if max_rows:
         cmd += ["--max-rows", str(max_rows)]
 
-    logger.info(f"[HOW] 启动 RQ2 脚本: {' '.join(cmd)}")
+    logger.info(f"[HOW] Starting RQ2 script: {' '.join(cmd)}")
     result = subprocess.run(cmd, cwd=str(PROJECT_ROOT))
 
     if result.returncode != 0:
-        logger.error(f"[HOW] RQ2 脚本退出码 {result.returncode}，请检查上方日志")
+        logger.error(f"[HOW] RQ2 script exited with code {result.returncode}, check logs above")
         return False
 
-    logger.info("[HOW] ✅ RQ2 完成")
+    logger.info("[HOW] ✅ RQ2 completed")
     return True
 
 
 def collect(config: dict) -> tuple[list[dict], list[dict]]:
-    """
-    读取 RQ2 输出结果，返回 (per-document 记录列表, 聚合摘要列表)。
+    """Read RQ2 results, return (per-document record list, aggregated summary list).
 
-    per-document 记录：ExpressionRecord.to_dict() 格式
+    Per-document records: ExpressionRecord.to_dict() format
       topic / lang / text / predicate / context / target / frame_type / layer
 
-    聚合摘要：rq2_aggregated_summary.csv 原样转 dict 列表（论文附录用）
+    Aggregated summary: rq2_aggregated_summary.csv converted to dict list (for paper appendix)
     """
     records: list[dict] = []
     summary: list[dict] = []

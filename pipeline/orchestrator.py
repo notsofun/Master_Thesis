@@ -1,13 +1,13 @@
 """
-pipeline/orchestrator.py — 管线编排核心
-=========================================
-统一调度 WHO → HOW → WHY 三阶段，收集结果，写入统一 Schema。
+pipeline/orchestrator.py — Pipeline Orchestration Core
+=======================================================
+Unified scheduling of WHO → HOW → WHY three stages, collect results, write to unified schema.
 
-设计原则：
-  - 每阶段通过 subprocess 调用原始脚本，不修改研究核心逻辑
-  - 每阶段失败时记录错误，默认继续后续阶段（可配置为 strict 模式）
-  - 中间结果写入各 RQ 的原生输出目录（保持现有数据流不变）
-  - 汇总结果写入 pipeline/outputs/
+Design Principles:
+  - Each stage calls original script via subprocess, does not modify core research logic
+  - Stage failures are logged, subsequent stages continue by default (strict mode for immediate termination)
+  - Intermediate results written to each RQ's native output directory (preserve existing data flow)
+  - Aggregated results written to pipeline/outputs/
 """
 
 import logging
@@ -17,7 +17,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-# 加入项目根到 sys.path，以便引用 pipeline 内模块
+# Add project root to sys.path, to import pipeline modules
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -31,15 +31,14 @@ logger = logging.getLogger(__name__)
 
 
 def run(config: dict, strict: bool = False) -> PipelineResult:
-    """
-    执行完整 WHO → HOW → WHY 管线。
+    """Execute complete WHO → HOW → WHY pipeline.
 
     Args:
-        config  : 从 config.yaml 解析得到的配置字典
-        strict  : True = 任意阶段失败即终止；False = 记录错误后继续
+        config  : Configuration dict parsed from config.yaml
+        strict  : True = fail immediately on any stage failure; False = log error and continue
 
     Returns:
-        PipelineResult：包含三层结果 + 错误信息 + 元数据
+        PipelineResult: Contains three-layer results + error info + metadata
     """
     stages_cfg  = config.get("stages", {})
     output_dir  = Path(config.get("output", "pipeline/outputs"))
@@ -173,26 +172,26 @@ def run(config: dict, strict: bool = False) -> PipelineResult:
 def _populate_doc_stats(result: PipelineResult, input_path: Path, lang_filter: str):
     """读取输入文档，填充 total_documents / language_counts / topic_count"""
     if not input_path.exists():
-        logger.warning(f"[META] 输入文件不存在: {input_path}")
+        logger.warning(f"[META] Input file not found: {input_path}")
         return
     try:
         import pandas as pd
         df = pd.read_csv(input_path)
         if lang_filter and lang_filter != "auto":
             df = df[df["lang"] == lang_filter]
-        df = df[df["topic"] != -1]  # 排除噪声话题
+        df = df[df["topic"] != -1]  # Exclude noise topic
         result.total_documents = len(df)
         result.language_counts = df["lang"].value_counts().to_dict() if "lang" in df.columns else {}
         result.topic_count = df["topic"].nunique() if "topic" in df.columns else 0
     except Exception as e:
-        logger.warning(f"[META] 无法读取输入文件统计: {e}")
+        logger.warning(f"[META] Cannot read input file statistics: {e}")
 
 
 def _frame_counts(records: list[dict]) -> dict[str, int]:
-    """统计修辞框架频次（调试用）"""
+    """Count rhetorical frame frequency (for debug output)"""
     counts: dict[str, int] = {}
     for r in records:
         ft = r.get("frame_type", "?")
         counts[ft] = counts.get(ft, 0) + 1
-    # 按频次降序，只取 top-5
+    # Sort by frequency descending, keep only top-5
     return dict(sorted(counts.items(), key=lambda kv: -kv[1])[:5])

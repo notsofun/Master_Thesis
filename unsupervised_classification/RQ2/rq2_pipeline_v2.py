@@ -777,12 +777,12 @@ def frame_bilingual_label(key: str) -> str:
     return en
 
 
-LANG_LABEL = {"en": "English 🇬🇧", "zh": "中文 🇨🇳", "jp": "日本語 🇯🇵"}
+LANG_LABEL = {"en": "English", "zh": "Chinese", "jp": "Japanese"}
 LANG_COLOR = {"en": "#4C78A8", "zh": "#F58518", "jp": "#54A24B"}
 
 _LAYOUT_BASE = dict(
     font=dict(
-        family="'Noto Sans SC','Noto Sans JP','Hiragino Sans','Microsoft YaHei',Arial,sans-serif",
+        family="Arial,Helvetica,sans-serif",
         size=12,
     ),
     paper_bgcolor="white",
@@ -832,8 +832,8 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     labeled_df["frame_zh"]   = labeled_df["frame_type"].map(FRAME_ZH)
     labeled_df["lang_label"] = labeled_df["lang"].map(LANG_LABEL)
 
-    # 双语轴标签列表（顺序与 FRAME_KEYS 一致）
-    bilingual_x = [frame_bilingual_label(k) for k in FRAME_KEYS]
+    # 英文轴标签列表（顺序与 FRAME_KEYS 一致）
+    english_x = [FRAME_EN.get(k, k) for k in FRAME_KEYS]
 
     # ── 图A: Topic × Frame 热力图 ──────────────────────────────────────
     tf = (labeled_df
@@ -845,13 +845,13 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
 
     fig_a = go.Figure(go.Heatmap(
         z=tf_pivot.values,
-        x=bilingual_x,
+        x=english_x,
         y=[f"Topic {t}" for t in tf_pivot.index],
         colorscale="Blues",
         text=tf_pivot.values.round(1),
         texttemplate="%{text}%",
         colorbar=dict(title="Percentage %"),
-        hovertemplate="Topic %{y}<br>框架: %{x}<br>占比: %{z:.1f}%<extra></extra>",
+        hovertemplate="Topic %{y}<br>Frame: %{x}<br>Percentage: %{z:.1f}%<extra></extra>",
     ))
     dynamic_height_a = len(tf_pivot) * 22 + 200
 
@@ -889,19 +889,27 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
         sub = lf[lf["lang"] == lang]
         fig_b.add_trace(go.Bar(
             name=LANG_LABEL.get(lang, lang),
-            x=[frame_bilingual_label(k) for k in sub["frame_type"]],
+            x=[FRAME_EN.get(k, k) for k in sub["frame_type"]],
             y=sub["pct"],
             marker_color=LANG_COLOR[lang],
-            hovertemplate=f"{LANG_LABEL.get(lang,lang)}<br>框架: %{{x}}<br>占比: %{{y:.1f}}%<extra></extra>",
+            hovertemplate=f"{LANG_LABEL.get(lang,lang)}<br>Frame: %{{x}}<br>Percentage: %{{y:.1f}}%<extra></extra>",
         ))
     fig_b.update_layout(
         **_LAYOUT_BASE,
         barmode="group",
         title=dict(text="Fig B: Attack Framing Distribution by Language (% within language)",
                    font=dict(size=14)),
-        xaxis=dict(title="Framing Type (攻击框架类型)", tickangle=-20),
-        yaxis=dict(title="% within Language (各语言内占比)"),
-        legend=dict(title="Language"),
+        xaxis=dict(title="Framing Type", tickangle=-30, automargin=True),
+        yaxis=dict(title="Percentage within Language", automargin=True),
+        legend=dict(
+            title="Language",
+            orientation="v",
+            x=1.02,
+            y=0.5,
+            xanchor="left",
+            yanchor="middle",
+        ),
+        margin=dict(t=120, r=170, b=120, l=80),
         height=520,
     )
     p = OUT_DIR / "rq2_B_lang_frame_bar.html"
@@ -919,20 +927,21 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
     dynamic_height = max(600, len(tgf_pivot) * 20 + 150)
     fig_c = go.Figure(go.Heatmap(
         z=tgf_pivot.values,
-        x=bilingual_x,
+        x=english_x,
         y=tgf_pivot.index.tolist(),
         colorscale="Reds",
         text=tgf_pivot.values.astype(int),
         texttemplate="%{text}",
         colorbar=dict(title="Count"),
-        hovertemplate="Target: %{y}<br>{x}<br>{z}<extra></extra>",
+        hovertemplate="Target: %{y}<br>Frame: %{x}<br>Count: %{z}<extra></extra>",
     ))
     fig_c.update_layout(
         **_LAYOUT_BASE,
         title=dict(text="Fig C: Attack Frame Matrix per Target (raw count)",
                    font=dict(size=14)),
-        xaxis=dict(title="Framing Type", tickangle=-20),
-        yaxis=dict(title="Target Group",dtick=1),
+        xaxis=dict(title="Framing Type", tickangle=-30, automargin=True),
+        yaxis=dict(title="Target Group", dtick=1, automargin=True),
+        margin=dict(t=120, r=80, b=120, l=120),
         height=dynamic_height,
     )
     p = OUT_DIR / "rq2_C_target_frame_matrix.html"

@@ -824,7 +824,7 @@ def _build_language_level_analysis(bias_df: pd.DataFrame, anova_df: pd.DataFrame
     
     fig_g1 = go.Figure(go.Heatmap(
         z=lang_means_pivot.values,
-        x=bilingual_x,
+        x=[AXIS_LABEL_EN[k] for k in AXIS_KEYS],
         y=[LANG_LABEL[l] for l in ["en", "zh", "jp"]],
         colorscale="RdBu",
         zmid=0,
@@ -839,7 +839,6 @@ def _build_language_level_analysis(bias_df: pd.DataFrame, anova_df: pd.DataFrame
         title=dict(
             text=(
                 "Fig G1: Language-Axis Mean Bias Heatmap<br>"
-                "<sup>三语言在各道德轴的绝对均值；正值=正向动机，负值=攻击性动机</sup>"
             ),
             font=dict(size=12),
         ),
@@ -911,11 +910,10 @@ def _build_language_level_analysis(bias_df: pd.DataFrame, anova_df: pd.DataFrame
         title=dict(
             text=(
                 "Fig G2: Languages in Moral Motivation PCA Space<br>"
-                "<sup>按语言汇总的 z-score 中心；PC1=攻击性程度，PC2=动机类型差异</sup>"
             ),
             font=dict(size=12),
         ),
-        xaxis=dict(title="PC1: Negativity Gradient (←负向 | 正向→)", zeroline=True),
+        xaxis=dict(title="PC1: Negativity Gradient (←Negative | Positive→)", zeroline=True),
         yaxis=dict(title="PC2: Motivation Type Contrast", zeroline=True),
         legend=dict(yanchor="top", y=0.99, xanchor="right", x=0.99),
         height=600,
@@ -991,7 +989,7 @@ def _build_topic_level_analysis(bias_df: pd.DataFrame):
     
     fig_h1 = go.Figure(go.Heatmap(
         z=topic_means_pivot.values,
-        x=bilingual_x,
+        x=[AXIS_LABEL_EN[k] for k in AXIS_KEYS],
         y=topic_means_pivot.index.tolist(),
         colorscale="RdBu",
         zmid=0,
@@ -1019,26 +1017,27 @@ def _build_topic_level_analysis(bias_df: pd.DataFrame):
     inject_font(p)
     log.info(f"[STEP4] ✅ 图H1: {p.name}")
     
-    # ── H2: 话题在 PCA 空间的位置 ───────────────────────────────────────
-    topic_centers = []
+    # ── H2: 话题在全局 PCA 空间的位置 ───────────────────────────────────
     df_z = df[df["topic"] >= 0].copy()
-    for topic in sorted(df_z["topic"].unique()):
-        topic_z = df_z[df_z["topic"] == topic][z_cols].values
-        if len(topic_z) >= 10:
-            scores, _, _ = _compute_pca_projection(topic_z)
-            center_pc1 = scores[:, 0].mean()
-            center_pc2 = scores[:, 1].mean()
-            topic_label = TOPIC_LABELS.get(topic, f"Topic {topic}")
-            topic_centers.append({
-                "topic": topic,
-                "topic_label": topic_label,
-                "pc1": center_pc1,
-                "pc2": center_pc2,
-                "n_docs": len(topic_z),
-            })
-    
-    topic_centers_df = pd.DataFrame(topic_centers)
-    
+    df_h2 = df_z.groupby("topic").filter(lambda g: len(g) >= 10).copy()
+    topic_centers_df = pd.DataFrame()
+    explained_h2 = np.zeros(2)
+    if not df_h2.empty:
+        # Fit one shared PCA basis across all topic documents so topic centers
+        # are directly comparable in the same coordinate system.
+        scores, explained_h2, _ = _compute_pca_projection(df_h2[z_cols].values)
+        df_h2["pc1"] = scores[:, 0]
+        df_h2["pc2"] = scores[:, 1]
+        topic_centers_df = (
+            df_h2.groupby("topic", as_index=False)
+            .agg(
+                topic_label=("topic", lambda s: TOPIC_LABELS.get(int(s.iloc[0]), f"Topic {int(s.iloc[0])}")),
+                pc1=("pc1", "mean"),
+                pc2=("pc2", "mean"),
+                n_docs=("topic", "size"),
+            )
+        )
+
     fig_h2 = go.Figure(go.Scatter(
         x=topic_centers_df["pc1"],
         y=topic_centers_df["pc2"],
@@ -1064,12 +1063,12 @@ def _build_topic_level_analysis(bias_df: pd.DataFrame):
         **_LAYOUT_BASE,
         title=dict(
             text=(
-                "Fig H2: Topics in Moral Motivation PCA Space<br>"
-                "<sup>按话题汇总的 z-score 中心；气泡大小=话题文档数；红=负向/攻击性强，蓝=正向</sup>"
+                "Fig H2: Topics in Global Moral Motivation PCA Space<br>"
+                f"<sup>One shared PCA basis fit on all topic documents; topic centers are directly comparable. PC1 explains {explained_h2[0]*100:.1f}% of variance, PC2 explains {explained_h2[1]*100:.1f}%</sup>"
             ),
             font=dict(size=12),
         ),
-        xaxis=dict(title="PC1: Negativity Gradient (←负向 | 正向→)", zeroline=True),
+        xaxis=dict(title="PC1: Negativity Gradient (←Negative | Positive→)", zeroline=True),
         yaxis=dict(title="PC2: Motivation Type Contrast", zeroline=True),
         height=700,
     )
@@ -1307,7 +1306,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         error_minus = sub["mean_bias"] - sub["ci_low"]
         fig_b.add_trace(
             go.Scatter(
-                x=bilingual_x,
+                x=[AXIS_LABEL_EN[k] for k in AXIS_KEYS],
                 y=sub["mean_bias"],
                 mode="lines+markers",
                 name=LANG_LABEL.get(lang, lang),
@@ -1332,7 +1331,7 @@ def aggregate_and_visualize(bias_df: pd.DataFrame, anova_df: pd.DataFrame):
         )
         fig_b.add_trace(
             go.Scatter(
-                x=bilingual_x,
+                x=[AXIS_LABEL_EN[k] for k in AXIS_KEYS],
                 y=sub["relative_salience"],
                 mode="lines+markers",
                 name=LANG_LABEL.get(lang, lang),

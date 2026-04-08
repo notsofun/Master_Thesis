@@ -1,0 +1,192 @@
+% ADD THIS HEADER TO ALL NEW CHAPTER FILES FOR SUBFILES SUPPORT
+
+% Allow independent compilation of this section for efficiency
+\documentclass[../CLthesis.tex]{subfiles}
+
+% Add the graphics path for subfiles support
+\graphicspath{{\subfix{../images/}}}
+
+% END OF SUBFILES HEADER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF DOCUMENT: Every chapter can be compiled separately
+\begin{document}
+
+\chapter{RQ3: What Moral Motivations Drive Anti-Religious Hate Speech, and How Do They Differ Across Languages and Topics?}%
+\label{chap:why}
+
+\section*{Overview}
+
+Building on the moral foundation scoring framework introduced in Chapter~\ref{chap:how}, this chapter investigates \textit{what moral motivations} underlie anti-religious hate speech — and whether those motivations systematically differ by language or by topic. Using the bias scores derived from the Moral Foundations Dictionary and the Realistic/Symbolic Threat lexicons, we compute a per-document \emph{moral bias score} for each of seven axes:
+
+\begin{itemize}
+    \item \textbf{Harm} — Care(+) vs.\ Harm(−): Does the text frame the target as harmful to others, or does it show care?
+    \item \textbf{Fairness} — Fairness(+) vs.\ Cheating(−): Does the text invoke notions of injustice or unfair treatment?
+    \item \textbf{Loyalty} — Loyalty(+) vs.\ Betrayal(−): Does the text frame the target as a traitor or betrayer of a group?
+    \item \textbf{Authority} — Authority(+) vs.\ Subversion(−): Does the text attack institutional or moral authority?
+    \item \textbf{Sanctity} — Sanctity(+) vs.\ Degradation(−): Does the text frame the target as morally corrupt or impure?
+    \item \textbf{Realistic Threat} — Safety(+) vs.\ Realistic Threat(−): Does the text portray the target as a concrete, physical danger?
+    \item \textbf{Symbolic Threat} — Cultural Cohesion(+) vs.\ Symbolic Threat(−): Does the text frame the target as a threat to culture, identity, or social values?
+\end{itemize}
+
+A negative score on any axis means the discourse \emph{leans toward the negative pole} of that axis — that is, the text tends to invoke attack-oriented moral framing. A positive score means the discourse leans toward the constructive pole.
+
+Before interpreting individual patterns, we first verify that these bias scores carry meaningful signal. A one-way ANOVA across all three language groups (English, Chinese, Japanese) was conducted for each of the seven axes. As shown in Table~\ref{tab:rq3_anova}, all seven axes yield extremely significant differences ($p < 4.9 \times 10^{-324}$ for the five Moral Foundation axes, and $p < 10^{-200}$ for the two threat axes), with large effect sizes ($\eta^2$ ranging from 0.24 to 0.95). This confirms that the moral bias scores capture real, language-dependent variation that is worth investigating.
+
+\begin{table}[htbp]
+\centering
+\caption{One-way ANOVA results for moral bias scores across English, Chinese, and Japanese corpora. All pairwise Tukey post-hoc comparisons are also significant ($p < 10^{-10}$) for all axes.}
+\label{tab:rq3_anova}
+\begin{tabular}{llrrrc}
+\hline
+\textbf{Axis} & \textbf{Description} & \textbf{F-stat} & \textbf{$\eta^2$} & \textbf{Sig.} \\
+\hline
+Harm            & Care(+) vs.\ Harm(−)                     & 32{,}068 & 0.949 & *** \\
+Fairness        & Fairness(+) vs.\ Cheating(−)             & 35{,}568 & 0.954 & *** \\
+Loyalty         & Loyalty(+) vs.\ Betrayal(−)              & 10{,}808 & 0.863 & *** \\
+Authority       & Authority(+) vs.\ Subversion(−)          & 17{,}686 & 0.912 & *** \\
+Sanctity        & Sanctity(+) vs.\ Degradation(−)          & 25{,}366 & 0.937 & *** \\
+Realistic Threat & Safety(+) vs.\ Realistic Threat(−)     &    840   & 0.329 & *** \\
+Symbolic Threat & Cultural Cohesion(+) vs.\ Symbolic Threat(−) & 544  & 0.241 & *** \\
+\hline
+\end{tabular}
+\end{table}
+
+
+%---------------------------------------------------------------
+\section{Moral Framing by Language}
+\label{sec:rq3_lang}
+
+Figure~\ref{fig:rq3_lang_heatmap} (heatmap) and Figure~\ref{fig:rq3_lang_line} (line chart) display the mean bias score for each language on each moral axis. Together they tell a clear story: the three languages do not attack religion in the same way — they each seem to reach for a different moral vocabulary.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{RQ3/rq3_lang_heatmap.png}
+    \caption{Mean moral bias scores per language across all seven axes. Cooler (blue) colours indicate negative bias (attack-oriented framing); warmer (red) colours indicate positive bias (care/cohesion-oriented framing).}
+    \label{fig:rq3_lang_heatmap}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{RQ3/rq3_lang_line.png}
+    \caption{Per-axis mean bias scores for English, Chinese, and Japanese, shown as a parallel-coordinate profile. Each line traces the moral ``fingerprint'' of one language community.}
+    \label{fig:rq3_lang_line}
+\end{figure}
+
+\paragraph{English: a broad negative sweep across moral foundations.}
+English discourse sits firmly in negative territory on the five classical Moral Foundation axes. The mean bias scores are $-0.081$ (Authority), $-0.074$ (Harm), $-0.065$ (Sanctity), $-0.063$ (Fairness), and $-0.050$ (Loyalty). In plain terms, English anti-religious texts tend to paint the target as harmful, unfair, corrupt, and authoritarian — a wide-ranging moral indictment. This pattern is consistent with what one might call \emph{moral condemnation-style attack}: the speaker argues that religion (or religious actors) is bad across many ethical dimensions at once.
+
+Interestingly, English is the \emph{only} language where the Realistic Threat axis is positive ($+0.018$), meaning English texts are \emph{not} particularly prone to framing religion as a concrete physical danger.
+
+\paragraph{Chinese and Japanese: threat framing stands out.}
+Chinese and Japanese show a markedly different profile. On the five classical Moral Foundation axes (Harm, Fairness, Loyalty, Authority, Sanctity), both languages tend toward \emph{positive} scores — Chinese: $+0.177, +0.182, +0.108, +0.117, +0.168$; Japanese: $+0.069, +0.085, +0.024, +0.034, +0.077$. This means that, on average, Chinese- and Japanese-language texts do \emph{not} simply attack religion on classical moral grounds to the same degree as English.
+
+However, both languages flip sharply negative on the two threat axes: Symbolic Threat ($-0.047$ for Chinese, $-0.045$ for Japanese) and Realistic Threat ($-0.012$ for Chinese, $-0.018$ for Japanese). This suggests that Chinese and Japanese anti-religious discourse leans into \emph{threat-based framing} — portraying religion as a danger to cultural identity, social cohesion, or physical safety — rather than mounting a broad moral condemnation.
+
+A concise way to summarise this divergence: English discourse is more negatively aligned with harm-, fairness-, authority-, and sanctity-related frames, whereas Chinese and Japanese discourse shows its main negative alignment on the realistic-threat and symbolic-threat axes. The attack is present in all three languages, but the rhetorical weapon of choice differs substantially.
+
+
+%---------------------------------------------------------------
+\section{Moral Framing by Topic}
+\label{sec:rq3_topic}
+
+Beyond language, we ask whether certain \emph{topics} systematically attract more aggressive moral framing than others, and whether the \emph{type} of aggression (condemnation vs.\ threat) also varies across topics.
+
+\subsection*{Heatmap: which topics engage which moral axes?}
+
+Figure~\ref{fig:rq3_topic_heatmap} shows the mean bias score for each (topic, axis) combination across all languages.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{RQ3/rq3_topic_heatmap.png}
+    \caption{Per-topic mean moral bias scores across all seven axes. Most topics show at least moderate negative alignment on Symbolic Threat, while several also engage Harm, Fairness, Authority, and Sanctity frames.}
+    \label{fig:rq3_topic_heatmap}
+\end{figure}
+
+The dominant pattern in the heatmap is Symbolic Threat: the vast majority of topics show a negative bias on this axis, suggesting that framing religion or religious groups as a threat to cultural identity and social values is a near-universal feature of anti-religious discourse, regardless of the specific topic. Beyond that baseline, a subset of topics additionally engages the classical Moral Foundation axes — Harm, Fairness, Loyalty, Authority, and Sanctity — producing stronger and more diverse moral indictments.
+
+\subsection*{Scatter plot: how hostile is each topic, and what kind of hostility?}
+
+Figure~\ref{fig:rq3_topic_scatter} maps every topic as a bubble onto a two-dimensional moral space derived from Principal Component Analysis (PCA) of the seven bias scores. The bubble size reflects the number of documents in that topic, making it easy to see which topics matter most.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{RQ3/rq3_topic_scatter.png}
+    \caption{PCA-based moral space of topics. PC1 (63.7\% of variance) captures overall negativity/attack orientation; PC2 (16.9\% of variance) separates threat-based framing (top) from condemnation/harm-based framing (bottom). Bubble size is proportional to document count.}
+    \label{fig:rq3_topic_scatter}
+\end{figure}
+
+Reading the plot is straightforward with a simple compass:
+\begin{itemize}
+    \item \textbf{Left} = more attack-oriented overall; \textbf{Right} = more normative or discussion-oriented.
+    \item \textbf{Top-left} = attack through threat narratives; \textbf{Bottom-left} = attack through moral condemnation.
+    \item \textbf{Larger bubbles} deserve more analytical attention because they represent more data.
+\end{itemize}
+
+PC1 explains 63.7\% of the total variance, meaning the single most important thing to know about a topic is simply \emph{how aggressive} it is. PC2 adds another 16.9\%, capturing the distinction between \emph{what kind} of aggression is deployed.
+
+\paragraph{Most hostile topics.}
+The leftmost topics — those furthest into attack territory — are \textit{T23 Historical Critiques of Christian Violence} (far-left, slightly upward), \textit{T42 Faith and Heresy Debates}, \textit{T46 Religious Beliefs and Social Controversies}, and \textit{T39 Religious Controversies and Social Critiques} (far-left, well below centre). Topics like \textit{T17 Pagan-Christian Conflicts}, \textit{T11 2017 Pakistan Religious Violence}, \textit{T4 Religion, Sexuality, and Violence}, and \textit{T6 Church Abuse Victims} are also prominently on the left side. The pattern is clear: topics centred on historical violence, heresy, social conflict, and abuse systematically generate more negatively charged discourse.
+
+\paragraph{Most normative topics.}
+On the right side, topics such as \textit{T29 Christian Principles and Criticisms}, \textit{T43 Missionaries and Confucianism}, \textit{T33 Healthcare Rights and Institutions}, \textit{T34 Church-State Relations and Charities}, and \textit{T2 Women and Ordination} appear more moderate. These topics tend to involve theological debate, institutional policy, or principled disagreement — discussions where hostile moral framing is present but not dominant.
+
+\paragraph{Large bubbles worth highlighting.}
+Among the high-volume topics, \textit{T1 Christians and Trump's Politics} (large, bottom-left) is both very common and strongly condemnation-oriented. \textit{T4 Religion, Sexuality, and Violence} (large, left-upper) is common and more threat-oriented. \textit{T6 Church Abuse Victims} (large, bottom-left) is common and predominantly harm/condemnation-oriented. By contrast, \textit{T0 Separation of Church \& State / Japan} — the single largest bubble — sits near the centre-right, indicating that despite its high frequency, it tends toward relatively measured, institutionally framed discussion rather than moral attack.
+
+To summarise, not all religious topics attract equal hostility. The strongest attack-oriented framing clusters around themes of historical violence, heresy, and social-sexual conflict, while institutional and theological topics remain comparatively more civil. Within the hostile cluster, some topics are driven by threat narratives (upper-left) and others by moral condemnation (lower-left).
+
+
+%---------------------------------------------------------------
+\section{Cross-Language Variation Within Topics}
+\label{sec:rq3_topic_lang}
+
+The previous two sections examined language and topic effects in isolation. Here we ask: \emph{when the same topic is discussed in different languages, does the moral framing shift?} This question is addressed by Figure~\ref{fig:rq3_lang_bar} and Figure~\ref{fig:rq3_topic_lang_scatter}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{RQ3/rq3_lang_bar.png}
+    \caption{Per-language mean moral bias scores grouped by topic. Topics are sorted by overall attack intensity. Bars show the attack salience of each language within each topic.}
+    \label{fig:rq3_lang_bar}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{RQ3/rq3_topic_lang_scatter.png}
+    \caption{PCA moral space of all topic-language combinations. Each point represents one (topic, language) unit: English (blue), Chinese (orange), Japanese (green). Arrows show the direction of increasing positive bias for each moral axis. Points far from the origin indicate extreme moral profiles.}
+    \label{fig:rq3_topic_lang_scatter}
+\end{figure}
+
+\paragraph{How to read Figure~\ref{fig:rq3_topic_lang_scatter}.}
+Unlike Figure~\ref{fig:rq3_topic_scatter} — where each point was an entire topic — here each point is a \emph{language-within-topic} unit (e.g., English-T25, Chinese-T25, Japanese-T25). The axes carry the same meaning: left is more attack-oriented, right is more normative; top is more threat-framed, bottom is more condemnation-framed. The arrows indicate which direction the original moral axes point — crucially, a point \emph{opposite} an arrow is more negatively biased on that axis, because the arrows point toward the \emph{positive} pole.
+
+\paragraph{Language centroids are close together.}
+The three language centroids all lie near the origin (English PC1~$\approx 0.015$, PC2~$\approx -0.030$; Japanese PC1~$\approx 0.020$, PC2~$\approx -0.039$; Chinese PC1~$\approx 0.033$, PC2~$\approx -0.034$). This confirms that \emph{no single language is uniformly more aggressive than another} when averaged across all topics. The real variation lies in specific topic-language combinations that deviate far from the centre.
+
+\paragraph{Some topics diverge sharply across languages.}
+When the three coloured points for the same topic are spread out, it means the topic is discussed very differently depending on the linguistic community. A left-right spread signals that one language is far more attack-oriented on that topic than another. An up-down spread signals that the \emph{type} of attack differs: one language reaches for threat framing, another for moral condemnation.
+
+\paragraph{English: social issues and belief conflict.}
+English-language anti-religious discourse is most extreme on topics involving broad social antagonism — politics, gender, racial identity, and moral pluralism. Topics like \textit{T1 Christians and Trump's Politics} and \textit{T6 Church Abuse Victims} pull English points sharply left and downward, toward condemnation framing. These are largely arguments about the social and political consequences of religion, framed through Harm, Fairness, and Authority lenses.
+
+\paragraph{Chinese and Japanese: concentrated around heresy and faith debates.}
+Both Chinese and Japanese communities show their most extreme moral profiles on topics centred on religious orthodoxy and faith controversy — most notably \textit{T42 Faith and Heresy Debates}. This topic pulls Chinese and Japanese points strongly leftward, indicating high attack intensity. However, even within this shared focus, the two languages differ in angle: Chinese points often drift more toward the threat axes (upward), reflecting cultural-identity threat framing, while Japanese points distribute more toward the condemnation quadrant (downward), reflecting harm- and fairness-based critique. This subtle but consistent divergence suggests that even when Chinese and Japanese communities engage the same religious controversy, they reach for somewhat different moral vocabularies.
+
+
+%---------------------------------------------------------------
+\section{Summary: Why Does Anti-Religious Hate Speech Happen?}
+\label{sec:rq3_summary}
+
+Taken together, the three analyses above paint a coherent picture of the moral motivations behind anti-religious hate speech across languages and topics.
+
+First, moral attack is not random. The bias scores show clear, statistically significant patterning: certain languages and certain topics consistently generate more negatively charged discourse, and the direction of that negativity is predictable from the moral axes.
+
+Second, \emph{language shapes the moral weapon of choice}. English speakers tend to mount broad moral condemnations — targeting religion on Harm, Fairness, Authority, and Sanctity grounds simultaneously. Chinese and Japanese speakers are more likely to deploy a threat-based frame, portraying religion as a danger to cultural cohesion or physical safety. This finding is consistent with theoretical accounts of how in-group identity concerns differ across cultural contexts: more collectivist communities may find threat-to-the-group narratives more rhetorically compelling, while more individualist communities may favour direct moral indictment.
+
+Third, \emph{topic determines the intensity and type of attack}. Topics rooted in historical violence, heresy, and social conflict generate the most hostile discourse; topics involving institutional or theological debate remain comparatively measured. Within hostile topics, some pull discourse toward threat narratives while others pull it toward moral condemnation — and which direction is taken often depends on the language of the community discussing it.
+
+In short, anti-religious hate speech is not a monolithic phenomenon. It is shaped by both the cultural-linguistic background of the speaker and the specific nature of the religious controversy at hand, producing a structured landscape of moral motivations that vary predictably along these two dimensions.
+
+% self-defined macro: include bibliography even when compiling a single chapter
+\subfilebibliography
+\end{document}

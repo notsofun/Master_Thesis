@@ -1,0 +1,8 @@
+2026-04-08 12:51:00,619 - INFO - 日志文件: /Users/noriaki/Documents/GitHub/Master_Thesis/unsupervised_classification/RQ3/logs/20260408_125100_rq3_frameaxis.log
+2026-04-08 12:51:00,639 - INFO - [STEP2] ✅ 从 checkpoint 加载 Bias 矩阵: 3435 行
+2026-04-08 12:51:00,695 - INFO - [STEP4] 开始生成可视化，共 3435 条记录
+2026-04-08 12:51:00,723 - INFO - [STEP4] 语言分布: {'jp': 1241, 'en': 1120, 'zh': 1074}
+2026-04-08 12:51:00,723 - INFO - [STEP4] Topic 数量: 47
+2026-04-08 12:51:00,723 - INFO - [STEP4] 图A: topic-language × axis 热力图（z-score）
+2026-04-08 12:51:00,853 - INFO - [STEP4] ✅ 图A: rq3_A_topic_axis_heatmap.html
+2026-04-08 12:51:00,853 - INFO - [STEP4] 图B: 语言层概览

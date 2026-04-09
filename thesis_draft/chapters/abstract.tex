@@ -19,13 +19,14 @@
     \begin{otherlanguage}{english}% Switch to English, in case the main language is not English
 
         \section*{Abstract}
-        This is the place to put your abstract in English.
-        \begin{itemize}
-            \item the background/goal
-            \item the methods
-            \item the evaluation and main results
-            \item the conclusions
-        \end{itemize}
+
+        Computational hate speech research has made substantial progress on detection, yet it remains concentrated on English-language data, explicit lexical abuse, and binary classification --- a combination that leaves implicit, cross-lingual religious hostility structurally underexplored. This thesis investigates anti-Christian hate speech across Chinese, Japanese, and English online discourse, asking not only whether hostility can be detected, but \emph{who} is targeted, \emph{how} attacks are rhetorically constructed, and \emph{why} different communities sustain them.
+
+        To answer these questions, the thesis assembles a trilingual corpus of 63,265 texts and develops a modular \emph{who--how--why} analytical pipeline. Low-resource Chinese and Japanese subsets are expanded through LLM-assisted back-translation augmentation, raising hate speech detection F1 from 0.172 to 0.635 (Chinese) and from 0.294 to 0.579 (Japanese). Unsupervised BERTopic modelling with cross-lingual centroid alignment identifies 47 semantically coherent topics without imposing a predefined English-centric taxonomy. A three-layer extraction architecture --- combining spaCy NER, a domain gazetteer, and a large language model fallback --- addresses the zero-subject constructions that make standard dependency parsing unreliable in CJK text. Attack frames are classified using a ten-category taxonomy, and moral motivations are projected onto classical Moral Foundation axes extended with intergroup threat dimensions.
+
+        The results reveal two structural regularities that prior binary detection cannot surface. First, attack frame selection is systematically governed by the social category of the target: clerical role-targets attract the Sexual Abuse Frame across all three languages, institutionally-embedded targets attract Political Interference and Economic Exploitation, and collective identity labels attract Rhetorical Attack and Moral Accusation --- a genre-like target-to-frame regularity that holds cross-linguistically. Second, English and East Asian communities inhabit fundamentally different moral architectures: English discourse aligns negatively across all five classical Moral Foundation axes simultaneously, constituting a broad ethical condemnation from within a shared normative framework, while Chinese and Japanese discourse aligns negatively on Symbolic and Realistic Threat axes rather than on classical foundations, framing Christianity as a danger to cultural identity and social cohesion rather than as a moral transgressor.
+
+        These findings are supported by a trilingual annotated dataset and an open-source pipeline released at \url{https://github.com/notsofun/Master_Thesis}, providing reusable resources for cross-lingual hate speech research in low-resource settings.
 
     \end{otherlanguage}
     %  A German Abstract is optional if there is an English one.

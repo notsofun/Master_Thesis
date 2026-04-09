@@ -14,6 +14,150 @@ This project provides a complete pipeline for analyzing hate speech in multiling
 
 ---
 
+## Dataset Guide
+
+This section explains where to find and how to use the Chinese, Japanese, and English religious hate speech datasets in this project.
+
+### Overview
+
+The project curates multilingual hate speech data through three approaches:
+1. **English**: Aggregated from existing public datasets (see below)
+2. **Chinese & Japanese**: Systematically collected from social media platforms, filtered with active learning, and annotated with human review
+3. **LLM-augmented**: Synthetic data generated for minority classes to address data imbalance
+
+### English Dataset
+
+English hate speech data was collected by filtering and merging from existing annotated datasets:
+- **HateXplain** ([paper](https://arxiv.org/abs/2012.15606))
+- **Jigsaw Multilingual Toxic Comments** (Kaggle)
+- Multiple Misogyny & Hate Speech datasets (MLMA, Measuring Hate Speech, etc.)
+- **Location**: `data_collection/English_Existing/`
+
+These provide pre-annotated hate speech labels, which we map to our binary classification schema.
+
+---
+
+### Chinese Dataset (Construction Pipeline)
+
+#### **Stage 1: Raw Data Collection** 📥
+
+| Source | Records | Location | Pipeline |
+|--------|---------|----------|----------|
+| Tieba (Chinese forum) | ~46,640 | `data_collection/Tieba/all_search_posts.csv` | `data_collection/Tieba/main.py` |
+| HuggingFace (Zhihu, Weibo, etc.) | ~19,820 | Merged in processing | [Datasets: liyucheng/zhihu_26k, vilarin/weibo-2014, m4rque2/weibo_automobile, Giacinta/weibo] |
+| **Total raw** | **~66,460** | — | — |
+
+**How to reproduce**: Edit the keyword list in `data_collection/Tieba/main.py` and run the scraper.
+
+#### **Stage 2: Preprocessing & Cleaning** 🧹
+
+After merging Tieba + HuggingFace data:
+```bash
+python scripts/combine.py
+```
+**Output**: `data_collection/Tieba/final_cleaned_data.csv` (~15,181 records)
+
+#### **Stage 3: Active Learning Selection** 🎯
+
+Using ensemble voting (LaBSE + XLM-R) + confidence thresholding, we select ~4,000 samples where the baseline model is most uncertain:
+
+```bash
+python data_detect/run_pipeline.py  # or
+python data_detect/Chinese/run_pipeline.py
+```
+This creates a high-quality annotation set using hierarchical sampling:
+- **Consensus samples** → High precision
+- **Conflicting samples** → Model edge cases
+
+#### **Stage 4: Human Annotation & Model Fine-tuning** ✅
+
+Once labeled, we fine-tune the baseline detection model on this 4,000-sample dataset using:
+- Focal Loss (to handle class imbalance)
+- Back-translation augmentation
+- Multi-task learning (hate speech + religious relevance)
+
+**Fine-tuned model**: `model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both_focal_loss.pt`
+
+#### **Stage 5: Final Filtering** 🔬
+
+Use the fine-tuned model on the full raw dataset:
+
+```bash
+python data_detect/run_pipeline.py --input data_collection/Tieba/final_cleaned_data.csv
+```
+
+**Result**: `data_detect/finetuned_detection/chinese_predictions.csv`
+
+**Statistics** (as of March 2026):
+- Religious relevance: **1,687 hate records** out of 15,181 (11.11%)
+- Total processed: 15,181 records
+
+**For downstream analysis**: Use the filtered records where `hate_label == 1`
+
+---
+
+### Japanese Dataset (Construction Pipeline)
+
+#### **Stage 1: Raw Data Collection** 📥
+
+| Source | Records | Location | Pipeline |
+|--------|---------|----------|----------|
+| 5ch (Japanese BBS) | ~26,737 | `data_collection/5ch/` | `data_collection/5ch/main.py` |
+| Common Crawl (web scrape) | ~38,303 | `data_collection/common_crawl/` | `data_collection/common_crawl/special_Ja.py` |
+| **Total raw** | **~65,040** | — | — |
+
+**How to reproduce**: Edit keyword lists and run the respective pipelines.
+
+#### **Stage 2: Preprocessing & Cleaning** 🧹
+
+After merging 5ch + Common Crawl data:
+```bash
+python scripts/combine.py
+```
+**Output**: `data_collection/5ch/raw_religious_ja.csv` (~43,102 records)
+
+#### **Stage 3–5: Active Learning → Fine-tuning → Filtering** 🎯✅🔬
+
+Same process as Chinese (see above).
+
+**Fine-tuned model**: Located in `model_train/classifier/Japanese/`
+
+**Final filtering**:
+```bash
+python data_detect/run_pipeline.py --input data_collection/5ch/raw_religious_ja.csv
+```
+
+**Result**: `data_detect/finetuned_detection/japanese_predictions.csv`
+
+**Statistics** (as of March 2026):
+- Religious hate speech: **1,610 records** out of 43,102 (3.74%)
+- Total processed: 43,102 records
+
+---
+
+### LLM-Augmented Data
+
+For minority classes, we generate synthetic hate speech using LLMs to achieve better class balance:
+
+**Location**: `data_augmentation/` (all stages) and `data_collection/common_crawl/`
+
+**Process**:
+- LLM-based synthesis with redundancy checks (see `data_augmentation/LLM/generated_texts`)
+- Back-translation for multilingual augmentation (see `data_augmentation/back_translation/data`)
+
+---
+
+### Quick Reference: File Locations
+
+| Category | Language | Raw Data | Cleaned Data | Predictions |
+|----------|----------|----------|--------------|-------------|
+| **Natural** | Chinese | `Tieba/all_search_posts.csv` | `Tieba/final_cleaned_data.csv` | `data_detect/finetuned_detection/chinese_predictions.csv` |
+| **Natural** | Japanese | `5ch/` + `common_crawl/` | `5ch/raw_religious_ja.csv` | `data_detect/finetuned_detection/japanese_predictions.csv` |
+| **Natural** | English | `English_Existing/` (Kaggle, HateXplain, etc.) | `English_Existing/merged_deduped.csv` | — |
+| **Augmented** | Chinese/Japanese | — | `data_augmentation/` | — |
+
+---
+
 ## Quick Start (Users)
 
 ### 1. Environment Setup

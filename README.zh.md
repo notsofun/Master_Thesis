@@ -14,6 +14,150 @@
 
 ---
 
+## 数据集指南
+
+本节说明如何在本项目中查找和使用中日英三语宗教仇恨言论数据集。
+
+### 概览
+
+项目通过三种方式收集多语言仇恨言论数据：
+1. **英文**：从现有公开数据集筛选合并（见下文）
+2. **中文 & 日文**：从社交媒体平台系统爬取 → 主动学习筛选 → 人工标注微调
+3. **LLM增强**：对少数类用大型语言模型生成合成数据以平衡类分布
+
+### 英文数据集
+
+英文仇恨言论数据来自现有注释数据集的筛选合并：
+- **HateXplain** ([论文](https://arxiv.org/abs/2012.15606))
+- **Jigsaw 多语言有毒评论** (Kaggle)
+- 多个女性仇恨 & 仇恨言论数据集（MLMA、Measuring Hate Speech 等）
+- **位置**：`data_collection/English_Existing/`
+
+这些数据已标注仇恨标签，我们统一映射到二分类模式。
+
+---
+
+### 中文数据集（构建管线）
+
+#### **第1阶段：原始数据收集** 📥
+
+| 数据源 | 记录数 | 位置 | 爬取脚本 |
+|--------|--------|------|--------|
+| Tieba（中文论坛） | ~46,640 条 | `data_collection/Tieba/all_search_posts.csv` | `data_collection/Tieba/main.py` |
+| HuggingFace（知乎、微博等） | ~19,820 条 | 从以下数据集合并 | [liyucheng/zhihu_26k, vilarin/weibo-2014, m4rque2/weibo_automobile, Giacinta/weibo] |
+| **合计原始数据** | **~66,460 条** | — | — |
+
+**复现方法**：编辑 `data_collection/Tieba/main.py` 中的关键词列表，运行爬虫。
+
+#### **第2阶段：预处理 & 清理** 🧹
+
+将 Tieba + HuggingFace 数据合并并清理：
+```bash
+python scripts/combine.py
+```
+**输出**：`data_collection/Tieba/final_cleaned_data.csv` (~15,181 条)
+
+#### **第3阶段：主动学习选样** 🎯
+
+采用集成学习投票（LaBSE + XLM-R）+ 置信度阈值，从基座模型最不确定的样本中选出 ~4,000 条：
+
+```bash
+python data_detect/run_pipeline.py  # 或
+python data_detect/Chinese/run_pipeline.py
+```
+采用分层抽样策略：
+- **共识样本** → 高精度
+- **冲突样本** → 模型边界情况
+
+#### **第4阶段：人工标注 & 模型微调** ✅
+
+在 4,000 条标注数据上微调基座检测模型，采用：
+- Focal Loss（处理类不平衡）
+- 回译增强
+- 多任务学习（仇恨言论 + 宗教相关性）
+
+**微调模型**：`model_train/classifier/Chinese/thu_best_multitask_model_back_translated_both_focal_loss.pt`
+
+#### **第5阶段：最终筛选** 🔬
+
+在完整原始数据上应用微调模型进行推理：
+
+```bash
+python data_detect/run_pipeline.py --input data_collection/Tieba/final_cleaned_data.csv
+```
+
+**输出**：`data_detect/finetuned_detection/chinese_predictions.csv`
+
+**统计数据**（截至 2026 年 3 月）：
+- 仇恨言论：**1,687 条** / 15,181 条原始数据（11.11%）
+- 处理总量：15,181 条
+
+**下游分析**：使用 `hate_label == 1` 的筛选结果
+
+---
+
+### 日文数据集（构建管线）
+
+#### **第1阶段：原始数据收集** 📥
+
+| 数据源 | 记录数 | 位置 | 爬取脚本 |
+|--------|--------|------|--------|
+| 5ch（日本 BBS） | ~26,737 条 | `data_collection/5ch/` | `data_collection/5ch/main.py` |
+| Common Crawl（网页爬取） | ~38,303 条 | `data_collection/common_crawl/` | `data_collection/common_crawl/special_Ja.py` |
+| **合计原始数据** | **~65,040 条** | — | — |
+
+**复现方法**：编辑对应脚本中的关键词列表，运行爬虫。
+
+#### **第2阶段：预处理 & 清理** 🧹
+
+将 5ch + Common Crawl 数据合并并清理：
+```bash
+python scripts/combine.py
+```
+**输出**：`data_collection/5ch/raw_religious_ja.csv` (~43,102 条)
+
+#### **第3–5阶段：主动学习 → 微调 → 最终筛选** 🎯✅🔬
+
+流程同中文（见上文）。
+
+**微调模型**：位于 `model_train/classifier/Japanese/`
+
+**最终筛选**：
+```bash
+python data_detect/run_pipeline.py --input data_collection/5ch/raw_religious_ja.csv
+```
+
+**输出**：`data_detect/finetuned_detection/japanese_predictions.csv`
+
+**统计数据**（截至 2026 年 3 月）：
+- 宗教相关仇恨言论：**1,610 条** / 43,102 条原始数据（3.74%）
+- 处理总量：43,102 条
+
+---
+
+### LLM 增强数据
+
+对于少数类，使用大型语言模型生成合成仇恨言论以实现类平衡：
+
+**位置**：`data_augmentation/` （全部阶段）以及 `data_collection/common_crawl/`
+
+**流程**：
+- LLM API 合成 + 冗余检查（见 `data_augmentation/LLM/generated_texts`）
+- 回译多语言增强（见 `data_augmentation/back_translation/data`）
+
+---
+
+### 快速查询表：文件位置
+
+| 数据类别 | 语言 | 原始数据 | 清理数据 | 预测结果 |
+|----------|------|---------|---------|----------|
+| **自然数据** | 中文 | `Tieba/all_search_posts.csv` | `Tieba/final_cleaned_data.csv` | `data_detect/finetuned_detection/chinese_predictions.csv` |
+| **自然数据** | 日文 | `5ch/` + `common_crawl/` | `5ch/raw_religious_ja.csv` | `data_detect/finetuned_detection/japanese_predictions.csv` |
+| **自然数据** | 英文 | `English_Existing/` (Kaggle、HateXplain 等) | `English_Existing/merged_deduped.csv` | — |
+| **增强数据** | 中日文 | — | `data_augmentation/` | — |
+
+---
+
 ## 快速开始（用户指南）
 
 ### 1. 环境配置

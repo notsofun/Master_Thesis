@@ -218,7 +218,7 @@ The two-label design matters because Christian vocabulary appears frequently in 
 
 A Chinese hate speech classifier was then fine-tuned on these labels using THU-COAI RoBERTa-COLD as the backbone \citep{thucoai-roberta-cold}. Two key techniques addressed the severe class imbalance (hate ratio: 3.8\%): \textbf{Focal Loss}, which up-weights hard-to-classify minority samples during training, and \textbf{back-translation augmentation}, which expanded the positive-class training set by translating hate speech samples through multiple pivot languages (English, Korean, French, German) and back. The final training set contained 4,223 texts (hate ratio: 22.5\% after augmentation); the validation set was kept free of any back-translated twins of training items to prevent data leakage.
 
-Table~\ref{tab:zh-finetune} reports the fine-tuning results per epoch. The model reached its best generalisation at Epoch~3 (Combined F1 = 0.7145), after which hate recall began to drop --- a sign of overfitting --- and early stopping was triggered at Epoch~6. Compared to the THU-COAI baseline (hate-speech F1 = 0.17 on the held-out test set), the fine-tuned model represents a substantial improvement.
+Table~\ref{tab:zh-finetune} reports the fine-tuning results per epoch. The model reached its best generalisation at Epoch~3 (Combined F1 = 0.7645), after which hate recall began to drop --- a sign of overfitting --- and early stopping was triggered at Epoch~6. Compared to the THU-COAI baseline (hate-speech F1 = 0.172 on the held-out test set), the fine-tuned model represents a substantial improvement.
 
 \begin{table}[htbp]
 \centering
@@ -229,7 +229,7 @@ Epoch & Rel F1 & Hate F1 & Combined F1 & Hate Recall \\
 \midrule
 1 & 0.891 & 0.591 & 0.741 & \textbf{0.840} \\
 2 & 0.887 & 0.623 & 0.755 & 0.800 \\
-\textbf{3} & \textbf{0.894} & \textbf{0.635} & \textbf{0.7145} & 0.760 \\
+\textbf{3} & \textbf{0.894} & \textbf{0.635} & \textbf{0.7645} & 0.760 \\
 4 & 0.882 & 0.601 & 0.742 & 0.700 \\
 5 & 0.876 & 0.589 & 0.733 & 0.660 \\
 6 & 0.871 & 0.541 & 0.706 & 0.540 \\
@@ -329,7 +329,7 @@ After combining and deduplicating, the raw pool contained 65,040 texts. X (Twitt
 
 Using the same ensemble-based uncertainty sampling (Figure~\ref{fig:ensemble}), 4,084 texts were selected for annotation in Label Studio with the same two-label scheme. The Japanese ensemble consisted of three models selected after an LLM-as-a-judge screening on 250 texts: KubotaModel (85.6\% accuracy) \citep{yamada2020luke}, LukeModel (81.2\%) \citep{luke-japanese}, and YukiModel (88.0\%) \citep{rinna-japanese-gpt-neox-3.6b-instruction-ppo, sawada2024release}. Of the 4,084 annotated texts, 690 were labeled Christianity-related and 102 as hate speech (hate ratio: 2.5\%, somewhat lower than Chinese).
 
-A LUKE-based Japanese classifier was fine-tuned on these labels using the same Focal Loss and back-translation augmentation strategy \citep{luke-japanese}. The back-translated training set contained 4,028 texts (hate ratio: 16.0\% after augmentation). Table~\ref{tab:ja-finetune} shows the epoch-level results. The model peaked at Epoch~3 (Combined F1 = 0.7356), with Religion F1 consistently above 0.89 throughout training. Compared to the LUKE baseline (hate-speech F1 = 0.29), the fine-tuned model again shows a substantial gain.
+A LUKE-based Japanese classifier was fine-tuned on these labels using the same Focal Loss and back-translation augmentation strategy \citep{luke-japanese}. The back-translated training set contained 4,028 texts (hate ratio: 16.0\% after augmentation). Table~\ref{tab:ja-finetune} shows the epoch-level results. The model peaked at Epoch~3 (Combined F1 = 0.7356), with Religion F1 consistently above 0.89 throughout training. Compared to the LUKE baseline (hate-speech F1 = 0.294), the fine-tuned model again shows a substantial gain.
 
 \begin{table}[htbp]
 \centering

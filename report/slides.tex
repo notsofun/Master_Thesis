@@ -10,12 +10,14 @@
 \usecolortheme{default}
 
 % Custom colour palette (UZH blue + warm accent)
-\definecolor{uzh}{RGB}{0,40,165}       % UZH blue
+\definecolor{uzh}{RGB}{0,40,165}
 \definecolor{uzhlight}{RGB}{220,230,255}
-\definecolor{accent}{RGB}{220,80,30}   % warm orange-red
+\definecolor{accent}{RGB}{220,80,30}
 \definecolor{accentlt}{RGB}{255,235,220}
 \definecolor{darkgray}{RGB}{60,60,60}
-\definecolor{mygray}{RGB}{245,245,245}
+\definecolor{enzh}{RGB}{70,130,180}    % steel blue for EN
+\definecolor{zhcol}{RGB}{255,140,0}    % orange for ZH
+\definecolor{jacol}{RGB}{60,160,80}    % green for JA
 
 \setbeamercolor{palette primary}{bg=uzh,fg=white}
 \setbeamercolor{palette secondary}{bg=uzh!80,fg=white}
@@ -41,46 +43,50 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{amsmath,amssymb}
-\usepackage{pifont}   % for \ding symbols
+\usepackage{pifont}
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage[numbers,sort&compress]{natbib}
 
-% Fake fontawesome icons via text/unicode approximations
-\newcommand{\faUser}{$\bigcirc\!\!\!\!\!\!-$}
-\newcommand{\faComments}{$\triangleright$}
-\newcommand{\faBrain}{$\star$}
-\newcommand{\faDatabase}{[\textsc{data}]}
-\newcommand{\faChartBar}{[\textsc{result}]}
-\newcommand{\faCogs}{[\textsc{method}]}
-\newcommand{\faGithub}{\textsc{gh}}
+% Simple icon substitutes
 \newcommand{\faCheckCircle}{\ding{52}}
-\newcommand{\faExclamationTriangle}{$\triangle$}
+\newcommand{\faExclamationTriangle}{$\blacktriangle$}
+\newcommand{\highlight}[1]{{\color{accent}\textbf{#1}}}
 
-% ── Fonts & spacing ──────────────────────────────────────────
+% ── Graphics path (relative to report/) ──────────────────────
+\graphicspath{%
+  {../thesis_draft/images/}%
+  {../thesis_draft/images/RQ1/}%
+  {../thesis_draft/images/RQ2/}%
+  {../thesis_draft/images/RQ3/}%
+  {../thesis_draft/images/discussion/}%
+  {../thesis_draft/images/foundations/}%
+}
+
+% ── Beamer settings ──────────────────────────────────────────
 \setbeamerfont{title}{size=\Large,series=\bfseries}
 \setbeamerfont{subtitle}{size=\normalsize}
 \setbeamerfont{frametitle}{size=\normalsize,series=\bfseries}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
 
-% ── Graphics path ─────────────────────────────────────────────
-\graphicspath{{images/}{images/RQ1/}{images/RQ2/}{images/RQ3/}{images/discussion/}{images/foundations/}}
-
-% ── Helper commands ───────────────────────────────────────────
-\newcommand{\rqbox}[2]{%
-  \begin{beamercolorbox}[rounded=true,sep=4pt,center]{block title}%
-    \textbf{#1}\\[2pt]\small #2%
-  \end{beamercolorbox}}
-
-\newcommand{\highlight}[1]{{\color{accent}\textbf{#1}}}
-
 % ── Metadata ─────────────────────────────────────────────────
 \title{Cross-Lingual Anti-Christian Hate Speech}
-\subtitle{Who Attacks, How, and Why — A Trilingual Computational Analysis}
+\subtitle{Who Attacks, How, and Why --- A Trilingual Computational Analysis}
 \author{Zhidian Huang}
-\institute{Department of Computational Linguistics\\University of Zurich}
+\institute{Department of Computational Linguistics \textperiodcentered\ University of Zurich}
 \date{\today}
+
+% ── Reusable TikZ styles ─────────────────────────────────────
+\tikzset{
+  mbox/.style={rectangle,rounded corners=4pt,draw=uzh,fill=uzhlight,
+               text width=#1,align=center,minimum height=0.9cm,font=\small},
+  mbox/.default=2.8cm,
+  sbox/.style={rectangle,rounded corners=3pt,draw=gray!60,fill=white,
+               text width=#1,align=center,font=\scriptsize,inner sep=3pt},
+  sbox/.default=2.6cm,
+  arr/.style={-{Stealth[length=5pt]},very thick,color=uzh},
+}
 
 % ============================================================
 \begin{document}
@@ -91,17 +97,17 @@
   \titlepage
 \end{frame}
 
-% ── SLIDE 2 · Overview ───────────────────────────────────────
+% ── SLIDE 2 · Roadmap ────────────────────────────────────────
 \begin{frame}{Roadmap}
   \tableofcontents[hideallsubsections]
 \end{frame}
 
 \section{Background \& Research Questions}
 \section{Data \& Augmentation}
-\section{Analytical Pipeline}
-\section{Results: RQ1 — Who?}
-\section{Results: RQ2 — How?}
-\section{Results: RQ3 — Why?}
+\section{Analytical Pipeline \& BERTopic}
+\section{RQ1 --- Who? Method \& Results}
+\section{RQ2 --- How? Method \& Results}
+\section{RQ3 --- Why? Method \& Results}
 \section{Discussion}
 \section{Contributions, Limitations \& Outlook}
 
@@ -111,58 +117,53 @@
 
 % ── SLIDE 3 · Motivation ─────────────────────────────────────
 \begin{frame}{The Problem in One Sentence}
-
   \begin{center}
-    \Large
+    \large
     \textit{``Hate speech research talks a lot about \highlight{what} people say.\\[6pt]
-     We ask \highlight{who} they attack, \highlight{how}, and \highlight{why}.''}
+    We ask \highlight{who} they attack, \highlight{how}, and \highlight{why}.''}
   \end{center}
-
-  \vspace{8pt}
+  \vspace{6pt}
   \begin{columns}[T]
     \column{0.48\textwidth}
       \begin{block}{Three blind spots in the literature}
         \begin{itemize}
           \item \textbf{English-centric} corpora dominate
-          \item \textbf{Binary} hate/not-hate classification is the default task
-          \item \textbf{Anti-Christian} discourse — especially in East Asia — largely unstudied
+          \item \textbf{Binary} hate/not-hate is the default task
+          \item \textbf{Anti-Christian} discourse in East Asia barely studied
         \end{itemize}
       \end{block}
     \column{0.48\textwidth}
       \begin{alertblock}{This thesis}
-        Develops a \textbf{trilingual} (EN / ZH / JA),\\
-        \textbf{interpretable} analytical pipeline\\[4pt]
-        \quad $\rightarrow$ from \emph{detection}\\
-        \quad $\rightarrow$ to structured \emph{discourse analysis}
+        Builds a \textbf{trilingual} (EN / ZH / JA)\\
+        interpretable analytical pipeline ---\\[4pt]
+        \quad from \emph{detection}\\
+        \quad to structured \emph{discourse analysis}
       \end{alertblock}
   \end{columns}
 \end{frame}
 
 % ── SLIDE 4 · Research Questions ─────────────────────────────
 \begin{frame}{Three Linked Research Questions}
-
   \begin{center}
   \begin{tikzpicture}[
-    box/.style={rectangle,rounded corners=5pt,draw=uzh,fill=uzhlight,
-                text width=3.2cm,align=center,minimum height=1.4cm,font=\small},
-    arr/.style={-{Stealth[length=6pt]},very thick,color=uzh},
+    rqbox/.style={rectangle,rounded corners=5pt,draw=uzh,fill=uzhlight,
+                  text width=3.0cm,align=center,minimum height=1.6cm,font=\small},
   ]
-    \node[box] (r1) {\textbf{RQ1}\\[4pt]\Large\faUser\\[4pt]\textbf{Who?}\\Target identification};
-    \node[box,right=1.4cm of r1] (r2) {\textbf{RQ2}\\[4pt]\Large\faComments\\[4pt]\textbf{How?}\\Attack frame taxonomy};
-    \node[box,right=1.4cm of r2] (r3) {\textbf{RQ3}\\[4pt]\Large\faBrain\\[4pt]\textbf{Why?}\\Moral motivations};
+    \node[rqbox] (r1) {\textbf{RQ1}\\[6pt]\textbf{Who?}\\Target identification};
+    \node[rqbox,right=1.4cm of r1] (r2) {\textbf{RQ2}\\[6pt]\textbf{How?}\\Attack frame taxonomy};
+    \node[rqbox,right=1.4cm of r2] (r3) {\textbf{RQ3}\\[6pt]\textbf{Why?}\\Moral motivations};
     \draw[arr] (r1)--(r2);
     \draw[arr] (r2)--(r3);
-    \node[above=0.5cm of r1,font=\footnotesize\itshape,text=darkgray] {Who is targeted?};
-    \node[above=0.5cm of r2,font=\footnotesize\itshape,text=darkgray] {What rhetoric is used?};
-    \node[above=0.5cm of r3,font=\footnotesize\itshape,text=darkgray] {What drives the hostility?};
+    \node[above=0.4cm of r1,font=\footnotesize\itshape,text=darkgray] {Who is targeted?};
+    \node[above=0.4cm of r2,font=\footnotesize\itshape,text=darkgray] {What rhetoric is used?};
+    \node[above=0.4cm of r3,font=\footnotesize\itshape,text=darkgray] {What drives the hostility?};
   \end{tikzpicture}
   \end{center}
-
   \vspace{6pt}
   \begin{block}{}
-    \centering
-    Case study: \textbf{anti-Christian discourse} online in Chinese, Japanese \& English —\\
-    a demanding testbed precisely because the \emph{same target} appears across very different cultural contexts.
+    \centering\small
+    Case study: \textbf{anti-Christian discourse} in Chinese, Japanese \& English ---\\
+    the \emph{same target} appears across very different cultural contexts.
   \end{block}
 \end{frame}
 
@@ -171,159 +172,143 @@
 % ============================================================
 
 % ── SLIDE 5 · Corpus ─────────────────────────────────────────
-\begin{frame}{A Trilingual Corpus — From Scratch}
-
+\begin{frame}{A Trilingual Corpus --- Built from Scratch}
   \begin{columns}[T]
     \column{0.40\textwidth}
       \begin{block}{Corpus at a glance}
-        \centering
-        \vspace{4pt}
+        \centering\vspace{4pt}
         \begin{tabular}{lrr}
           \toprule
-          Lang & Texts & Hate\% \\
+          Lang & Texts & Source \\
           \midrule
-          \textbf{EN} & 58,940 & mixed \\
-          \textbf{ZH} & 1,965  & 100\% \\
-          \textbf{JA} & 2,360  & 100\% \\
+          \textbf{EN} & 58,940 & 4 public datasets \\
+          \textbf{ZH} & 1,965  & Tieba (crawled) \\
+          \textbf{JA} & 2,360  & 5ch (crawled) \\
           \midrule
           \textbf{Total} & \textbf{63,265} & \\
           \bottomrule
         \end{tabular}
         \vspace{4pt}
       \end{block}
-      \vspace{6pt}
+      \vspace{4pt}
       \footnotesize
-      \textbf{EN:} filtered from 4 public datasets\\
-      (HateXplain, Jigsaw, MLMA, MHS)\\[4pt]
-      \textbf{ZH/JA:} crawled + manually annotated\\
-      (Tieba / 5ch)
+      EN: filtered from HateXplain, Jigsaw,\\
+      MLMA, Measuring Hate Speech\\[4pt]
+      ZH/JA: manual annotation (Label Studio)\\
+      + LLM localization (back-translation)
     \column{0.56\textwidth}
       \begin{alertblock}{The low-resource challenge}
-        ZH and JA data are scarce. Classifiers trained naively perform \textbf{very poorly}.
+        ZH and JA hate speech data is scarce.\\
+        Naively-trained classifiers perform very poorly.
       \end{alertblock}
       \vspace{6pt}
       \begin{block}{Two-stage pipeline for ZH / JA}
-        \begin{enumerate}
-          \item \textbf{Native crawl} → manual annotation → fine-tuned classifier
-          \item \textbf{LLM-based localization}: translate EN seed texts into ZH/JA → filter with same classifier
-        \end{enumerate}
+        \textbf{Stage 1 --- Native:}
+        \begin{itemize}\small
+          \item Crawl \textrightarrow\ Manual annotation \textrightarrow\ Fine-tune classifier (Focal Loss)
+        \end{itemize}
+        \textbf{Stage 2 --- Augmentation:}
+        \begin{itemize}\small
+          \item Translate EN seed texts into ZH/JA
+          \item Filter with the same classifier
+        \end{itemize}
       \end{block}
       \vspace{4pt}
-      \footnotesize
-      \textit{Key finding:} LLM seed-guided generation collapses into\\
-      \textbf{keyword loops} after 20–30 iterations\\
-      (ZH: 90\% redundancy at 50 samples; JA: 100\% at 30)\\
+      \footnotesize\color{accent}
+      \textit{Key failure:} LLM seed-guided generation collapses into\\
+      keyword loops after 20--30 iterations\\
+      (JA: 100\% redundant at 30 samples; ZH: 90\% at 50)\\
       $\Rightarrow$ back-translation is more robust.
   \end{columns}
 \end{frame}
 
 % ── SLIDE 6 · Augmentation results ───────────────────────────
 \begin{frame}{Data Augmentation: Three Strategies, One Clear Winner}
-
   \begin{columns}[T]
     \column{0.52\textwidth}
       \vspace{4pt}
       \begin{tikzpicture}
         \begin{axis}[
-          ybar, bar width=14pt,
-          width=7.5cm, height=5.5cm,
+          ybar, bar width=15pt,
+          width=8cm, height=5.8cm,
           ylabel={Hate-speech F1},
           ymin=0, ymax=0.85,
-          symbolic x coords={Baseline, Strategy B, Strategy C},
+          symbolic x coords={Baseline, {Strategy B}, {Strategy C}},
           xtick=data,
           x tick label style={font=\small},
           ytick={0,0.2,0.4,0.6,0.8},
-          ymajorgrids=true, grid style=dashed,
+          ymajorgrids=true, grid style={dashed,gray!40},
           legend style={at={(0.5,-0.22)},anchor=north,legend columns=2,font=\small},
-          legend cell align=left,
-          title={\small F1 Score Comparison by Strategy},
+          title={\small F1 by Augmentation Strategy},
         ]
-          % Chinese
-          \addplot[fill=uzh!80,draw=uzh] coordinates {
-            (Baseline,0.172)
-            (Strategy B,0.56)
-            (Strategy C,0.635)
-          };
-          % Japanese
-          \addplot[fill=accent!80,draw=accent] coordinates {
-            (Baseline,0.294)
-            (Strategy B,0.42)
-            (Strategy C,0.579)
-          };
+          \addplot[fill=zhcol!80,draw=zhcol!120] coordinates {
+            (Baseline,0.172)({Strategy B},0.560)({Strategy C},0.635)};
+          \addplot[fill=jacol!80,draw=jacol!120] coordinates {
+            (Baseline,0.294)({Strategy B},0.420)({Strategy C},0.579)};
           \legend{Chinese (ZH), Japanese (JA)}
         \end{axis}
       \end{tikzpicture}
     \column{0.44\textwidth}
       \vspace{4pt}
-      \begin{block}{Strategy A — Baseline}
-        Train on native data only. \\
+      \begin{block}{Strategy A --- Baseline}
+        Native data only.\\
         \textit{Very low F1 due to data scarcity.}
       \end{block}
       \vspace{4pt}
-      \begin{block}{Strategy B — Train-only BT}
+      \begin{block}{Strategy B --- Train-only BT}
         Back-translate training set only.\\
-        \textit{Distribution shift between train \& eval degrades performance.}
+        \textit{Distribution shift between train \& eval.}
       \end{block}
       \vspace{4pt}
-      \begin{alertblock}{\faCheckCircle\ Strategy C — Double BT (Winner)}
+      \begin{alertblock}{\faCheckCircle\ Strategy C --- Double BT \emph{(Winner)}}
         Back-translate \textbf{both} train \& eval sets.\\
-        Eliminates distribution gap.\\
-        \highlight{ZH: $0.172 \to 0.635$} \quad
+        Eliminates distribution gap.\\[4pt]
+        \highlight{ZH: $0.172 \to 0.635$}\\
         \highlight{JA: $0.294 \to 0.579$}
       \end{alertblock}
   \end{columns}
 \end{frame}
 
 % ============================================================
-\section{Analytical Pipeline}
+\section{Analytical Pipeline \& BERTopic}
 % ============================================================
 
 % ── SLIDE 7 · Pipeline overview ──────────────────────────────
-\begin{frame}{The Who–How–Why Pipeline}
-
+\begin{frame}{The Who--How--Why Pipeline}
   \begin{center}
-  \begin{tikzpicture}[
-    box/.style={rectangle,rounded corners=4pt,draw=uzh,fill=uzhlight,
-                text width=2.8cm,align=center,minimum height=1.1cm,font=\small\bfseries},
-    subbox/.style={rectangle,rounded corners=3pt,draw=gray,fill=white,
-                   text width=2.5cm,align=center,font=\scriptsize},
-    arr/.style={-{Stealth[length=5pt]},very thick,color=uzh},
-  ]
-    \node[box] (bt) {BERTopic\\Topic Modelling};
-    \node[box,right=1.2cm of bt] (r1) {RQ1\\Target\\Extraction};
-    \node[box,right=1.2cm of r1] (r2) {RQ2\\Frame\\Classification};
-    \node[box,right=1.2cm of r2] (r3) {RQ3\\Moral Axis\\Projection};
+  \begin{tikzpicture}[node distance=1.2cm]
+    \node[mbox=3.0cm] (bt)  {BERTopic\\Topic Modelling};
+    \node[mbox=3.0cm,right=1.2cm of bt]  (r1) {RQ1\\Target Extraction};
+    \node[mbox=3.0cm,right=1.2cm of r1]  (r2) {RQ2\\Frame Classification};
+    \node[mbox=3.0cm,right=1.2cm of r2]  (r3) {RQ3\\Moral Axis Projection};
 
     \draw[arr] (bt)--(r1);
     \draw[arr] (r1)--(r2);
     \draw[arr] (r2)--(r3);
 
-    % sub labels
-    \node[subbox,below=0.4cm of bt]
+    \node[sbox=2.9cm,below=0.35cm of bt]
       {E5-large embeddings\\UMAP + HDBSCAN\\47 topics};
-    \node[subbox,below=0.4cm of r1]
-      {spaCy NER\\+ domain gazetteer\\+ LLM fallback};
-    \node[subbox,below=0.4cm of r2]
-      {10-category taxonomy\\dep.\ parsing\\+ LLM classification};
-    \node[subbox,below=0.4cm of r3]
-      {MFT + intergroup\\threat dimensions\\lexicon projection};
+    \node[sbox=2.9cm,below=0.35cm of r1]
+      {spaCy NER\\domain gazetteer\\LLM fallback};
+    \node[sbox=2.9cm,below=0.35cm of r2]
+      {10-frame taxonomy\\dep.\ parsing\\Gemini-2.5-Flash};
+    \node[sbox=2.9cm,below=0.35cm of r3]
+      {MFT (5 axes)\\+ Threat lexicons\\(2 axes)};
 
-    % language tag
-    \node[above=0.5cm of bt,font=\footnotesize,text=darkgray]
+    \node[above=0.45cm of bt,font=\footnotesize,text=darkgray]
       {Input: 63,265 ZH/JA/EN texts};
   \end{tikzpicture}
   \end{center}
-
   \vspace{4pt}
   \begin{block}{}
-    \small
-    \textbf{Design principle:} thematic structure is \emph{induced} from the corpus (not imposed), so findings are not biased toward English-language research assumptions.
+    \small\centering
+    \textbf{Design principle:} thematic structure is \emph{induced} from the corpus (not imposed),\\
+    so findings are not pre-biased toward English-language research assumptions.
   \end{block}
 \end{frame}
 
 % ── SLIDE 8 · BERTopic results ────────────────────────────────
 \begin{frame}{BERTopic: 47 Cross-Lingual Topics}
-
   \begin{columns}[T]
     \column{0.60\textwidth}
       \vspace{2pt}
@@ -332,20 +317,20 @@
     \column{0.36\textwidth}
       \vspace{6pt}
       \begin{block}{Key numbers}
+        \small
         \begin{tabular}{ll}
           Topics found & \textbf{47} \\
           Noise docs   & 2,530 (4\%) \\
-          Size range   & 20–499 docs \\
+          Largest topic & 499 docs \\
         \end{tabular}
       \end{block}
       \vspace{6pt}
-      \begin{block}{Cross-lingual mixing}
-        \textbf{Monolingual} (single lang $>$90\%):
+      \begin{block}{Monolingual topics}
         {\footnotesize
         \begin{itemize}
-          \item JP: Unification Church \& Abe
-          \item EN: Religion \& Canadian identity
-          \item ZH: Missionaries in China
+          \item JP (99\%): Unification Church \& Abe
+          \item EN (92\%): Religion \& Canadian identity
+          \item ZH (96\%): Missionaries in China
         \end{itemize}}
       \end{block}
       \begin{alertblock}{Cross-lingual (entropy $\approx$1.1)}
@@ -353,29 +338,79 @@
         \begin{itemize}
           \item LGBTQ+ \& Catholic teaching
           \item Science vs.\ creationism
-          \item Conservative / liberal church split
+          \item Conservative/liberal church split
         \end{itemize}}
       \end{alertblock}
   \end{columns}
 \end{frame}
 
 % ============================================================
-\section{Results: RQ1 — Who?}
+\section{RQ1 --- Who? Method \& Results}
 % ============================================================
 
-% ── SLIDE 9 · RQ1 top targets ────────────────────────────────
-\begin{frame}{RQ1 — Who Gets Attacked? (Top-20 per Language)}
-
+% ── SLIDE 9 · RQ1 Method ─────────────────────────────────────
+\begin{frame}{RQ1 --- Method: Three-Stage Target Extraction}
   \begin{center}
-    \includegraphics[width=0.95\textwidth]{rq1_global_top20_bilingual.png}
-  \end{center}
-  {\tiny Top-20 hate-speech targets per language community, ranked by total mention frequency.}
+  \begin{tikzpicture}[node distance=0.5cm and 0.85cm]
+    \node[mbox=2.8cm] (inp) {Topic-labelled\\corpus\\(47 topics)};
 
+    \node[sbox=2.9cm, right=0.85cm of inp] (s1)
+      {\textbf{Stage 1 --- NER}\\[4pt]
+       spaCy transformer models\\
+       \texttt{en\_core\_web\_trf}\\
+       \texttt{zh\_core\_web\_trf}\\
+       \texttt{ja\_core\_news\_trf}\\[4pt]
+       Types: PERSON, ORG,\\
+       NORP, GPE, FAC};
+
+    \node[sbox=2.9cm, right=0.85cm of s1] (s2)
+      {\textbf{Stage 2 --- Gazetteer}\\[4pt]
+       40+ category\\
+       domain lexicon\\
+       (clergy roles,\\
+       institutions,\\
+       denominational labels)\\[4pt]
+       Catches NER misses};
+
+    \node[sbox=2.9cm, right=0.85cm of s2] (s3)
+      {\textbf{Stage 3 --- LLM Fallback}\\[4pt]
+       Gemini API\\[4pt]
+       For zero-subject\\
+       constructions in ZH/JA\\[4pt]
+       Async + rate-limit\\
+       + disk checkpoint};
+
+    \node[mbox=2.6cm, right=0.85cm of s3] (out)
+      {Freq-ranked\\target list\\per topic\\$\times$ language};
+
+    \draw[arr] (inp)--(s1);
+    \draw[arr] (s1)--(s2);
+    \draw[arr] (s2)--(s3);
+    \draw[arr] (s3)--(out);
+
+    % note below s2
+    \node[font=\scriptsize\itshape,text=darkgray,
+          below=0.18cm of s2] {if no target found $\downarrow$};
+  \end{tikzpicture}
+  \end{center}
+  \vspace{6pt}
+  \begin{block}{}
+    \small\centering
+    A \textbf{blacklist} removes pronouns and generic religious nouns (``faith'', ``religion'')\\
+    that appear universally and carry no discriminative information about specific targets.
+  \end{block}
 \end{frame}
 
-% ── SLIDE 10 · RQ1 category heatmap ──────────────────────────
-\begin{frame}{RQ1 — Target Profiles Differ by Language}
+% ── SLIDE 10 · RQ1 top targets ───────────────────────────────
+\begin{frame}{RQ1 --- Results: Top-20 Targets per Language}
+  \begin{center}
+    \includegraphics[width=0.93\textwidth]{rq1_global_top20_bilingual.png}
+  \end{center}
+  {\tiny Top-20 hate-speech targets per language, ranked by total mention frequency. Labels: original language + English translation.}
+\end{frame}
 
+% ── SLIDE 11 · RQ1 category heatmap ──────────────────────────
+\begin{frame}{RQ1 --- Results: Target Profiles Differ by Language}
   \begin{columns}[T]
     \column{0.55\textwidth}
       \includegraphics[width=\linewidth]{rq1_lang_category_heatmap.png}
@@ -383,188 +418,476 @@
     \column{0.42\textwidth}
       \vspace{6pt}
       \begin{block}{Language-specific patterns}
-        \textbf{English} — \emph{clergy} dominate; individual figures prominent\\[4pt]
-        \textbf{Chinese} — \emph{church institutions} \& historical missionaries; state-framed discourse\\[4pt]
-        \textbf{Japanese} — \emph{Unification Church} as near-singular focal point; political entanglement salient
+        \small
+        \textbf{English} --- \emph{clergy} dominate; named individuals prominent\\[4pt]
+        \textbf{Chinese} --- \emph{church institutions} \& historical missionaries; state-framed discourse\\[4pt]
+        \textbf{Japanese} --- \emph{Unification Church} as focal point; political entanglement salient
       \end{block}
       \vspace{6pt}
       \begin{alertblock}{Key finding}
-        Attack targets reflect each community's \textbf{socio-political context}, not just shared religious subject matter.
+        \small Attack targets reflect each community's \textbf{socio-political context},\\
+        not just shared religious subject matter.
       \end{alertblock}
   \end{columns}
 \end{frame}
 
 % ============================================================
-\section{Results: RQ2 — How?}
+\section{RQ2 --- How? Method \& Results}
 % ============================================================
 
-% ── SLIDE 11 · RQ2 tactic by language ────────────────────────
-\begin{frame}{RQ2 — How Is Hatred Expressed? Frame Distribution}
+% ── SLIDE 12 · RQ2 Method ────────────────────────────────────
+\begin{frame}{RQ2 --- Method: Three-Layer Predicate Extraction}
+  \begin{center}
+  \begin{tikzpicture}[node distance=0.5cm and 0.9cm]
+    \node[mbox=2.6cm] (inp) {Hate speech\\corpus};
 
+    % Three extraction layers
+    \node[sbox=3.0cm, right=0.9cm of inp, yshift=1.1cm] (l1)
+      {\textbf{Layer 1 --- Dep.\ Parsing}\\[3pt]
+       spaCy dependency parser\\
+       Extract verb--object pairs\\
+       ZH/JA zero-subject\\
+       resolved via context};
+
+    \node[sbox=3.0cm, right=0.9cm of inp] (l2)
+      {\textbf{Layer 2 --- Pattern Matching}\\[3pt]
+       Heuristic verb--target\\
+       pattern rules\\
+       (language-specific)};
+
+    \node[sbox=3.0cm, right=0.9cm of inp, yshift=-1.1cm] (l3)
+      {\textbf{Layer 3 --- LLM Classification}\\[3pt]
+       Gemini-2.5-Flash\\
+       Assigns each predicate\\
+       to one of 10 frames};
+
+    \draw[arr] (inp.east) -- (l1.west);
+    \draw[arr] (inp.east) -- (l2.west);
+    \draw[arr] (inp.east) -- (l3.west);
+
+    % 10-frame taxonomy
+    \node[sbox=2.8cm, right=0.9cm of l2] (tax)
+      {\textbf{10 Attack Frames}\\[3pt]
+       Sexual Abuse\\
+       Political Interference\\
+       Economic Exploitation\\
+       Moral Accusation\\
+       Rhetorical Attack\\
+       Cognitive Manipulation\\
+       Dehumanization\\
+       Institutional Rot\\
+       Social Exclusion\\
+       Historical Atrocity};
+
+    \draw[arr] (l1.east) -- (tax.west|-l1.east);
+    \draw[arr] (l2.east) -- (tax.west);
+    \draw[arr] (l3.east) -- (tax.west|-l3.east);
+
+    \node[mbox=2.4cm, right=0.9cm of tax] (out)
+      {Frame labels\\aggregated by\\topic / lang /\\target};
+
+    \draw[arr] (tax)--(out);
+  \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+% ── SLIDE 13 · RQ2 by language ───────────────────────────────
+\begin{frame}{RQ2 --- Results: Frame Distribution by Language}
   \begin{columns}[T]
     \column{0.58\textwidth}
       \includegraphics[width=\linewidth]{rq2_lang_tactic.png}
-      {\tiny 10-category attack-frame distribution across language communities.}
+      {\tiny 10-frame distribution by language community (predicate counts).}
     \column{0.38\textwidth}
       \vspace{4pt}
-      \begin{block}{10 Attack Frames}
+      \begin{block}{\small EN --- Rhetoric \& moral condemnation}
         {\footnotesize
-        \begin{enumerate}
-          \item Sexual Abuse
-          \item Political Interference
-          \item Economic Exploitation
-          \item Moral Accusation
-          \item Rhetorical Attack
-          \item Cultural Invasion
-          \item Conspiracy / Deception
-          \item Historical Atrocity
-          \item Identity Threat
-          \item Institutional Critique
-        \end{enumerate}}
+        Rhetorical Attack (46\%),\\
+        Moral Accusation (22\%),\\
+        Sexual Abuse (14\%)}
+      \end{block}
+      \vspace{4pt}
+      \begin{block}{\small JA --- Political \& economic frames}
+        {\footnotesize
+        Political Interference (20\%),\\
+        Rhetorical Attack (18\%),\\
+        Economic Exploitation (14\%)\\
+        \textit{Driven by Abe/Unification Church}}
+      \end{block}
+      \vspace{4pt}
+      \begin{block}{\small ZH --- Sexual abuse salient}
+        {\footnotesize
+        Sexual Abuse Frame (26\%),\\
+        Rhetorical Attack (25\%),\\
+        Moral Accusation (14\%)}
       \end{block}
   \end{columns}
-
 \end{frame}
 
-% ── SLIDE 12 · RQ2 target–tactic (key finding) ───────────────
-\begin{frame}{RQ2 — The Key Finding: Frame = Target, not Language}
-
+% ── SLIDE 14 · RQ2 target--tactic (key finding) ──────────────
+\begin{frame}{RQ2 --- Key Finding: Frame = Target Type, Not Language}
   \begin{columns}[T]
     \column{0.55\textwidth}
       \includegraphics[width=\linewidth]{rq2_target_tactic.png}
-      {\tiny Target-type vs.\ attack-frame heatmap (aggregated across all 3 languages).}
+      {\tiny Attack-frame distribution by target entity (all languages pooled).}
     \column{0.42\textwidth}
       \vspace{6pt}
       \begin{alertblock}{\faExclamationTriangle\ Structural regularity \#1}
-        Attack frame selection is governed by the \textbf{target's social category} — not by language community.
+        Frame choice is governed by the\\
+        \textbf{target's social category},\\
+        not by language community.
       \end{alertblock}
       \vspace{6pt}
-      \begin{block}{Genre-like conventions}
-        {\small
-        \begin{tabular}{ll}
+      \begin{block}{Cross-lingual genre conventions}
+        \small
+        \begin{tabular}{@{}ll@{}}
           \toprule
           \textbf{Target type} & \textbf{Dominant frame} \\
           \midrule
-          Clergy & Sexual Abuse \\
-          Institution & Political Interference \\
-          Institution & Economic Exploitation \\
-          Collective label & Rhetorical Attack \\
-          Collective label & Moral Accusation \\
+          Clergy roles & Sexual Abuse \\
+          Church institution & Institutional Rot \\
+          Political institution & Political Interf. \\
+          Collective identity & Rhetorical Attack \\
+          Collective identity & Moral Accusation \\
           \bottomrule
-        \end{tabular}}
+        \end{tabular}
       \end{block}
       \vspace{4pt}
-      \footnotesize
-      Cross-linguistically \textbf{stable} — holds in EN, ZH \& JA independently.
+      {\footnotesize Holds independently in EN, ZH \& JA.}
   \end{columns}
 \end{frame}
 
 % ============================================================
-\section{Results: RQ3 — Why?}
+\section{RQ3 --- Why? Method \& Results}
 % ============================================================
 
-% ── SLIDE 13 · RQ3 MFT results ───────────────────────────────
-\begin{frame}{RQ3 — Why Do People Hate? Moral Foundations}
+% ── SLIDE 15 · RQ3 Method ────────────────────────────────────
+\begin{frame}{RQ3 --- Method: Moral Axis Projection}
+  \begin{center}
+  \begin{tikzpicture}[node distance=0.55cm and 1.0cm]
+
+    \node[mbox=2.6cm] (inp) {Documents\\+ frame labels};
+
+    \node[sbox=3.4cm, right=1.0cm of inp, yshift=0.85cm] (mft)
+      {\textbf{Moral Foundations Dict.\ (MFD)}\\[3pt]
+       Harm/Care \quad Fairness/Cheating\\
+       Loyalty/Betrayal\\
+       Authority/Subversion\\
+       Sanctity/Degradation\\[3pt]
+       Bias $=$ (pos $-$ neg) / total};
+
+    \node[sbox=3.4cm, right=1.0cm of inp, yshift=-0.85cm] (thr)
+      {\textbf{Intergroup Threat Lexicons}\\[3pt]
+       Realistic Threat\\
+       (physical danger framing)\\[3pt]
+       Symbolic Threat\\
+       (cultural identity framing)};
+
+    \draw[arr] (inp.east) -- (mft.west);
+    \draw[arr] (inp.east) -- (thr.west);
+
+    \node[sbox=3.0cm, right=1.0cm of mft, yshift=-0.85cm] (stat)
+      {\textbf{Statistical Validation}\\[3pt]
+       One-way ANOVA\\
+       ($p \ll 10^{-200}$,\\
+       $\eta^2 = 0.24$--$0.95$)\\[3pt]
+       Tukey post-hoc tests\\[3pt]
+       PCA for 2D moral space};
+
+    \draw[arr] (mft.east) -- (stat.west|-mft.east);
+    \draw[arr] (thr.east) -- (stat.west|-thr.east);
+
+    \node[mbox=2.5cm, right=1.0cm of stat] (out)
+      {Moral profiles\\per language\\per topic\\per lang$\times$topic};
+
+    \draw[arr] (stat)--(out);
+  \end{tikzpicture}
+  \end{center}
+  \vspace{6pt}
+  \begin{block}{}
+    \small\centering
+    \textbf{Interpretation:} a \emph{negative} score means the discourse invokes the\\
+    attack-oriented pole of that foundation (e.g., \emph{Harm} rather than \emph{Care}).
+  \end{block}
+\end{frame}
+
+% ── SLIDE 16 · RQ3 language profiles ─────────────────────────
+\begin{frame}{RQ3 --- Results: Different Moral Vocabularies}
 
   \begin{columns}[T]
-    \column{0.55\textwidth}
-      \includegraphics[width=\linewidth]{rq3_lang_bar.png}
-      {\tiny Mean moral-axis scores per language. Negative = anti-Christian alignment.}
-    \column{0.42\textwidth}
-      \vspace{6pt}
-      \begin{block}{Moral Foundations Theory \citep{haidt2012righteous}}
-        5 foundations: \emph{Harm, Fairness, Loyalty, Authority, Purity}\\[4pt]
-        Extended with 2 intergroup threat axes:\\
-        \emph{Symbolic Threat}, \emph{Realistic Threat}
-      \end{block}
-      \vspace{6pt}
+    \column{0.58\textwidth}
+      \vspace{2pt}
+      \begin{tikzpicture}
+        \begin{axis}[
+          xbar, bar width=7.5pt,
+          width=8.8cm, height=7.2cm,
+          xlabel={Mean bias score (negative $=$ attack-oriented)},
+          xmin=-0.16, xmax=0.24,
+          symbolic y coords={
+            {Symbolic Threat},
+            {Realistic Threat},
+            {Sanctity},
+            {Authority},
+            {Loyalty},
+            {Fairness},
+            {Harm}},
+          ytick=data,
+          y tick label style={font=\small},
+          x tick label style={font=\small},
+          xmajorgrids=true, grid style={dashed,gray!40},
+          xtick={-0.15,-0.10,-0.05,0,0.05,0.10,0.15,0.20},
+          xticklabel style={/pgf/number format/fixed,
+                            /pgf/number format/precision=2},
+          legend style={at={(0.5,-0.13)},anchor=north,
+                        legend columns=3,font=\small},
+          title={\small Mean Moral Bias Score by Language},
+        ]
+          % ── EN: negative on all 5 MFT; Realistic = positive; Symbolic negative
+          \addplot[xbar,fill=enzh!80,draw=enzh] coordinates {
+            (-0.074,{Harm})
+            (-0.063,{Fairness})
+            (-0.050,{Loyalty})
+            (-0.081,{Authority})
+            (-0.065,{Sanctity})
+            (+0.018,{Realistic Threat})
+            (-0.022,{Symbolic Threat})
+          };
+          % ── ZH: positive on all 5 MFT; negative on both threat axes
+          \addplot[xbar,fill=zhcol!80,draw=zhcol!120] coordinates {
+            (+0.177,{Harm})
+            (+0.182,{Fairness})
+            (+0.108,{Loyalty})
+            (+0.117,{Authority})
+            (+0.168,{Sanctity})
+            (-0.012,{Realistic Threat})
+            (-0.047,{Symbolic Threat})
+          };
+          % ── JA: same direction as ZH, smaller magnitude
+          \addplot[xbar,fill=jacol!80,draw=jacol!120] coordinates {
+            (+0.069,{Harm})
+            (+0.085,{Fairness})
+            (+0.024,{Loyalty})
+            (+0.034,{Authority})
+            (+0.077,{Sanctity})
+            (-0.018,{Realistic Threat})
+            (-0.045,{Symbolic Threat})
+          };
+          \legend{EN (English), ZH (Chinese), JA (Japanese)}
+        \end{axis}
+      \end{tikzpicture}
+
+    \column{0.38\textwidth}
+      \vspace{4pt}
       \begin{alertblock}{\faExclamationTriangle\ Structural regularity \#2}
-        \textbf{English:} negative across \emph{all 5} MF axes\\
-        $\Rightarrow$ broad \emph{ethical condemnation}\\[6pt]
-        \textbf{ZH \& JA:} negative only on\\
-        Symbolic + Realistic \emph{Threat} axes\\
-        $\Rightarrow$ \emph{identity-threat} framing
+        \textbf{English:} negative across all\\
+        5 classical MFT axes\\
+        $\Rightarrow$ \emph{broad ethical condemnation}\\[8pt]
+        \textbf{ZH \& JA:} positive on MFT,\\
+        negative only on\\
+        Symbolic + Realistic \emph{Threat}\\
+        $\Rightarrow$ \emph{identity-threat framing}
       \end{alertblock}
+      \vspace{6pt}
+      \begin{block}{Statistical validation}
+        \footnotesize
+        All 7 axes: ANOVA\\
+        $p < 4.9 \times 10^{-324}$\\
+        $\eta^2 = 0.24$--$0.95$\\[4pt]
+        EN is the \textbf{only} language\\
+        where Realistic Threat\\
+        is \emph{positive} ($+0.018$).
+      \end{block}
   \end{columns}
 \end{frame}
 
-% ── SLIDE 14 · RQ3 moral architecture ────────────────────────
-\begin{frame}{RQ3 — Two Moral Universes}
-
+% ── SLIDE 17 · RQ3 moral architecture ────────────────────────
+\begin{frame}{RQ3 --- Results: Two Moral Universes}
   \begin{columns}[T]
-    \column{0.60\textwidth}
-      \includegraphics[width=\linewidth]{disc_moral_architecture.png}
-      {\tiny Moral architecture diagram. EN occupies a different region from ZH/JA.}
-    \column{0.36\textwidth}
+    \column{0.58\textwidth}
+      \vspace{4pt}
+      % 2D moral space: X = MFT condemnation, Y = threat framing
+      % EN:  MFT avg = -0.067,  Threat avg = -0.002
+      % ZH:  MFT avg = +0.150,  Threat avg = -0.030
+      % JA:  MFT avg = +0.058,  Threat avg = -0.032
+      \begin{tikzpicture}
+        \begin{axis}[
+          width=7.6cm, height=5.6cm,
+          xlabel={\footnotesize MFT score (neg.$=$condemning)},
+          ylabel={\footnotesize Threat score (neg.$=$threat)},
+          xmin=-0.14, xmax=0.24,
+          ymin=-0.052, ymax=0.032,
+          xtick={-0.10,-0.05,0.00,0.05,0.10,0.15,0.20},
+          ytick={-0.04,-0.02,0.00,0.02},
+          x tick label style={font=\tiny},
+          y tick label style={font=\tiny},
+          xlabel style={font=\small},
+          ylabel style={font=\small},
+          grid=both, grid style={dashed,gray!25},
+          clip=false,
+        ]
+          % Quadrant shading
+          \fill[enzh!12] (-0.14,-0.052) rectangle (0.00, 0.032);
+          \fill[accent!8]  (0.00,-0.052) rectangle (0.24,-0.002);
+          % Reference lines
+          \draw[very thick,gray!60,dashed] (axis cs:0,-0.052)--(axis cs:0,0.032);
+          \draw[very thick,gray!60,dashed] (axis cs:-0.14,0)--(axis cs:0.24,0);
+          % Quadrant labels
+          \node[font=\tiny\bfseries,color=enzh!80,align=center]
+            at (axis cs:-0.075, 0.022) {Ethical\\Condemnation};
+          \node[font=\tiny\bfseries,color=accent!80,align=center]
+            at (axis cs:0.155, -0.040) {Identity\\Threat};
+          % EN
+          \addplot[only marks,mark=square*,mark size=5pt,color=enzh]
+            coordinates {(-0.067,-0.002)};
+          \node[font=\small\bfseries,color=enzh,anchor=south west]
+            at (axis cs:-0.067,-0.002) {EN};
+          % ZH
+          \addplot[only marks,mark=*,mark size=6pt,color=zhcol]
+            coordinates {(0.150,-0.030)};
+          \node[font=\small\bfseries,color=zhcol,anchor=north west]
+            at (axis cs:0.150,-0.030) {ZH};
+          % JA
+          \addplot[only marks,mark=triangle*,mark size=6pt,color=jacol]
+            coordinates {(0.058,-0.032)};
+          \node[font=\small\bfseries,color=jacol,anchor=north east]
+            at (axis cs:0.058,-0.032) {JA};
+        \end{axis}
+      \end{tikzpicture}\\
+      {\tiny X = mean of 5 MFT axes; Y = mean of 2 threat axes.
+             All differences significant ($p < 10^{-200}$).}
+    \column{0.38\textwidth}
       \vspace{6pt}
       \begin{block}{English speakers say:}
-        \small ``Christianity is \emph{morally wrong}''\\
-        — condemnation using \textbf{shared} ethical norms\\
-        (insider critique within a normative framework)
+        \small ``Christianity is \emph{morally wrong}''\\[4pt]
+        Wide ethical condemnation\\
+        using \emph{shared} normative standards\\
+        (insider critique)
       \end{block}
       \vspace{6pt}
       \begin{alertblock}{East Asian speakers say:}
-        \small ``Christianity is \emph{dangerous to us}''\\
-        — threat framing: cultural invasion, social disruption\\
-        (outsider critique focused on group safety)
+        \small ``Christianity is \emph{dangerous to us}''\\[4pt]
+        Cultural invasion /\\
+        social threat framing\\
+        (outsider critique, group safety)
       \end{alertblock}
-      \vspace{4pt}
-      \footnotesize
-      \textbf{Same target. Fundamentally different moral logic.}
-    \end{columns}
+      \vspace{6pt}
+      \textbf{\small Same target.\\Fundamentally different\\moral logic.}
+  \end{columns}
 \end{frame}
 
 % ============================================================
 \section{Discussion}
 % ============================================================
 
-% ── SLIDE 15 · Discussion – two regularities ─────────────────
-\begin{frame}{Discussion: What Do These Patterns Tell Us?}
-
+% ── SLIDE 18 · Discussion -- two regularities ─────────────────
+\begin{frame}{Discussion: Two Structural Regularities}
   \begin{columns}[T]
-    \column{0.48\textwidth}
-      \begin{block}{\#1 — Attack Frames as Genre Conventions}
-        \small
-        Frame choice is \textbf{not random} and \textbf{not language-specific}.\\[4pt]
-        Each target type attracts a predictable set of frames — like a \emph{rhetorical genre}.\\[4pt]
-        Implication: hate speech has \textbf{stable structural grammar} across cultures.
+    % ── LEFT: Genre convention map (TikZ) ──────────────────────
+    \column{0.54\textwidth}
+      \begin{block}{\#1 --- Attack Frames as Genre Conventions}
+        \footnotesize
+        Frame choice is governed by \textbf{target type}, not language.\\
+        Same conventions hold in EN, ZH \& JA.
       \end{block}
-    \column{0.48\textwidth}
-      \begin{block}{\#2 — Two Moral Architectures}
-        \small
-        EN discourse: \emph{moral transgressor} model — Christianity is judged by universal ethics.\\[4pt]
-        ZH/JA discourse: \emph{outgroup threat} model — Christianity is a cultural danger.\\[4pt]
-        Implication: binary classifiers collapse this difference; structured analysis reveals it.
-      \end{block}
-  \end{columns}
+      \vspace{4pt}
+      \begin{center}
+      \begin{tikzpicture}[
+        tgt/.style={rectangle,rounded corners=3pt,draw=uzh,fill=uzhlight,
+                    text width=2.0cm,align=center,minimum height=0.78cm,
+                    font=\scriptsize\bfseries},
+        frm/.style={rectangle,rounded corners=2pt,draw=accent!70,fill=accentlt,
+                    text width=2.0cm,align=center,minimum height=0.36cm,
+                    font=\scriptsize},
+        mor/.style={rectangle,rounded corners=2pt,draw=gray!60,fill=gray!10,
+                    text width=1.7cm,align=center,minimum height=0.78cm,
+                    font=\scriptsize},
+        ca/.style={-{Stealth[length=3.5pt]},semithick,color=uzh!60},
+      ]
+        % ── Column headers
+        \node[font=\tiny\bfseries,color=darkgray] at (0,    3.0) {Target};
+        \node[font=\tiny\bfseries,color=darkgray] at (2.9,  3.0) {Frames};
+        \node[font=\tiny\bfseries,color=darkgray] at (5.55, 3.0) {Moral sig.};
+        \draw[gray!40,dotted] (1.35,3.15)--(1.35,-1.0);
+        \draw[gray!40,dotted] (4.2, 3.15)--(4.2, -1.0);
 
-  \vspace{10pt}
-  \begin{center}
-    \includegraphics[width=0.55\textwidth]{disc_genre_convention_map.png}
-  \end{center}
+        % ── Row 1 : Individual Clergy
+        \node[tgt] (t1) at (0,    2.2) {Individual\\Clergy};
+        \node[frm] (f1a) at (2.9, 2.52) {Sexual Abuse};
+        \node[frm] (f1b) at (2.9, 2.05) {Institutional Rot};
+        \node[mor] (m1)  at (5.55,2.2)  {\textbf{Moral}\\condemnation};
+
+        % ── Row 2 : Institution
+        \node[tgt] (t2) at (0,    0.9) {Political/Econ.\\Institution};
+        \node[frm] (f2a) at (2.9, 1.22) {Political Interf.};
+        \node[frm] (f2b) at (2.9, 0.75) {Economic Exploit.};
+        \node[mor] (m2)  at (5.55,0.9)  {\textbf{Identity}\\threat};
+
+        % ── Row 3 : Collective identity
+        \node[tgt] (t3) at (0,   -0.4) {Collective\\Identity Label};
+        \node[frm] (f3a) at (2.9,-0.08) {Rhetorical Attack};
+        \node[frm] (f3b) at (2.9,-0.55) {Moral Accusation};
+        \node[mor] (m3)  at (5.55,-0.4) {\textbf{Mixed}\\EN+ZH+JA};
+
+        % ── Arrows
+        \draw[ca] (t1.east)--(f1a.west); \draw[ca] (t1.east)--(f1b.west);
+        \draw[ca] (t2.east)--(f2a.west); \draw[ca] (t2.east)--(f2b.west);
+        \draw[ca] (t3.east)--(f3a.west); \draw[ca] (t3.east)--(f3b.west);
+        \draw[ca] (f1a.east)--(m1.west|-f1a.east);
+        \draw[ca] (f1b.east)--(m1.west|-f1b.east);
+        \draw[ca] (f2a.east)--(m2.west|-f2a.east);
+        \draw[ca] (f2b.east)--(m2.west|-f2b.east);
+        \draw[ca] (f3a.east)--(m3.west|-f3a.east);
+        \draw[ca] (f3b.east)--(m3.west|-f3b.east);
+
+        % ── Footer
+        \node[font=\tiny\itshape,text=darkgray,align=center]
+          at (2.8,-0.92) {Pattern stable across EN, ZH \& JA};
+      \end{tikzpicture}
+      \end{center}
+
+    % ── RIGHT: Moral architecture summary ──────────────────────
+    \column{0.43\textwidth}
+      \begin{block}{\#2 --- Two Moral Architectures}
+        \small
+        EN: \emph{moral transgressor} model\\
+        --- Christianity judged by\\
+        universal ethical standards.\\[5pt]
+        ZH/JA: \emph{outgroup threat} model\\
+        --- Christianity is a\\
+        cultural/social danger.\\[5pt]
+        Binary classifiers collapse this\\
+        difference; structured analysis\\
+        makes it visible.
+      \end{block}
+      \vspace{6pt}
+      \begin{alertblock}{Broader lesson}
+        \small
+        Binary detection cannot surface\\
+        these structural patterns.\\
+        \textbf{The who--how--why pipeline can.}
+      \end{alertblock}
+  \end{columns}
 \end{frame}
 
-% ── SLIDE 16 · Methodological reflections ────────────────────
+% ── SLIDE 19 · Methodological reflections ────────────────────
 \begin{frame}{Discussion: Methodological Reflections}
-
   \begin{columns}[T]
     \column{0.48\textwidth}
-      \begin{block}{What worked well}
-        {\small
+      \begin{block}{What worked}
+        \small
         \begin{itemize}
-          \item \textbf{Double back-translation} resolves distribution shift — a reusable solution for low-resource hate speech tasks
-          \item \textbf{Cross-lingual centroid alignment} in BERTopic produces genuinely mixed topics without translation
-          \item \textbf{Corpus-induction} (not taxonomy imposition) lets Japanese Unification Church discourse emerge naturally
-        \end{itemize}}
+          \item \textbf{Double BT} resolves distribution shift --- reusable solution for low-resource hate speech
+          \item \textbf{Cross-lingual centroid alignment} in BERTopic creates genuinely mixed topics without translation
+          \item \textbf{Corpus-induction} lets culturally specific topics emerge naturally (JP Unification Church)
+        \end{itemize}
       \end{block}
     \column{0.48\textwidth}
       \begin{alertblock}{What to watch for}
-        {\small
+        \small
         \begin{itemize}
-          \item \textbf{LLM data collapse}: after 20–30 iterations, generated ZH/JA text becomes 90–100\% redundant — a real problem for low-resource augmentation
-          \item \textbf{Platform bias}: Tieba (ZH) and 5ch (JA) are not representative of all Chinese/Japanese internet speech
-          \item \textbf{Annotation subjectivity}: implicit hate is inherently harder to label consistently
-        \end{itemize}}
+          \item \textbf{LLM data collapse}: after 20--30 iterations, ZH/JA generation becomes 90--100\% redundant
+          \item \textbf{Platform bias}: Tieba (ZH) and 5ch (JA) are not representative of all online speech
+          \item \textbf{Annotation noise}: implicit hate labels have moderate inter-annotator agreement
+        \end{itemize}
       \end{alertblock}
   \end{columns}
 \end{frame}
@@ -573,112 +896,117 @@
 \section{Contributions, Limitations \& Outlook}
 % ============================================================
 
-% ── SLIDE 17 · Contributions ─────────────────────────────────
+% ── SLIDE 20 · Contributions ─────────────────────────────────
 \begin{frame}{Contributions}
-
   \begin{columns}[T]
     \column{0.31\textwidth}
-      \begin{block}{\faDatabase\ Resource}
+      \begin{block}{Resource}
         \small
-        First trilingual corpus of anti-Christian hate speech (EN/ZH/JA, 63,265 texts) with structured annotation across target, frame \& moral-axis dimensions.\\[4pt]
-        \textbf{Open-source} at GitHub.
+        First trilingual corpus of anti-Christian hate speech (EN/ZH/JA, 63,265 texts)\\[4pt]
+        Structured annotation:\\
+        target $\times$ frame $\times$ moral axis\\[4pt]
+        \textbf{Open-source on GitHub}
       \end{block}
     \column{0.31\textwidth}
-      \begin{block}{\faChartBar\ Empirical}
+      \begin{block}{Empirical}
         \small
         First systematic cross-lingual analysis revealing:\\[4pt]
-        (1) Attack frame = genre convention\\[4pt]
-        (2) EN vs.\ EA communities inhabit different \emph{moral universes}
+        (1) Attack frame $=$ genre convention\\[4pt]
+        (2) EN vs.\ EA communities inhabit different moral universes
       \end{block}
     \column{0.31\textwidth}
-      \begin{block}{\faCogs\ Methodological}
+      \begin{block}{Methodological}
         \small
-        Reusable \textbf{who–how–why} pipeline combining:\\[4pt]
+        Reusable \textbf{who--how--why} pipeline:\\[4pt]
         multilingual embeddings,\\
-        unsupervised topic modelling,\\
+        topic modelling,\\
         frame classification,\\
-        moral-axis projection.
+        moral-axis projection\\[4pt]
+        All code open-source
       \end{block}
   \end{columns}
 \end{frame}
 
-% ── SLIDE 18 · Limitations & Future Work ─────────────────────
+% ── SLIDE 21 · Limitations & Future Work ─────────────────────
 \begin{frame}{Limitations \& Future Work}
-
   \begin{columns}[T]
     \column{0.48\textwidth}
       \begin{alertblock}{Current limitations}
-        \begin{itemize}
+        \begin{itemize}\small
           \item \textbf{Platform coverage}: Tieba \& 5ch may not generalise to WeChat, Twitter/X, LINE
-          \item \textbf{Temporal snapshot}: discourse evolves; pipeline should be re-run on fresh data
-          \item \textbf{ZH/JA corpus size}: still relatively small despite augmentation
-          \item \textbf{Annotation}: implicit hate labels are noisy; inter-annotator agreement is moderate
+          \item \textbf{Temporal snapshot}: discourse evolves --- longitudinal re-running needed
+          \item \textbf{ZH/JA corpus size}: still small despite augmentation
+          \item \textbf{Annotation noise}: implicit hate labels are harder to label consistently
         \end{itemize}
       \end{alertblock}
     \column{0.48\textwidth}
       \begin{block}{Promising directions}
-        \begin{itemize}
-          \item Extend pipeline to \textbf{other religious minorities} (Islamophobia, antisemitism) — same framework, different case
-          \item Apply to \textbf{more languages} (Korean, Vietnamese) to test whether moral-architecture finding generalises
-          \item Use \textbf{larger LLMs} with RAG for more stable low-resource augmentation
-          \item Longitudinal analysis: does moral framing \textbf{shift} after major events (e.g.\ 2022 Abe assassination)?
+        \begin{itemize}\small
+          \item Apply pipeline to \textbf{other religious minorities} (Islamophobia, antisemitism) --- same framework, different case
+          \item \textbf{More languages} (Korean, Vietnamese): does the moral-architecture split generalise?
+          \item \textbf{Larger LLMs with RAG} for stable low-resource augmentation
+          \item \textbf{Longitudinal analysis}: does moral framing shift after major events? (post-2022 Abe assassination)
         \end{itemize}
       \end{block}
   \end{columns}
 \end{frame}
 
-% ── SLIDE 19 · Summary ───────────────────────────────────────
-\begin{frame}{Summary: The Big Picture}
-
-  \begin{center}
-    \Large
-    We started with a simple question:\\[8pt]
-    \textit{``Why do people hate Christianity — and is it the same reason\\
-    in English, Chinese, and Japanese?''}
-  \end{center}
-
-  \vspace{10pt}
+% ── SLIDE 22 · Summary ───────────────────────────────────────
+\begin{frame}{Summary: The Story in Three Acts}
   \begin{columns}[T]
-    \column{0.48\textwidth}
-      \begin{block}{The answer}
+    \column{0.32\textwidth}
+      \begin{block}{Act 1 --- Data}
         \small
-        \textbf{No} — the targets, the rhetoric, and the moral logic are structurally different.\\[4pt]
-        English speakers condemn. East Asian speakers fear.\\[4pt]
-        But the \emph{choice of weapon} (attack frame) follows the \emph{type of victim} — consistently, across all three languages.
+        Built a trilingual corpus\\
+        from near-zero.\\[4pt]
+        Back-translation solved\\
+        the low-resource problem\\
+        better than LLM generation.
       \end{block}
-    \column{0.48\textwidth}
-      \begin{alertblock}{The broader lesson}
+    \column{0.32\textwidth}
+      \begin{block}{Act 2 --- Structure}
         \small
-        Binary hate speech detection cannot surface these differences.\\[4pt]
-        \textbf{Structured, interpretable, cross-lingual analysis can.}\\[4pt]
-        The who–how–why pipeline is a step toward that goal.
+        Frame selection follows\\
+        the target, not the language.\\[4pt]
+        Cross-cultural genre\\
+        conventions exist in\\
+        hate speech.
+      \end{block}
+    \column{0.32\textwidth}
+      \begin{alertblock}{Act 3 --- Morality}
+        \small
+        \textbf{English} condemns.\\
+        \textbf{East Asian} fears.\\[4pt]
+        Same target, fundamentally\\
+        different moral logic ---\\
+        invisible to binary detectors.
       \end{alertblock}
   \end{columns}
-
-  \vspace{8pt}
+  \vspace{10pt}
   \begin{center}
-    \small\faGithub\ \texttt{github.com/notsofun/Master\_Thesis}
+    \small\texttt{github.com/notsofun/Master\_Thesis}\\[4pt]
+    {\footnotesize\color{darkgray} Open-source corpus, annotations, and pipeline code}
   \end{center}
 \end{frame}
 
-% ── SLIDE 20 · Q&A ───────────────────────────────────────────
+% ── SLIDE 23 · Q\&A ───────────────────────────────────────────
 \begin{frame}[plain]
   \begin{center}
-    \vspace{2cm}
-    {\Huge \color{uzh} Thank you.}\\[20pt]
-    {\Large Questions?}\\[30pt]
+    \vspace{1.5cm}
+    {\Huge\color{uzh} Thank you.}\\[20pt]
+    {\Large Questions?}\\[24pt]
     \small
     Zhidian Huang\\
-    \texttt{huangzhidian15@gmail.com}\\[10pt]
-    \faGithub\ \texttt{github.com/notsofun/Master\_Thesis}
+    \texttt{huangzhidian15@gmail.com}\\[8pt]
+    \texttt{github.com/notsofun/Master\_Thesis}
   \end{center}
 \end{frame}
 
-% ── References (appendix) ─────────────────────────────────────
+% ── References ───────────────────────────────────────────────
 \begin{frame}[allowframebreaks]{Selected References}
   \footnotesize
-  \bibliographystyle{acl_natbib}
-  \bibliography{biblio/thesis}
+  \bibliographystyle{../thesis_draft/acl_natbib}
+  \bibliography{../thesis_draft/biblio/thesis}
 \end{frame}
 
 \end{document}

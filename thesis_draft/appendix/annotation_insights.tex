@@ -17,5 +17,85 @@
 \chapter{Annotation Insights}%
 \label{appendix:annotation}
 
+This appendix provides qualitative observations from the manual annotation phase described in Chapter~\ref{chap:material}. The annotation criteria and document selection procedure are covered there; the focus here is on boundary cases that required interpretive judgment and on the rhetorical patterns found in confirmed hate speech examples.
 
+%===================================================================
+\section{Boundary Cases: What Does Not Count as Hate Speech}
+\label{sec:annotation-boundary}
+%===================================================================
+
+A recurring challenge during annotation was distinguishing genuine hostility \emph{toward} Christians from superficially similar texts that merely invoke Christian vocabulary. Three boundary categories were encountered repeatedly.
+
+\paragraph{Christianity invoked as a moral authority against others.}
+Some posts cite Jesus or Christian values not to disparage the religion, but to attack a third party. The following Japanese example is representative:
+
+\begin{quote}
+\textit{何億人の人間よりイエス１人が正しい そういったことがあるんですよ 君たちは多数派だからドやる ドブ川に人間がいる訳ないだろ？ この世は下界である 君たちは下界の魚だとして ブラックバスがドやるのと似たような 惨めな立場の自覚をしたほうが良い} \\
+(\textit{Jesus alone is more correct than hundreds of millions of people. You act arrogantly because you are the majority. \ldots You should become aware of your own pitiful position.})
+\end{quote}
+
+This text positions Christianity as a standard of truth from which to condemn the audience. The hostility is directed \emph{at} other people using Christian authority, not against Christianity itself, and was therefore labelled \texttt{hate\_speech = 0}.
+
+\paragraph{Historical grievance rhetoric.}
+A second category frames Christianity as a historical impediment to civilisation without calling for any action against contemporary believers:
+
+\begin{quote}
+\textit{マジ キリスト教が存在しなかったら1000年は文明が進んでて今頃は火星に移民都市を作っていたとされる} \\
+(\textit{Seriously, if Christianity had never existed, civilisation would be 1,000 years more advanced and we would already have colony cities on Mars.})
+\end{quote}
+
+This expresses a strong negative view of Christianity's historical role, but lacks the target-directed hostility toward a contemporary group that our annotation standard requires. Such texts were labelled \texttt{christianity\_related = 1} but \texttt{hate\_speech = 0}.
+
+\paragraph{Secularised religious vocabulary.}
+A third source of ambiguity arises when religious terms have acquired a secular meaning in Chinese online discourse. The word \textit{sh\`engm\u{u}} (lit.\ \textit{Holy Mother}/Virgin Mary) is widely used as a dismissive label for na\"ive idealism, completely detached from its Christian referent. Texts using this term as a secular insult were annotated as \texttt{christianity\_related = 0} unless additional religious content was present.
+
+
+%===================================================================
+\section{Patterns of Anti-Christian Hostile Rhetoric}
+\label{sec:annotation-patterns}
+%===================================================================
+
+Among the texts that did meet the hate speech threshold, two structural patterns appeared with notable frequency across both Chinese and Japanese examples.
+
+\subsection{Absolute Generalisation}
+\label{subsec:pattern-generalisation}
+
+The first pattern uses a sweeping claim based on personal experience to impute a collective moral deficiency. An annotated Japanese example reads (paraphrased from the original):
+
+\begin{quote}
+\textit{I have never once met a decent [\textit{matomona}] Catholic. I think Marian devotion is part of the reason.}
+\end{quote}
+
+Three rhetorical moves are at work. First, the extreme negation construction (``never once'') converts a subjective impression into a universal generalisation covering all Catholics. Second, the attribution is deliberately simplified: a complex tradition of Marian veneration is reduced to a pseudo-causal explanation for alleged moral failure. Third, and most consequentially, the word \textit{matomona} (``decent'', ``proper'') is deployed as a moral criterion, implicitly classifying Catholic believers as deficient in basic human normality. This move is what elevates the text above mere criticism: it does not dispute doctrine but calls into question the personhood of the entire group.
+
+\subsection{Intellectual Delegitimisation}
+\label{subsec:pattern-delegitimisation}
+
+The second pattern employs the register of scholarly analysis to systematically strip Christianity of legitimacy. An annotated Japanese example (excerpt):
+
+\begin{quote}
+\textit{宗教としては稚拙な出来であるキリスト教は、幼稚な感情論を誘発しやすい……絶対者との契約という妄想に落とし混む宗教の真似事であり……} \\
+(\textit{Christianity, a crude [\textit{chijutsu}] product as a religion, easily induces infantile emotionalism \ldots\ it is a mere imitation [\textit{manemono}] of religion that entraps people in the delusion [\textit{m\={o}s\={o}}] of a contract with an absolute being \ldots})
+\end{quote}
+
+The vocabulary choices are not incidental. \textit{Chijutsu} (``crude'', ``immature'') and \textit{manemono} (``imitation'', ``fake'') position the religion as intellectually inferior by comparison with an unstated norm, often Confucian ethics in such contexts. More significantly, \textit{m\={o}s\={o}} (``delusion'') is a clinical or quasi-psychiatric term: it reframes religious experience as a symptom of disordered thinking rather than as a coherent worldview deserving engagement. The effect is to deny believers not just doctrinal credibility but rational standing altogether.
+
+
+%===================================================================
+\section{A Common Three-Stage Logic}
+\label{sec:annotation-logic}
+%===================================================================
+
+Across both patterns, the hostile reasoning tends to follow a three-stage structure:
+
+\begin{enumerate}
+  \item \textbf{Generalisation.} An individual anecdote or selective observation is extended to cover the entire group (``I have never met a decent Catholic''; ``Christianity as a religion is crude'').
+  \item \textbf{Characterisation.} The group is assigned a negative essential quality --- moral deficiency, intellectual inferiority, or psychological dysfunction --- that strips it of equal standing in public discourse.
+  \item \textbf{Threat argument.} The characterisation is linked to a social danger: the group's beliefs produce ``antisocial behaviour'', ``infantile emotionalism'', or civilisational harm, thereby providing a justification for exclusion or hostility.
+\end{enumerate}
+
+Recognising this progression was practically useful during annotation: texts that completed all three stages were almost always classified as hate speech, whereas texts that stopped at stage~1 (generalisation without sustained characterisation) were treated as borderline cases requiring closer scrutiny. The patterns also informed the feature engineering stage of the classifier, where lexical markers associated with moral judgment and pathologisation were included in the domain gazetteer described in Chapter~\ref{chap:methods}.
+
+% self-defined macro: include bibliography even when compiling a single chapter
+\subfilebibliography
 \end{document}

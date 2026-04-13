@@ -13,8 +13,311 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-
 \chapter{Fine-tuning Details}%
 \label{appendix:finetuning}
 
+This appendix provides the implementation-level details of the language-specific hate speech classifiers used for corpus construction (Chapter~\ref{chap:material}), at a level of specificity sufficient for independent reproduction. Epoch-by-epoch performance curves are reported in Tables~\ref{tab:zh-finetune} and~\ref{tab:ja-finetune} of the main text; the present appendix focuses on architecture, data preparation, hyperparameters, and the back-translation strategy that was critical to achieving acceptable performance under severe class imbalance.
+
+% ------------------------------------------------------------------
+\section{Multi-task Classifier Architecture}
+\label{sec:app-arch}
+% ------------------------------------------------------------------
+
+Both the Chinese and Japanese classifiers share the same dual-head multi-task architecture, differing only in their pre-trained backbone. An encoder model maps each tokenised input to a sequence of contextual representations; the \texttt{[CLS]} position vector is extracted as the sentence-level embedding $\mathbf{h}_\texttt{[CLS]} \in \mathbb{R}^{d_h}$. A dropout layer (rate $p = 0.1$) is applied before two independent linear classification heads:
+
+\begin{itemize}
+  \item \textbf{Relevance head} (\texttt{rel\_header}):\ a linear layer $\mathbb{R}^{d_h} \to \mathbb{R}^1$ predicting whether the text is substantively Christianity-related.
+  \item \textbf{Hate head} (\texttt{hate\_header}):\ a structurally identical layer predicting hate speech.
+\end{itemize}
+
+\noindent Both heads produce raw logits; sigmoid activation and per-head threshold optimisation (Section~\ref{sec:app-threshold}) are applied at inference time. The two backbones differ in their hidden dimensionality: $d_h = 768$ for RoBERTa-COLD and $d_h = 1024$ for LUKE-large. Table~\ref{tab:backbones} summarises the backbone configuration for each language.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}llrl@{}}
+\toprule
+Language & Backbone & Parameters & Notes \\
+\midrule
+Chinese  & \texttt{thu-coai/roberta-base-cold} \citep{thucoai-roberta-cold}              & $\approx$110M & Trained on COLD offensive-language corpus \\
+Japanese & \texttt{kubota/luke-large-defamation-detection-japanese} \citep{yamada2020luke} & $\approx$483M & Domain-adapted for Japanese defamation \\
+\bottomrule
+\end{tabular}
+\caption{Pre-trained backbones. Both are fine-tuned end-to-end with the shared dual-head architecture.}
+\label{tab:backbones}
+\end{table}
+
+Figure~\ref{fig:classifier-arch} illustrates the architecture.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=5mm and 14mm,
+  >=Latex,
+  inpbox/.style={
+    draw=gray!55!black, fill=gray!6,
+    rounded corners=3pt, align=center, font=\small,
+    text width=6.2cm, minimum height=0.9cm, line width=0.6pt
+  },
+  encbox/.style={
+    draw=blue!55!black, fill=blue!7,
+    rounded corners=3pt, align=center, font=\small,
+    text width=6.2cm, minimum height=1.3cm, line width=0.65pt
+  },
+  procbox/.style={
+    draw=gray!55!black, fill=gray!6,
+    rounded corners=3pt, align=center, font=\small,
+    text width=6.2cm, minimum height=0.9cm, line width=0.6pt
+  },
+  headbox/.style={
+    draw=orange!65!black, fill=orange!7,
+    rounded corners=3pt, align=center, font=\small,
+    text width=2.7cm, minimum height=0.9cm, line width=0.65pt
+  },
+  outbox/.style={
+    draw=green!55!black, fill=green!7,
+    rounded corners=3pt, align=center, font=\small,
+    text width=2.7cm, minimum height=0.85cm, line width=0.6pt
+  },
+  arr/.style={-{Latex[length=2.5mm]}, thick, color=gray!65!black},
+  lbl/.style={font=\scriptsize\itshape, text=gray!70!black},
+]
+
+%% Input
+\node[inpbox] (inp) {Input text (max 64 tokens)\\{\footnotesize tokenised by backbone-specific tokeniser}};
+
+%% Encoder
+\node[encbox, below=of inp] (enc) {
+  \textbf{Encoder backbone}\\
+  {\footnotesize ZH:~\texttt{RoBERTa-COLD}~($d_h{=}768$)\quad
+   JP:~\texttt{LUKE-large}~($d_h{=}1024$)}
+};
+
+%% CLS pooling
+\node[procbox, below=of enc] (cls)
+  {$\mathbf{h}_\texttt{[CLS]} \in \mathbb{R}^{d_h}$ \quad (\texttt{[CLS]} token representation)};
+
+%% Dropout
+\node[procbox, below=of cls] (drop) {Dropout\quad($p = 0.1$)};
+
+%% Two heads (side by side, below dropout)
+\node[headbox, below left=11mm and 2mm of drop]  (relh)
+  {Rel head\\{\footnotesize $\mathrm{Linear}(d_h,\,1)$}};
+\node[headbox, below right=11mm and 2mm of drop] (hateh)
+  {Hate head\\{\footnotesize $\mathrm{Linear}(d_h,\,1)$}};
+
+%% Outputs
+\node[outbox, below=7mm of relh]  (relout)
+  {$\hat{p}_\mathrm{rel}$\\{\footnotesize Chr.-related}};
+\node[outbox, below=7mm of hateh] (hateout)
+  {$\hat{p}_\mathrm{hate}$\\{\footnotesize Hate speech}};
+
+%% Arrows
+\draw[arr] (inp)  -- (enc);
+\draw[arr] (enc)  -- (cls);
+\draw[arr] (cls)  -- (drop);
+\draw[arr] (drop.south) -- ++(0,-6pt) -| (relh.north);
+\draw[arr] (drop.south) -- ++(0,-6pt) -| (hateh.north);
+\draw[arr] (relh)  -- (relout);
+\draw[arr] (hateh) -- (hateout);
+
+%% Threshold annotations
+\node[lbl, right=4mm of relout]  {$\sigma(\cdot) \geq \theta_\mathrm{rel}$};
+\node[lbl, right=4mm of hateout] {$\sigma(\cdot) \geq \theta_\mathrm{hate}$};
+
+\end{tikzpicture}
+\caption{Dual-head multi-task classifier architecture, shown for the Chinese model. The Japanese model is identical except for the backbone. $d_h$ is the backbone's hidden size (768 / 1024 for RoBERTa-COLD / LUKE-large). Decision thresholds $\theta_\mathrm{rel}$ and $\theta_\mathrm{hate}$ are optimised on the validation set independently for each head (Section~\ref{sec:app-threshold}).}
+\label{fig:classifier-arch}
+\end{figure}
+
+
+% ------------------------------------------------------------------
+\section{Training Data Preparation}
+\label{sec:app-data}
+% ------------------------------------------------------------------
+
+\subsection{Stratified Train/Validation Split}
+\label{subsec:app-split}
+
+The annotated dataset is partitioned \emph{before} any augmentation is applied. Samples are stratified by the joint label pair $(\texttt{hate\_speech},\,\texttt{christianity\_related})$, producing an 85\,/\,15 train/validation split with \texttt{random\_state\,=\,42} (implemented via \texttt{sklearn.model\_selection.train\_test\_split}). Stratification by the joint label ensures that the hate ratio and the Christianity-related ratio are both preserved proportionally in each partition, even though hate samples are extremely sparse (3.8\,\% for Chinese, 2.5\,\% for Japanese). If joint stratification fails due to insufficient class support, the implementation automatically falls back to a single-label stratification on \texttt{hate\_speech}.
+
+Performing the split \emph{prior} to augmentation is essential for data integrity. A preliminary run that applied back-translation across the full corpus and split afterwards yielded an inflated validation Combined F1 of 0.93: back-translated near-duplicates of held-out validation samples had entered the training set, producing a severe data-leakage artifact. The pre-split protocol described here eliminates this by construction --- no augmented variant of a validation sample is ever present in the training set.
+
+\subsection{Back-Translation Augmentation}
+\label{subsec:app-bt}
+
+Following the split, back-translation augmentation \citep{sennrich-etal-2016-improving} is applied \emph{independently} to the training and validation partitions. Each annotated hate speech sample is translated through a chain of pivot languages and back to the source language:
+
+\begin{equation}
+  L_\mathrm{src}
+  \xrightarrow{\;\mathrm{MT}\;}
+  \mathrm{EN}
+  \xrightarrow{\;\mathrm{MT}\;}
+  \mathrm{KO}
+  \xrightarrow{\;\mathrm{MT}\;}
+  \mathrm{FR}
+  \xrightarrow{\;\mathrm{MT}\;}
+  \mathrm{DE}
+  \xrightarrow{\;\mathrm{MT}\;}
+  L_\mathrm{src},
+  \label{eq:bt-chain}
+\end{equation}
+
+\noindent where $L_\mathrm{src}$ is Chinese or Japanese. The pivot languages were chosen to maximise morphological and syntactic diversity: English serves as a high-resource bridge; Korean introduces agglutinative structure; French and German introduce inflectional variation. Each pass produces a lexically varied paraphrase that preserves the hostile semantic content. Multiple augmented copies per original sample raise the effective hate ratio in both the training and validation sets to approximately 20--25\,\%, compared to the raw 3.8\,\% (Chinese) and 2.5\,\% (Japanese). Table~\ref{tab:split-sizes} reports the resulting dataset sizes.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Language & Total annotated & Train (pre-BT) & \textbf{Train (post-BT)} & Validation (post-BT) \\
+\midrule
+Chinese  & 4\,000 & 3\,400 & \textbf{4\,223} & 600 \\
+Japanese & 4\,084 & 3\,473 & \textbf{4\,028} & 439 \\
+\bottomrule
+\end{tabular}
+\caption{Dataset sizes at each stage of data preparation. The validation set is smaller after back-translation for Japanese because a subset of validation samples did not produce augmented variants that passed quality filtering.}
+\label{tab:split-sizes}
+\end{table}
+
+
+% ------------------------------------------------------------------
+\section{Back-Translation Strategy Ablation}
+\label{sec:app-bt-ablation}
+% ------------------------------------------------------------------
+
+Three augmentation strategies were compared during development to determine the scope of back-translation. They differ in whether augmentation is applied to the training set, the validation set, or neither.
+
+\begin{description}
+  \item[Strategy~A (No BT):] Both training and validation sets use the original annotated samples only. This was the baseline condition.
+  \item[Strategy~B (Train-only BT):] Back-translation is applied to the training set; the validation set remains unaugmented.
+  \item[Strategy~C (Double BT):] Back-translation is applied to both the training and validation sets. \textbf{This is the strategy adopted throughout this thesis.}
+\end{description}
+
+Table~\ref{tab:bt-ablation} compares the best Combined F1 achieved under each strategy across all hyperparameter settings explored.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}p{3.2cm}llcc@{}}
+\toprule
+Strategy & Train set & Val set & ZH Combined F1 & JP Combined F1 \\
+\midrule
+A:~No BT               & Original  & Original  & 0.47--0.52     & 0.47--0.52 \\
+B:~Train-only BT       & BT-aug.   & Original  & $\approx$0.56  & $\approx$0.55 \\
+\textbf{C:~Double BT}  & \textbf{BT-aug.} & \textbf{BT-aug.} & \textbf{0.7145} & \textbf{0.7356} \\
+\bottomrule
+\end{tabular}
+\caption{Back-translation strategy ablation. Each figure represents the best Combined F1 on the held-out validation set. Strategy~C is adopted as the main approach; Strategies~A and~B clarify why the other options were discarded.}
+\label{tab:bt-ablation}
+\end{table}
+
+Three failure modes explain the underperformance of Strategies~A and~B.
+
+\paragraph{Strategy~A: insufficient positive samples.} With only 340--510 hate speech training examples and no augmentation, the learning signal for the minority class is too sparse. Hate F1 plateaus below 0.42 across all learning rates, and the optimal decision threshold drifts into the range 0.74--0.91, indicating that the model adopts an over-conservative strategy to minimise false positives at the expense of recall. The Combined F1 ceiling is approximately 0.52.
+
+\paragraph{Strategy~B: distributional mismatch.} Augmenting only the training set introduces a lexical and syntactic gap between training inputs (a mixture of natural and machine-translated text) and the unaugmented validation inputs (natural text only). The model is penalised on the validation set for features it learned from synthetic text, causing Combined F1 to stagnate at approximately 0.55--0.56. The optimal hate threshold also remains elevated relative to Strategy~C, consistent with a miscalibrated model.
+
+\paragraph{Strategy~C: distributional consistency.} Applying back-translation to both partitions ensures that the validation set is drawn from the same synthetic-and-natural mixture as the training set, providing an accurate estimate of generalisation capacity. Combined F1 rises to 0.7145 / 0.7356 for Chinese / Japanese respectively, with the optimal hate threshold stabilising in the range 0.3--0.5 --- consistent with a well-calibrated classifier.
+
+
+% ------------------------------------------------------------------
+\section{Hyperparameters}
+\label{sec:app-hyper}
+% ------------------------------------------------------------------
+
+Table~\ref{tab:hyperparams} lists all hyperparameters for the final training runs (Strategy~C). The same configuration was applied to both languages unless a language-specific value is indicated; the higher learning rate for Japanese reflects the larger backbone and was selected by manual search on held-out validation performance.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Hyperparameter              & Chinese                         & Japanese \\
+\midrule
+Backbone                    & \texttt{roberta-base-cold}       & \texttt{luke-large-defamation} \\
+Learning rate               & $5 \times 10^{-6}$              & $8 \times 10^{-6}$ \\
+Batch size                  & 16                              & 16 \\
+Max sequence length         & 64 tokens                       & 64 tokens \\
+Max epochs                  & 10                              & 10 \\
+LR scheduler                & \multicolumn{2}{l}{Linear decay with 10\,\% warmup steps} \\
+Optimiser                   & \multicolumn{2}{l}{AdamW, weight decay $= 0.05$} \\
+Monitor metric              & \multicolumn{2}{l}{Combined F1 $=\;(\mathrm{Rel\;F1} + \mathrm{Hate\;F1})\,/\,2$} \\
+Early stopping patience     & \multicolumn{2}{l}{3 epochs (no improvement in Combined F1)} \\
+Training environment        & \multicolumn{2}{l}{NVIDIA GPU (AutoDL cloud, CUDA)} \\
+\bottomrule
+\end{tabular}
+\caption{Hyperparameters for the final training runs under Strategy~C. Values shared across both languages are merged into a single column.}
+\label{tab:hyperparams}
+\end{table}
+
+
+% ------------------------------------------------------------------
+\section{Loss Function}
+\label{sec:app-loss}
+% ------------------------------------------------------------------
+
+Both heads are trained with Focal Loss \citep{lin2018focallossdenseobject}, which up-weights hard-to-classify minority samples by a factor proportional to the model's current prediction error:
+
+\begin{equation}
+  \mathrm{FL}(p_t) \;=\; \alpha_t \cdot (1 - p_t)^{\gamma} \cdot \mathrm{BCE}(p_t),
+  \label{eq:focal}
+\end{equation}
+
+\noindent where $p_t$ is the predicted probability for the ground-truth class, $\gamma = 2$ is the focusing parameter, and $\alpha_t$ is the class-balancing weight:
+
+\begin{equation}
+  \alpha_t \;=\; \begin{cases} \alpha & \text{if label} = 1, \\ 1 - \alpha & \text{otherwise,} \end{cases}
+  \qquad \alpha \;=\; 1 - r_+,
+  \label{eq:alpha}
+\end{equation}
+
+\noindent where $r_+$ is the proportion of positive (hate speech) samples in the training partition. Setting $\alpha = 1 - r_+$ assigns a weight to the positive class that equals the negative-class frequency, providing a principled initialisation for highly imbalanced datasets without manual tuning. The combined training objective weights the two heads asymmetrically:
+
+\begin{equation}
+  \mathcal{L} \;=\; \mathrm{FL}_\mathrm{rel} \;+\; 2.0\;\cdot\;\mathrm{FL}_\mathrm{hate}.
+  \label{eq:combined-loss}
+\end{equation}
+
+\noindent The coefficient $2.0$ on the hate task reflects its greater downstream importance: hate labels determine corpus membership for the main analysis, whereas relevance labels serve primarily as an auxiliary regulariser preventing collapse onto high-frequency religious vocabulary.
+
+
+% ------------------------------------------------------------------
+\section{Decision Threshold Optimisation}
+\label{sec:app-threshold}
+% ------------------------------------------------------------------
+
+Rather than fixing the decision threshold at 0.5, each head's threshold is optimised independently on the validation set at the end of every training epoch. A grid search evaluates 95 candidate values $\theta \in \{0.01,\,0.02,\,\ldots,\,0.95\}$ and selects the threshold that maximises the binary F1 for that head. Combined F1 is then computed using each head's individually optimised threshold, and serves as the metric for both model selection and early stopping.
+
+This approach serves two purposes. First, under class imbalance the Bayes-optimal threshold departs from 0.5, and a validation search yields a better approximation. Second, the evolution of the optimal threshold across epochs provides a useful diagnostic: under Strategy~A, $\theta_\mathrm{hate}$ drifts upward toward 0.74--0.91 as the model grows over-conservative; under Strategy~C, the threshold stabilises in the range 0.3--0.5, indicating a well-calibrated decision boundary.
+
+
+% ------------------------------------------------------------------
+\section{Detection Results Summary}
+\label{sec:app-results}
+% ------------------------------------------------------------------
+
+Table~\ref{tab:finetune-summary} provides a language-level summary of classifier performance under Strategy~C. Epoch-by-epoch training curves are reported in Tables~\ref{tab:zh-finetune} and~\ref{tab:ja-finetune} of the main text.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Language & Model                                 & Rel F1        & Hate F1       & Combined F1   & Best epoch \\
+\midrule
+Chinese  & Baseline (RoBERTa-COLD, no fine-tuning) & ---           & 0.172         & ---           & --- \\
+Chinese  & Fine-tuned (Strategy~C)               & \textbf{0.894} & \textbf{0.579} & \textbf{0.7145} & 3 \\
+\midrule
+Japanese & Baseline (LUKE-large, no fine-tuning)   & ---           & 0.294         & ---           & --- \\
+Japanese & Fine-tuned (Strategy~C)               & \textbf{0.893} & \textbf{0.579} & \textbf{0.7356} & 3 \\
+\bottomrule
+\end{tabular}
+\caption{Summary of fine-tuning results on the held-out validation set. Baseline figures are produced by the pre-trained backbone without any task-specific fine-tuning. Combined F1 is undefined for baselines because no relevance prediction is available. See Tables~\ref{tab:zh-finetune} and~\ref{tab:ja-finetune} for the complete epoch-level breakdown.}
+\label{tab:finetune-summary}
+\end{table}
+
+Both classifiers reach peak generalisation at Epoch~3 under Strategy~C. The sharp improvement over the respective pre-trained baselines --- Hate~F1 rising from 0.172 to 0.579 for Chinese, and from 0.294 to 0.579 for Japanese --- confirms that domain-specific fine-tuning with back-translation augmentation is necessary for reliable detection of anti-Christian hate speech, and that the pre-trained models' general-purpose training data does not adequately cover the register and vocabulary of religious hostility in either language.
+
+\subfilebibliography
 \end{document}

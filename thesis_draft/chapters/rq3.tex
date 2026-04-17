@@ -38,6 +38,16 @@ Symbolic Threat  & Cultural Cohesion(+) vs.\ Symbolic Threat(−) &    544   & 0
 \end{tabularx}
 \end{table}
 
+\paragraph{How to read bias scores.}
+Before interpreting the figures, one semantic caveat deserves emphasis. As defined in Section~\ref{sec:rq3}, the bias score is the cosine alignment between a document and an axis vector anchored by two opposing vocabulary clusters in a shared multilingual embedding space. It therefore reflects \emph{which moral vocabulary the document activates}, not whether the speaker is praising or attacking the axis concept. A positive score on Sanctity, for instance, does not mean that the text treats religion as sacred — it means the document's language is lexically closer to purity/tradition vocabulary than to degradation vocabulary, which is fully consistent with a speaker invoking those virtue words in order to attack an outgroup (``we must protect our sacred tradition from this foreign cult'' would score positively on Sanctity precisely while being hostile).
+
+Concretely, anti-religious discourse follows two distinct moral-argumentative grammars, both of which are hostile:
+\begin{itemize}
+    \item \textbf{Direct-condemnation grammar} — the speaker loads vice vocabulary (\textit{harm}, \textit{corruption}, \textit{cheating}, \textit{degradation}) directly onto the target, yielding a \emph{negative} bias on the relevant MFT axis. The target is explicitly cast as the violator of a shared moral value.
+    \item \textbf{Identity-defense grammar} — the speaker invokes ingroup virtue vocabulary (\textit{tradition}, \textit{purity}, \textit{order}, \textit{loyalty}) to justify the attack, and simultaneously marks the target as a threat to those virtues (\textit{cult}, \textit{brainwashing}, \textit{foreign influence}), yielding a \emph{positive} bias on the MFT axes together with a \emph{negative} bias on the Realistic/Symbolic Threat axes. The target is cast as a danger to cherished values rather than as a moral violator.
+\end{itemize}
+A positive MFT score therefore does not exonerate a text; it indicates that the hostility is framed as defense of something cherished, rather than as the indictment of a wrongdoer. A central empirical claim of this chapter is that the three language communities systematically prefer different grammars — English skews toward direct condemnation, while Chinese and Japanese skew toward identity defense — so the apparently paradoxical mix of positive MFT scores and negative threat scores in the Chinese and Japanese rows of the figures below is the expected signature of identity-defense framing, not an inconsistency in the data.
+
 %---------------------------------------------------------------
 \section{Moral Framing by Language}
 \label{sec:rq3_lang}
@@ -47,14 +57,14 @@ Figure~\ref{fig:rq3_lang_heatmap} (heatmap) and Figure~\ref{fig:rq3_lang_line} (
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{RQ3/rq3_lang_heatmap.png}
-    \caption{Mean moral bias scores per language across all seven axes. Warmer (red) colours indicate negative bias (attack-oriented framing); cooler (blue) colours indicate positive bias (care/cohesion-oriented framing).}
+    \caption{Mean moral bias scores per language across all seven axes. Warmer (red) = document language closer to the vice/threat pole of the axis; cooler (blue) = closer to the virtue/safety/cohesion pole. Note that in the identity-defense grammar (Chinese, Japanese; see reading guide above), positive values on the five classical MFT axes signal ingroup-virtue invocation and typically co-occur with negative values on the threat axes — both are markers of hostility.}
     \label{fig:rq3_lang_heatmap}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{RQ3/rq3_lang_line.png}
-    \caption{Per-axis mean bias scores for English, Chinese, and Japanese, shown as a parallel-coordinate profile. Each line traces the moral ``fingerprint'' of one language community.}
+    \caption{Per-axis mean bias scores for English, Chinese, and Japanese, shown as a parallel-coordinate profile. Each line traces the moral ``fingerprint'' of one language community. See the reading guide above for how to interpret the sign of each axis.}
     \label{fig:rq3_lang_line}
 \end{figure}
 
@@ -164,13 +174,13 @@ One systematic pattern runs through every topic: English-language texts consiste
 %---------------------------------------------------------------
 \section{Summary: Why Does Anti-Religious Hate Speech Happen?}
 \label{sec:rq3_summary}
-At its core, the answer to RQ3 is this: people attack Christianity — and religion more broadly — because they perceive it as violating the moral values they hold most dear. Anti-religious hate speech is not simply the expression of dislike; it is a moral argument. The speaker is not saying ``I dislike this''; they are saying ``this is wrong, this is harmful, this is a threat to us.'' The specific moral charge, however, depends heavily on who is speaking and what they are talking about.
+At its core, the answer to RQ3 is this: people attack Christianity — and religion more broadly — because they perceive it as violating, or as threatening, the moral values they hold most dear. Anti-religious hate speech is not simply the expression of dislike; it is a moral argument. The speaker is not saying ``I dislike this''; they are saying ``this is wrong, this is harmful, this is a threat to us.'' The specific moral charge, however, depends heavily on who is speaking and what they are talking about.
 
 For English-speaking audiences, the dominant grievance is moral condemnation. Christianity is attacked for causing harm, enabling injustice, undermining legitimate authority, or degrading human dignity — the Harm, Fairness, Authority, and Sanctity axes all pull negative simultaneously. The implied complaint is that the religion, or its institutions, have betrayed a wide set of ethical standards that society takes for granted. Topics like church abuse scandals or religion in politics exemplify this: the speaker's anger is grounded in the belief that religion has actively done something wrong.
 
 For Chinese- and Japanese-speaking audiences, the moral charge shifts. Here the primary complaint is not that religion has done something wrong in a universal ethical sense, but that it poses a threat — to cultural identity, social cohesion, or group safety. The Symbolic Threat and Realistic Threat axes turn negative while the classical Moral Foundation axes remain relatively positive. The implied complaint is closer to: ``this religion does not belong here, and its presence endangers us.'' Topics like faith and heresy debates concentrate the most extreme versions of this framing in both languages, though Chinese discourse leans more strongly into identity-threat narratives while Japanese discourse incorporates more direct moral criticism.
 
-In both cases, the hate speech follows a recognisable logic: the speaker identifies a moral value they care about, concludes that the target religion violates it, and uses that violation as the justification for attack. What changes across languages and topics is simply \emph{which value} is invoked — and that choice is far from random. It reflects the broader cultural and social concerns of each community, turning anti-religious discourse into a lens through which those communities articulate what they believe a good society should look like.
+In both cases, the hate speech follows a recognisable logic: the speaker identifies a moral value they care about, constructs an argument that the target religion either violates it or threatens it, and uses that construction as the justification for attack. What changes across languages and topics is not only \emph{which value} is invoked but also the \emph{grammar} of the moral argument itself: English-language discourse tends to indict religion as the violator of a shared ethical code (direct-condemnation grammar), while Chinese- and Japanese-language discourse tends to position religion as a danger to cherished ingroup virtues (identity-defense grammar). Neither grammar is more hostile than the other; they are different rhetorical routes to the same end. And the choice of both value and grammar is far from random — it reflects the broader cultural and social concerns of each community, turning anti-religious discourse into a lens through which those communities articulate what they believe a good society should look like.
 
 
 % self-defined macro: include bibliography even when compiling a single chapter

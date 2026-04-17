@@ -290,19 +290,48 @@ For each axis, we define a positive pole (virtue / safety / cohesion) and a nega
 \end{equation}
 where $D_k^+$ and $D_k^-$ are the positive and negative pole vocabulary sets for axis $k$, and $\text{E5}(w)$ denotes the multilingual E5-large embedding of word $w$. Each axis vector is $\ell_2$-normalized.
 
+To make the semantic direction of each axis concrete, Table~\ref{tab:rq3_anchor_words} lists representative anchor words for both poles of every axis, with one illustrative example per language. These are the words whose centroids define the pole endpoints in E5 embedding space; any document is then located somewhere along the continuum between them.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Representative anchor words defining each moral axis (EN / ZH / JA). The axis vector $\mathbf{a}_k$ is the centroid of the positive-pole embeddings minus the centroid of the negative-pole embeddings. Only a small illustrative sample is shown per cell; the last column gives the full vocabulary size $|D_k^+|$ / $|D_k^-|$ after deduplication across dictionaries.}
+\label{tab:rq3_anchor_words}
+\begin{tabularx}{\textwidth}{l X X r}
+\toprule
+\textbf{Axis} & \textbf{Positive pole (virtue / safety / cohesion)} & \textbf{Negative pole (vice / threat / degradation)} & \boldmath$|D_k^+| / |D_k^-|$ \\
+\midrule
+Harm/Care        & \textit{care}, \textit{protect} / 关爱, 保护 / 守る, 保護        & \textit{harm}, \textit{hurt} / 伤害, 虐待 / 傷つける, 虐待         & 1619 / 453 \\
+Fairness         & \textit{fair}, \textit{justice} / 公平, 正义 / 公正, 平等        & \textit{cheat}, \textit{unfair} / 欺骗, 不公 / 不正, 差別          & 1065 / 371 \\
+Loyalty          & \textit{loyal}, \textit{unite} / 忠诚, 团结 / 忠誠, 結束          & \textit{betray}, \textit{traitor} / 背叛, 叛国 / 裏切り, 背信      & 887 / 124 \\
+Authority        & \textit{respect}, \textit{order} / 秩序, 尊重 / 秩序, 尊敬        & \textit{rebel}, \textit{subvert} / 反叛, 颠覆 / 反乱, 転覆         & 1782 / 226 \\
+Sanctity         & \textit{pure}, \textit{sacred} / 纯洁, 神圣 / 清浄, 神聖          & \textit{corrupt}, \textit{disgust} / 污秽, 堕落 / 汚れ, 堕落       & 1171 / 538 \\
+Realistic Threat & \textit{safe}, \textit{sovereign} / 安全, 主权 / 安全, 主権       & \textit{invasion}, \textit{infiltrate} / 入侵, 渗透 / 侵略, 支配   & 25 / 40 \\
+Symbolic Threat  & \textit{culture}, \textit{tradition} / 文化, 传统 / 文化, 伝統    & \textit{brainwash}, \textit{cult} / 洗脑, 邪教 / 洗脳, カルト      & 25 / 33 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \subsection{Document Projection and Bias Score}
 
 Each document $d$ in the corpus is encoded using the same multilingual E5-large model with a \texttt{passage:} prefix, producing a unit-normalized embedding. The moral bias of document $d$ along axis $k$ is then computed as the cosine similarity between the document vector and the axis vector:
 \begin{equation}
     \text{Bias}(d, k) = \cos\!\left(\text{E5}(d),\; \mathbf{a}_k\right)
 \end{equation}
-A negative bias score indicates that the document's semantic content is closer to the negative (vice/threat) pole, while a positive score indicates alignment with the positive (virtue/safety) pole. This formulation follows the original FrameAxis paper \citep{Kwak_2021} and is conceptually related to the word embedding association tests used in bias research \citep{Caliskan_2017}.
+Formally, a negative bias score indicates that the document's semantic content is closer to the negative (vice/threat) pole, while a positive score indicates alignment with the positive (virtue/safety/cohesion) pole. Crucially, however, the sign of the bias score reflects \emph{which moral vocabulary the document activates}, not the speaker's evaluative stance toward any particular target. A hostile document can score positive on Sanctity if it invokes purity or tradition language — for example, ``we must protect our sacred traditions from this cult'' — because the document's embedding is dominated by virtue-pole terms even though the overall communicative intent is to attack.
+
+Anti-religious discourse therefore admits two distinct moral-argumentative grammars, both of which are hostile and both of which the bias framework can capture:
+\begin{itemize}
+    \item \textbf{Direct-condemnation grammar:} the speaker loads vice vocabulary onto the target (\textit{harmful}, \textit{unjust}, \textit{corrupt}, \textit{degenerate}). The document's semantic centre of mass shifts toward the negative pole, yielding a \emph{negative} bias on the relevant MFT axis. The target is explicitly cast as the violator of that moral value.
+    \item \textbf{Identity-defense grammar:} the speaker invokes ingroup virtue vocabulary to justify the attack (\textit{our tradition}, \textit{our order}, \textit{our purity}) and simultaneously casts the target as a threat to those virtues (\textit{foreign cult}, \textit{brainwashing sect}, \textit{cultural invasion}). The document shifts \emph{toward} the positive pole of the classical MFT axes and \emph{away} from the positive pole of the threat axes, yielding a characteristic \emph{positive-MFT + negative-threat} configuration.
+\end{itemize}
+Neither configuration is inherently more hateful than the other; they are two rhetorical strategies for morally grounding an attack. A central motivation for projecting onto seven complementary axes — rather than collapsing to a single hostility dimension — is precisely that this structural difference between direct-condemnation and identity-defense framing becomes visible in the data, and can be compared across languages and topics. This formulation follows the original FrameAxis paper \citep{Kwak_2021} and is conceptually related to the word embedding association tests used in bias research \citep{Caliskan_2017}.
 
 \subsection{Statistical Analysis and Interpretation}
 
 Bias scores are computed for all documents and aggregated at the language $\times$ topic level. Cross-linguistic differences in moral motivation profiles are assessed using one-way ANOVA for each axis, with language as the grouping variable. We report $F$-statistics, $p$-values, and effect sizes ($\eta^2$) to distinguish statistically significant from incidental differences.
 
-Because the five MFD foundations are empirically highly correlated within our corpus (pairwise correlations $\approx 0.8$), we treat them as a single ``moral condemnation bundle'' for interpretation purposes and focus on the Realistic Threat and Symbolic Threat axes as the primary dimensions that differentiate language communities from one another. Within each language, we additionally compute per-topic $z$-scores to identify which topics are most strongly associated with each moral motivation, independently of the language-level baseline.
+Because the five MFD foundations are empirically highly correlated within our corpus (pairwise correlations $\approx 0.8$), we treat them as a single ``moral-foundation bundle'' for interpretation purposes — its sign indicates whether the dominant grammar in a given slice of the data is direct-condemnation (negative bundle) or identity-defense (positive bundle) — and focus on the Realistic Threat and Symbolic Threat axes as the primary additional dimensions that differentiate language communities from one another. Within each language, we additionally compute per-topic $z$-scores to identify which topics are most strongly associated with each moral motivation, independently of the language-level baseline.
 
 \begin{figure}[h]
 \centering

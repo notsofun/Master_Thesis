@@ -196,23 +196,35 @@ A key design challenge is that social media text in all three languages frequent
 Layer 1 applies dependency parsing using spaCy to extract explicit SVO triples from sentences that contain a complete subject and object. This works well for English and a subset of Chinese texts. Layer 2, the predicate window method, handles structurally incomplete sentences: for documents that contain a known attack target but no parseable SVO, we extract all content verbs within a $\pm N$-word window centred on the target entity, filtering out a language-specific stop-verb list. This recovers the predicate--target relationship even when the subject is absent. Layer 3 passes the extracted verb--target pairs from Layers 1 and 2 to a Gemini LLM for frame classification, using a structured prompt with chain-of-thought reasoning that maps each predicate--argument pair to one of the ten frame categories defined below.
 
 \subsection{Attack Frame Taxonomy}
+\label{sec:rq2-taxonomy}
 
-The taxonomy of attack frames was developed through iterative annotation and informed by prior theoretical work on hate speech discourse, particularly the dimensions of explicitness and power articulated in \citet{matamoros-fernandez_racism_2021}. The final taxonomy comprises ten categories:
+The ten-category taxonomy used in this thesis is author-constructed: no prior scheme provided a ready-made classification that covered the full range of anti-Christian discourse across three languages simultaneously. The taxonomy was developed inductively through three rounds of pilot coding on a stratified random sample of 200 documents drawn from the BERTopic corpus (approximately 70 per language). In each round, emergent categories were refined, merged, or split until saturation was reached and inter-rater agreement between the author and an independent coder exceeded $\kappa = 0.74$ on the pilot set. The resulting scheme is also informed by prior theoretical work on hate speech discourse, particularly the explicitness and power dimensions articulated in \citet{matamoros-fernandez_racism_2021}, and by the framing literature's distinction between diagnostic frames (attributing blame) and motivational frames (calling to action) \citep{snow_master_2000}.
+
+The final taxonomy comprises ten categories, defined below with representative examples drawn from the corpus:
 
 \begin{enumerate}
-    \item \textbf{Cognitive Manipulation}: Accusations of brainwashing, indoctrination, or cult-like psychological control.
-    \item \textbf{Moral Accusation}: Charges of hypocrisy, immorality, or violation of publicly professed values.
-    \item \textbf{Dehumanization}: Framing Christians or Christian institutions using animal or disease metaphors (e.g., ``parasite,'' ``cancer'').
-    \item \textbf{Sexual Abuse Frame}: References to clergy abuse, cover-ups, or sexual exploitation.
-    \item \textbf{Economic Exploitation}: Accusations of financial fraud, coercive donation practices, or wealth extraction.
-    \item \textbf{Political Interference}: Claims of undue religious influence on elections, legislation, or state governance.
-    \item \textbf{Institutional Rot}: Systemic critique of ecclesiastical structures, complicity, and impunity.
-    \item \textbf{Social Exclusion}: Framing Christianity as socially incompatible, with calls for exclusion or ostracization.
-    \item \textbf{Rhetorical Attack}: Sarcasm, satire, and critical rhetoric that attacks without explicit violence.
-    \item \textbf{Other}: Residual category for verifiable hate content that does not fit the above frames.
+    \item \textbf{Cognitive Manipulation}: Accusations that a religious institution or group uses deceptive psychological techniques — brainwashing, indoctrination, or cult-like mind control — to recruit or retain members, overriding individual rational agency. \textit{Example:} ``Christians assaulted people trying to make use of their new freedom'' (EN); 洗脑 (\textit{brainwash}) directed at 教会 (ZH); 狂信的カルト (\textit{fanatical cult}) directed at 統一教会 (JA).
+
+    \item \textbf{Moral Accusation}: Charges that individuals or institutions have violated their own publicly professed moral code --- hypocrisy, abuse of power, or double standards --- framing the target as morally discredited rather than physically dangerous. \textit{Example:} ``They wish to spread their religious beliefs by force'' (EN); 堕落 (\textit{degenerate}) directed at 神父 (ZH).
+
+    \item \textbf{Dehumanization}: Language that strips Christian targets of human status through animal, disease, or pest metaphors, rendering the group as a category to be eliminated rather than merely criticised. \textit{Example:} 毒瘤 (\textit{malignant tumour}) (ZH); ゴキブリ (\textit{cockroach}) (JA).
+
+    \item \textbf{Sexual Abuse Frame}: References to clergy sexual abuse, institutional cover-ups, or sexual exploitation of minors or subordinates, framing the church as a site of predatory misconduct. \textit{Example:} ``pedophile priests'' (EN); 性侵 (\textit{sexual assault}) directed at 神父 (ZH); 児童への性的虐待 (\textit{child sexual abuse}) (JA).
+
+    \item \textbf{Economic Exploitation}: Accusations of financial predation --- fraudulent fundraising, coercive donation schemes, or systematic wealth extraction from vulnerable believers. \textit{Example:} ``defrauding the faithful'' (EN); 敛财 (\textit{amass money illicitly}) (ZH); 献金 (\textit{forced donations}) and 搾取 (\textit{exploitation}) directed at 統一教会 (JA).
+
+    \item \textbf{Political Interference}: Claims that a religious group or institution exerts undue influence on elections, legislation, or state governance, conflating religious authority with political power. \textit{Example:} ``strangle democracy'' (EN); 渗透 (\textit{infiltrate}) (ZH); 支配 (\textit{domination}/\textit{control}) and 選挙 (\textit{election}) directed at 自民党 (JA).
+
+    \item \textbf{Institutional Rot}: Systemic critique of ecclesiastical structures that enables misconduct to persist through complicity, cover-up, and the shielding of perpetrators by those in authority. \textit{Example:} ``cover ups and protection'' (EN); 官官相护 (\textit{officials shielding each other}) and 包庇 (\textit{cover up}) (ZH); 腐敗と隠蔽 (\textit{corruption and concealment}) (JA).
+
+    \item \textbf{Social Exclusion}: Framing Christianity or Christians as incompatible with social norms, public life, or national identity, with explicit or implicit calls for exclusion, banning, or ostracisation. \textit{Example:} ``kick them out'' (EN); 取缔 (\textit{ban/suppress}) (ZH); 認めろ (\textit{refuse to recognise}) (JA).
+
+    \item \textbf{Rhetorical Attack}: Sarcasm, mockery, dismissive invective, or critical rhetoric that attacks a target without resolving into a more specific factual allegation. This is the residual frame for hostile discourse that is affectively charged but content-light. \textit{Example:} ``I remember the phony, fake, stifling forced artificial piety'' (EN); 不如 (\textit{inferior to}) used to demean Christian practice (ZH); 破壊 / 壊滅 (\textit{destruction/annihilation}) as rhetorical hyperbole (JA).
+
+    \item \textbf{Other}: Residual category for predicate--argument pairs that are verifiably hateful but do not fit any of the nine substantive frames, or where the frame cannot be reliably determined from the available context.
 \end{enumerate}
 
-A rule-based fallback classifier using keyword lists is applied when the LLM is unavailable, ensuring full coverage of the corpus. Documents classified as noise — texts that contain no discernible attack predicate directed at a Christian entity — are filtered from the analysis.
+A rule-based fallback classifier using keyword lists is applied when the LLM is unavailable, ensuring full corpus coverage. Documents classified as \textit{noise} — texts that contain no discernible attack predicate directed at a Christian entity — are filtered before aggregation.
 
 \subsection{Aggregation}
 
@@ -221,35 +233,43 @@ Results are aggregated at the language $\times$ topic level. For each language, 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}[
-  node distance=0.45cm,
+  node distance=0.45cm and 1.4cm,
   box/.style={rectangle, rounded corners=3pt, draw=black, fill=gray!10,
-              text width=5.8cm, align=center, minimum height=0.8cm, font=\small},
-  laybox/.style={rectangle, rounded corners=3pt, draw=black, fill=white,
-                 text width=5.8cm, align=center, minimum height=0.8cm, font=\small},
-  arr/.style={-{Stealth[length=5pt]}, thick}
+              text width=5.8cm, align=center, minimum height=0.85cm, font=\small},
+  sidebox/.style={rectangle, rounded corners=3pt, draw=black!60, fill=white,
+                  text width=3.2cm, align=center, minimum height=0.75cm,
+                  font=\footnotesize, dashed},
+  arr/.style={-{Stealth[length=5pt]}, thick},
+  sarr/.style={-{Stealth[length=4pt]}, thick, dashed, gray}
 ]
 
-\node[box]    (inp) {Topic corpus + RQ1 targets};
+\node[box] (inp)  {Topic corpus + RQ1 targets};
 
-\node[laybox, below=of inp]  (l1)  {Layer 1: Dependency parsing $\rightarrow$ SVO triples};
-\node[laybox, below=of l1]   (l2)  {Layer 2: Predicate window ($\pm N$ words around target)};
-\node[box,    below=of l2]   (l3)  {Layer 3: Gemini LLM $\rightarrow$ 10-class frame label};
+\node[box, below=of inp]  (svo)  {\textbf{Step 1 — SVO Extraction}\\Dependency parsing $\rightarrow$ subject--verb--object triples};
 
-\node[box, below=of l3] (tax) {Attack frame taxonomy (9 substantive + \textit{other})};
-\node[box, below=of tax] (out) {\textbf{Output:} frame distribution by language $\times$ topic};
+\node[box, below=of svo]  (ctx)  {\textbf{Step 2 — Context Window}\\Predicate window ($\pm N$ words around target)\\for zero-subject / topic-drop sentences};
 
-\draw[arr] (inp) -- (l1);
-\draw[arr] (l1)  -- (l2);
-\draw[arr] (l2)  -- (l3);
-\draw[arr] (l3)  -- (tax);
+\node[box, below=of ctx]  (llm)  {\textbf{Step 3 — LLM Classification}\\Gemini-2.5-Flash: structured prompt\\$\rightarrow$ 10-class frame label};
+
+\node[box, below=of llm]  (tax)  {\textbf{Step 4 — Frame Assignment}\\Attack frame taxonomy\\(9 substantive categories + \textit{other})};
+
+\node[box, below=of tax]  (out)  {\textbf{Output:} frame distribution by language $\times$ topic};
+
+% side annotations
+\node[sidebox, right=1.1cm of svo] (ann1) {Full SVO if parseable\\(English + partial ZH)};
+\node[sidebox, right=1.1cm of ctx] (ann2) {Handles ZH / JA\\zero-subject drop};
+
+\draw[arr] (inp) -- (svo);
+\draw[arr] (svo) -- (ctx);
+\draw[arr] (ctx) -- (llm);
+\draw[arr] (llm) -- (tax);
 \draw[arr] (tax) -- (out);
 
-% bracket label for layers
-\node[font=\footnotesize\itshape, text=gray, right=0.3cm of l1] {complementary};
-\node[font=\footnotesize\itshape, text=gray, right=0.3cm of l2] {for zero-subject sentences};
+\draw[sarr] (ann1.west) -- (svo.east);
+\draw[sarr] (ann2.west) -- (ctx.east);
 
 \end{tikzpicture}
-\caption{RQ2 frame classification pipeline. Layers 1--2 extract predicate--argument structure using complementary syntactic methods; Layer 3 maps these to a theoretically grounded attack frame taxonomy via LLM.}
+\caption{RQ2 frame classification pipeline. The four sequential steps transform each document into a labelled predicate--argument pair: SVO extraction captures full syntactic structure; the context window fallback recovers predicates from zero-subject sentences; the LLM maps each pair to one of ten attack frames; the taxonomy then assigns the final label.}
 \label{fig:rq2-pipeline}
 \end{figure}
 

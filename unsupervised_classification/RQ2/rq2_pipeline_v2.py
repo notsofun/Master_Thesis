@@ -780,6 +780,34 @@ def frame_bilingual_label(key: str) -> str:
 LANG_LABEL = {"en": "English", "zh": "Chinese", "jp": "Japanese"}
 LANG_COLOR = {"en": "#4C78A8", "zh": "#F58518", "jp": "#54A24B"}
 
+# English translations for all non-English target labels appearing in Fig C
+TARGET_EN = {
+    # Chinese targets
+    "韩国":   "韩国 (South Korea)",
+    "韓国":   "韓国 (South Korea)",
+    "神父":   "神父 (Priest)",
+    "教会":   "教会 (Church)",
+    "主教":   "主教 (Bishop)",
+    "教皇":   "教皇 (Pope)",
+    "基督教":  "基督教 (Christianity)",
+    "基督徒":  "基督徒 (Christians)",
+    "教会学校": "教会学校 (Sunday School)",
+    "邪教":   "邪教 (Cult)",
+    "信徒":   "信徒 (Believers)",
+    # Japanese targets
+    "自民党":   "自民党 (LDP)",
+    "統一教会":  "統一教会 (Unification Church)",
+    "日本人":   "日本人 (Japanese People)",
+    "安倍晋三":  "安倍晋三 (Shinzo Abe)",
+    "キリスト教": "キリスト教 (Christianity)",
+    "カトリック": "カトリック (Catholicism)",
+    "マリア":   "マリア (Virgin Mary)",
+    "トランプ":  "トランプ (Trump)",
+    "中国共産党": "中国共産党 (CCP)",
+    "保守派":   "保守派 (Conservatives)",
+    "ncr":    "ncr",
+}
+
 _LAYOUT_BASE = dict(
     font=dict(
         family="Arial,Helvetica,sans-serif",
@@ -924,11 +952,13 @@ def aggregate_and_visualize(labeled_df: pd.DataFrame):
            .reset_index(name="count"))
     tgf_pivot = (tgf.pivot(index="target", columns="frame_type", values="count")
                     .reindex(columns=FRAME_KEYS, fill_value=0).fillna(0))
+    # Apply English translations to all non-English target labels
+    translated_y = [TARGET_EN.get(t, t) for t in tgf_pivot.index.tolist()]
     dynamic_height = max(600, len(tgf_pivot) * 20 + 150)
     fig_c = go.Figure(go.Heatmap(
         z=tgf_pivot.values,
         x=english_x,
-        y=tgf_pivot.index.tolist(),
+        y=translated_y,
         colorscale="Reds",
         text=tgf_pivot.values.astype(int),
         texttemplate="%{text}",

@@ -1,426 +1,426 @@
 ﻿lang,topic,target,frame_type,count,top_verb,frame_zh,lang_label,pct_in_lang
-en,6,priests,sexual_abuse_frame,14,pedophile,性侵虐待/掩盖,English 🇬🇧,5.69
-en,1,trump,rhetorical_attack,11,blame,修辞攻击/讽刺批判,English 🇬🇧,4.47
-en,1,catholics,rhetorical_attack,10,put,修辞攻击/讽刺批判,English 🇬🇧,4.07
-en,1,christian,moral_accusation,10,abuses,道德指控/伪善,English 🇬🇧,4.07
-en,1,catholic,rhetorical_attack,7,admire,修辞攻击/讽刺批判,English 🇬🇧,2.85
-en,1,trump,moral_accusation,6,elect,道德指控/伪善,English 🇬🇧,2.44
-en,2,priests,rhetorical_attack,6,cringe,修辞攻击/讽刺批判,English 🇬🇧,2.44
-en,3,priests,sexual_abuse_frame,6,abuse,性侵虐待/掩盖,English 🇬🇧,2.44
-en,6,priests,institutional_rot,6,protect,制度性腐败,English 🇬🇧,2.44
-en,6,priests,moral_accusation,6,abandon,道德指控/伪善,English 🇬🇧,2.44
-en,18,catholic,rhetorical_attack,6,meet,修辞攻击/讽刺批判,English 🇬🇧,2.44
-en,5,catholic,rhetorical_attack,5,point,修辞攻击/讽刺批判,English 🇬🇧,2.03
-en,5,catholics,rhetorical_attack,5,attend,修辞攻击/讽刺批判,English 🇬🇧,2.03
-en,15,catholics,sexual_abuse_frame,5,condescend,性侵虐待/掩盖,English 🇬🇧,2.03
-en,16,canada,rhetorical_attack,5,assault,修辞攻击/讽刺批判,English 🇬🇧,2.03
-en,19,jesus,rhetorical_attack,5,love,修辞攻击/讽刺批判,English 🇬🇧,2.03
-en,1,catholics,moral_accusation,4,silence,道德指控/伪善,English 🇬🇧,1.63
-en,5,jesus,rhetorical_attack,4,ignore,修辞攻击/讽刺批判,English 🇬🇧,1.63
-en,8,catholic,rhetorical_attack,4,mention,修辞攻击/讽刺批判,English 🇬🇧,1.63
-en,13,catholic,rhetorical_attack,4,remember,修辞攻击/讽刺批判,English 🇬🇧,1.63
-en,16,christian,rhetorical_attack,4,remember,修辞攻击/讽刺批判,English 🇬🇧,1.63
-en,1,christian,cognitive_manipulation,3,venture,认知操纵/洗脑,English 🇬🇧,1.22
-en,1,christian,rhetorical_attack,3,hate,修辞攻击/讽刺批判,English 🇬🇧,1.22
-en,2,priests,moral_accusation,3,live,道德指控/伪善,English 🇬🇧,1.22
-en,8,catholic,moral_accusation,3,end,道德指控/伪善,English 🇬🇧,1.22
-en,11,christians,moral_accusation,3,condemn,道德指控/伪善,English 🇬🇧,1.22
-en,14,christian,rhetorical_attack,3,will,修辞攻击/讽刺批判,English 🇬🇧,1.22
-en,15,catholic,sexual_abuse_frame,3,rape,性侵虐待/掩盖,English 🇬🇧,1.22
-en,1,catholic,moral_accusation,2,silence,道德指控/伪善,English 🇬🇧,0.81
-en,1,trump,political_interference,2,strangle,政治干预,English 🇬🇧,0.81
-en,2,priests,sexual_abuse_frame,2,abuse,性侵虐待/掩盖,English 🇬🇧,0.81
-en,5,catholic,cognitive_manipulation,2,corruption,认知操纵/洗脑,English 🇬🇧,0.81
-en,5,catholics,cognitive_manipulation,2,corruption,认知操纵/洗脑,English 🇬🇧,0.81
-en,5,jesus,cognitive_manipulation,2,brainwashing,认知操纵/洗脑,English 🇬🇧,0.81
-en,6,priests,rhetorical_attack,2,favor,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,7,christian,rhetorical_attack,2,prefer,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,8,catholic,economic_exploitation,2,pay,经济剥削,English 🇬🇧,0.81
-en,9,jesus,rhetorical_attack,2,reference,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,10,christian,rhetorical_attack,2,preach,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,11,christian,moral_accusation,2,stab,道德指控/伪善,English 🇬🇧,0.81
-en,11,christian,rhetorical_attack,2,write,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,12,catholic,moral_accusation,2,assure,道德指控/伪善,English 🇬🇧,0.81
-en,15,catholic,rhetorical_attack,2,bid,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,15,catholics,rhetorical_attack,2,practice,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,16,canada,social_exclusion,2,swamp,社会排斥/逐出,English 🇬🇧,0.81
-en,27,christian,rhetorical_attack,2,lump,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,27,gays,rhetorical_attack,2,hat,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,32,christians,moral_accusation,2,love,道德指控/伪善,English 🇬🇧,0.81
-en,33,catholic,rhetorical_attack,2,guess,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,35,jesus,rhetorical_attack,2,count,修辞攻击/讽刺批判,English 🇬🇧,0.81
-en,46,christians,moral_accusation,2,crucify,道德指控/伪善,English 🇬🇧,0.81
-en,1,catholic,political_interference,1,like,政治干预,English 🇬🇧,0.41
-en,1,catholics,dehumanization,1,contaminate,非人化/病理化,English 🇬🇧,0.41
-en,1,catholics,social_exclusion,1,kick,社会排斥/逐出,English 🇬🇧,0.41
-en,1,christian,political_interference,1,live,政治干预,English 🇬🇧,0.41
-en,1,christian,social_exclusion,1,kick,社会排斥/逐出,English 🇬🇧,0.41
-en,1,trump,cognitive_manipulation,1,invent,认知操纵/洗脑,English 🇬🇧,0.41
-en,1,trump,economic_exploitation,1,defrauding,经济剥削,English 🇬🇧,0.41
-en,1,trump,sexual_abuse_frame,1,abuser,性侵虐待/掩盖,English 🇬🇧,0.41
-en,2,priests,institutional_rot,1,ordain,制度性腐败,English 🇬🇧,0.41
-en,2,priests,social_exclusion,1,ordain,社会排斥/逐出,English 🇬🇧,0.41
-en,3,priests,institutional_rot,1,question,制度性腐败,English 🇬🇧,0.41
-en,3,priests,moral_accusation,1,interpret,道德指控/伪善,English 🇬🇧,0.41
-en,5,catholics,social_exclusion,1,forbid,社会排斥/逐出,English 🇬🇧,0.41
-en,7,christian,moral_accusation,1,corrupt,道德指控/伪善,English 🇬🇧,0.41
-en,7,jesus,moral_accusation,1,corrupt,道德指控/伪善,English 🇬🇧,0.41
-en,7,jesus,rhetorical_attack,1,welcome,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,10,christian,moral_accusation,1,witness,道德指控/伪善,English 🇬🇧,0.41
-en,11,christians,other,1,target,其他,English 🇬🇧,0.41
-en,11,christians,rhetorical_attack,1,wield,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,12,catholic,rhetorical_attack,1,forbid,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,12,jesus,rhetorical_attack,1,touch,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,13,christian,cognitive_manipulation,1,indoctrination,认知操纵/洗脑,English 🇬🇧,0.41
-en,13,christian,rhetorical_attack,1,read,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,13,christian,social_exclusion,1,exclude,社会排斥/逐出,English 🇬🇧,0.41
-en,16,canada,moral_accusation,1,enter,道德指控/伪善,English 🇬🇧,0.41
-en,16,canada,political_interference,1,experience,政治干预,English 🇬🇧,0.41
-en,16,christian,moral_accusation,1,assaulted,道德指控/伪善,English 🇬🇧,0.41
-en,16,christian,other,1,reject,其他,English 🇬🇧,0.41
-en,16,christian,social_exclusion,1,immigrate,社会排斥/逐出,English 🇬🇧,0.41
-en,16,christians,moral_accusation,1,assaulted,道德指控/伪善,English 🇬🇧,0.41
-en,16,trudeau,political_interference,1,apologize,政治干预,English 🇬🇧,0.41
-en,16,trudeau,rhetorical_attack,1,critisize,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,18,catholic,institutional_rot,1,cover ups,制度性腐败,English 🇬🇧,0.41
-en,18,catholic,sexual_abuse_frame,1,abuse,性侵虐待/掩盖,English 🇬🇧,0.41
-en,19,pharisee,moral_accusation,1,rebuke,道德指控/伪善,English 🇬🇧,0.41
-en,24,pope,institutional_rot,1,move,制度性腐败,English 🇬🇧,0.41
-en,27,christian,moral_accusation,1,respect,道德指控/伪善,English 🇬🇧,0.41
-en,27,christian,sexual_abuse_frame,1,molestations,性侵虐待/掩盖,English 🇬🇧,0.41
-en,27,jesus,rhetorical_attack,1,bake,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,33,catholic,institutional_rot,1,welcome,制度性腐败,English 🇬🇧,0.41
-en,36,catholics,rhetorical_attack,1,believe,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,41,catholic,rhetorical_attack,1,hear,修辞攻击/讽刺批判,English 🇬🇧,0.41
-en,41,catholics,sexual_abuse_frame,1,defend,性侵虐待/掩盖,English 🇬🇧,0.41
-en,46,christian,cognitive_manipulation,1,brainwashed,认知操纵/洗脑,English 🇬🇧,0.41
-en,46,christian,sexual_abuse_frame,1,raped,性侵虐待/掩盖,English 🇬🇧,0.41
-en,46,christians,rhetorical_attack,1,hate,修辞攻击/讽刺批判,English 🇬🇧,0.41
-jp,0,統一教会,political_interference,77,支配,政治干预,日本語 🇯🇵,11.06
-jp,0,統一教会,economic_exploitation,49,献金,经济剥削,日本語 🇯🇵,7.04
-jp,0,統一教会,rhetorical_attack,39,擁護,修辞攻击/讽刺批判,日本語 🇯🇵,5.6
-jp,0,統一教会,cognitive_manipulation,31,洗脳,认知操纵/洗脑,日本語 🇯🇵,4.45
-jp,6,教会,sexual_abuse_frame,31,性的虐待,性侵虐待/掩盖,日本語 🇯🇵,4.45
-jp,0,統一教会,moral_accusation,25,破壊,道德指控/伪善,日本語 🇯🇵,3.59
-jp,0,自民党,political_interference,22,要求,政治干预,日本語 🇯🇵,3.16
-jp,0,日本人,economic_exploitation,21,巻き,经济剥削,日本語 🇯🇵,3.02
-jp,0,日本人,cognitive_manipulation,14,洗脳,认知操纵/洗脑,日本語 🇯🇵,2.01
-jp,6,教皇,sexual_abuse_frame,12,性的虐待,性侵虐待/掩盖,日本語 🇯🇵,1.72
-jp,0,安倍晋三,moral_accusation,11,殺さ,道德指控/伪善,日本語 🇯🇵,1.58
-jp,2,教会,institutional_rot,11,搾取,制度性腐败,日本語 🇯🇵,1.58
-jp,6,神父,sexual_abuse_frame,11,性的虐待,性侵虐待/掩盖,日本語 🇯🇵,1.58
-jp,0,日本人,moral_accusation,9,苦しめ,道德指控/伪善,日本語 🇯🇵,1.29
-jp,0,韓国,economic_exploitation,9,送っ,经济剥削,日本語 🇯🇵,1.29
-jp,0,安倍晋三,political_interference,8,受け,政治干预,日本語 🇯🇵,1.15
-jp,0,統一教会,dehumanization,8,ゴキブリ,非人化/病理化,日本語 🇯🇵,1.15
-jp,6,教会,institutional_rot,8,隠蔽,制度性腐败,日本語 🇯🇵,1.15
-jp,31,中国共産党,political_interference,8,作っ,政治干预,日本語 🇯🇵,1.15
-jp,0,日本人,political_interference,7,増え,政治干预,日本語 🇯🇵,1.01
-jp,0,統一教会,institutional_rot,7,腐敗,制度性腐败,日本語 🇯🇵,1.01
-jp,0,統一教会,social_exclusion,7,活動,社会排斥/逐出,日本語 🇯🇵,1.01
-jp,1,トランプ,moral_accusation,7,投票,道德指控/伪善,日本語 🇯🇵,1.01
-jp,8,教会,rhetorical_attack,7,認め,修辞攻击/讽刺批判,日本語 🇯🇵,1.01
-jp,0,日本人,rhetorical_attack,6,持てる,修辞攻击/讽刺批判,日本語 🇯🇵,0.86
-jp,1,トランプ,rhetorical_attack,6,離脱,修辞攻击/讽刺批判,日本語 🇯🇵,0.86
-jp,2,教会,moral_accusation,6,逸脱,道德指控/伪善,日本語 🇯🇵,0.86
-jp,3,教会,rhetorical_attack,6,呼ぶ,修辞攻击/讽刺批判,日本語 🇯🇵,0.86
-jp,0,自民党,moral_accusation,5,あり,道德指控/伪善,日本語 🇯🇵,0.72
-jp,0,韓国,political_interference,5,支配,政治干预,日本語 🇯🇵,0.72
-jp,0,韓国,rhetorical_attack,5,言わ,修辞攻击/讽刺批判,日本語 🇯🇵,0.72
-jp,15,カトリック,moral_accusation,5,自称,道德指控/伪善,日本語 🇯🇵,0.72
-jp,17,キリスト教,cognitive_manipulation,5,洗脳,认知操纵/洗脑,日本語 🇯🇵,0.72
-jp,28,教皇,rhetorical_attack,5,かける,修辞攻击/讽刺批判,日本語 🇯🇵,0.72
-jp,0,自民党,economic_exploitation,4,献金,经济剥削,日本語 🇯🇵,0.57
-jp,5,教会,rhetorical_attack,4,遅れ,修辞攻击/讽刺批判,日本語 🇯🇵,0.57
-jp,7,教会,rhetorical_attack,4,出入り,修辞攻击/讽刺批判,日本語 🇯🇵,0.57
-jp,23,キリスト教,rhetorical_attack,4,やっ,修辞攻击/讽刺批判,日本語 🇯🇵,0.57
-jp,28,教会,rhetorical_attack,4,救わ,修辞攻击/讽刺批判,日本語 🇯🇵,0.57
-jp,31,中国共産党,rhetorical_attack,4,破壊,修辞攻击/讽刺批判,日本語 🇯🇵,0.57
-jp,44,教皇,rhetorical_attack,4,中傷,修辞攻击/讽刺批判,日本語 🇯🇵,0.57
-jp,0,日本人,dehumanization,3,結婚,非人化/病理化,日本語 🇯🇵,0.43
-jp,0,統一教会,sexual_abuse_frame,3,拉致,性侵虐待/掩盖,日本語 🇯🇵,0.43
-jp,0,自民党,institutional_rot,3,追い,制度性腐败,日本語 🇯🇵,0.43
-jp,1,トランプ,cognitive_manipulation,3,詐欺,认知操纵/洗脑,日本語 🇯🇵,0.43
-jp,2,教会,rhetorical_attack,3,もたらさ,修辞攻击/讽刺批判,日本語 🇯🇵,0.43
-jp,3,教会,moral_accusation,3,来い,道德指控/伪善,日本語 🇯🇵,0.43
-jp,6,教皇,institutional_rot,3,隠蔽,制度性腐败,日本語 🇯🇵,0.43
-jp,11,キリスト教,moral_accusation,3,虐殺,道德指控/伪善,日本語 🇯🇵,0.43
-jp,14,統一教会,political_interference,3,学べよっ,政治干预,日本語 🇯🇵,0.43
-jp,21,教会,economic_exploitation,3,通う,经济剥削,日本語 🇯🇵,0.43
-jp,22,マリア,moral_accusation,3,利用,道德指控/伪善,日本語 🇯🇵,0.43
-jp,23,キリスト教徒,moral_accusation,3,信じ,道德指控/伪善,日本語 🇯🇵,0.43
-jp,24,教会,cognitive_manipulation,3,切り,认知操纵/洗脑,日本語 🇯🇵,0.43
-jp,28,バーク,moral_accusation,3,言っ,道德指控/伪善,日本語 🇯🇵,0.43
-jp,28,バーク,rhetorical_attack,3,狂信,修辞攻击/讽刺批判,日本語 🇯🇵,0.43
-jp,31,ユダヤ人,political_interference,3,作っ,政治干预,日本語 🇯🇵,0.43
-jp,31,ユダヤ国際金融資本,political_interference,3,阻止,政治干预,日本語 🇯🇵,0.43
-jp,38,キリスト教,rhetorical_attack,3,広がっ,修辞攻击/讽刺批判,日本語 🇯🇵,0.43
-jp,0,日本人,social_exclusion,2,差別,社会排斥/逐出,日本語 🇯🇵,0.29
-jp,0,韓国,cognitive_manipulation,2,嫁い,认知操纵/洗脑,日本語 🇯🇵,0.29
-jp,0,韓国,institutional_rot,2,腐敗,制度性腐败,日本語 🇯🇵,0.29
-jp,2,教会,social_exclusion,2,なれ,社会排斥/逐出,日本語 🇯🇵,0.29
-jp,3,教会,sexual_abuse_frame,2,失い,性侵虐待/掩盖,日本語 🇯🇵,0.29
-jp,3,教会,social_exclusion,2,見なし,社会排斥/逐出,日本語 🇯🇵,0.29
-jp,3,神父,moral_accusation,2,下手,道德指控/伪善,日本語 🇯🇵,0.29
-jp,5,神父,rhetorical_attack,2,受信,修辞攻击/讽刺批判,日本語 🇯🇵,0.29
-jp,7,キリスト教,moral_accusation,2,やっ,道德指控/伪善,日本語 🇯🇵,0.29
-jp,7,キリスト教,rhetorical_attack,2,極め,修辞攻击/讽刺批判,日本語 🇯🇵,0.29
-jp,8,カトリック,sexual_abuse_frame,2,児童,性侵虐待/掩盖,日本語 🇯🇵,0.29
-jp,8,教会,cognitive_manipulation,2,狂信,认知操纵/洗脑,日本語 🇯🇵,0.29
-jp,8,教会,sexual_abuse_frame,2,児童,性侵虐待/掩盖,日本語 🇯🇵,0.29
-jp,12,教会,moral_accusation,2,課し,道德指控/伪善,日本語 🇯🇵,0.29
-jp,12,教会,rhetorical_attack,2,罰し,修辞攻击/讽刺批判,日本語 🇯🇵,0.29
-jp,14,統一教会,economic_exploitation,2,気づき,经济剥削,日本語 🇯🇵,0.29
-jp,14,自民党,moral_accusation,2,詐欺,道德指控/伪善,日本語 🇯🇵,0.29
-jp,18,カトリック,moral_accusation,2,狂信,道德指控/伪善,日本語 🇯🇵,0.29
-jp,22,マリア,rhetorical_attack,2,呼ばわり,修辞攻击/讽刺批判,日本語 🇯🇵,0.29
-jp,23,キリスト教,moral_accusation,2,殺し,道德指控/伪善,日本語 🇯🇵,0.29
-jp,23,クリスチャン,moral_accusation,2,殺さ,道德指控/伪善,日本語 🇯🇵,0.29
-jp,28,バーク,cognitive_manipulation,2,言っ,认知操纵/洗脑,日本語 🇯🇵,0.29
-jp,28,教会,sexual_abuse_frame,2,児童,性侵虐待/掩盖,日本語 🇯🇵,0.29
-jp,28,教皇,moral_accusation,2,保っ,道德指控/伪善,日本語 🇯🇵,0.29
-jp,31,ユダヤ人,rhetorical_attack,2,作っ,修辞攻击/讽刺批判,日本語 🇯🇵,0.29
-jp,31,中国,dehumanization,2,行わ,非人化/病理化,日本語 🇯🇵,0.29
-jp,31,中国,economic_exploitation,2,繰り,经济剥削,日本語 🇯🇵,0.29
-jp,34,教会,economic_exploitation,2,やっ,经济剥削,日本語 🇯🇵,0.29
-jp,0,安倍晋三,cognitive_manipulation,1,産まれ,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,0,安倍晋三,dehumanization,1,殺さ,非人化/病理化,日本語 🇯🇵,0.14
-jp,0,統一教会,other,1,生み,其他,日本語 🇯🇵,0.14
-jp,0,自民党,cognitive_manipulation,1,騙す,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,0,韓国,sexual_abuse_frame,1,児童,性侵虐待/掩盖,日本語 🇯🇵,0.14
-jp,1,トランプ,economic_exploitation,1,詐欺,经济剥削,日本語 🇯🇵,0.14
-jp,1,トランプ,social_exclusion,1,勝っ,社会排斥/逐出,日本語 🇯🇵,0.14
-jp,2,教会,cognitive_manipulation,1,強要,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,2,神父,institutional_rot,1,問わ,制度性腐败,日本語 🇯🇵,0.14
-jp,2,神父,social_exclusion,1,認める,社会排斥/逐出,日本語 🇯🇵,0.14
-jp,3,lgbt,rhetorical_attack,1,差別,修辞攻击/讽刺批判,日本語 🇯🇵,0.14
-jp,3,lgbt,social_exclusion,1,認めろ,社会排斥/逐出,日本語 🇯🇵,0.14
-jp,3,教会,institutional_rot,1,陥っ,制度性腐败,日本語 🇯🇵,0.14
-jp,4,jesus,dehumanization,1,なびい,非人化/病理化,日本語 🇯🇵,0.14
-jp,4,jesus,rhetorical_attack,1,取る,修辞攻击/讽刺批判,日本語 🇯🇵,0.14
-jp,5,教会,institutional_rot,1,引っ,制度性腐败,日本語 🇯🇵,0.14
-jp,5,教会,moral_accusation,1,裏切,道德指控/伪善,日本語 🇯🇵,0.14
-jp,6,教会,economic_exploitation,1,搾取,经济剥削,日本語 🇯🇵,0.14
-jp,6,神父,institutional_rot,1,偉く,制度性腐败,日本語 🇯🇵,0.14
-jp,7,教会,cognitive_manipulation,1,見つけ,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,8,カトリック,cognitive_manipulation,1,狂信,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,8,カトリック,dehumanization,1,害悪,非人化/病理化,日本語 🇯🇵,0.14
-jp,8,カトリック,moral_accusation,1,支配,道德指控/伪善,日本語 🇯🇵,0.14
-jp,8,教会,dehumanization,1,害悪,非人化/病理化,日本語 🇯🇵,0.14
-jp,8,教会,institutional_rot,1,救い,制度性腐败,日本語 🇯🇵,0.14
-jp,8,教会,moral_accusation,1,固執,道德指控/伪善,日本語 🇯🇵,0.14
-jp,9,イエス・キリスト,cognitive_manipulation,1,演じ,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,11,キリスト教,political_interference,1,支配,政治干预,日本語 🇯🇵,0.14
-jp,13,教会,cognitive_manipulation,1,狂信,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,13,統一教会,cognitive_manipulation,1,狂信,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,14,統一教会,cognitive_manipulation,1,洗脳,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,15,カトリック,rhetorical_attack,1,信用,修辞攻击/讽刺批判,日本語 🇯🇵,0.14
-jp,15,カトリック,social_exclusion,1,信用,社会排斥/逐出,日本語 🇯🇵,0.14
-jp,15,ローマカトリック教会,moral_accusation,1,思っ,道德指控/伪善,日本語 🇯🇵,0.14
-jp,15,ローマカトリック教会,social_exclusion,1,繋がっ,社会排斥/逐出,日本語 🇯🇵,0.14
-jp,18,ncr,social_exclusion,1,下ろす,社会排斥/逐出,日本語 🇯🇵,0.14
-jp,18,カトリック,political_interference,1,つるむ,政治干预,日本語 🇯🇵,0.14
-jp,19,教会,moral_accusation,1,取っ,道德指控/伪善,日本語 🇯🇵,0.14
-jp,21,教会,sexual_abuse_frame,1,性的虐待,性侵虐待/掩盖,日本語 🇯🇵,0.14
-jp,22,マリア,dehumanization,1,拝む,非人化/病理化,日本語 🇯🇵,0.14
-jp,22,マリア,sexual_abuse_frame,1,利用,性侵虐待/掩盖,日本語 🇯🇵,0.14
-jp,22,教会,cognitive_manipulation,1,入信,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,22,教会,dehumanization,1,入信,非人化/病理化,日本語 🇯🇵,0.14
-jp,22,教会,rhetorical_attack,1,受ける,修辞攻击/讽刺批判,日本語 🇯🇵,0.14
-jp,24,教会,institutional_rot,1,改革,制度性腐败,日本語 🇯🇵,0.14
-jp,24,教会,moral_accusation,1,並立,道德指控/伪善,日本語 🇯🇵,0.14
-jp,24,教会,rhetorical_attack,1,勘違い,修辞攻击/讽刺批判,日本語 🇯🇵,0.14
-jp,24,教皇,moral_accusation,1,付け,道德指控/伪善,日本語 🇯🇵,0.14
-jp,25,白人,rhetorical_attack,1,虐待,修辞攻击/讽刺批判,日本語 🇯🇵,0.14
-jp,25,黒人,dehumanization,1,迫害,非人化/病理化,日本語 🇯🇵,0.14
-jp,28,バーク,institutional_rot,1,伝え,制度性腐败,日本語 🇯🇵,0.14
-jp,28,教会,institutional_rot,1,切れる,制度性腐败,日本語 🇯🇵,0.14
-jp,28,教皇,other,1,潰せる,其他,日本語 🇯🇵,0.14
-jp,28,教皇,political_interference,1,失脚,政治干预,日本語 🇯🇵,0.14
-jp,31,ユダヤ国際金融資本,dehumanization,1,阻止,非人化/病理化,日本語 🇯🇵,0.14
-jp,31,ユダヤ国際金融資本,moral_accusation,1,阻止,道德指控/伪善,日本語 🇯🇵,0.14
-jp,31,中国,political_interference,1,支配,政治干预,日本語 🇯🇵,0.14
-jp,31,中国共産党,social_exclusion,1,破壊,社会排斥/逐出,日本語 🇯🇵,0.14
-jp,35,クリスチャン,economic_exploitation,1,搾取,经济剥削,日本語 🇯🇵,0.14
-jp,36,保守派,economic_exploitation,1,搾取,经济剥削,日本語 🇯🇵,0.14
-jp,36,教会,political_interference,1,やめ,政治干预,日本語 🇯🇵,0.14
-jp,36,教会,rhetorical_attack,1,あっ,修辞攻击/讽刺批判,日本語 🇯🇵,0.14
-jp,42,キリスト教,cognitive_manipulation,1,欺く,认知操纵/洗脑,日本語 🇯🇵,0.14
-jp,42,キリスト教,moral_accusation,1,理解,道德指控/伪善,日本語 🇯🇵,0.14
-jp,44,信徒,moral_accusation,1,見せ,道德指控/伪善,日本語 🇯🇵,0.14
-zh,6,神父,sexual_abuse_frame,36,性侵,性侵虐待/掩盖,中文 🇨🇳,8.39
-zh,6,教会,sexual_abuse_frame,27,丑闻,性侵虐待/掩盖,中文 🇨🇳,6.29
-zh,6,主教,sexual_abuse_frame,22,性侵,性侵虐待/掩盖,中文 🇨🇳,5.13
-zh,6,教会,institutional_rot,14,官官相护,制度性腐败,中文 🇨🇳,3.26
-zh,3,教会,rhetorical_attack,10,扭曲,修辞攻击/讽刺批判,中文 🇨🇳,2.33
-zh,6,主教,institutional_rot,10,官官相护,制度性腐败,中文 🇨🇳,2.33
-zh,6,神父,institutional_rot,10,官官相护,制度性腐败,中文 🇨🇳,2.33
-zh,9,耶稣,rhetorical_attack,9,不如,修辞攻击/讽刺批判,中文 🇨🇳,2.1
-zh,4,神父,sexual_abuse_frame,8,搭上,性侵虐待/掩盖,中文 🇨🇳,1.86
-zh,2,教会,moral_accusation,6,压迫,道德指控/伪善,中文 🇨🇳,1.4
-zh,2,神父,rhetorical_attack,6,任命,修辞攻击/讽刺批判,中文 🇨🇳,1.4
-zh,3,教会,moral_accusation,6,正确,道德指控/伪善,中文 🇨🇳,1.4
-zh,3,教会,sexual_abuse_frame,6,躲进,性侵虐待/掩盖,中文 🇨🇳,1.4
-zh,5,神父,rhetorical_attack,6,不行,修辞攻击/讽刺批判,中文 🇨🇳,1.4
-zh,6,教皇,sexual_abuse_frame,6,丑闻,性侵虐待/掩盖,中文 🇨🇳,1.4
-zh,2,教会,rhetorical_attack,5,合着,修辞攻击/讽刺批判,中文 🇨🇳,1.17
-zh,22,圣母婊,moral_accusation,5,牺牲,道德指控/伪善,中文 🇨🇳,1.17
-zh,2,神父,moral_accusation,4,碰到,道德指控/伪善,中文 🇨🇳,0.93
-zh,3,神父,moral_accusation,4,走掉,道德指控/伪善,中文 🇨🇳,0.93
-zh,8,教会,rhetorical_attack,4,禁止,修辞攻击/讽刺批判,中文 🇨🇳,0.93
-zh,13,教会,cognitive_manipulation,4,洗脑,认知操纵/洗脑,中文 🇨🇳,0.93
-zh,13,教会学校,cognitive_manipulation,4,洗脑,认知操纵/洗脑,中文 🇨🇳,0.93
-zh,2,主教,institutional_rot,3,当上,制度性腐败,中文 🇨🇳,0.7
-zh,2,主教,rhetorical_attack,3,迈一步,修辞攻击/讽刺批判,中文 🇨🇳,0.7
-zh,2,教会,cognitive_manipulation,3,压迫,认知操纵/洗脑,中文 🇨🇳,0.7
-zh,2,神父,social_exclusion,3,一样,社会排斥/逐出,中文 🇨🇳,0.7
-zh,2,耶稣,rhetorical_attack,3,献给,修辞攻击/讽刺批判,中文 🇨🇳,0.7
-zh,3,神父,sexual_abuse_frame,3,当上,性侵虐待/掩盖,中文 🇨🇳,0.7
-zh,5,教会,rhetorical_attack,3,大佬,修辞攻击/讽刺批判,中文 🇨🇳,0.7
-zh,6,主教,dehumanization,3,毒瘤,非人化/病理化,中文 🇨🇳,0.7
-zh,6,教会,dehumanization,3,毒瘤,非人化/病理化,中文 🇨🇳,0.7
-zh,6,教皇,institutional_rot,3,没有,制度性腐败,中文 🇨🇳,0.7
-zh,8,教会,moral_accusation,3,助长,道德指控/伪善,中文 🇨🇳,0.7
-zh,12,教会,moral_accusation,3,宣布,道德指控/伪善,中文 🇨🇳,0.7
-zh,13,教会学校,rhetorical_attack,3,没有,修辞攻击/讽刺批判,中文 🇨🇳,0.7
-zh,19,耶稣,moral_accusation,3,拜耶,道德指控/伪善,中文 🇨🇳,0.7
-zh,21,教会,economic_exploitation,3,解构,经济剥削,中文 🇨🇳,0.7
-zh,28,伯克,rhetorical_attack,3,毒瘤,修辞攻击/讽刺批判,中文 🇨🇳,0.7
-zh,35,耶稣,rhetorical_attack,3,攒够,修辞攻击/讽刺批判,中文 🇨🇳,0.7
-zh,42,阿米念,moral_accusation,3,不知,道德指控/伪善,中文 🇨🇳,0.7
-zh,44,教会,rhetorical_attack,3,核心,修辞攻击/讽刺批判,中文 🇨🇳,0.7
-zh,2,教会,economic_exploitation,2,快养,经济剥削,中文 🇨🇳,0.47
-zh,2,神父,institutional_rot,2,说穿,制度性腐败,中文 🇨🇳,0.47
-zh,3,教会,cognitive_manipulation,2,扭曲,认知操纵/洗脑,中文 🇨🇳,0.47
-zh,4,耶稣,rhetorical_attack,2,够萌,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,6,主教,moral_accusation,2,折磨,道德指控/伪善,中文 🇨🇳,0.47
-zh,6,教会,moral_accusation,2,烂透,道德指控/伪善,中文 🇨🇳,0.47
-zh,7,耶稣,rhetorical_attack,2,惩罚,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,8,教会,political_interference,2,承受,政治干预,中文 🇨🇳,0.47
-zh,9,孔子,rhetorical_attack,2,慈爱,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,9,洪秀全,rhetorical_attack,2,不如,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,21,信徒,cognitive_manipulation,2,优越感,认知操纵/洗脑,中文 🇨🇳,0.47
-zh,21,教会,cognitive_manipulation,2,找到,认知操纵/洗脑,中文 🇨🇳,0.47
-zh,21,教会,rhetorical_attack,2,抹黑,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,21,神棍,moral_accusation,2,动动,道德指控/伪善,中文 🇨🇳,0.47
-zh,22,圣母婊,rhetorical_attack,2,喜欢,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,26,神父,rhetorical_attack,2,犹存,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,28,教会,rhetorical_attack,2,这样,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,34,教会,economic_exploitation,2,断奶,经济剥削,中文 🇨🇳,0.47
-zh,36,主教,cognitive_manipulation,2,没有,认知操纵/洗脑,中文 🇨🇳,0.47
-zh,36,保守派,cognitive_manipulation,2,支持,认知操纵/洗脑,中文 🇨🇳,0.47
-zh,39,基督徒,moral_accusation,2,配叫,道德指控/伪善,中文 🇨🇳,0.47
-zh,39,基督徒,rhetorical_attack,2,强奸,修辞攻击/讽刺批判,中文 🇨🇳,0.47
-zh,40,神棍,economic_exploitation,2,敛财,经济剥削,中文 🇨🇳,0.47
-zh,42,基督徒,dehumanization,2,设立,非人化/病理化,中文 🇨🇳,0.47
-zh,44,教会,institutional_rot,2,清理,制度性腐败,中文 🇨🇳,0.47
-zh,2,主教,cognitive_manipulation,1,渗透,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,2,主教,moral_accusation,1,谢谢,道德指控/伪善,中文 🇨🇳,0.23
-zh,2,教会,institutional_rot,1,虐待,制度性腐败,中文 🇨🇳,0.23
-zh,2,教会,sexual_abuse_frame,1,要求,性侵虐待/掩盖,中文 🇨🇳,0.23
-zh,2,教会,social_exclusion,1,支持,社会排斥/逐出,中文 🇨🇳,0.23
-zh,2,神父,cognitive_manipulation,1,独身,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,2,神父,sexual_abuse_frame,1,执行,性侵虐待/掩盖,中文 🇨🇳,0.23
-zh,2,耶稣,institutional_rot,1,服务人,制度性腐败,中文 🇨🇳,0.23
-zh,3,lgbt,moral_accusation,1,堕落,道德指控/伪善,中文 🇨🇳,0.23
-zh,3,教会,social_exclusion,1,认同性,社会排斥/逐出,中文 🇨🇳,0.23
-zh,3,神父,social_exclusion,1,搞基,社会排斥/逐出,中文 🇨🇳,0.23
-zh,4,基督徒,social_exclusion,1,看见,社会排斥/逐出,中文 🇨🇳,0.23
-zh,4,神棍,rhetorical_attack,1,...,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,4,神父,moral_accusation,1,修女,道德指控/伪善,中文 🇨🇳,0.23
-zh,6,主教,rhetorical_attack,1,听腻,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,6,教会,rhetorical_attack,1,攻击,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,6,神父,moral_accusation,1,自诩,道德指控/伪善,中文 🇨🇳,0.23
-zh,6,神父,social_exclusion,1,排挤,社会排斥/逐出,中文 🇨🇳,0.23
-zh,7,教会,cognitive_manipulation,1,洗脑,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,8,教会,cognitive_manipulation,1,需要,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,8,教会,social_exclusion,1,离开,社会排斥/逐出,中文 🇨🇳,0.23
-zh,9,耶稣,political_interference,1,比不上,政治干预,中文 🇨🇳,0.23
-zh,10,耶稣,rhetorical_attack,1,搞清,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,11,基督徒,dehumanization,1,干掉,非人化/病理化,中文 🇨🇳,0.23
-zh,11,基督徒,rhetorical_attack,1,动手,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,11,基督教,cognitive_manipulation,1,洗脑,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,11,基督教,moral_accusation,1,至上,道德指控/伪善,中文 🇨🇳,0.23
-zh,12,教会,institutional_rot,1,阴暗,制度性腐败,中文 🇨🇳,0.23
-zh,12,教会,rhetorical_attack,1,设高,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,12,教会,sexual_abuse_frame,1,强奸,性侵虐待/掩盖,中文 🇨🇳,0.23
-zh,12,神父,cognitive_manipulation,1,警惕,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,12,神父,institutional_rot,1,结婚,制度性腐败,中文 🇨🇳,0.23
-zh,12,神父,moral_accusation,1,腐败,道德指控/伪善,中文 🇨🇳,0.23
-zh,12,神父,rhetorical_attack,1,要求,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,12,神父,sexual_abuse_frame,1,强奸,性侵虐待/掩盖,中文 🇨🇳,0.23
-zh,13,教会,dehumanization,1,毒瘤,非人化/病理化,中文 🇨🇳,0.23
-zh,13,教会学校,dehumanization,1,毒瘤,非人化/病理化,中文 🇨🇳,0.23
-zh,13,教会学校,moral_accusation,1,万恶之源,道德指控/伪善,中文 🇨🇳,0.23
-zh,13,教会学校,political_interference,1,教会,政治干预,中文 🇨🇳,0.23
-zh,14,信徒,cognitive_manipulation,1,忽悠,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,14,信徒,dehumanization,1,进化,非人化/病理化,中文 🇨🇳,0.23
-zh,14,信徒,political_interference,1,信教,政治干预,中文 🇨🇳,0.23
-zh,14,神棍,cognitive_manipulation,1,拿来,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,17,基督徒,moral_accusation,1,迫害,道德指控/伪善,中文 🇨🇳,0.23
-zh,17,基督徒,rhetorical_attack,1,处理,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,17,教会,moral_accusation,1,待人接物,道德指控/伪善,中文 🇨🇳,0.23
-zh,17,教会,rhetorical_attack,1,讽刺,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,19,耶稣,rhetorical_attack,1,一样,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,20,修女,dehumanization,1,算是,非人化/病理化,中文 🇨🇳,0.23
-zh,20,修女,rhetorical_attack,1,疯狂,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,20,修道院,rhetorical_attack,1,神圣,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,20,教会,institutional_rot,1,有着,制度性腐败,中文 🇨🇳,0.23
-zh,20,教会,rhetorical_attack,1,蛐蛐,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,20,神父,institutional_rot,1,相较于,制度性腐败,中文 🇨🇳,0.23
-zh,20,神父,rhetorical_attack,1,不如,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,20,神父,sexual_abuse_frame,1,接触,性侵虐待/掩盖,中文 🇨🇳,0.23
-zh,21,信徒,social_exclusion,1,跑光,社会排斥/逐出,中文 🇨🇳,0.23
-zh,21,教会,institutional_rot,1,腐败,制度性腐败,中文 🇨🇳,0.23
-zh,21,教堂,economic_exploitation,1,苦撑,经济剥削,中文 🇨🇳,0.23
-zh,21,教堂,moral_accusation,1,转转,道德指控/伪善,中文 🇨🇳,0.23
-zh,22,主教,rhetorical_attack,1,感性,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,22,教会,cognitive_manipulation,1,急需,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,22,耶稣,cognitive_manipulation,1,不够,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,22,耶稣,rhetorical_attack,1,见见,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,24,教会,cognitive_manipulation,1,渗透,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,24,教会,rhetorical_attack,1,与时俱进,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,24,梵二,cognitive_manipulation,1,渗透,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,24,梵二,rhetorical_attack,1,反对,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,26,主教,sexual_abuse_frame,1,打桩,性侵虐待/掩盖,中文 🇨🇳,0.23
-zh,27,信徒,political_interference,1,金主,政治干预,中文 🇨🇳,0.23
-zh,27,基督徒,social_exclusion,1,看看,社会排斥/逐出,中文 🇨🇳,0.23
-zh,28,教会,cognitive_manipulation,1,引导,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,30,基督徒,rhetorical_attack,1,不如,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,30,新教,rhetorical_attack,1,抢注,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,34,信徒,cognitive_manipulation,1,以为,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,34,耶稣,economic_exploitation,1,清理,经济剥削,中文 🇨🇳,0.23
-zh,35,基督徒,moral_accusation,1,...,道德指控/伪善,中文 🇨🇳,0.23
-zh,35,耶稣,economic_exploitation,1,关心,经济剥削,中文 🇨🇳,0.23
-zh,36,主教,moral_accusation,1,不当,道德指控/伪善,中文 🇨🇳,0.23
-zh,36,教会,institutional_rot,1,拉胯,制度性腐败,中文 🇨🇳,0.23
-zh,36,教会,rhetorical_attack,1,四分五裂,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,37,中国,economic_exploitation,1,允许,经济剥削,中文 🇨🇳,0.23
-zh,37,佛教,moral_accusation,1,没有,道德指控/伪善,中文 🇨🇳,0.23
-zh,37,基督教,rhetorical_attack,1,挨着,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,37,基督教,social_exclusion,1,取缔,社会排斥/逐出,中文 🇨🇳,0.23
-zh,38,基督教,rhetorical_attack,1,明显,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,38,邪教,cognitive_manipulation,1,确认,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,38,邪教,rhetorical_attack,1,出来,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,39,信徒,moral_accusation,1,洗出,道德指控/伪善,中文 🇨🇳,0.23
-zh,39,神棍,rhetorical_attack,1,散播,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,40,信徒,political_interference,1,渗透,政治干预,中文 🇨🇳,0.23
-zh,40,基督教,dehumanization,1,毒瘤,非人化/病理化,中文 🇨🇳,0.23
-zh,40,基督教,rhetorical_attack,1,叫做,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,40,教徒,cognitive_manipulation,1,洗脑,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,42,异端,dehumanization,1,狗咬,非人化/病理化,中文 🇨🇳,0.23
-zh,42,异端,moral_accusation,1,堕落,道德指控/伪善,中文 🇨🇳,0.23
-zh,42,异端,social_exclusion,1,指责,社会排斥/逐出,中文 🇨🇳,0.23
-zh,43,传教士,cognitive_manipulation,1,洗脑,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,43,传教士,political_interference,1,伴随,政治干预,中文 🇨🇳,0.23
-zh,43,传教士,rhetorical_attack,1,传播,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,44,主教,institutional_rot,1,看看,制度性腐败,中文 🇨🇳,0.23
-zh,44,主教,rhetorical_attack,1,毒瘤,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,44,信徒,cognitive_manipulation,1,接受,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,44,教会,dehumanization,1,毒瘤,非人化/病理化,中文 🇨🇳,0.23
-zh,44,教会,moral_accusation,1,森严,道德指控/伪善,中文 🇨🇳,0.23
-zh,44,教皇方济各,rhetorical_attack,1,刺痛,修辞攻击/讽刺批判,中文 🇨🇳,0.23
-zh,44,教皇方济各,social_exclusion,1,踢出,社会排斥/逐出,中文 🇨🇳,0.23
-zh,45,基督徒,cognitive_manipulation,1,圈呼,认知操纵/洗脑,中文 🇨🇳,0.23
-zh,45,基督徒,moral_accusation,1,越过,道德指控/伪善,中文 🇨🇳,0.23
-zh,46,大卫王,moral_accusation,1,弄死,道德指控/伪善,中文 🇨🇳,0.23
+en,6,priests,sexual_abuse_frame,14,pedophile,性侵虐待/掩盖,English,5.69
+en,1,trump,rhetorical_attack,11,blame,修辞攻击/讽刺批判,English,4.47
+en,1,catholics,rhetorical_attack,10,put,修辞攻击/讽刺批判,English,4.07
+en,1,christian,moral_accusation,10,abuses,道德指控/伪善,English,4.07
+en,1,catholic,rhetorical_attack,7,admire,修辞攻击/讽刺批判,English,2.85
+en,1,trump,moral_accusation,6,elect,道德指控/伪善,English,2.44
+en,2,priests,rhetorical_attack,6,cringe,修辞攻击/讽刺批判,English,2.44
+en,3,priests,sexual_abuse_frame,6,abuse,性侵虐待/掩盖,English,2.44
+en,6,priests,institutional_rot,6,protect,制度性腐败,English,2.44
+en,6,priests,moral_accusation,6,abandon,道德指控/伪善,English,2.44
+en,18,catholic,rhetorical_attack,6,meet,修辞攻击/讽刺批判,English,2.44
+en,5,catholic,rhetorical_attack,5,point,修辞攻击/讽刺批判,English,2.03
+en,5,catholics,rhetorical_attack,5,attend,修辞攻击/讽刺批判,English,2.03
+en,15,catholics,sexual_abuse_frame,5,condescend,性侵虐待/掩盖,English,2.03
+en,16,canada,rhetorical_attack,5,assault,修辞攻击/讽刺批判,English,2.03
+en,19,jesus,rhetorical_attack,5,love,修辞攻击/讽刺批判,English,2.03
+en,1,catholics,moral_accusation,4,silence,道德指控/伪善,English,1.63
+en,5,jesus,rhetorical_attack,4,ignore,修辞攻击/讽刺批判,English,1.63
+en,8,catholic,rhetorical_attack,4,mention,修辞攻击/讽刺批判,English,1.63
+en,13,catholic,rhetorical_attack,4,remember,修辞攻击/讽刺批判,English,1.63
+en,16,christian,rhetorical_attack,4,remember,修辞攻击/讽刺批判,English,1.63
+en,1,christian,cognitive_manipulation,3,venture,认知操纵/洗脑,English,1.22
+en,1,christian,rhetorical_attack,3,hate,修辞攻击/讽刺批判,English,1.22
+en,2,priests,moral_accusation,3,live,道德指控/伪善,English,1.22
+en,8,catholic,moral_accusation,3,end,道德指控/伪善,English,1.22
+en,11,christians,moral_accusation,3,condemn,道德指控/伪善,English,1.22
+en,14,christian,rhetorical_attack,3,will,修辞攻击/讽刺批判,English,1.22
+en,15,catholic,sexual_abuse_frame,3,rape,性侵虐待/掩盖,English,1.22
+en,1,catholic,moral_accusation,2,silence,道德指控/伪善,English,0.81
+en,1,trump,political_interference,2,strangle,政治干预,English,0.81
+en,2,priests,sexual_abuse_frame,2,abuse,性侵虐待/掩盖,English,0.81
+en,5,catholic,cognitive_manipulation,2,corruption,认知操纵/洗脑,English,0.81
+en,5,catholics,cognitive_manipulation,2,corruption,认知操纵/洗脑,English,0.81
+en,5,jesus,cognitive_manipulation,2,brainwashing,认知操纵/洗脑,English,0.81
+en,6,priests,rhetorical_attack,2,favor,修辞攻击/讽刺批判,English,0.81
+en,7,christian,rhetorical_attack,2,prefer,修辞攻击/讽刺批判,English,0.81
+en,8,catholic,economic_exploitation,2,pay,经济剥削,English,0.81
+en,9,jesus,rhetorical_attack,2,reference,修辞攻击/讽刺批判,English,0.81
+en,10,christian,rhetorical_attack,2,preach,修辞攻击/讽刺批判,English,0.81
+en,11,christian,moral_accusation,2,stab,道德指控/伪善,English,0.81
+en,11,christian,rhetorical_attack,2,write,修辞攻击/讽刺批判,English,0.81
+en,12,catholic,moral_accusation,2,assure,道德指控/伪善,English,0.81
+en,15,catholic,rhetorical_attack,2,bid,修辞攻击/讽刺批判,English,0.81
+en,15,catholics,rhetorical_attack,2,practice,修辞攻击/讽刺批判,English,0.81
+en,16,canada,social_exclusion,2,swamp,社会排斥/逐出,English,0.81
+en,27,christian,rhetorical_attack,2,lump,修辞攻击/讽刺批判,English,0.81
+en,27,gays,rhetorical_attack,2,hat,修辞攻击/讽刺批判,English,0.81
+en,32,christians,moral_accusation,2,love,道德指控/伪善,English,0.81
+en,33,catholic,rhetorical_attack,2,guess,修辞攻击/讽刺批判,English,0.81
+en,35,jesus,rhetorical_attack,2,count,修辞攻击/讽刺批判,English,0.81
+en,46,christians,moral_accusation,2,crucify,道德指控/伪善,English,0.81
+en,1,catholic,political_interference,1,like,政治干预,English,0.41
+en,1,catholics,dehumanization,1,contaminate,非人化/病理化,English,0.41
+en,1,catholics,social_exclusion,1,kick,社会排斥/逐出,English,0.41
+en,1,christian,political_interference,1,live,政治干预,English,0.41
+en,1,christian,social_exclusion,1,kick,社会排斥/逐出,English,0.41
+en,1,trump,cognitive_manipulation,1,invent,认知操纵/洗脑,English,0.41
+en,1,trump,economic_exploitation,1,defrauding,经济剥削,English,0.41
+en,1,trump,sexual_abuse_frame,1,abuser,性侵虐待/掩盖,English,0.41
+en,2,priests,institutional_rot,1,ordain,制度性腐败,English,0.41
+en,2,priests,social_exclusion,1,ordain,社会排斥/逐出,English,0.41
+en,3,priests,institutional_rot,1,question,制度性腐败,English,0.41
+en,3,priests,moral_accusation,1,interpret,道德指控/伪善,English,0.41
+en,5,catholics,social_exclusion,1,forbid,社会排斥/逐出,English,0.41
+en,7,christian,moral_accusation,1,corrupt,道德指控/伪善,English,0.41
+en,7,jesus,moral_accusation,1,corrupt,道德指控/伪善,English,0.41
+en,7,jesus,rhetorical_attack,1,welcome,修辞攻击/讽刺批判,English,0.41
+en,10,christian,moral_accusation,1,witness,道德指控/伪善,English,0.41
+en,11,christians,other,1,target,其他,English,0.41
+en,11,christians,rhetorical_attack,1,wield,修辞攻击/讽刺批判,English,0.41
+en,12,catholic,rhetorical_attack,1,forbid,修辞攻击/讽刺批判,English,0.41
+en,12,jesus,rhetorical_attack,1,touch,修辞攻击/讽刺批判,English,0.41
+en,13,christian,cognitive_manipulation,1,indoctrination,认知操纵/洗脑,English,0.41
+en,13,christian,rhetorical_attack,1,read,修辞攻击/讽刺批判,English,0.41
+en,13,christian,social_exclusion,1,exclude,社会排斥/逐出,English,0.41
+en,16,canada,moral_accusation,1,enter,道德指控/伪善,English,0.41
+en,16,canada,political_interference,1,experience,政治干预,English,0.41
+en,16,christian,moral_accusation,1,assaulted,道德指控/伪善,English,0.41
+en,16,christian,other,1,reject,其他,English,0.41
+en,16,christian,social_exclusion,1,immigrate,社会排斥/逐出,English,0.41
+en,16,christians,moral_accusation,1,assaulted,道德指控/伪善,English,0.41
+en,16,trudeau,political_interference,1,apologize,政治干预,English,0.41
+en,16,trudeau,rhetorical_attack,1,critisize,修辞攻击/讽刺批判,English,0.41
+en,18,catholic,institutional_rot,1,cover ups,制度性腐败,English,0.41
+en,18,catholic,sexual_abuse_frame,1,abuse,性侵虐待/掩盖,English,0.41
+en,19,pharisee,moral_accusation,1,rebuke,道德指控/伪善,English,0.41
+en,24,pope,institutional_rot,1,move,制度性腐败,English,0.41
+en,27,christian,moral_accusation,1,respect,道德指控/伪善,English,0.41
+en,27,christian,sexual_abuse_frame,1,molestations,性侵虐待/掩盖,English,0.41
+en,27,jesus,rhetorical_attack,1,bake,修辞攻击/讽刺批判,English,0.41
+en,33,catholic,institutional_rot,1,welcome,制度性腐败,English,0.41
+en,36,catholics,rhetorical_attack,1,believe,修辞攻击/讽刺批判,English,0.41
+en,41,catholic,rhetorical_attack,1,hear,修辞攻击/讽刺批判,English,0.41
+en,41,catholics,sexual_abuse_frame,1,defend,性侵虐待/掩盖,English,0.41
+en,46,christian,cognitive_manipulation,1,brainwashed,认知操纵/洗脑,English,0.41
+en,46,christian,sexual_abuse_frame,1,raped,性侵虐待/掩盖,English,0.41
+en,46,christians,rhetorical_attack,1,hate,修辞攻击/讽刺批判,English,0.41
+jp,0,統一教会,political_interference,77,支配,政治干预,Japanese,11.06
+jp,0,統一教会,economic_exploitation,49,献金,经济剥削,Japanese,7.04
+jp,0,統一教会,rhetorical_attack,39,擁護,修辞攻击/讽刺批判,Japanese,5.6
+jp,0,統一教会,cognitive_manipulation,31,洗脳,认知操纵/洗脑,Japanese,4.45
+jp,6,教会,sexual_abuse_frame,31,性的虐待,性侵虐待/掩盖,Japanese,4.45
+jp,0,統一教会,moral_accusation,25,破壊,道德指控/伪善,Japanese,3.59
+jp,0,自民党,political_interference,22,支配,政治干预,Japanese,3.16
+jp,0,日本人,economic_exploitation,21,巻き,经济剥削,Japanese,3.02
+jp,0,日本人,cognitive_manipulation,14,洗脳,认知操纵/洗脑,Japanese,2.01
+jp,6,教皇,sexual_abuse_frame,12,性的虐待,性侵虐待/掩盖,Japanese,1.72
+jp,0,安倍晋三,moral_accusation,11,殺さ,道德指控/伪善,Japanese,1.58
+jp,2,教会,institutional_rot,11,搾取,制度性腐败,Japanese,1.58
+jp,6,神父,sexual_abuse_frame,11,性的虐待,性侵虐待/掩盖,Japanese,1.58
+jp,0,日本人,moral_accusation,9,苦しめ,道德指控/伪善,Japanese,1.29
+jp,0,韓国,economic_exploitation,9,送っ,经济剥削,Japanese,1.29
+jp,0,安倍晋三,political_interference,8,受け,政治干预,Japanese,1.15
+jp,0,統一教会,dehumanization,8,ゴキブリ,非人化/病理化,Japanese,1.15
+jp,6,教会,institutional_rot,8,隠蔽,制度性腐败,Japanese,1.15
+jp,31,中国共産党,political_interference,8,作っ,政治干预,Japanese,1.15
+jp,0,日本人,political_interference,7,増え,政治干预,Japanese,1.01
+jp,0,統一教会,institutional_rot,7,腐敗,制度性腐败,Japanese,1.01
+jp,0,統一教会,social_exclusion,7,活動,社会排斥/逐出,Japanese,1.01
+jp,1,トランプ,moral_accusation,7,投票,道德指控/伪善,Japanese,1.01
+jp,8,教会,rhetorical_attack,7,認め,修辞攻击/讽刺批判,Japanese,1.01
+jp,0,日本人,rhetorical_attack,6,持てる,修辞攻击/讽刺批判,Japanese,0.86
+jp,1,トランプ,rhetorical_attack,6,離脱,修辞攻击/讽刺批判,Japanese,0.86
+jp,2,教会,moral_accusation,6,逸脱,道德指控/伪善,Japanese,0.86
+jp,3,教会,rhetorical_attack,6,呼ぶ,修辞攻击/讽刺批判,Japanese,0.86
+jp,0,自民党,moral_accusation,5,あり,道德指控/伪善,Japanese,0.72
+jp,0,韓国,political_interference,5,支配,政治干预,Japanese,0.72
+jp,0,韓国,rhetorical_attack,5,言わ,修辞攻击/讽刺批判,Japanese,0.72
+jp,15,カトリック,moral_accusation,5,自称,道德指控/伪善,Japanese,0.72
+jp,17,キリスト教,cognitive_manipulation,5,洗脳,认知操纵/洗脑,Japanese,0.72
+jp,28,教皇,rhetorical_attack,5,かける,修辞攻击/讽刺批判,Japanese,0.72
+jp,0,自民党,economic_exploitation,4,献金,经济剥削,Japanese,0.57
+jp,5,教会,rhetorical_attack,4,遅れ,修辞攻击/讽刺批判,Japanese,0.57
+jp,7,教会,rhetorical_attack,4,出入り,修辞攻击/讽刺批判,Japanese,0.57
+jp,23,キリスト教,rhetorical_attack,4,やっ,修辞攻击/讽刺批判,Japanese,0.57
+jp,28,教会,rhetorical_attack,4,救わ,修辞攻击/讽刺批判,Japanese,0.57
+jp,31,中国共産党,rhetorical_attack,4,破壊,修辞攻击/讽刺批判,Japanese,0.57
+jp,44,教皇,rhetorical_attack,4,中傷,修辞攻击/讽刺批判,Japanese,0.57
+jp,0,日本人,dehumanization,3,結婚,非人化/病理化,Japanese,0.43
+jp,0,統一教会,sexual_abuse_frame,3,拉致,性侵虐待/掩盖,Japanese,0.43
+jp,0,自民党,institutional_rot,3,追い,制度性腐败,Japanese,0.43
+jp,1,トランプ,cognitive_manipulation,3,詐欺,认知操纵/洗脑,Japanese,0.43
+jp,2,教会,rhetorical_attack,3,もたらさ,修辞攻击/讽刺批判,Japanese,0.43
+jp,3,教会,moral_accusation,3,来い,道德指控/伪善,Japanese,0.43
+jp,6,教皇,institutional_rot,3,隠蔽,制度性腐败,Japanese,0.43
+jp,11,キリスト教,moral_accusation,3,虐殺,道德指控/伪善,Japanese,0.43
+jp,14,統一教会,political_interference,3,学べよっ,政治干预,Japanese,0.43
+jp,21,教会,economic_exploitation,3,通う,经济剥削,Japanese,0.43
+jp,22,マリア,moral_accusation,3,利用,道德指控/伪善,Japanese,0.43
+jp,23,キリスト教徒,moral_accusation,3,信じ,道德指控/伪善,Japanese,0.43
+jp,24,教会,cognitive_manipulation,3,切り,认知操纵/洗脑,Japanese,0.43
+jp,28,バーク,moral_accusation,3,言っ,道德指控/伪善,Japanese,0.43
+jp,28,バーク,rhetorical_attack,3,狂信,修辞攻击/讽刺批判,Japanese,0.43
+jp,31,ユダヤ人,political_interference,3,作っ,政治干预,Japanese,0.43
+jp,31,ユダヤ国際金融資本,political_interference,3,阻止,政治干预,Japanese,0.43
+jp,38,キリスト教,rhetorical_attack,3,広がっ,修辞攻击/讽刺批判,Japanese,0.43
+jp,0,日本人,social_exclusion,2,差別,社会排斥/逐出,Japanese,0.29
+jp,0,韓国,cognitive_manipulation,2,嫁い,认知操纵/洗脑,Japanese,0.29
+jp,0,韓国,institutional_rot,2,腐敗,制度性腐败,Japanese,0.29
+jp,2,教会,social_exclusion,2,なれ,社会排斥/逐出,Japanese,0.29
+jp,3,教会,sexual_abuse_frame,2,失い,性侵虐待/掩盖,Japanese,0.29
+jp,3,教会,social_exclusion,2,見なし,社会排斥/逐出,Japanese,0.29
+jp,3,神父,moral_accusation,2,下手,道德指控/伪善,Japanese,0.29
+jp,5,神父,rhetorical_attack,2,受信,修辞攻击/讽刺批判,Japanese,0.29
+jp,7,キリスト教,moral_accusation,2,やっ,道德指控/伪善,Japanese,0.29
+jp,7,キリスト教,rhetorical_attack,2,極め,修辞攻击/讽刺批判,Japanese,0.29
+jp,8,カトリック,sexual_abuse_frame,2,児童,性侵虐待/掩盖,Japanese,0.29
+jp,8,教会,cognitive_manipulation,2,狂信,认知操纵/洗脑,Japanese,0.29
+jp,8,教会,sexual_abuse_frame,2,児童,性侵虐待/掩盖,Japanese,0.29
+jp,12,教会,moral_accusation,2,課し,道德指控/伪善,Japanese,0.29
+jp,12,教会,rhetorical_attack,2,罰し,修辞攻击/讽刺批判,Japanese,0.29
+jp,14,統一教会,economic_exploitation,2,気づき,经济剥削,Japanese,0.29
+jp,14,自民党,moral_accusation,2,詐欺,道德指控/伪善,Japanese,0.29
+jp,18,カトリック,moral_accusation,2,狂信,道德指控/伪善,Japanese,0.29
+jp,22,マリア,rhetorical_attack,2,呼ばわり,修辞攻击/讽刺批判,Japanese,0.29
+jp,23,キリスト教,moral_accusation,2,殺し,道德指控/伪善,Japanese,0.29
+jp,23,クリスチャン,moral_accusation,2,殺さ,道德指控/伪善,Japanese,0.29
+jp,28,バーク,cognitive_manipulation,2,言っ,认知操纵/洗脑,Japanese,0.29
+jp,28,教会,sexual_abuse_frame,2,児童,性侵虐待/掩盖,Japanese,0.29
+jp,28,教皇,moral_accusation,2,保っ,道德指控/伪善,Japanese,0.29
+jp,31,ユダヤ人,rhetorical_attack,2,作っ,修辞攻击/讽刺批判,Japanese,0.29
+jp,31,中国,dehumanization,2,行わ,非人化/病理化,Japanese,0.29
+jp,31,中国,economic_exploitation,2,繰り,经济剥削,Japanese,0.29
+jp,34,教会,economic_exploitation,2,やっ,经济剥削,Japanese,0.29
+jp,0,安倍晋三,cognitive_manipulation,1,産まれ,认知操纵/洗脑,Japanese,0.14
+jp,0,安倍晋三,dehumanization,1,殺さ,非人化/病理化,Japanese,0.14
+jp,0,統一教会,other,1,生み,其他,Japanese,0.14
+jp,0,自民党,cognitive_manipulation,1,騙す,认知操纵/洗脑,Japanese,0.14
+jp,0,韓国,sexual_abuse_frame,1,児童,性侵虐待/掩盖,Japanese,0.14
+jp,1,トランプ,economic_exploitation,1,詐欺,经济剥削,Japanese,0.14
+jp,1,トランプ,social_exclusion,1,勝っ,社会排斥/逐出,Japanese,0.14
+jp,2,教会,cognitive_manipulation,1,強要,认知操纵/洗脑,Japanese,0.14
+jp,2,神父,institutional_rot,1,問わ,制度性腐败,Japanese,0.14
+jp,2,神父,social_exclusion,1,認める,社会排斥/逐出,Japanese,0.14
+jp,3,lgbt,rhetorical_attack,1,差別,修辞攻击/讽刺批判,Japanese,0.14
+jp,3,lgbt,social_exclusion,1,認めろ,社会排斥/逐出,Japanese,0.14
+jp,3,教会,institutional_rot,1,陥っ,制度性腐败,Japanese,0.14
+jp,4,jesus,dehumanization,1,なびい,非人化/病理化,Japanese,0.14
+jp,4,jesus,rhetorical_attack,1,取る,修辞攻击/讽刺批判,Japanese,0.14
+jp,5,教会,institutional_rot,1,引っ,制度性腐败,Japanese,0.14
+jp,5,教会,moral_accusation,1,裏切,道德指控/伪善,Japanese,0.14
+jp,6,教会,economic_exploitation,1,搾取,经济剥削,Japanese,0.14
+jp,6,神父,institutional_rot,1,偉く,制度性腐败,Japanese,0.14
+jp,7,教会,cognitive_manipulation,1,見つけ,认知操纵/洗脑,Japanese,0.14
+jp,8,カトリック,cognitive_manipulation,1,狂信,认知操纵/洗脑,Japanese,0.14
+jp,8,カトリック,dehumanization,1,害悪,非人化/病理化,Japanese,0.14
+jp,8,カトリック,moral_accusation,1,支配,道德指控/伪善,Japanese,0.14
+jp,8,教会,dehumanization,1,害悪,非人化/病理化,Japanese,0.14
+jp,8,教会,institutional_rot,1,救い,制度性腐败,Japanese,0.14
+jp,8,教会,moral_accusation,1,固執,道德指控/伪善,Japanese,0.14
+jp,9,イエス・キリスト,cognitive_manipulation,1,演じ,认知操纵/洗脑,Japanese,0.14
+jp,11,キリスト教,political_interference,1,支配,政治干预,Japanese,0.14
+jp,13,教会,cognitive_manipulation,1,狂信,认知操纵/洗脑,Japanese,0.14
+jp,13,統一教会,cognitive_manipulation,1,狂信,认知操纵/洗脑,Japanese,0.14
+jp,14,統一教会,cognitive_manipulation,1,洗脳,认知操纵/洗脑,Japanese,0.14
+jp,15,カトリック,rhetorical_attack,1,信用,修辞攻击/讽刺批判,Japanese,0.14
+jp,15,カトリック,social_exclusion,1,信用,社会排斥/逐出,Japanese,0.14
+jp,15,ローマカトリック教会,moral_accusation,1,思っ,道德指控/伪善,Japanese,0.14
+jp,15,ローマカトリック教会,social_exclusion,1,繋がっ,社会排斥/逐出,Japanese,0.14
+jp,18,ncr,social_exclusion,1,下ろす,社会排斥/逐出,Japanese,0.14
+jp,18,カトリック,political_interference,1,つるむ,政治干预,Japanese,0.14
+jp,19,教会,moral_accusation,1,取っ,道德指控/伪善,Japanese,0.14
+jp,21,教会,sexual_abuse_frame,1,性的虐待,性侵虐待/掩盖,Japanese,0.14
+jp,22,マリア,dehumanization,1,拝む,非人化/病理化,Japanese,0.14
+jp,22,マリア,sexual_abuse_frame,1,利用,性侵虐待/掩盖,Japanese,0.14
+jp,22,教会,cognitive_manipulation,1,入信,认知操纵/洗脑,Japanese,0.14
+jp,22,教会,dehumanization,1,入信,非人化/病理化,Japanese,0.14
+jp,22,教会,rhetorical_attack,1,受ける,修辞攻击/讽刺批判,Japanese,0.14
+jp,24,教会,institutional_rot,1,改革,制度性腐败,Japanese,0.14
+jp,24,教会,moral_accusation,1,並立,道德指控/伪善,Japanese,0.14
+jp,24,教会,rhetorical_attack,1,勘違い,修辞攻击/讽刺批判,Japanese,0.14
+jp,24,教皇,moral_accusation,1,付け,道德指控/伪善,Japanese,0.14
+jp,25,白人,rhetorical_attack,1,虐待,修辞攻击/讽刺批判,Japanese,0.14
+jp,25,黒人,dehumanization,1,迫害,非人化/病理化,Japanese,0.14
+jp,28,バーク,institutional_rot,1,伝え,制度性腐败,Japanese,0.14
+jp,28,教会,institutional_rot,1,切れる,制度性腐败,Japanese,0.14
+jp,28,教皇,other,1,潰せる,其他,Japanese,0.14
+jp,28,教皇,political_interference,1,失脚,政治干预,Japanese,0.14
+jp,31,ユダヤ国際金融資本,dehumanization,1,阻止,非人化/病理化,Japanese,0.14
+jp,31,ユダヤ国際金融資本,moral_accusation,1,阻止,道德指控/伪善,Japanese,0.14
+jp,31,中国,political_interference,1,支配,政治干预,Japanese,0.14
+jp,31,中国共産党,social_exclusion,1,破壊,社会排斥/逐出,Japanese,0.14
+jp,35,クリスチャン,economic_exploitation,1,搾取,经济剥削,Japanese,0.14
+jp,36,保守派,economic_exploitation,1,搾取,经济剥削,Japanese,0.14
+jp,36,教会,political_interference,1,やめ,政治干预,Japanese,0.14
+jp,36,教会,rhetorical_attack,1,あっ,修辞攻击/讽刺批判,Japanese,0.14
+jp,42,キリスト教,cognitive_manipulation,1,欺く,认知操纵/洗脑,Japanese,0.14
+jp,42,キリスト教,moral_accusation,1,理解,道德指控/伪善,Japanese,0.14
+jp,44,信徒,moral_accusation,1,見せ,道德指控/伪善,Japanese,0.14
+zh,6,神父,sexual_abuse_frame,36,性侵,性侵虐待/掩盖,Chinese,8.39
+zh,6,教会,sexual_abuse_frame,27,丑闻,性侵虐待/掩盖,Chinese,6.29
+zh,6,主教,sexual_abuse_frame,22,性侵,性侵虐待/掩盖,Chinese,5.13
+zh,6,教会,institutional_rot,14,官官相护,制度性腐败,Chinese,3.26
+zh,3,教会,rhetorical_attack,10,扭曲,修辞攻击/讽刺批判,Chinese,2.33
+zh,6,主教,institutional_rot,10,官官相护,制度性腐败,Chinese,2.33
+zh,6,神父,institutional_rot,10,官官相护,制度性腐败,Chinese,2.33
+zh,9,耶稣,rhetorical_attack,9,不如,修辞攻击/讽刺批判,Chinese,2.1
+zh,4,神父,sexual_abuse_frame,8,搭上,性侵虐待/掩盖,Chinese,1.86
+zh,2,教会,moral_accusation,6,压迫,道德指控/伪善,Chinese,1.4
+zh,2,神父,rhetorical_attack,6,任命,修辞攻击/讽刺批判,Chinese,1.4
+zh,3,教会,moral_accusation,6,正确,道德指控/伪善,Chinese,1.4
+zh,3,教会,sexual_abuse_frame,6,躲进,性侵虐待/掩盖,Chinese,1.4
+zh,5,神父,rhetorical_attack,6,不行,修辞攻击/讽刺批判,Chinese,1.4
+zh,6,教皇,sexual_abuse_frame,6,丑闻,性侵虐待/掩盖,Chinese,1.4
+zh,2,教会,rhetorical_attack,5,合着,修辞攻击/讽刺批判,Chinese,1.17
+zh,22,圣母婊,moral_accusation,5,牺牲,道德指控/伪善,Chinese,1.17
+zh,2,神父,moral_accusation,4,碰到,道德指控/伪善,Chinese,0.93
+zh,3,神父,moral_accusation,4,走掉,道德指控/伪善,Chinese,0.93
+zh,8,教会,rhetorical_attack,4,禁止,修辞攻击/讽刺批判,Chinese,0.93
+zh,13,教会,cognitive_manipulation,4,洗脑,认知操纵/洗脑,Chinese,0.93
+zh,13,教会学校,cognitive_manipulation,4,洗脑,认知操纵/洗脑,Chinese,0.93
+zh,2,主教,institutional_rot,3,当上,制度性腐败,Chinese,0.7
+zh,2,主教,rhetorical_attack,3,迈一步,修辞攻击/讽刺批判,Chinese,0.7
+zh,2,教会,cognitive_manipulation,3,压迫,认知操纵/洗脑,Chinese,0.7
+zh,2,神父,social_exclusion,3,一样,社会排斥/逐出,Chinese,0.7
+zh,2,耶稣,rhetorical_attack,3,献给,修辞攻击/讽刺批判,Chinese,0.7
+zh,3,神父,sexual_abuse_frame,3,当上,性侵虐待/掩盖,Chinese,0.7
+zh,5,教会,rhetorical_attack,3,大佬,修辞攻击/讽刺批判,Chinese,0.7
+zh,6,主教,dehumanization,3,毒瘤,非人化/病理化,Chinese,0.7
+zh,6,教会,dehumanization,3,毒瘤,非人化/病理化,Chinese,0.7
+zh,6,教皇,institutional_rot,3,没有,制度性腐败,Chinese,0.7
+zh,8,教会,moral_accusation,3,助长,道德指控/伪善,Chinese,0.7
+zh,12,教会,moral_accusation,3,宣布,道德指控/伪善,Chinese,0.7
+zh,13,教会学校,rhetorical_attack,3,没有,修辞攻击/讽刺批判,Chinese,0.7
+zh,19,耶稣,moral_accusation,3,拜耶,道德指控/伪善,Chinese,0.7
+zh,21,教会,economic_exploitation,3,解构,经济剥削,Chinese,0.7
+zh,28,伯克,rhetorical_attack,3,毒瘤,修辞攻击/讽刺批判,Chinese,0.7
+zh,35,耶稣,rhetorical_attack,3,攒够,修辞攻击/讽刺批判,Chinese,0.7
+zh,42,阿米念,moral_accusation,3,不知,道德指控/伪善,Chinese,0.7
+zh,44,教会,rhetorical_attack,3,核心,修辞攻击/讽刺批判,Chinese,0.7
+zh,2,教会,economic_exploitation,2,快养,经济剥削,Chinese,0.47
+zh,2,神父,institutional_rot,2,说穿,制度性腐败,Chinese,0.47
+zh,3,教会,cognitive_manipulation,2,扭曲,认知操纵/洗脑,Chinese,0.47
+zh,4,耶稣,rhetorical_attack,2,够萌,修辞攻击/讽刺批判,Chinese,0.47
+zh,6,主教,moral_accusation,2,折磨,道德指控/伪善,Chinese,0.47
+zh,6,教会,moral_accusation,2,烂透,道德指控/伪善,Chinese,0.47
+zh,7,耶稣,rhetorical_attack,2,惩罚,修辞攻击/讽刺批判,Chinese,0.47
+zh,8,教会,political_interference,2,承受,政治干预,Chinese,0.47
+zh,9,孔子,rhetorical_attack,2,慈爱,修辞攻击/讽刺批判,Chinese,0.47
+zh,9,洪秀全,rhetorical_attack,2,不如,修辞攻击/讽刺批判,Chinese,0.47
+zh,21,信徒,cognitive_manipulation,2,优越感,认知操纵/洗脑,Chinese,0.47
+zh,21,教会,cognitive_manipulation,2,找到,认知操纵/洗脑,Chinese,0.47
+zh,21,教会,rhetorical_attack,2,抹黑,修辞攻击/讽刺批判,Chinese,0.47
+zh,21,神棍,moral_accusation,2,动动,道德指控/伪善,Chinese,0.47
+zh,22,圣母婊,rhetorical_attack,2,喜欢,修辞攻击/讽刺批判,Chinese,0.47
+zh,26,神父,rhetorical_attack,2,犹存,修辞攻击/讽刺批判,Chinese,0.47
+zh,28,教会,rhetorical_attack,2,这样,修辞攻击/讽刺批判,Chinese,0.47
+zh,34,教会,economic_exploitation,2,断奶,经济剥削,Chinese,0.47
+zh,36,主教,cognitive_manipulation,2,没有,认知操纵/洗脑,Chinese,0.47
+zh,36,保守派,cognitive_manipulation,2,支持,认知操纵/洗脑,Chinese,0.47
+zh,39,基督徒,moral_accusation,2,配叫,道德指控/伪善,Chinese,0.47
+zh,39,基督徒,rhetorical_attack,2,强奸,修辞攻击/讽刺批判,Chinese,0.47
+zh,40,神棍,economic_exploitation,2,敛财,经济剥削,Chinese,0.47
+zh,42,基督徒,dehumanization,2,设立,非人化/病理化,Chinese,0.47
+zh,44,教会,institutional_rot,2,清理,制度性腐败,Chinese,0.47
+zh,2,主教,cognitive_manipulation,1,渗透,认知操纵/洗脑,Chinese,0.23
+zh,2,主教,moral_accusation,1,谢谢,道德指控/伪善,Chinese,0.23
+zh,2,教会,institutional_rot,1,虐待,制度性腐败,Chinese,0.23
+zh,2,教会,sexual_abuse_frame,1,要求,性侵虐待/掩盖,Chinese,0.23
+zh,2,教会,social_exclusion,1,支持,社会排斥/逐出,Chinese,0.23
+zh,2,神父,cognitive_manipulation,1,独身,认知操纵/洗脑,Chinese,0.23
+zh,2,神父,sexual_abuse_frame,1,执行,性侵虐待/掩盖,Chinese,0.23
+zh,2,耶稣,institutional_rot,1,服务人,制度性腐败,Chinese,0.23
+zh,3,lgbt,moral_accusation,1,堕落,道德指控/伪善,Chinese,0.23
+zh,3,教会,social_exclusion,1,认同性,社会排斥/逐出,Chinese,0.23
+zh,3,神父,social_exclusion,1,搞基,社会排斥/逐出,Chinese,0.23
+zh,4,基督徒,social_exclusion,1,看见,社会排斥/逐出,Chinese,0.23
+zh,4,神棍,rhetorical_attack,1,...,修辞攻击/讽刺批判,Chinese,0.23
+zh,4,神父,moral_accusation,1,修女,道德指控/伪善,Chinese,0.23
+zh,6,主教,rhetorical_attack,1,听腻,修辞攻击/讽刺批判,Chinese,0.23
+zh,6,教会,rhetorical_attack,1,攻击,修辞攻击/讽刺批判,Chinese,0.23
+zh,6,神父,moral_accusation,1,自诩,道德指控/伪善,Chinese,0.23
+zh,6,神父,social_exclusion,1,排挤,社会排斥/逐出,Chinese,0.23
+zh,7,教会,cognitive_manipulation,1,洗脑,认知操纵/洗脑,Chinese,0.23
+zh,8,教会,cognitive_manipulation,1,需要,认知操纵/洗脑,Chinese,0.23
+zh,8,教会,social_exclusion,1,离开,社会排斥/逐出,Chinese,0.23
+zh,9,耶稣,political_interference,1,比不上,政治干预,Chinese,0.23
+zh,10,耶稣,rhetorical_attack,1,搞清,修辞攻击/讽刺批判,Chinese,0.23
+zh,11,基督徒,dehumanization,1,干掉,非人化/病理化,Chinese,0.23
+zh,11,基督徒,rhetorical_attack,1,动手,修辞攻击/讽刺批判,Chinese,0.23
+zh,11,基督教,cognitive_manipulation,1,洗脑,认知操纵/洗脑,Chinese,0.23
+zh,11,基督教,moral_accusation,1,至上,道德指控/伪善,Chinese,0.23
+zh,12,教会,institutional_rot,1,阴暗,制度性腐败,Chinese,0.23
+zh,12,教会,rhetorical_attack,1,设高,修辞攻击/讽刺批判,Chinese,0.23
+zh,12,教会,sexual_abuse_frame,1,强奸,性侵虐待/掩盖,Chinese,0.23
+zh,12,神父,cognitive_manipulation,1,警惕,认知操纵/洗脑,Chinese,0.23
+zh,12,神父,institutional_rot,1,结婚,制度性腐败,Chinese,0.23
+zh,12,神父,moral_accusation,1,腐败,道德指控/伪善,Chinese,0.23
+zh,12,神父,rhetorical_attack,1,要求,修辞攻击/讽刺批判,Chinese,0.23
+zh,12,神父,sexual_abuse_frame,1,强奸,性侵虐待/掩盖,Chinese,0.23
+zh,13,教会,dehumanization,1,毒瘤,非人化/病理化,Chinese,0.23
+zh,13,教会学校,dehumanization,1,毒瘤,非人化/病理化,Chinese,0.23
+zh,13,教会学校,moral_accusation,1,万恶之源,道德指控/伪善,Chinese,0.23
+zh,13,教会学校,political_interference,1,教会,政治干预,Chinese,0.23
+zh,14,信徒,cognitive_manipulation,1,忽悠,认知操纵/洗脑,Chinese,0.23
+zh,14,信徒,dehumanization,1,进化,非人化/病理化,Chinese,0.23
+zh,14,信徒,political_interference,1,信教,政治干预,Chinese,0.23
+zh,14,神棍,cognitive_manipulation,1,拿来,认知操纵/洗脑,Chinese,0.23
+zh,17,基督徒,moral_accusation,1,迫害,道德指控/伪善,Chinese,0.23
+zh,17,基督徒,rhetorical_attack,1,处理,修辞攻击/讽刺批判,Chinese,0.23
+zh,17,教会,moral_accusation,1,待人接物,道德指控/伪善,Chinese,0.23
+zh,17,教会,rhetorical_attack,1,讽刺,修辞攻击/讽刺批判,Chinese,0.23
+zh,19,耶稣,rhetorical_attack,1,一样,修辞攻击/讽刺批判,Chinese,0.23
+zh,20,修女,dehumanization,1,算是,非人化/病理化,Chinese,0.23
+zh,20,修女,rhetorical_attack,1,疯狂,修辞攻击/讽刺批判,Chinese,0.23
+zh,20,修道院,rhetorical_attack,1,神圣,修辞攻击/讽刺批判,Chinese,0.23
+zh,20,教会,institutional_rot,1,有着,制度性腐败,Chinese,0.23
+zh,20,教会,rhetorical_attack,1,蛐蛐,修辞攻击/讽刺批判,Chinese,0.23
+zh,20,神父,institutional_rot,1,相较于,制度性腐败,Chinese,0.23
+zh,20,神父,rhetorical_attack,1,不如,修辞攻击/讽刺批判,Chinese,0.23
+zh,20,神父,sexual_abuse_frame,1,接触,性侵虐待/掩盖,Chinese,0.23
+zh,21,信徒,social_exclusion,1,跑光,社会排斥/逐出,Chinese,0.23
+zh,21,教会,institutional_rot,1,腐败,制度性腐败,Chinese,0.23
+zh,21,教堂,economic_exploitation,1,苦撑,经济剥削,Chinese,0.23
+zh,21,教堂,moral_accusation,1,转转,道德指控/伪善,Chinese,0.23
+zh,22,主教,rhetorical_attack,1,感性,修辞攻击/讽刺批判,Chinese,0.23
+zh,22,教会,cognitive_manipulation,1,急需,认知操纵/洗脑,Chinese,0.23
+zh,22,耶稣,cognitive_manipulation,1,不够,认知操纵/洗脑,Chinese,0.23
+zh,22,耶稣,rhetorical_attack,1,见见,修辞攻击/讽刺批判,Chinese,0.23
+zh,24,教会,cognitive_manipulation,1,渗透,认知操纵/洗脑,Chinese,0.23
+zh,24,教会,rhetorical_attack,1,与时俱进,修辞攻击/讽刺批判,Chinese,0.23
+zh,24,梵二,cognitive_manipulation,1,渗透,认知操纵/洗脑,Chinese,0.23
+zh,24,梵二,rhetorical_attack,1,反对,修辞攻击/讽刺批判,Chinese,0.23
+zh,26,主教,sexual_abuse_frame,1,打桩,性侵虐待/掩盖,Chinese,0.23
+zh,27,信徒,political_interference,1,金主,政治干预,Chinese,0.23
+zh,27,基督徒,social_exclusion,1,看看,社会排斥/逐出,Chinese,0.23
+zh,28,教会,cognitive_manipulation,1,引导,认知操纵/洗脑,Chinese,0.23
+zh,30,基督徒,rhetorical_attack,1,不如,修辞攻击/讽刺批判,Chinese,0.23
+zh,30,新教,rhetorical_attack,1,抢注,修辞攻击/讽刺批判,Chinese,0.23
+zh,34,信徒,cognitive_manipulation,1,以为,认知操纵/洗脑,Chinese,0.23
+zh,34,耶稣,economic_exploitation,1,清理,经济剥削,Chinese,0.23
+zh,35,基督徒,moral_accusation,1,...,道德指控/伪善,Chinese,0.23
+zh,35,耶稣,economic_exploitation,1,关心,经济剥削,Chinese,0.23
+zh,36,主教,moral_accusation,1,不当,道德指控/伪善,Chinese,0.23
+zh,36,教会,institutional_rot,1,拉胯,制度性腐败,Chinese,0.23
+zh,36,教会,rhetorical_attack,1,四分五裂,修辞攻击/讽刺批判,Chinese,0.23
+zh,37,中国,economic_exploitation,1,允许,经济剥削,Chinese,0.23
+zh,37,佛教,moral_accusation,1,没有,道德指控/伪善,Chinese,0.23
+zh,37,基督教,rhetorical_attack,1,挨着,修辞攻击/讽刺批判,Chinese,0.23
+zh,37,基督教,social_exclusion,1,取缔,社会排斥/逐出,Chinese,0.23
+zh,38,基督教,rhetorical_attack,1,明显,修辞攻击/讽刺批判,Chinese,0.23
+zh,38,邪教,cognitive_manipulation,1,确认,认知操纵/洗脑,Chinese,0.23
+zh,38,邪教,rhetorical_attack,1,出来,修辞攻击/讽刺批判,Chinese,0.23
+zh,39,信徒,moral_accusation,1,洗出,道德指控/伪善,Chinese,0.23
+zh,39,神棍,rhetorical_attack,1,散播,修辞攻击/讽刺批判,Chinese,0.23
+zh,40,信徒,political_interference,1,渗透,政治干预,Chinese,0.23
+zh,40,基督教,dehumanization,1,毒瘤,非人化/病理化,Chinese,0.23
+zh,40,基督教,rhetorical_attack,1,叫做,修辞攻击/讽刺批判,Chinese,0.23
+zh,40,教徒,cognitive_manipulation,1,洗脑,认知操纵/洗脑,Chinese,0.23
+zh,42,异端,dehumanization,1,狗咬,非人化/病理化,Chinese,0.23
+zh,42,异端,moral_accusation,1,堕落,道德指控/伪善,Chinese,0.23
+zh,42,异端,social_exclusion,1,指责,社会排斥/逐出,Chinese,0.23
+zh,43,传教士,cognitive_manipulation,1,洗脑,认知操纵/洗脑,Chinese,0.23
+zh,43,传教士,political_interference,1,伴随,政治干预,Chinese,0.23
+zh,43,传教士,rhetorical_attack,1,传播,修辞攻击/讽刺批判,Chinese,0.23
+zh,44,主教,institutional_rot,1,看看,制度性腐败,Chinese,0.23
+zh,44,主教,rhetorical_attack,1,毒瘤,修辞攻击/讽刺批判,Chinese,0.23
+zh,44,信徒,cognitive_manipulation,1,接受,认知操纵/洗脑,Chinese,0.23
+zh,44,教会,dehumanization,1,毒瘤,非人化/病理化,Chinese,0.23
+zh,44,教会,moral_accusation,1,森严,道德指控/伪善,Chinese,0.23
+zh,44,教皇方济各,rhetorical_attack,1,刺痛,修辞攻击/讽刺批判,Chinese,0.23
+zh,44,教皇方济各,social_exclusion,1,踢出,社会排斥/逐出,Chinese,0.23
+zh,45,基督徒,cognitive_manipulation,1,圈呼,认知操纵/洗脑,Chinese,0.23
+zh,45,基督徒,moral_accusation,1,越过,道德指控/伪善,Chinese,0.23
+zh,46,大卫王,moral_accusation,1,弄死,道德指控/伪善,Chinese,0.23

@@ -35,14 +35,14 @@ Both the Chinese and Japanese classifiers share the same dual-head multi-task ar
 \begin{table}[htbp]
 \centering
 \small
-\begin{tabular}{@{}llrl@{}}
+\begin{tabularx}{\textwidth}{@{}l X r X@{}}
 \toprule
 Language & Backbone & Parameters & Notes \\
 \midrule
-Chinese  & \texttt{thu-coai/roberta-base-cold} \citep{thucoai-roberta-cold}              & $\approx$110M & Trained on COLD offensive-language corpus \\
-Japanese & \texttt{kubota/luke-large-defamation-detection-japanese} \citep{yamada2020luke} & $\approx$483M & Domain-adapted for Japanese defamation \\
+Chinese  & \texttt{thu-coai/roberta-base-cold} \citep{thucoai-roberta-cold} & $\approx$110M & Trained on COLD offensive-language corpus \\ \addlinespace
+Japanese & \texttt{kubota/luke-large-defamation\allowbreak -detection-japanese} \citep{yamada2020luke} & $\approx$483M & Domain-adapted for Japanese defamation \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Pre-trained backbones. Both are fine-tuned end-to-end with the shared dual-head architecture.}
 \label{tab:backbones}
 \end{table}
@@ -302,17 +302,19 @@ Table~\ref{tab:finetune-summary} provides a language-level summary of classifier
 \begin{table}[htbp]
 \centering
 \small
-\begin{tabular}{@{}llcccc@{}}
+% 将表格总宽设为 \textwidth
+% 列定义：第一列 l，第二列 X (自动换行)，其余四列 c
+\begin{tabularx}{\textwidth}{@{} l X cccc @{}}
 \toprule
-Language & Model                                 & Rel F1        & Hate F1       & Combined F1   & Best epoch \\
+Language & Model & Rel F1 & Hate F1 & Combined F1 & Best epoch \\
 \midrule
-Chinese  & Baseline (RoBERTa-COLD, no fine-tuning) & ---           & 0.172         & ---           & --- \\
-Chinese  & Fine-tuned (Strategy~C)               & \textbf{0.894} & \textbf{0.579} & \textbf{0.7145} & 3 \\
+Chinese  & Baseline (RoBERTa-COLD, no fine-tuning) & --- & 0.172 & --- & --- \\
+Chinese  & Fine-tuned (Strategy~C) & \textbf{0.894} & \textbf{0.579} & \textbf{0.7145} & 3 \\
 \midrule
-Japanese & Baseline (LUKE-large, no fine-tuning)   & ---           & 0.294         & ---           & --- \\
-Japanese & Fine-tuned (Strategy~C)               & \textbf{0.893} & \textbf{0.579} & \textbf{0.7356} & 3 \\
+Japanese & Baseline (LUKE-large, no fine-tuning) & --- & 0.294 & --- & --- \\
+Japanese & Fine-tuned (Strategy~C) & \textbf{0.893} & \textbf{0.579} & \textbf{0.7356} & 3 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{Summary of fine-tuning results on the held-out validation set. Baseline figures are produced by the pre-trained backbone without any task-specific fine-tuning. Combined F1 is undefined for baselines because no relevance prediction is available. See Tables~\ref{tab:zh-finetune} and~\ref{tab:ja-finetune} for the complete epoch-level breakdown.}
 \label{tab:finetune-summary}
 \end{table}

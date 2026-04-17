@@ -135,16 +135,32 @@ Total                   & 58\,940 \\
 \subsection{Stage 1: Native Data Collection}
 \label{subsec:zh-native}
 
-Raw candidate texts were collected from two Chinese social media platforms using a keyword list that combined neutral Christianity-related terms with expressions associated with anti-Christian hostility in Chinese online discourse.
+Raw candidate texts were collected from Baidu Tieba and HuggingFace Hub. The dataset was then refined through keyword-based filtering and source exclusion.
 
 \begin{itemize}
-  \item \textbf{Tieba} (Baidu's forum platform): 46,640 posts were retrieved through automated web interaction, where \texttt{Selenium} \citep{selenium2014} was used to simulate keyword queries and extract search results.
-  \item \textbf{HuggingFace datasets}: 19,820 additional texts were gathered from four publicly available Weibo-derived datasets on HuggingFace Hub: \texttt{liyucheng/zhi\allowbreak hu\_26k}\citep{hf_zhihu_26k}, \texttt{vilarin/weibo-2014}\citep{hf_weibo_2014}, \texttt{m4rque2/weibo\_automo\allowbreak bile}\citep{hf_weibo_automobile}, and \texttt{Giacinta/weibo}\citep{hf_weibo_giacinta}.
+    \item \textbf{Baidu Tieba:} 46,640 posts were retrieved using \texttt{Selenium} \citep{selenium2014} to simulate manual searches. The search queries relied on a self-constructed keyword list (see Table~\ref{tab:keywords}).
+    \item \textbf{HuggingFace Datasets:} 19,820 texts were extracted from four datasets: \texttt{liyucheng/zhihu\_26k} \citep{hf_zhihu_26k}, \texttt{vilarin/weibo-2014} \citep{hf_weibo_2014}, \texttt{m4rque2/weibo\_automobile} \citep{hf_weibo_automobile}, and \texttt{Giacinta/weibo} \citep{hf_weibo_giacinta}.
 \end{itemize}
 
-After combining and deduplicating, the raw pool contained 78,874 texts. Weibo-derived sources were subsequently excluded because they contributed too few usable texts after keyword filtering (only 412 relevant posts), leaving Tieba as the sole native platform. Relevance filtering reduced the pool to \textbf{15,181 texts}.
+The keyword list, used for both Tieba retrieval and relevance filtering, includes neutral terms, hostile slurs, and historical contexts. They are shown in Table~\ref{tab:keywords}.
 
-To select the most informative 4,000 texts for annotation, we applied an ensemble detection pipeline using three pre-trained Chinese hate speech classifiers: THUCOAIModel \citep{thucoai-roberta-cold}, MoritModel \citep{conneau2018xnlievaluatingcrosslingualsentence}, and DavidcliaoModel \citep{davidliao2024, Wang2022}. Each model scored every candidate independently, and the 4,000 texts with the highest inter-model disagreement --- i.e.\ where the models gave conflicting predictions --- were selected for human review. This active-learning-style strategy ensures the annotation budget is spent on genuinely ambiguous cases, which improves classifier training more than randomly sampled data would. Figure~\ref{fig:ensemble} illustrates the pipeline.
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lp{5cm}p{5cm}}
+\hline
+\textbf{Category} & \textbf{Chinese Keywords (Selection)} & \textbf{English Translation} \\ \hline
+Neutral & 上帝, 耶稣, 基督, 圣经, 牧师, 教会 & God, Jesus, Christ, Bible, Pastor, Church \\
+Hostile & 耶狗, 神棍, 布道鬼, 圣母婊, 二毛子 & Jesus dog, Charlatan, Preaching ghost, Holy Mother bitch, Er-mao-zi \\
+Historical & 十字军东征, 宗教改革, 中世纪 & Crusades, Reformation, Middle Ages \\ \hline
+\end{tabular}
+\caption{Keyword list for data retrieval and filtering.}
+\label{tab:keywords}
+\end{table}
+
+After merging and deduplication, the raw pool contained 66,460 texts. We applied the keyword list to filter all texts for relevance, and the final dataset consists of \textbf{15,181 texts}.
+
+To select the most informative 4,000 texts for annotation, we applied an ensemble detection pipeline using three pre-trained Chinese hate speech classifiers: THUCOAIModel \citep{thucoai-roberta-cold}, MoritModel \citep{conneau2018xnlievaluatingcrosslingualsentence}, and DavidcliaoModel \citep{davidliao2024, Wang2022}. Each model scored every candidate independently, and the 4,000 texts with the highest inter-model disagreement --- i.e.\ where the models gave conflicting predictions --- were selected for human review. Figure~\ref{fig:ensemble} illustrates the pipeline.
 
 %-------------------------------------------------------------------
 % FIGURE: Ensemble detection pipeline for annotation selection
@@ -275,7 +291,7 @@ The fine-tuned classifier was applied to all 15,181 cleaned texts. Texts predict
 \def\wE{2.2cm}
 
 \node[funnel_blue, text width=\wA] (s1)
-  {Raw collected texts\\{\footnotesize Tieba + Weibo HF datasets: \textbf{78,874}}};
+  {Raw collected texts\\{\footnotesize Tieba + Weibo HF datasets: \textbf{66,460}}};
 
 \node[funnel_blue, text width=\wB, below=2mm of s1] (s2)
   {After dedup \& relevance filtering\\{}{\footnotesize \textbf{15,181} texts}};
@@ -325,7 +341,7 @@ The Japanese pipeline followed the same overall procedure. Raw texts were collec
   \item \textbf{Common Crawl}: 38,303 Japanese text segments were extracted from the \texttt{allenai/c4} dataset \cite{xue2021mt5massivelymultilingualpretrained, raffel2023exploringlimitstransferlearning} by filtering with religion-related keywords.
 \end{itemize}
 
-After combining and deduplicating, the raw pool contained 65,040 texts. X (Twitter) was excluded due to access-quota constraints that prevented building a usable pool. After cleaning and relevance filtering, the pool was reduced to \textbf{43,101 texts}, and a second pass produced \textbf{4,181 usable candidates}.
+After combining and deduplicating, the raw pool contained 65,040 texts. X (Twitter) was excluded due to access-quota constraints that prevented building a usable pool. After cleaning and relevance filtering, the pool was reduced to \textbf{43,101 texts}.
 
 Using the same ensemble-based uncertainty sampling (Figure~\ref{fig:ensemble}), 4,084 texts were selected for annotation in Label Studio with the same two-label scheme. The Japanese ensemble consisted of three models selected after an LLM-as-a-judge screening on 250 texts: KubotaModel (85.6\% accuracy) \citep{yamada2020luke}, LukeModel (81.2\%) \citep{luke-japanese}, and YukiModel (88.0\%) \citep{rinna-japanese-gpt-neox-3.6b-instruction-ppo, sawada2024release}. Of the 4,084 annotated texts, 690 were labeled Christianity-related and 102 as hate speech (hate ratio: 2.5\%, somewhat lower than Chinese).
 

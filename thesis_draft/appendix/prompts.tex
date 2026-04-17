@@ -42,7 +42,8 @@ Format: topic: \textless{}label\textgreater{}
 \section{RQ1: Target Extraction Fallback}
 \label{sec:prompt-ner}
 
-\noindent\textbf{Model:} Gemini-2.5-Flash\quad\textbf{File:} \texttt{unsupervised\_classification/RQ1/target\_extraction\_v3.py}
+\noindent\textbf{Model:} Gemini-2.5-Flash \\
+\textbf{Script:} \texttt{unsupervised\_classification/RQ1/target\_extraction\_v3.py}
 
 \smallskip\noindent
 Documents that yield no target from the spaCy NER and domain gazetteer stages are passed to Gemini as a fallback. The placeholder \texttt{\{ln\}} is filled with the language name (\textit{Chinese}, \textit{Japanese}, or \textit{English}) at runtime.
@@ -73,10 +74,11 @@ JSON:
 \section{RQ2: Attack Frame Classification}
 \label{sec:prompt-rq2}
 
-\noindent\textbf{Model:} Gemini-2.5-Flash\quad\textbf{File:} \texttt{unsupervised\_classification/RQ2/rq2\_pipeline\_v2.py}
+\noindent\textbf{Model:} Gemini-2.5-Flash \\
+\textbf{Script:} \texttt{unsupervised\_classification/RQ2/rq2\_pipeline\_v2.py}
 
 \smallskip\noindent
-Extracted predicate--target pairs are batched and submitted together. The model returns a compact JSON mapping each input index to one of ten frame keys. The placeholder \texttt{\{numbered\}} is replaced by the numbered list of inputs; \texttt{\{GEMINI\_FRAME\_KEYS\}} is replaced by the list of valid key strings.
+Extracted predicate--target pairs are batched and submitted together. The model returns a compact JSON mapping each input index to one of ten frame keys. The placeholder \texttt{\{numbered\}} is replaced by the numbered list of inputs; \texttt{\{GEMINI\_FRAME\_K\allowbreak EYS\}} is replaced by the list of valid key strings.
 
 \begin{quote}
 \small\noindent
@@ -123,7 +125,7 @@ Inputs to classify:\\
 \texttt{\{numbered\}}
 
 Reply ONLY with compact JSON mapping index to frame key.\\
-Example: \texttt{\{"1":"moral\_accusation","2":"dehumanization","3":"rhetorical\_attack"\}}\\
+Example: \texttt{\{"1":"moral\_accusation","2":"dehumanization", "3":"rhetori\allowbreak cal\_attack"\}}\\
 Valid keys: \texttt{\{GEMINI\_FRAME\_KEYS\}}
 \end{quote}
 
@@ -190,7 +192,7 @@ Three LLM-based augmentation strategies were used to expand the low-resource Chi
 \end{quote}
 
 %---
-\subsection{Cultural Alignment (EN $\rightarrow$ ZH/JP)}
+\subsection{Cultural Alignment (EN -> ZH/JP)}
 \label{sec:prompt-aug-cultural}
 
 \noindent\textbf{Model:} Gemini-2.5-Pro\quad\textbf{File:} \texttt{data\_augmentation/LLM/main.py}
@@ -225,7 +227,7 @@ Directly provide the localized text in \texttt{\{target\_lang\}} without any int
 \subsection{Back-Translation}
 \label{sec:prompt-aug-bt}
 
-\noindent\textbf{Model:} Gemini-2.5-Flash\quad\textbf{File:} \texttt{data\_augmentation/back\_translation/google\_main.py}
+\noindent\textbf{Model:} Gemini-2.5-Flash\quad \\ \textbf{File:} \texttt{data\_augmentation/back\_translation/google\_main.py}
 
 \smallskip\noindent
 Chinese samples are translated through English, Korean, French, or German pivot languages and then back to Chinese. The same prompt is used for both directions, with \texttt{\{from\_lang\}} and \texttt{\{to\_lang\}} filled at runtime.

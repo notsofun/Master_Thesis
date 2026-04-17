@@ -56,10 +56,6 @@ Topic modelling is used to discover the thematic structure of the corpus without
 
 All documents — Chinese, Japanese, and English — are encoded using \texttt{intfloat/mult\allowbreak lingual-e5-large-instruct} \citep{wang2024multilinguale5textembeddings}, a large multilingual encoder pre-trained on a diverse mixture of supervised and weakly supervised multilingual data. The E5-large model maps texts from all three languages into a shared 1024-dimensional embedding space, making cross-lingual semantic comparisons possible without translation.
 
-\subsection{Cross-Lingual Centroid Alignment}
-
-A practical challenge in multilingual topic modelling is that even within a shared embedding space, monolingual sub-corpora tend to form distinct language-specific clusters driven by surface-level linguistic features rather than shared semantic content. To mitigate this, we apply centroid alignment before passing embeddings to the clustering step. For each language $l$, we compute the language centroid $\mu_l = \frac{1}{n_l} \sum_{i \in l} \mathbf{v}_i$, subtract it from each document vector ($\mathbf{v}_i' = \mathbf{v}_i - \mu_l$), and re-normalize to unit length. This procedure removes the global offset introduced by language-specific vocabulary distributions while preserving within-language semantic variation \citep{wang2024multilinguale5textembeddings}. Cluster quality is evaluated using a mixed-language topic ratio: topics where no single language accounts for more than 90\% of documents are considered cross-lingual; we target a cross-lingual fusion rate above 50\% as evidence that the alignment is effective.
-
 \subsection{Dimensionality Reduction and Clustering}
 
 To extract meaningful thematic patterns, we employ a two-stage pipeline consisting of non-linear dimensionality reduction followed by density-based clustering:

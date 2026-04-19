@@ -139,7 +139,7 @@ Raw candidate texts were collected from Baidu Tieba and HuggingFace Hub. The dat
 
 \begin{itemize}
     \item \textbf{Baidu Tieba:} 46,640 posts were retrieved using \texttt{Selenium} \citep{selenium2014} to simulate manual searches. The search queries relied on a self-constructed keyword list (see Table~\ref{tab:keywords}).
-    \item \textbf{HuggingFace Datasets:} 19,820 texts were extracted from four datasets: \texttt{liyucheng/zhihu\_26k} \citep{hf_zhihu_26k}, \texttt{vilarin/weibo-2014} \citep{hf_weibo_2014}, \texttt{m4rque2/weibo\_automobile} \citep{hf_weibo_automobile}, and \texttt{Giacinta/weibo} \citep{hf_weibo_giacinta}.
+    \item \textbf{HuggingFace Datasets:} 19,820 texts were extracted from four datasets: \texttt{liyucheng / zhihu\_26k} \citep{hf_zhihu_26k}, \texttt{vilarin / weibo-2014} \citep{hf_weibo_2014}, \texttt{m4rque2 / \allowbreak weibo\_automobile} \citep{hf_weibo_automobile} and \texttt{Giacinta / weibo} \citep{hf_weibo_giacinta}.
 \end{itemize}
 
 The keyword list, used for both Tieba retrieval and relevance filtering, includes neutral terms, hostile slurs, and historical contexts. They are shown in Table~\ref{tab:keywords}.
@@ -449,7 +449,7 @@ The native and synthetic sets were merged to form the \textbf{final Japanese cor
 
 Table~\ref{tab:dataset-summary} reports the corpus size across all construction stages. Table~\ref{tab:annotation-distribution} summarises the label distributions from the manual annotation phase for both languages. Hate speech is a minority class in both (3.8\% for Chinese, 2.5\% for Japanese), which motivated the use of Focal Loss and back-translation for classifier fine-tuning.
 
-\begin{table}[htbp]
+\begin{table}[t]
 \centering
 \small
 \begin{tabular}{@{}lrrrrrr@{}}

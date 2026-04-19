@@ -23,10 +23,66 @@ The most important single finding of this thesis is not contained in any individ
 Figure~\ref{fig:disc-genre-map} summarises the three-row pattern that the empirical chapters establish. The pattern is clearest for clerical targets. Across English, Chinese, and Japanese corpora alike, role-based targets at the level of the individual clergy member --- English \textit{priests}, Chinese 神父, and by extension 主教~(\textit{bishops}) and 教皇~(\textit{the Pope}) --- attract the Sexual Abuse Frame as their primary attack vector. In Chinese, the frame's dominance is particularly pronounced: 51\% of all predicates directed at 神父 are abuse-related, and the same frame leads for 主教 (23 predicates) and 教皇 (6). In English, \textit{priests} receive the Sexual Abuse Frame in 45\% of their predicate assignments. This cross-lingual convergence is consistent with the interpretation that clerical role-categories activate a culturally shared discourse \emph{genre}: the priest is a specific kind of moral authority figure, and moral authority's betrayal through sexual misconduct may constitute a predictable, genre-appropriate attack vector regardless of the speaker's native language --- though cultural amplification through the Catholic abuse scandal news cycle likely plays a role as well.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{discussion/disc_genre_convention_map.png}
-    \caption{Genre convention map synthesising RQ1 and RQ2: target social role systematically constrains rhetorical frame selection across all three language communities. Three target-type lanes (Individual Clergy, Political Institution, Collective Identity Label) map onto three distinct frame profiles, each associated with a distinct moral motivation signature from RQ3. This pattern is stable across EN, ZH, and JA despite their otherwise divergent discourse styles (see Chapter~\ref{chap:how}, Figure~\ref{fig:rq2-target}).}
-    \label{fig:disc-genre-map}
+  \centering
+  \begin{tikzpicture}[
+    % 优化样式定义
+    tgt/.style={rectangle, rounded corners=3pt, draw=blue!50, fill=blue!5, 
+                text width=2.8cm, align=center, minimum height=1.0cm, 
+                inner sep=5pt, font=\scriptsize\bfseries},
+    frm/.style={rectangle, rounded corners=2pt, draw=orange!60, fill=orange!5, 
+                text width=2.8cm, align=center, minimum height=0.5cm, 
+                inner sep=4pt, font=\scriptsize},
+    mor/.style={rectangle, rounded corners=2pt, draw=gray!50, fill=gray!5, 
+                text width=2.5cm, align=center, minimum height=1.0cm, 
+                inner sep=5pt, font=\scriptsize},
+    ca/.style={-{Stealth[length=4pt]}, semithick, color=gray!70},
+  ]
+    % ── 列标题 (增加了 y 坐标高度，避免压到内容)
+    \node[font=\tiny\bfseries, color=darkgray] at (0,    3.8) {Target};
+    \node[font=\tiny\bfseries, color=darkgray] at (4.2,  3.8) {Frames};
+    \node[font=\tiny\bfseries, color=darkgray] at (8.2, 3.8) {Moral sig.};
+    
+    % 分隔虚线 (根据新间距调整了位置)
+    \draw[gray!20, dashed] (2.1, 4.0) -- (2.1, -1.8);
+    \draw[gray!20, dashed] (6.3, 4.0) -- (6.3, -1.8);
+
+    % ── 第一行 : Individual Clergy (y=2.5)
+    \node[tgt] (t1) at (0,    2.5) {Individual\\Clergy};
+    \node[frm] (f1a) at (4.2, 3.0) {Sexual Abuse};
+    \node[frm] (f1b) at (4.2, 2.0) {Institutional Rot};
+    \node[mor] (m1)  at (8.2, 2.5) {\textbf{Moral}\\condemnation};
+
+    % ── 第二行 : Institution (y=0.2)
+    \node[tgt] (t2) at (0,    0.2) {Political/Econ.\\Institution};
+    \node[frm] (f2a) at (4.2, 0.7) {Political Interf.};
+    \node[frm] (f2b) at (4.2, -0.3) {Economic Exploit.};
+    \node[mor] (m2)  at (8.2, 0.2) {\textbf{Identity}\\threat};
+
+    % ── 第三行 : Collective identity (y=-2.1)
+    \node[tgt] (t3) at (0,   -2.1) {Collective\\Identity Label};
+    \node[frm] (f3a) at (4.2, -1.6) {Rhetorical Attack};
+    \node[frm] (f3b) at (4.2, -2.6) {Moral Accusation};
+    \node[mor] (m3)  at (8.2, -2.1) {\textbf{Mixed}\\EN+ZH+JA};
+
+    % ── 绘制箭头
+    \draw[ca] (t1.east) -- (f1a.west); \draw[ca] (t1.east) -- (f1b.west);
+    \draw[ca] (t2.east) -- (f2a.west); \draw[ca] (t2.east) -- (f2b.west);
+    \draw[ca] (t3.east) -- (f3a.west); \draw[ca] (t3.east) -- (f3b.west);
+    
+    \draw[ca] (f1a.east) -- (m1.west|-f1a.east);
+    \draw[ca] (f1b.east) -- (m1.west|-f1b.east);
+    \draw[ca] (f2a.east) -- (m2.west|-f2a.east);
+    \draw[ca] (f2b.east) -- (m2.west|-f2b.east);
+    \draw[ca] (f3a.east) -- (m3.west|-f3a.east);
+    \draw[ca] (f3b.east) -- (m3.west|-f3b.east);
+
+    % ── 页脚标注 (位置下移)
+    \node[font=\tiny\itshape, text=gray, align=center]
+      at (4.2, -3.5) {Pattern stable across EN, ZH \& JA};
+  \end{tikzpicture}
+  
+  \caption{Genre convention map synthesising RQ1 and RQ2: target social role systematically constrains rhetorical frame selection across all three language communities. Three target-type lanes (Individual Clergy, Political Institution, Collective Identity Label) map onto three distinct frame profiles, each associated with a distinct moral motivation signature from RQ3. This pattern is stable across EN, ZH, and JA despite their otherwise divergent discourse styles (see Chapter~\ref{chap:how}, Figure~\ref{fig:rq2-target}).}
+  \label{fig:disc-genre-map}
 \end{figure}
 
 The Japanese corpus provides the clearest counterexample and therefore the strongest corroboration of the same principle. The Unification Church (統一教会) is not a clerical role-category but a political-institutional target, and it attracts not the Sexual Abuse Frame but \textit{Political Interference} (31\% of predicates, 80 instances) and \textit{Economic Exploitation} (20\%, 51 instances). The Liberal Democratic Party (自民党), as the political patron enabling the Church, is attacked almost exclusively through the Political Interference frame (59\%). Shinzo Abe (安倍晋三), as a named political individual, receives Moral Accusation alongside Political Interference --- encoding him simultaneously as a morally culpable person and a political actor. The target's perceived social role --- religious-political institution, enabler party, and named individual --- constrains the available rhetorical repertoire in each case. Importantly, \textit{霊感商法}~(spirit-based fraud) vocabulary such as 献金, 詐欺, and 搾取 appears nowhere in the English or Chinese targets, precisely because the financial predation narrative is specific to the social context of the Unification Church scandal rather than to Christianity as a religious category.

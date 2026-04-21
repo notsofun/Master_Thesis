@@ -49,10 +49,18 @@
 \graphicspath{{images/}}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,shapes.geometric,fit,backgrounds,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% ---- Language colours (used in RQ3 scatter plot) --------------------------
+\definecolor{enzh}{RGB}{0,90,170}      % EN  — blue
+\definecolor{zhcol}{RGB}{200,70,20}    % ZH  — orange-red
+\definecolor{jacol}{RGB}{30,140,60}    % JA  — green
+\colorlet{accent}{uzhaccent}           % reuse existing dark-red accent
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tabularx}
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{adjustbox}
@@ -455,26 +463,22 @@
       \includegraphics[width=\linewidth]{datamap_final_final.png}\\[0.2em]
       \footnotesize 47 topics · 6{,}000 documents · 3 languages
     \end{column}
-    \begin{column}{0.36\textwidth}\small
+    \begin{column}{0.36\textwidth}
       \textbf{Two patterns emerge:}
       \vspace{0.5em}
 
       \keyword{Monolingual peaks}\\
-      \footnotesize Events and controversies that resonate only inside one language community.
+       Events and controversies that resonate only inside one language community.
       \vspace{0.6em}
 
-      \keyword{Cross-lingual clusters} ($H \approx 1.1$)\\
-      \footnotesize Debates that attract equal participation from all three communities.
+      \keyword{Cross-lingual clusters}\\
+      Debates that attract equal participation from all three communities.
       \vspace{0.8em}
 
-      \footnotesize\textcolor{mutedgray}{\textit{The next two slides show one example text per topic.}}
     \end{column}
   \end{columns}
-  \vspace{0.2em}
-  \takeaway{The corpus is already speaking: some religious grievances are
-  local, others travel across languages.}
 \end{frame}
-% ---- Slide 6.5b: Monolingual peaks with examples --------------------------
+
 \begin{frame}{Monolingual peaks — language-specific events}
   \footnotesize
   \begin{columns}[T]
@@ -527,11 +531,11 @@
       \textit{Keywords:} 传教士, 传教, 中国, 道教, 儒教, 洋人
       \vspace{0.5em}
 
-      \begin{block}{Example}
+      \begin{block}{Example (ZH)}
       \scriptsize
-      「儒教は宣教師を必要としなかった。
-      科挙制度こそが最大の『布教』機構であり、
-      キリスト教の制度的な伝道組織とは根本的に異なる。」\\[0.3em]
+      「儒教从汉代起便由皇权诏令推行，根本不需要传教士。
+      科举制度才是儒家价值观最伟大的『布道』机构——
+      这与基督教建立专门传教组织的逻辑截然不同。」\\[0.3em]
       \textcolor{mutedgray}{\textit{(Confucianism needed no missionaries — the imperial exams were its ``mission structure'', unlike Christianity's institutional evangelism.)}}
       \end{block}
       \vspace{0.3em}
@@ -549,15 +553,15 @@
     % ── Topic 3: LGBTQ+ ─────────────────────────────────────────────────────
     \begin{column}{0.33\textwidth}
       \textbf{LGBTQ+ \& Catholic Teaching}\\
-      \textcolor{mutedgray}{\scriptsize Topic 3 · 149 docs · ZH 36\% / EN 34\% / JA 30\%}
+      \textcolor{mutedgray}{\scriptsize Topic 3 · 149 docs · ZH 36\% / EN 34\% / JA 30\% · \textit{ex: ZH}}
       \vspace{0.4em}
 
       \begin{block}{Example (ZH)}
       \scriptsize
-      「同性愛者を司祭職から排除する規則は、
-      候補者に『病的で危険な自己嫌悪』を
-      強いるものであり、
-      司教たちはこの政策を本当に実施するつもりなのか明確にすべきだ。」\\[0.3em]
+      「将公开同性恋者拒于神职门外，
+      等于逼迫候选人陷入"病态且危险的自我憎恨"。
+      主教们到底打算执行这条规定，
+      还是承认它只是个摆设？」\\[0.3em]
       \textcolor{mutedgray}{\textit{(Barring gay men from the priesthood forces ``pathological self-hatred''; bishops must say whether they actually enforce it.)}}
       \end{block}
       \vspace{0.2em}
@@ -567,14 +571,15 @@
     % ── Topic 7: Science ────────────────────────────────────────────────────
     \begin{column}{0.33\textwidth}
       \textbf{Science vs.\ Creationism}\\
-      \textcolor{mutedgray}{\scriptsize Topic 7 · 119 docs · EN 39\% / JA 30\% / ZH 31\%}
+      \textcolor{mutedgray}{\scriptsize Topic 7 · 119 docs · EN 39\% / ZH 31\% / JA 30\% · \textit{ex: JA}}
       \vspace{0.4em}
 
-      \begin{block}{Example (ZH)}
+      \begin{block}{Example (JA)}
       \scriptsize
-      「創造論者は科学の定義自体を拒絶している。
-      もし聖書が『2＋2＝5』と言えば、
-      彼らは数学を嘘と宣言するだろう。」\\[0.3em]
+      「創造論者は科学の定義そのものを拒絶している。
+      もし聖書に『2＋2＝5』と書いてあれば、
+      彼らは数学を嘘と宣言するだろう。
+      聖書を文字通りの取扱説明書と見なしているのだ。」\\[0.3em]
       \textcolor{mutedgray}{\textit{(Creationists reject the definition of science: if the Bible said $2+2=5$, they'd declare mathematics a lie.)}}
       \end{block}
       \vspace{0.2em}
@@ -584,16 +589,15 @@
     % ── Topic 36: Conservative/Liberal ──────────────────────────────────────
     \begin{column}{0.33\textwidth}
       \textbf{Conservative / Liberal Church Split}\\
-      \textcolor{mutedgray}{\scriptsize Topic 36 · 25 docs · ZH 36\% / EN 32\% / JA 32\%}
+      \textcolor{mutedgray}{\scriptsize Topic 36 · 25 docs · ZH 36\% / EN 32\% / JA 32\% · \textit{ex: EN}}
       \vspace{0.4em}
 
-      \begin{block}{Example (ZH)}
+      \begin{block}{Example (EN)}
       \scriptsize
-      「主流派教会は両側から挟み撃ちにされている。
-      右派からは自由すぎると攻撃され、
-      世俗的左派には相手にされない。
-      アメリカの宗教的地盤の17\%しか代表していない。」\\[0.3em]
-      \textcolor{mutedgray}{\textit{(Mainline churches squeezed from both sides — too liberal for the right, irrelevant to the secular left; only 17\% of the religious landscape.)}}
+      ``Mainline denominations are getting squeezed from both ends.
+      Conservatives call them too liberal; secular progressives have no
+      use for faith at all. They're down to commanding maybe 17\% of the
+      American religious landscape — and shrinking.''
       \end{block}
       \vspace{0.2em}
       \scriptsize A \emphc{global} institutional tension, not culturally specific.
@@ -618,101 +622,85 @@
 
 % ---- Slide 7.1: Who is targeted? -----------------------------------------
 \begin{frame}{RQ1 — Who is targeted?}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.60\textwidth}
-      \centering
-      \includegraphics[width=\linewidth]{rq1_global_top20_bilingual.png}
-    \end{column}
-    \begin{column}{0.39\textwidth}\small
-      \textbf{Three distinct target profiles.}
-      \begin{itemize}
-        \item \keyword{English} — \emph{clergy} dominate; named political
-          figures prominent (\textit{priests, bishops, Trump}).
-        \item \keyword{Chinese} — \emph{church institutions} and the
-          clerical hierarchy; plus 神棍 ``religious fraudster'' — a
-          register not seen in the other two languages.
-        \item \keyword{Japanese} — \emph{統一教会} (Unification Church)
-          alone $= 501$ mentions, dwarfing every other target; paired
-          with 安倍晋三 and 自民党.
-      \end{itemize}
-      \vspace{0.3em}
-      \footnotesize
-      Japanese hate speech about religion is, in its most prevalent form,
-      a discourse about \emphc{domestic political corruption}, not
-      theology.
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ---- Slide 7.2: How is the attack expressed? ------------------------------
-\begin{frame}{RQ2 — Which rhetorical frame carries the attack?}
-  \small
-  \textit{Ten author-constructed frames, induced from pilot-coding 200
-  documents and grounded in the framing literature:}
-  \vspace{0.4em}
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.52\textwidth}\footnotesize
-      \begin{itemize}
-        \item \textbf{Rhetorical Attack} — sarcasm, mockery, invective.
-        \item \textbf{Moral Accusation} — hypocrisy, double standards.
-        \item \textbf{Sexual Abuse Frame} — clerical abuse \& cover-ups.
-        \item \textbf{Economic Exploitation} — fraud, coerced donations.
-        \item \textbf{Political Interference} — capture of state / party.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}\footnotesize
-      \begin{itemize}
-        \item \textbf{Cognitive Manipulation} — brainwashing, cult control.
-        \item \textbf{Institutional Rot} — systemic cover-up.
-        \item \textbf{Social Exclusion} — calls for banning / ostracism.
-        \item \textbf{Dehumanization} — vermin / disease metaphors.
-        \item \textbf{Other} — residual.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-  \vspace{0.2em}
   \centering
-  \includegraphics[width=0.78\textwidth]{rq2_lang_tactic.png}
-\end{frame}
+  \includegraphics[width=1\textwidth,height=1\textheight,keepaspectratio]{rq1_global_top20_bilingual.png}
 
-% ---- Slide 7.2b: Which frames dominate per language -----------------------
-\begin{frame}{Three national ``frame signatures''}
-  \small
-  \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.33\textwidth}
-      \textbf{\keyword{English}}\\ \footnotesize
-      \begin{itemize}
-        \item Rhetorical Attack \emph{46\%}
-        \item Moral Accusation \emph{22\%}
-        \item Sexual Abuse \emph{14\%}
-      \end{itemize}
-      \footnotesize\textcolor{mutedgray}{``The phony, fake, stifling
-      forced artificial piety.'' — broad moral condemnation.}
+  \vspace{0.2em}
+  \begin{columns}[T]
+    \begin{column}{0.33\textwidth}\footnotesize\centering
+      \keyword{English}\\
+      \emph{Clergy} dominate — priests, bishops, Trump
     \end{column}
-    \begin{column}{0.33\textwidth}
-      \textbf{\keyword{Japanese}}\\ \footnotesize
-      \begin{itemize}
-        \item Political Interference \emph{20\%}
-        \item Rhetorical Attack \emph{18\%}
-        \item Economic Exploitation \emph{14\%}
-      \end{itemize}
-      \footnotesize\textcolor{mutedgray}{Driven by Abe / 統一教会:
-      支配, 献金, 搾取 — politics and money.}
+    \begin{column}{0.33\textwidth}\footnotesize\centering
+      \keyword{Chinese}\\
+      Church institutions + 神棍 ``religious fraudster''
     \end{column}
-    \begin{column}{0.33\textwidth}
-      \textbf{\keyword{Chinese}}\\ \footnotesize
-      \begin{itemize}
-        \item Sexual Abuse \emph{26\%}
-        \item Rhetorical Attack \emph{25\%}
-        \item Moral Accusation \emph{14\%}
-      \end{itemize}
-      \footnotesize\textcolor{mutedgray}{性侵, 丑闻, 官官相护 —
-      clerical misconduct + cover-up.}
+    \begin{column}{0.33\textwidth}\footnotesize\centering
+      \keyword{Japanese}\\
+      統一教会 alone: 501 mentions — \emphc{politics, not theology}
     \end{column}
   \end{columns}
-  \vspace{0.5em}
-  \takeaway{Surface vocabularies differ; but — as the next slide shows —
-  the \emph{same underlying rule} chooses them.}
+\end{frame}
+
+
+% ---- Slide 7.2: Frame taxonomy (text only) --------------------------------
+\begin{frame}{RQ2 — Ten attack frames (inductively constructed)}
+  \small
+  \textit{Induced from pilot-coding 200 documents; rule-based fallback
+  ensures full corpus coverage.}
+  \vspace{0.6em}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.50\textwidth}
+      \begin{enumerate}\itemsep4pt\footnotesize
+        \item \textbf{Rhetorical Attack} — sarcasm, mockery, invective
+        \item \textbf{Moral Accusation} — hypocrisy, double standards
+        \item \textbf{Sexual Abuse Frame} — clerical abuse \& cover-ups
+        \item \textbf{Economic Exploitation} — fraud, coerced donations
+        \item \textbf{Political Interference} — capture of state / party
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{enumerate}\itemsep4pt\footnotesize\setcounter{enumi}{5}
+        \item \textbf{Cognitive Manipulation} — brainwashing, cult control
+        \item \textbf{Institutional Rot} — systemic cover-up
+        \item \textbf{Social Exclusion} — calls for banning / ostracism
+        \item \textbf{Dehumanization} — vermin / disease metaphors
+        \item \textbf{Other} — residual
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+  \vspace{0.7em}
+  \takeaway{Taxonomy constructed inductively — not imported from an
+  English-language schema. Each frame maps to a distinct rhetorical
+  move visible across all three languages.}
+\end{frame}
+
+% ---- Slide 7.2b: Distribution chart + per-language signatures -------------
+\begin{frame}{Three national ``frame signatures''}
+  \begin{columns}[T]
+    \begin{column}{0.58\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{rq2_lang_tactic.png}
+    \end{column}
+    \begin{column}{0.40\textwidth}\footnotesize
+      \textbf{\keyword{English}}\\
+      Rhetorical Attack 46\% · Moral Accusation 22\%\\
+      \textcolor{mutedgray}{\textit{``The phony, fake, stifling piety.''\\broad moral condemnation}}
+      \vspace{0.5em}
+
+      \textbf{\keyword{Japanese}}\\
+      Political Interference 20\% · Economic 14\%\\
+      \textcolor{mutedgray}{\textit{支配, 献金, 搾取 —\\politics and money}}
+      \vspace{0.5em}
+
+      \textbf{\keyword{Chinese}}\\
+      Sexual Abuse 26\% · Rhetorical Attack 25\%\\
+      \textcolor{mutedgray}{\textit{性侵, 丑闻, 官官相护 —\\misconduct + cover-up}}
+      \vspace{0.6em}
+
+    \end{column}
+  \end{columns}
+    \takeaway{Surface vocabularies differ; the \emph{same underlying rule} chooses them.}
 \end{frame}
 
 % ---- Slide 7.3: Target-frame rule (the strongest slide) -------------------
@@ -723,12 +711,12 @@
   the target category selects the frame:}
   \vspace{0.3em}
   \begin{center}\small
-  \begin{tabular}{@{}r c l@{}}
+  \begin{tabular}{@{}l c l@{}}
     \textbf{Clergy} (priests, bishops, Pope)
       & $\longrightarrow$ & \keyword{Sexual Abuse Frame} \\
-    \textbf{Institutions} (Unification Church, LDP, 教会)
+    \textbf{Institutions} (Unification Church, LDP)
       & $\longrightarrow$ & \keyword{Political Interference / Economic Exploitation} \\
-    \textbf{Collective believers} (Catholics, 基督徒, キリスト教徒)
+    \textbf{Collective believers} (Catholics)
       & $\longrightarrow$ & \keyword{Rhetorical Attack / Moral Accusation} \\
   \end{tabular}
   \end{center}
@@ -791,49 +779,84 @@
 
 % ---- Slide 8.2: The main picture -----------------------------------------
 \begin{frame}{Three moral fingerprints}
-  \centering
-  \includegraphics[width=0.80\textwidth]{rq3_lang_line.png}
-  \vspace{0.2em}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.48\textwidth}\footnotesize
-      \textbf{\keyword{English} — direct condemnation.}\\
-      Negative on \emph{all five} classical moral foundations.
-      Christianity is indicted as ``harmful, unfair, corrupt, authoritarian''
-      — a \emphc{wide ethical indictment} from within a shared normative
-      framework (insider critique).
+
+    % ── scatter plot ──────────────────────────────────────────────────────
+    \begin{column}{0.54\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \begin{axis}[
+          width=7.6cm, height=5.6cm,
+          xlabel={\footnotesize MFT score (neg.$=$condemning)},
+          ylabel={\footnotesize Threat score (neg.$=$threat)},
+          xmin=-0.14, xmax=0.24,
+          ymin=-0.052, ymax=0.032,
+          xtick={-0.10,-0.05,0.00,0.05,0.10,0.15,0.20},
+          ytick={-0.04,-0.02,0.00,0.02},
+          x tick label style={font=\tiny},
+          y tick label style={font=\tiny},
+          xlabel style={font=\small},
+          ylabel style={font=\small},
+          grid=both, grid style={dashed,gray!25},
+          clip=false,
+        ]
+          % Quadrant shading
+          \fill[enzh!12] (-0.14,-0.052) rectangle (0.00, 0.032);
+          \fill[accent!8]  (0.00,-0.052) rectangle (0.24,-0.002);
+          % Reference lines
+          \draw[very thick,gray!60,dashed]
+            (axis cs:0,-0.052)--(axis cs:0,0.032);
+          \draw[very thick,gray!60,dashed]
+            (axis cs:-0.14,0)--(axis cs:0.24,0);
+          % Quadrant labels
+          \node[font=\tiny\bfseries,color=enzh!80,align=center]
+            at (axis cs:-0.075, 0.022) {Ethical\\Condemnation};
+          \node[font=\tiny\bfseries,color=accent!80,align=center]
+            at (axis cs:0.155, -0.040) {Identity\\Threat};
+          % EN
+          \addplot[only marks,mark=square*,mark size=5pt,color=enzh]
+            coordinates {(-0.067,-0.002)};
+          \node[font=\small\bfseries,color=enzh,anchor=south west]
+            at (axis cs:-0.067,-0.002) {EN};
+          % ZH
+          \addplot[only marks,mark=*,mark size=6pt,color=zhcol]
+            coordinates {(0.150,-0.030)};
+          \node[font=\small\bfseries,color=zhcol,anchor=north west]
+            at (axis cs:0.150,-0.030) {ZH};
+          % JA
+          \addplot[only marks,mark=triangle*,mark size=6pt,color=jacol]
+            coordinates {(0.058,-0.032)};
+          \node[font=\small\bfseries,color=jacol,anchor=north east]
+            at (axis cs:0.058,-0.032) {JA};
+        \end{axis}
+      \end{tikzpicture}
     \end{column}
-    \begin{column}{0.48\textwidth}\footnotesize
-      \textbf{\keyword{Chinese \& Japanese} — identity defense.}\\
-      \emph{Positive} on the classical MFT axes; \emph{negative} on
-      Symbolic and Realistic Threat. Christianity is framed as a
-      \emphc{foreign / social danger} — outsider critique organised
-      around group safety.
+
+    % ── interpretation ────────────────────────────────────────────────────
+    \begin{column}{0.44\textwidth}\small
+      \vspace{0.6em}
+      \textbf{\textcolor{enzh}{English} — direct condemnation.}\\
+      \footnotesize
+      Negative MFT score: Christianity indicted as
+      ``harmful, unfair, corrupt, authoritarian'' —
+      a \emphc{wide ethical indictment} from within a
+      shared normative framework.
+      \vspace{0.7em}
+
+      \textbf{\textcolor{zhcol}{Chinese} \&
+              \textcolor{jacol}{Japanese} — identity defense.}\\
+      \footnotesize
+      Positive MFT axes; negative Threat axes.
+      Christianity framed as a \emphc{foreign / social danger}
+      — outsider critique organised around group safety.
+      \vspace{0.9em}
+
+      \takeaway{Same target, two opposite\\
+      moral architectures.}
     \end{column}
+
   \end{columns}
 \end{frame}
-
-% ---- Slide 8.3: Summary ---------------------------------------------------
-\begin{frame}{The headline, in one sentence}
-  \vspace{0.3em}
-  \begin{center}
-  \Large
-  \textcolor{uzhblue}{\textbf{``Christianity is morally wrong''}}
-  \hspace{0.8em}\textit{vs.}\hspace{0.8em}
-  \textcolor{uzhaccent}{\textbf{``Christianity is dangerous to us.''}}
-  \end{center}
-  \vspace{0.6em}
-  \small
-  \begin{itemize}
-    \item Neither grammar is inherently more hostile than the other —
-      they are \emph{different rhetorical routes to the same end}.
-    \item The choice is not random. It reflects each community's broader
-      sense of what \emph{a good society} should look like.
-    \item \textit{For Digital-Religion scholars:} the same target
-      (Christianity) becomes an analytic lens onto the \emphc{moral
-      imaginaries} of three online publics.
-  \end{itemize}
-\end{frame}
-
 % =========================================================================
 % CLOSING
 % =========================================================================
@@ -867,30 +890,65 @@
   resolution.}
 \end{frame}
 
-% ---- Slide 10: Limits + invitation ---------------------------------------
-\begin{frame}{Limits, and what I want to discuss with you}
-  \small
-  \textbf{Honest limits.}
-  \begin{itemize}
-    \item \emph{Platform bias.} Tieba, 5ch, and Anglophone forums each
-      carry their own selection effects.
-    \item \emph{Constructed datasets.} Our annotated Chinese / Japanese
-      data are partly back-translation-augmented.
-    \item \emph{Moral dictionaries} were built for English; the CMFD /
-      J-MFD adaptations are imperfect.
-    \item \emph{Qualitative validation} by religion scholars is still
-      needed topic-by-topic — this is where \textbf{you} come in.
-  \end{itemize}
-  \vspace{0.4em}
-  \textbf{Three discussion questions.}
-  \begin{enumerate}\small
-    \item How should Digital-Religion studies draw the line between
-      \emph{hostility} and \emph{critique}?
-    \item Can computational models be trained to detect
-      \emph{theological} nuance — not only discursive hostility?
-    \item Which traditions should be compared next? Where would the
-      \emph{who--how--why} framework break?
-  \end{enumerate}
+
+% ---- Slide 10: Conclusions + Limitations ---------------------------------
+\begin{frame}{Conclusions and limitations}
+  \begin{columns}[T,onlytextwidth]
+
+    % ── Conclusions — three RQ blocks ─────────────────────────────────────
+    \begin{column}{0.56\textwidth}
+      \begin{block}{RQ1 — Who is targeted?}
+        \footnotesize
+        Shared core (Jesus, Pope) \textbf{+} community-specific peaks:\\[0.2em]
+        \textcolor{jacol}{\textbf{JA}} 統一教会·自民党 \quad
+        \textcolor{zhcol}{\textbf{ZH}} clerical hierarchy \quad
+        \textcolor{enzh}{\textbf{EN}} clergy \& politicians
+      \end{block}
+      \vspace{0.2em}
+      \begin{block}{RQ2 — How is hatred expressed?}
+        \footnotesize
+        Target category \emphc{selects} the frame — stably, across all three languages:\\[0.2em]
+        Clergy $\!\to\!$ Sexual Abuse \enspace
+        Institutions $\!\to\!$ Political/Economic \enspace
+        Collectives $\!\to\!$ Rhetorical Attack
+      \end{block}
+      \vspace{0.2em}
+      \begin{block}{RQ3 — Why does it persuade?}
+        \footnotesize
+        \textcolor{enzh}{\textbf{EN}} \ negative on all five MFT axes
+        \hfill\textit{moral condemnation}\\[0.15em]
+        \textcolor{zhcol}{\textbf{ZH}} \textcolor{jacol}{\textbf{JA}} \ positive MFT, negative Threat
+        \hfill\textit{identity defense}
+      \end{block}
+    \end{column}
+
+    % ── Limitations ───────────────────────────────────────────────────────
+    \begin{column}{0.41\textwidth}
+      \small\textbf{Structural limits}
+      \vspace{0.4em}
+
+      \begin{itemize}\footnotesize\itemsep5pt
+        \item[\textcolor{uzhaccent}{$\blacktriangleright$}]
+          \textbf{Snapshot only} — cannot trace how triggering events
+          reshape discourse over time
+        \item[\textcolor{uzhaccent}{$\blacktriangleright$}]
+          \textbf{Surface antagonism} — irony, code-switching, and
+          in-group vocabulary go undetected
+        \item[\textcolor{uzhaccent}{$\blacktriangleright$}]
+          \textbf{Dictionary artefacts} — CMFD / J-MFD are imperfect
+          adaptations of English-native MFD~2.0
+        \item[\textcolor{uzhaccent}{$\blacktriangleright$}]
+          \textbf{Constructed data} — ZH / JA corpora are partly
+          back-translation-augmented
+      \end{itemize}
+
+      \vspace{0.5em}
+      \footnotesize\textcolor{mutedgray}{Pipeline is
+      \keyword{target-agnostic} and open-source —\\
+      applicable beyond the Christianity case.}
+    \end{column}
+
+  \end{columns}
 \end{frame}
 
 % ---- Slide 11: Thank you --------------------------------------------------
@@ -906,19 +964,7 @@
   huangzhidian15@gmail.com\\
   \href{https://github.com/notsofun/Master_Thesis}{github.com/notsofun/Master\_Thesis}
   \vspace{0.8em}\\
-  \footnotesize\textit{I'd love your questions — especially the hard ones.}
-\end{frame}
-
-\end{document}
-notsofun/Master_Thesis}{github.com/notsofun/Master\_Thesis}
-  \vspace{0.8em}\\
-  \footnotesize\textit{I'd love your questions — especially the hard ones.}
-\end{frame}
-
-\end{document}
-ster_Thesis}{github.com/notsofun/Master\_Thesis}
-  \vspace{0.8em}\\
-  \footnotesize\textit{I'd love your questions — especially the hard ones.}
+  \footnotesize\textit{I'd love your questions.}
 \end{frame}
 
 \end{document}

@@ -8,30 +8,107 @@
 %  If Noto CJK is not installed, replace the \setCJKmainfont line with
 %  another CJK font available on your system (e.g. "Source Han Serif SC").
 % =========================================================================
+\PassOptionsToPackage{table}{xcolor}
 \documentclass[aspectratio=169,10pt]{beamer}
 
-% ---- Theme & look ---------------------------------------------------------
+% ---- Theme & look — clean blue-white tech theme ---------------------------
 \usetheme{default}
 \usecolortheme{default}
+\usefonttheme{professionalfonts}
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\setbeamertemplate{itemize items}[circle]
-\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize items}{\color{techblue}\small$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{skyblue}\footnotesize$\triangleright$}
+\setbeamertemplate{enumerate item}{\color{techblue}\bfseries\insertenumlabel.}
+\setbeamersize{text margin left=0.9cm,text margin right=0.9cm}
 
-\definecolor{uzhblue}{RGB}{0,40,85}
-\definecolor{uzhaccent}{RGB}{160,30,50}
-\definecolor{mutedgray}{RGB}{90,90,90}
-\definecolor{softbg}{RGB}{245,245,245}
+% ---- Colour palette --------------------------------------------------------
+%   navyblue  — deep navy for header bars and primary text
+%   techblue  — bright Microsoft/UZH blue for accents and structure
+%   skyblue   — mid blue for sub-items and secondary emphasis
+%   icyblue   — very pale blue for block / card backgrounds
+%   midgray   — blue-gray for secondary text (no pure black anywhere)
+\definecolor{navyblue}{RGB}{10,40,90}
+\definecolor{techblue}{RGB}{0,112,204}
+\definecolor{skyblue}{RGB}{80,160,230}
+\definecolor{icyblue}{RGB}{228,241,255}
+\definecolor{midgray}{RGB}{95,108,128}
 
-\setbeamercolor{title}{fg=uzhblue}
-\setbeamercolor{frametitle}{fg=uzhblue}
-\setbeamercolor{structure}{fg=uzhblue}
-\setbeamercolor{alerted text}{fg=uzhaccent}
-\setbeamercolor{block title}{bg=uzhblue,fg=white}
-\setbeamercolor{block body}{bg=softbg,fg=black}
+% Keep old macro names alive so existing slide content compiles unchanged
+\colorlet{uzhblue}{navyblue}
+\colorlet{uzhaccent}{techblue}
+\colorlet{mutedgray}{midgray}
+\colorlet{softbg}{icyblue}
 
+% ---- Beamer colour assignments --------------------------------------------
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=navyblue}
+\setbeamercolor{title}{fg=navyblue}
+\setbeamercolor{subtitle}{fg=techblue}
+\setbeamercolor{author}{fg=midgray}
+\setbeamercolor{date}{fg=midgray}
+\setbeamercolor{institute}{fg=midgray}
+\setbeamercolor{frametitle}{fg=white,bg=navyblue}
+\setbeamercolor{frametitle rule}{bg=techblue}
+\setbeamercolor{structure}{fg=techblue}
+\setbeamercolor{alerted text}{fg=techblue}
+\setbeamercolor{item}{fg=techblue}
+\setbeamercolor{subitem}{fg=skyblue}
+\setbeamercolor{block title}{bg=navyblue,fg=white}
+\setbeamercolor{block body}{bg=icyblue,fg=navyblue}
+\setbeamercolor{block title alerted}{bg=techblue,fg=white}
+\setbeamercolor{block body alerted}{bg=icyblue,fg=navyblue}
+\setbeamercolor{footer sep}{bg=techblue!30}
+\setbeamercolor{footer}{fg=midgray}
+
+% ---- Fonts -----------------------------------------------------------------
 \setbeamerfont{frametitle}{series=\bfseries,size=\large}
-\setbeamerfont{title}{series=\bfseries,size=\Large}
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{subtitle}{series=\normalfont,size=\normalsize}
+\setbeamerfont{block title}{series=\bfseries,size=\small}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% ---- Frame title: full-width navy bar + thin bright-blue accent line -------
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.70cm,dp=0.24cm,
+                         leftskip=0.9cm]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.20pt,dp=0pt]{frametitle rule}%
+  \end{beamercolorbox}%
+}
+
+% ---- Footer: thin separator + author · title left, page/total right --------
+\setbeamertemplate{footline}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.28pt,dp=0pt]{footer sep}%
+  \end{beamercolorbox}%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.65\paperwidth,ht=2.4ex,dp=1ex,
+                           left,leftskip=0.9em]{footer}%
+      \tiny\textcolor{midgray}{\insertshortauthor\ ·\ \insertshorttitle}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.35\paperwidth,ht=2.4ex,dp=1ex,
+                           right,rightskip=0.9em]{footer}%
+      \tiny\textcolor{midgray}{\insertframenumber\,/\,\inserttotalframenumber}%
+    \end{beamercolorbox}%
+  }%
+}
+
+% ---- Title page: large title, blue rule, subtitle, author/date ------------
+\setbeamertemplate{title page}{%
+  \vspace*{1.5cm}%
+  \begin{center}%
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\\[0.55em]%
+    {\color{techblue}\rule{0.52\textwidth}{1.6pt}}\\[0.55em]%
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}\\[1.3em]%
+    {\small\textcolor{midgray}{\insertauthor}}\\[0.18em]%
+    {\footnotesize\textcolor{midgray}{\insertinstitute}}\\[0.18em]%
+    {\footnotesize\textcolor{midgray}{\insertdate}}%
+  \end{center}%
+}
 
 % ---- Packages -------------------------------------------------------------
 \usepackage{fontspec}

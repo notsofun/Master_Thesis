@@ -91,36 +91,47 @@
 % ---- Slide 2: Why this matters for this audience --------------------------
 \begin{frame}{Why this talk belongs at Digital Religions}
   \begin{columns}[T,onlytextwidth]
+    % --- 左侧：核心逻辑 ---
     \begin{column}{0.55\textwidth}
-    \small
-    Digital-religion scholarship asks \keyword{how religion is contested
-    online}. That question is increasingly answered at a \keyword{scale}
-    that manual reading alone cannot cover.
-    \vspace{0.6em}
+      \small
+      
+      \keyword{The Challenge}\\
+      Digital Religion scholarship requires \keyword{scale} beyond manual reading.
+      \vspace{0.8em}
 
-    Most NLP work, by contrast, still asks only:\\
-    \centerline{\textit{``is this post hate speech — yes / no?''}}
-    \vspace{0.6em}
+      \keyword{The Gap}\\
+      Standard NLP focuses on \keyword{Binary Detection}:\\
+      \quad \textit{``Is this hate speech? (Yes/No)''}
+      \vspace{0.8em}
 
-    My question is different:
-    \begin{itemize}
-      \item \emphc{What kinds of anti-religious narratives emerge
-      \emph{across cultures}}, once we stop forcing a binary label?
-    \end{itemize}
-    \vspace{0.5em}
-    \textit{Bridge.} This re-purposes AI as an \keyword{interpretive tool}
-    for religion research — letting the data itself reveal the
-    \keyword{forms} that religious hostility takes online.
+      \keyword{The Shift: Interpretive AI}\\
+      Moving from labeling to \keyword{understanding}:
+      \begin{itemize}
+        \item \emphc{Cross-cultural narratives}
+        \item Data-driven discovery of hostility \keyword{forms}
+      \end{itemize}
+      
+      \vspace{0.5em}
+      \centering
+      \rule{0.5\textwidth}{0.4pt}\\
+      \vspace{0.3em}
+      \footnotesize \textit{AI as a tool for structured interpretation.}
     \end{column}
+
+    % --- 右侧：视觉总结 ---
     \begin{column}{0.42\textwidth}
-    \centering\footnotesize
-    \begin{tikzpicture}[every node/.style={font=\footnotesize}]
-      \node[draw,rounded corners,fill=softbg,text width=3.6cm,align=center,minimum height=1cm] (a)
-        {\textbf{NLP today}\\ binary detection\\ \textit{``hate or not''}};
-      \node[draw,rounded corners,fill=uzhblue!15,text width=3.6cm,align=center,minimum height=1cm,below=0.6cm of a] (b)
-        {\textbf{This talk}\\ structured interpretation\\ \textit{who · how · why}};
-      \draw[-{Stealth[length=6pt]},thick,uzhblue] (a) -- (b);
-    \end{tikzpicture}
+      \centering\footnotesize
+      \vspace{1em}
+      \begin{tikzpicture}[every node/.style={font=\footnotesize}]
+        \node[draw, rounded corners, fill=softbg, text width=3.4cm, align=center, minimum height=1.1cm] (a)
+          {\textbf{Current NLP}\\ \color{gray}Binary Detection\\ \textit{``Classification''}};
+          
+        \node[draw, rounded corners, fill=uzhblue!15, text width=3.4cm, align=center, minimum height=1.1cm, below=0.8cm of a] (b)
+          {\textbf{Proposed Approach}\\ \color{uzhblue}Structured Interpretation\\ \textit{``Discovery''}};
+          
+        \draw[-{Stealth[length=6pt]}, thick, uzhblue] (a) -- (b) 
+          node[midway, right, text width=1.5cm] {Shift to Meaning};
+      \end{tikzpicture}
     \end{column}
   \end{columns}
 \end{frame}
@@ -163,7 +174,7 @@
   a natural laboratory for asking whether hate discourse is
   \emphc{universal} or \emphc{context-dependent}.
   \vspace{0.4em}\\
-  \footnotesize The goal is \emph{not} to privilege one religion, but to
+    The goal is \emph{not} to privilege one religion, but to
   use Christianity as a \keyword{comparative probe}.
 \end{frame}
 
@@ -208,27 +219,34 @@
 
 % ---- Slide 5: Data --------------------------------------------------------
 \begin{frame}{A trilingual corpus of 63{,}265 texts}
+  \vspace{0.2cm}
   \small
-  \begin{tabularx}{\textwidth}{l X r}
-    \toprule
-    \textbf{Language} & \textbf{Sources} & \textbf{Texts} \\
-    \midrule
-    English  & Existing hate-speech datasets, curated forum threads &
-      \textasciitilde 21k \\
-    Chinese  & Tieba + web corpora, custom annotation &
-      \textasciitilde 18k \\
-    Japanese & 5ch + Common Crawl, custom annotation &
-      \textasciitilde 24k \\
-    \bottomrule
-  \end{tabularx}
-  \vspace{0.5em}
-  \begin{itemize}
-    \item For low-resource settings, we use \keyword{LLM-assisted
-      back-translation augmentation} rather than translating from English
-      (which would import English framings).
-    \item Annotation is \emphc{structured}: target, attack frame, and
-      moral axis — not only ``hate / not-hate''.
-  \end{itemize}
+    \begin{tabularx}{\textwidth}{l X r}
+      \toprule
+      \textbf{Language} & \textbf{Sources} & \textbf{Texts} \\
+      \midrule
+      English  & HateXplain, Jigsaw, MLMA, Measuring Hate Speech
+                (filtered for Christianity-targeted content) &
+        58{,}940 \\
+      Chinese  & Baidu Tieba + Zhihu/Weibo corpora (native);
+                LLM localisation from English seeds (synthetic) &
+        1{,}965 \\
+      Japanese & 5ch + Common Crawl (native);
+                LLM localisation from English seeds (synthetic) &
+        2{,}360 \\
+      \bottomrule
+    \end{tabularx}
+    \vspace{0.5em}
+    \begin{itemize}
+      \item Chinese and Japanese corpora are built via a
+        \keyword{two-stage pipeline}: Stage~1 crawls native texts and trains
+        language-specific classifiers; Stage~2 expands coverage by
+        \keyword{LLM-localising} diverse English seed texts into the target
+        language, with the same classifiers used for quality filtering.
+      \item Each text receives \emphc{two binary labels} ---
+        \texttt{christianity\_related} and \texttt{hate\_speech} --- to
+        separate targeted hostility from incidental religious mention.
+    \end{itemize}
   \takeaway{A balanced trilingual resource lets us compare
   \emph{framings} on equal footing — and is released open-source:
   \href{https://github.com/notsofun/Master_Thesis}{\texttt{github.com/notsofun/Master\_Thesis}}.}
@@ -278,78 +296,312 @@
   \end{columns}
 \end{frame}
 
-% ---- Slide 6b: Method (short technical zoom) -----------------------------
-\begin{frame}{One technical slide — how the pieces fit}
-  \small
+% ============================================================
+%  SLIDE A — Shared backbone: embeddings + topic modelling
+% ============================================================
+\begin{frame}{Methodology: Cross-lingual Discovery \& Target Extraction}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.55\textwidth}
-    \textbf{Shared backbone.}\\
-    Multilingual E5-large (1024-d) encodes every sentence. A small
-    mean-centring step per language aligns the three sub-spaces.
-    \vspace{0.4em}\\
-    \textbf{BERTopic} (UMAP + HDBSCAN) then clusters the aligned
-    embeddings into \keyword{47 discourse topics} — monolingual topics
-    live next to genuinely cross-lingual ones.
-    \vspace{0.4em}\\
-    \textbf{For RQ2} we add a predicate-window extractor to cope with
-    Chinese and Japanese zero-subject sentences, then an LLM classifier
-    into \keyword{10 author-constructed attack frames}.
-    \vspace{0.4em}\\
-    \textbf{For RQ3} we build seven \keyword{moral axes}
-    (5 MFT + 2 intergroup-threat) as centroid differences of dictionary
-    words, and project every document onto them:
-    \[
-      \mathrm{Bias}(d,k)\;=\;\cos\!\bigl(\text{E5}(d),\,\mathbf{a}_k\bigr).
-    \]
+    % --- Left Column ---
+    \begin{column}{0.56\textwidth}
+      \small
+      \textbf{Balanced Topic Modelling}\\
+      \begin{itemize}
+        \item \keyword{Random sampling}: 2,000 per language
+              ($N=6{,}000$ total)
+        \item BERTopic (UMAP + HDBSCAN); noise posts excluded
+      \end{itemize}
+      \textit{Output}: \keyword{47 discourse topics} — monolingual
+      and cross-lingual clusters coexist.
+
+      \vspace{0.6em}
+      \textbf{RQ1 — Target Identification}\\
+      Three-stage pipeline on the topic-labelled corpus:
+      \begin{itemize}
+        \item \textbf{Stage 1}: spaCy NER
+              (\textsc{person, org, norp, gpe, fac})
+        \item \textbf{Stage 2}: Domain gazetteer
+              (40+ religious categories)
+        \item \textbf{Stage 3}: Gemini LLM fallback for ZH/JP
+              zero-subject sentences
+      \end{itemize}
+      \textit{Output}: target frequency rankings by topic $\times$
+      language.
     \end{column}
-    \begin{column}{0.43\textwidth}\footnotesize
-    \textbf{Axis = virtue centroid $-$ vice centroid}
-    \vspace{0.3em}
-    \begin{tikzpicture}[every node/.style={font=\scriptsize}]
-      \draw[->,thick,uzhblue] (-2.0,0) -- (2.0,0);
-      \node[uzhblue] at (-2.2,0) {\textit{harm}};
-      \node[uzhblue] at ( 2.2,0) {\textit{care}};
-      \node[circle,fill=uzhaccent,inner sep=2pt,label=below:\textit{document $d$}] at (-0.8,0) {};
-    \end{tikzpicture}
-    \vspace{0.3em}\\
-    A \keyword{negative} score means the text's embedding sits closer to
-    the \emph{vice/threat} pole — which is the fingerprint of hostile
-    framing \emph{via that moral axis}.
-    \vspace{0.3em}\\
-    \textcolor{mutedgray}{Crucially, a \emph{positive} score can also be
-    hostile when the speaker invokes ingroup virtues to attack an
-    outgroup — more on this in a moment.}
+
+    % --- Right Column: Visual Flow ---
+    \begin{column}{0.40\textwidth}
+      \centering\footnotesize
+      \vspace{0.4em}
+      \begin{tikzpicture}[
+          node distance=0.55cm,
+          box/.style={draw, rounded corners, text width=3.2cm,
+                      align=center, minimum height=0.85cm,
+                      font=\footnotesize},
+          sep/.style={draw=none, text width=3.2cm, align=center,
+                      font=\scriptsize\itshape, text=mutedgray}
+        ]
+
+        \node[box, fill=softbg] (a) {
+          \textbf{Balanced Corpus}\\
+          ZH $\cdot$ JP $\cdot$ EN\\
+          \textcolor{uzhblue}{\scriptsize ($N=2{,}000$/lang)}
+        };
+
+        \node[box, fill=uzhblue!20, below=of a] (c) {
+          \textbf{BERTopic}\\
+          47 Clusters
+        };
+
+        % divider label
+        \node[sep, below=0.3cm of c] (lbl) {$\downarrow$\ RQ1 pipeline};
+
+        \node[box, fill=gray!10, below=0.1cm of lbl] (d) {
+          \textbf{NER + Gazetteer}\\
+          \scriptsize spaCy $\cdot$ 40+ categories
+        };
+
+        \node[box, fill=gray!10, below=of d] (e) {
+          \textbf{LLM Fallback}\\
+          \scriptsize Gemini (ZH/JP zero-subj)
+        };
+
+        \node[box, fill=uzhaccent!20, draw=uzhaccent,
+              below=of e] (f) {
+          \textbf{Target Rankings}\\
+          \scriptsize by topic $\times$ language
+        };
+
+        \draw[-{Stealth[length=5pt]}, thick, uzhblue] (a)--(c);
+        \draw[-{Stealth[length=5pt]}, thick, gray]    (c)--(lbl);
+        \draw[-{Stealth[length=5pt]}, thick, gray]    (lbl)--(d);
+        \draw[-{Stealth[length=5pt]}, thick, gray]    (d)--(e);
+        \draw[-{Stealth[length=5pt]}, thick, gray]    (e)--(f);
+      \end{tikzpicture}
     \end{column}
   \end{columns}
 \end{frame}
 
-% ---- Slide 6.5: BERTopic result map ---------------------------------------
-\begin{frame}{What the data says, before we ask any question}
-  \centering
-  \includegraphics[width=0.68\textwidth]{datamap_final_final.png}\\[0.2em]
-  \footnotesize 47 topics, coloured by dominant language.
-  \vspace{0.3em}
+
+% ============================================================
+%  SLIDE B — RQ2 & RQ3 analytical layers
+% ============================================================
+\begin{frame}{Methodology: Attack frames \& Moral axes}
+  \small
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.5\textwidth}\footnotesize
-      \textbf{Monolingual peaks.}
-      \begin{itemize}
-        \item \keyword{JA (99\%)} — Unification Church \& Abe
-        \item \keyword{EN (92\%)} — religion \& Canadian identity
-        \item \keyword{ZH (96\%)} — missionaries in China
-      \end{itemize}
+
+    % ── left: RQ2 ─────────────────────────────────────────
+    \begin{column}{0.50\textwidth}
+      \textbf{RQ2 — How? \ Three-layer frame extractor}
+
+      \begin{enumerate}\itemsep2pt
+        \item \textbf{SVO parsing} (spaCy) — full triples where
+              syntax permits
+        \item \textbf{Predicate window} (${\pm}N$ words around
+              target) — handles ZH/JP zero-subject drop
+        \item \textbf{LLM classification} (Gemini) — maps each
+              predicate–argument pair to \keyword{1 of 10 attack frames}
+              (cognitive manipulation, moral accusation,
+              dehumanisation, \ldots)
+      \end{enumerate}
+
+      \vspace{0.4em}
+      \textcolor{mutedgray}{Taxonomy constructed inductively from
+      200-doc pilot; rule-based fallback ensures full corpus coverage.}
     \end{column}
-    \begin{column}{0.5\textwidth}\footnotesize
-      \textbf{Truly cross-lingual clusters.} ($H \approx 1.1$)
-      \begin{itemize}
-        \item LGBTQ+ \& Catholic teaching
-        \item Science vs.\ creationism
-        \item Conservative / liberal church split
-      \end{itemize}
+
+    % ── right: RQ3 ────────────────────────────────────────
+    \begin{column}{0.47\textwidth}
+      \textbf{RQ3 — Why? \ Moral-axis projection}\\[0.3em]
+
+      \keyword{7 axes}: 5 MFT foundations
+      (Harm, Fairness, Loyalty, Authority, Sanctity)
+      + 2 intergroup-threat axes
+      (Realistic, Symbolic)\\[0.4em]
+
+      \textbf{Axis construction} (dictionaries: MFD 2.0 / J-MFD / CMFD):
+      \[
+        \mathbf{a}_k \;=\;
+        \text{cent}\!\left(\{E5(w)\}_{w\in D_k^+}\right)
+        -
+        \text{cent}\!\left(\{E5(w)\}_{w\in D_k^-}\right)
+      \]
+
+      \textbf{Bias score} (cosine projection):
+      \[
+        \mathrm{Bias}(d,k)=\cos\!\bigl(E5(d),\,\mathbf{a}_k\bigr)
+      \]
+
+      \begin{tikzpicture}[every node/.style={font=\scriptsize}]
+        \draw[->,thick,uzhblue] (-2.1,0) -- (2.1,0);
+        \node[uzhblue] at (-2.35,0) {\textit{vice}};
+        \node[uzhblue] at ( 2.35,0) {\textit{virtue}};
+        \node[circle,fill=uzhaccent,inner sep=2pt,
+              label=below:\textit{doc $d$}] at (-0.7,0) {};
+      \end{tikzpicture}
+
+      \textcolor{mutedgray}{\scriptsize Negative = vice/threat pole
+      (direct condemnation); positive = virtue pole
+      (identity-defense grammar).}
+    \end{column}
+
+  \end{columns}
+\end{frame}
+
+% ---- Slide 6.5a: BERTopic overview ----------------------------------------
+\begin{frame}{What the data says, before we ask any question}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.62\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{datamap_final_final.png}\\[0.2em]
+      \footnotesize 47 topics · 6{,}000 documents · 3 languages
+    \end{column}
+    \begin{column}{0.36\textwidth}\small
+      \textbf{Two patterns emerge:}
+      \vspace{0.5em}
+
+      \keyword{Monolingual peaks}\\
+      \footnotesize Events and controversies that resonate only inside one language community.
+      \vspace{0.6em}
+
+      \keyword{Cross-lingual clusters} ($H \approx 1.1$)\\
+      \footnotesize Debates that attract equal participation from all three communities.
+      \vspace{0.8em}
+
+      \footnotesize\textcolor{mutedgray}{\textit{The next two slides show one example text per topic.}}
     \end{column}
   \end{columns}
-  \vspace{0.3em}
+  \vspace{0.2em}
   \takeaway{The corpus is already speaking: some religious grievances are
   local, others travel across languages.}
+\end{frame}
+% ---- Slide 6.5b: Monolingual peaks with examples --------------------------
+\begin{frame}{Monolingual peaks — language-specific events}
+  \footnotesize
+  \begin{columns}[T]
+
+    % ── JA ──────────────────────────────────────────────────────────────────
+    \begin{column}{0.33\textwidth}
+      \textbf{\keyword{JA 99\%} — Unification Church \& Abe}\\
+      \textcolor{mutedgray}{\scriptsize Topic 0 · 499 docs · entropy $\approx 0.07$}
+      \vspace{0.4em}
+
+      \textit{Keywords:} 統一教会, 安倍, 日本, 自民党
+      \vspace{0.5em}
+
+      \begin{block}{Example}
+      \scriptsize
+      「安倍は教会の内実を熟知した上で、その公的な宣伝役を担っていた。
+      自民党の派閥は教会に名称変更を許し、
+      訴追リストを逃れて霊感商法を続けさせた。」\\[0.3em]
+      \textcolor{mutedgray}{\textit{(Abe knowingly promoted the church; the LDP let it rename itself to evade prosecution and continue ``spirit sales'' fraud.)}}
+      \end{block}
+      \vspace{0.3em}
+      \scriptsize Resonates \emphc{only} in Japan — shaped by the 2022 assassination and ensuing media scrutiny.
+    \end{column}
+
+    % ── EN ──────────────────────────────────────────────────────────────────
+    \begin{column}{0.33\textwidth}
+      \textbf{\keyword{EN 92\%} — Religion \& Canadian Identity}\\
+      \textcolor{mutedgray}{\scriptsize Topic 16 · 61 docs · entropy $\approx 0.34$}
+      \vspace{0.4em}
+
+      \textit{Keywords:} canada, immigrants, conservative, christian, society
+      \vspace{0.5em}
+
+      \begin{block}{Example}
+      \scriptsize
+      ``Canada was built on European Christian civilisational foundations;
+      newcomers are expected to integrate into that tradition — not dilute
+      it with incompatible values.''
+      \end{block}
+      \vspace{0.3em}
+      \scriptsize Religion embedded in multiculturalism debate — a framing that has \emphc{little resonance} in JA or ZH communities.
+    \end{column}
+
+    % ── ZH ──────────────────────────────────────────────────────────────────
+    \begin{column}{0.33\textwidth}
+      \textbf{\keyword{ZH 96\%} — Missionaries in China}\\
+      \textcolor{mutedgray}{\scriptsize Topic 43 · 22 docs · entropy $\approx 0.18$}
+      \vspace{0.4em}
+
+      \textit{Keywords:} 传教士, 传教, 中国, 道教, 儒教, 洋人
+      \vspace{0.5em}
+
+      \begin{block}{Example}
+      \scriptsize
+      「儒教は宣教師を必要としなかった。
+      科挙制度こそが最大の『布教』機構であり、
+      キリスト教の制度的な伝道組織とは根本的に異なる。」\\[0.3em]
+      \textcolor{mutedgray}{\textit{(Confucianism needed no missionaries — the imperial exams were its ``mission structure'', unlike Christianity's institutional evangelism.)}}
+      \end{block}
+      \vspace{0.3em}
+      \scriptsize A distinctly Chinese intellectual concern with indigenous vs.\ Western belief systems.
+    \end{column}
+
+  \end{columns}
+\end{frame}
+
+% ---- Slide 6.5c: Cross-lingual clusters with examples ---------------------
+\begin{frame}{Cross-lingual clusters — shared concerns across all three languages}
+  \footnotesize
+  \begin{columns}[T]
+
+    % ── Topic 3: LGBTQ+ ─────────────────────────────────────────────────────
+    \begin{column}{0.33\textwidth}
+      \textbf{LGBTQ+ \& Catholic Teaching}\\
+      \textcolor{mutedgray}{\scriptsize Topic 3 · 149 docs · ZH 36\% / EN 34\% / JA 30\%}
+      \vspace{0.4em}
+
+      \begin{block}{Example (ZH)}
+      \scriptsize
+      「同性愛者を司祭職から排除する規則は、
+      候補者に『病的で危険な自己嫌悪』を
+      強いるものであり、
+      司教たちはこの政策を本当に実施するつもりなのか明確にすべきだ。」\\[0.3em]
+      \textcolor{mutedgray}{\textit{(Barring gay men from the priesthood forces ``pathological self-hatred''; bishops must say whether they actually enforce it.)}}
+      \end{block}
+      \vspace{0.2em}
+      \scriptsize \emphc{Universal} fault line within Catholicism.
+    \end{column}
+
+    % ── Topic 7: Science ────────────────────────────────────────────────────
+    \begin{column}{0.33\textwidth}
+      \textbf{Science vs.\ Creationism}\\
+      \textcolor{mutedgray}{\scriptsize Topic 7 · 119 docs · EN 39\% / JA 30\% / ZH 31\%}
+      \vspace{0.4em}
+
+      \begin{block}{Example (ZH)}
+      \scriptsize
+      「創造論者は科学の定義自体を拒絶している。
+      もし聖書が『2＋2＝5』と言えば、
+      彼らは数学を嘘と宣言するだろう。」\\[0.3em]
+      \textcolor{mutedgray}{\textit{(Creationists reject the definition of science: if the Bible said $2+2=5$, they'd declare mathematics a lie.)}}
+      \end{block}
+      \vspace{0.2em}
+      \scriptsize Anti-creationist critique appears in \emphc{all three} communities.
+    \end{column}
+
+    % ── Topic 36: Conservative/Liberal ──────────────────────────────────────
+    \begin{column}{0.33\textwidth}
+      \textbf{Conservative / Liberal Church Split}\\
+      \textcolor{mutedgray}{\scriptsize Topic 36 · 25 docs · ZH 36\% / EN 32\% / JA 32\%}
+      \vspace{0.4em}
+
+      \begin{block}{Example (ZH)}
+      \scriptsize
+      「主流派教会は両側から挟み撃ちにされている。
+      右派からは自由すぎると攻撃され、
+      世俗的左派には相手にされない。
+      アメリカの宗教的地盤の17\%しか代表していない。」\\[0.3em]
+      \textcolor{mutedgray}{\textit{(Mainline churches squeezed from both sides — too liberal for the right, irrelevant to the secular left; only 17\% of the religious landscape.)}}
+      \end{block}
+      \vspace{0.2em}
+      \scriptsize A \emphc{global} institutional tension, not culturally specific.
+    \end{column}
+
+  \end{columns}
+  \vspace{0.2em}
+  \takeaway{The same critical frames appear word-for-word across ZH, EN, and JA — suggesting a shared global Catholic discourse, not three separate ones.}
 \end{frame}
 
 % =========================================================================

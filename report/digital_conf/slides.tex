@@ -177,13 +177,13 @@
     \item \keyword{Japanese} — a \emph{small} minority, but politically
       salient after the Abe/Unification-Church scandal of 2022.
   \end{itemize}
-  \vspace{0.6em}
-  \textit{The same target, three distinct social positions:}
-  a natural laboratory for asking whether hate discourse is
-  \emphc{universal} or \emphc{context-dependent}.
-  \vspace{0.4em}\\
-    The goal is \emph{not} to privilege one religion, but to
-  use Christianity as a \keyword{comparative probe}.
+  \vspace{0.5em}
+  \takeaway{\textit{Same target, three distinct social positions} —
+  a natural laboratory for testing whether hate discourse is
+  \emphc{universal} or \emphc{context-dependent}.\\[0.3em]
+  \textcolor{mutedgray}{\footnotesize
+    Goal: use Christianity as a \keyword{comparative probe},
+    not to privilege one religion.}}
 \end{frame}
 
 % ---- Slide 4: Research questions -----------------------------------------
@@ -246,14 +246,12 @@
     \end{tabularx}
     \vspace{0.5em}
     \begin{itemize}
-      \item Chinese and Japanese corpora are built via a
-        \keyword{two-stage pipeline}: Stage~1 crawls native texts and trains
-        language-specific classifiers; Stage~2 expands coverage by
-        \keyword{LLM-localising} diverse English seed texts into the target
-        language, with the same classifiers used for quality filtering.
-      \item Each text receives \emphc{two binary labels} ---
-        \texttt{christianity\_related} and \texttt{hate\_speech} --- to
-        separate targeted hostility from incidental religious mention.
+      \item \keyword{Two-stage pipeline}: Stage~1 crawls native texts +
+        trains language-specific classifiers; Stage~2 expands via
+        \keyword{LLM-localisation} of English seeds, filtered by the same classifiers.
+      \item Each text carries \emphc{two binary labels}:
+        \texttt{christianity\_related} \& \texttt{hate\_speech} —
+        separating targeted hostility from incidental mention.
     \end{itemize}
   \takeaway{A balanced trilingual resource lets us compare
   \emph{framings} on equal footing — and is released open-source:
@@ -294,12 +292,12 @@
     \end{column}
     \begin{column}{0.44\textwidth}\footnotesize
       \textbf{Why not supervised end-to-end?}
-      \vspace{0.2em}\\
-      Pure supervised classifiers reproduce the labels we already have
-      (mostly English, mostly Islamophobia / antisemitism). Unsupervised
-      clustering lets new regions of the discourse \emph{surface}
-      themselves — including the Unification-Church cluster that nobody
-      pre-labelled.
+      \begin{itemize}\itemsep3pt
+        \item Supervised classifiers reproduce \emph{existing} labels —
+              mostly EN, mostly Islamophobia / antisemitism.
+        \item Unsupervised clustering lets new structures \emph{emerge} —
+              e.g.\ the Unification-Church cluster no taxonomy pre-labelled.
+      \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
@@ -421,12 +419,11 @@
     \begin{column}{0.47\textwidth}
       \textbf{RQ3 — Why? \ Moral-axis projection}\\[0.3em]
 
-      \keyword{7 axes}: 5 MFT foundations
-      (Harm, Fairness, Loyalty, Authority, Sanctity)
-      + 2 intergroup-threat axes
-      (Realistic, Symbolic)\\[0.4em]
+      \keyword{7 axes} (5 MFT + 2 intergroup-threat),
+      constructed from multilingual moral dictionaries
+      (MFD~2.0 / J-MFD / CMFD).\\[0.5em]
 
-      \textbf{Axis construction} (dictionaries: MFD 2.0 / J-MFD / CMFD):
+      \textbf{Axis vector} (virtue$-$vice centroid in embedding space):
       \[
         \mathbf{a}_k \;=\;
         \text{cent}\!\left(\{E5(w)\}_{w\in D_k^+}\right)
@@ -645,34 +642,52 @@
 
 % ---- Slide 7.2: Frame taxonomy (text only) --------------------------------
 \begin{frame}{RQ2 — Ten attack frames (inductively constructed)}
-  \small
-  \textit{Induced from pilot-coding 200 documents; rule-based fallback
-  ensures full corpus coverage.}
-  \vspace{0.6em}
+  \vspace{0.15em}
+  \textcolor{mutedgray}{\footnotesize
+    Induced from pilot-coding 200 documents;
+    rule-based fallback ensures full corpus coverage.}
+  \vspace{0.5em}
+
+  % Two colour-coded columns — blue = discourse/rhetoric; red = institutional harm
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.50\textwidth}
-      \begin{enumerate}\itemsep4pt\footnotesize
-        \item \textbf{Rhetorical Attack} — sarcasm, mockery, invective
-        \item \textbf{Moral Accusation} — hypocrisy, double standards
-        \item \textbf{Sexual Abuse Frame} — clerical abuse \& cover-ups
-        \item \textbf{Economic Exploitation} — fraud, coerced donations
-        \item \textbf{Political Interference} — capture of state / party
-      \end{enumerate}
+    \begin{column}{0.49\textwidth}
+      \setlength{\leftmargini}{0.9em}
+      \begin{itemize}\footnotesize\itemsep5pt
+        \item[\textcolor{uzhblue}{$\blacksquare$}]
+          \textbf{Rhetorical Attack} {\color{mutedgray}— sarcasm, mockery, invective}
+        \item[\textcolor{uzhblue}{$\blacksquare$}]
+          \textbf{Moral Accusation} {\color{mutedgray}— hypocrisy, double standards}
+        \item[\textcolor{uzhaccent}{$\blacksquare$}]
+          \textbf{Sexual Abuse} {\color{mutedgray}— clerical abuse \& cover-ups}
+        \item[\textcolor{uzhaccent}{$\blacksquare$}]
+          \textbf{Economic Exploitation} {\color{mutedgray}— fraud, coerced donations}
+        \item[\textcolor{uzhaccent}{$\blacksquare$}]
+          \textbf{Political Interference} {\color{mutedgray}— capture of state / party}
+      \end{itemize}
     \end{column}
-    \begin{column}{0.48\textwidth}
-      \begin{enumerate}\itemsep4pt\footnotesize\setcounter{enumi}{5}
-        \item \textbf{Cognitive Manipulation} — brainwashing, cult control
-        \item \textbf{Institutional Rot} — systemic cover-up
-        \item \textbf{Social Exclusion} — calls for banning / ostracism
-        \item \textbf{Dehumanization} — vermin / disease metaphors
-        \item \textbf{Other} — residual
-      \end{enumerate}
+    \begin{column}{0.49\textwidth}
+      \setlength{\leftmargini}{0.9em}
+      \begin{itemize}\footnotesize\itemsep5pt
+        \item[\textcolor{uzhaccent}{$\blacksquare$}]
+          \textbf{Cognitive Manipulation} {\color{mutedgray}— brainwashing, cult control}
+        \item[\textcolor{uzhaccent}{$\blacksquare$}]
+          \textbf{Institutional Rot} {\color{mutedgray}— systemic cover-up}
+        \item[\textcolor{uzhblue}{$\blacksquare$}]
+          \textbf{Social Exclusion} {\color{mutedgray}— calls for banning / ostracism}
+        \item[\textcolor{uzhaccent}{$\blacksquare$}]
+          \textbf{Dehumanization} {\color{mutedgray}— vermin / disease metaphors}
+        \item[\textcolor{mutedgray}{$\blacksquare$}]
+          \textbf{Other} {\color{mutedgray}— residual}
+      \end{itemize}
     \end{column}
   \end{columns}
-  \vspace{0.7em}
-  \takeaway{Taxonomy constructed inductively — not imported from an
-  English-language schema. Each frame maps to a distinct rhetorical
-  move visible across all three languages.}
+  \vspace{0.5em}
+  {\footnotesize
+    \textcolor{uzhblue}{$\blacksquare$}~discourse/rhetoric \quad
+    \textcolor{uzhaccent}{$\blacksquare$}~institutional harm / coercion}
+  \vspace{0.2em}
+  \takeaway{Taxonomy constructed inductively — each frame maps to a distinct
+  rhetorical move visible across all three languages.}
 \end{frame}
 
 % ---- Slide 7.2b: Distribution chart + per-language signatures -------------
@@ -755,10 +770,10 @@
         \item \textbf{Realistic Threat} — safety vs.\ invasion
         \item \textbf{Symbolic Threat} — cultural cohesion vs.\ cultural threat
       \end{itemize}
-      \vspace{0.2em}
-      The score is a cosine similarity between the document and the
-      axis vector — it tells us \emph{which moral vocabulary the document
-      activates}, not whether the speaker is a fan of the axis.
+      \vspace{0.3em}
+      \textcolor{mutedgray}{\footnotesize
+        Score $=$ cosine(doc, axis) — reveals \emph{which vocabulary is active},
+        not the speaker's own moral stance.}
     \end{column}
     \begin{column}{0.46\textwidth}\footnotesize
       \textbf{Two hostile grammars both show up:}
